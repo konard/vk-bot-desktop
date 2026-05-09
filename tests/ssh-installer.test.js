@@ -16,13 +16,23 @@ describe('buildInstallScript', () => {
     const script = buildInstallScript({ ...baseOptions, isolation: 'docker' });
     assert.match(script, /^#!\/usr\/bin\/env bash/);
     assert.match(script, /set -euo pipefail/);
-    assert.match(script, /\$ --isolated docker --image node:20 --/);
+    assert.match(script, /\$ --isolated docker --name .+ --image node:20 --/);
     assert.match(script, /node src\/bot\/runner\.js/);
   });
 
   it('emits a screen isolation invocation', () => {
     const script = buildInstallScript({ ...baseOptions, isolation: 'screen' });
-    assert.match(script, /\$ --isolated screen --/);
+    assert.match(script, /\$ --isolated screen --name .+ --/);
+  });
+
+  it('stops any prior session before starting a new one', () => {
+    const script = buildInstallScript({ ...baseOptions, isolation: 'screen' });
+    assert.match(script, /\$ --stop /);
+  });
+
+  it('uses screen isolation by default', () => {
+    const script = buildInstallScript({ ...baseOptions });
+    assert.match(script, /\$ --isolated screen --name /);
   });
 
   it('throws when the bundle archive is missing', () => {
