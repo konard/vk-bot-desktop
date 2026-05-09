@@ -1,0 +1,146 @@
+name: Electron release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag to release (e.g. v0.0.1)'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            artifact_glob: 'release/*.{AppImage,deb,tar.gz}'
+          - os: macos-latest
+            artifact_glob: 'release/*.{dmg,zip}'
+          - os: windows-latest
+            artifact_glob: 'release/*.{exe,msi}'
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Build renderer bundle
+        run: npm run build:renderer
+
+      - name: Build Electron artifacts (Linux)
+        if: matrix.os == 'ubuntu-latest'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx electron-builder --linux --publish never
+
+      - name: Build Electron artifacts (macOS)
+        if: matrix.os == 'macos-latest'
+        env:
+          # Disable code-signing for unsigned releases. Users verify via SHA256SUMS.
+          CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx electron-builder --mac --publish never
+
+      - name: Build Electron artifacts (Windows)
+        if: matrix.os == 'windows-latest'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx electron-builder --win --publish never
+
+      - name: Compute SHA256 sums (Linux/macOS)
+        if: matrix.os != 'windows-latest'
+        run: |
+          cd release
+          shasum -a 256 $(ls | grep -E '\.(AppImage|deb|tar\.gz|dmg|zip)$') > SHA256SUMS-${{ matrix.os }}.txt
+          cat SHA256SUMS-${{ matrix.os }}.txt
+
+      - name: Compute SHA256 sums (Windows)
+        if: matrix.os == 'windows-latest'
+        shell: pwsh
+        run: |
+          Set-Location release
+          $files = Get-ChildItem -File | Where-Object { $_.Name -match '\.(exe|msi)$' }
+          $entries = foreach ($file in $files) {
+            $hash = (Get-FileHash -Algorithm SHA256 $file.Name).Hash.ToLower()
+            "$hash  $($file.Name)"
+          }
+          $entries | Out-File -Encoding ascii -FilePath SHA256SUMS-${{ matrix.os }}.txt
+          Get-Content SHA256SUMS-${{ matrix.os }}.txt
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: electron-${{ matrix.os }}
+          path: |
+            release/*.AppImage
+            release/*.deb
+            release/*.tar.gz
+            release/*.dmg
+            release/*.zip
+            release/*.exe
+            release/*.msi
+            release/SHA256SUMS-*.txt
+          if-no-files-found: ignore
+          retention-days: 7
+
+  publish:
+    name: Publish GitHub release
+    needs: [build]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    if: startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download all build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Aggregate SHA256SUMS
+        run: |
+          mkdir -p dist
+          find artifacts -type f -name 'SHA256SUMS-*.txt' -exec cat {} + | sort > dist/SHA256SUMS.txt
+          find artifacts -type f \
+            \( -name '*.AppImage' -o -name '*.deb' -o -name '*.tar.gz' \
+               -o -name '*.dmg' -o -name '*.zip' \
+               -o -name '*.exe' -o -name '*.msi' \) \
+            -exec cp {} dist/ \;
+          ls -la dist
+          cat dist/SHA256SUMS.txt
+
+      - name: Determine release tag
+        id: tag
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "tag=${{ github.event.inputs.tag }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "tag=${GITHUB_REF#refs/tags/}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create or update GitHub release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ steps.tag.outputs.tag }}
+        run: |
+          if ! gh release view "$TAG" >/dev/null 2>&1; then
+            gh release create "$TAG" \
+              --title "$TAG" \
+              --notes "Cross-platform Electron build of vk-bot-desktop. Verify downloads against SHA256SUMS.txt."
+          fi
+          gh release upload "$TAG" dist/* --clobber
