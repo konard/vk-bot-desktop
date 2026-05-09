@@ -1,338 +1,135 @@
-# Case Study: Issue #3 - Release Formatting Script Only Handles Patch Changes
+# Issue 3 Case Study: Desktop-Only Releases
 
-## Issue Overview
+## Summary
 
-**Issue:** [#3](https://github.com/link-foundation/js-ai-driven-development-pipeline-template/issues/3)
-**Title:** Release formatting script only handles Patch changes, not Minor/Major
-**Status:** In Progress
-**Created:** 2025-12-17
+Issue #3 was opened after the initial desktop app PR merged and the first main
+release run failed in the npm publish step. The requested temporary
+distribution model is GitHub Releases only: Linux, Windows, and macOS desktop
+binaries are the user-facing artifacts, and npm publishing must not block them.
 
-### Problem Statement
+The root cause was release workflow coupling left from the JavaScript package
+template. `.github/workflows/release.yml` still used npm as the source of truth,
+published to npm before creating a GitHub release, and skipped the release
+artifact path when npm failed. `.github/workflows/electron-release.yml` already
+contained the platform build matrix, but it was only tag/manual driven and was
+never dispatched by the main release workflow.
 
-The `scripts/format-release-notes.mjs` script only handles `### Patch Changes` sections, causing it to fail on Minor and Major releases.
+## Timeline
 
-**Current Behavior:**
+| Time (UTC)       | Event                                                                                         | Evidence                                   |
+| ---------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| 2026-05-09 11:50 | Issue #1 defined the full `vk-bot-desktop` product vision, including GitHub Release binaries. | `data/linked-issue-1.json`                 |
+| 2026-05-09 11:55 | PR #2 opened with the initial React + Electron implementation.                                | `data/linked-pr-2.json`                    |
+| 2026-05-09 13:20 | PR #2 comment added stats, lifecycle, defaults, and UI confirmation requirements.             | `data/linked-pr-2-comment-4412616546.json` |
+| 2026-05-09 14:16 | PR #2 merged to `main`.                                                                       | `data/linked-pr-2.json`                    |
+| 2026-05-09 14:22 | Main run `25603272038` failed while publishing `vk-bot-desktop@0.9.0` to npm.                 | `data/ci-logs/checks-main-25603272038.log` |
+| 2026-05-09 15:19 | Issue #3 requested temporary npm skip and GitHub Release binaries only.                       | `data/issue-3.json`                        |
+| 2026-05-09 15:20 | PR #4 was opened from `issue-3-0e5a85ffef02`.                                                 | `data/pr-4.json`                           |
 
-- Section headers (### Minor Changes, ### Major Changes) remain in release notes
-- PR detection is skipped
-- Release formatting fails silently
+## Captured Data
 
-**Expected Behavior:**
+The issue data, linked PR data, and CI logs are stored under `data/`.
 
-- Release notes should be formatted cleanly without section headers
-- PR detection should work for all release types
-- NPM badge should be added
+| File                                            | Purpose                                                             |
+| ----------------------------------------------- | ------------------------------------------------------------------- |
+| `issue-3.json`, `issue-3-comments.json`         | Primary issue and comments.                                         |
+| `linked-issue-1.json`                           | Full product vision referenced by issue #3.                         |
+| `linked-pr-2.json`, `linked-pr-2-comments.json` | Initial implementation PR and follow-up requirements.               |
+| `linked-pr-2-comment-4412616546.json`           | The specific linked PR comment from issue #3.                       |
+| `pr-4.json`, `pr-4-*.json`                      | Current solution PR metadata and comments/reviews.                  |
+| `main-run-*.json`, `main-runs.json`             | Main branch run metadata around the failure.                        |
+| `ci-logs/checks-main-25603272038.log`           | Failing main release run for `vk-bot-desktop@0.9.0`.                |
+| `ci-logs/checks-main-25600034255.log`           | Earlier template-lineage npm publish failure.                       |
+| `electron-release-runs-before-fix.json`         | Confirms no Electron release workflow runs existed before this fix. |
+| `releases-before-fix.txt`                       | Confirms no GitHub Releases existed before this fix.                |
 
-## Timeline of Events
+## Failure Evidence
 
-### December 13, 2025
+The latest failing main run completed checks and failed only in the release job:
 
-1. **Initial commit** - Template repository created with format-release-notes.mjs script
-2. **Release v0.1.0 created** - First release with Minor Changes section
-3. **Bug manifested** - Release shows "### Minor Changes" header and no PR link
+- `checks-main-25603272038.log:10240` shows `E404 Not Found - PUT https://registry.npmjs.org/vk-bot-desktop - Not found`.
+- `checks-main-25603272038.log:10262` shows the release script detected `"packages failed to publish"`.
+- `checks-main-25603272038.log:10412` shows the final retry still detected the same failure.
 
-### December 16, 2025
+Because the old workflow only created the GitHub release after
+`steps.publish.outputs.published == 'true'`, no Electron artifacts could be
+published once npm failed.
 
-1. **Bug discovered in link-assistant/agent** - Issue #58 reported in downstream repository
-2. **Fix implemented** - PR #59 created with solution
-3. **Case study documented** - Comprehensive analysis in docs/case-studies/issue-58/
+## Requirements
 
-### December 17, 2025
+Detailed requirements are normalized in `../../REQUIREMENTS.md`. The release
+requirements extracted for this issue are:
 
-1. **03:45 UTC** - Issue #3 created in template repository
-2. **03:47 UTC** - Comment added requesting:
-   - Find all repositories with same issue
-   - Create issues in those repositories
-   - Compile comprehensive case study in docs/case-studies/issue-3/
-   - Reconstruct timeline and root causes
-   - Propose solutions
+1. Temporarily skip npm publishing.
+2. Make GitHub Releases the only distribution channel.
+3. Publish Linux, Windows, and macOS desktop binaries.
+4. Attach verification data, at minimum SHA256 checksums.
+5. Keep release automation self-healing when a version bump lands but artifact
+   publication fails.
+6. Preserve the full product requirements and map them to code/tests.
+7. Capture logs/data and reconstruct the issue timeline.
 
-## Data Collection
+## Root Causes
 
-### Affected Repositories
+1. **Wrong release source of truth**: `scripts/check-release-needed.mjs`
+   checked npm package state, even though issue #3 makes GitHub Releases the
+   temporary source of truth.
+2. **Hard release gate on npm**: `release.yml` ran `publish-to-npm.mjs`, then
+   only created a GitHub release if npm publish succeeded.
+3. **Detached Electron workflow**: `electron-release.yml` could build binaries
+   on tags or manual dispatch, but `release.yml` never triggered it after a
+   version bump.
+4. **No regression test for release wiring**: tests covered helpers, but not
+   the workflow contract that desktop releases must avoid npm.
+5. **Stale case-study data**: the existing `docs/case-studies/issue-3` folder
+   described an unrelated template issue and could mislead future debugging.
 
-Search revealed 4 repositories with the same script:
+## Solution Plan
 
-1. **link-foundation/js-ai-driven-development-pipeline-template** (this repo)
-   - Path: scripts/format-release-notes.mjs
-   - URL: https://github.com/link-foundation/js-ai-driven-development-pipeline-template
+1. Add failing tests that assert release jobs do not call npm publish and do
+   dispatch `electron-release.yml` with a tag and exact target commit.
+2. Replace npm release detection with GitHub Release detection through
+   `gh release view`.
+3. Update automatic and manual release jobs to version main, resolve the target
+   commit, and dispatch the Electron release workflow using `workflow_dispatch`.
+4. Update `electron-release.yml` to accept `target_sha`, check out that exact
+   commit, build all platform artifacts, aggregate SHA256 sums, write build
+   provenance, and upload assets to the GitHub Release.
+5. Add requirements documentation and replace stale issue #3 case-study files.
+6. Add a changeset so CI accepts the code changes.
 
-2. **link-foundation/test-anywhere**
-   - Path: scripts/format-release-notes.mjs
-   - URL: https://github.com/link-foundation/test-anywhere
+## Online Research
 
-3. **link-foundation/gh-download-pull-request**
-   - Path: scripts/format-release-notes.mjs
-   - URL: https://github.com/link-foundation/gh-download-pull-request
+Only official documentation was used for workflow and builder behavior:
 
-4. **link-foundation/gh-download-issue**
-   - Path: scripts/format-release-notes.mjs
-   - URL: https://github.com/link-foundation/gh-download-issue
+- GitHub CLI `gh workflow run` supports triggering a `workflow_dispatch`
+  workflow with inputs and `--ref`: <https://cli.github.com/manual/gh_workflow_run>
+- GitHub Actions documents that `workflow_dispatch` is an exception that can be
+  triggered from another workflow using `GITHUB_TOKEN`:
+  <https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow>
+- GitHub CLI `gh release create` supports `--target` for a branch or full commit
+  SHA: <https://cli.github.com/manual/gh_release_create>
+- GitHub CLI `gh release upload` supports uploading release assets and
+  `--clobber`: <https://cli.github.com/manual/gh_release_upload>
+- electron-builder documents `--publish never`, which prevents implicit
+  publishing while still building artifacts:
+  <https://www.electron.build/publish.html>
 
-### Release v0.1.0 Data
+## Verification
 
-**Release:** https://github.com/link-foundation/js-ai-driven-development-pipeline-template/releases/tag/v0.1.0
+The regression suite introduced for this issue covers:
 
-**Current Body (Problematic):**
+- release jobs contain no `Publish to npm`, `publish-to-npm.mjs`,
+  `setup-npm.mjs`, npm registry URL, or npm OIDC permission;
+- release jobs have `actions: write` and dispatch `electron-release.yml` with
+  `tag` and `target_sha`;
+- Electron release workflow keeps Linux, macOS, and Windows builders and uploads
+  artifacts/checksums to the GitHub release;
+- release detection treats GitHub Releases as the publish state and fails on
+  unexpected `gh release view` errors.
 
-```markdown
-### Minor Changes
+Focused local reproduction:
 
-- 65d76dc: Initial template setup with complete AI-driven development pipeline
-
-  Features:
-  - Multi-runtime support for Node.js, Bun, and Deno
-  - Universal testing with test-anywhere framework
-  - Automated release workflow with changesets
-  - GitHub Actions CI/CD pipeline with 9 test combinations
-  - Code quality tools: ESLint + Prettier with Husky pre-commit hooks
-  - Package manager agnostic design
+```sh
+node --test --test-timeout=30000 tests/desktop-release-workflow.test.js tests/check-release-needed.test.js
 ```
-
-**CHANGELOG.md Content:**
-
-```markdown
-## 0.1.0
-
-### Minor Changes
-
-- 65d76dc: Initial template setup with complete AI-driven development pipeline
-
-  Features:
-  - Multi-runtime support for Node.js, Bun, and Deno
-  - Universal testing with test-anywhere framework
-  - Automated release workflow with changesets
-  - GitHub Actions CI/CD pipeline with 9 test combinations
-  - Code quality tools: ESLint + Prettier with Husky pre-commit hooks
-  - Package manager agnostic design
-```
-
-## Root Cause Analysis
-
-### Bug #1: Incorrect Section Header Remaining
-
-**File:** `scripts/format-release-notes.mjs`
-**Lines:** 92-115
-
-The script only matches `### Patch Changes` sections:
-
-```javascript
-const patchChangesMatchWithHash = currentBody.match(
-  /### Patch Changes\s*\n\s*-\s+([a-f0-9]+):\s+(.+?)$/s
-);
-const patchChangesMatchNoHash = currentBody.match(
-  /### Patch Changes\s*\n\s*-\s+(.+?)$/s
-);
-```
-
-**Root Cause:**
-
-- The regex pattern is hardcoded to only match `### Patch Changes`
-- When a release contains `### Minor Changes` or `### Major Changes`, the pattern doesn't match
-- Script exits early with warning message (line 113)
-- Section header remains in the release notes unprocessed
-
-### Bug #2: Missing PR Link
-
-**Related to Bug #1**
-
-Because the script exits early when it can't parse the changes section:
-
-- Commit hash is never extracted (lines 106-115)
-- PR detection logic is never reached (lines 136-182)
-- No PR link is added to release notes
-
-### Bug #3: Missing NPM Badge
-
-**Related to Bug #1**
-
-The NPM badge formatting (lines 184-195) is also never reached:
-
-- Script exits before building formatted body
-- No shields.io badge is added
-
-## Comparison with Changesets Default Behavior
-
-### Changesets CHANGELOG Format
-
-Changesets CLI generates CHANGELOG.md with section headers for organizational purposes:
-
-- `### Major Changes` - Breaking changes (X.0.0)
-- `### Minor Changes` - New features (0.X.0)
-- `### Patch Changes` - Bug fixes (0.0.X)
-
-**Sources:**
-
-- [Changesets GitHub Repository](https://github.com/changesets/changesets)
-- [Changesets Detailed Documentation](https://github.com/changesets/changesets/blob/main/docs/detailed-explanation.md)
-- [NPM Package](https://www.npmjs.com/package/@changesets/cli)
-- [LogRocket Guide to Changesets](https://blog.logrocket.com/version-management-changesets/)
-
-### Why This is a Problem for GitHub Releases
-
-1. **CHANGELOG.md vs GitHub Releases** - Section headers are useful in CHANGELOG.md for organizing multiple version entries, but redundant in individual GitHub Releases
-2. **Version already indicates type** - A v0.1.0 release is clearly a minor version; the "### Minor Changes" header is redundant
-3. **User expectations** - GitHub Release notes should be clean, concise, and focused on content, not categorization
-
-## Reference Implementation
-
-### link-assistant/agent Fix
-
-The bug was already fixed in a downstream repository:
-
-- **Repository:** link-assistant/agent
-- **Issue:** [#58](https://github.com/link-assistant/agent/issues/58)
-- **Pull Request:** [#59](https://github.com/link-assistant/agent/pull/59)
-- **Case Study:** docs/case-studies/issue-58/README.md
-
-### The Solution
-
-Replace hardcoded `### Patch Changes` regex with flexible pattern matching:
-
-```javascript
-// Match any changeset type (Major, Minor, or Patch)
-const changesPattern =
-  /### (Major|Minor|Patch) Changes\s*\n\s*-\s+(?:([a-f0-9]+):\s+)?(.+?)$/s;
-const changesMatch = currentBody.match(changesPattern);
-
-let commitHash = null;
-let rawDescription = null;
-let changeType = null;
-
-if (changesMatch) {
-  // Extract: [full match, changeType, commitHash (optional), description]
-  [, changeType, commitHash, rawDescription] = changesMatch;
-  console.log(`ℹ️ Found ${changeType} Changes section`);
-
-  // If commitHash is undefined and description contains it, try to extract
-  if (!commitHash && rawDescription) {
-    const descWithHashMatch = rawDescription.match(/^([a-f0-9]+):\s+(.+)$/s);
-    if (descWithHashMatch) {
-      [, commitHash, rawDescription] = descWithHashMatch;
-    }
-  }
-} else {
-  console.log('⚠️ Could not parse changes from release notes');
-  console.log('   Looking for pattern: ### [Major|Minor|Patch] Changes');
-  process.exit(0);
-}
-```
-
-**Key Improvements:**
-
-1. Uses capture group `(Major|Minor|Patch)` to match all changeset types
-2. Makes commit hash optional with non-capturing group `(?:...)?`
-3. Handles both formats: with and without commit hash
-4. Provides informative logging for debugging
-5. Continues to PR detection and formatting instead of exiting early
-
-## Proposed Solution
-
-### Implementation Steps
-
-1. **Update regex pattern** in scripts/format-release-notes.mjs:92-115
-   - Replace hardcoded "Patch Changes" with flexible "(Major|Minor|Patch) Changes"
-   - Handle optional commit hash in single regex
-   - Add fallback extraction for embedded commit hashes
-
-2. **Test all changeset types:**
-   - Create test script for Major changes
-   - Create test script for Minor changes
-   - Create test script for Patch changes
-
-3. **Verify expected outcomes:**
-   - Section headers removed
-   - PR detection works for all types
-   - NPM badge added
-   - Formatting preserved
-
-### Expected Results
-
-**After Fix - Release Notes Format:**
-
-```markdown
-Initial template setup with complete AI-driven development pipeline
-
-Features:
-
-- Multi-runtime support for Node.js, Bun, and Deno
-- Universal testing with test-anywhere framework
-- Automated release workflow with changesets
-- GitHub Actions CI/CD pipeline with 9 test combinations
-- Code quality tools: ESLint + Prettier with Husky pre-commit hooks
-- Package manager agnostic design
-
-**Related Pull Request:** #X
-
----
-
-[![npm version](https://img.shields.io/badge/npm-0.1.0-blue.svg)](https://www.npmjs.com/package/my-package/v/0.1.0)
-```
-
-**Key Changes:**
-
-1. ✅ NO "### Minor Changes" header
-2. ✅ Clean description starting directly with content
-3. ✅ PR link detected and shown
-4. ✅ NPM badge included
-5. ✅ Proper formatting with separator
-
-## Impact Assessment
-
-### Affected Releases
-
-**In this repository:**
-
-- v0.1.0 - Minor release with formatting bug
-
-**In downstream repositories:**
-
-- All Minor and Major releases fail formatting
-- Patch releases work correctly
-
-### Risk Analysis
-
-**Low Risk Fix:**
-
-- Script already handles edge cases for commit hash extraction
-- Only expanding pattern matching, not changing logic
-- Backward compatible with Patch changes
-- Already tested and proven in link-assistant/agent#59
-
-## Next Steps
-
-1. ✅ Create comprehensive case study (this document)
-2. ⏳ Create issues in affected repositories:
-   - link-foundation/test-anywhere
-   - link-foundation/gh-download-pull-request
-   - link-foundation/gh-download-issue
-3. ⏳ Implement fix in this repository
-4. ⏳ Create test scripts to validate all changeset types
-5. ⏳ Run local CI checks before committing
-6. ⏳ Update PR with solution details
-7. ⏳ Mark PR as ready for review
-
-## Files Modified
-
-1. `scripts/format-release-notes.mjs` - Implement flexible pattern matching
-2. `docs/case-studies/issue-3/README.md` - This case study
-3. `experiments/test-format-release-notes-*.mjs` - Test scripts for validation
-
-## Verification Steps
-
-1. Test script against mock Major changes
-2. Test script against mock Minor changes
-3. Test script against mock Patch changes
-4. Verify all three types:
-   - Remove section headers
-   - Extract commit hash
-   - Detect and link PR
-   - Add NPM badge
-   - Preserve formatting
-
-## References
-
-- [Changesets GitHub](https://github.com/changesets/changesets)
-- [Changesets Documentation](https://github.com/changesets/changesets/blob/main/docs/detailed-explanation.md)
-- [Reference Fix PR](https://github.com/link-assistant/agent/pull/59)
-- [Original Issue](https://github.com/link-foundation/js-ai-driven-development-pipeline-template/issues/3)

@@ -117,8 +117,13 @@ The release process is fully automated:
 2. **CI detects changesets** - On push to main, CI checks for pending changesets
 3. **Version bump** - Package version is updated based on changeset type
 4. **Changelog update** - `CHANGELOG.md` is updated automatically
-5. **npm publish** - Package is published via OIDC trusted publishing
-6. **GitHub Release** - A release is created with formatted notes
+5. **Release dispatch** - CI dispatches the Electron release workflow with the
+   exact version tag and target commit
+6. **Desktop artifacts** - Linux, Windows, and macOS binaries are uploaded to a
+   GitHub Release with SHA256 checksums
+
+For now, npm publishing is intentionally skipped. GitHub Releases are the only
+supported distribution channel until package publishing is reintroduced.
 
 ### Multiple Changesets
 

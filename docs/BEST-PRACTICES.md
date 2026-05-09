@@ -75,8 +75,11 @@ Local quality gates prevent broken commits from reaching CI:
 Automated release workflows ensure:
 
 - **No manual version management** - Versions update automatically
-- **OIDC trusted publishing** - No API tokens needed in CI
-- **Validated releases only** - All checks must pass before publishing
+- **Desktop-only distribution** - GitHub Releases are the current release
+  source of truth while npm publishing is paused
+- **Validated releases only** - All checks must pass before release dispatch
+- **Verifiable artifacts** - Desktop builds include SHA256 checksums and build
+  provenance
 - **Dual trigger modes** - Both automatic (on merge) and manual (workflow dispatch)
 
 ### 8. CI/CD Pipeline Features
@@ -157,8 +160,8 @@ a test, network call, package install, or release step hangs:
   Actions' six-hour default.
 - Matrix test jobs have a 10-minute cap per runtime and operating
   system.
-- Release jobs have 30 minutes for package registry and GitHub API
-  retries without allowing an unbounded release run.
+- Release jobs have 30 minutes for versioning, GitHub API retries, and desktop
+  workflow dispatch without allowing an unbounded release run.
 - The broken link checker has 10 minutes for slow external hosts and
   Web Archive fallback probes.
 
@@ -214,7 +217,7 @@ Developer Machine    ->    CI/CD Pipeline               ->    Release
 ├── Pre-commit hooks      ├── Fast checks (~7-30s)           ├── All checks pass
 ├── Local tests           │   ├── test-compilation           ├── Version bump
 └── IDE integration       │   ├── lint + secrets scan        ├── Changelog update
-                          │   └── file line limits           └── Publish package
+                          │   └── file line limits           └── Desktop artifacts
                           ├── Slow checks (~1-10 min)
                           │   └── test matrix (9 combos)
                           ├── Documentation validation
