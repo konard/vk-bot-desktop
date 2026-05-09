@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.9.2
+
+### Patch Changes
+
+- 3ba96e6: Fix Electron release artifact builds by adding Linux deb maintainer metadata and hashing Linux/macOS artifact filenames safely.
+
 ## 0.9.1
 
 ### Patch Changes
