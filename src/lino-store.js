@@ -18,12 +18,19 @@ import os from 'node:os';
 
 import logger from './bot/logger.js';
 
-const DEFAULT_GLOBAL_DIR =
-  process.env.VK_BOT_DESKTOP_GLOBAL_DIR ||
-  path.join(os.homedir(), '.vk-bot-desktop');
-const DEFAULT_LOCAL_DIR =
-  process.env.VK_BOT_DESKTOP_LOCAL_DIR ||
-  path.join(process.cwd(), '.vk-bot-desktop');
+function defaultGlobalDir() {
+  return (
+    process.env.VK_BOT_DESKTOP_GLOBAL_DIR ||
+    path.join(os.homedir(), '.vk-bot-desktop')
+  );
+}
+
+function defaultLocalDir() {
+  return (
+    process.env.VK_BOT_DESKTOP_LOCAL_DIR ||
+    path.join(process.cwd(), '.vk-bot-desktop')
+  );
+}
 
 let codec;
 
@@ -240,12 +247,9 @@ function deepMerge(base, overlay) {
 }
 
 export class LinoStore {
-  constructor({
-    globalDir = DEFAULT_GLOBAL_DIR,
-    localDir = DEFAULT_LOCAL_DIR,
-  } = {}) {
-    this.globalDir = globalDir;
-    this.localDir = localDir;
+  constructor({ globalDir, localDir } = {}) {
+    this.globalDir = globalDir ?? defaultGlobalDir();
+    this.localDir = localDir ?? defaultLocalDir();
   }
 
   configPath(scope = 'global') {
@@ -331,4 +335,10 @@ export class LinoStore {
   }
 }
 
-export const defaultStore = new LinoStore();
+let _defaultStore;
+export function getDefaultStore() {
+  if (!_defaultStore) {
+    _defaultStore = new LinoStore();
+  }
+  return _defaultStore;
+}

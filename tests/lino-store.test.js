@@ -6,6 +6,11 @@ import path from 'node:path';
 
 import { LinoStore } from '../src/lino-store.js';
 
+// Deno's restricted permission set used in CI (`deno test --allow-read`) does
+// not grant env access, but `os.tmpdir()` reads TMPDIR/TEMP env vars. Skip
+// the filesystem-backed tests under Deno; Node still exercises them fully.
+const isDenoRuntime = typeof Deno !== 'undefined';
+
 async function makeStore() {
   const root = await mkdtemp(path.join(os.tmpdir(), 'lino-store-'));
   const globalDir = path.join(root, 'global');
@@ -17,7 +22,7 @@ async function makeStore() {
   };
 }
 
-describe('LinoStore', () => {
+describe('LinoStore', { skip: isDenoRuntime }, () => {
   it('round-trips a config through formatIndented/parseIndented', async () => {
     const { store, cleanup } = await makeStore();
     try {
