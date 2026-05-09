@@ -1,6 +1,6 @@
 {
   "name": "vk-bot-desktop",
-  "version": "0.0.0",
+  "version": "0.8.6",
   "description": "Cross-platform desktop wrapper around konard/vk-bot, written with React and Electron.",
   "type": "module",
   "main": "electron/main.cjs",
@@ -50,8 +50,8 @@
     "node": ">=20.0.0"
   },
   "dependencies": {
-    "lino-arguments": "^0.0.4",
-    "lino-objects-codec": "^0.0.6",
+    "lino-arguments": "^0.3.0",
+    "lino-objects-codec": "^0.3.6",
     "node-ssh": "^13.2.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

@@ -54,8 +54,7 @@ function configToForm(config) {
     mode: config.mode === 'server' ? 'server' : 'local',
     vkToken: config.vk?.token || '',
     priorityFriendIds: listToCsv(config.priorityFriendIds),
-    invitationText:
-      config.invitationPost?.text || DEFAULT_FORM.invitationText,
+    invitationText: config.invitationPost?.text || DEFAULT_FORM.invitationText,
     invitationCommunities: listToCsv(config.invitationPost?.communities),
     ssh: {
       host: config.server?.host || '',
@@ -115,7 +114,10 @@ function useTheme(api) {
   }, [api]);
 
   useEffect(() => {
-    applyTheme(document.documentElement, resolveTheme({ preference, systemTheme }));
+    applyTheme(
+      document.documentElement,
+      resolveTheme({ preference, systemTheme })
+    );
   }, [preference, systemTheme]);
 
   const updatePreference = useCallback((value) => {
@@ -163,8 +165,7 @@ function FeatureCheckbox({ id, checked, onChange, label }) {
         id={id}
         checked={checked}
         onChange={(event) => onChange(event.target.checked)}
-      />
-      {' '}
+      />{' '}
       {label}
     </label>
   );
@@ -286,7 +287,8 @@ export default function App({ api }) {
       <h1>{t('appTitle')}</h1>
       <div className="toolbar">
         <label>
-          {t('mode')}{': '}
+          {t('mode')}
+          {': '}
           <select
             value={form.mode}
             onChange={(event) => onField(['mode'], event.target.value)}
@@ -296,16 +298,24 @@ export default function App({ api }) {
           </select>
         </label>
         <label>
-          {t('theme')}{': '}
-          <select value={theme} onChange={(event) => setTheme(event.target.value)}>
+          {t('theme')}
+          {': '}
+          <select
+            value={theme}
+            onChange={(event) => setTheme(event.target.value)}
+          >
             <option value="auto">{t('themeAuto')}</option>
             <option value="light">{t('themeLight')}</option>
             <option value="dark">{t('themeDark')}</option>
           </select>
         </label>
         <label>
-          {t('language')}{': '}
-          <select value={locale} onChange={(event) => setLocale(event.target.value)}>
+          {t('language')}
+          {': '}
+          <select
+            value={locale}
+            onChange={(event) => setLocale(event.target.value)}
+          >
             <option value="en">English</option>
             <option value="ru">Русский</option>
           </select>
@@ -362,9 +372,7 @@ export default function App({ api }) {
       </div>
 
       <div className="field">
-        <label htmlFor="invite-communities">
-          {t('invitationCommunities')}
-        </label>
+        <label htmlFor="invite-communities">{t('invitationCommunities')}</label>
         <textarea
           id="invite-communities"
           rows={2}
@@ -439,7 +447,11 @@ export default function App({ api }) {
             </select>
           </div>
 
-          <button type="button" className="secondary" onClick={onGenerateScript}>
+          <button
+            type="button"
+            className="secondary"
+            onClick={onGenerateScript}
+          >
             {t('serverGenerate')}
           </button>
 

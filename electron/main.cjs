@@ -2,12 +2,7 @@
 
 const path = require('path');
 const { fork } = require('child_process');
-const {
-  app,
-  BrowserWindow,
-  ipcMain,
-  nativeTheme,
-} = require('electron');
+const { app, BrowserWindow, ipcMain, nativeTheme } = require('electron');
 
 let mainWindow;
 let botProcess = null;
@@ -70,7 +65,7 @@ ipcMain.handle('vkbot:load-config', async () => {
   return store.loadLayered();
 });
 
-ipcMain.handle('vkbot:start-local', async (_event, config) => {
+ipcMain.handle('vkbot:start-local', (_event, config) => {
   if (botProcess) {
     return { ok: true, alreadyRunning: true };
   }
@@ -88,16 +83,13 @@ ipcMain.handle('vkbot:start-local', async (_event, config) => {
     mainWindow?.webContents.send('vkbot:log', chunk.toString())
   );
   botProcess.on('exit', (code) => {
-    mainWindow?.webContents.send(
-      'vkbot:log',
-      `Bot exited with code ${code}\n`
-    );
+    mainWindow?.webContents.send('vkbot:log', `Bot exited with code ${code}\n`);
     botProcess = null;
   });
   return { ok: true };
 });
 
-ipcMain.handle('vkbot:stop-local', async () => {
+ipcMain.handle('vkbot:stop-local', () => {
   if (botProcess) {
     botProcess.kill();
     botProcess = null;
@@ -106,9 +98,7 @@ ipcMain.handle('vkbot:stop-local', async () => {
 });
 
 ipcMain.handle('vkbot:server-script', async (_event, options) => {
-  const { buildInstallPlan } = await import(
-    '../src/server/ssh-installer.js'
-  );
+  const { buildInstallPlan } = await import('../src/server/ssh-installer.js');
   return buildInstallPlan({
     ...options,
     bundleArchiveBase64:

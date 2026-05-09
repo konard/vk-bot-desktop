@@ -90,6 +90,18 @@ export default [
     },
   },
   {
+    // Renderer-side files run in the browser context
+    files: ['electron/renderer/**/*.js'],
+    languageOptions: {
+      globals: {
+        window: 'readonly',
+        document: 'readonly',
+        localStorage: 'readonly',
+        navigator: 'readonly',
+      },
+    },
+  },
+  {
     ignores: [
       'node_modules/**',
       'coverage/**',

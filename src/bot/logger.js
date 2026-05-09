@@ -41,7 +41,8 @@ const SECRET_KEY_NAMES = new Set([
 ]);
 
 const TOKEN_LIKE = /\b[A-Za-z0-9_-]{40,}\b/g;
-const QUERY_SECRET = /(access_token|password|api_key|token|secret)=([^&\s"']+)/gi;
+const QUERY_SECRET =
+  /(access_token|password|api_key|token|secret)=([^&\s"']+)/gi;
 
 const MASK = '***';
 

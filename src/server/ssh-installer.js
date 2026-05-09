@@ -95,7 +95,7 @@ export function buildInstallScript({
     );
   }
 
-  return lines.join('\n') + '\n';
+  return `${lines.join('\n')}\n`;
 }
 
 export function buildInstallPlan(options) {

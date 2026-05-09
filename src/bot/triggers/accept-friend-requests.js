@@ -39,7 +39,7 @@ async function fetchIncomingRequestsWithMutuals({ vk, count }) {
   if (userIds.length === 0) {
     return [];
   }
-  let mutualByUser = new Map();
+  const mutualByUser = new Map();
   try {
     const mutuals = await vk.api.friends.getMutual({
       target_uids: userIds,
@@ -62,6 +62,58 @@ async function fetchIncomingRequestsWithMutuals({ vk, count }) {
   }));
 }
 
+async function sendPriorityRequests({ vk, priorityToSend }) {
+  for (const userId of priorityToSend) {
+    try {
+      await vk.api.friends.add({ user_id: userId, text: '' });
+      logger.info('Friend request sent to priority friend', { userId });
+      await sleep(10 * ONE_SECOND_MS);
+    } catch (error) {
+      if (error.code === 29) {
+        logger.warn('Rate limit while adding priority friend; backing off', {
+          userId,
+        });
+        await sleep(ONE_MINUTE_MS);
+        break;
+      }
+      if (error.code === 242) {
+        logger.warn('Friend limit exceeded; stopping priority send', {
+          userId,
+        });
+        break;
+      }
+      logger.error('Could not send priority friend request', {
+        userId,
+        error,
+      });
+    }
+  }
+}
+
+async function acceptIncomingRequests({ vk, selected }) {
+  for (const request of selected) {
+    try {
+      await vk.api.friends.add({ user_id: request.userId, text: '' });
+      logger.info('Incoming friend request accepted', {
+        userId: request.userId,
+        mutualCount: request.mutualCount,
+      });
+      await sleep(10 * ONE_SECOND_MS);
+    } catch (error) {
+      if (error.code === 242) {
+        logger.warn('Friend limit exceeded; stopping run', {
+          userId: request.userId,
+        });
+        break;
+      }
+      logger.error('Could not accept friend request', {
+        userId: request.userId,
+        error,
+      });
+    }
+  }
+}
+
 export async function acceptFriendRequests({ vk, config }) {
   try {
     const friends = await loadFriends({ vk });
@@ -76,31 +128,7 @@ export async function acceptFriendRequests({ vk, config }) {
       currentFriendIds: friendIds,
       remainingCapacity,
     });
-    for (const userId of priorityToSend) {
-      try {
-        await vk.api.friends.add({ user_id: userId, text: '' });
-        logger.info('Friend request sent to priority friend', { userId });
-        await sleep(10 * ONE_SECOND_MS);
-      } catch (error) {
-        if (error.code === 29) {
-          logger.warn('Rate limit while adding priority friend; backing off', {
-            userId,
-          });
-          await sleep(ONE_MINUTE_MS);
-          break;
-        }
-        if (error.code === 242) {
-          logger.warn('Friend limit exceeded; stopping priority send', {
-            userId,
-          });
-          break;
-        }
-        logger.error('Could not send priority friend request', {
-          userId,
-          error,
-        });
-      }
-    }
+    await sendPriorityRequests({ vk, priorityToSend });
 
     const requests = await fetchIncomingRequestsWithMutuals({
       vk,
@@ -127,27 +155,7 @@ export async function acceptFriendRequests({ vk, config }) {
       selected: selected.length,
     });
 
-    for (const request of selected) {
-      try {
-        await vk.api.friends.add({ user_id: request.userId, text: '' });
-        logger.info('Incoming friend request accepted', {
-          userId: request.userId,
-          mutualCount: request.mutualCount,
-        });
-        await sleep(10 * ONE_SECOND_MS);
-      } catch (error) {
-        if (error.code === 242) {
-          logger.warn('Friend limit exceeded; stopping run', {
-            userId: request.userId,
-          });
-          break;
-        }
-        logger.error('Could not accept friend request', {
-          userId: request.userId,
-          error,
-        });
-      }
-    }
+    await acceptIncomingRequests({ vk, selected });
   } catch (error) {
     logger.error('Could not accept friend requests', { error });
   }

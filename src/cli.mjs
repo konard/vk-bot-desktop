@@ -84,8 +84,7 @@ export async function runCli(argv = process.argv.slice(2)) {
 const isDirectRun =
   typeof process !== 'undefined' &&
   process.argv[1] &&
-  (process.argv[1].endsWith('cli.mjs') ||
-    process.argv[1].endsWith('cli.js'));
+  (process.argv[1].endsWith('cli.mjs') || process.argv[1].endsWith('cli.js'));
 
 if (isDirectRun) {
   runCli().catch((error) => {

@@ -6,9 +6,10 @@
  * - Cache stored in the application folder.
  * - Human-readable indented Links Notation, no JSON, no type markers.
  *
- * We delegate format work to `lino-objects-codec`'s `formatIndented` /
- * `parseIndented` helpers. They are loaded lazily so unit tests can run
- * without the dependency installed.
+ * We use an inline indented Links Notation codec because the upstream
+ * `lino-objects-codec` package's `formatIndented` / `parseIndented` helpers
+ * only support flat `{ id, obj }` shapes, while we need to encode arbitrary
+ * nested configuration trees.
  */
 
 import { promises as fs } from 'node:fs';
@@ -26,26 +27,15 @@ const DEFAULT_LOCAL_DIR =
 
 let codec;
 
-async function loadCodec() {
-  if (codec) {
-    return codec;
-  }
-  try {
-    codec = await import('lino-objects-codec');
-  } catch (error) {
-    logger.warn(
-      'lino-objects-codec is not installed; falling back to inline indented codec.',
-      { error: String(error) }
-    );
-    codec = inlineFallbackCodec();
+function loadCodec() {
+  if (!codec) {
+    codec = inlineCodec();
   }
   return codec;
 }
 
 /**
- * Minimal inline implementation of `formatIndented` / `parseIndented` used as
- * a fallback when the upstream package is unavailable. The format mirrors the
- * one documented in `lino-objects-codec`:
+ * Inline implementation of indented Links Notation. The format:
  *
  *   key
  *     childKey "value"
@@ -54,166 +44,167 @@ async function loadCodec() {
  * Strings containing whitespace, quotes, or special characters are written in
  * double quotes with `""` escaping for embedded `"`.
  */
-function inlineFallbackCodec() {
-  function escape(value) {
-    if (value === null || value === undefined) {
-      return '""';
-    }
-    const str = String(value);
-    if (/^[A-Za-z0-9_./:-]+$/.test(str)) {
-      return str;
-    }
-    return `"${str.replace(/"/g, '""')}"`;
-  }
 
-  function unescape(token) {
-    if (
-      token.length >= 2 &&
-      token.startsWith('"') &&
-      token.endsWith('"')
-    ) {
-      return token.slice(1, -1).replace(/""/g, '"');
-    }
-    if (token === 'true') {
-      return true;
-    }
-    if (token === 'false') {
-      return false;
-    }
-    if (token === 'null') {
-      return null;
-    }
-    if (token === '') {
-      return '';
-    }
-    if (/^-?\d+$/.test(token)) {
-      return Number(token);
-    }
-    if (/^-?\d*\.\d+$/.test(token)) {
-      return Number(token);
-    }
-    return token;
-  }
+const SAFE_TOKEN = /^[A-Za-z0-9_./:-]+$/;
+const INTEGER = /^-?\d+$/;
+const FLOAT = /^-?\d*\.\d+$/;
 
-  function formatIndented({ value, indent = 0 } = {}) {
-    const pad = '  '.repeat(indent);
-    if (
-      value === null ||
-      value === undefined ||
-      typeof value === 'string' ||
-      typeof value === 'number' ||
-      typeof value === 'boolean'
-    ) {
-      return `${pad}${escape(value)}\n`;
-    }
-    if (Array.isArray(value)) {
-      let out = '';
-      for (const item of value) {
-        out += formatIndented({ value: item, indent });
-      }
-      return out;
-    }
+function escape(value) {
+  if (value === null || value === undefined) {
+    return '""';
+  }
+  const str = String(value);
+  if (SAFE_TOKEN.test(str)) {
+    return str;
+  }
+  return `"${str.replace(/"/g, '""')}"`;
+}
+
+function unescape(token) {
+  if (token.length >= 2 && token.startsWith('"') && token.endsWith('"')) {
+    return token.slice(1, -1).replace(/""/g, '"');
+  }
+  if (token === 'true') {
+    return true;
+  }
+  if (token === 'false') {
+    return false;
+  }
+  if (token === 'null') {
+    return null;
+  }
+  if (token === '') {
+    return '';
+  }
+  if (INTEGER.test(token) || FLOAT.test(token)) {
+    return Number(token);
+  }
+  return token;
+}
+
+function isScalar(value) {
+  return (
+    value === null ||
+    value === undefined ||
+    typeof value === 'string' ||
+    typeof value === 'number' ||
+    typeof value === 'boolean'
+  );
+}
+
+function formatScalarArray(key, items, pad) {
+  return `${pad}${escape(key)} ${items.map(escape).join(' ')}\n`;
+}
+
+function formatArrayChild(key, items, indent, pad) {
+  if (items.every(isScalar) && items.length > 0) {
+    return formatScalarArray(key, items, pad);
+  }
+  let out = `${pad}${escape(key)}\n`;
+  for (const item of items) {
+    out += formatIndented({ value: item, indent: indent + 1 });
+  }
+  return out;
+}
+
+function formatIndented({ value, indent = 0 } = {}) {
+  const pad = '  '.repeat(indent);
+  if (isScalar(value)) {
+    return `${pad}${escape(value)}\n`;
+  }
+  if (Array.isArray(value)) {
     let out = '';
-    for (const [key, raw] of Object.entries(value)) {
-      if (
-        raw !== null &&
-        raw !== undefined &&
-        typeof raw === 'object' &&
-        !Array.isArray(raw)
-      ) {
-        out += `${pad}${escape(key)}\n`;
-        out += formatIndented({ value: raw, indent: indent + 1 });
-      } else if (Array.isArray(raw)) {
-        const isScalarArray = raw.every(
-          (item) =>
-            item === null ||
-            item === undefined ||
-            typeof item === 'string' ||
-            typeof item === 'number' ||
-            typeof item === 'boolean'
-        );
-        if (isScalarArray && raw.length > 0) {
-          out += `${pad}${escape(key)} ${raw.map(escape).join(' ')}\n`;
-        } else {
-          out += `${pad}${escape(key)}\n`;
-          for (const item of raw) {
-            out += formatIndented({ value: item, indent: indent + 1 });
-          }
-        }
-      } else {
-        out += `${pad}${escape(key)} ${escape(raw)}\n`;
-      }
+    for (const item of value) {
+      out += formatIndented({ value: item, indent });
     }
     return out;
   }
-
-  function tokenize(line) {
-    const tokens = [];
-    let i = 0;
-    while (i < line.length) {
-      const ch = line[i];
-      if (ch === ' ' || ch === '\t') {
-        i += 1;
-        continue;
-      }
-      if (ch === '"') {
-        let end = i + 1;
-        while (end < line.length) {
-          if (line[end] === '"' && line[end + 1] === '"') {
-            end += 2;
-            continue;
-          }
-          if (line[end] === '"') {
-            break;
-          }
-          end += 1;
-        }
-        tokens.push(line.slice(i, end + 1));
-        i = end + 1;
-      } else {
-        let end = i;
-        while (end < line.length && line[end] !== ' ' && line[end] !== '\t') {
-          end += 1;
-        }
-        tokens.push(line.slice(i, end));
-        i = end;
-      }
+  let out = '';
+  for (const [key, raw] of Object.entries(value)) {
+    if (Array.isArray(raw)) {
+      out += formatArrayChild(key, raw, indent, pad);
+    } else if (raw !== null && raw !== undefined && typeof raw === 'object') {
+      out += `${pad}${escape(key)}\n`;
+      out += formatIndented({ value: raw, indent: indent + 1 });
+    } else {
+      out += `${pad}${escape(key)} ${escape(raw)}\n`;
     }
-    return tokens;
   }
+  return out;
+}
 
-  function parseIndented({ text } = {}) {
-    const lines = text.split(/\r?\n/);
-    const root = {};
-    const stack = [{ indent: -1, container: root }];
-    for (const rawLine of lines) {
-      if (!rawLine.trim()) {
-        continue;
-      }
-      const indent = rawLine.match(/^ */)[0].length / 2;
-      const tokens = tokenize(rawLine);
-      while (stack[stack.length - 1].indent >= indent) {
-        stack.pop();
-      }
-      const parent = stack[stack.length - 1].container;
-      if (tokens.length === 1) {
-        const key = unescape(tokens[0]);
-        const child = {};
-        parent[key] = child;
-        stack.push({ indent, container: child });
-      } else {
-        const [keyToken, ...valueTokens] = tokens;
-        const key = unescape(keyToken);
-        if (valueTokens.length === 1) {
-          parent[key] = unescape(valueTokens[0]);
-        } else {
-          parent[key] = valueTokens.map(unescape);
-        }
-      }
+function tokenizeQuoted(line, start) {
+  let end = start + 1;
+  while (end < line.length) {
+    if (line[end] === '"' && line[end + 1] === '"') {
+      end += 2;
+      continue;
     }
-    return root;
+    if (line[end] === '"') {
+      break;
+    }
+    end += 1;
   }
+  return { token: line.slice(start, end + 1), next: end + 1 };
+}
 
+function tokenizeBare(line, start) {
+  let end = start;
+  while (end < line.length && line[end] !== ' ' && line[end] !== '\t') {
+    end += 1;
+  }
+  return { token: line.slice(start, end), next: end };
+}
+
+function tokenize(line) {
+  const tokens = [];
+  let i = 0;
+  while (i < line.length) {
+    const ch = line[i];
+    if (ch === ' ' || ch === '\t') {
+      i += 1;
+      continue;
+    }
+    const { token, next } =
+      ch === '"' ? tokenizeQuoted(line, i) : tokenizeBare(line, i);
+    tokens.push(token);
+    i = next;
+  }
+  return tokens;
+}
+
+function parseIndented({ text } = {}) {
+  const lines = text.split(/\r?\n/);
+  const root = {};
+  const stack = [{ indent: -1, container: root }];
+  for (const rawLine of lines) {
+    if (!rawLine.trim()) {
+      continue;
+    }
+    const indent = rawLine.match(/^ */)[0].length / 2;
+    const tokens = tokenize(rawLine);
+    while (stack[stack.length - 1].indent >= indent) {
+      stack.pop();
+    }
+    const parent = stack[stack.length - 1].container;
+    if (tokens.length === 1) {
+      const key = unescape(tokens[0]);
+      const child = {};
+      parent[key] = child;
+      stack.push({ indent, container: child });
+    } else {
+      const [keyToken, ...valueTokens] = tokens;
+      const key = unescape(keyToken);
+      parent[key] =
+        valueTokens.length === 1
+          ? unescape(valueTokens[0])
+          : valueTokens.map(unescape);
+    }
+  }
+  return root;
+}
+
+function inlineCodec() {
   return { formatIndented, parseIndented };
 }
 
@@ -274,7 +265,7 @@ export class LinoStore {
   }
 
   async loadLayered() {
-    const { parseIndented } = await loadCodec();
+    const { parseIndented } = loadCodec();
     const result = {};
     for (const scope of ['global', 'local']) {
       const filePath = this.configPath(scope);
@@ -293,7 +284,7 @@ export class LinoStore {
   }
 
   async saveConfig(value, scope = 'global') {
-    const { formatIndented } = await loadCodec();
+    const { formatIndented } = loadCodec();
     const target = this.configPath(scope);
     await ensureDir(path.dirname(target));
     const text = formatIndented({ value });
@@ -302,7 +293,7 @@ export class LinoStore {
   }
 
   async writeCache(name, value, scope = 'global') {
-    const { formatIndented } = await loadCodec();
+    const { formatIndented } = loadCodec();
     const target = this.cachePath(name, scope);
     await ensureDir(path.dirname(target));
     const text = formatIndented({ value });
@@ -311,7 +302,7 @@ export class LinoStore {
   }
 
   async readCache(name, scope = 'global') {
-    const { parseIndented } = await loadCodec();
+    const { parseIndented } = loadCodec();
     const target = this.cachePath(name, scope);
     const text = await readIfExists(target);
     if (!text) {
@@ -321,7 +312,7 @@ export class LinoStore {
   }
 
   async writeState(value, scope = 'global') {
-    const { formatIndented } = await loadCodec();
+    const { formatIndented } = loadCodec();
     const target = this.statePath(scope);
     await ensureDir(path.dirname(target));
     const text = formatIndented({ value });
@@ -330,7 +321,7 @@ export class LinoStore {
   }
 
   async readState(scope = 'global') {
-    const { parseIndented } = await loadCodec();
+    const { parseIndented } = loadCodec();
     const target = this.statePath(scope);
     const text = await readIfExists(target);
     if (!text) {

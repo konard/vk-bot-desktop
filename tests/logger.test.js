@@ -1,12 +1,7 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 
-import {
-  redact,
-  logger,
-  addSink,
-  clearSinks,
-} from '../src/bot/logger.js';
+import { redact, logger, addSink, clearSinks } from '../src/bot/logger.js';
 
 describe('redact', () => {
   it('masks long token-like strings', () => {
@@ -52,7 +47,7 @@ describe('logger sinks', () => {
     clearSinks();
     addSink((line) => captured.push(line));
     try {
-      logger.info('token=' + 'x'.repeat(50));
+      logger.info(`token=${'x'.repeat(50)}`);
     } finally {
       clearSinks();
     }

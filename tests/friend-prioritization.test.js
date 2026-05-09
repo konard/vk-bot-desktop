@@ -16,7 +16,11 @@ describe('selectIncomingRequests', () => {
     const out = selectIncomingRequests({
       requests,
       currentFriendCount: 100,
-      limits: { maxFriends: 10000, topPercentMutuals: 10, maxRequestsPerRun: 25 },
+      limits: {
+        maxFriends: 10000,
+        topPercentMutuals: 10,
+        maxRequestsPerRun: 25,
+      },
     });
     assert.equal(out.length, 2);
     assert.deepEqual(
@@ -34,7 +38,11 @@ describe('selectIncomingRequests', () => {
     const out = selectIncomingRequests({
       requests,
       currentFriendCount: 10000,
-      limits: { maxFriends: 10000, topPercentMutuals: 10, maxRequestsPerRun: 25 },
+      limits: {
+        maxFriends: 10000,
+        topPercentMutuals: 10,
+        maxRequestsPerRun: 25,
+      },
     });
     assert.equal(out.length, 0); // remainingCapacity is 0 at the cap
   });
@@ -43,7 +51,11 @@ describe('selectIncomingRequests', () => {
     const out = selectIncomingRequests({
       requests: [{ userId: 1, mutualCount: 5 }],
       currentFriendCount: 10000,
-      limits: { maxFriends: 10000, topPercentMutuals: 10, maxRequestsPerRun: 25 },
+      limits: {
+        maxFriends: 10000,
+        topPercentMutuals: 10,
+        maxRequestsPerRun: 25,
+      },
     });
     assert.deepEqual(out, []);
   });

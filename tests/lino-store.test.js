@@ -42,7 +42,10 @@ describe('LinoStore', () => {
   it('local config overrides global', async () => {
     const { store, cleanup } = await makeStore();
     try {
-      await store.saveConfig({ vk: { token: 'global' }, mode: 'local' }, 'global');
+      await store.saveConfig(
+        { vk: { token: 'global' }, mode: 'local' },
+        'global'
+      );
       await store.saveConfig({ vk: { token: 'local' } }, 'local');
       const merged = await store.loadLayered();
       assert.equal(merged.vk.token, 'local');

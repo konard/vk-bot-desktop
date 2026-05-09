@@ -9,13 +9,25 @@ import {
 
 describe('resolveTheme', () => {
   it('honors explicit light or dark preferences', () => {
-    assert.equal(resolveTheme({ preference: 'light', systemTheme: 'dark' }), 'light');
-    assert.equal(resolveTheme({ preference: 'dark', systemTheme: 'light' }), 'dark');
+    assert.equal(
+      resolveTheme({ preference: 'light', systemTheme: 'dark' }),
+      'light'
+    );
+    assert.equal(
+      resolveTheme({ preference: 'dark', systemTheme: 'light' }),
+      'dark'
+    );
   });
 
   it('falls back to system theme when preference is auto', () => {
-    assert.equal(resolveTheme({ preference: 'auto', systemTheme: 'dark' }), 'dark');
-    assert.equal(resolveTheme({ preference: 'auto', systemTheme: 'light' }), 'light');
+    assert.equal(
+      resolveTheme({ preference: 'auto', systemTheme: 'dark' }),
+      'dark'
+    );
+    assert.equal(
+      resolveTheme({ preference: 'auto', systemTheme: 'light' }),
+      'light'
+    );
   });
 
   it('defaults to light when system theme is missing', () => {
@@ -52,7 +64,10 @@ describe('watchSystemTheme', () => {
       removeEventListener() {},
     };
     const events = [];
-    const stop = watchSystemTheme(() => fakeMedia, (value) => events.push(value));
+    const stop = watchSystemTheme(
+      () => fakeMedia,
+      (value) => events.push(value)
+    );
     listener({ matches: true });
     listener({ matches: false });
     stop();
