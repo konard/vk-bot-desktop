@@ -1,64 +1,85 @@
 import logger from '../logger.js';
+import {
+  INVITATION_MESSAGES,
+  pickInvitationMessage,
+} from '../messages/invitation-messages.js';
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+function resolveMessages(config) {
+  if (config.invitationPost?.messages?.length > 0) {
+    return config.invitationPost.messages;
+  }
+  if (config.invitationPost?.text) {
+    return [config.invitationPost.text];
+  }
+  return INVITATION_MESSAGES;
+}
+
+async function alreadyHasInvitationPost({ vk, ownerId, messages }) {
+  const topPosts = await vk.api.wall.get({ owner_id: ownerId, count: 10 });
+  return (topPosts.items || []).some((p) =>
+    messages.some((m) => (p.text || '').includes(m.trim()))
+  );
+}
+
+function handlePostError(error, communityId) {
+  if (error.code === 14) {
+    logger.warn('Captcha required; backing off', { communityId });
+    return { backoffMs: 60000 };
+  }
+  if (error.code === 219 || error.code === 210 || error.code === 15) {
+    logger.warn('Posting blocked for community; skipping', {
+      communityId,
+      code: error.code,
+    });
+    return { skip: true };
+  }
+  logger.error('Failed to send invitation post', { communityId, error });
+  return {};
+}
+
+async function postToCommunity({ vk, config, communityId, messages }) {
+  const ownerId = `-${communityId}`;
+  if (await alreadyHasInvitationPost({ vk, ownerId, messages })) {
+    logger.info('Invitation post already present; skipping community', {
+      communityId,
+    });
+    return;
+  }
+  const attachments = [];
+  const avatarAttachment = await uploadCommunityAvatar({
+    vk,
+    config,
+    communityId,
+  });
+  if (avatarAttachment) {
+    attachments.push(avatarAttachment);
+  }
+  await vk.api.wall.post({
+    owner_id: ownerId,
+    message: pickInvitationMessage(Math.random, messages).trim(),
+    attachments: attachments.join(','),
+  });
+  logger.info('Invitation post sent', { communityId });
+  await sleep(5000);
+}
+
 export async function sendInvitationPosts({ vk, config }) {
-  const message = (
-    config.invitationPost?.text || 'Приму заявки в друзья.'
-  ).trim();
+  const messages = resolveMessages(config);
   const communities = config.invitationPost?.communities || [];
   if (communities.length === 0) {
     logger.info('No invitation-post communities configured; skipping');
     return;
   }
   for (const communityId of communities) {
-    const ownerId = `-${communityId}`;
     try {
-      const topPosts = await vk.api.wall.get({
-        owner_id: ownerId,
-        count: 10,
-      });
-      const alreadyPosted = (topPosts.items || []).some((p) =>
-        (p.text || '').includes(message)
-      );
-      if (alreadyPosted) {
-        logger.info('Invitation post already present; skipping community', {
-          communityId,
-        });
-        continue;
-      }
-
-      const attachments = [];
-      const avatarAttachment = await uploadCommunityAvatar({
-        vk,
-        config,
-        communityId,
-      });
-      if (avatarAttachment) {
-        attachments.push(avatarAttachment);
-      }
-
-      await vk.api.wall.post({
-        owner_id: ownerId,
-        message,
-        attachments: attachments.join(','),
-      });
-      logger.info('Invitation post sent', { communityId });
-      await sleep(5000);
+      await postToCommunity({ vk, config, communityId, messages });
     } catch (error) {
-      if (error.code === 14) {
-        logger.warn('Captcha required; backing off', { communityId });
-        await sleep(60000);
-        continue;
+      const { backoffMs } = handlePostError(error, communityId);
+      if (backoffMs) {
+        await sleep(backoffMs);
       }
-      if (error.code === 219 || error.code === 210 || error.code === 15) {
-        logger.warn('Posting blocked for community; skipping', {
-          communityId,
-          code: error.code,
-        });
-        continue;
-      }
-      logger.error('Failed to send invitation post', { communityId, error });
     }
   }
 }

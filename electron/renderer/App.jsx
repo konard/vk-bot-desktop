@@ -9,6 +9,32 @@ import {
   watchSystemTheme,
 } from './theme.js';
 
+const DEFAULT_INVITATIONS = [
+  'Приму заявки в друзья.',
+  'Открыт для новых знакомств. Жду заявку.',
+  'Если хочется пообщаться — добавляйся в друзья.',
+  'Готов принять заявку в друзья.',
+  'Можно подружиться. Жду заявку в друзья.',
+  'Принимаю заявки в друзья — пиши, познакомимся.',
+  'Заявки в друзья приветствуются.',
+  'Добавляйся в друзья, рад буду общению.',
+  'Открыт для новых друзей. Заявки принимаются.',
+  'Жду заявок в друзья — буду рад познакомиться.',
+];
+
+const DEFAULT_GREETINGS = [
+  '🎉 Поздравляю с днём рождения!',
+  'С днём рождения! 🎂',
+  '🎈 Поздравляю с праздником!',
+  'Желаю всего самого лучшего! 🌟',
+  '🥳 С днём рождения!',
+  'Счастья и здоровья! 💐',
+  '🎁 С днём рождения! Пусть всё получится.',
+  'Радости и улыбок! ☀️',
+  'С днём рождения! Пусть мечты сбываются. ✨',
+  'Поздравляю! Удачи во всём. 🍀',
+];
+
 const FEATURE_KEYS = [
   ['onlineStatus', 'featureOnlineStatus'],
   ['acceptFriendRequests', 'featureAcceptFriendRequests'],
@@ -22,10 +48,11 @@ const DEFAULT_FORM = {
   mode: 'local',
   vkToken: '',
   priorityFriendIds: '',
-  invitationText: 'Приму заявки в друзья.',
+  invitationMessages: DEFAULT_INVITATIONS.join('\n'),
   invitationCommunities: '',
+  birthdayGreetings: DEFAULT_GREETINGS.join('\n'),
   ssh: { host: '', user: '', port: '22', keyPath: '' },
-  isolation: 'docker',
+  isolation: 'screen',
   features: Object.fromEntries(FEATURE_KEYS.map(([key]) => [key, true])),
 };
 
@@ -38,6 +65,20 @@ function csvToList(value) {
 
 function listToCsv(list) {
   return Array.isArray(list) ? list.join(', ') : '';
+}
+
+function linesToList(value) {
+  return String(value || '')
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(Boolean);
+}
+
+function listToLines(list, fallback) {
+  if (Array.isArray(list) && list.length > 0) {
+    return list.join('\n');
+  }
+  return fallback.join('\n');
 }
 
 function configToForm(config) {
@@ -54,28 +95,35 @@ function configToForm(config) {
     mode: config.mode === 'server' ? 'server' : 'local',
     vkToken: config.vk?.token || '',
     priorityFriendIds: listToCsv(config.priorityFriendIds),
-    invitationText: config.invitationPost?.text || DEFAULT_FORM.invitationText,
+    invitationMessages: listToLines(
+      config.invitationPost?.messages,
+      DEFAULT_INVITATIONS
+    ),
     invitationCommunities: listToCsv(config.invitationPost?.communities),
+    birthdayGreetings: listToLines(config.birthdayGreetings, DEFAULT_GREETINGS),
     ssh: {
       host: config.server?.host || '',
       user: config.server?.user || '',
       port: String(config.server?.port || '22'),
       keyPath: config.server?.keyPath || '',
     },
-    isolation: config.server?.isolation === 'screen' ? 'screen' : 'docker',
+    isolation: config.server?.isolation === 'docker' ? 'docker' : 'screen',
     features,
   };
 }
 
 function formToConfig(form) {
+  const messages = linesToList(form.invitationMessages);
   return {
     mode: form.mode,
     vk: { token: form.vkToken },
     priorityFriendIds: csvToList(form.priorityFriendIds),
     invitationPost: {
-      text: form.invitationText,
+      text: messages[0] || DEFAULT_INVITATIONS[0],
+      messages,
       communities: csvToList(form.invitationCommunities),
     },
+    birthdayGreetings: linesToList(form.birthdayGreetings),
     server: {
       host: form.ssh.host,
       user: form.ssh.user,
@@ -171,6 +219,68 @@ function FeatureCheckbox({ id, checked, onChange, label }) {
   );
 }
 
+function Section({ title, defaultOpen = false, children }) {
+  const [open, setOpen] = useState(defaultOpen);
+  return (
+    <div className="section">
+      <button
+        type="button"
+        className="section-toggle"
+        aria-expanded={open}
+        onClick={() => setOpen((value) => !value)}
+      >
+        <span className="section-toggle-arrow">{open ? '▼' : '▶'}</span>
+        <span>{title}</span>
+      </button>
+      {open ? <div className="section-body">{children}</div> : null}
+    </div>
+  );
+}
+
+function StatsBanner({ stats, t }) {
+  const total = Number(stats?.total?.acceptedFriends || 0);
+  const month = Number(stats?.month?.acceptedFriends || 0);
+  const week = Number(stats?.week?.acceptedFriends || 0);
+  const initial = Number(stats?.total?.initialFriendsCount ?? -1);
+  if (total <= 0) {
+    return null;
+  }
+  return (
+    <div className="stats-banner" role="status">
+      <strong>{t('statsTitle')}</strong>
+      <span>
+        {t('statsWeek')}: {week}
+      </span>
+      <span>
+        {t('statsMonth')}: {month}
+      </span>
+      <span>
+        {t('statsTotal')}: {total}
+      </span>
+      {initial >= 0 ? (
+        <span className="stats-initial">
+          {t('statsInitial')}: {initial}
+        </span>
+      ) : null}
+    </div>
+  );
+}
+
+function Toasts({ toasts }) {
+  if (!toasts || toasts.length === 0) {
+    return null;
+  }
+  return (
+    <div className="toasts" aria-live="polite">
+      {toasts.map((toast) => (
+        <div key={toast.id} className={`toast toast-${toast.kind || 'info'}`}>
+          {toast.text}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function App({ api }) {
   const [locale, setLocale] = useLocale(api);
   const [theme, setTheme] = useTheme(api);
@@ -180,7 +290,31 @@ export default function App({ api }) {
   const [running, setRunning] = useState(false);
   const [logLines, setLogLines] = useState([]);
   const [scriptPreview, setScriptPreview] = useState('');
+  const [stats, setStats] = useState(null);
+  const [toasts, setToasts] = useState([]);
   const logRef = useRef(null);
+  const toastIdRef = useRef(0);
+
+  const showToast = useCallback((text, kind = 'info') => {
+    toastIdRef.current += 1;
+    const id = toastIdRef.current;
+    setToasts((prev) => [...prev, { id, text, kind }]);
+    setTimeout(() => {
+      setToasts((prev) => prev.filter((toast) => toast.id !== id));
+    }, 3500);
+  }, []);
+
+  const refreshStats = useCallback(async () => {
+    if (!api?.readStats) {
+      return;
+    }
+    try {
+      const snapshot = await api.readStats();
+      setStats(snapshot);
+    } catch {
+      // ignore
+    }
+  }, [api]);
 
   useEffect(() => {
     if (!api?.loadConfig) {
@@ -191,6 +325,12 @@ export default function App({ api }) {
       .then((config) => setForm(configToForm(config)))
       .catch(() => {});
   }, [api]);
+
+  useEffect(() => {
+    refreshStats();
+    const id = setInterval(refreshStats, 15000);
+    return () => clearInterval(id);
+  }, [refreshStats]);
 
   useEffect(() => {
     if (!api?.onLog) {
@@ -243,9 +383,14 @@ export default function App({ api }) {
     if (!api?.startLocal) {
       return;
     }
-    await api.startLocal(formToConfig(form));
+    const result = await api.startLocal(formToConfig(form));
     setRunning(true);
-  }, [api, form]);
+    if (result?.stoppedOther) {
+      showToast(t('notifSwitched'), 'info');
+    }
+    showToast(t('notifStarted'), 'success');
+    refreshStats();
+  }, [api, form, refreshStats, showToast, t]);
 
   const onStop = useCallback(async () => {
     if (!api?.stopLocal) {
@@ -253,13 +398,13 @@ export default function App({ api }) {
     }
     await api.stopLocal();
     setRunning(false);
-  }, [api]);
+    showToast(t('notifStopped'), 'warn');
+  }, [api, showToast, t]);
 
   const onGenerateScript = useCallback(async () => {
     if (!api?.buildServerScript) {
       return;
     }
-    const config = formToConfig(form);
     const result = await api.buildServerScript({
       remoteDir: '~/vk-bot-desktop',
       isolation: form.isolation,
@@ -267,6 +412,23 @@ export default function App({ api }) {
     });
     setScriptPreview(result?.script || '');
   }, [api, form]);
+
+  const onFillPriorityFromOutgoing = useCallback(async () => {
+    if (!api?.fetchOutgoing) {
+      return;
+    }
+    const ids = await api.fetchOutgoing(form.vkToken);
+    if (Array.isArray(ids) && ids.length > 0) {
+      setForm((prev) => ({
+        ...prev,
+        priorityFriendIds: ids.join(', '),
+      }));
+    }
+  }, [api, form.vkToken]);
+
+  const onClearPriority = useCallback(() => {
+    setForm((prev) => ({ ...prev, priorityFriendIds: '' }));
+  }, []);
 
   const features = useMemo(
     () =>
@@ -284,7 +446,9 @@ export default function App({ api }) {
 
   return (
     <div className="app">
+      <Toasts toasts={toasts} />
       <h1>{t('appTitle')}</h1>
+      <StatsBanner stats={stats} t={t} />
       <div className="toolbar">
         <label>
           {t('mode')}
@@ -348,49 +512,90 @@ export default function App({ api }) {
         <span className="help">{t('vkTokenHelp')}</span>
       </div>
 
-      <div className="field">
-        <label htmlFor="priority-ids">{t('priorityFriendIds')}</label>
-        <textarea
-          id="priority-ids"
-          rows={2}
-          value={form.priorityFriendIds}
-          onChange={(event) =>
-            onField(['priorityFriendIds'], event.target.value)
-          }
-        />
-        <span className="help">{t('priorityFriendIdsHelp')}</span>
-      </div>
-
-      <div className="field">
-        <label htmlFor="invite-text">{t('invitationText')}</label>
-        <input
-          id="invite-text"
-          value={form.invitationText}
-          onChange={(event) => onField(['invitationText'], event.target.value)}
-        />
-        <span className="help">{t('invitationTextHelp')}</span>
-      </div>
-
-      <div className="field">
-        <label htmlFor="invite-communities">{t('invitationCommunities')}</label>
-        <textarea
-          id="invite-communities"
-          rows={2}
-          value={form.invitationCommunities}
-          onChange={(event) =>
-            onField(['invitationCommunities'], event.target.value)
-          }
-        />
-        <span className="help">{t('invitationCommunitiesHelp')}</span>
-      </div>
-
       <div className="section">
         <h2>{t('features')}</h2>
         <div className="feature-list">{features}</div>
       </div>
 
+      <Section title={t('sectionPriority')}>
+        <div className="field">
+          <label htmlFor="priority-ids">{t('priorityFriendIds')}</label>
+          <textarea
+            id="priority-ids"
+            rows={3}
+            value={form.priorityFriendIds}
+            onChange={(event) =>
+              onField(['priorityFriendIds'], event.target.value)
+            }
+          />
+          <span className="help">{t('priorityFriendIdsHelp')}</span>
+          <div className="row inline-actions">
+            <button
+              type="button"
+              className="secondary"
+              onClick={onFillPriorityFromOutgoing}
+            >
+              {t('fillFromOutgoing')}
+            </button>
+            <button
+              type="button"
+              className="secondary"
+              onClick={onClearPriority}
+            >
+              {t('clearList')}
+            </button>
+          </div>
+        </div>
+      </Section>
+
+      <Section title={t('sectionInvitations')}>
+        <div className="field">
+          <label htmlFor="invitation-messages">{t('invitationMessages')}</label>
+          <textarea
+            id="invitation-messages"
+            rows={6}
+            value={form.invitationMessages}
+            onChange={(event) =>
+              onField(['invitationMessages'], event.target.value)
+            }
+          />
+          <span className="help">{t('invitationMessagesHelp')}</span>
+        </div>
+        <div className="field">
+          <label htmlFor="invite-communities">
+            {t('invitationCommunities')}
+          </label>
+          <textarea
+            id="invite-communities"
+            rows={2}
+            value={form.invitationCommunities}
+            onChange={(event) =>
+              onField(['invitationCommunities'], event.target.value)
+            }
+          />
+          <span className="help">{t('invitationCommunitiesHelp')}</span>
+        </div>
+      </Section>
+
+      <Section title={t('sectionGreetings')}>
+        <div className="field">
+          <label htmlFor="birthday-greetings">
+            {t('birthdayGreetingsLabel')}
+          </label>
+          <textarea
+            id="birthday-greetings"
+            rows={6}
+            value={form.birthdayGreetings}
+            onChange={(event) =>
+              onField(['birthdayGreetings'], event.target.value)
+            }
+          />
+          <span className="help">{t('birthdayGreetingsHelp')}</span>
+        </div>
+      </Section>
+
       {form.mode === 'server' ? (
-        <div className="section">
+        <Section title={t('sectionServer')} defaultOpen>
           <div className="row">
             <div className="field">
               <label htmlFor="ssh-host">{t('sshHost')}</label>
@@ -442,8 +647,8 @@ export default function App({ api }) {
               value={form.isolation}
               onChange={(event) => onField(['isolation'], event.target.value)}
             >
-              <option value="docker">{t('isolationDocker')}</option>
               <option value="screen">{t('isolationScreen')}</option>
+              <option value="docker">{t('isolationDocker')}</option>
             </select>
           </div>
 
@@ -461,7 +666,7 @@ export default function App({ api }) {
               <textarea readOnly rows={10} value={scriptPreview} />
             </div>
           ) : null}
-        </div>
+        </Section>
       ) : null}
 
       <div className="section">

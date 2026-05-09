@@ -19,16 +19,23 @@ export const BIRTHDAY_GREETINGS = [
 
 let lastIndex = -1;
 
-export function pickBirthdayGreeting(rng = Math.random) {
-  if (BIRTHDAY_GREETINGS.length === 0) {
+export function pickBirthdayGreeting(
+  rng = Math.random,
+  list = BIRTHDAY_GREETINGS
+) {
+  if (!Array.isArray(list) || list.length === 0) {
     return '';
+  }
+  if (list.length === 1) {
+    lastIndex = 0;
+    return list[0];
   }
   let index;
   do {
-    index = Math.floor(rng() * BIRTHDAY_GREETINGS.length);
-  } while (index === lastIndex && BIRTHDAY_GREETINGS.length > 1);
+    index = Math.floor(rng() * list.length);
+  } while (index === lastIndex);
   lastIndex = index;
-  return BIRTHDAY_GREETINGS[index];
+  return list[index];
 }
 
 export function resetBirthdayGreetingState() {

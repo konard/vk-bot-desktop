@@ -11,6 +11,8 @@ contextBridge.exposeInMainWorld('vkbot', {
   stopLocal: () => ipcRenderer.invoke('vkbot:stop-local'),
   buildServerScript: (options) =>
     ipcRenderer.invoke('vkbot:server-script', options),
+  readStats: () => ipcRenderer.invoke('vkbot:read-stats'),
+  fetchOutgoing: (token) => ipcRenderer.invoke('vkbot:fetch-outgoing', token),
   onLog: (handler) => {
     const listener = (_event, line) => handler(line);
     ipcRenderer.on('vkbot:log', listener);

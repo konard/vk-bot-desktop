@@ -1,8 +1,29 @@
 'use strict';
 
 const path = require('path');
-const { fork } = require('child_process');
+const { fork, spawn } = require('child_process');
 const { app, BrowserWindow, ipcMain, nativeTheme } = require('electron');
+
+function runLocalCommand(argv) {
+  return new Promise((resolve) => {
+    const child = spawn(argv[0], argv.slice(1), {
+      stdio: ['ignore', 'pipe', 'pipe'],
+      env: process.env,
+    });
+    let stdout = '';
+    let stderr = '';
+    child.stdout.on('data', (chunk) => {
+      stdout += chunk.toString();
+    });
+    child.stderr.on('data', (chunk) => {
+      stderr += chunk.toString();
+    });
+    child.on('error', () => resolve({ exitCode: 1, stdout, stderr }));
+    child.on('exit', (code) =>
+      resolve({ exitCode: code ?? 1, stdout, stderr })
+    );
+  });
+}
 
 let mainWindow;
 let botProcess = null;
@@ -65,9 +86,21 @@ ipcMain.handle('vkbot:load-config', async () => {
   return store.loadLayered();
 });
 
-ipcMain.handle('vkbot:start-local', (_event, config) => {
+ipcMain.handle('vkbot:start-local', async (_event, config) => {
   if (botProcess) {
     return { ok: true, alreadyRunning: true };
+  }
+  let stoppedOther = false;
+  try {
+    const { ensureMutualExclusion } =
+      await import('../src/server/bot-lifecycle.js');
+    const result = await ensureMutualExclusion({
+      targetMode: 'local',
+      localRunner: runLocalCommand,
+    });
+    stoppedOther = Boolean(result?.stoppedOther);
+  } catch {
+    stoppedOther = false;
   }
   botProcess = fork(path.join(__dirname, '..', 'src', 'bot', 'runner.js'), [], {
     env: {
@@ -86,7 +119,7 @@ ipcMain.handle('vkbot:start-local', (_event, config) => {
     mainWindow?.webContents.send('vkbot:log', `Bot exited with code ${code}\n`);
     botProcess = null;
   });
-  return { ok: true };
+  return { ok: true, stoppedOther };
 });
 
 ipcMain.handle('vkbot:stop-local', () => {
@@ -104,4 +137,27 @@ ipcMain.handle('vkbot:server-script', async (_event, options) => {
     bundleArchiveBase64:
       options?.bundleArchiveBase64 || 'PLACEHOLDER_BUNDLE_NOT_BUILT',
   });
+});
+
+ipcMain.handle('vkbot:read-stats', async () => {
+  const { LinoStore } = await import('../src/lino-store.js');
+  const { StatsStore, statsRootFor } = await import('../src/bot/stats.js');
+  const store = new LinoStore();
+  const stats = new StatsStore({ rootDir: statsRootFor(store) });
+  return stats.snapshot();
+});
+
+ipcMain.handle('vkbot:fetch-outgoing', async (_event, token) => {
+  if (!token) {
+    return [];
+  }
+  try {
+    const { VK } = await import('vk-io');
+    const vk = new VK({ token });
+    const { fetchOutgoingRequestIds } =
+      await import('../src/bot/fetch-outgoing-requests.js');
+    return await fetchOutgoingRequestIds({ vk });
+  } catch {
+    return [];
+  }
 });

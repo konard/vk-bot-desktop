@@ -50,6 +50,27 @@ export const TRANSLATIONS = {
     featureSendBirthday: 'Send birthday congratulations',
     runningHint:
       'The bot is running in the background. Logs appear below as they arrive. You can leave this window open or stop the bot.',
+    statsTitle: 'Accepted friends',
+    statsTotal: 'Total',
+    statsMonth: 'This month',
+    statsWeek: 'This week',
+    statsInitial: 'Initial friends count',
+    notifStarted: 'Bot started',
+    notifStopped: 'Bot stopped',
+    notifSwitched: 'Stopped the other instance to avoid duplicates',
+    sectionPriority: 'Priority friends',
+    sectionInvitations: 'Invitation messages',
+    sectionGreetings: 'Birthday greetings',
+    sectionServer: 'Server (SSH)',
+    fillFromOutgoing: 'Pre-fill from current outgoing requests',
+    clearList: 'Clear list',
+    addItem: 'Add',
+    invitationMessages: 'Invitation messages (one per line)',
+    invitationMessagesHelp:
+      'When the bot posts an invitation, it picks one of these messages at random.',
+    birthdayGreetingsLabel: 'Birthday greetings (one per line)',
+    birthdayGreetingsHelp:
+      'When the bot sends a birthday congratulation, it picks one of these messages at random. Keep them short with at most two emojis.',
   },
   ru: {
     appTitle: 'VK Bot Desktop',
@@ -97,6 +118,28 @@ export const TRANSLATIONS = {
     featureSendBirthday: 'Поздравлять с днём рождения',
     runningHint:
       'Бот работает в фоне. Журнал обновляется автоматически. Окно можно оставить открытым или остановить бота.',
+    statsTitle: 'Принятые друзья',
+    statsTotal: 'Всего',
+    statsMonth: 'За месяц',
+    statsWeek: 'За неделю',
+    statsInitial: 'Друзей было на старте',
+    notifStarted: 'Бот запущен',
+    notifStopped: 'Бот остановлен',
+    notifSwitched: 'Остановил вторую копию, чтобы не было дублирования',
+    sectionPriority: 'Приоритетные друзья',
+    sectionInvitations: 'Сообщения приглашения',
+    sectionGreetings: 'Поздравления с днём рождения',
+    sectionServer: 'Сервер (SSH)',
+    fillFromOutgoing: 'Заполнить из исходящих заявок',
+    clearList: 'Очистить',
+    addItem: 'Добавить',
+    invitationMessages: 'Сообщения приглашения (по одному на строку)',
+    invitationMessagesHelp:
+      'При публикации приглашения бот выбирает одно из этих сообщений случайным образом.',
+    birthdayGreetingsLabel:
+      'Поздравления с днём рождения (по одному на строку)',
+    birthdayGreetingsHelp:
+      'При отправке поздравления бот случайно выбирает одно из этих сообщений. Старайтесь не больше двух эмоджи в одном сообщении.',
   },
 };
 

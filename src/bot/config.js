@@ -7,6 +7,9 @@
  * the values declared here.
  */
 
+import { INVITATION_MESSAGES } from './messages/invitation-messages.js';
+import { BIRTHDAY_GREETINGS } from './messages/birthday-greetings.js';
+
 export const DEFAULT_CONFIG = {
   vk: {
     token: '',
@@ -35,9 +38,11 @@ export const DEFAULT_CONFIG = {
   },
   priorityFriendIds: [],
   invitationPost: {
-    text: 'Приму заявки в друзья.',
+    text: INVITATION_MESSAGES[0],
+    messages: [...INVITATION_MESSAGES],
     communities: [],
   },
+  birthdayGreetings: [...BIRTHDAY_GREETINGS],
 };
 
 /**

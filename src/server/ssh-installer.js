@@ -28,9 +28,10 @@ function escapeShellSingle(value) {
 export function buildInstallScript({
   remoteDir = DEFAULT_REMOTE_DIR,
   nodeVersion = DEFAULT_NODE_VERSION,
-  isolation = 'docker',
+  isolation = 'screen',
   configLino = '',
   bundleArchiveBase64,
+  session = 'vk-bot-desktop',
 } = {}) {
   if (!bundleArchiveBase64) {
     throw new Error('bundleArchiveBase64 is required to install the bot');
@@ -75,6 +76,14 @@ export function buildInstallScript({
     ``,
   ];
 
+  const sessionName = escapeShellSingle(session);
+
+  lines.push(
+    `# Stop any existing session before starting a new one.`,
+    `$ --stop ${sessionName} >/dev/null 2>&1 || true`,
+    ``
+  );
+
   if (isolation === 'docker') {
     lines.push(
       `if ! command -v docker >/dev/null 2>&1; then`,
@@ -82,7 +91,7 @@ export function buildInstallScript({
       `  exit 1`,
       `fi`,
       ``,
-      `$ --isolated docker --image node:${nodeVersion} -- node src/bot/runner.js`
+      `$ --isolated docker --name ${sessionName} --image node:${nodeVersion} -- node src/bot/runner.js`
     );
   } else {
     lines.push(
@@ -91,7 +100,7 @@ export function buildInstallScript({
       `  exit 1`,
       `fi`,
       ``,
-      `$ --isolated screen -- node src/bot/runner.js`
+      `$ --isolated screen --name ${sessionName} -- node src/bot/runner.js`
     );
   }
 
@@ -101,7 +110,7 @@ export function buildInstallScript({
 export function buildInstallPlan(options) {
   return {
     remoteDir: options.remoteDir || DEFAULT_REMOTE_DIR,
-    isolation: options.isolation || 'docker',
+    isolation: options.isolation || 'screen',
     nodeVersion: options.nodeVersion || DEFAULT_NODE_VERSION,
     script: buildInstallScript(options),
   };

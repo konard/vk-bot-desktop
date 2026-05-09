@@ -1,5 +1,8 @@
 import logger from '../logger.js';
-import { pickBirthdayGreeting } from '../messages/birthday-greetings.js';
+import {
+  BIRTHDAY_GREETINGS,
+  pickBirthdayGreeting,
+} from '../messages/birthday-greetings.js';
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -33,10 +36,13 @@ export async function sendBirthdayCongratulations({ vk, config }) {
   }
   const friends = await collectFriendsWithBirthday({ vk });
   const targets = findBirthdayFriends({ friends });
+  const greetings = config.birthdayGreetings?.length
+    ? config.birthdayGreetings
+    : BIRTHDAY_GREETINGS;
   logger.info('Birthday targets identified', { count: targets.length });
   for (const friend of targets) {
     try {
-      const message = pickBirthdayGreeting();
+      const message = pickBirthdayGreeting(Math.random, greetings);
       await vk.api.messages.send({
         user_id: friend.id,
         message,
