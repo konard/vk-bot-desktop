@@ -6,7 +6,7 @@ export default [
   js.configs.recommended,
   prettierConfig,
   {
-    files: ['**/*.js', '**/*.mjs'],
+    files: ['**/*.js', '**/*.mjs', '**/*.cjs'],
     plugins: {
       prettier: prettierPlugin,
     },
@@ -20,9 +20,18 @@ export default [
         Buffer: 'readonly',
         __dirname: 'readonly',
         __filename: 'readonly',
+        require: 'readonly',
+        module: 'readonly',
+        exports: 'readonly',
+        setTimeout: 'readonly',
+        clearTimeout: 'readonly',
+        setInterval: 'readonly',
+        clearInterval: 'readonly',
         // Node.js 18+ globals
         fetch: 'readonly',
         AbortController: 'readonly',
+        URL: 'readonly',
+        URLSearchParams: 'readonly',
         // Runtime-specific globals
         Bun: 'readonly',
         Deno: 'readonly',
@@ -85,6 +94,9 @@ export default [
       'node_modules/**',
       'coverage/**',
       'dist/**',
+      'release/**',
+      'electron/renderer/dist/**',
+      'electron/renderer/**/*.jsx',
       '*.min.js',
       '.eslintcache',
       // Case study raw data files (downloaded from external sources)
