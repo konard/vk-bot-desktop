@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'test-anywhere';
 import { readFileSync } from 'node:fs';
 
+const packageJson = JSON.parse(readFileSync('package.json', 'utf8'));
 const releaseWorkflow = readWorkflow('.github/workflows/release.yml');
 const electronWorkflow = readWorkflow('.github/workflows/electron-release.yml');
 
@@ -68,5 +69,21 @@ describe('desktop release workflow', () => {
     expect(electronWorkflow).toContain('release/provenance-*.txt');
     expect(electronWorkflow).toContain('dist/BUILD-PROVENANCE.txt');
     expect(electronWorkflow).toContain('gh release upload "$TAG" dist/*');
+  });
+
+  it('configures a Linux maintainer for deb artifacts', () => {
+    expect(packageJson.build?.linux?.maintainer).toMatch(
+      /^.+ <[^@\s]+@[^@\s]+\.[^@\s]+>$/
+    );
+  });
+
+  it('hashes Linux and macOS artifacts without splitting filenames on spaces', () => {
+    const checksumStep = electronWorkflow.match(
+      /- name: Compute SHA256 sums \(Linux\/macOS\)[\s\S]*?(?=\n {6}- name:)/
+    )?.[0];
+
+    expect(checksumStep).toContain('while IFS= read -r file');
+    expect(checksumStep).toContain('shasum -a 256 "$file"');
+    expect(checksumStep).not.toContain('shasum -a 256 $(ls');
   });
 });
