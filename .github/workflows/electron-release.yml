@@ -10,6 +10,10 @@ on:
         description: 'Tag to release (e.g. v0.0.1)'
         required: true
         type: string
+      target_sha:
+        description: 'Commit SHA to build and attach to the release tag'
+        required: false
+        type: string
 
 permissions:
   contents: write
@@ -31,6 +35,8 @@ jobs:
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.target_sha || github.sha }}
 
       - uses: actions/setup-node@v4
         with:
@@ -82,6 +88,20 @@ jobs:
           $entries | Out-File -Encoding ascii -FilePath SHA256SUMS-${{ matrix.os }}.txt
           Get-Content SHA256SUMS-${{ matrix.os }}.txt
 
+      - name: Write build provenance
+        shell: bash
+        run: |
+          mkdir -p release
+          {
+            echo "repository=${{ github.repository }}"
+            echo "workflow=${{ github.workflow }}"
+            echo "run_id=${{ github.run_id }}"
+            echo "run_attempt=${{ github.run_attempt }}"
+            echo "tag=${{ github.event.inputs.tag || github.ref_name }}"
+            echo "target_sha=${{ github.event.inputs.target_sha || github.sha }}"
+            echo "builder_os=${{ matrix.os }}"
+          } > "release/provenance-${{ matrix.os }}.txt"
+
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -95,6 +115,7 @@ jobs:
             release/*.exe
             release/*.msi
             release/SHA256SUMS-*.txt
+            release/provenance-*.txt
           if-no-files-found: ignore
           retention-days: 7
 
@@ -116,6 +137,7 @@ jobs:
         run: |
           mkdir -p dist
           find artifacts -type f -name 'SHA256SUMS-*.txt' -exec cat {} + | sort > dist/SHA256SUMS.txt
+          find artifacts -type f -name 'provenance-*.txt' -exec cat {} + > dist/BUILD-PROVENANCE.txt
           find artifacts -type f \
             \( -name '*.AppImage' -o -name '*.deb' -o -name '*.tar.gz' \
                -o -name '*.dmg' -o -name '*.zip' \
@@ -128,18 +150,28 @@ jobs:
         id: tag
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "tag=${{ github.event.inputs.tag }}" >> "$GITHUB_OUTPUT"
+            TAG="${{ github.event.inputs.tag }}"
+            TARGET_SHA="${{ github.event.inputs.target_sha }}"
+            if [ -z "$TARGET_SHA" ]; then
+              TARGET_SHA="$GITHUB_SHA"
+            fi
           else
-            echo "tag=${GITHUB_REF#refs/tags/}" >> "$GITHUB_OUTPUT"
+            TAG="${GITHUB_REF#refs/tags/}"
+            TARGET_SHA="$GITHUB_SHA"
           fi
+
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "target_sha=$TARGET_SHA" >> "$GITHUB_OUTPUT"
 
       - name: Create or update GitHub release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAG: ${{ steps.tag.outputs.tag }}
+          TARGET_SHA: ${{ steps.tag.outputs.target_sha }}
         run: |
           if ! gh release view "$TAG" >/dev/null 2>&1; then
             gh release create "$TAG" \
+              --target "$TARGET_SHA" \
               --title "$TAG" \
               --notes "Cross-platform Electron build of vk-bot-desktop. Verify downloads against SHA256SUMS.txt."
           fi

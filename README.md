@@ -21,7 +21,9 @@ Cross-platform desktop app that wraps [`konard/vk-bot`](https://github.com/konar
 
 ## Install
 
-Download a signed binary for your OS from the latest [GitHub release](https://github.com/konard/vk-bot-desktop/releases). Verify the SHA256:
+Download the desktop binary for your OS from the latest
+[GitHub release](https://github.com/konard/vk-bot-desktop/releases). Verify the
+SHA256 checksum:
 
 ```sh
 sha256sum -c SHA256SUMS.txt
@@ -60,3 +62,5 @@ npm test
 
 A detailed walk-through of the design decisions, library choices, and reproducibility steps is in
 [`docs/case-studies/issue-1`](docs/case-studies/issue-1/README.md).
+
+The full requirements are maintained in [`docs/REQUIREMENTS.md`](docs/REQUIREMENTS.md).
