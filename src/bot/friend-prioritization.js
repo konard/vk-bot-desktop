@@ -1,17 +1,14 @@
 /**
  * Friend-request prioritization.
  *
- * The issue specifies two regimes for accepting friend requests:
+ * Acceptance is rate-limited to 10% of every incoming request the bot has
+ * ever observed. With totalAcceptedEver and totalIncomingSeen tracked in the
+ * stats store, each run accepts at most:
  *
- * - Below the friend limit (10000): accept the top 10% of pending requests
- *   by mutual-friend count.
- * - At or above the friend limit: only accept requests from people with whom
- *   we share the most mutual friends.
+ *   floor(totalIncomingSeen * 0.10) - totalAcceptedEver
  *
- * `selectIncomingRequests` encapsulates that logic in a pure function so it
- * is easy to test without hitting the VK API. It expects a list of incoming
- * requests, each shaped as `{ userId, mutualCount }`, plus the current
- * friend count.
+ * Plus, we never exceed maxFriends (10 000). When at the friend cap, we only
+ * accept requests from users with whom we share at least one mutual friend.
  */
 
 export const DEFAULT_LIMITS = {
@@ -19,6 +16,20 @@ export const DEFAULT_LIMITS = {
   topPercentMutuals: 10,
   maxRequestsPerRun: 23,
 };
+
+/**
+ * Number of incoming requests we are still allowed to accept under the global
+ * 10% cap. `totalIncomingSeen` includes the requests already counted in the
+ * current run.
+ */
+export function computePotentialAcceptanceQuota({
+  totalIncomingSeen = 0,
+  totalAcceptedEver = 0,
+  topPercentMutuals = 10,
+} = {}) {
+  const allowed = Math.floor((totalIncomingSeen * topPercentMutuals) / 100);
+  return Math.max(0, allowed - totalAcceptedEver);
+}
 
 function compareByMutualsDesc(a, b) {
   const da = (b.mutualCount ?? 0) - (a.mutualCount ?? 0);
@@ -28,45 +39,43 @@ function compareByMutualsDesc(a, b) {
   return (a.userId ?? 0) - (b.userId ?? 0);
 }
 
+function readLimits(limits) {
+  return {
+    maxFriends: limits.maxFriends ?? DEFAULT_LIMITS.maxFriends,
+    perRunCap: limits.maxRequestsPerRun ?? DEFAULT_LIMITS.maxRequestsPerRun,
+    topPercent: limits.topPercentMutuals ?? DEFAULT_LIMITS.topPercentMutuals,
+  };
+}
+
 export function selectIncomingRequests({
   requests = [],
   currentFriendCount = 0,
   limits = DEFAULT_LIMITS,
+  totalAcceptedEver = 0,
+  totalIncomingSeen = 0,
 } = {}) {
   if (!Array.isArray(requests) || requests.length === 0) {
     return [];
   }
-
-  const sorted = [...requests].sort(compareByMutualsDesc);
-  const remainingCapacity = Math.max(
-    0,
-    (limits.maxFriends ?? DEFAULT_LIMITS.maxFriends) - currentFriendCount
-  );
-  const cap = Math.min(
-    remainingCapacity,
-    limits.maxRequestsPerRun ?? DEFAULT_LIMITS.maxRequestsPerRun
-  );
-
+  const { maxFriends, perRunCap, topPercent } = readLimits(limits);
+  const remainingCapacity = Math.max(0, maxFriends - currentFriendCount);
+  if (remainingCapacity <= 0) {
+    return [];
+  }
+  const quota = computePotentialAcceptanceQuota({
+    totalIncomingSeen: totalIncomingSeen || requests.length,
+    totalAcceptedEver,
+    topPercentMutuals: topPercent,
+  });
+  const cap = Math.min(remainingCapacity, perRunCap, quota);
   if (cap <= 0) {
     return [];
   }
-
-  const aboveLimit =
-    currentFriendCount >= (limits.maxFriends ?? DEFAULT_LIMITS.maxFriends);
-
-  if (aboveLimit) {
-    // Above the limit we only accept the very top requests by mutuals,
-    // because at this point we cannot grow the friend list — only curate
-    // it through cleanup.
+  const sorted = [...requests].sort(compareByMutualsDesc);
+  if (currentFriendCount >= maxFriends) {
     return sorted.filter((r) => (r.mutualCount ?? 0) > 0).slice(0, cap);
   }
-
-  // Below the limit: keep the top X% of all requests, but never more than
-  // the per-run cap and never more than the remaining capacity.
-  const percent =
-    (limits.topPercentMutuals ?? DEFAULT_LIMITS.topPercentMutuals) / 100;
-  const topCount = Math.max(1, Math.ceil(sorted.length * percent));
-  return sorted.slice(0, Math.min(topCount, cap));
+  return sorted.slice(0, cap);
 }
 
 /**

@@ -5,10 +5,64 @@ import {
   selectIncomingRequests,
   pickPrioritySendList,
   pickDeactivatedToDelete,
+  computePotentialAcceptanceQuota,
 } from '../src/bot/friend-prioritization.js';
 
+describe('computePotentialAcceptanceQuota', () => {
+  it('returns floor(totalIncomingSeen * 10%) - totalAcceptedEver', () => {
+    assert.equal(
+      computePotentialAcceptanceQuota({
+        totalIncomingSeen: 100,
+        totalAcceptedEver: 3,
+      }),
+      7
+    );
+  });
+
+  it('clamps to zero when already over quota', () => {
+    assert.equal(
+      computePotentialAcceptanceQuota({
+        totalIncomingSeen: 50,
+        totalAcceptedEver: 12,
+      }),
+      0
+    );
+  });
+
+  it('honours a custom percentage', () => {
+    assert.equal(
+      computePotentialAcceptanceQuota({
+        totalIncomingSeen: 200,
+        totalAcceptedEver: 1,
+        topPercentMutuals: 5,
+      }),
+      9
+    );
+  });
+});
+
 describe('selectIncomingRequests', () => {
-  it('returns top 10% when below the friend limit', () => {
+  it('respects the lifetime 10% quota across runs', () => {
+    const requests = Array.from({ length: 20 }, (_, i) => ({
+      userId: 1000 + i,
+      mutualCount: i,
+    }));
+    const out = selectIncomingRequests({
+      requests,
+      currentFriendCount: 100,
+      totalIncomingSeen: 100,
+      totalAcceptedEver: 3,
+      limits: {
+        maxFriends: 10000,
+        topPercentMutuals: 10,
+        maxRequestsPerRun: 25,
+      },
+    });
+    assert.equal(out.length, 7);
+    assert.deepEqual(out.map((r) => r.userId).slice(0, 2), [1019, 1018]);
+  });
+
+  it('falls back to current batch size when no lifetime stats provided', () => {
     const requests = Array.from({ length: 20 }, (_, i) => ({
       userId: 1000 + i,
       mutualCount: i,
@@ -23,10 +77,6 @@ describe('selectIncomingRequests', () => {
       },
     });
     assert.equal(out.length, 2);
-    assert.deepEqual(
-      out.map((r) => r.userId),
-      [1019, 1018]
-    );
   });
 
   it('above the limit only accepts requests with mutuals', () => {

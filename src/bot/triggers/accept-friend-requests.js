@@ -3,6 +3,8 @@ import {
   selectIncomingRequests,
   pickPrioritySendList,
 } from '../friend-prioritization.js';
+import { StatsStore, statsRootFor } from '../stats.js';
+import { LinoStore } from '../../lino-store.js';
 
 const ONE_SECOND_MS = 1000;
 const ONE_MINUTE_MS = 60 * 1000;
@@ -90,10 +92,17 @@ async function sendPriorityRequests({ vk, priorityToSend }) {
   }
 }
 
-async function acceptIncomingRequests({ vk, selected }) {
+async function acceptIncomingRequests({
+  vk,
+  selected,
+  stats,
+  incomingRequestsSeen = 0,
+}) {
+  let accepted = 0;
   for (const request of selected) {
     try {
       await vk.api.friends.add({ user_id: request.userId, text: '' });
+      accepted += 1;
       logger.info('Incoming friend request accepted', {
         userId: request.userId,
         mutualCount: request.mutualCount,
@@ -112,16 +121,72 @@ async function acceptIncomingRequests({ vk, selected }) {
       });
     }
   }
+  if (stats && (accepted > 0 || incomingRequestsSeen > 0)) {
+    try {
+      await stats.recordAccepted({ count: accepted, incomingRequestsSeen });
+    } catch (error) {
+      logger.warn('Could not record stats for accepted friends', { error });
+    }
+  }
+  return accepted;
 }
 
-export async function acceptFriendRequests({ vk, config }) {
+function resolveStats(providedStats) {
+  if (providedStats) {
+    return providedStats;
+  }
   try {
+    const store = new LinoStore();
+    return new StatsStore({ rootDir: statsRootFor(store) });
+  } catch (error) {
+    logger.warn('Stats store unavailable; running without persistence', {
+      error,
+    });
+    return null;
+  }
+}
+
+async function recordInitialFriendsCount(stats, count) {
+  if (!stats) {
+    return;
+  }
+  try {
+    await stats.setInitialFriendsCount(count);
+  } catch (error) {
+    logger.warn('Could not record initial friends count', { error });
+  }
+}
+
+async function readTotals(stats, currentBatch) {
+  if (!stats) {
+    return { totalIncomingSeen: currentBatch, totalAcceptedEver: 0 };
+  }
+  try {
+    const total = await stats.readTotal();
+    return {
+      totalIncomingSeen:
+        (Number(total.incomingRequestsSeen) || 0) + currentBatch,
+      totalAcceptedEver: Number(total.acceptedFriends) || 0,
+    };
+  } catch (error) {
+    logger.warn('Could not read stats; falling back to batch size', { error });
+    return { totalIncomingSeen: currentBatch, totalAcceptedEver: 0 };
+  }
+}
+
+export async function acceptFriendRequests({
+  vk,
+  config,
+  stats: providedStats,
+}) {
+  try {
+    const stats = resolveStats(providedStats);
     const friends = await loadFriends({ vk });
     const friendIds = friends.map((f) => f.id);
-    const remainingCapacity = Math.max(
-      0,
-      (config.limits?.maxFriends ?? 10000) - friendIds.length
-    );
+    await recordInitialFriendsCount(stats, friendIds.length);
+
+    const maxFriends = config.limits?.maxFriends ?? 10000;
+    const remainingCapacity = Math.max(0, maxFriends - friendIds.length);
 
     const priorityToSend = pickPrioritySendList({
       priorityFriendIds: config.priorityFriendIds || [],
@@ -136,27 +201,42 @@ export async function acceptFriendRequests({ vk, config }) {
     });
     if (requests.length === 0) {
       logger.info('No incoming friend requests to be accepted');
-      return;
+      return 0;
     }
+
+    const { totalIncomingSeen, totalAcceptedEver } = await readTotals(
+      stats,
+      requests.length
+    );
 
     const selected = selectIncomingRequests({
       requests,
       currentFriendCount: friendIds.length,
       limits: {
-        maxFriends: config.limits?.maxFriends ?? 10000,
+        maxFriends,
         topPercentMutuals: config.limits?.topPercentMutuals ?? 10,
         maxRequestsPerRun:
           config.limits?.maxFriendRequestsPerRun ?? requests.length,
       },
+      totalIncomingSeen,
+      totalAcceptedEver,
     });
 
     logger.info('Selected incoming friend requests', {
       total: requests.length,
       selected: selected.length,
+      totalIncomingSeen,
+      totalAcceptedEver,
     });
 
-    await acceptIncomingRequests({ vk, selected });
+    return await acceptIncomingRequests({
+      vk,
+      selected,
+      stats,
+      incomingRequestsSeen: requests.length,
+    });
   } catch (error) {
     logger.error('Could not accept friend requests', { error });
+    return 0;
   }
 }
