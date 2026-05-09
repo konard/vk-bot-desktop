@@ -72,8 +72,26 @@ jobs:
         if: matrix.os != 'windows-latest'
         run: |
           cd release
-          shasum -a 256 $(ls | grep -E '\.(AppImage|deb|tar\.gz|dmg|zip)$') > SHA256SUMS-${{ matrix.os }}.txt
-          cat SHA256SUMS-${{ matrix.os }}.txt
+          checksum_file="SHA256SUMS-${{ matrix.os }}.txt"
+          artifact_count=0
+          : > "$checksum_file"
+
+          while IFS= read -r file; do
+            artifact_count=$((artifact_count + 1))
+            shasum -a 256 "$file" | sed 's#  \./#  #' >> "$checksum_file"
+          done < <(
+            find . -maxdepth 1 -type f \
+              \( -name '*.AppImage' -o -name '*.deb' -o -name '*.tar.gz' \
+                 -o -name '*.dmg' -o -name '*.zip' \) \
+              | sort
+          )
+
+          if [ "$artifact_count" -eq 0 ]; then
+            echo "No Linux/macOS release artifacts were found to hash." >&2
+            exit 1
+          fi
+
+          cat "$checksum_file"
 
       - name: Compute SHA256 sums (Windows)
         if: matrix.os == 'windows-latest'

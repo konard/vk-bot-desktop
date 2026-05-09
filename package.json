@@ -88,7 +88,8 @@
         "deb",
         "tar.gz"
       ],
-      "category": "Network"
+      "category": "Network",
+      "maintainer": "Konstantin Diachenko <1431904+konard@users.noreply.github.com>"
     },
     "mac": {
       "target": [
