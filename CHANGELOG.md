@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.9.1
+
+### Patch Changes
+
+- 6cfc3f1: Temporarily skip npm publishing and publish desktop binaries through GitHub Releases.
+
 ## 0.9.0
 
 ### Minor Changes
