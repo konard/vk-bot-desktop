@@ -29,6 +29,22 @@ SHA256 checksum:
 sha256sum -c SHA256SUMS.txt
 ```
 
+Direct latest-release downloads:
+
+| Platform            | Artifact       | Download                                                                                                                                               |
+| ------------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| macOS Apple silicon | DMG installer  | [vk-bot-desktop-macos-arm64.dmg](https://github.com/konard/vk-bot-desktop/releases/latest/download/vk-bot-desktop-macos-arm64.dmg)                     |
+| macOS Intel         | DMG installer  | [vk-bot-desktop-macos-x64.dmg](https://github.com/konard/vk-bot-desktop/releases/latest/download/vk-bot-desktop-macos-x64.dmg)                         |
+| Windows x64         | NSIS installer | [vk-bot-desktop-windows-installer-x64.exe](https://github.com/konard/vk-bot-desktop/releases/latest/download/vk-bot-desktop-windows-installer-x64.exe) |
+| Windows x64         | Portable app   | [vk-bot-desktop-windows-portable-x64.exe](https://github.com/konard/vk-bot-desktop/releases/latest/download/vk-bot-desktop-windows-portable-x64.exe)   |
+| Linux x64           | AppImage       | [vk-bot-desktop-linux-x64.AppImage](https://github.com/konard/vk-bot-desktop/releases/latest/download/vk-bot-desktop-linux-x64.AppImage)               |
+| Linux x64           | Debian package | [vk-bot-desktop-linux-x64.deb](https://github.com/konard/vk-bot-desktop/releases/latest/download/vk-bot-desktop-linux-x64.deb)                         |
+| Linux x64           | tar.gz archive | [vk-bot-desktop-linux-x64.tar.gz](https://github.com/konard/vk-bot-desktop/releases/latest/download/vk-bot-desktop-linux-x64.tar.gz)                   |
+| Checksums           | SHA256SUMS.txt | [SHA256SUMS.txt](https://github.com/konard/vk-bot-desktop/releases/latest/download/SHA256SUMS.txt)                                                     |
+
+The download page is published from this repository with GitHub Pages after
+changes to `site/` are merged to `main`.
+
 ## Develop
 
 ```sh

@@ -80,6 +80,9 @@ Automated release workflows ensure:
 - **Validated releases only** - All checks must pass before release dispatch
 - **Verifiable artifacts** - Desktop builds include SHA256 checksums and build
   provenance
+- **Install-tested artifacts** - Release jobs inspect or install the built
+  package on the target runner before upload, including Gatekeeper assessment
+  for macOS DMGs
 - **Dual trigger modes** - Both automatic (on merge) and manual (workflow dispatch)
 
 ### 8. CI/CD Pipeline Features
@@ -178,9 +181,19 @@ Current timeout bands:
 | `lint`                    | 10 min |
 | `test` per runtime and OS | 10 min |
 | `links.yml` link checker  | 10 min |
+| `pages.yml` site build    | 10 min |
+| `pages.yml` site deploy   | 10 min |
 | `changeset-pr`            | 10 min |
 | `release`                 | 30 min |
 | `instant-release`         | 30 min |
+
+### 15. Release Landing Page
+
+The GitHub Pages workflow builds the React download page from `site/` and
+deploys it with the official Pages artifact flow. The page detects language,
+theme, and operating system in the browser, then falls back to a full OS chooser
+and stable `/releases/latest/download/...` links when release API access is not
+available.
 
 Per-test timeouts are also enforced inside the runners that support a
 global budget:

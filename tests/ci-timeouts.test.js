@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 
 const releaseWorkflow = readWorkflow('.github/workflows/release.yml');
 const linksWorkflow = readWorkflow('.github/workflows/links.yml');
+const pagesWorkflow = readWorkflow('.github/workflows/pages.yml');
 const packageJson = JSON.parse(readFileSync('package.json', 'utf8'));
 
 function readWorkflow(filePath) {
@@ -73,6 +74,21 @@ describe('CI timeout policy', () => {
   it('sets timeout-minutes for every link workflow job', () => {
     expect(listWorkflowJobs(linksWorkflow)).toEqual(['link-checker']);
     expect(getTimeoutMinutes(linksWorkflow, 'link-checker')).toBe(10);
+  });
+
+  it('sets timeout-minutes for every Pages workflow job', () => {
+    const expectedTimeouts = {
+      build: 10,
+      deploy: 10,
+    };
+
+    expect(listWorkflowJobs(pagesWorkflow).sort()).toEqual(
+      Object.keys(expectedTimeouts).sort()
+    );
+
+    for (const [jobName, timeout] of Object.entries(expectedTimeouts)) {
+      expect(getTimeoutMinutes(pagesWorkflow, jobName)).toBe(timeout);
+    }
   });
 
   it('parses workflow files checked out with Windows line endings', () => {

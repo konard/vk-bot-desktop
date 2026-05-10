@@ -106,6 +106,7 @@ export default [
       'node_modules/**',
       'coverage/**',
       'dist/**',
+      '**/dist/**',
       'release/**',
       'electron/renderer/dist/**',
       'electron/renderer/**/*.jsx',
