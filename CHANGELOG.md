@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.9.6
+
+### Patch Changes
+
+- e66dd38: Stop the Pages download site and static docs from linking to missing release assets, and verify published release links in CI.
+
 ## 0.9.5
 
 ### Patch Changes
