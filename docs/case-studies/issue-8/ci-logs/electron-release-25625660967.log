@@ -1,0 +1,613 @@
+Build (windows-latest)	UNKNOWN STEP	﻿2026-05-10T09:51:44.0049453Z Current runner version: '2.334.0'
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:44.0084098Z ##[group]Runner Image Provisioner
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:44.0085431Z Hosted Compute Agent
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:44.0086199Z Version: 20260422.526
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:44.0087073Z Commit: e1a9e573f4d0838b3a7c1b07401aeb29ed3635a9
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:44.0088125Z Build Date: 2026-04-22T09:31:31Z
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:44.0089126Z Worker ID: {378e0a0d-4304-453b-9d18-946a88ce0495}
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:44.0090109Z Azure Region: eastus2
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:44.0090906Z ##[endgroup]
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:44.0093340Z ##[group]Operating System
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:44.0094240Z Microsoft Windows Server 2025
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:44.0095125Z 10.0.26100
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:44.0096002Z Datacenter
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:44.0096690Z ##[endgroup]
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:44.0097355Z ##[group]Runner Image
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:44.0098203Z Image: windows-2025
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:44.0098902Z Version: 20260428.110.2
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:44.0101255Z Included Software: https://github.com/actions/runner-images/blob/win25/20260428.110/images/windows/Windows2025-Readme.md
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:44.0103690Z Image Release: https://github.com/actions/runner-images/releases/tag/win25%2F20260428.110
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:44.0105151Z ##[endgroup]
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:44.0106748Z ##[group]GITHUB_TOKEN Permissions
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:44.0109362Z Contents: write
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:44.0110241Z Metadata: read
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:44.0110964Z ##[endgroup]
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:44.0114320Z Secret source: Actions
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:44.0115580Z Prepare workflow directory
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:44.0497162Z Prepare all required actions
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:44.0535029Z Getting action download info
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:44.2617107Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:44.4023938Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7065595Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:45.2060342Z Complete job name: Build (windows-latest)
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:45.4413454Z ##[group]Run actions/checkout@v4
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:45.4414784Z with:
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:45.4416023Z   ref: 8838b3c9626bd5a012ee518393d19994b9f67825
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:45.4416635Z   repository: konard/vk-bot-desktop
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:45.4417507Z   token: ***
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:45.4417896Z   ssh-strict: true
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:45.4418285Z   ssh-user: git
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:45.4418699Z   persist-credentials: true
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:45.4419637Z   clean: true
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:45.4420113Z   sparse-checkout-cone-mode: true
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:45.4420599Z   fetch-depth: 1
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:45.4420981Z   fetch-tags: false
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:45.4421436Z   show-progress: true
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:45.4421973Z   lfs: false
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:45.4422340Z   submodules: false
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:45.4422748Z   set-safe-directory: true
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:45.4423529Z ##[endgroup]
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:45.6480848Z Syncing repository: konard/vk-bot-desktop
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:45.6483445Z ##[group]Getting Git version info
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:45.6484981Z Working directory is 'D:\a\vk-bot-desktop\vk-bot-desktop'
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:45.7727220Z [command]"C:\Program Files\Git\bin\git.exe" version
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:46.0552743Z git version 2.54.0.windows.1
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:46.0629624Z ##[endgroup]
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:46.0650657Z Temporarily overriding HOME='D:\a\_temp\747301fc-e136-4ce0-84af-34b971f4c7ba' before making global git config changes
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:46.0654037Z Adding repository directory to the temporary git global config as a safe directory
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:46.0668489Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\vk-bot-desktop\vk-bot-desktop
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:46.1060690Z Deleting the contents of 'D:\a\vk-bot-desktop\vk-bot-desktop'
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:46.1068720Z ##[group]Initializing the repository
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:46.1085248Z [command]"C:\Program Files\Git\bin\git.exe" init D:\a\vk-bot-desktop\vk-bot-desktop
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:46.1650824Z Initialized empty Git repository in D:/a/vk-bot-desktop/vk-bot-desktop/.git/
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:46.1707208Z [command]"C:\Program Files\Git\bin\git.exe" remote add origin https://github.com/konard/vk-bot-desktop
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:46.2077456Z ##[endgroup]
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:46.2078812Z ##[group]Disabling automatic garbage collection
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:46.2088838Z [command]"C:\Program Files\Git\bin\git.exe" config --local gc.auto 0
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:46.2449948Z ##[endgroup]
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:46.2451665Z ##[group]Setting up auth
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:46.2481661Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:46.2829878Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:47.7044572Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:47.7414600Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:48.3774123Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:48.4100792Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:48.9602546Z [command]"C:\Program Files\Git\bin\git.exe" config --local http.https://github.com/.extraheader "AUTHORIZATION: basic ***"
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:48.9916284Z ##[endgroup]
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:48.9917005Z ##[group]Fetching the repository
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:48.9939916Z [command]"C:\Program Files\Git\bin\git.exe" -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin 8838b3c9626bd5a012ee518393d19994b9f67825
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:49.8147793Z From https://github.com/konard/vk-bot-desktop
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:49.8148685Z  * branch            8838b3c9626bd5a012ee518393d19994b9f67825 -> FETCH_HEAD
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:49.8345071Z ##[endgroup]
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:49.8345703Z ##[group]Determining the checkout info
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:49.8347418Z ##[endgroup]
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:49.8360105Z [command]"C:\Program Files\Git\bin\git.exe" sparse-checkout disable
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:49.8707126Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all extensions.worktreeConfig
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:49.9052701Z ##[group]Checking out the ref
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:49.9065448Z [command]"C:\Program Files\Git\bin\git.exe" checkout --progress --force 8838b3c9626bd5a012ee518393d19994b9f67825
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:50.0465508Z Note: switching to '8838b3c9626bd5a012ee518393d19994b9f67825'.
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:50.0466121Z
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:50.0466443Z You are in 'detached HEAD' state. You can look around, make experimental
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:50.0467010Z changes and commit them, and you can discard any commits you make in this
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:50.0467455Z state without impacting any branches by switching back to a branch.
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:50.0467724Z
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:50.0467920Z If you want to create a new branch to retain commits you create, you may
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:50.0468373Z do so (now or later) by using -c with the switch command. Example:
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:50.0468631Z
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:50.0468718Z   git switch -c <new-branch-name>
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:50.0468877Z
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:50.0468962Z Or undo this operation with:
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:50.0469130Z
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:50.0469204Z   git switch -
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:50.0469307Z
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:50.0469496Z Turn off this advice by setting config variable advice.detachedHead to false
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:50.0469800Z
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:50.0469870Z HEAD is now at 8838b3c 0.9.3
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:50.0546279Z ##[endgroup]
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:50.0940278Z [command]"C:\Program Files\Git\bin\git.exe" log -1 --format=%H
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:50.1228533Z 8838b3c9626bd5a012ee518393d19994b9f67825
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:50.1659999Z ##[group]Run actions/setup-node@v4
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:50.1660293Z with:
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:50.1660455Z   node-version: 20.x
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:50.1660644Z   always-auth: false
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:50.1660804Z   check-latest: false
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:50.1661113Z   token: ***
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:50.1661264Z ##[endgroup]
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:50.4284798Z Found in cache @ C:\hostedtoolcache\windows\node\20.20.2\x64
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:51:50.4299508Z ##[group]Environment details
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:52:03.9802556Z node: v20.20.2
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:52:03.9802854Z npm: 10.8.2
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:52:03.9803008Z yarn: 1.22.22
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:52:03.9805641Z ##[endgroup]
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:52:04.0057642Z ##[group]Run npm install --no-audit --no-fund
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:52:04.0058044Z ^[[36;1mnpm install --no-audit --no-fund^[[0m
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:52:04.0639568Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:52:04.0640012Z ##[endgroup]
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:52:20.8221642Z npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:52:20.9868781Z npm warn deprecated npmlog@6.0.2: This package is no longer supported.
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:52:21.4372303Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:52:23.0004111Z npm warn deprecated @npmcli/move-file@2.0.1: This functionality has been moved to @npmcli/fs
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:52:23.2481758Z npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:52:23.7219507Z npm warn deprecated are-we-there-yet@3.0.1: This package is no longer supported.
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:52:24.0657665Z npm warn deprecated glob@8.1.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:52:24.1837437Z npm warn deprecated gauge@4.0.4: This package is no longer supported.
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:52:24.3924016Z npm warn deprecated boolean@3.2.0: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:52:24.6431840Z npm warn deprecated tar@6.2.1: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:52:24.9433145Z npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:52:25.7347166Z npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:50.2893176Z
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:50.2894140Z > vk-bot-desktop@0.9.3 prepare
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:50.2895097Z > husky || true
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:50.2895289Z
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:50.4293972Z
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:50.4294921Z added 708 packages in 2m
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:50.9556735Z ##[group]Run npm run build:renderer
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:50.9557101Z ^[[36;1mnpm run build:renderer^[[0m
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:50.9618969Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:50.9619294Z ##[endgroup]
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:51.5470365Z
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:51.5470995Z > vk-bot-desktop@0.9.3 build:renderer
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:51.5472062Z > node scripts/build-renderer.mjs
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:51.5472623Z
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:51.7593180Z
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:51.7593714Z   electron\renderer\dist\bootstrap.js      1.0mb
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:51.7594238Z   electron\renderer\dist\bootstrap.js.map  1.7mb
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:51.7594512Z
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:51.7594588Z Done in 87ms
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:51.9229792Z ##[group]Run npx electron-builder --win --publish never
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:51.9230222Z ^[[36;1mnpx electron-builder --win --publish never^[[0m
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:51.9291747Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:51.9292066Z env:
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:51.9292450Z   GH_TOKEN: ***
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:51.9292613Z ##[endgroup]
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:53.8138091Z   • electron-builder  version=25.1.8 os=10.0.26100
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:53.8210253Z   • loaded configuration  file=package.json ("build" field)
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:53.9886178Z   ⨯ Invalid configuration object. electron-builder 25.1.8 has been initialized using a configuration object that does not match the API schema.
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:53.9887734Z  - configuration has an unknown property 'tar'. These properties are valid:
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:53.9898005Z    object { afterAllArtifactBuild?, afterExtract?, afterPack?, afterSign?, apk?, appId?, appImage?, appx?, appxManifestCreated?, artifactBuildCompleted?, artifactBuildStarted?, artifactName?, asar?, asarUnpack?, beforeBuild?, beforePack?, buildDependenciesFromSource?, buildNumber?, buildVersion?, compression?, copyright?, cscKeyPassword?, cscLink?, deb?, defaultArch?, detectUpdateChannel?, directories?, disableDefaultIgnoredFiles?, disableSanityCheckAsar?, dmg?, downloadAlternateFFmpeg?, electronBranding?, electronCompile?, electronDist?, electronDownload?, electronLanguages?, electronUpdaterCompatibility?, electronVersion?, executableName?, extends?, extraFiles?, extraMetadata?, extraResources?, fileAssociations?, files?, flatpak?, forceCodeSigning?, framework?, freebsd?, generateUpdatesFilesForAllChannels?, icon?, includePdb?, includeSubNodeModules?, launchUiVersion?, linux?, mac?, mas?, masDev?, msi?, msiProjectCreated?, msiWrapped?, nativeRebuilder?, nodeGypRebuild?, nodeVersion?, npmArgs?, npmRebuild?, nsis?, nsisWeb?, onNodeModuleFile?, p5p?, pacman?, pkg?, portable?, productName?, protocols?, publish?, releaseInfo?, removePackageKeywords?, removePackageScripts?, rpm?, snap?, squirrelWindows?, target?, win?, $schema? }
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:53.9906760Z      How to fix:
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:53.9907483Z      1. Open https://www.electron.build/configuration
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:53.9908341Z      2. Search the option name on the page (or type in into Search to find across the docs).
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:53.9909297Z        * Not found? The option was deprecated or not exists (check spelling).
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:53.9910396Z        * Found? Check that the option in the appropriate place. e.g. "title" only in the "dmg", not in the root.
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:53.9912343Z   failedTask=build stackTrace=ValidationError: Invalid configuration object. electron-builder 25.1.8 has been initialized using a configuration object that does not match the API schema.
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:53.9914269Z  - configuration has an unknown property 'tar'. These properties are valid:
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:53.9926868Z    object { afterAllArtifactBuild?, afterExtract?, afterPack?, afterSign?, apk?, appId?, appImage?, appx?, appxManifestCreated?, artifactBuildCompleted?, artifactBuildStarted?, artifactName?, asar?, asarUnpack?, beforeBuild?, beforePack?, buildDependenciesFromSource?, buildNumber?, buildVersion?, compression?, copyright?, cscKeyPassword?, cscLink?, deb?, defaultArch?, detectUpdateChannel?, directories?, disableDefaultIgnoredFiles?, disableSanityCheckAsar?, dmg?, downloadAlternateFFmpeg?, electronBranding?, electronCompile?, electronDist?, electronDownload?, electronLanguages?, electronUpdaterCompatibility?, electronVersion?, executableName?, extends?, extraFiles?, extraMetadata?, extraResources?, fileAssociations?, files?, flatpak?, forceCodeSigning?, framework?, freebsd?, generateUpdatesFilesForAllChannels?, icon?, includePdb?, includeSubNodeModules?, launchUiVersion?, linux?, mac?, mas?, masDev?, msi?, msiProjectCreated?, msiWrapped?, nativeRebuilder?, nodeGypRebuild?, nodeVersion?, npmArgs?, npmRebuild?, nsis?, nsisWeb?, onNodeModuleFile?, p5p?, pacman?, pkg?, portable?, productName?, protocols?, publish?, releaseInfo?, removePackageKeywords?, removePackageScripts?, rpm?, snap?, squirrelWindows?, target?, win?, $schema? }
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:53.9935924Z      How to fix:
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:53.9936377Z      1. Open https://www.electron.build/configuration
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:53.9937772Z      2. Search the option name on the page (or type in into Search to find across the docs).
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:53.9938725Z        * Not found? The option was deprecated or not exists (check spelling).
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:53.9939821Z        * Found? Check that the option in the appropriate place. e.g. "title" only in the "dmg", not in the root.
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:53.9947011Z                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     at validate (D:\a\vk-bot-desktop\vk-bot-desktop\node_modules\@develar\schema-utils\dist\validate.js:86:11)
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:53.9952983Z     at validateConfiguration (D:\a\vk-bot-desktop\vk-bot-desktop\node_modules\app-builder-lib\src\util\config\config.ts:238:3)
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:53.9954529Z     at Packager.validateConfig (D:\a\vk-bot-desktop\vk-bot-desktop\node_modules\app-builder-lib\src\packager.ts:354:5)
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:53.9955939Z     at Packager.build (D:\a\vk-bot-desktop\vk-bot-desktop\node_modules\app-builder-lib\src\packager.ts:362:5)
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:53.9957622Z     at executeFinally (D:\a\vk-bot-desktop\vk-bot-desktop\node_modules\builder-util\src\promise.ts:12:14)
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:54.1354982Z ##[error]Process completed with exit code 1.
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:54.1575985Z Post job cleanup.
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:54.4010303Z [command]"C:\Program Files\Git\bin\git.exe" version
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:54.4355899Z git version 2.54.0.windows.1
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:54.4453250Z Temporarily overriding HOME='D:\a\_temp\30c3ac62-cdaf-464a-b24f-d22a8e2dfbbf' before making global git config changes
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:54.4454375Z Adding repository directory to the temporary git global config as a safe directory
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:54.4469764Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\vk-bot-desktop\vk-bot-desktop
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:54.4774740Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:54.5062118Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:55.0528393Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:55.0795923Z http.https://github.com/.extraheader
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:55.0842892Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all http.https://github.com/.extraheader
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:55.1200526Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:55.6472268Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:55.6764249Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:56.2223574Z Cleaning up orphan processes
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:56.2475261Z Terminate orphan process: pid (4468) (vctip)
+Build (windows-latest)	UNKNOWN STEP	2026-05-10T09:53:56.2493946Z ##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/checkout@v4, actions/setup-node@v4. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Node.js 20 will be removed from the runner on September 16th, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Build (ubuntu-latest)	UNKNOWN STEP	﻿2026-05-10T09:51:42.3324884Z Current runner version: '2.334.0'
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3350314Z ##[group]Runner Image Provisioner
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3351146Z Hosted Compute Agent
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3351678Z Version: 20260213.493
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3352555Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3353260Z Build Date: 2026-02-13T00:28:41Z
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3353833Z Worker ID: {f70f4ade-7c58-4c45-a4c4-82c5fae317bd}
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3354457Z Azure Region: westus3
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3354960Z ##[endgroup]
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3356401Z ##[group]Operating System
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3356913Z Ubuntu
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3357387Z 24.04.4
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3357767Z LTS
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3358186Z ##[endgroup]
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3358613Z ##[group]Runner Image
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3359128Z Image: ubuntu-24.04
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3359587Z Version: 20260413.86.1
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3360670Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260413.86/images/ubuntu/Ubuntu2404-Readme.md
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3361926Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260413.86
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3363407Z ##[endgroup]
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3364300Z ##[group]GITHUB_TOKEN Permissions
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3366391Z Contents: write
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3366863Z Metadata: read
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3367303Z ##[endgroup]
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3369288Z Secret source: Actions
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3370003Z Prepare workflow directory
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3691657Z Prepare all required actions
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3733642Z Getting action download info
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:42.8116271Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:42.9190698Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:42.9914120Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.1655565Z Complete job name: Build (ubuntu-latest)
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.2475415Z ##[group]Run actions/checkout@v4
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.2476137Z with:
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.2476529Z   ref: 8838b3c9626bd5a012ee518393d19994b9f67825
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.2477035Z   repository: konard/vk-bot-desktop
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.2477691Z   token: ***
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.2478036Z   ssh-strict: true
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.2478433Z   ssh-user: git
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.2478798Z   persist-credentials: true
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.2479196Z   clean: true
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.2479558Z   sparse-checkout-cone-mode: true
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.2479982Z   fetch-depth: 1
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.2480342Z   fetch-tags: false
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.2480695Z   show-progress: true
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.2481059Z   lfs: false
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.2481386Z   submodules: false
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.2481755Z   set-safe-directory: true
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.2482618Z ##[endgroup]
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3569479Z Syncing repository: konard/vk-bot-desktop
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3571174Z ##[group]Getting Git version info
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3571921Z Working directory is '/home/runner/work/vk-bot-desktop/vk-bot-desktop'
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3573180Z [command]/usr/bin/git version
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3609474Z git version 2.53.0
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3632639Z ##[endgroup]
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3646991Z Temporarily overriding HOME='/home/runner/work/_temp/30ffa3d6-fdff-4d8e-9263-d3160229b98d' before making global git config changes
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3648640Z Adding repository directory to the temporary git global config as a safe directory
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3660103Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/vk-bot-desktop/vk-bot-desktop
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3687890Z Deleting the contents of '/home/runner/work/vk-bot-desktop/vk-bot-desktop'
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3690993Z ##[group]Initializing the repository
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3695127Z [command]/usr/bin/git init /home/runner/work/vk-bot-desktop/vk-bot-desktop
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3783133Z hint: Using 'master' as the name for the initial branch. This default branch name
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3785343Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3787135Z hint: to use in all of your new repositories, which will suppress this warning,
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3788658Z hint: call:
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3789377Z hint:
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3790298Z hint: 	git config --global init.defaultBranch <name>
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3791357Z hint:
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3792489Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3794095Z hint: 'development'. The just-created branch can be renamed via this command:
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3795387Z hint:
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3796148Z hint: 	git branch -m <name>
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3796979Z hint:
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3798126Z hint: Disable this message with "git config set advice.defaultBranchName false"
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3800239Z Initialized empty Git repository in /home/runner/work/vk-bot-desktop/vk-bot-desktop/.git/
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3803540Z [command]/usr/bin/git remote add origin https://github.com/konard/vk-bot-desktop
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3821397Z ##[endgroup]
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3822729Z ##[group]Disabling automatic garbage collection
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3826583Z [command]/usr/bin/git config --local gc.auto 0
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3852486Z ##[endgroup]
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3859862Z ##[group]Setting up auth
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3860953Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3888012Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.4139920Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.4169940Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.4367556Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.4393167Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.4578386Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.4607287Z ##[endgroup]
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.4614898Z ##[group]Fetching the repository
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:43.4615934Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin 8838b3c9626bd5a012ee518393d19994b9f67825
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.6882214Z From https://github.com/konard/vk-bot-desktop
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.6896845Z  * branch            8838b3c9626bd5a012ee518393d19994b9f67825 -> FETCH_HEAD
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.6911800Z ##[endgroup]
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.6913009Z ##[group]Determining the checkout info
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.6914376Z ##[endgroup]
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.6914926Z [command]/usr/bin/git sparse-checkout disable
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.6950338Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.6974752Z ##[group]Checking out the ref
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.6979821Z [command]/usr/bin/git checkout --progress --force 8838b3c9626bd5a012ee518393d19994b9f67825
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7316035Z Note: switching to '8838b3c9626bd5a012ee518393d19994b9f67825'.
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7317878Z
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7318675Z You are in 'detached HEAD' state. You can look around, make experimental
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7321200Z changes and commit them, and you can discard any commits you make in this
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7324097Z state without impacting any branches by switching back to a branch.
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7325458Z
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7326157Z If you want to create a new branch to retain commits you create, you may
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7327990Z do so (now or later) by using -c with the switch command. Example:
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7329178Z
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7329543Z   git switch -c <new-branch-name>
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7330178Z
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7330537Z Or undo this operation with:
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7331104Z
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7331399Z   git switch -
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7331907Z
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7332993Z Turn off this advice by setting config variable advice.detachedHead to false
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7334156Z
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7334495Z HEAD is now at 8838b3c 0.9.3
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7337189Z ##[endgroup]
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7357652Z [command]/usr/bin/git log -1 --format=%H
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7378027Z 8838b3c9626bd5a012ee518393d19994b9f67825
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7665466Z ##[group]Run actions/setup-node@v4
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7666578Z with:
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7667372Z   node-version: 20.x
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7668285Z   always-auth: false
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7669196Z   check-latest: false
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7670417Z   token: ***
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7671204Z ##[endgroup]
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.9425481Z Found in cache @ /opt/hostedtoolcache/node/20.20.2/x64
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:44.9432155Z ##[group]Environment details
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:51.5635872Z node: v20.20.2
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:51.5636300Z npm: 10.8.2
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:51.5636591Z yarn: 1.22.22
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:51.5638134Z ##[endgroup]
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:51.5727398Z ##[group]Run npm install --no-audit --no-fund
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:51.5727926Z ^[[36;1mnpm install --no-audit --no-fund^[[0m
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:51.5757630Z shell: /usr/bin/bash -e {0}
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:51.5757945Z ##[endgroup]
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:55.3409175Z npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:55.6403441Z npm warn deprecated npmlog@6.0.2: This package is no longer supported.
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:55.7005563Z npm warn deprecated tar@6.2.1: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:56.0379484Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:56.1901012Z npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:56.1949993Z npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:56.4335609Z npm warn deprecated gauge@4.0.4: This package is no longer supported.
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:56.7183464Z npm warn deprecated are-we-there-yet@3.0.1: This package is no longer supported.
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:56.7882628Z npm warn deprecated boolean@3.2.0: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:56.8813986Z npm warn deprecated @npmcli/move-file@2.0.1: This functionality has been moved to @npmcli/fs
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:57.7348367Z npm warn deprecated glob@8.1.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:51:58.1959873Z npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:10.5795826Z
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:10.5796467Z > vk-bot-desktop@0.9.3 prepare
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:10.5796839Z > husky || true
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:10.5796974Z
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:10.6303255Z
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:10.6304655Z added 711 packages in 19s
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:10.6461896Z ##[group]Run npm run build:renderer
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:10.6462469Z ^[[36;1mnpm run build:renderer^[[0m
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:10.6479323Z shell: /usr/bin/bash -e {0}
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:10.6479608Z ##[endgroup]
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:10.7560436Z
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:10.7561077Z > vk-bot-desktop@0.9.3 build:renderer
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:10.8930962Z
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:10.8931910Z   electron/renderer/dist/bootstrap.js      1.0mb ⚠️
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:10.8932730Z   electron/renderer/dist/bootstrap.js.map  1.7mb
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:10.8933073Z
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:10.8933280Z ⚡ Done in 77ms
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:10.8933706Z > node scripts/build-renderer.mjs
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:10.8933937Z
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:10.9057955Z ##[group]Run npx electron-builder --linux --publish never
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:10.9058368Z ^[[36;1mnpx electron-builder --linux --publish never^[[0m
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:10.9073088Z shell: /usr/bin/bash -e {0}
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:10.9073323Z env:
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:10.9073759Z   GH_TOKEN: ***
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:10.9073959Z ##[endgroup]
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:11.7522320Z   • electron-builder  version=25.1.8 os=6.17.0-1010-azure
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:11.7574531Z   • loaded configuration  file=package.json ("build" field)
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:11.8847819Z   ⨯ Invalid configuration object. electron-builder 25.1.8 has been initialized using a configuration object that does not match the API schema.
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:11.8849389Z  - configuration has an unknown property 'tar'. These properties are valid:
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:11.8859530Z    object { afterAllArtifactBuild?, afterExtract?, afterPack?, afterSign?, apk?, appId?, appImage?, appx?, appxManifestCreated?, artifactBuildCompleted?, artifactBuildStarted?, artifactName?, asar?, asarUnpack?, beforeBuild?, beforePack?, buildDependenciesFromSource?, buildNumber?, buildVersion?, compression?, copyright?, cscKeyPassword?, cscLink?, deb?, defaultArch?, detectUpdateChannel?, directories?, disableDefaultIgnoredFiles?, disableSanityCheckAsar?, dmg?, downloadAlternateFFmpeg?, electronBranding?, electronCompile?, electronDist?, electronDownload?, electronLanguages?, electronUpdaterCompatibility?, electronVersion?, executableName?, extends?, extraFiles?, extraMetadata?, extraResources?, fileAssociations?, files?, flatpak?, forceCodeSigning?, framework?, freebsd?, generateUpdatesFilesForAllChannels?, icon?, includePdb?, includeSubNodeModules?, launchUiVersion?, linux?, mac?, mas?, masDev?, msi?, msiProjectCreated?, msiWrapped?, nativeRebuilder?, nodeGypRebuild?, nodeVersion?, npmArgs?, npmRebuild?, nsis?, nsisWeb?, onNodeModuleFile?, p5p?, pacman?, pkg?, portable?, productName?, protocols?, publish?, releaseInfo?, removePackageKeywords?, removePackageScripts?, rpm?, snap?, squirrelWindows?, target?, win?, $schema? }
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:11.8868439Z      How to fix:
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:11.8869032Z      1. Open https://www.electron.build/configuration
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:11.8869917Z      2. Search the option name on the page (or type in into Search to find across the docs).
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:11.8870843Z        * Not found? The option was deprecated or not exists (check spelling).
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:11.8871969Z        * Found? Check that the option in the appropriate place. e.g. "title" only in the "dmg", not in the root.
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:11.8873970Z   failedTask=build stackTrace=ValidationError: Invalid configuration object. electron-builder 25.1.8 has been initialized using a configuration object that does not match the API schema.
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:11.8875568Z  - configuration has an unknown property 'tar'. These properties are valid:
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:11.8885310Z    object { afterAllArtifactBuild?, afterExtract?, afterPack?, afterSign?, apk?, appId?, appImage?, appx?, appxManifestCreated?, artifactBuildCompleted?, artifactBuildStarted?, artifactName?, asar?, asarUnpack?, beforeBuild?, beforePack?, buildDependenciesFromSource?, buildNumber?, buildVersion?, compression?, copyright?, cscKeyPassword?, cscLink?, deb?, defaultArch?, detectUpdateChannel?, directories?, disableDefaultIgnoredFiles?, disableSanityCheckAsar?, dmg?, downloadAlternateFFmpeg?, electronBranding?, electronCompile?, electronDist?, electronDownload?, electronLanguages?, electronUpdaterCompatibility?, electronVersion?, executableName?, extends?, extraFiles?, extraMetadata?, extraResources?, fileAssociations?, files?, flatpak?, forceCodeSigning?, framework?, freebsd?, generateUpdatesFilesForAllChannels?, icon?, includePdb?, includeSubNodeModules?, launchUiVersion?, linux?, mac?, mas?, masDev?, msi?, msiProjectCreated?, msiWrapped?, nativeRebuilder?, nodeGypRebuild?, nodeVersion?, npmArgs?, npmRebuild?, nsis?, nsisWeb?, onNodeModuleFile?, p5p?, pacman?, pkg?, portable?, productName?, protocols?, publish?, releaseInfo?, removePackageKeywords?, removePackageScripts?, rpm?, snap?, squirrelWindows?, target?, win?, $schema? }
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:11.8893711Z      How to fix:
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:11.8894224Z      1. Open https://www.electron.build/configuration
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:11.8895105Z      2. Search the option name on the page (or type in into Search to find across the docs).
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:11.8896088Z        * Not found? The option was deprecated or not exists (check spelling).
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:11.8897189Z        * Found? Check that the option in the appropriate place. e.g. "title" only in the "dmg", not in the root.
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:11.8904442Z                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     at validate (/home/runner/work/vk-bot-desktop/vk-bot-desktop/node_modules/@develar/schema-utils/dist/validate.js:86:11)
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:11.8910112Z     at validateConfiguration (/home/runner/work/vk-bot-desktop/vk-bot-desktop/node_modules/app-builder-lib/src/util/config/config.ts:238:3)
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:11.8911830Z     at Packager.validateConfig (/home/runner/work/vk-bot-desktop/vk-bot-desktop/node_modules/app-builder-lib/src/packager.ts:354:5)
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:11.8913632Z     at Packager.build (/home/runner/work/vk-bot-desktop/vk-bot-desktop/node_modules/app-builder-lib/src/packager.ts:362:5)
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:11.8915120Z     at executeFinally (/home/runner/work/vk-bot-desktop/vk-bot-desktop/node_modules/builder-util/src/promise.ts:12:14)
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:11.9083584Z ##[error]Process completed with exit code 1.
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:11.9217568Z Post job cleanup.
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:12.0124482Z [command]/usr/bin/git version
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:12.0157680Z git version 2.53.0
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:12.0196261Z Temporarily overriding HOME='/home/runner/work/_temp/5ef1efea-a52c-48fc-82c9-3dbfb2e416de' before making global git config changes
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:12.0197142Z Adding repository directory to the temporary git global config as a safe directory
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:12.0201404Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/vk-bot-desktop/vk-bot-desktop
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:12.0234256Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:12.0260905Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:12.0438094Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:12.0456029Z http.https://github.com/.extraheader
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:12.0466358Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:12.0490717Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:12.0662325Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:12.0690339Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:12.0956984Z Cleaning up orphan processes
+Build (ubuntu-latest)	UNKNOWN STEP	2026-05-10T09:52:12.1167548Z ##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/checkout@v4, actions/setup-node@v4. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Node.js 20 will be removed from the runner on September 16th, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Build (macos-latest)	UNKNOWN STEP	﻿2026-05-10T09:51:42.3450350Z Current runner version: '2.334.0'
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3468140Z ##[group]Runner Image Provisioner
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3468660Z Hosted Compute Agent
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3469010Z Version: 20260422.526
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3469400Z Commit: e1a9e573f4d0838b3a7c1b07401aeb29ed3635a9
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3469900Z Build Date: 2026-04-22T09:31:31Z
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3470520Z Worker ID: {7ee4414d-bf23-4ef1-9379-cc323f2d5576}
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3470990Z Azure Region: westus
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3471400Z ##[endgroup]
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3472480Z ##[group]Operating System
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3472870Z macOS
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3473220Z 15.7.4
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3473550Z 24G517
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3473850Z ##[endgroup]
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3474260Z ##[group]Runner Image
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3474650Z Image: macos-15-arm64
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3474970Z Version: 20260427.0018.1
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3475850Z Included Software: https://github.com/actions/runner-images/blob/macos-15-arm64/20260427.0018/images/macos/macos-15-arm64-Readme.md
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3476840Z Image Release: https://github.com/actions/runner-images/releases/tag/macos-15-arm64%2F20260427.0018
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3477440Z ##[endgroup]
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3478240Z ##[group]GITHUB_TOKEN Permissions
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3479560Z Contents: write
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3479880Z Metadata: read
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3480180Z ##[endgroup]
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3481660Z Secret source: Actions
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3482070Z Prepare workflow directory
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3712490Z Prepare all required actions
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:42.3740610Z Getting action download info
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:42.8446800Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.0332220Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.1239250Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.2842030Z Complete job name: Build (macos-latest)
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3449690Z ##[group]Run actions/checkout@v4
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3450230Z with:
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3450530Z   ref: 8838b3c9626bd5a012ee518393d19994b9f67825
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3451340Z   repository: konard/vk-bot-desktop
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3451880Z   token: ***
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3452140Z   ssh-strict: true
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3452450Z   ssh-user: git
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3452740Z   persist-credentials: true
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3453070Z   clean: true
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3453420Z   sparse-checkout-cone-mode: true
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3453800Z   fetch-depth: 1
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3454140Z   fetch-tags: false
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3454520Z   show-progress: true
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3454850Z   lfs: false
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3455470Z   submodules: false
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3455880Z   set-safe-directory: true
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.3456520Z ##[endgroup]
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.6534430Z Syncing repository: konard/vk-bot-desktop
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.6535670Z ##[group]Getting Git version info
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.6536280Z Working directory is '/Users/runner/work/vk-bot-desktop/vk-bot-desktop'
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.6537140Z [command]/opt/homebrew/bin/git version
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.7063390Z git version 2.54.0
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.7091110Z ##[endgroup]
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.7103650Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/d753689f-2d63-4608-ba50-c48db8d89409/.gitconfig'
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.7110580Z Temporarily overriding HOME='/Users/runner/work/_temp/d753689f-2d63-4608-ba50-c48db8d89409' before making global git config changes
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.7111490Z Adding repository directory to the temporary git global config as a safe directory
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.7114710Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/vk-bot-desktop/vk-bot-desktop
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.7209450Z Deleting the contents of '/Users/runner/work/vk-bot-desktop/vk-bot-desktop'
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.7211940Z ##[group]Initializing the repository
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.7216260Z [command]/opt/homebrew/bin/git init /Users/runner/work/vk-bot-desktop/vk-bot-desktop
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.7398730Z hint: Using 'master' as the name for the initial branch. This default branch name
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.7400100Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.7400800Z hint: to use in all of your new repositories, which will suppress this warning,
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.7401300Z hint: call:
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.7401590Z hint:
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.7401960Z hint: 	git config --global init.defaultBranch <name>
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.7402350Z hint:
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.7402760Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.7403370Z hint: 'development'. The just-created branch can be renamed via this command:
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.7403870Z hint:
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.7404130Z hint: 	git branch -m <name>
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.7404440Z hint:
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.7404890Z hint: Disable this message with "git config set advice.defaultBranchName false"
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.7405630Z Initialized empty Git repository in /Users/runner/work/vk-bot-desktop/vk-bot-desktop/.git/
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.7407430Z [command]/opt/homebrew/bin/git remote add origin https://github.com/konard/vk-bot-desktop
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.7482050Z ##[endgroup]
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.7482580Z ##[group]Disabling automatic garbage collection
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.7484370Z [command]/opt/homebrew/bin/git config --local gc.auto 0
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.7606650Z ##[endgroup]
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.7607150Z ##[group]Setting up auth
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.7611980Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.7669840Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.8589890Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.8647400Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.9316760Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:43.9371350Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:44.0060860Z [command]/opt/homebrew/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:44.0122720Z ##[endgroup]
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:44.0123360Z ##[group]Fetching the repository
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:44.0128000Z [command]/opt/homebrew/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin 8838b3c9626bd5a012ee518393d19994b9f67825
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:44.6675310Z From https://github.com/konard/vk-bot-desktop
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:44.6676180Z  * branch            8838b3c9626bd5a012ee518393d19994b9f67825 -> FETCH_HEAD
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:44.6753220Z ##[endgroup]
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:44.6753840Z ##[group]Determining the checkout info
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:44.6754470Z ##[endgroup]
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:44.6758980Z [command]/opt/homebrew/bin/git sparse-checkout disable
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:44.6833950Z [command]/opt/homebrew/bin/git config --local --unset-all extensions.worktreeConfig
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:44.6893120Z ##[group]Checking out the ref
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:44.6895480Z [command]/opt/homebrew/bin/git checkout --progress --force 8838b3c9626bd5a012ee518393d19994b9f67825
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7404280Z HEAD is now at 8838b3c 0.9.3
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7420050Z ##[endgroup]
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7505740Z [command]/opt/homebrew/bin/git log -1 --format=%H
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7573550Z 8838b3c9626bd5a012ee518393d19994b9f67825
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7803500Z ##[group]Run actions/setup-node@v4
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7804550Z with:
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7805080Z   node-version: 20.x
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7805660Z   always-auth: false
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7806240Z   check-latest: false
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7807070Z   token: ***
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:44.7807590Z ##[endgroup]
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:44.9318170Z Found in cache @ /Users/runner/hostedtoolcache/node/20.20.2/arm64
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:44.9321630Z ##[group]Environment details
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:45.3548160Z node: v20.20.2
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:45.3548890Z npm: 10.8.2
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:45.3549540Z yarn: 1.22.22
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:45.3550740Z ##[endgroup]
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:45.3643870Z ##[group]Run npm install --no-audit --no-fund
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:45.3644410Z ^[[36;1mnpm install --no-audit --no-fund^[[0m
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:45.3685070Z shell: /bin/bash -e {0}
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:45.3685480Z ##[endgroup]
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:48.0514230Z npm warn deprecated npmlog@6.0.2: This package is no longer supported.
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:48.4488510Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:48.4813760Z npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:48.8168770Z npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:48.8350470Z npm warn deprecated gauge@4.0.4: This package is no longer supported.
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:48.8911660Z npm warn deprecated tar@6.2.1: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:48.9204640Z npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:49.0416000Z npm warn deprecated are-we-there-yet@3.0.1: This package is no longer supported.
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:49.1706430Z npm warn deprecated boolean@3.2.0: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:49.1985100Z npm warn deprecated @npmcli/move-file@2.0.1: This functionality has been moved to @npmcli/fs
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:50.1787220Z npm warn deprecated glob@8.1.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:50.9537120Z npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.1523000Z
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.1524370Z > vk-bot-desktop@0.9.3 prepare
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.1524730Z > husky || true
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.1525020Z
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.2324190Z
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.2324920Z added 720 packages in 13s
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.2691920Z ##[group]Run npm run build:renderer
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.2692310Z ^[[36;1mnpm run build:renderer^[[0m
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.2733410Z shell: /bin/bash -e {0}
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.2733730Z ##[endgroup]
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.4534350Z
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.4535080Z > vk-bot-desktop@0.9.3 build:renderer
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.4535470Z > node scripts/build-renderer.mjs
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.4535880Z
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.5896780Z
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.5898540Z   electron/renderer/dist/bootstrap.js      1.0mb ⚠️
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.5901680Z   electron/renderer/dist/bootstrap.js.map  1.7mb
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.5902030Z
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.5902250Z ⚡ Done in 71ms
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.6005590Z ##[group]Run set -euo pipefail
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.6011870Z ^[[36;1mset -euo pipefail^[[0m
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.6012160Z ^[[36;1mmissing=()^[[0m
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.6012530Z ^[[36;1mfor name in MAC_CSC_LINK MAC_CSC_KEY_PASSWORD APPLE_API_KEY APPLE_API_KEY_ID APPLE_API_ISSUER; do^[[0m
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.6012950Z ^[[36;1m  if [ -z "${!name}" ]; then^[[0m
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.6013190Z ^[[36;1m    missing+=("$name")^[[0m
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.6013480Z ^[[36;1m  fi^[[0m
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.6013650Z ^[[36;1mdone^[[0m
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.6013840Z ^[[36;1m^[[0m
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.6014110Z ^[[36;1mif [ "${#missing[@]}" -gt 0 ]; then^[[0m
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.6014490Z ^[[36;1m  echo "::error::Missing required macOS signing/notarization secrets: ${missing[*]}"^[[0m
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.6015080Z ^[[36;1m  echo "Unsigned DMGs are not published because downloaded macOS apps can be blocked as damaged by Gatekeeper."^[[0m
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.6015510Z ^[[36;1m  exit 1^[[0m
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.6015730Z ^[[36;1mfi^[[0m
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.6051710Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.6052040Z env:
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.6052240Z   MAC_CSC_LINK:
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.6052470Z   MAC_CSC_KEY_PASSWORD:
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.6052800Z   APPLE_API_KEY:
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.6053000Z   APPLE_API_KEY_ID:
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.6053190Z   APPLE_API_ISSUER:
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.6053440Z ##[endgroup]
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.6409120Z ##[error]Missing required macOS signing/notarization secrets: MAC_CSC_LINK MAC_CSC_KEY_PASSWORD APPLE_API_KEY APPLE_API_KEY_ID APPLE_API_ISSUER
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.6415510Z Unsigned DMGs are not published because downloaded macOS apps can be blocked as damaged by Gatekeeper.
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.6417140Z ##[error]Process completed with exit code 1.
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.6570930Z Post job cleanup.
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.8963790Z [command]/opt/homebrew/bin/git version
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.9056520Z git version 2.54.0
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.9100340Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/d7efafc5-12e6-4487-a5ff-8170caf7f6ae/.gitconfig'
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.9110580Z Temporarily overriding HOME='/Users/runner/work/_temp/d7efafc5-12e6-4487-a5ff-8170caf7f6ae' before making global git config changes
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.9111410Z Adding repository directory to the temporary git global config as a safe directory
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.9119530Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/vk-bot-desktop/vk-bot-desktop
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.9188190Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:58.9254560Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:59.0118080Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:59.0174390Z http.https://github.com/.extraheader
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:59.0183250Z [command]/opt/homebrew/bin/git config --local --unset-all http.https://github.com/.extraheader
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:59.0249780Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:59.1069480Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:59.1137470Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:59.2087530Z Cleaning up orphan processes
+Build (macos-latest)	UNKNOWN STEP	2026-05-10T09:51:59.2386480Z ##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/checkout@v4, actions/setup-node@v4. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Node.js 20 will be removed from the runner on September 16th, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

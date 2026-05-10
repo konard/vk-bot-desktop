@@ -61,4 +61,21 @@ describe('GitHub Pages download site', () => {
     );
     expect(siteApp).toContain('downloadOptions');
   });
+
+  it('runs browser-commander e2e checks before and after Pages deployment', () => {
+    expect(packageJson.scripts['test:pages:e2e']).toBe(
+      'node scripts/test-pages-e2e.mjs'
+    );
+    expect(existsSync('scripts/test-pages-e2e.mjs')).toBe(true);
+    expect(pagesWorkflow).toContain('browser-commander@0.8.0');
+    expect(pagesWorkflow).toContain('playwright@1.59.1');
+    expect(pagesWorkflow).toContain('Test built Pages site before deploy');
+    expect(pagesWorkflow).toContain(
+      'npm run test:pages:e2e -- --site-dir site/dist'
+    );
+    expect(pagesWorkflow).toContain('Test published Pages site after deploy');
+    expect(pagesWorkflow).toContain(
+      'npm run test:pages:e2e -- --url "${{ steps.deployment.outputs.page_url }}"'
+    );
+  });
 });

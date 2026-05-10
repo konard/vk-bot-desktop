@@ -32,7 +32,8 @@
     "electron:build:linux": "npm run build:renderer && electron-builder --linux --publish never",
     "electron:build:mac": "npm run build:renderer && electron-builder --mac --publish never",
     "electron:build:win": "npm run build:renderer && electron-builder --win --publish never",
-    "build:site": "node scripts/build-site.mjs"
+    "build:site": "node scripts/build-site.mjs",
+    "test:pages:e2e": "node scripts/test-pages-e2e.mjs"
   },
   "keywords": [
     "vk",
@@ -84,6 +85,7 @@
       "output": "release"
     },
     "linux": {
+      "artifactName": "vk-bot-desktop-linux-${arch}.${ext}",
       "target": [
         "AppImage",
         "deb",
@@ -115,9 +117,6 @@
     },
     "deb": {
       "artifactName": "vk-bot-desktop-linux-${arch}.deb"
-    },
-    "tar": {
-      "artifactName": "vk-bot-desktop-linux-${arch}.tar.gz"
     },
     "dmg": {
       "artifactName": "vk-bot-desktop-macos-${arch}.dmg",
