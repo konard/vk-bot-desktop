@@ -49,6 +49,17 @@ jobs:
       - name: Build site
         run: npm run build:site
 
+      - name: Install browser e2e dependencies
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: npm install --no-save --package-lock=false --no-audit --no-fund browser-commander@0.8.0 playwright@1.59.1
+
+      - name: Install Chromium for browser e2e tests
+        run: npx playwright install chromium
+
+      - name: Test built Pages site before deploy
+        run: npm run test:pages:e2e -- --site-dir site/dist
+
       - name: Configure GitHub Pages
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: actions/configure-pages@v5
@@ -68,12 +79,31 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
+      contents: read
       pages: write
       id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24.x'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Install browser e2e dependencies
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: npm install --no-save --package-lock=false --no-audit --no-fund browser-commander@0.8.0 playwright@1.59.1
+
+      - name: Install Chromium for browser e2e tests
+        run: npx playwright install chromium
+
+      - name: Test published Pages site after deploy
+        run: npm run test:pages:e2e -- --url "${{ steps.deployment.outputs.page_url }}"

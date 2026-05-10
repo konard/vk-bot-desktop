@@ -48,7 +48,8 @@ jobs:
       - name: Build renderer bundle
         run: npm run build:renderer
 
-      - name: Validate macOS signing secrets
+      - name: Check macOS signing secrets
+        id: mac_secrets
         if: matrix.os == 'macos-latest'
         shell: bash
         env:
@@ -67,9 +68,11 @@ jobs:
           done
 
           if [ "${#missing[@]}" -gt 0 ]; then
-            echo "::error::Missing required macOS signing/notarization secrets: ${missing[*]}"
-            echo "Unsigned DMGs are not published because downloaded macOS apps can be blocked as damaged by Gatekeeper."
-            exit 1
+            echo "has_secrets=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::Missing required macOS signing/notarization secrets: ${missing[*]}"
+            echo "Skipping macOS artifacts because unsigned DMGs are not published."
+          else
+            echo "has_secrets=true" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Build Electron artifacts (Linux)
@@ -79,7 +82,7 @@ jobs:
         run: npx electron-builder --linux --publish never
 
       - name: Build Electron artifacts (macOS)
-        if: matrix.os == 'macos-latest'
+        if: matrix.os == 'macos-latest' && steps.mac_secrets.outputs.has_secrets == 'true'
         env:
           CSC_LINK: ${{ secrets.MAC_CSC_LINK }}
           CSC_KEY_PASSWORD: ${{ secrets.MAC_CSC_KEY_PASSWORD }}
@@ -143,7 +146,7 @@ jobs:
           done
 
       - name: Smoke test macOS release artifacts
-        if: matrix.os == 'macos-latest'
+        if: matrix.os == 'macos-latest' && steps.mac_secrets.outputs.has_secrets == 'true'
         shell: bash
         run: |
           set -euo pipefail
@@ -224,7 +227,7 @@ jobs:
           }
 
       - name: Compute SHA256 sums (Linux/macOS)
-        if: matrix.os != 'windows-latest'
+        if: matrix.os == 'ubuntu-latest' || (matrix.os == 'macos-latest' && steps.mac_secrets.outputs.has_secrets == 'true')
         run: |
           cd release
           checksum_file="SHA256SUMS-${{ matrix.os }}.txt"
@@ -263,6 +266,8 @@ jobs:
 
       - name: Write build provenance
         shell: bash
+        env:
+          MACOS_SIGNING_SECRETS_AVAILABLE: ${{ steps.mac_secrets.outputs.has_secrets }}
         run: |
           mkdir -p release
           {
@@ -273,6 +278,10 @@ jobs:
             echo "tag=${{ github.event.inputs.tag || github.ref_name }}"
             echo "target_sha=${{ github.event.inputs.target_sha || github.sha }}"
             echo "builder_os=${{ matrix.os }}"
+            if [ "${{ matrix.os }}" = "macos-latest" ] && [ "$MACOS_SIGNING_SECRETS_AVAILABLE" != "true" ]; then
+              echo "macos_artifacts=skipped"
+              echo "macos_skip_reason=missing signing/notarization secrets"
+            fi
           } > "release/provenance-${{ matrix.os }}.txt"
 
       - name: Upload artifacts

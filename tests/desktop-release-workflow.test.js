@@ -29,7 +29,13 @@ function workflowJob(workflow, jobName) {
   return lines.slice(start, end).join('\n');
 }
 
-describe('desktop release workflow', () => {
+function workflowStep(workflow, stepName) {
+  return workflow.match(
+    new RegExp(`- name: ${stepName}[\\s\\S]*?(?=\\n {6}- name:)`)
+  )?.[0];
+}
+
+describe('release workflow dispatch', () => {
   it('does not publish packages to npm from release jobs', () => {
     const automaticRelease = workflowJob(releaseWorkflow, 'release');
     const instantRelease = workflowJob(releaseWorkflow, 'instant-release');
@@ -57,7 +63,9 @@ describe('desktop release workflow', () => {
       );
     }
   });
+});
 
+describe('desktop release workflow', () => {
   it('builds desktop artifacts for Linux, macOS, and Windows releases', () => {
     expect(electronWorkflow).toContain('os: ubuntu-latest');
     expect(electronWorkflow).toContain('os: macos-latest');
@@ -74,36 +82,35 @@ describe('desktop release workflow', () => {
   });
 
   it('uses stable artifact names for latest download links', () => {
-    expect(packageJson.build?.appImage?.artifactName).toBe(
+    const build = packageJson.build;
+
+    expect(Object.hasOwn(build, 'tar')).toBe(false);
+    expect(build.linux.artifactName).toBe(
+      'vk-bot-desktop-linux-${arch}.${ext}'
+    );
+    expect(build.appImage.artifactName).toBe(
       'vk-bot-desktop-linux-${arch}.AppImage'
     );
-    expect(packageJson.build?.deb?.artifactName).toBe(
-      'vk-bot-desktop-linux-${arch}.deb'
-    );
-    expect(packageJson.build?.tar?.artifactName).toBe(
-      'vk-bot-desktop-linux-${arch}.tar.gz'
-    );
-    expect(packageJson.build?.dmg?.artifactName).toBe(
-      'vk-bot-desktop-macos-${arch}.dmg'
-    );
-    expect(packageJson.build?.mac?.artifactName).toBe(
-      'vk-bot-desktop-macos-${arch}.${ext}'
-    );
-    expect(packageJson.build?.nsis?.artifactName).toBe(
+    expect(build.deb.artifactName).toBe('vk-bot-desktop-linux-${arch}.deb');
+    expect(build.dmg.artifactName).toBe('vk-bot-desktop-macos-${arch}.dmg');
+    expect(build.mac.artifactName).toBe('vk-bot-desktop-macos-${arch}.${ext}');
+    expect(build.nsis.artifactName).toBe(
       'vk-bot-desktop-windows-installer-${arch}.${ext}'
     );
-    expect(packageJson.build?.portable?.artifactName).toBe(
+    expect(build.portable.artifactName).toBe(
       'vk-bot-desktop-windows-portable-${arch}.${ext}'
     );
   });
 
   it('signs, notarizes, and assesses macOS artifacts instead of publishing unsigned DMGs', () => {
-    const macBuildStep = electronWorkflow.match(
-      /- name: Build Electron artifacts \(macOS\)[\s\S]*?(?=\n {6}- name:)/
-    )?.[0];
-    const macSmokeStep = electronWorkflow.match(
-      /- name: Smoke test macOS release artifacts[\s\S]*?(?=\n {6}- name:)/
-    )?.[0];
+    const macBuildStep = workflowStep(
+      electronWorkflow,
+      'Build Electron artifacts \\(macOS\\)'
+    );
+    const macSmokeStep = workflowStep(
+      electronWorkflow,
+      'Smoke test macOS release artifacts'
+    );
 
     expect(macBuildStep).not.toContain('CSC_IDENTITY_AUTO_DISCOVERY:');
     expect(macBuildStep).toContain('CSC_LINK: ${{ secrets.MAC_CSC_LINK }}');
@@ -131,6 +138,38 @@ describe('desktop release workflow', () => {
     expect(macSmokeStep).toContain('codesign --verify --deep --strict');
     expect(macSmokeStep).toContain('spctl --assess --type execute');
     expect(macSmokeStep).toContain('xcrun stapler validate');
+  });
+
+  it('skips macOS artifacts without signing secrets instead of blocking Linux and Windows releases', () => {
+    const macSecretsStep = workflowStep(
+      electronWorkflow,
+      'Check macOS signing secrets'
+    );
+    const macBuildStep = workflowStep(
+      electronWorkflow,
+      'Build Electron artifacts \\(macOS\\)'
+    );
+    const macSmokeStep = workflowStep(
+      electronWorkflow,
+      'Smoke test macOS release artifacts'
+    );
+
+    expect(macSecretsStep).toContain('id: mac_secrets');
+    expect(macSecretsStep).toContain('has_secrets=false');
+    expect(macSecretsStep).toContain(
+      '::warning::Missing required macOS signing/notarization secrets'
+    );
+    expect(macSecretsStep).not.toContain('exit 1');
+    expect(electronWorkflow).not.toContain(
+      '::error::Missing required macOS signing/notarization secrets'
+    );
+    expect(macBuildStep).toContain(
+      "steps.mac_secrets.outputs.has_secrets == 'true'"
+    );
+    expect(macSmokeStep).toContain(
+      "steps.mac_secrets.outputs.has_secrets == 'true'"
+    );
+    expect(electronWorkflow).toContain('if-no-files-found: ignore');
   });
 
   it('smoke-tests platform installers after building and before uploading', () => {
