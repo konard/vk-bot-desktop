@@ -10,26 +10,24 @@ import { chromium } from 'playwright';
 
 const RELEASE_API_URL =
   'https://api.github.com/repos/konard/vk-bot-desktop/releases/latest';
-const RELEASE_TAG = 'v0.0.0-pages-e2e';
-const REQUIRED_RELEASE_ASSETS = [
-  'vk-bot-desktop-macos-arm64.dmg',
-  'vk-bot-desktop-macos-x64.dmg',
-  'vk-bot-desktop-windows-installer-x64.exe',
-  'vk-bot-desktop-windows-portable-x64.exe',
-  'vk-bot-desktop-linux-x64.AppImage',
-  'vk-bot-desktop-linux-x64.deb',
-  'vk-bot-desktop-linux-x64.tar.gz',
-  'SHA256SUMS.txt',
-];
+const RELEASE_TAG = 'v0.9.8';
 const LOCAL_RELEASE_ASSETS = [
-  'vk-bot-desktop-macos-arm64.dmg',
-  'vk-bot-desktop-macos-x64.dmg',
-  'vk-bot-desktop-windows-installer-x64.exe',
-  'vk-bot-desktop-windows-portable-x64.exe',
-  'vk-bot-desktop-linux-x64.AppImage',
-  'vk-bot-desktop-linux-x64.deb',
-  'vk-bot-desktop-linux-x64.tar.gz',
+  'vk-bot-desktop-macos-arm64-0.9.8.dmg',
+  'vk-bot-desktop-macos-x64-0.9.8.dmg',
+  'vk-bot-desktop-macos-arm64-0.9.8.zip',
+  'vk-bot-desktop-macos-x64-0.9.8.zip',
+  'vk-bot-desktop-windows-installer-x64-0.9.8.exe',
+  'vk-bot-desktop-windows-installer-arm64-0.9.8.exe',
+  'vk-bot-desktop-windows-portable-x64-0.9.8.exe',
+  'vk-bot-desktop-windows-portable-arm64-0.9.8.exe',
+  'vk-bot-desktop-linux-x64-0.9.8.AppImage',
+  'vk-bot-desktop-linux-arm64-0.9.8.AppImage',
+  'vk-bot-desktop-linux-x64-0.9.8.deb',
+  'vk-bot-desktop-linux-arm64-0.9.8.deb',
+  'vk-bot-desktop-linux-x64-0.9.8.tar.gz',
+  'vk-bot-desktop-linux-arm64-0.9.8.tar.gz',
   'SHA256SUMS.txt',
+  'BUILD-PROVENANCE.txt',
 ];
 
 const contentTypes = new Map([
@@ -127,6 +125,41 @@ function makeReleaseFixture(assetNames) {
   };
 }
 
+function releaseVersion(release) {
+  const match = String(release?.tag_name || release?.tagName || '').match(
+    /(?:^|-)v?(\d+\.\d+\.\d+(?:[-+][0-9A-Za-z.-]+)?)/
+  );
+
+  return match?.[1];
+}
+
+function expectedReleaseAssets(release) {
+  const version = releaseVersion(release);
+
+  if (!version) {
+    return ['SHA256SUMS.txt', 'BUILD-PROVENANCE.txt'];
+  }
+
+  return [
+    `vk-bot-desktop-macos-arm64-${version}.dmg`,
+    `vk-bot-desktop-macos-x64-${version}.dmg`,
+    `vk-bot-desktop-macos-arm64-${version}.zip`,
+    `vk-bot-desktop-macos-x64-${version}.zip`,
+    `vk-bot-desktop-windows-installer-x64-${version}.exe`,
+    `vk-bot-desktop-windows-installer-arm64-${version}.exe`,
+    `vk-bot-desktop-windows-portable-x64-${version}.exe`,
+    `vk-bot-desktop-windows-portable-arm64-${version}.exe`,
+    `vk-bot-desktop-linux-x64-${version}.AppImage`,
+    `vk-bot-desktop-linux-arm64-${version}.AppImage`,
+    `vk-bot-desktop-linux-x64-${version}.deb`,
+    `vk-bot-desktop-linux-arm64-${version}.deb`,
+    `vk-bot-desktop-linux-x64-${version}.tar.gz`,
+    `vk-bot-desktop-linux-arm64-${version}.tar.gz`,
+    'SHA256SUMS.txt',
+    'BUILD-PROVENANCE.txt',
+  ];
+}
+
 async function fetchLatestRelease() {
   const headers = {
     accept: 'application/vnd.github+json',
@@ -169,7 +202,7 @@ async function validatePage({ commander, release, url }) {
   });
 
   const result = await commander.evaluate({
-    fn: (requiredAssets) => {
+    fn: (requiredAssets, releaseTag) => {
       const links = Array.from(document.querySelectorAll('a[href]')).map(
         (link) => ({
           href: link.href,
@@ -179,19 +212,34 @@ async function validatePage({ commander, release, url }) {
       const linkedAssets = requiredAssets.filter((asset) =>
         links.some(({ href }) => href.endsWith(`/${asset}`))
       );
+      const releaseAssetLinks = links
+        .map(({ href }) => {
+          const marker = `/releases/download/${releaseTag}/`;
+          const markerIndex = href.indexOf(marker);
+
+          if (markerIndex === -1) {
+            return undefined;
+          }
+
+          return decodeURIComponent(href.slice(markerIndex + marker.length));
+        })
+        .filter(Boolean);
 
       return {
         title: document.title,
         heading: document.querySelector('h1')?.textContent?.trim() ?? '',
         groupCount: document.querySelectorAll('.download-group').length,
+        detailsCount: document.querySelectorAll('.verification details').length,
+        hasWindowFrame: Boolean(document.querySelector('.window-frame')),
         primaryHref:
           document.querySelector('.primary-download')?.getAttribute('href') ??
           '',
         linkedAssets,
+        releaseAssetLinks,
         links,
       };
     },
-    args: [REQUIRED_RELEASE_ASSETS],
+    args: [expectedReleaseAssets(release), release?.tag_name || ''],
   });
 
   if (!result.title.includes('VK Bot Desktop')) {
@@ -208,6 +256,16 @@ async function validatePage({ commander, release, url }) {
     );
   }
 
+  if (result.detailsCount < 2) {
+    throw new Error(
+      `Expected regular and advanced verification sections, got ${result.detailsCount}.`
+    );
+  }
+
+  if (!result.hasWindowFrame) {
+    throw new Error('Expected OS-styled preview window frame.');
+  }
+
   if (!result.primaryHref.includes('/releases/download/')) {
     throw new Error(
       `Primary download does not use a release asset: ${result.primaryHref}`
@@ -215,10 +273,10 @@ async function validatePage({ commander, release, url }) {
   }
 
   const availableAssets = releaseAssetNames(release);
-  const missingLinkedAssets = result.linkedAssets.filter(
+  const missingLinkedAssets = result.releaseAssetLinks.filter(
     (asset) => !availableAssets.has(asset)
   );
-  const availableAssetsWithoutLinks = REQUIRED_RELEASE_ASSETS.filter(
+  const availableAssetsWithoutLinks = expectedReleaseAssets(release).filter(
     (asset) =>
       availableAssets.has(asset) && !result.linkedAssets.includes(asset)
   );

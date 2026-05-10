@@ -192,8 +192,12 @@ Current timeout bands:
 The GitHub Pages workflow builds the React download page from `site/` and
 deploys it with the official Pages artifact flow. The page detects language,
 theme, and operating system in the browser, then falls back to a full OS chooser
-and stable `/releases/latest/download/...` links when release API access is not
-available.
+with direct links only for assets that GitHub's latest Release API reports for
+the selected release. Desktop release assets use versioned filenames, cover x64
+and arm64 macOS/Windows/Linux builds, and include expandable verification
+instructions for checksums, build provenance, and GitHub artifact attestations.
+When release API access is unavailable, the page opens the latest release page
+instead of guessing `/releases/latest/download/...` binary URLs.
 
 Per-test timeouts are also enforced inside the runners that support a
 global budget:

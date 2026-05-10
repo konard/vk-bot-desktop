@@ -17,20 +17,31 @@ on:
 
 permissions:
   contents: write
+  id-token: write
+  attestations: write
 
 jobs:
   build:
-    name: Build (${{ matrix.os }})
+    name: Build (${{ matrix.platform }} ${{ matrix.arch }})
     strategy:
       fail-fast: false
       matrix:
         include:
           - os: ubuntu-latest
-            artifact_glob: 'release/*.{AppImage,deb,tar.gz}'
+            platform: linux
+            arch: x64
+          - os: ubuntu-24.04-arm
+            platform: linux
+            arch: arm64
           - os: macos-latest
-            artifact_glob: 'release/*.{dmg,zip}'
+            platform: macos
+            arch: x64-arm64
           - os: windows-latest
-            artifact_glob: 'release/*.{exe,msi}'
+            platform: windows
+            arch: x64
+          - os: windows-11-arm
+            platform: windows
+            arch: arm64
     runs-on: ${{ matrix.os }}
     timeout-minutes: 45
     steps:
@@ -50,7 +61,7 @@ jobs:
 
       - name: Check macOS signing secrets
         id: mac_secrets
-        if: matrix.os == 'macos-latest'
+        if: matrix.platform == 'macos'
         shell: bash
         env:
           MAC_CSC_LINK: ${{ secrets.MAC_CSC_LINK }}
@@ -78,13 +89,13 @@ jobs:
           fi
 
       - name: Build Electron artifacts (Linux)
-        if: matrix.os == 'ubuntu-latest'
+        if: matrix.platform == 'linux'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx electron-builder --linux --publish never
+        run: npx electron-builder --linux --${{ matrix.arch }} --publish never
 
       - name: Build Electron artifacts (macOS signed)
-        if: matrix.os == 'macos-latest' && steps.mac_secrets.outputs.has_secrets == 'true'
+        if: matrix.platform == 'macos' && steps.mac_secrets.outputs.has_secrets == 'true'
         env:
           CSC_LINK: ${{ secrets.MAC_CSC_LINK }}
           CSC_KEY_PASSWORD: ${{ secrets.MAC_CSC_KEY_PASSWORD }}
@@ -96,7 +107,7 @@ jobs:
         run: npx electron-builder --mac --x64 --arm64 --publish never
 
       - name: Build Electron artifacts (macOS ad-hoc)
-        if: matrix.os == 'macos-latest' && steps.mac_secrets.outputs.has_secrets != 'true'
+        if: matrix.platform == 'macos' && steps.mac_secrets.outputs.has_secrets != 'true'
         env:
           CSC_IDENTITY_AUTO_DISCOVERY: 'false'
           MACOS_ADHOC_SIGN: '1'
@@ -105,34 +116,36 @@ jobs:
         run: npx electron-builder --mac --x64 --arm64 --publish never -c.mac.notarize=false -c.mac.sign=./scripts/adhoc-sign-mac.cjs
 
       - name: Build Electron artifacts (Windows)
-        if: matrix.os == 'windows-latest'
+        if: matrix.platform == 'windows'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx electron-builder --win --publish never
+        run: npx electron-builder --win --${{ matrix.arch }} --publish never
 
       - name: Smoke test Linux release artifacts
-        if: matrix.os == 'ubuntu-latest'
+        if: matrix.platform == 'linux'
         shell: bash
         run: |
           set -euo pipefail
+          VERSION="$(node -p "require('./package.json').version")"
+          ARCH="${{ matrix.arch }}"
 
           required_linux_artifacts=(
-            release/vk-bot-desktop-linux-x64.AppImage
-            release/vk-bot-desktop-linux-x64.deb
-            release/vk-bot-desktop-linux-x64.tar.gz
+            "release/vk-bot-desktop-linux-${ARCH}-${VERSION}.AppImage"
+            "release/vk-bot-desktop-linux-${ARCH}-${VERSION}.deb"
+            "release/vk-bot-desktop-linux-${ARCH}-${VERSION}.tar.gz"
           )
 
           for artifact in "${required_linux_artifacts[@]}"; do
             if [ ! -f "$artifact" ]; then
-              echo "::error file=$artifact::Expected stable Linux release artifact was not created."
+              echo "::error file=$artifact::Expected versioned Linux release artifact was not created."
               ls -la release || true
               exit 1
             fi
           done
 
-          debs=(release/vk-bot-desktop-linux-x64.deb)
-          appimages=(release/vk-bot-desktop-linux-x64.AppImage)
-          tarballs=(release/vk-bot-desktop-linux-x64.tar.gz)
+          debs=("release/vk-bot-desktop-linux-${ARCH}-${VERSION}.deb")
+          appimages=("release/vk-bot-desktop-linux-${ARCH}-${VERSION}.AppImage")
+          tarballs=("release/vk-bot-desktop-linux-${ARCH}-${VERSION}.tar.gz")
 
           for deb in "${debs[@]}"; do
             echo "Inspecting Debian package: $deb"
@@ -164,26 +177,27 @@ jobs:
           done
 
       - name: Smoke test macOS release artifacts
-        if: matrix.os == 'macos-latest'
+        if: matrix.platform == 'macos'
         shell: bash
         env:
           MACOS_BUILD_MODE: ${{ steps.mac_secrets.outputs.mode }}
         run: |
           set -euo pipefail
           shopt -s nullglob
+          VERSION="$(node -p "require('./package.json').version")"
 
           dmgs=(
-            release/vk-bot-desktop-macos-arm64.dmg
-            release/vk-bot-desktop-macos-x64.dmg
+            "release/vk-bot-desktop-macos-arm64-${VERSION}.dmg"
+            "release/vk-bot-desktop-macos-x64-${VERSION}.dmg"
           )
           zips=(
-            release/vk-bot-desktop-macos-arm64.zip
-            release/vk-bot-desktop-macos-x64.zip
+            "release/vk-bot-desktop-macos-arm64-${VERSION}.zip"
+            "release/vk-bot-desktop-macos-x64-${VERSION}.zip"
           )
 
           for artifact in "${dmgs[@]}" "${zips[@]}"; do
             if [ ! -f "$artifact" ]; then
-              echo "::error file=$artifact::Expected stable macOS release artifact was not created."
+              echo "::error file=$artifact::Expected versioned macOS release artifact was not created."
               ls -la release || true
               exit 1
             fi
@@ -249,17 +263,22 @@ jobs:
           done
 
       - name: Smoke test Windows release artifacts
-        if: matrix.os == 'windows-latest'
+        if: matrix.platform == 'windows'
         shell: pwsh
         run: |
           $ErrorActionPreference = 'Stop'
-          $installers = @(Get-ChildItem -Path release -Filter '*installer*.exe' -File)
-          $portableApps = @(Get-ChildItem -Path release -Filter '*portable*.exe' -File)
+          $version = (Get-Content package.json | ConvertFrom-Json).version
+          $arch = '${{ matrix.arch }}'
+          $installerPath = "release/vk-bot-desktop-windows-installer-$arch-$version.exe"
+          $portablePath = "release/vk-bot-desktop-windows-portable-$arch-$version.exe"
 
-          if ($installers.Count -eq 0 -or $portableApps.Count -eq 0) {
+          if (!(Test-Path $installerPath) -or !(Test-Path $portablePath)) {
             Get-ChildItem -Path release -File | Format-Table -AutoSize
-            throw 'Expected installer and portable Windows executables.'
+            throw "Expected versioned Windows installer and portable executables for $arch."
           }
+
+          $installers = @(Get-Item $installerPath)
+          $portableApps = @(Get-Item $portablePath)
 
           foreach ($installer in $installers) {
             $installDir = Join-Path $env:RUNNER_TEMP 'vk-bot-desktop-install'
@@ -286,7 +305,7 @@ jobs:
           }
 
       - name: Compute SHA256 sums (Linux/macOS)
-        if: matrix.os == 'ubuntu-latest' || matrix.os == 'macos-latest'
+        if: matrix.platform == 'linux' || matrix.platform == 'macos'
         run: |
           cd release
           checksum_file="SHA256SUMS-${{ matrix.os }}.txt"
@@ -311,7 +330,7 @@ jobs:
           cat "$checksum_file"
 
       - name: Compute SHA256 sums (Windows)
-        if: matrix.os == 'windows-latest'
+        if: matrix.platform == 'windows'
         shell: pwsh
         run: |
           Set-Location release
@@ -338,7 +357,8 @@ jobs:
             echo "tag=${{ github.event.inputs.tag || github.ref_name }}"
             echo "target_sha=${{ github.event.inputs.target_sha || github.sha }}"
             echo "builder_os=${{ matrix.os }}"
-            if [ "${{ matrix.os }}" = "macos-latest" ]; then
+            echo "builder_arch=${{ matrix.arch }}"
+            if [ "${{ matrix.platform }}" = "macos" ]; then
               echo "macos_artifacts=$MACOS_BUILD_MODE"
               if [ "$MACOS_SIGNING_SECRETS_AVAILABLE" = "true" ]; then
                 echo "macos_notarization=enabled"
@@ -353,7 +373,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: electron-${{ matrix.os }}
+          name: electron-${{ matrix.platform }}-${{ matrix.arch }}
           path: |
             release/*.AppImage
             release/*.deb
@@ -394,31 +414,42 @@ jobs:
           ls -la dist
           cat dist/SHA256SUMS.txt
 
-      - name: Validate stable release asset names
+      - name: Validate versioned release asset names
         run: |
           set -euo pipefail
+          VERSION="$(node -p "require('./package.json').version")"
 
           required_assets=(
-            vk-bot-desktop-macos-arm64.dmg
-            vk-bot-desktop-macos-x64.dmg
-            vk-bot-desktop-macos-arm64.zip
-            vk-bot-desktop-macos-x64.zip
-            vk-bot-desktop-linux-x64.AppImage
-            vk-bot-desktop-linux-x64.deb
-            vk-bot-desktop-linux-x64.tar.gz
-            vk-bot-desktop-windows-installer-x64.exe
-            vk-bot-desktop-windows-portable-x64.exe
+            "vk-bot-desktop-macos-arm64-${VERSION}.dmg"
+            "vk-bot-desktop-macos-x64-${VERSION}.dmg"
+            "vk-bot-desktop-macos-arm64-${VERSION}.zip"
+            "vk-bot-desktop-macos-x64-${VERSION}.zip"
+            "vk-bot-desktop-linux-x64-${VERSION}.AppImage"
+            "vk-bot-desktop-linux-arm64-${VERSION}.AppImage"
+            "vk-bot-desktop-linux-x64-${VERSION}.deb"
+            "vk-bot-desktop-linux-arm64-${VERSION}.deb"
+            "vk-bot-desktop-linux-x64-${VERSION}.tar.gz"
+            "vk-bot-desktop-linux-arm64-${VERSION}.tar.gz"
+            "vk-bot-desktop-windows-installer-x64-${VERSION}.exe"
+            "vk-bot-desktop-windows-installer-arm64-${VERSION}.exe"
+            "vk-bot-desktop-windows-portable-x64-${VERSION}.exe"
+            "vk-bot-desktop-windows-portable-arm64-${VERSION}.exe"
             SHA256SUMS.txt
             BUILD-PROVENANCE.txt
           )
 
           for asset in "${required_assets[@]}"; do
             if [ ! -f "dist/$asset" ]; then
-              echo "::error file=dist/$asset::Required stable release asset is missing."
+              echo "::error file=dist/$asset::Required versioned release asset is missing."
               ls -la dist || true
               exit 1
             fi
           done
+
+      - name: Generate release artifact attestations
+        uses: actions/attest@v4
+        with:
+          subject-path: dist/*
 
       - name: Determine release tag
         id: tag
@@ -447,7 +478,7 @@ jobs:
             gh release create "$TAG" \
               --target "$TARGET_SHA" \
               --title "$TAG" \
-              --notes "Cross-platform Electron build of vk-bot-desktop. Verify downloads against SHA256SUMS.txt."
+              --notes "Cross-platform Electron build of vk-bot-desktop. Filenames include the app version. Verify downloads against SHA256SUMS.txt, BUILD-PROVENANCE.txt, and GitHub artifact attestations."
           fi
           gh release upload "$TAG" dist/* --clobber
 

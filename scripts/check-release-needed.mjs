@@ -38,11 +38,37 @@ import { readPackageInfo } from './package-info.mjs';
 
 const REQUIRED_RELEASE_ASSET_GROUPS = {
   checksums: [/^SHA256SUMS\.txt$/],
-  linux: [/\.(AppImage|deb|tar\.gz)$/],
-  macos: [/\.(dmg|zip)$/],
+  linux: [
+    /^vk-bot-desktop-linux-(x64|arm64)-\d+\.\d+\.\d+(?:[-+][0-9A-Za-z.-]+)?\.(AppImage|deb|tar\.gz)$/,
+  ],
+  macos: [
+    /^vk-bot-desktop-macos-(x64|arm64)-\d+\.\d+\.\d+(?:[-+][0-9A-Za-z.-]+)?\.(dmg|zip)$/,
+  ],
   provenance: [/^BUILD-PROVENANCE\.txt$/],
-  windows: [/\.(exe|msi)$/],
+  windows: [
+    /^vk-bot-desktop-windows-(installer|portable)-(x64|arm64)-\d+\.\d+\.\d+(?:[-+][0-9A-Za-z.-]+)?\.exe$/,
+  ],
 };
+
+const RELEASE_ARTIFACTS = [
+  ['macos', 'arm64', 'dmg'],
+  ['macos', 'x64', 'dmg'],
+  ['macos', 'arm64', 'zip'],
+  ['macos', 'x64', 'zip'],
+  ['linux', 'x64', 'AppImage'],
+  ['linux', 'arm64', 'AppImage'],
+  ['linux', 'x64', 'deb'],
+  ['linux', 'arm64', 'deb'],
+  ['linux', 'x64', 'tar.gz'],
+  ['linux', 'arm64', 'tar.gz'],
+];
+
+const WINDOWS_RELEASE_ARTIFACTS = [
+  ['installer', 'x64'],
+  ['installer', 'arm64'],
+  ['portable', 'x64'],
+  ['portable', 'arm64'],
+];
 
 /**
  * Build the GitHub Release tag for a package version.
@@ -52,6 +78,32 @@ const REQUIRED_RELEASE_ASSET_GROUPS = {
  */
 export function buildReleaseTag(version, tagPrefix = 'v') {
   return `${tagPrefix}${version}`;
+}
+
+export function releaseVersionFromTag(tag) {
+  const match = String(tag || '').match(
+    /(?:^|-)v?(\d+\.\d+\.\d+(?:[-+][0-9A-Za-z.-]+)?)/
+  );
+
+  return match?.[1];
+}
+
+export function expectedDesktopReleaseAssetNames(version) {
+  if (!version) {
+    return ['SHA256SUMS.txt', 'BUILD-PROVENANCE.txt'];
+  }
+
+  return [
+    ...RELEASE_ARTIFACTS.map(
+      ([platform, arch, extension]) =>
+        `vk-bot-desktop-${platform}-${arch}-${version}.${extension}`
+    ),
+    ...WINDOWS_RELEASE_ARTIFACTS.map(
+      ([kind, arch]) => `vk-bot-desktop-windows-${kind}-${arch}-${version}.exe`
+    ),
+    'SHA256SUMS.txt',
+    'BUILD-PROVENANCE.txt',
+  ];
 }
 
 /**
@@ -93,10 +145,19 @@ function getAssetName(asset) {
 /**
  * Check whether release assets satisfy the desktop distribution contract.
  * @param {Array<string | { name?: string }>} assets
+ * @param {string} [version]
  * @returns {boolean}
  */
-export function hasRequiredDesktopReleaseAssets(assets) {
+export function hasRequiredDesktopReleaseAssets(assets, version) {
   const assetNames = assets.map(getAssetName).filter(Boolean);
+
+  if (version) {
+    const available = new Set(assetNames);
+
+    return expectedDesktopReleaseAssetNames(version).every((name) =>
+      available.has(name)
+    );
+  }
 
   return Object.values(REQUIRED_RELEASE_ASSET_GROUPS).every((patterns) =>
     patterns.some((pattern) => assetNames.some((name) => pattern.test(name)))
@@ -150,7 +211,10 @@ export function isGitHubReleaseComplete({
       );
     }
 
-    return hasRequiredDesktopReleaseAssets(release.assets ?? []);
+    return hasRequiredDesktopReleaseAssets(
+      release.assets ?? [],
+      releaseVersionFromTag(tag)
+    );
   }
 
   const output = formatGhOutput(result);

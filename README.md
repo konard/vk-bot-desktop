@@ -22,30 +22,44 @@ Cross-platform desktop app that wraps [`konard/vk-bot`](https://github.com/konar
 ## Install
 
 Download the desktop binary for your OS from the latest
-[GitHub release](https://github.com/konard/vk-bot-desktop/releases). Verify the
-SHA256 checksum:
+[GitHub release](https://github.com/konard/vk-bot-desktop/releases) or the
+[download page](https://konard.github.io/vk-bot-desktop/). Release filenames
+include the version so cached installers stay unambiguous.
+
+| Platform            | Artifact examples                                      |
+| ------------------- | ------------------------------------------------------ |
+| macOS Apple silicon | `vk-bot-desktop-macos-arm64-0.9.8.dmg`, `.zip`         |
+| macOS Intel         | `vk-bot-desktop-macos-x64-0.9.8.dmg`, `.zip`           |
+| Windows x64         | `vk-bot-desktop-windows-installer-x64-0.9.8.exe`       |
+| Windows arm64       | `vk-bot-desktop-windows-installer-arm64-0.9.8.exe`     |
+| Linux x64           | `vk-bot-desktop-linux-x64-0.9.8.AppImage`, `.deb`      |
+| Linux arm64         | `vk-bot-desktop-linux-arm64-0.9.8.AppImage`, `.deb`    |
+| Verification        | `SHA256SUMS.txt`, `BUILD-PROVENANCE.txt`, attestations |
+
+Verify the SHA-256 checksum against `SHA256SUMS.txt` from the same release:
 
 ```sh
 sha256sum -c SHA256SUMS.txt
 ```
 
-Direct latest-release downloads for currently published artifact families:
+On Windows, PowerShell can compute the same SHA-256 value:
 
-| Platform            | Artifact       | Download                                                                                                                                               |
-| ------------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| macOS Apple silicon | DMG installer  | [Latest release](https://github.com/konard/vk-bot-desktop/releases/latest) when signed macOS assets are attached                                       |
-| macOS Intel         | DMG installer  | [Latest release](https://github.com/konard/vk-bot-desktop/releases/latest) when signed macOS assets are attached                                       |
-| Windows x64         | NSIS installer | [vk-bot-desktop-windows-installer-x64.exe](https://github.com/konard/vk-bot-desktop/releases/latest/download/vk-bot-desktop-windows-installer-x64.exe) |
-| Windows x64         | Portable app   | [vk-bot-desktop-windows-portable-x64.exe](https://github.com/konard/vk-bot-desktop/releases/latest/download/vk-bot-desktop-windows-portable-x64.exe)   |
-| Linux x64           | AppImage       | [vk-bot-desktop-linux-x64.AppImage](https://github.com/konard/vk-bot-desktop/releases/latest/download/vk-bot-desktop-linux-x64.AppImage)               |
-| Linux x64           | Debian package | [vk-bot-desktop-linux-x64.deb](https://github.com/konard/vk-bot-desktop/releases/latest/download/vk-bot-desktop-linux-x64.deb)                         |
-| Linux x64           | tar.gz archive | [vk-bot-desktop-linux-x64.tar.gz](https://github.com/konard/vk-bot-desktop/releases/latest/download/vk-bot-desktop-linux-x64.tar.gz)                   |
-| Checksums           | SHA256SUMS.txt | [SHA256SUMS.txt](https://github.com/konard/vk-bot-desktop/releases/latest/download/SHA256SUMS.txt)                                                     |
+```powershell
+Get-FileHash .\vk-bot-desktop-windows-installer-x64-0.9.8.exe -Algorithm SHA256
+```
+
+For stronger supply-chain checks, inspect `BUILD-PROVENANCE.txt` and verify
+GitHub artifact attestations when they are attached to the release:
+
+```sh
+gh attestation verify ./vk-bot-desktop-linux-x64-0.9.8.AppImage --repo konard/vk-bot-desktop
+```
 
 The download page is published from this repository with GitHub Pages after
 changes to `site/` are merged to `main`. It reads GitHub's latest Release API
 and only renders direct download buttons for assets that are attached to that
-release.
+release. If the API is unavailable, it opens the release page instead of
+guessing binary URLs.
 
 ## Develop
 

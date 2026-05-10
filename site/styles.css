@@ -206,15 +206,113 @@ h1 {
   position: relative;
 }
 
-.hero-media img {
+.window-frame {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.window-titlebar {
+  display: grid;
+  grid-template-columns: 92px 1fr 92px;
+  min-height: 36px;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  padding: 0 12px;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.window-title {
+  min-width: 0;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.traffic-lights,
+.window-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.traffic-lights span,
+.window-actions span {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border: 1px solid rgba(29, 36, 34, 0.2);
+}
+
+.traffic-lights span {
+  border-radius: 50%;
+}
+
+.traffic-lights span:nth-child(1) {
+  background: #f26b5f;
+}
+
+.traffic-lights span:nth-child(2) {
+  background: #f3bf4f;
+}
+
+.traffic-lights span:nth-child(3) {
+  background: #61c454;
+}
+
+.window-actions {
+  justify-content: end;
+}
+
+.window-actions span {
+  border-radius: 2px;
+  background: transparent;
+}
+
+.hero-media.macos .window-actions,
+.hero-media.linux .window-actions {
+  visibility: hidden;
+}
+
+.hero-media.windows .traffic-lights {
+  visibility: hidden;
+}
+
+.hero-media.windows .window-titlebar {
+  min-height: 34px;
+  color: #ffffff;
+  background: #1f5fbf;
+}
+
+.hero-media.windows .window-actions span {
+  border-color: rgba(255, 255, 255, 0.72);
+}
+
+.hero-media.linux .window-titlebar {
+  color: #ffffff;
+  background: #343033;
+}
+
+.hero-media.linux .traffic-lights {
+  order: 3;
+  justify-content: end;
+}
+
+.hero-media.linux .traffic-lights span {
+  background: #f28c35;
+}
+
+.window-frame img {
   display: block;
   width: 100%;
   min-height: 340px;
   object-fit: cover;
-  border: 1px solid var(--line);
-  border-radius: 8px;
   background: var(--surface-strong);
-  box-shadow: var(--shadow);
 }
 
 .downloads {
@@ -287,6 +385,79 @@ h1 {
   color: var(--muted);
 }
 
+.verification {
+  display: grid;
+  gap: 20px;
+  padding: 34px 0 64px;
+  border-top: 1px solid var(--line);
+}
+
+.verification h2 {
+  margin-top: 6px;
+  font-size: 2rem;
+  letter-spacing: 0;
+}
+
+.verification-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 16px;
+}
+
+.verification details {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px 16px;
+  background: var(--surface);
+}
+
+.verification summary {
+  cursor: pointer;
+  font-weight: 850;
+}
+
+.verification ol {
+  display: grid;
+  gap: 8px;
+  margin: 14px 0 0;
+  padding-left: 22px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.verification p {
+  margin-top: 14px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.command-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.command-list div {
+  display: grid;
+  gap: 5px;
+}
+
+.command-list strong {
+  font-size: 0.82rem;
+}
+
+.command-list code {
+  display: block;
+  overflow-wrap: anywhere;
+  border-radius: 6px;
+  padding: 9px 10px;
+  color: var(--text);
+  background: var(--surface-strong);
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
 @media (max-width: 860px) {
   .page-shell {
     width: min(100% - 24px, 720px);
@@ -312,13 +483,17 @@ h1 {
     order: -1;
   }
 
-  .hero-media img {
+  .window-frame img {
     aspect-ratio: 16 / 10;
     min-height: 0;
     max-height: 220px;
   }
 
   .download-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .verification-grid {
     grid-template-columns: 1fr;
   }
 }

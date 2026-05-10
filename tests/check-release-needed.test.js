@@ -2,9 +2,11 @@ import { describe, it, expect } from 'test-anywhere';
 
 import {
   buildReleaseTag,
+  expectedDesktopReleaseAssetNames,
   getReleaseDecision,
   hasRequiredDesktopReleaseAssets,
   isGitHubReleaseComplete,
+  releaseVersionFromTag,
 } from '../scripts/check-release-needed.mjs';
 
 function createSpawn(result) {
@@ -24,6 +26,7 @@ describe('desktop release detection', () => {
     expect(buildReleaseTag('0.9.0')).toBe('v0.9.0');
     expect(buildReleaseTag('0.9.0', 'desktop-v')).toBe('desktop-v0.9.0');
     expect(buildReleaseTag('0.9.0', '')).toBe('0.9.0');
+    expect(releaseVersionFromTag('desktop-v0.9.0')).toBe('0.9.0');
   });
 
   it('releases through a version bump when changesets exist', () => {
@@ -54,23 +57,29 @@ describe('desktop release detection', () => {
   });
 
   it('requires checksum, provenance, and all desktop platform assets', () => {
-    expect(
-      hasRequiredDesktopReleaseAssets([
-        'VK Bot Desktop-0.9.0.AppImage',
-        'VK Bot Desktop-0.9.0.dmg',
-        'VK Bot Desktop Setup 0.9.0.exe',
-        'SHA256SUMS.txt',
-        'BUILD-PROVENANCE.txt',
-      ])
-    ).toBe(true);
+    const expectedAssets = expectedDesktopReleaseAssetNames('0.9.8');
+
+    expect(hasRequiredDesktopReleaseAssets(expectedAssets, '0.9.8')).toBe(true);
 
     expect(
-      hasRequiredDesktopReleaseAssets([
-        'VK Bot Desktop-0.9.0.AppImage',
-        'SHA256SUMS.txt',
-        'BUILD-PROVENANCE.txt',
-      ])
+      hasRequiredDesktopReleaseAssets(
+        [
+          'vk-bot-desktop-linux-x64-0.9.8.AppImage',
+          'vk-bot-desktop-macos-arm64-0.9.8.dmg',
+          'vk-bot-desktop-windows-installer-x64-0.9.8.exe',
+          'SHA256SUMS.txt',
+          'BUILD-PROVENANCE.txt',
+        ],
+        '0.9.8'
+      )
     ).toBe(false);
+
+    expect(expectedAssets).toContain(
+      'vk-bot-desktop-windows-installer-arm64-0.9.8.exe'
+    );
+    expect(expectedAssets).toContain(
+      'vk-bot-desktop-linux-arm64-0.9.8.AppImage'
+    );
   });
 
   it('checks GitHub Release artifact completeness with gh release view', () => {
@@ -78,13 +87,9 @@ describe('desktop release detection', () => {
       status: 0,
       stderr: '',
       stdout: JSON.stringify({
-        assets: [
-          { name: 'VK Bot Desktop-0.9.0.AppImage' },
-          { name: 'VK Bot Desktop-0.9.0.dmg' },
-          { name: 'VK Bot Desktop Setup 0.9.0.exe' },
-          { name: 'SHA256SUMS.txt' },
-          { name: 'BUILD-PROVENANCE.txt' },
-        ],
+        assets: expectedDesktopReleaseAssetNames('0.9.0').map((name) => ({
+          name,
+        })),
       }),
     });
 

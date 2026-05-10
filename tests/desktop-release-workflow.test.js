@@ -69,16 +69,23 @@ describe('release workflow dispatch', () => {
 describe('desktop release workflow', () => {
   it('builds desktop artifacts for Linux, macOS, and Windows releases', () => {
     expect(electronWorkflow).toContain('os: ubuntu-latest');
+    expect(electronWorkflow).toContain('os: ubuntu-24.04-arm');
     expect(electronWorkflow).toContain('os: macos-latest');
     expect(electronWorkflow).toContain('os: windows-latest');
-    expect(electronWorkflow).toContain('npx electron-builder --linux');
+    expect(electronWorkflow).toContain('os: windows-11-arm');
+    expect(electronWorkflow).toContain(
+      'npx electron-builder --linux --${{ matrix.arch }}'
+    );
     expect(electronWorkflow).toContain(
       'npx electron-builder --mac --x64 --arm64'
     );
-    expect(electronWorkflow).toContain('npx electron-builder --win');
+    expect(electronWorkflow).toContain(
+      'npx electron-builder --win --${{ matrix.arch }}'
+    );
     expect(electronWorkflow).toContain('release/SHA256SUMS-*.txt');
     expect(electronWorkflow).toContain('release/provenance-*.txt');
     expect(electronWorkflow).toContain('dist/BUILD-PROVENANCE.txt');
+    expect(electronWorkflow).toContain('actions/attest@v4');
     expect(electronWorkflow).toContain('gh release upload "$TAG" dist/*');
     expect(electronWorkflow).toContain('Verify published release asset links');
     expect(electronWorkflow).toContain('gh release view "$TAG" --json assets');
@@ -88,33 +95,56 @@ describe('desktop release workflow', () => {
     expect(electronWorkflow).not.toContain('--head');
   });
 
-  it('uses stable artifact names for latest download links', () => {
+  it('uses versioned artifact names for release download links', () => {
     const build = packageJson.build;
 
     expect(Object.hasOwn(build, 'tar')).toBe(false);
-    expect(build.linux.artifactName).toBe('vk-bot-desktop-linux-x64.${ext}');
-    expect(build.appImage.artifactName).toBe(
-      'vk-bot-desktop-linux-x64.AppImage'
+    expect(build.linux.artifactName).toBe(
+      'vk-bot-desktop-linux-${arch}-${version}.${ext}'
     );
-    expect(build.deb.artifactName).toBe('vk-bot-desktop-linux-x64.deb');
-    expect(build.dmg.artifactName).toBe('vk-bot-desktop-macos-${arch}.dmg');
-    expect(build.mac.artifactName).toBe('vk-bot-desktop-macos-${arch}.${ext}');
+    expect(build.appImage.artifactName).toBe(
+      'vk-bot-desktop-linux-${arch}-${version}.AppImage'
+    );
+    expect(build.deb.artifactName).toBe(
+      'vk-bot-desktop-linux-${arch}-${version}.deb'
+    );
+    expect(build.dmg.artifactName).toBe(
+      'vk-bot-desktop-macos-${arch}-${version}.dmg'
+    );
+    expect(build.mac.artifactName).toBe(
+      'vk-bot-desktop-macos-${arch}-${version}.${ext}'
+    );
     expect(build.nsis.artifactName).toBe(
-      'vk-bot-desktop-windows-installer-${arch}.${ext}'
+      'vk-bot-desktop-windows-installer-${arch}-${version}.${ext}'
     );
     expect(build.portable.artifactName).toBe(
-      'vk-bot-desktop-windows-portable-${arch}.${ext}'
+      'vk-bot-desktop-windows-portable-${arch}-${version}.${ext}'
     );
-    expect(electronWorkflow).toContain('Validate stable release asset names');
-    expect(electronWorkflow).toContain('vk-bot-desktop-macos-arm64.dmg');
-    expect(electronWorkflow).toContain('vk-bot-desktop-macos-x64.dmg');
-    expect(electronWorkflow).toContain('vk-bot-desktop-macos-arm64.zip');
-    expect(electronWorkflow).toContain('vk-bot-desktop-macos-x64.zip');
-    expect(electronWorkflow).toContain('vk-bot-desktop-linux-x64.AppImage');
-    expect(electronWorkflow).toContain('vk-bot-desktop-linux-x64.deb');
-    expect(electronWorkflow).toContain('vk-bot-desktop-linux-x64.tar.gz');
+    expect(electronWorkflow).toContain(
+      'Validate versioned release asset names'
+    );
+    expect(electronWorkflow).toContain(
+      'vk-bot-desktop-macos-arm64-${VERSION}.dmg'
+    );
+    expect(electronWorkflow).toContain(
+      'vk-bot-desktop-macos-x64-${VERSION}.zip'
+    );
+    expect(electronWorkflow).toContain(
+      'vk-bot-desktop-linux-arm64-${VERSION}.AppImage'
+    );
+    expect(electronWorkflow).toContain(
+      'vk-bot-desktop-linux-x64-${VERSION}.tar.gz'
+    );
+    expect(electronWorkflow).toContain(
+      'vk-bot-desktop-windows-installer-arm64-${VERSION}.exe'
+    );
+    expect(electronWorkflow).toContain(
+      'vk-bot-desktop-windows-portable-x64-${VERSION}.exe'
+    );
   });
+});
 
+describe('desktop release workflow macOS signing', () => {
   it('keeps signed and notarized macOS publishing when Apple secrets are configured', () => {
     const macSignedBuildStep = workflowStep(
       electronWorkflow,
