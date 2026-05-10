@@ -61,6 +61,36 @@ and only renders direct download buttons for assets that are attached to that
 release. If the API is unavailable, it opens the release page instead of
 guessing binary URLs.
 
+### Open the app on macOS
+
+macOS releases are ad-hoc signed without an Apple Developer ID, so Gatekeeper
+blocks the first launch with `"VK Bot Desktop" Not Opened — Apple could not
+verify "VK Bot Desktop" is free of malware...`. Verify the SHA-256 checksum
+first, then use either of the workflows below to allow the app once. These
+steps only need to be done one time per install; subsequent launches do not
+show the warning.
+
+**Terminal one-liner.** Drag `VK Bot Desktop.app` to `/Applications`, then
+remove the quarantine attribute:
+
+```sh
+sudo xattr -dr com.apple.quarantine "/Applications/VK Bot Desktop.app"
+```
+
+**System Settings (macOS 15 Sequoia and later).** On Sequoia, Apple removed
+the Control-click → Open bypass, so the flow is:
+
+1. Double-click `VK Bot Desktop`, then click **Done** when the
+   "Apple could not verify…" dialog appears.
+2. Open **System Settings → Privacy & Security** and scroll to the **Security**
+   section.
+3. Click **Open Anyway** next to `VK Bot Desktop`, confirm, and authenticate
+   with Touch ID or your admin password.
+
+Only run these steps for VK Bot Desktop release artifacts whose SHA-256 matches
+`SHA256SUMS.txt` from the same GitHub release. The same workflow applies to
+the `.zip` archive after expanding `VK Bot Desktop.app`.
+
 ## Develop
 
 ```sh

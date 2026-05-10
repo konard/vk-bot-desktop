@@ -68,6 +68,21 @@ const copy = {
       'When release attestations are available, verify the artifact with GitHub CLI.',
     reproducibleNote:
       'Byte-for-byte reproducible desktop builds need a pinned rebuild environment; this release records provenance now and leaves that stronger guarantee explicit.',
+    installMacosTitle: 'Open the app on macOS',
+    installMacosWhy:
+      'Builds are ad-hoc signed without an Apple Developer ID, so macOS Gatekeeper blocks the first launch with "Apple could not verify VK Bot Desktop is free of malware." After verifying the SHA-256 checksum above, use either of the workflows below to allow the app once.',
+    installMacosTerminalTitle: 'Terminal one-liner',
+    installMacosTerminalStep:
+      'After dragging VK Bot Desktop.app into /Applications, remove the quarantine attribute from a Terminal:',
+    installMacosSettingsTitle: 'System Settings (macOS 15 Sequoia)',
+    installMacosSettingsStep1:
+      'Double-click VK Bot Desktop, then click Done when "Apple could not verify..." appears.',
+    installMacosSettingsStep2:
+      'Open System Settings → Privacy & Security and scroll to the Security section.',
+    installMacosSettingsStep3:
+      'Click "Open Anyway" next to VK Bot Desktop, confirm, and authenticate with Touch ID or your admin password.',
+    installMacosFooter:
+      'Subsequent launches do not show the warning. Only run these steps for VK Bot Desktop release artifacts whose SHA-256 matches SHA256SUMS.txt from the same GitHub release.',
   },
   ru: {
     eyebrow: 'Локальная автоматизация VK',
@@ -123,6 +138,21 @@ const copy = {
       'Когда attestation доступен в релизе, проверьте файл через GitHub CLI.',
     reproducibleNote:
       'Побайтово воспроизводимые desktop-сборки требуют зафиксированной среды пересборки; текущий релиз уже записывает provenance и явно отделяет это от более строгой гарантии.',
+    installMacosTitle: 'Открытие приложения на macOS',
+    installMacosWhy:
+      'Сборки подписаны ad-hoc, без Apple Developer ID, поэтому Gatekeeper блокирует первый запуск сообщением «Не удалось проверить, что приложение «VK Bot Desktop» не содержит вредоносного ПО». Сначала сверьте SHA-256 выше, а затем выполните один из вариантов ниже, чтобы открыть приложение.',
+    installMacosTerminalTitle: 'Команда в Терминале',
+    installMacosTerminalStep:
+      'Перетащите VK Bot Desktop.app в /Applications и снимите карантин в Терминале:',
+    installMacosSettingsTitle: 'Системные настройки (macOS 15 Sequoia)',
+    installMacosSettingsStep1:
+      'Откройте VK Bot Desktop двойным щелчком и нажмите «Готово», когда появится предупреждение «Apple не удалось проверить...».',
+    installMacosSettingsStep2:
+      'Откройте Системные настройки → Конфиденциальность и безопасность и пролистайте до раздела «Безопасность».',
+    installMacosSettingsStep3:
+      'Нажмите «Открыть всё равно» рядом с VK Bot Desktop, подтвердите и введите пароль администратора или Touch ID.',
+    installMacosFooter:
+      'При последующих запусках предупреждение не появляется. Используйте эти шаги только для релизных файлов VK Bot Desktop, чья контрольная сумма SHA-256 совпала с SHA256SUMS.txt из того же релиза GitHub.',
   },
 };
 
@@ -203,6 +233,9 @@ function verificationCommands(release) {
     },
   ];
 }
+
+export const MACOS_INSTALL_COMMAND =
+  'sudo xattr -dr com.apple.quarantine "/Applications/VK Bot Desktop.app"';
 
 export default function App() {
   const [locale, setLocale] = useState(() => detectLocale());
@@ -416,6 +449,39 @@ export default function App() {
           ))}
         </div>
         <p className="verify-note">{text(locale, 'verify')}</p>
+      </section>
+
+      <section className="install-macos" aria-labelledby="install-macos-title">
+        <div>
+          <p className="eyebrow">{text(locale, 'macos')}</p>
+          <h2 id="install-macos-title">{text(locale, 'installMacosTitle')}</h2>
+        </div>
+        <p className="install-macos-why">{text(locale, 'installMacosWhy')}</p>
+        <div className="install-macos-grid">
+          <details open>
+            <summary>{text(locale, 'installMacosTerminalTitle')}</summary>
+            <ol>
+              <li>{text(locale, 'installMacosTerminalStep')}</li>
+            </ol>
+            <div className="command-list">
+              <div>
+                <strong>{text(locale, 'macosCommand')}</strong>
+                <code>{MACOS_INSTALL_COMMAND}</code>
+              </div>
+            </div>
+          </details>
+          <details>
+            <summary>{text(locale, 'installMacosSettingsTitle')}</summary>
+            <ol>
+              <li>{text(locale, 'installMacosSettingsStep1')}</li>
+              <li>{text(locale, 'installMacosSettingsStep2')}</li>
+              <li>{text(locale, 'installMacosSettingsStep3')}</li>
+            </ol>
+          </details>
+        </div>
+        <p className="install-macos-footer">
+          {text(locale, 'installMacosFooter')}
+        </p>
       </section>
 
       <section className="verification" aria-labelledby="verification-title">
