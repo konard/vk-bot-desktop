@@ -65,7 +65,9 @@ describe('GitHub Pages download site', () => {
       'https://api.github.com/repos/konard/vk-bot-desktop/releases/latest'
     );
     expect(siteApp).toContain('resolveDownloadHref');
+    expect(siteApp).toContain('resolveDownloadAsset');
     expect(siteApp).toContain('resolveChecksumHref');
+    expect(siteDownloads).toContain('assetNameFor');
     expect(siteApp).toContain('downloadUnavailable');
     expect(siteApp).toContain('className={`${className} unavailable`}');
     expect(siteApp).not.toContain('/releases/latest/download/vk-bot-desktop-');
@@ -97,7 +99,25 @@ describe('GitHub Pages download site', () => {
   it('requires macOS assets in the built-site release fixture', () => {
     const localReleaseAssets = e2eLocalReleaseAssets();
 
-    expect(localReleaseAssets).toContain('vk-bot-desktop-macos-arm64.dmg');
-    expect(localReleaseAssets).toContain('vk-bot-desktop-macos-x64.dmg');
+    expect(localReleaseAssets).toContain(
+      'vk-bot-desktop-macos-arm64-0.9.8.dmg'
+    );
+    expect(localReleaseAssets).toContain('vk-bot-desktop-macos-x64-0.9.8.dmg');
+    expect(localReleaseAssets).toContain(
+      'vk-bot-desktop-windows-installer-arm64-0.9.8.exe'
+    );
+    expect(localReleaseAssets).toContain(
+      'vk-bot-desktop-linux-arm64-0.9.8.AppImage'
+    );
+  });
+
+  it('has expandable verification instructions and OS-specific preview chrome', () => {
+    expect(siteApp).toContain('verifyRegular');
+    expect(siteApp).toContain('verifyAdvanced');
+    expect(siteApp).toContain('gh attestation verify');
+    expect(siteApp).toContain('resolveProvenanceHref');
+    expect(siteApp).toContain('window-frame');
+    expect(siteApp).toContain('className={`hero-media ${previewOs}`}');
+    expect(siteDownloads).toContain('PROVENANCE_ASSET_NAME');
   });
 });

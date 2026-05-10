@@ -2,11 +2,15 @@ import { useEffect, useMemo, useState } from 'react';
 import {
   RELEASE_API,
   RELEASES_URL,
+  assetNameFor,
   assetsByName,
   groupedOptions,
   primaryOptionFor,
+  releaseVersion,
+  resolveDownloadAsset,
   resolveChecksumHref,
   resolveDownloadHref,
+  resolveProvenanceHref,
 } from './downloads.js';
 
 const copy = {
@@ -30,14 +34,40 @@ const copy = {
     downloadChecking: 'Checking release assets',
     downloadUnavailable: 'Not available in latest release',
     macArm: 'macOS Apple silicon',
+    macArmZip: 'macOS Apple silicon zip',
     macIntel: 'macOS Intel',
+    macIntelZip: 'macOS Intel zip',
     winInstaller: 'Windows installer',
+    winInstallerArm: 'Windows ARM installer',
     winPortable: 'Windows portable',
+    winPortableArm: 'Windows ARM portable',
     linuxAppImage: 'Linux AppImage',
+    linuxAppImageArm: 'Linux ARM AppImage',
     linuxDeb: 'Linux .deb',
+    linuxDebArm: 'Linux ARM .deb',
     linuxTar: 'Linux tar.gz',
+    linuxTarArm: 'Linux ARM tar.gz',
     previewAlt: 'VK Bot Desktop application interface preview',
     verify: 'Verify downloads with SHA256SUMS.txt from the same release.',
+    provenance: 'Build provenance',
+    verifyTitle: 'Verify your download',
+    verifyRegular: 'Regular check',
+    verifyAdvanced: 'Advanced check',
+    regularStepOne:
+      'Download the app and SHA256SUMS.txt from the same release.',
+    regularStepTwo:
+      'Open the built-in checksum tool for your system and compare the SHA-256 value.',
+    regularStepThree:
+      'Install only when the value matches the line for the file you downloaded.',
+    windowsCommand: 'Windows PowerShell',
+    macosCommand: 'macOS Terminal',
+    linuxCommand: 'Linux Terminal',
+    advancedStepOne:
+      'Check BUILD-PROVENANCE.txt for the repository, workflow run, tag, commit, and builder OS.',
+    advancedStepTwo:
+      'When release attestations are available, verify the artifact with GitHub CLI.',
+    reproducibleNote:
+      'Byte-for-byte reproducible desktop builds need a pinned rebuild environment; this release records provenance now and leaves that stronger guarantee explicit.',
   },
   ru: {
     eyebrow: 'Локальная автоматизация VK',
@@ -59,14 +89,40 @@ const copy = {
     downloadChecking: 'Проверяем файлы релиза',
     downloadUnavailable: 'Нет в последнем релизе',
     macArm: 'macOS Apple silicon',
+    macArmZip: 'macOS Apple silicon zip',
     macIntel: 'macOS Intel',
+    macIntelZip: 'macOS Intel zip',
     winInstaller: 'Windows installer',
+    winInstallerArm: 'Windows ARM installer',
     winPortable: 'Windows portable',
+    winPortableArm: 'Windows ARM portable',
     linuxAppImage: 'Linux AppImage',
+    linuxAppImageArm: 'Linux ARM AppImage',
     linuxDeb: 'Linux .deb',
+    linuxDebArm: 'Linux ARM .deb',
     linuxTar: 'Linux tar.gz',
+    linuxTarArm: 'Linux ARM tar.gz',
     previewAlt: 'Интерфейс приложения VK Bot Desktop',
     verify: 'Проверяйте загрузки через SHA256SUMS.txt из того же релиза.',
+    provenance: 'Происхождение сборки',
+    verifyTitle: 'Проверка загрузки',
+    verifyRegular: 'Обычная проверка',
+    verifyAdvanced: 'Расширенная проверка',
+    regularStepOne:
+      'Скачайте приложение и SHA256SUMS.txt из одного и того же релиза.',
+    regularStepTwo:
+      'Откройте встроенную проверку контрольных сумм для вашей системы и сравните SHA-256.',
+    regularStepThree:
+      'Устанавливайте файл только если значение совпало со строкой для скачанного файла.',
+    windowsCommand: 'Windows PowerShell',
+    macosCommand: 'macOS Terminal',
+    linuxCommand: 'Linux Terminal',
+    advancedStepOne:
+      'Проверьте BUILD-PROVENANCE.txt: репозиторий, workflow run, тег, коммит и OS сборщика.',
+    advancedStepTwo:
+      'Когда attestation доступен в релизе, проверьте файл через GitHub CLI.',
+    reproducibleNote:
+      'Побайтово воспроизводимые desktop-сборки требуют зафиксированной среды пересборки; текущий релиз уже записывает provenance и явно отделяет это от более строгой гарантии.',
   },
 };
 
@@ -129,6 +185,25 @@ function detectOperatingSystem() {
   return 'unknown';
 }
 
+function verificationCommands(release) {
+  const version = releaseVersion(release) || '0.9.8';
+
+  return [
+    {
+      key: 'windowsCommand',
+      command: `Get-FileHash .\\vk-bot-desktop-windows-installer-x64-${version}.exe -Algorithm SHA256`,
+    },
+    {
+      key: 'macosCommand',
+      command: `shasum -a 256 vk-bot-desktop-macos-arm64-${version}.dmg`,
+    },
+    {
+      key: 'linuxCommand',
+      command: 'sha256sum -c SHA256SUMS.txt --ignore-missing',
+    },
+  ];
+}
+
 export default function App() {
   const [locale, setLocale] = useState(() => detectLocale());
   const [theme, setTheme] = useState(() => detectTheme());
@@ -184,7 +259,12 @@ export default function App() {
 
   const releaseAssets = useMemo(() => assetsByName(release), [release]);
   const primaryOption = primaryOptionFor(selectedOs);
-  const primaryHref = resolveDownloadHref(primaryOption, releaseAssets);
+  const primaryHref = resolveDownloadHref(
+    primaryOption,
+    releaseAssets,
+    release
+  );
+  const previewOs = selectedOs === 'unknown' ? 'macos' : selectedOs;
   const statusKey =
     releaseStatus === 'ready'
       ? 'statusReady'
@@ -259,8 +339,29 @@ export default function App() {
             <a href={RELEASES_URL}>{text(locale, 'allReleases')}</a>
           </nav>
         </div>
-        <div className="hero-media" aria-label={text(locale, 'previewAlt')}>
-          <img src="assets/app-preview.png" alt={text(locale, 'previewAlt')} />
+        <div
+          className={`hero-media ${previewOs}`}
+          aria-label={text(locale, 'previewAlt')}
+        >
+          <div className="window-frame">
+            <div className="window-titlebar" aria-hidden="true">
+              <span className="traffic-lights">
+                <span />
+                <span />
+                <span />
+              </span>
+              <span className="window-title">VK Bot Desktop</span>
+              <span className="window-actions">
+                <span />
+                <span />
+                <span />
+              </span>
+            </div>
+            <img
+              src="assets/app-preview.png"
+              alt={text(locale, 'previewAlt')}
+            />
+          </div>
         </div>
       </section>
 
@@ -274,7 +375,14 @@ export default function App() {
             <div className="download-group" key={group.os}>
               <h3>{text(locale, group.os)}</h3>
               {group.options.map((option) => {
-                const href = resolveDownloadHref(option, releaseAssets);
+                const asset = resolveDownloadAsset(
+                  option,
+                  releaseAssets,
+                  release
+                );
+                const href = asset?.browser_download_url;
+                const displayName =
+                  asset?.name || assetNameFor(option, release);
                 const className =
                   option.os === detectedOs
                     ? 'download-row detected'
@@ -283,7 +391,7 @@ export default function App() {
                 return href ? (
                   <a key={option.id} href={href} className={className}>
                     <span>{text(locale, option.labelKey)}</span>
-                    <code>{option.assetName}</code>
+                    <code>{displayName}</code>
                   </a>
                 ) : (
                   <div
@@ -292,7 +400,7 @@ export default function App() {
                     aria-disabled="true"
                   >
                     <span>{text(locale, option.labelKey)}</span>
-                    <code>{option.assetName}</code>
+                    <code>{displayName}</code>
                     <small>
                       {text(
                         locale,
@@ -308,6 +416,56 @@ export default function App() {
           ))}
         </div>
         <p className="verify-note">{text(locale, 'verify')}</p>
+      </section>
+
+      <section className="verification" aria-labelledby="verification-title">
+        <div>
+          <p className="eyebrow">{text(locale, 'checksum')}</p>
+          <h2 id="verification-title">{text(locale, 'verifyTitle')}</h2>
+        </div>
+        <div className="verification-grid">
+          <details open>
+            <summary>{text(locale, 'verifyRegular')}</summary>
+            <ol>
+              <li>{text(locale, 'regularStepOne')}</li>
+              <li>{text(locale, 'regularStepTwo')}</li>
+              <li>{text(locale, 'regularStepThree')}</li>
+            </ol>
+            <div className="command-list">
+              {verificationCommands(release).map((item) => (
+                <div key={item.key}>
+                  <strong>{text(locale, item.key)}</strong>
+                  <code>{item.command}</code>
+                </div>
+              ))}
+            </div>
+          </details>
+          <details>
+            <summary>{text(locale, 'verifyAdvanced')}</summary>
+            <ol>
+              <li>{text(locale, 'advancedStepOne')}</li>
+              <li>{text(locale, 'advancedStepTwo')}</li>
+            </ol>
+            <div className="command-list">
+              <div>
+                <strong>GitHub CLI</strong>
+                <code>
+                  gh attestation verify ./downloaded-file --repo
+                  konard/vk-bot-desktop
+                </code>
+              </div>
+            </div>
+            <p>{text(locale, 'reproducibleNote')}</p>
+          </details>
+        </div>
+        <nav className="support-links" aria-label="Verification links">
+          <a href={resolveChecksumHref(releaseAssets)}>
+            {text(locale, 'checksum')}
+          </a>
+          <a href={resolveProvenanceHref(releaseAssets)}>
+            {text(locale, 'provenance')}
+          </a>
+        </nav>
       </section>
     </main>
   );

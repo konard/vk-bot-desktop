@@ -85,7 +85,7 @@
       "output": "release"
     },
     "linux": {
-      "artifactName": "vk-bot-desktop-linux-x64.${ext}",
+      "artifactName": "vk-bot-desktop-linux-${arch}-${version}.${ext}",
       "target": [
         "AppImage",
         "deb",
@@ -100,7 +100,7 @@
         "zip"
       ],
       "category": "public.app-category.social-networking",
-      "artifactName": "vk-bot-desktop-macos-${arch}.${ext}",
+      "artifactName": "vk-bot-desktop-macos-${arch}-${version}.${ext}",
       "hardenedRuntime": true,
       "notarize": true,
       "entitlements": "build/entitlements.mac.plist",
@@ -113,13 +113,13 @@
       ]
     },
     "appImage": {
-      "artifactName": "vk-bot-desktop-linux-x64.AppImage"
+      "artifactName": "vk-bot-desktop-linux-${arch}-${version}.AppImage"
     },
     "deb": {
-      "artifactName": "vk-bot-desktop-linux-x64.deb"
+      "artifactName": "vk-bot-desktop-linux-${arch}-${version}.deb"
     },
     "dmg": {
-      "artifactName": "vk-bot-desktop-macos-${arch}.dmg",
+      "artifactName": "vk-bot-desktop-macos-${arch}-${version}.dmg",
       "title": "Install VK Bot Desktop",
       "backgroundColor": "#f4f6f5",
       "iconSize": 96,
@@ -142,13 +142,13 @@
       ]
     },
     "nsis": {
-      "artifactName": "vk-bot-desktop-windows-installer-${arch}.${ext}",
+      "artifactName": "vk-bot-desktop-windows-installer-${arch}-${version}.${ext}",
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
       "perMachine": false
     },
     "portable": {
-      "artifactName": "vk-bot-desktop-windows-portable-${arch}.${ext}"
+      "artifactName": "vk-bot-desktop-windows-portable-${arch}-${version}.${ext}"
     }
   },
   "lint-staged": {

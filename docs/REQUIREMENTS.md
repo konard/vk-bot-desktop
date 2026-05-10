@@ -92,28 +92,36 @@ local bot execution and remote execution over SSH.
    Builder targets: dmg and zip.
 6. Windows release artifacts must include the configured Electron Builder
    targets: nsis and portable executables.
-7. Release artifacts must include SHA256 checksums.
-8. Release artifacts must include enough provenance to identify repository,
-   workflow run, tag, target commit, and builder OS.
-9. The automated release path must run tests before dispatching release builds.
-10. Version bumps and changelog updates should remain changeset-driven.
-11. If a version bump reaches main but artifact publication fails, a later main
+7. Release artifacts must include x64 and arm64 downloads for macOS, Windows,
+   and Linux when the target-platform runners can build and smoke-test them.
+8. Release artifact filenames must include the application version, platform,
+   architecture, and format, for example
+   `vk-bot-desktop-macos-arm64-0.9.8.dmg`.
+9. Release artifacts must include SHA256 checksums.
+10. Release artifacts must include enough provenance to identify repository,
+    workflow run, tag, target commit, and builder OS.
+11. Release artifacts should be covered by GitHub artifact attestations when
+    GitHub Actions supports attestations for the release workflow.
+12. The automated release path must run tests before dispatching release builds.
+13. Version bumps and changelog updates should remain changeset-driven.
+14. If a version bump reaches main but artifact publication fails, a later main
     run should retry the GitHub Release without requiring another changeset.
-12. Manual release mode should use the same desktop artifact publication path as
+15. Manual release mode should use the same desktop artifact publication path as
     automatic releases.
-13. Release artifact names should remain stable. Static documentation may only
-    use direct `/releases/latest/download/...` links for assets that are
-    guaranteed by release validation, and the download page must only render
-    direct asset links returned by the latest Release API.
-14. macOS release artifacts must be signed, notarized, and assessed before
+16. Static documentation should avoid direct latest-download links for versioned
+    binary assets; the download page must render direct asset links returned by
+    the latest Release API and must not synthesize absent asset URLs.
+17. macOS release artifacts must be signed, notarized, and assessed before
     upload; unsigned downloaded DMGs must not be published as successful macOS
     releases.
-15. Release jobs should smoke-test installable artifacts on their target
+18. Release jobs should smoke-test installable artifacts on their target
     platform after building and before uploading.
-16. A GitHub Pages React download page should detect language, theme, and
+19. A GitHub Pages React download page should detect language, theme, and
     operating system, then fall back to a full OS chooser when detection is
     unavailable. If Release API data is unavailable or a platform asset is not
     attached, the page must not synthesize a direct asset URL.
+20. The download page should include expandable checksum/provenance verification
+    instructions for regular and advanced users.
 
 ## Testing And Documentation
 

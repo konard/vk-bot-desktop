@@ -3,49 +3,106 @@ export const RELEASE_API =
 export const RELEASES_URL =
   'https://github.com/konard/vk-bot-desktop/releases/latest';
 export const CHECKSUM_ASSET_NAME = 'SHA256SUMS.txt';
+export const PROVENANCE_ASSET_NAME = 'BUILD-PROVENANCE.txt';
 
 export const downloadOptions = [
   {
     id: 'macos-arm64',
     os: 'macos',
     labelKey: 'macArm',
-    assetName: 'vk-bot-desktop-macos-arm64.dmg',
+    assetPrefix: 'vk-bot-desktop-macos-arm64',
+    extension: 'dmg',
+  },
+  {
+    id: 'macos-arm64-zip',
+    os: 'macos',
+    labelKey: 'macArmZip',
+    assetPrefix: 'vk-bot-desktop-macos-arm64',
+    extension: 'zip',
   },
   {
     id: 'macos-x64',
     os: 'macos',
     labelKey: 'macIntel',
-    assetName: 'vk-bot-desktop-macos-x64.dmg',
+    assetPrefix: 'vk-bot-desktop-macos-x64',
+    extension: 'dmg',
+  },
+  {
+    id: 'macos-x64-zip',
+    os: 'macos',
+    labelKey: 'macIntelZip',
+    assetPrefix: 'vk-bot-desktop-macos-x64',
+    extension: 'zip',
   },
   {
     id: 'windows-x64',
     os: 'windows',
     labelKey: 'winInstaller',
-    assetName: 'vk-bot-desktop-windows-installer-x64.exe',
+    assetPrefix: 'vk-bot-desktop-windows-installer-x64',
+    extension: 'exe',
+  },
+  {
+    id: 'windows-arm64',
+    os: 'windows',
+    labelKey: 'winInstallerArm',
+    assetPrefix: 'vk-bot-desktop-windows-installer-arm64',
+    extension: 'exe',
   },
   {
     id: 'windows-portable-x64',
     os: 'windows',
     labelKey: 'winPortable',
-    assetName: 'vk-bot-desktop-windows-portable-x64.exe',
+    assetPrefix: 'vk-bot-desktop-windows-portable-x64',
+    extension: 'exe',
+  },
+  {
+    id: 'windows-portable-arm64',
+    os: 'windows',
+    labelKey: 'winPortableArm',
+    assetPrefix: 'vk-bot-desktop-windows-portable-arm64',
+    extension: 'exe',
   },
   {
     id: 'linux-appimage-x64',
     os: 'linux',
     labelKey: 'linuxAppImage',
-    assetName: 'vk-bot-desktop-linux-x64.AppImage',
+    assetPrefix: 'vk-bot-desktop-linux-x64',
+    extension: 'AppImage',
+  },
+  {
+    id: 'linux-appimage-arm64',
+    os: 'linux',
+    labelKey: 'linuxAppImageArm',
+    assetPrefix: 'vk-bot-desktop-linux-arm64',
+    extension: 'AppImage',
   },
   {
     id: 'linux-deb-x64',
     os: 'linux',
     labelKey: 'linuxDeb',
-    assetName: 'vk-bot-desktop-linux-x64.deb',
+    assetPrefix: 'vk-bot-desktop-linux-x64',
+    extension: 'deb',
+  },
+  {
+    id: 'linux-deb-arm64',
+    os: 'linux',
+    labelKey: 'linuxDebArm',
+    assetPrefix: 'vk-bot-desktop-linux-arm64',
+    extension: 'deb',
   },
   {
     id: 'linux-tar-x64',
     os: 'linux',
     labelKey: 'linuxTar',
-    assetName: 'vk-bot-desktop-linux-x64.tar.gz',
+    assetPrefix: 'vk-bot-desktop-linux-x64',
+    extension: 'tar.gz',
+  },
+  {
+    id: 'linux-tar-arm64',
+    os: 'linux',
+    labelKey: 'linuxTarArm',
+    assetPrefix: 'vk-bot-desktop-linux-arm64',
+    extension: 'tar.gz',
   },
 ];
 
@@ -71,17 +128,65 @@ export function assetsByName(release) {
   );
 }
 
-export function resolveDownloadHref(option, releaseAssets) {
+export function releaseVersion(release) {
+  const tag = String(
+    release?.tag_name || release?.tagName || release?.name || ''
+  );
+  const match = tag.match(/(?:^|-)v?(\d+\.\d+\.\d+(?:[-+][0-9A-Za-z.-]+)?)/);
+
+  return match?.[1];
+}
+
+export function assetNameFor(option, release) {
   if (!option) {
     return undefined;
   }
 
-  return releaseAssets[option.assetName]?.browser_download_url;
+  const version = releaseVersion(release) || 'version';
+
+  return `${option.assetPrefix}-${version}.${option.extension}`;
+}
+
+function legacyAssetNameFor(option) {
+  return `${option.assetPrefix}.${option.extension}`;
+}
+
+export function candidateAssetNames(option, release) {
+  if (!option) {
+    return [];
+  }
+
+  return [assetNameFor(option, release), legacyAssetNameFor(option)].filter(
+    (name, index, names) => name && names.indexOf(name) === index
+  );
+}
+
+export function resolveDownloadAsset(option, releaseAssets, release) {
+  for (const name of candidateAssetNames(option, release)) {
+    const asset = releaseAssets[name];
+
+    if (asset) {
+      return asset;
+    }
+  }
+
+  return undefined;
+}
+
+export function resolveDownloadHref(option, releaseAssets, release) {
+  return resolveDownloadAsset(option, releaseAssets, release)
+    ?.browser_download_url;
 }
 
 export function resolveChecksumHref(releaseAssets) {
   return (
     releaseAssets[CHECKSUM_ASSET_NAME]?.browser_download_url || RELEASES_URL
+  );
+}
+
+export function resolveProvenanceHref(releaseAssets) {
+  return (
+    releaseAssets[PROVENANCE_ASSET_NAME]?.browser_download_url || RELEASES_URL
   );
 }
 
