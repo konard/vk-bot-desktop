@@ -4,9 +4,12 @@
 
 Issue: [konard/vk-bot-desktop#15](https://github.com/konard/vk-bot-desktop/issues/15)
 
-Pull request: [konard/vk-bot-desktop#16](https://github.com/konard/vk-bot-desktop/pull/16)
+Pull requests:
+[konard/vk-bot-desktop#16](https://github.com/konard/vk-bot-desktop/pull/16)
+and
+[konard/vk-bot-desktop#17](https://github.com/konard/vk-bot-desktop/pull/17)
 
-Branch: `issue-15-9ea339e71924`
+Branches: `issue-15-9ea339e71924` and `issue-15-a34bf7d3d42f`
 
 The issue asks for a more trustworthy download experience:
 
@@ -30,6 +33,8 @@ Local evidence files:
 - `data/latest-release-v0.9.7.json` - latest release metadata at investigation time.
 - `data/ci-runs-branch-before-fix.json` - latest branch CI run metadata before the fix.
 - `ci-logs/checks-and-release-25634091107.log` - downloaded CI log for the successful prepared-branch run.
+- `data/electron-release-25634996041.json` - failed post-merge Electron release run metadata.
+- `ci-logs/electron-release-25634996041.log` - downloaded CI log for the failed post-merge release run.
 - `data/related-merged-prs.json` and `data/pr-*-summary.json` - recent merged PR context.
 - `data/file-tree.txt` - repository file inventory used during triage.
 
@@ -43,6 +48,12 @@ The prepared branch CI run `25634091107` started on 2026-05-10 at 16:39:40 UTC
 for commit `9ff260569e1afa0f4d652e4cbec1a5b116847d72` and concluded
 successfully. That confirmed the baseline branch was green before changing the
 release contract.
+
+After PR #16 merged, the release sequence reached commit
+`eb04762f10d1055537887fb60a15b96055a32306` and attempted Electron release run
+`25634996041` on 2026-05-10 at 17:22:38 UTC. That run failed and no `v0.9.8`
+GitHub release was produced. The downloaded log preserved the two actual
+failures that blocked publishing.
 
 ## Online Research
 
@@ -69,6 +80,10 @@ verification tooling:
 - The Reproducible Builds project distinguishes checksum verification from the
   stronger guarantee of rebuilding the same bytes from source:
   <https://reproducible-builds.org/docs/>.
+- Electron Builder has existing upstream reports for bundled x86 FPM being used
+  on Linux arm64 runners, including
+  <https://github.com/electron-userland/electron-builder/issues/9563> and the
+  older <https://github.com/electron-userland/electron-builder/issues/5154>.
 
 ## Root Causes
 
@@ -86,6 +101,24 @@ The release workflow built Linux on `ubuntu-latest`, Windows on
 `windows-latest`, and macOS as a dual-architecture build. Linux and Windows did
 not have arm64 matrix entries, so no release job could produce or validate those
 artifacts.
+
+### Post-Merge Release Failure
+
+The post-merge Electron release run `25634996041` found two additional release
+workflow bugs:
+
+- Linux arm64 reached the Debian packaging step, but Electron Builder downloaded
+  `fpm-1.9.3-2.3.1-linux-x86` on the `ubuntu-24.04-arm` runner. The bundled Ruby
+  executable failed with `cannot execute binary file: Exec format error`, so the
+  arm64 `.deb` artifact was never produced.
+- Linux x64 successfully produced an AppImage and Debian package, but Electron
+  Builder expanded the target-specific artifact names to
+  `vk-bot-desktop-linux-x86_64-0.9.8.AppImage` and
+  `vk-bot-desktop-linux-amd64-0.9.8.deb`. The public download contract and smoke
+  test expected `linux-x64`, so the job failed before publishing.
+
+Because a build job failed, the publish job was skipped and the repository still
+only had `v0.9.7` as the latest release.
 
 ### Download Page Trust Gap
 
@@ -144,11 +177,21 @@ and leaves the stronger reproducible-build guarantee explicit for future work.
 
 Windows and Linux arm64 are built as first-class release jobs instead of only
 cross-compiling from x64 runners. Native runner coverage allows the same smoke
-test pattern to validate the produced artifacts before upload.
+test pattern to validate the produced artifacts before upload. For Linux arm64
+Debian packaging, the workflow installs system Ruby/FPM and sets
+`USE_SYSTEM_FPM=true` so Electron Builder does not use its bundled x86 FPM
+binary on an arm64 runner.
 
-No upstream issue was opened. The required behavior is supported by existing
-Electron Builder and GitHub Actions features, so this is a repository
-configuration and UI issue rather than an upstream defect.
+Linux x64 AppImage and Debian artifact filenames are normalized immediately
+after build and before smoke tests. Electron Builder intentionally uses
+distribution-specific architecture labels for some Linux targets, but the
+download page, release-completeness checks, and user-facing filenames all use
+the simpler `x64` and `arm64` labels.
+
+No duplicate upstream issue was opened for the Linux arm64 FPM failure because
+existing Electron Builder issues already describe the same failure mode. The
+repository workflow now uses the documented environment switch for system FPM
+while upstream support continues to evolve.
 
 ## Verification Strategy
 
@@ -156,6 +199,8 @@ Automated checks cover the contract at multiple levels:
 
 - `tests/desktop-release-workflow.test.js` asserts versioned artifact templates,
   arm64 runner labels, attestation generation, and workflow validation strings.
+  Follow-up assertions cover system FPM on native Linux arm64 builds and Linux
+  artifact filename normalization before smoke testing.
 - `tests/check-release-needed.test.js` asserts release-completeness logic for
   all expected platform artifacts.
 - `tests/site-downloads.test.js` asserts derived versioned filenames and that

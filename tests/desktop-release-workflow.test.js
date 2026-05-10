@@ -142,6 +142,53 @@ describe('desktop release workflow', () => {
       'vk-bot-desktop-windows-portable-x64-${VERSION}.exe'
     );
   });
+
+  it('uses system FPM for native Linux arm64 Debian builds', () => {
+    const installFpmStep = workflowStep(
+      electronWorkflow,
+      'Install system FPM \\(Linux arm64\\)'
+    );
+    const linuxBuildStep = workflowStep(
+      electronWorkflow,
+      'Build Electron artifacts \\(Linux\\)'
+    );
+
+    expect(electronWorkflow).toContain('os: ubuntu-24.04-arm');
+    expect(installFpmStep).toContain(
+      "matrix.platform == 'linux' && matrix.arch == 'arm64'"
+    );
+    expect(installFpmStep).toContain(
+      'sudo apt-get install -y ruby ruby-dev build-essential'
+    );
+    expect(installFpmStep).toContain('sudo gem install --no-document fpm');
+    expect(linuxBuildStep).toContain('export USE_SYSTEM_FPM=true');
+  });
+
+  it('normalizes Linux artifact architecture names before validation', () => {
+    const normalizeStep = workflowStep(
+      electronWorkflow,
+      'Normalize Linux release artifact names'
+    );
+    const normalizeIndex = electronWorkflow.indexOf(
+      '- name: Normalize Linux release artifact names'
+    );
+    const linuxSmokeIndex = electronWorkflow.indexOf(
+      '- name: Smoke test Linux release artifacts'
+    );
+
+    expect(normalizeIndex).toBeGreaterThan(-1);
+    expect(normalizeIndex).toBeLessThan(linuxSmokeIndex);
+    expect(normalizeStep).toContain(
+      'vk-bot-desktop-linux-x86_64-${VERSION}.AppImage'
+    );
+    expect(normalizeStep).toContain(
+      'vk-bot-desktop-linux-amd64-${VERSION}.deb'
+    );
+    expect(normalizeStep).toContain(
+      'vk-bot-desktop-linux-x64-${VERSION}.AppImage'
+    );
+    expect(normalizeStep).toContain('vk-bot-desktop-linux-x64-${VERSION}.deb');
+  });
 });
 
 describe('desktop release workflow macOS signing', () => {
