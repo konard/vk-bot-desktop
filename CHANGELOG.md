@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.9.11
+
+### Patch Changes
+
+- 45816dd: Fix desktop release publishing by resolving the release tag and target commit in the JavaScript CI workflow before building and validating release artifacts.
+
 ## 0.9.10
 
 ### Patch Changes
