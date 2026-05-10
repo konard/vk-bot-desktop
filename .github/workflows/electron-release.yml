@@ -387,3 +387,40 @@ jobs:
               --notes "Cross-platform Electron build of vk-bot-desktop. Verify downloads against SHA256SUMS.txt."
           fi
           gh release upload "$TAG" dist/* --clobber
+
+      - name: Verify published release asset links
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ steps.tag.outputs.tag }}
+        run: |
+          set -euo pipefail
+
+          gh release view "$TAG" --json assets --jq '.assets[].name' | sort > release-assets.txt
+          find dist -maxdepth 1 -type f -printf '%f\n' | sort > dist-assets.txt
+
+          while IFS= read -r asset; do
+            if ! grep -Fxq "$asset" release-assets.txt; then
+              echo "::error file=dist/$asset::Uploaded release asset is missing from GitHub release metadata."
+              cat release-assets.txt
+              exit 1
+            fi
+
+            url="https://github.com/${GITHUB_REPOSITORY}/releases/download/${TAG}/${asset}"
+            status="$(
+              curl \
+                --head \
+                --location \
+                --silent \
+                --show-error \
+                --retry 3 \
+                --output /dev/null \
+                --write-out '%{http_code}' \
+                "$url"
+            )"
+
+            if [ "$status" != "200" ]; then
+              echo "::error file=dist/$asset::Published release asset URL returned HTTP $status."
+              echo "$url"
+              exit 1
+            fi
+          done < dist-assets.txt

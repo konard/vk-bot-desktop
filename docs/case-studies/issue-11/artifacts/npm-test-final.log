@@ -1,0 +1,1036 @@
+
+> vk-bot-desktop@0.9.5 test
+> node --test --test-timeout=30000 tests/*.test.js
+
+TAP version 13
+# Subtest: birthday greetings
+    # Subtest: contains exactly 10 entries
+    ok 1 - contains exactly 10 entries
+      ---
+      duration_ms: 0.530261
+      ...
+    # Subtest: every greeting has at most 2 emojis
+    ok 2 - every greeting has at most 2 emojis
+      ---
+      duration_ms: 0.444082
+      ...
+    # Subtest: every greeting is a non-empty Russian-language string
+    ok 3 - every greeting is a non-empty Russian-language string
+      ---
+      duration_ms: 0.109312
+      ...
+    # Subtest: does not pick the same index twice in a row
+    ok 4 - does not pick the same index twice in a row
+      ---
+      duration_ms: 0.997958
+      ...
+    1..4
+ok 1 - birthday greetings
+  ---
+  duration_ms: 3.239998
+  type: 'suite'
+  ...
+# Subtest: buildStatusCommand
+    # Subtest: uses the default session name
+    ok 1 - uses the default session name
+      ---
+      duration_ms: 0.956606
+      ...
+    # Subtest: honors a custom session name
+    ok 2 - honors a custom session name
+      ---
+      duration_ms: 0.108262
+      ...
+    1..2
+ok 2 - buildStatusCommand
+  ---
+  duration_ms: 1.814034
+  type: 'suite'
+  ...
+# Subtest: buildStartCommand
+    # Subtest: defaults to screen isolation with the session name
+    ok 1 - defaults to screen isolation with the session name
+      ---
+      duration_ms: 0.170925
+      ...
+    # Subtest: builds a docker invocation with image and session name
+    ok 2 - builds a docker invocation with image and session name
+      ---
+      duration_ms: 0.118998
+      ...
+    # Subtest: passes through a custom command
+    ok 3 - passes through a custom command
+      ---
+      duration_ms: 0.118197
+      ...
+    1..3
+ok 3 - buildStartCommand
+  ---
+  duration_ms: 0.534256
+  type: 'suite'
+  ...
+# Subtest: buildStopCommand
+    # Subtest: uses --stop with the session
+    ok 1 - uses --stop with the session
+      ---
+      duration_ms: 0.103985
+      ...
+    1..1
+ok 4 - buildStopCommand
+  ---
+  duration_ms: 0.271745
+  type: 'suite'
+  ...
+# Subtest: isRunning
+    # Subtest: returns true when stdout indicates running
+    ok 1 - returns true when stdout indicates running
+      ---
+      duration_ms: 0.403922
+      ...
+    # Subtest: returns false when exit code != 0
+    ok 2 - returns false when exit code != 0
+      ---
+      duration_ms: 0.125196
+      ...
+    # Subtest: returns false when stdout has no running keyword
+    ok 3 - returns false when stdout has no running keyword
+      ---
+      duration_ms: 0.150614
+      ...
+    # Subtest: throws when runCommand is missing
+    ok 4 - throws when runCommand is missing
+      ---
+      duration_ms: 0.389981
+      ...
+    1..4
+ok 5 - isRunning
+  ---
+  duration_ms: 1.23443
+  type: 'suite'
+  ...
+# Subtest: startBot/stopBot
+    # Subtest: startBot invokes runCommand with the start argv
+    ok 1 - startBot invokes runCommand with the start argv
+      ---
+      duration_ms: 0.294809
+      ...
+    # Subtest: stopBot invokes runCommand with the stop argv
+    ok 2 - stopBot invokes runCommand with the stop argv
+      ---
+      duration_ms: 0.159477
+      ...
+    1..2
+ok 6 - startBot/stopBot
+  ---
+  duration_ms: 0.556148
+  type: 'suite'
+  ...
+# Subtest: ensureMutualExclusion
+    # Subtest: rejects unknown targetMode
+    ok 1 - rejects unknown targetMode
+      ---
+      duration_ms: 0.217865
+      ...
+    # Subtest: returns stoppedOther=false when no other runner is provided
+    ok 2 - returns stoppedOther=false when no other runner is provided
+      ---
+      duration_ms: 0.07958
+      ...
+    # Subtest: stops the remote bot when starting local and remote is running
+    ok 3 - stops the remote bot when starting local and remote is running
+      ---
+      duration_ms: 0.109353
+      ...
+    # Subtest: does not stop the remote bot when it is not running
+    ok 4 - does not stop the remote bot when it is not running
+      ---
+      duration_ms: 0.057046
+      ...
+    # Subtest: treats runner errors as not-running
+    ok 5 - treats runner errors as not-running
+      ---
+      duration_ms: 0.078026
+      ...
+    # Subtest: stops the local bot when starting server
+    ok 6 - stops the local bot when starting server
+      ---
+      duration_ms: 0.179057
+      ...
+    1..6
+ok 7 - ensureMutualExclusion
+  ---
+  duration_ms: 0.899861
+  type: 'suite'
+  ...
+# Subtest: check-file-line-limits.sh
+    # Subtest: defines a warning band below the hard limit
+    ok 1 - defines a warning band below the hard limit
+      ---
+      duration_ms: 0.911248
+      ...
+    # Subtest: warns without failing for files above the warning threshold
+    ok 2 - warns without failing for files above the warning threshold
+      ---
+      duration_ms: 34.713771
+      ...
+    # Subtest: still fails files over the hard limit
+    ok 3 - still fails files over the hard limit
+      ---
+      duration_ms: 16.843499
+      ...
+    # Subtest: normalizes padded wc output from BSD-like environments
+    ok 4 - normalizes padded wc output from BSD-like environments
+      ---
+      duration_ms: 18.478206
+      ...
+    1..4
+ok 8 - check-file-line-limits.sh
+  ---
+  duration_ms: 72.161306
+  type: 'suite'
+  ...
+# Subtest: desktop release detection
+    # Subtest: builds GitHub release tags from the package version
+    ok 1 - builds GitHub release tags from the package version
+      ---
+      duration_ms: 0.801614
+      ...
+    # Subtest: releases through a version bump when changesets exist
+    ok 2 - releases through a version bump when changesets exist
+      ---
+      duration_ms: 0.22154
+      ...
+    # Subtest: skips release when the current GitHub Release already has artifacts
+    ok 3 - skips release when the current GitHub Release already has artifacts
+      ---
+      duration_ms: 0.101892
+      ...
+    # Subtest: retries release without a bump when the GitHub Release is incomplete
+    ok 4 - retries release without a bump when the GitHub Release is incomplete
+      ---
+      duration_ms: 0.089423
+      ...
+    # Subtest: requires checksum, provenance, and all desktop platform assets
+    ok 5 - requires checksum, provenance, and all desktop platform assets
+      ---
+      duration_ms: 0.374118
+      ...
+    # Subtest: checks GitHub Release artifact completeness with gh release view
+    ok 6 - checks GitHub Release artifact completeness with gh release view
+      ---
+      duration_ms: 0.305405
+      ...
+    # Subtest: treats missing GitHub Releases as unpublished
+    ok 7 - treats missing GitHub Releases as unpublished
+      ---
+      duration_ms: 0.197554
+      ...
+    # Subtest: fails closed on unexpected gh release errors
+    ok 8 - fails closed on unexpected gh release errors
+      ---
+      duration_ms: 0.217575
+      ...
+    1..8
+ok 9 - desktop release detection
+  ---
+  duration_ms: 3.5289
+  type: 'suite'
+  ...
+# Subtest: CI timeout policy
+    # Subtest: sets timeout-minutes for every release workflow job
+    ok 1 - sets timeout-minutes for every release workflow job
+      ---
+      duration_ms: 1.920202
+      ...
+    # Subtest: sets timeout-minutes for every link workflow job
+    ok 2 - sets timeout-minutes for every link workflow job
+      ---
+      duration_ms: 0.233958
+      ...
+    # Subtest: sets timeout-minutes for every Pages workflow job
+    ok 3 - sets timeout-minutes for every Pages workflow job
+      ---
+      duration_ms: 1.077536
+      ...
+    # Subtest: parses workflow files checked out with Windows line endings
+    ok 4 - parses workflow files checked out with Windows line endings
+      ---
+      duration_ms: 0.151716
+      ...
+    # Subtest: caps individual Node.js and Bun tests at 30 seconds
+    ok 5 - caps individual Node.js and Bun tests at 30 seconds
+      ---
+      duration_ms: 0.141611
+      ...
+    1..5
+ok 10 - CI timeout policy
+  ---
+  duration_ms: 4.876658
+  type: 'suite'
+  ...
+# Subtest: create-github-release release title formatting
+    # Subtest: parses language from CLI arguments and environment defaults
+    ok 1 - parses language from CLI arguments and environment defaults
+      ---
+      duration_ms: 0.914764
+      ...
+    # Subtest: builds a human-readable release name from a language-prefixed tag
+    ok 2 - builds a human-readable release name from a language-prefixed tag
+      ---
+      duration_ms: 0.490301
+      ...
+    1..2
+ok 11 - create-github-release release title formatting
+  ---
+  duration_ms: 2.570871
+  type: 'suite'
+  ...
+# Subtest: create-github-release.mjs
+    # Subtest: uses gh api and reports successful creation only for exit code 0
+    ok 1 - uses gh api and reports successful creation only for exit code 0
+      ---
+      duration_ms: 0.323221
+      ...
+    # Subtest: throws when gh api exits non-zero with an unexpected error
+    ok 2 - throws when gh api exits non-zero with an unexpected error
+      ---
+      duration_ms: 0.283763
+      ...
+    # Subtest: treats already_exists as an idempotent gh api result
+    ok 3 - treats already_exists as an idempotent gh api result
+      ---
+      duration_ms: 0.230224
+      ...
+    # Subtest: passes release payload to gh api and reports success only on exit code 0
+    ok 4 - passes release payload to gh api and reports success only on exit code 0
+      ---
+      duration_ms: 117.868539
+      ...
+    # Subtest: passes a human-readable release name for language-prefixed tags
+    ok 5 - passes a human-readable release name for language-prefixed tags
+      ---
+      duration_ms: 78.178282
+      ...
+    # Subtest: fails when gh api exits non-zero with an unexpected error
+    ok 6 - fails when gh api exits non-zero with an unexpected error
+      ---
+      duration_ms: 69.799676
+      ...
+    # Subtest: treats already_exists as an explicit idempotent skip
+    ok 7 - treats already_exists as an explicit idempotent skip
+      ---
+      duration_ms: 65.182816
+      ...
+    1..7
+ok 12 - create-github-release.mjs
+  ---
+  duration_ms: 332.367308
+  type: 'suite'
+  ...
+# Subtest: release workflow dispatch
+    # Subtest: does not publish packages to npm from release jobs
+    ok 1 - does not publish packages to npm from release jobs
+      ---
+      duration_ms: 0.955945
+      ...
+    # Subtest: dispatches the Electron release workflow with an exact tag and commit
+    ok 2 - dispatches the Electron release workflow with an exact tag and commit
+      ---
+      duration_ms: 1.139338
+      ...
+    1..2
+ok 13 - release workflow dispatch
+  ---
+  duration_ms: 2.944979
+  type: 'suite'
+  ...
+# Subtest: desktop release workflow
+    # Subtest: builds desktop artifacts for Linux, macOS, and Windows releases
+    ok 1 - builds desktop artifacts for Linux, macOS, and Windows releases
+      ---
+      duration_ms: 0.328769
+      ...
+    # Subtest: uses stable artifact names for latest download links
+    ok 2 - uses stable artifact names for latest download links
+      ---
+      duration_ms: 0.203013
+      ...
+    # Subtest: signs, notarizes, and assesses macOS artifacts instead of publishing unsigned DMGs
+    ok 3 - signs, notarizes, and assesses macOS artifacts instead of publishing unsigned DMGs
+      ---
+      duration_ms: 0.44929
+      ...
+    # Subtest: skips macOS artifacts without signing secrets instead of blocking Linux and Windows releases
+    ok 4 - skips macOS artifacts without signing secrets instead of blocking Linux and Windows releases
+      ---
+      duration_ms: 0.265045
+      ...
+    # Subtest: smoke-tests platform installers after building and before uploading
+    ok 5 - smoke-tests platform installers after building and before uploading
+      ---
+      duration_ms: 0.224183
+      ...
+    # Subtest: configures a Linux maintainer for deb artifacts
+    ok 6 - configures a Linux maintainer for deb artifacts
+      ---
+      duration_ms: 0.291945
+      ...
+    # Subtest: hashes Linux and macOS artifacts without splitting filenames on spaces
+    ok 7 - hashes Linux and macOS artifacts without splitting filenames on spaces
+      ---
+      duration_ms: 0.34209
+      ...
+    1..7
+ok 14 - desktop release workflow
+  ---
+  duration_ms: 2.627827
+  type: 'suite'
+  ...
+# Subtest: fetchOutgoingRequestIds
+    # Subtest: returns [] when vk client is missing
+    ok 1 - returns [] when vk client is missing
+      ---
+      duration_ms: 0.799742
+      ...
+    # Subtest: returns [] when friends.getRequests is missing
+    ok 2 - returns [] when friends.getRequests is missing
+      ---
+      duration_ms: 0.146038
+      ...
+    # Subtest: returns the items array from the VK response
+    ok 3 - returns the items array from the VK response
+      ---
+      duration_ms: 0.205356
+      ...
+    # Subtest: returns [] when items is not an array
+    ok 4 - returns [] when items is not an array
+      ---
+      duration_ms: 1.324122
+      ...
+    1..4
+ok 15 - fetchOutgoingRequestIds
+  ---
+  duration_ms: 3.319236
+  type: 'suite'
+  ...
+# Subtest: computePotentialAcceptanceQuota
+    # Subtest: returns floor(totalIncomingSeen * 10%) - totalAcceptedEver
+    ok 1 - returns floor(totalIncomingSeen * 10%) - totalAcceptedEver
+      ---
+      duration_ms: 1.789246
+      ...
+    # Subtest: clamps to zero when already over quota
+    ok 2 - clamps to zero when already over quota
+      ---
+      duration_ms: 0.106469
+      ...
+    # Subtest: honours a custom percentage
+    ok 3 - honours a custom percentage
+      ---
+      duration_ms: 0.116504
+      ...
+    1..3
+ok 16 - computePotentialAcceptanceQuota
+  ---
+  duration_ms: 3.219547
+  type: 'suite'
+  ...
+# Subtest: selectIncomingRequests
+    # Subtest: respects the lifetime 10% quota across runs
+    ok 1 - respects the lifetime 10% quota across runs
+      ---
+      duration_ms: 0.931108
+      ...
+    # Subtest: falls back to current batch size when no lifetime stats provided
+    ok 2 - falls back to current batch size when no lifetime stats provided
+      ---
+      duration_ms: 0.200809
+      ...
+    # Subtest: above the limit only accepts requests with mutuals
+    ok 3 - above the limit only accepts requests with mutuals
+      ---
+      duration_ms: 0.132848
+      ...
+    # Subtest: returns nothing when capacity is exhausted
+    ok 4 - returns nothing when capacity is exhausted
+      ---
+      duration_ms: 0.118837
+      ...
+    # Subtest: returns nothing for empty input
+    ok 5 - returns nothing for empty input
+      ---
+      duration_ms: 0.14073
+      ...
+    1..5
+ok 17 - selectIncomingRequests
+  ---
+  duration_ms: 1.850968
+  type: 'suite'
+  ...
+# Subtest: pickPrioritySendList
+    # Subtest: returns priority IDs not yet in friends
+    ok 1 - returns priority IDs not yet in friends
+      ---
+      duration_ms: 0.167309
+      ...
+    # Subtest: respects remaining capacity
+    ok 2 - respects remaining capacity
+      ---
+      duration_ms: 0.090675
+      ...
+    1..2
+ok 18 - pickPrioritySendList
+  ---
+  duration_ms: 0.386376
+  type: 'suite'
+  ...
+# Subtest: pickDeactivatedToDelete
+    # Subtest: returns banned/deleted friends excluding priority list
+    ok 1 - returns banned/deleted friends excluding priority list
+      ---
+      duration_ms: 0.257043
+      ...
+    1..1
+ok 19 - pickDeactivatedToDelete
+  ---
+  duration_ms: 0.356702
+  type: 'suite'
+  ...
+# Subtest: detectLocale
+    # Subtest: returns ru for Russian language tags
+    ok 1 - returns ru for Russian language tags
+      ---
+      duration_ms: 0.644179
+      ...
+    # Subtest: falls back to en for unknown locales
+    ok 2 - falls back to en for unknown locales
+      ---
+      duration_ms: 0.111226
+      ...
+    1..2
+ok 20 - detectLocale
+  ---
+  duration_ms: 1.651882
+  type: 'suite'
+  ...
+# Subtest: translate
+    # Subtest: returns the translated string when available
+    ok 1 - returns the translated string when available
+      ---
+      duration_ms: 0.249812
+      ...
+    # Subtest: falls back to English when key missing in target locale
+    ok 2 - falls back to English when key missing in target locale
+      ---
+      duration_ms: 0.115322
+      ...
+    # Subtest: returns the key itself when nothing matches
+    ok 3 - returns the key itself when nothing matches
+      ---
+      duration_ms: 0.137445
+      ...
+    1..3
+ok 21 - translate
+  ---
+  duration_ms: 1.495398
+  type: 'suite'
+  ...
+# Subtest: add function
+    # Subtest: should add two positive numbers
+    ok 1 - should add two positive numbers
+      ---
+      duration_ms: 0.623138
+      ...
+    # Subtest: should add negative numbers
+    ok 2 - should add negative numbers
+      ---
+      duration_ms: 0.100129
+      ...
+    # Subtest: should add zero
+    ok 3 - should add zero
+      ---
+      duration_ms: 0.073059
+      ...
+    1..3
+ok 22 - add function
+  ---
+  duration_ms: 1.621787
+  type: 'suite'
+  ...
+# Subtest: multiply function
+    # Subtest: should multiply two positive numbers
+    ok 1 - should multiply two positive numbers
+      ---
+      duration_ms: 0.10749
+      ...
+    # Subtest: should multiply by zero
+    ok 2 - should multiply by zero
+      ---
+      duration_ms: 0.129092
+      ...
+    # Subtest: should multiply negative numbers
+    ok 3 - should multiply negative numbers
+      ---
+      duration_ms: 0.144535
+      ...
+    1..3
+ok 23 - multiply function
+  ---
+  duration_ms: 0.569749
+  type: 'suite'
+  ...
+# Subtest: invitation messages
+    # Subtest: contains exactly 10 entries
+    ok 1 - contains exactly 10 entries
+      ---
+      duration_ms: 0.940822
+      ...
+    # Subtest: every message is a non-empty Russian-language string
+    ok 2 - every message is a non-empty Russian-language string
+      ---
+      duration_ms: 0.436491
+      ...
+    # Subtest: does not pick the same index twice in a row
+    ok 3 - does not pick the same index twice in a row
+      ---
+      duration_ms: 0.332596
+      ...
+    # Subtest: accepts a custom list
+    ok 4 - accepts a custom list
+      ---
+      duration_ms: 1.851309
+      ...
+    # Subtest: returns empty string for empty list
+    ok 5 - returns empty string for empty list
+      ---
+      duration_ms: 0.187099
+      ...
+    1..5
+ok 24 - invitation messages
+  ---
+  duration_ms: 5.123695
+  type: 'suite'
+  ...
+# Subtest: LinoStore
+    # Subtest: round-trips a config through formatIndented/parseIndented
+    ok 1 - round-trips a config through formatIndented/parseIndented
+      ---
+      duration_ms: 7.046831
+      ...
+    # Subtest: local config overrides global
+    ok 2 - local config overrides global
+      ---
+      duration_ms: 6.984087
+      ...
+    # Subtest: returns empty object when no config files exist
+    ok 3 - returns empty object when no config files exist
+      ---
+      duration_ms: 4.977538
+      ...
+    1..3
+ok 25 - LinoStore
+  ---
+  duration_ms: 20.03057
+  type: 'suite'
+  ...
+# Subtest: redact
+    # Subtest: masks long token-like strings
+    ok 1 - masks long token-like strings
+      ---
+      duration_ms: 0.950367
+      ...
+    # Subtest: masks query-style secrets
+    ok 2 - masks query-style secrets
+      ---
+      duration_ms: 0.13493
+      ...
+    # Subtest: masks secret-named object properties
+    ok 3 - masks secret-named object properties
+      ---
+      duration_ms: 1.407558
+      ...
+    # Subtest: handles circular references
+    ok 4 - handles circular references
+      ---
+      duration_ms: 0.155271
+      ...
+    # Subtest: does not mask short ids
+    ok 5 - does not mask short ids
+      ---
+      duration_ms: 0.102633
+      ...
+    1..5
+ok 26 - redact
+  ---
+  duration_ms: 3.803037
+  type: 'suite'
+  ...
+# Subtest: logger sinks
+    # Subtest: routes log lines to registered sinks with redaction
+    ok 1 - routes log lines to registered sinks with redaction
+      ---
+      duration_ms: 0.518974
+      ...
+    1..1
+ok 27 - logger sinks
+  ---
+  duration_ms: 0.688786
+  type: 'suite'
+  ...
+# Subtest: package info helpers
+    # Subtest: reads scoped package names and versions from package.json content
+    ok 1 - reads scoped package names and versions from package.json content
+      ---
+      duration_ms: 0.716537
+      ...
+    # Subtest: formats npm package specifiers from the derived package name
+    ok 2 - formats npm package specifiers from the derived package name
+      ---
+      duration_ms: 0.166027
+      ...
+    # Subtest: formats changeset headers from the derived package name
+    ok 3 - formats changeset headers from the derived package name
+      ---
+      duration_ms: 0.147399
+      ...
+    # Subtest: matches changesets for the derived package name only
+    ok 4 - matches changesets for the derived package name only
+      ---
+      duration_ms: 0.271474
+      ...
+    # Subtest: reports missing package names clearly
+    ok 5 - reports missing package names clearly
+      ---
+      duration_ms: 0.113359
+      ...
+    1..5
+ok 28 - package info helpers
+  ---
+  duration_ms: 2.363021
+  type: 'suite'
+  ...
+# Subtest: GitHub Pages download site
+    # Subtest: has a reproducible React build script
+    ok 1 - has a reproducible React build script
+      ---
+      duration_ms: 0.786872
+      ...
+    # Subtest: deploys the built site with the official GitHub Pages actions
+    ok 2 - deploys the built site with the official GitHub Pages actions
+      ---
+      duration_ms: 0.231224
+      ...
+    # Subtest: detects language, theme, and operating system for the primary download
+    ok 3 - detects language, theme, and operating system for the primary download
+      ---
+      duration_ms: 0.132338
+      ...
+    # Subtest: loads latest release assets without synthesizing absent asset links
+    ok 4 - loads latest release assets without synthesizing absent asset links
+      ---
+      duration_ms: 0.131135
+      ...
+    # Subtest: runs browser-commander e2e checks before and after Pages deployment
+    ok 5 - runs browser-commander e2e checks before and after Pages deployment
+      ---
+      duration_ms: 0.229012
+      ...
+    1..5
+ok 29 - GitHub Pages download site
+  ---
+  duration_ms: 2.404102
+  type: 'suite'
+  ...
+# Subtest: release badge version normalization
+    # Subtest: strips a plain v prefix for backward compatibility
+    ok 1 - strips a plain v prefix for backward compatibility
+      ---
+      duration_ms: 1.248741
+      ...
+    # Subtest: strips a js-v prefix from multi-language release tags
+    ok 2 - strips a js-v prefix from multi-language release tags
+      ---
+      duration_ms: 0.177745
+      ...
+    # Subtest: strips a rust-v prefix from multi-language release tags
+    ok 3 - strips a rust-v prefix from multi-language release tags
+      ---
+      duration_ms: 0.103464
+      ...
+    # Subtest: escapes hyphens in prerelease versions for shields.io static badge paths
+    ok 4 - escapes hyphens in prerelease versions for shields.io static badge paths
+      ---
+      duration_ms: 0.096074
+      ...
+    # Subtest: builds a valid shields.io badge URL for prefixed tags
+    ok 5 - builds a valid shields.io badge URL for prefixed tags
+      ---
+      duration_ms: 0.124235
+      ...
+    # Subtest: builds a valid shields.io badge URL for prefixed prerelease tags
+    ok 6 - builds a valid shields.io badge URL for prefixed prerelease tags
+      ---
+      duration_ms: 0.187439
+      ...
+    1..6
+ok 30 - release badge version normalization
+  ---
+  duration_ms: 3.025979
+  type: 'suite'
+  ...
+# Subtest: setup-npm version requirements
+    # Subtest: compares semantic versions numerically
+    ok 1 - compares semantic versions numerically
+      ---
+      duration_ms: 0.880092
+      ...
+    # Subtest: requires npm 11.5.1 or later
+    ok 2 - requires npm 11.5.1 or later
+      ---
+      duration_ms: 0.150625
+      ...
+    # Subtest: requires Node.js 22.14.0 or later
+    ok 3 - requires Node.js 22.14.0 or later
+      ---
+      duration_ms: 0.189473
+      ...
+    # Subtest: selects the latest npm 11 tarball that satisfies trusted publishing
+    ok 4 - selects the latest npm 11 tarball that satisfies trusted publishing
+      ---
+      duration_ms: 0.300217
+      ...
+    1..4
+ok 31 - setup-npm version requirements
+  ---
+  duration_ms: 2.450071
+  type: 'suite'
+  ...
+# Subtest: Pages release download helpers
+    # Subtest: resolves download links only from actual release assets
+    ok 1 - resolves download links only from actual release assets
+      ---
+      duration_ms: 2.038277
+      ...
+    # Subtest: uses the release page rather than a synthetic checksum URL when missing
+    ok 2 - uses the release page rather than a synthetic checksum URL when missing
+      ---
+      duration_ms: 0.134881
+      ...
+    # Subtest: keeps stable option groups for all supported operating systems
+    ok 3 - keeps stable option groups for all supported operating systems
+      ---
+      duration_ms: 0.499574
+      ...
+    1..3
+ok 32 - Pages release download helpers
+  ---
+  duration_ms: 3.576259
+  type: 'suite'
+  ...
+# Subtest: buildInstallScript
+    # Subtest: emits a docker isolation invocation
+    ok 1 - emits a docker isolation invocation
+      ---
+      duration_ms: 0.819251
+      ...
+    # Subtest: emits a screen isolation invocation
+    ok 2 - emits a screen isolation invocation
+      ---
+      duration_ms: 1.231835
+      ...
+    # Subtest: stops any prior session before starting a new one
+    ok 3 - stops any prior session before starting a new one
+      ---
+      duration_ms: 0.118567
+      ...
+    # Subtest: uses screen isolation by default
+    ok 4 - uses screen isolation by default
+      ---
+      duration_ms: 0.124085
+      ...
+    # Subtest: throws when the bundle archive is missing
+    ok 5 - throws when the bundle archive is missing
+      ---
+      duration_ms: 0.578131
+      ...
+    # Subtest: throws on unknown isolation
+    ok 6 - throws on unknown isolation
+      ---
+      duration_ms: 0.145056
+      ...
+    # Subtest: escapes the remote dir
+    ok 7 - escapes the remote dir
+      ---
+      duration_ms: 0.117355
+      ...
+    1..7
+ok 33 - buildInstallScript
+  ---
+  duration_ms: 4.271886
+  type: 'suite'
+  ...
+# Subtest: buildInstallPlan
+    # Subtest: returns plan metadata alongside the script
+    ok 1 - returns plan metadata alongside the script
+      ---
+      duration_ms: 0.272997
+      ...
+    1..1
+ok 34 - buildInstallPlan
+  ---
+  duration_ms: 0.464904
+  type: 'suite'
+  ...
+# Subtest: isoWeek
+    # Subtest: returns the ISO week number for known dates
+    ok 1 - returns the ISO week number for known dates
+      ---
+      duration_ms: 0.908414
+      ...
+    1..1
+ok 35 - isoWeek
+  ---
+  duration_ms: 1.795285
+  type: 'suite'
+  ...
+# Subtest: pathsForDate
+    # Subtest: produces total + month + week paths
+    ok 1 - produces total + month + week paths
+      ---
+      duration_ms: 0.397392
+      ...
+    1..1
+ok 36 - pathsForDate
+  ---
+  duration_ms: 0.527526
+  type: 'suite'
+  ...
+# Subtest: StatsStore
+    # Subtest: throws when rootDir missing
+    ok 1 - throws when rootDir missing
+      ---
+      duration_ms: 0.408188
+      ...
+    # Subtest: records accepted friends in three files
+    ok 2 - records accepted friends in three files
+      ---
+      duration_ms: 10.692965
+      ...
+    # Subtest: accumulates across multiple calls in the same week
+    ok 3 - accumulates across multiple calls in the same week
+      ---
+      duration_ms: 9.42851
+      ...
+    # Subtest: isolates weeks: new week file when the date changes
+    ok 4 - isolates weeks: new week file when the date changes
+      ---
+      duration_ms: 8.72331
+      ...
+    # Subtest: records initial friends count once and never overwrites
+    ok 5 - records initial friends count once and never overwrites
+      ---
+      duration_ms: 2.828616
+      ...
+    # Subtest: snapshot returns empty objects when no data exists
+    ok 6 - snapshot returns empty objects when no data exists
+      ---
+      duration_ms: 1.942093
+      ...
+    1..6
+ok 37 - StatsStore
+  ---
+  duration_ms: 34.730416
+  type: 'suite'
+  ...
+# Subtest: tag prefix logic
+    # Subtest: defaults to "v" prefix (backward compatible)
+    ok 1 - defaults to "v" prefix (backward compatible)
+      ---
+      duration_ms: 2.431974
+      ...
+    # Subtest: supports "js-v" prefix for multi-language repos
+    ok 2 - supports "js-v" prefix for multi-language repos
+      ---
+      duration_ms: 0.156483
+      ...
+    # Subtest: supports "rust-v" prefix
+    ok 3 - supports "rust-v" prefix
+      ---
+      duration_ms: 0.106329
+      ...
+    # Subtest: supports empty prefix
+    ok 4 - supports empty prefix
+      ---
+      duration_ms: 0.079188
+      ...
+    # Subtest: works with pre-release versions
+    ok 5 - works with pre-release versions
+      ---
+      duration_ms: 0.083024
+      ...
+    1..5
+ok 38 - tag prefix logic
+  ---
+  duration_ms: 3.955935
+  type: 'suite'
+  ...
+# Subtest: resolveTheme
+    # Subtest: honors explicit light or dark preferences
+    ok 1 - honors explicit light or dark preferences
+      ---
+      duration_ms: 0.582919
+      ...
+    # Subtest: falls back to system theme when preference is auto
+    ok 2 - falls back to system theme when preference is auto
+      ---
+      duration_ms: 0.127401
+      ...
+    # Subtest: defaults to light when system theme is missing
+    ok 3 - defaults to light when system theme is missing
+      ---
+      duration_ms: 0.903887
+      ...
+    1..3
+ok 39 - resolveTheme
+  ---
+  duration_ms: 2.417392
+  type: 'suite'
+  ...
+# Subtest: applyTheme
+    # Subtest: writes data-theme to the document element
+    ok 1 - writes data-theme to the document element
+      ---
+      duration_ms: 0.171184
+      ...
+    1..1
+ok 40 - applyTheme
+  ---
+  duration_ms: 0.247278
+  type: 'suite'
+  ...
+# Subtest: watchSystemTheme
+    # Subtest: returns a no-op when matchMedia is unavailable
+    ok 1 - returns a no-op when matchMedia is unavailable
+      ---
+      duration_ms: 0.123194
+      ...
+    # Subtest: listens via addEventListener and reports dark/light
+    ok 2 - listens via addEventListener and reports dark/light
+      ---
+      duration_ms: 0.715857
+      ...
+    1..2
+ok 41 - watchSystemTheme
+  ---
+  duration_ms: 1.032278
+  type: 'suite'
+  ...
+1..41
+# tests 147
+# suites 41
+# pass 147
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 476.059399

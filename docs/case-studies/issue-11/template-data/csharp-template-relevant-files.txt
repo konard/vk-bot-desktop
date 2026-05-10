@@ -1,0 +1,7 @@
+.changeset/add-changesets-workflow.md
+.changeset/fix-ci-workflow-dependencies.md
+.changeset/fix-csharp-release-format.md
+.github/workflows
+.github/workflows/release.yml
+scripts/create-github-release.mjs
+scripts/create-github-release.test.mjs

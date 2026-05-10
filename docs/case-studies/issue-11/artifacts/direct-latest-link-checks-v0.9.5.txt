@@ -1,0 +1,8 @@
+404 vk-bot-desktop-macos-arm64.dmg https://github.com/konard/vk-bot-desktop/releases/download/v0.9.5/vk-bot-desktop-macos-arm64.dmg
+404 vk-bot-desktop-macos-x64.dmg https://github.com/konard/vk-bot-desktop/releases/download/v0.9.5/vk-bot-desktop-macos-x64.dmg
+200 vk-bot-desktop-windows-installer-x64.exe https://github.com/konard/vk-bot-desktop/releases/download/v0.9.5/vk-bot-desktop-windows-installer-x64.exe
+200 vk-bot-desktop-windows-portable-x64.exe https://github.com/konard/vk-bot-desktop/releases/download/v0.9.5/vk-bot-desktop-windows-portable-x64.exe
+200 vk-bot-desktop-linux-x64.AppImage https://github.com/konard/vk-bot-desktop/releases/download/v0.9.5/vk-bot-desktop-linux-x64.AppImage
+200 vk-bot-desktop-linux-x64.deb https://github.com/konard/vk-bot-desktop/releases/download/v0.9.5/vk-bot-desktop-linux-x64.deb
+200 vk-bot-desktop-linux-x64.tar.gz https://github.com/konard/vk-bot-desktop/releases/download/v0.9.5/vk-bot-desktop-linux-x64.tar.gz
+200 SHA256SUMS.txt https://github.com/konard/vk-bot-desktop/releases/download/v0.9.5/SHA256SUMS.txt

@@ -10,6 +10,9 @@
     "**/*.min.js",
     "**/coverage/**",
     "**/.changeset/**",
+    "**/docs/case-studies/*/artifacts/**",
+    "**/docs/case-studies/*/ci-logs/**",
+    "**/docs/case-studies/*/template-data/**",
     "**/package-lock.json",
     "**/pnpm-lock.yaml",
     "**/yarn.lock"

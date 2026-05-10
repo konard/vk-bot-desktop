@@ -1,0 +1,5 @@
+
+> vk-bot-desktop@0.9.5 test:pages:e2e
+> node scripts/test-pages-e2e.mjs --site-dir site/dist
+
+Pages e2e checks passed for http://127.0.0.1:38869/

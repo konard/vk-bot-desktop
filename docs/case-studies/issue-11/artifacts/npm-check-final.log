@@ -1,0 +1,29 @@
+
+> vk-bot-desktop@0.9.5 check
+> npm run lint && npm run format:check && npm run check:duplication
+
+
+> vk-bot-desktop@0.9.5 lint
+> eslint .
+
+
+/tmp/gh-issue-solver-1778417515622/src/bot/runner.js
+  50:8  warning  Async function 'startBot' has a complexity of 28. Maximum allowed is 15  complexity
+
+✖ 1 problem (0 errors, 1 warning)
+
+
+> vk-bot-desktop@0.9.5 format:check
+> prettier --check .
+
+Checking formatting...
+All matched files use Prettier code style!
+
+> vk-bot-desktop@0.9.5 check:duplication
+> jscpd .
+
+[3m[90mtime[39m[23m: 0.143ms
+
+💡 Auto-refactor with AI: npx skills add kucherenko/jscpd
+🎩 New: Gangsta Agents — discipline your AI coding → gangsta.page
+💖 Sponsor jscpd → https://opencollective.com/jscpd

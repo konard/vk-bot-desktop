@@ -8,7 +8,10 @@ import path from 'node:path';
 import { makeBrowserCommander } from 'browser-commander';
 import { chromium } from 'playwright';
 
-const REQUIRED_DOWNLOAD_ASSETS = [
+const RELEASE_API_URL =
+  'https://api.github.com/repos/konard/vk-bot-desktop/releases/latest';
+const RELEASE_TAG = 'v0.0.0-pages-e2e';
+const REQUIRED_RELEASE_ASSETS = [
   'vk-bot-desktop-macos-arm64.dmg',
   'vk-bot-desktop-macos-x64.dmg',
   'vk-bot-desktop-windows-installer-x64.exe',
@@ -16,6 +19,15 @@ const REQUIRED_DOWNLOAD_ASSETS = [
   'vk-bot-desktop-linux-x64.AppImage',
   'vk-bot-desktop-linux-x64.deb',
   'vk-bot-desktop-linux-x64.tar.gz',
+  'SHA256SUMS.txt',
+];
+const LOCAL_RELEASE_ASSETS = [
+  'vk-bot-desktop-windows-installer-x64.exe',
+  'vk-bot-desktop-windows-portable-x64.exe',
+  'vk-bot-desktop-linux-x64.AppImage',
+  'vk-bot-desktop-linux-x64.deb',
+  'vk-bot-desktop-linux-x64.tar.gz',
+  'SHA256SUMS.txt',
 ];
 
 const contentTypes = new Map([
@@ -103,7 +115,39 @@ async function createStaticServer(siteDir) {
   };
 }
 
-async function validatePage({ commander, url }) {
+function makeReleaseFixture(assetNames) {
+  return {
+    tag_name: RELEASE_TAG,
+    assets: assetNames.map((name) => ({
+      name,
+      browser_download_url: `https://github.com/konard/vk-bot-desktop/releases/download/${RELEASE_TAG}/${name}`,
+    })),
+  };
+}
+
+async function fetchLatestRelease() {
+  const headers = {
+    accept: 'application/vnd.github+json',
+  };
+
+  if (process.env.GH_TOKEN) {
+    headers.authorization = `Bearer ${process.env.GH_TOKEN}`;
+  }
+
+  const response = await fetch(RELEASE_API_URL, { headers });
+
+  if (!response.ok) {
+    throw new Error(`Release request failed: ${response.status}`);
+  }
+
+  return response.json();
+}
+
+function releaseAssetNames(release) {
+  return new Set((release?.assets || []).map((asset) => asset.name));
+}
+
+async function validatePage({ commander, release, url }) {
   const navigation = await commander.goto({
     url,
     waitForStableUrlBefore: false,
@@ -125,10 +169,13 @@ async function validatePage({ commander, url }) {
   const result = await commander.evaluate({
     fn: (requiredAssets) => {
       const links = Array.from(document.querySelectorAll('a[href]')).map(
-        (link) => link.href
+        (link) => ({
+          href: link.href,
+          text: link.textContent?.trim() ?? '',
+        })
       );
-      const missingAssets = requiredAssets.filter(
-        (asset) => !links.some((href) => href.endsWith(`/${asset}`))
+      const linkedAssets = requiredAssets.filter((asset) =>
+        links.some(({ href }) => href.endsWith(`/${asset}`))
       );
 
       return {
@@ -138,10 +185,11 @@ async function validatePage({ commander, url }) {
         primaryHref:
           document.querySelector('.primary-download')?.getAttribute('href') ??
           '',
-        missingAssets,
+        linkedAssets,
+        links,
       };
     },
-    args: [REQUIRED_DOWNLOAD_ASSETS],
+    args: [REQUIRED_RELEASE_ASSETS],
   });
 
   if (!result.title.includes('VK Bot Desktop')) {
@@ -158,25 +206,40 @@ async function validatePage({ commander, url }) {
     );
   }
 
-  if (!result.primaryHref.includes('/releases/latest/download/')) {
+  if (!result.primaryHref.includes('/releases/download/')) {
     throw new Error(
       `Primary download does not use a release asset: ${result.primaryHref}`
     );
   }
 
-  if (result.missingAssets.length > 0) {
+  const availableAssets = releaseAssetNames(release);
+  const missingLinkedAssets = result.linkedAssets.filter(
+    (asset) => !availableAssets.has(asset)
+  );
+  const availableAssetsWithoutLinks = REQUIRED_RELEASE_ASSETS.filter(
+    (asset) =>
+      availableAssets.has(asset) && !result.linkedAssets.includes(asset)
+  );
+
+  if (missingLinkedAssets.length > 0) {
     throw new Error(
-      `Missing download links: ${result.missingAssets.join(', ')}`
+      `Page links to release assets that are absent from the latest release: ${missingLinkedAssets.join(', ')}`
+    );
+  }
+
+  if (availableAssetsWithoutLinks.length > 0) {
+    throw new Error(
+      `Page does not link to available latest release assets: ${availableAssetsWithoutLinks.join(', ')}`
     );
   }
 }
 
-async function validateWithRetry({ commander, url }) {
+async function validateWithRetry({ commander, release, url }) {
   let lastError;
 
   for (let attempt = 1; attempt <= 5; attempt += 1) {
     try {
-      await validatePage({ commander, url });
+      await validatePage({ commander, release, url });
       return;
     } catch (error) {
       lastError = error;
@@ -194,6 +257,9 @@ async function main() {
   const args = parseArgs(process.argv.slice(2));
   let server;
   let url = args.url;
+  const release = args.siteDir
+    ? makeReleaseFixture(LOCAL_RELEASE_ASSETS)
+    : await fetchLatestRelease();
 
   if (!url) {
     server = await createStaticServer(args.siteDir);
@@ -209,6 +275,17 @@ async function main() {
     viewport: { width: 1280, height: 900 },
   });
   const page = await context.newPage();
+
+  if (args.siteDir) {
+    await page.route(RELEASE_API_URL, (route) =>
+      route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify(release),
+      })
+    );
+  }
+
   const commander = makeBrowserCommander({
     page,
     enableNavigationManager: false,
@@ -219,6 +296,7 @@ async function main() {
   try {
     await validateWithRetry({
       commander,
+      release,
       url,
     });
     console.log(`Pages e2e checks passed for ${url}`);

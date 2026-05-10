@@ -1,0 +1,9 @@
+
+> vk-bot-desktop@0.9.5 check:duplication
+> jscpd .
+
+[3m[90mtime[39m[23m: 0.145ms
+
+💡 Auto-refactor with AI: npx skills add kucherenko/jscpd
+🎩 New: Gangsta Agents — discipline your AI coding → gangsta.page
+💖 Sponsor jscpd → https://opencollective.com/jscpd

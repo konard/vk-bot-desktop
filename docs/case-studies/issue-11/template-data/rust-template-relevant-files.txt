@@ -1,0 +1,13 @@
+.github/workflows
+.github/workflows/release.yml
+changelog.d/20251229_143823_fix_ci_workflow_dependencies.md
+changelog.d/20260415_fix_workspace_release_scripts.md
+changelog.d/20260509_031015_human_readable_release_titles.md
+changelog.d/20260509_205000_docker_hub_release_publishing.md
+docs/case-studies/issue-11/analysis-workflow-dispatch.md
+docs/case-studies/issue-38/template-data/js-template-release.yml
+docs/case-studies/issue-38/template-data/rust-template-release-after.yml
+docs/case-studies/issue-38/template-data/rust-template-release-before.yml
+scripts/check-release-needed.rs
+scripts/create-github-release.rs
+tests/unit/ci-cd/workflow_release.rs

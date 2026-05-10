@@ -9,6 +9,9 @@ const pagesWorkflow = existsSync(pagesWorkflowPath)
 const siteApp = existsSync('site/App.jsx')
   ? readFileSync('site/App.jsx', 'utf8')
   : '';
+const siteDownloads = existsSync('site/downloads.js')
+  ? readFileSync('site/downloads.js', 'utf8')
+  : '';
 const siteIndex = existsSync('site/index.html')
   ? readFileSync('site/index.html', 'utf8')
   : '';
@@ -18,7 +21,9 @@ describe('GitHub Pages download site', () => {
     expect(packageJson.scripts['build:site']).toBe(
       'node scripts/build-site.mjs'
     );
+    expect(pagesWorkflow).toContain('scripts/test-pages-e2e.mjs');
     expect(existsSync('scripts/build-site.mjs')).toBe(true);
+    expect(existsSync('site/downloads.js')).toBe(true);
     expect(siteIndex).toContain('<div id="root"></div>');
     expect(siteIndex).toContain('assets/app-preview.png');
   });
@@ -46,20 +51,18 @@ describe('GitHub Pages download site', () => {
     expect(siteApp).toContain('detectTheme');
   });
 
-  it('loads latest release assets and keeps direct fallback download links', () => {
-    expect(siteApp).toContain(
+  it('loads latest release assets without synthesizing absent asset links', () => {
+    expect(siteDownloads).toContain(
       'https://api.github.com/repos/konard/vk-bot-desktop/releases/latest'
     );
-    expect(siteApp).toContain(
-      'https://github.com/konard/vk-bot-desktop/releases/latest/download/vk-bot-desktop-macos-arm64.dmg'
+    expect(siteApp).toContain('resolveDownloadHref');
+    expect(siteApp).toContain('resolveChecksumHref');
+    expect(siteApp).toContain('downloadUnavailable');
+    expect(siteApp).toContain('className={`${className} unavailable`}');
+    expect(siteApp).not.toContain('/releases/latest/download/vk-bot-desktop-');
+    expect(siteDownloads).not.toContain(
+      '/releases/latest/download/vk-bot-desktop-'
     );
-    expect(siteApp).toContain(
-      'https://github.com/konard/vk-bot-desktop/releases/latest/download/vk-bot-desktop-linux-x64.AppImage'
-    );
-    expect(siteApp).toContain(
-      'https://github.com/konard/vk-bot-desktop/releases/latest/download/vk-bot-desktop-windows-installer-x64.exe'
-    );
-    expect(siteApp).toContain('downloadOptions');
   });
 
   it('runs browser-commander e2e checks before and after Pages deployment', () => {
@@ -69,6 +72,9 @@ describe('GitHub Pages download site', () => {
     expect(existsSync('scripts/test-pages-e2e.mjs')).toBe(true);
     expect(pagesWorkflow).toContain('browser-commander@0.8.0');
     expect(pagesWorkflow).toContain('playwright@1.59.1');
+    expect(readFileSync('scripts/test-pages-e2e.mjs', 'utf8')).toContain(
+      'Page links to release assets that are absent from the latest release'
+    );
     expect(pagesWorkflow).toContain('Test built Pages site before deploy');
     expect(pagesWorkflow).toContain(
       'npm run test:pages:e2e -- --site-dir site/dist'
