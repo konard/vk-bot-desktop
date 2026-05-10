@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.9.8
+
+### Patch Changes
+
+- 58bdacf: Add versioned desktop release filenames, arm64 Windows/Linux downloads, and expanded download verification guidance.
+
 ## 0.9.7
 
 ### Patch Changes
