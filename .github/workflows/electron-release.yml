@@ -104,17 +104,24 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          shopt -s nullglob
 
-          debs=(release/*.deb)
-          appimages=(release/*.AppImage)
-          tarballs=(release/*.tar.gz)
+          required_linux_artifacts=(
+            release/vk-bot-desktop-linux-x64.AppImage
+            release/vk-bot-desktop-linux-x64.deb
+            release/vk-bot-desktop-linux-x64.tar.gz
+          )
 
-          if [ "${#debs[@]}" -eq 0 ] || [ "${#appimages[@]}" -eq 0 ] || [ "${#tarballs[@]}" -eq 0 ]; then
-            echo "::error::Expected .deb, .AppImage, and .tar.gz Linux artifacts."
-            ls -la release || true
-            exit 1
-          fi
+          for artifact in "${required_linux_artifacts[@]}"; do
+            if [ ! -f "$artifact" ]; then
+              echo "::error file=$artifact::Expected stable Linux release artifact was not created."
+              ls -la release || true
+              exit 1
+            fi
+          done
+
+          debs=(release/vk-bot-desktop-linux-x64.deb)
+          appimages=(release/vk-bot-desktop-linux-x64.AppImage)
+          tarballs=(release/vk-bot-desktop-linux-x64.tar.gz)
 
           for deb in "${debs[@]}"; do
             echo "Inspecting Debian package: $deb"
@@ -327,6 +334,28 @@ jobs:
             -exec cp {} dist/ \;
           ls -la dist
           cat dist/SHA256SUMS.txt
+
+      - name: Validate stable release asset names
+        run: |
+          set -euo pipefail
+
+          required_assets=(
+            vk-bot-desktop-linux-x64.AppImage
+            vk-bot-desktop-linux-x64.deb
+            vk-bot-desktop-linux-x64.tar.gz
+            vk-bot-desktop-windows-installer-x64.exe
+            vk-bot-desktop-windows-portable-x64.exe
+            SHA256SUMS.txt
+            BUILD-PROVENANCE.txt
+          )
+
+          for asset in "${required_assets[@]}"; do
+            if [ ! -f "dist/$asset" ]; then
+              echo "::error file=dist/$asset::Required stable release asset is missing."
+              ls -la dist || true
+              exit 1
+            fi
+          done
 
       - name: Determine release tag
         id: tag

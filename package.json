@@ -85,7 +85,7 @@
       "output": "release"
     },
     "linux": {
-      "artifactName": "vk-bot-desktop-linux-${arch}.${ext}",
+      "artifactName": "vk-bot-desktop-linux-x64.${ext}",
       "target": [
         "AppImage",
         "deb",
@@ -113,10 +113,10 @@
       ]
     },
     "appImage": {
-      "artifactName": "vk-bot-desktop-linux-${arch}.AppImage"
+      "artifactName": "vk-bot-desktop-linux-x64.AppImage"
     },
     "deb": {
-      "artifactName": "vk-bot-desktop-linux-${arch}.deb"
+      "artifactName": "vk-bot-desktop-linux-x64.deb"
     },
     "dmg": {
       "artifactName": "vk-bot-desktop-macos-${arch}.dmg",
