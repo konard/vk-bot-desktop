@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.9.12
+
+### Patch Changes
+
+- 9da9655: Fix desktop release workflow orchestration so binary build and GitHub Release upload jobs still run after optional release modes are skipped.
+
 ## 0.9.11
 
 ### Patch Changes
