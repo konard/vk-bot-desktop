@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.9.4
+
+### Patch Changes
+
+- 636d18a: Fix Electron release publishing after CI build validation and add Pages browser e2e checks.
+
 ## 0.9.3
 
 ### Patch Changes
