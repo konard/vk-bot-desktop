@@ -85,13 +85,11 @@ describe('desktop release workflow', () => {
     const build = packageJson.build;
 
     expect(Object.hasOwn(build, 'tar')).toBe(false);
-    expect(build.linux.artifactName).toBe(
-      'vk-bot-desktop-linux-${arch}.${ext}'
-    );
+    expect(build.linux.artifactName).toBe('vk-bot-desktop-linux-x64.${ext}');
     expect(build.appImage.artifactName).toBe(
-      'vk-bot-desktop-linux-${arch}.AppImage'
+      'vk-bot-desktop-linux-x64.AppImage'
     );
-    expect(build.deb.artifactName).toBe('vk-bot-desktop-linux-${arch}.deb');
+    expect(build.deb.artifactName).toBe('vk-bot-desktop-linux-x64.deb');
     expect(build.dmg.artifactName).toBe('vk-bot-desktop-macos-${arch}.dmg');
     expect(build.mac.artifactName).toBe('vk-bot-desktop-macos-${arch}.${ext}');
     expect(build.nsis.artifactName).toBe(
@@ -100,6 +98,10 @@ describe('desktop release workflow', () => {
     expect(build.portable.artifactName).toBe(
       'vk-bot-desktop-windows-portable-${arch}.${ext}'
     );
+    expect(electronWorkflow).toContain('Validate stable release asset names');
+    expect(electronWorkflow).toContain('vk-bot-desktop-linux-x64.AppImage');
+    expect(electronWorkflow).toContain('vk-bot-desktop-linux-x64.deb');
+    expect(electronWorkflow).toContain('vk-bot-desktop-linux-x64.tar.gz');
   });
 
   it('signs, notarizes, and assesses macOS artifacts instead of publishing unsigned DMGs', () => {

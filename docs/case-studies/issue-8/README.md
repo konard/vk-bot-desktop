@@ -9,14 +9,29 @@ automation bumped `package.json` to `0.9.3` on main. The follow-up
 `Electron release` workflow failed at `2026-05-10T09:51:38Z`, so the latest
 GitHub Release stayed at `v0.9.2` from `2026-05-09T20:22:59Z`.
 
+PR 9 restored release creation and published `v0.9.4` at
+`2026-05-10T12:11:50Z`, but the successful run exposed a remaining stable-link
+contract failure: Electron Builder emitted Linux AppImage and Debian assets as
+`vk-bot-desktop-linux-x86_64.AppImage` and
+`vk-bot-desktop-linux-amd64.deb`, while the README and Pages site link to
+`linux-x64` filenames. This follow-up locks the actual release artifacts to the
+documented stable names and fails the release before upload if they are absent.
+
 ## Captured Data
 
 - `data/issue-8.json` and `data/issue-8-comments.json`: issue details.
 - `data/pr-7.json` and `data/pr-9.json`: related pull request context.
 - `data/recent-runs.json`: recent workflow runs around the failure.
+- `data/recent-runs-after-pr-9.json`: workflow runs after PR 9 landed.
 - `data/releases-before-fix.txt`: release list before this fix.
 - `data/electron-release-25625660967.json`: failed workflow metadata.
 - `ci-logs/electron-release-25625660967.log`: failed workflow log.
+- `data/electron-release-25628289463.json`: successful `v0.9.4` workflow
+  metadata.
+- `ci-logs/electron-release-25628289463.log`: successful `v0.9.4` workflow log.
+- `data/release-v0.9.4.json`: release asset metadata after PR 9.
+- `data/direct-latest-link-checks-v0.9.4.txt`: direct download URL status
+  checks showing the remaining Linux stable-link mismatch in `v0.9.4`.
 - `data/*-workflow-script-files.txt`: CI/CD template workflow and script
   inventories for JavaScript, Rust, Python, and C# templates.
 - `data/link-foundation-code-search.txt`: related code search results.
@@ -47,6 +62,12 @@ GitHub Release stayed at `v0.9.2` from `2026-05-09T20:22:59Z`.
 - `2026-05-10T09:53:54Z`: Windows build failed on the same electron-builder
   configuration error.
 - `2026-05-10T09:53:57Z`: publish job was skipped because matrix builds failed.
+- `2026-05-10T11:59:43Z`: PR 9 merged the first issue 8 fix.
+- `2026-05-10T12:06:02Z`: `Electron release` run `25628289463` started for
+  `v0.9.4`.
+- `2026-05-10T12:11:50Z`: `v0.9.4` was published successfully.
+- `2026-05-10T12:12Z`: direct latest-link checks showed `404` for the
+  documented `linux-x64` AppImage and Debian package URLs.
 
 ## Root Causes
 
@@ -82,19 +103,36 @@ is not configured, but still publish the signed-policy-safe non-macOS artifacts.
 source, but no real browser loaded the built site before deploy or the
 published Pages URL after deploy.
 
+### Stable Linux download links still missed published assets
+
+PR 9 used `${arch}` in the AppImage and Debian `artifactName` templates. The
+successful `v0.9.4` release log shows Electron Builder generated
+`vk-bot-desktop-linux-x86_64.AppImage` and
+`vk-bot-desktop-linux-amd64.deb` even though the documented direct links use
+`vk-bot-desktop-linux-x64.AppImage` and `vk-bot-desktop-linux-x64.deb`
+(`ci-logs/electron-release-25628289463.log:514`,
+`ci-logs/electron-release-25628289463.log:519`,
+`ci-logs/electron-release-25628289463.log:1559`,
+`ci-logs/electron-release-25628289463.log:1561`). The captured direct URL
+checks show those two documented URLs returned `404` for `v0.9.4`.
+
 ## Fix Plan
 
 1. Move Linux tar.gz artifact naming to `build.linux.artifactName` and remove
    unsupported `build.tar`.
 2. Add a regression test that fails if `build.tar` reappears.
-3. Change the macOS signing check to produce a warning and skip macOS build,
+3. Use literal `linux-x64` AppImage, Debian, and tar.gz artifact names so
+   actual release uploads match the README and Pages direct links.
+4. Validate stable Linux and Windows asset names in the release publish job
+   before `gh release upload` can publish a partial or drifted release.
+5. Change the macOS signing check to produce a warning and skip macOS build,
    smoke, and checksum steps when secrets are absent.
-4. Keep provenance uploaded from the macOS matrix entry so logs and release
+6. Keep provenance uploaded from the macOS matrix entry so logs and release
    metadata explain that macOS artifacts were skipped.
-5. Add a `browser-commander` Pages e2e script that can test either local
+7. Add a `browser-commander` Pages e2e script that can test either local
    `site/dist` or a deployed URL.
-6. Run the Pages e2e script in `pages.yml` before deploy and after deploy.
-7. Add a changeset so the next merge creates a new release attempt.
+8. Run the Pages e2e script in `pages.yml` before deploy and after deploy.
+9. Add a changeset so the next merge creates a new release attempt.
 
 ## Template Comparison
 
