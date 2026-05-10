@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.9.9
+
+### Patch Changes
+
+- edb6d0c: Fix Linux desktop release publishing by using system FPM for native arm64
+  Debian builds and normalizing Linux AppImage/deb filenames before release
+  validation.
+
 ## 0.9.8
 
 ### Patch Changes
