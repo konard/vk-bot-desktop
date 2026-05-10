@@ -176,6 +176,13 @@ h1 {
   font-size: 1.25rem;
 }
 
+.primary-download em {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-style: normal;
+  font-weight: 700;
+}
+
 .primary-download.empty {
   color: var(--text);
   background: var(--surface-strong);
@@ -254,6 +261,11 @@ h1 {
   border-color: var(--accent);
 }
 
+.download-row.unavailable {
+  color: var(--muted);
+  background: var(--surface-strong);
+}
+
 .download-row span {
   font-weight: 800;
 }
@@ -263,6 +275,12 @@ h1 {
   color: var(--muted);
   font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
   font-size: 0.78rem;
+}
+
+.download-row small {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
 }
 
 .verify-note {

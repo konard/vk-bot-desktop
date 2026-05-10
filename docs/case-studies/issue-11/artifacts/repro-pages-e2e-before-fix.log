@@ -1,0 +1,8 @@
+
+> vk-bot-desktop@0.9.5 test:pages:e2e
+> node scripts/test-pages-e2e.mjs --site-dir site/dist
+
+Error: Page links to release assets that are absent from the latest release: vk-bot-desktop-macos-arm64.dmg, vk-bot-desktop-macos-x64.dmg
+    at validatePage (file:///tmp/gh-issue-solver-1778417515622/scripts/test-pages-e2e.mjs:225:11)
+    at async validateWithRetry (file:///tmp/gh-issue-solver-1778417515622/scripts/test-pages-e2e.mjs:242:7)
+    at async main (file:///tmp/gh-issue-solver-1778417515622/scripts/test-pages-e2e.mjs:297:5)

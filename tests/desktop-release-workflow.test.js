@@ -79,6 +79,9 @@ describe('desktop release workflow', () => {
     expect(electronWorkflow).toContain('release/provenance-*.txt');
     expect(electronWorkflow).toContain('dist/BUILD-PROVENANCE.txt');
     expect(electronWorkflow).toContain('gh release upload "$TAG" dist/*');
+    expect(electronWorkflow).toContain('Verify published release asset links');
+    expect(electronWorkflow).toContain('gh release view "$TAG" --json assets');
+    expect(electronWorkflow).toContain('--write-out');
   });
 
   it('uses stable artifact names for latest download links', () => {

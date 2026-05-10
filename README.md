@@ -29,12 +29,12 @@ SHA256 checksum:
 sha256sum -c SHA256SUMS.txt
 ```
 
-Direct latest-release downloads:
+Direct latest-release downloads for currently published artifact families:
 
 | Platform            | Artifact       | Download                                                                                                                                               |
 | ------------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| macOS Apple silicon | DMG installer  | [vk-bot-desktop-macos-arm64.dmg](https://github.com/konard/vk-bot-desktop/releases/latest/download/vk-bot-desktop-macos-arm64.dmg)                     |
-| macOS Intel         | DMG installer  | [vk-bot-desktop-macos-x64.dmg](https://github.com/konard/vk-bot-desktop/releases/latest/download/vk-bot-desktop-macos-x64.dmg)                         |
+| macOS Apple silicon | DMG installer  | [Latest release](https://github.com/konard/vk-bot-desktop/releases/latest) when signed macOS assets are attached                                       |
+| macOS Intel         | DMG installer  | [Latest release](https://github.com/konard/vk-bot-desktop/releases/latest) when signed macOS assets are attached                                       |
 | Windows x64         | NSIS installer | [vk-bot-desktop-windows-installer-x64.exe](https://github.com/konard/vk-bot-desktop/releases/latest/download/vk-bot-desktop-windows-installer-x64.exe) |
 | Windows x64         | Portable app   | [vk-bot-desktop-windows-portable-x64.exe](https://github.com/konard/vk-bot-desktop/releases/latest/download/vk-bot-desktop-windows-portable-x64.exe)   |
 | Linux x64           | AppImage       | [vk-bot-desktop-linux-x64.AppImage](https://github.com/konard/vk-bot-desktop/releases/latest/download/vk-bot-desktop-linux-x64.AppImage)               |
@@ -43,7 +43,9 @@ Direct latest-release downloads:
 | Checksums           | SHA256SUMS.txt | [SHA256SUMS.txt](https://github.com/konard/vk-bot-desktop/releases/latest/download/SHA256SUMS.txt)                                                     |
 
 The download page is published from this repository with GitHub Pages after
-changes to `site/` are merged to `main`.
+changes to `site/` are merged to `main`. It reads GitHub's latest Release API
+and only renders direct download buttons for assets that are attached to that
+release.
 
 ## Develop
 

@@ -1,10 +1,13 @@
 import { useEffect, useMemo, useState } from 'react';
-
-const RELEASE_API =
-  'https://api.github.com/repos/konard/vk-bot-desktop/releases/latest';
-const LATEST_DOWNLOAD =
-  'https://github.com/konard/vk-bot-desktop/releases/latest/download';
-const RELEASES_URL = 'https://github.com/konard/vk-bot-desktop/releases/latest';
+import {
+  RELEASE_API,
+  RELEASES_URL,
+  assetsByName,
+  groupedOptions,
+  primaryOptionFor,
+  resolveChecksumHref,
+  resolveDownloadHref,
+} from './downloads.js';
 
 const copy = {
   en: {
@@ -23,7 +26,9 @@ const copy = {
     allReleases: 'All releases',
     statusReady: 'Release assets ready',
     statusLoading: 'Checking latest release',
-    statusFallback: 'Using direct latest links',
+    statusFallback: 'Open latest release to download',
+    downloadChecking: 'Checking release assets',
+    downloadUnavailable: 'Not available in latest release',
     macArm: 'macOS Apple silicon',
     macIntel: 'macOS Intel',
     winInstaller: 'Windows installer',
@@ -50,7 +55,9 @@ const copy = {
     allReleases: 'Все релизы',
     statusReady: 'Файлы релиза готовы',
     statusLoading: 'Проверяем последний релиз',
-    statusFallback: 'Используем прямые latest-ссылки',
+    statusFallback: 'Откройте последний релиз для загрузки',
+    downloadChecking: 'Проверяем файлы релиза',
+    downloadUnavailable: 'Нет в последнем релизе',
     macArm: 'macOS Apple silicon',
     macIntel: 'macOS Intel',
     winInstaller: 'Windows installer',
@@ -62,58 +69,6 @@ const copy = {
     verify: 'Проверяйте загрузки через SHA256SUMS.txt из того же релиза.',
   },
 };
-
-const downloadOptions = [
-  {
-    id: 'macos-arm64',
-    os: 'macos',
-    labelKey: 'macArm',
-    assetName: 'vk-bot-desktop-macos-arm64.dmg',
-    href: 'https://github.com/konard/vk-bot-desktop/releases/latest/download/vk-bot-desktop-macos-arm64.dmg',
-  },
-  {
-    id: 'macos-x64',
-    os: 'macos',
-    labelKey: 'macIntel',
-    assetName: 'vk-bot-desktop-macos-x64.dmg',
-    href: 'https://github.com/konard/vk-bot-desktop/releases/latest/download/vk-bot-desktop-macos-x64.dmg',
-  },
-  {
-    id: 'windows-x64',
-    os: 'windows',
-    labelKey: 'winInstaller',
-    assetName: 'vk-bot-desktop-windows-installer-x64.exe',
-    href: 'https://github.com/konard/vk-bot-desktop/releases/latest/download/vk-bot-desktop-windows-installer-x64.exe',
-  },
-  {
-    id: 'windows-portable-x64',
-    os: 'windows',
-    labelKey: 'winPortable',
-    assetName: 'vk-bot-desktop-windows-portable-x64.exe',
-    href: 'https://github.com/konard/vk-bot-desktop/releases/latest/download/vk-bot-desktop-windows-portable-x64.exe',
-  },
-  {
-    id: 'linux-appimage-x64',
-    os: 'linux',
-    labelKey: 'linuxAppImage',
-    assetName: 'vk-bot-desktop-linux-x64.AppImage',
-    href: 'https://github.com/konard/vk-bot-desktop/releases/latest/download/vk-bot-desktop-linux-x64.AppImage',
-  },
-  {
-    id: 'linux-deb-x64',
-    os: 'linux',
-    labelKey: 'linuxDeb',
-    assetName: 'vk-bot-desktop-linux-x64.deb',
-    href: 'https://github.com/konard/vk-bot-desktop/releases/latest/download/vk-bot-desktop-linux-x64.deb',
-  },
-  {
-    id: 'linux-tar-x64',
-    os: 'linux',
-    labelKey: 'linuxTar',
-    assetName: 'vk-bot-desktop-linux-x64.tar.gz',
-    href: 'https://github.com/konard/vk-bot-desktop/releases/latest/download/vk-bot-desktop-linux-x64.tar.gz',
-  },
-];
 
 function text(locale, key) {
   return copy[locale]?.[key] || copy.en[key];
@@ -174,39 +129,6 @@ function detectOperatingSystem() {
   return 'unknown';
 }
 
-function primaryOptionFor(os) {
-  if (os === 'macos') {
-    return downloadOptions.find((option) => option.id === 'macos-arm64');
-  }
-
-  if (os === 'windows') {
-    return downloadOptions.find((option) => option.id === 'windows-x64');
-  }
-
-  if (os === 'linux') {
-    return downloadOptions.find((option) => option.id === 'linux-appimage-x64');
-  }
-
-  return undefined;
-}
-
-function assetsByName(release) {
-  return Object.fromEntries(
-    (release?.assets || []).map((asset) => [asset.name, asset])
-  );
-}
-
-function resolveDownload(option, releaseAssets) {
-  return releaseAssets[option.assetName]?.browser_download_url || option.href;
-}
-
-function groupedOptions() {
-  return ['macos', 'windows', 'linux'].map((os) => ({
-    os,
-    options: downloadOptions.filter((option) => option.os === os),
-  }));
-}
-
 export default function App() {
   const [locale, setLocale] = useState(() => detectLocale());
   const [theme, setTheme] = useState(() => detectTheme());
@@ -262,6 +184,7 @@ export default function App() {
 
   const releaseAssets = useMemo(() => assetsByName(release), [release]);
   const primaryOption = primaryOptionFor(selectedOs);
+  const primaryHref = resolveDownloadHref(primaryOption, releaseAssets);
   const statusKey =
     releaseStatus === 'ready'
       ? 'statusReady'
@@ -293,14 +216,24 @@ export default function App() {
             {release?.tag_name ? <strong>{release.tag_name}</strong> : null}
           </div>
           <div className="download-panel">
-            {primaryOption ? (
-              <a
-                className="primary-download"
-                href={resolveDownload(primaryOption, releaseAssets)}
-              >
+            {primaryOption && primaryHref ? (
+              <a className="primary-download" href={primaryHref}>
                 <span>{text(locale, 'primaryAction')}</span>
                 <strong>{text(locale, primaryOption.labelKey)}</strong>
               </a>
+            ) : primaryOption ? (
+              <div className="primary-download empty" aria-disabled="true">
+                <span>{text(locale, 'primaryAction')}</span>
+                <strong>{text(locale, primaryOption.labelKey)}</strong>
+                <em>
+                  {text(
+                    locale,
+                    releaseStatus === 'loading'
+                      ? 'downloadChecking'
+                      : 'downloadUnavailable'
+                  )}
+                </em>
+              </div>
             ) : (
               <div className="primary-download empty">
                 <span>{text(locale, 'primaryUnknown')}</span>
@@ -320,7 +253,7 @@ export default function App() {
             </div>
           </div>
           <nav className="support-links" aria-label="Release links">
-            <a href={`${LATEST_DOWNLOAD}/SHA256SUMS.txt`}>
+            <a href={resolveChecksumHref(releaseAssets)}>
               {text(locale, 'checksum')}
             </a>
             <a href={RELEASES_URL}>{text(locale, 'allReleases')}</a>
@@ -340,20 +273,37 @@ export default function App() {
           {groupedOptions().map((group) => (
             <div className="download-group" key={group.os}>
               <h3>{text(locale, group.os)}</h3>
-              {group.options.map((option) => (
-                <a
-                  key={option.id}
-                  href={resolveDownload(option, releaseAssets)}
-                  className={
-                    option.os === detectedOs
-                      ? 'download-row detected'
-                      : 'download-row'
-                  }
-                >
-                  <span>{text(locale, option.labelKey)}</span>
-                  <code>{option.assetName}</code>
-                </a>
-              ))}
+              {group.options.map((option) => {
+                const href = resolveDownloadHref(option, releaseAssets);
+                const className =
+                  option.os === detectedOs
+                    ? 'download-row detected'
+                    : 'download-row';
+
+                return href ? (
+                  <a key={option.id} href={href} className={className}>
+                    <span>{text(locale, option.labelKey)}</span>
+                    <code>{option.assetName}</code>
+                  </a>
+                ) : (
+                  <div
+                    key={option.id}
+                    className={`${className} unavailable`}
+                    aria-disabled="true"
+                  >
+                    <span>{text(locale, option.labelKey)}</span>
+                    <code>{option.assetName}</code>
+                    <small>
+                      {text(
+                        locale,
+                        releaseStatus === 'loading'
+                          ? 'downloadChecking'
+                          : 'downloadUnavailable'
+                      )}
+                    </small>
+                  </div>
+                );
+              })}
             </div>
           ))}
         </div>

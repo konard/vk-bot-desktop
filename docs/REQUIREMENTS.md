@@ -83,12 +83,13 @@ local bot execution and remote execution over SSH.
 
 1. For now, skip npm publishing.
 2. For now, the only distribution channel is GitHub Releases.
-3. GitHub Releases must contain downloadable desktop binaries for Linux,
-   Windows, and macOS.
+3. GitHub Releases must contain downloadable desktop binaries for every
+   platform whose artifacts were successfully built and passed target-platform
+   smoke tests.
 4. Linux release artifacts must include the configured Electron Builder targets:
    AppImage, deb, and tar.gz.
-5. macOS release artifacts must include the configured Electron Builder targets:
-   dmg and zip.
+5. macOS release artifacts, when published, must include the configured Electron
+   Builder targets: dmg and zip.
 6. Windows release artifacts must include the configured Electron Builder
    targets: nsis and portable executables.
 7. Release artifacts must include SHA256 checksums.
@@ -100,17 +101,19 @@ local bot execution and remote execution over SSH.
     run should retry the GitHub Release without requiring another changeset.
 12. Manual release mode should use the same desktop artifact publication path as
     automatic releases.
-13. Release artifact names should remain stable so
-    `/releases/latest/download/...` links work from documentation and the
-    download page.
+13. Release artifact names should remain stable. Static documentation may only
+    use direct `/releases/latest/download/...` links for assets that are
+    guaranteed by release validation, and the download page must only render
+    direct asset links returned by the latest Release API.
 14. macOS release artifacts must be signed, notarized, and assessed before
     upload; unsigned downloaded DMGs must not be published as successful macOS
     releases.
 15. Release jobs should smoke-test installable artifacts on their target
     platform after building and before uploading.
 16. A GitHub Pages React download page should detect language, theme, and
-    operating system, then fall back to a full OS chooser when detection or
-    release API access is unavailable.
+    operating system, then fall back to a full OS chooser when detection is
+    unavailable. If Release API data is unavailable or a platform asset is not
+    attached, the page must not synthesize a direct asset URL.
 
 ## Testing And Documentation
 

@@ -1,0 +1,6 @@
+.github/workflows
+.github/workflows/release.yml
+changelog.d/20260509_204000_issue_6_release_metadata.md
+scripts/create_github_release.py
+scripts/format_release_notes.py
+tests/test_create_github_release.py
