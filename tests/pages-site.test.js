@@ -27,6 +27,10 @@ describe('GitHub Pages download site', () => {
     expect(pagesWorkflow).toContain('actions/configure-pages@v5');
     expect(pagesWorkflow).toContain('actions/upload-pages-artifact@v4');
     expect(pagesWorkflow).toContain('actions/deploy-pages@v4');
+    expect(pagesWorkflow).toContain('enablement: true');
+    expect(pagesWorkflow).toContain(
+      "if: github.event_name == 'push' && github.ref == 'refs/heads/main'"
+    );
     expect(pagesWorkflow).toContain('path: site/dist');
     expect(pagesWorkflow).toContain('pages: write');
     expect(pagesWorkflow).toContain('id-token: write');
