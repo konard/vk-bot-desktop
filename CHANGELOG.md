@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.9.10
+
+### Patch Changes
+
+- c4bddbd: Fail parent release jobs when the dispatched Electron release workflow fails and keep Windows installer smoke tests from auto-launching the app after silent install.
+
 ## 0.9.9
 
 ### Patch Changes
