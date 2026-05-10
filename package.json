@@ -1,6 +1,6 @@
 {
   "name": "vk-bot-desktop",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "description": "Cross-platform desktop wrapper around konard/vk-bot, written with React and Electron.",
   "type": "module",
   "main": "electron/main.cjs",

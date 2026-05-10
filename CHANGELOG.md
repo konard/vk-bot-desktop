@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.9.5
+
+### Patch Changes
+
+- 5e950f7: Fix Linux desktop release artifact names so the published AppImage and Debian
+  package match the documented stable latest-download links.
+
 ## 0.9.4
 
 ### Patch Changes
