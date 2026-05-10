@@ -22,6 +22,8 @@ const REQUIRED_RELEASE_ASSETS = [
   'SHA256SUMS.txt',
 ];
 const LOCAL_RELEASE_ASSETS = [
+  'vk-bot-desktop-macos-arm64.dmg',
+  'vk-bot-desktop-macos-x64.dmg',
   'vk-bot-desktop-windows-installer-x64.exe',
   'vk-bot-desktop-windows-portable-x64.exe',
   'vk-bot-desktop-linux-x64.AppImage',

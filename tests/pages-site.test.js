@@ -15,6 +15,15 @@ const siteDownloads = existsSync('site/downloads.js')
 const siteIndex = existsSync('site/index.html')
   ? readFileSync('site/index.html', 'utf8')
   : '';
+const pagesE2e = existsSync('scripts/test-pages-e2e.mjs')
+  ? readFileSync('scripts/test-pages-e2e.mjs', 'utf8')
+  : '';
+
+function e2eLocalReleaseAssets() {
+  return (
+    pagesE2e.match(/const LOCAL_RELEASE_ASSETS = \[([\s\S]*?)\];/)?.[1] ?? ''
+  );
+}
 
 describe('GitHub Pages download site', () => {
   it('has a reproducible React build script', () => {
@@ -83,5 +92,12 @@ describe('GitHub Pages download site', () => {
     expect(pagesWorkflow).toContain(
       'npm run test:pages:e2e -- --url "${{ steps.deployment.outputs.page_url }}"'
     );
+  });
+
+  it('requires macOS assets in the built-site release fixture', () => {
+    const localReleaseAssets = e2eLocalReleaseAssets();
+
+    expect(localReleaseAssets).toContain('vk-bot-desktop-macos-arm64.dmg');
+    expect(localReleaseAssets).toContain('vk-bot-desktop-macos-x64.dmg');
   });
 });
