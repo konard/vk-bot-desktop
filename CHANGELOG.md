@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.9.3
+
+### Patch Changes
+
+- f646a36: Validate desktop release installers on target platforms and add the GitHub Pages download site.
+
 ## 0.9.2
 
 ### Patch Changes
