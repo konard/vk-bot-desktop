@@ -69,10 +69,12 @@ jobs:
 
           if [ "${#missing[@]}" -gt 0 ]; then
             echo "has_secrets=false" >> "$GITHUB_OUTPUT"
+            echo "mode=adhoc" >> "$GITHUB_OUTPUT"
             echo "::warning::Missing required macOS signing/notarization secrets: ${missing[*]}"
-            echo "Skipping macOS artifacts because unsigned DMGs are not published."
+            echo "Building ad-hoc signed macOS artifacts without notarization for direct testing."
           else
             echo "has_secrets=true" >> "$GITHUB_OUTPUT"
+            echo "mode=signed" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Build Electron artifacts (Linux)
@@ -81,7 +83,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx electron-builder --linux --publish never
 
-      - name: Build Electron artifacts (macOS)
+      - name: Build Electron artifacts (macOS signed)
         if: matrix.os == 'macos-latest' && steps.mac_secrets.outputs.has_secrets == 'true'
         env:
           CSC_LINK: ${{ secrets.MAC_CSC_LINK }}
@@ -92,6 +94,15 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEBUG: electron-builder,electron-notarize*
         run: npx electron-builder --mac --x64 --arm64 --publish never
+
+      - name: Build Electron artifacts (macOS ad-hoc)
+        if: matrix.os == 'macos-latest' && steps.mac_secrets.outputs.has_secrets != 'true'
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+          MACOS_ADHOC_SIGN: '1'
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEBUG: electron-builder,electron-osx-sign*
+        run: npx electron-builder --mac --x64 --arm64 --publish never -c.mac.notarize=false -c.mac.sign=./scripts/adhoc-sign-mac.cjs
 
       - name: Build Electron artifacts (Windows)
         if: matrix.os == 'windows-latest'
@@ -153,20 +164,30 @@ jobs:
           done
 
       - name: Smoke test macOS release artifacts
-        if: matrix.os == 'macos-latest' && steps.mac_secrets.outputs.has_secrets == 'true'
+        if: matrix.os == 'macos-latest'
         shell: bash
+        env:
+          MACOS_BUILD_MODE: ${{ steps.mac_secrets.outputs.mode }}
         run: |
           set -euo pipefail
           shopt -s nullglob
 
-          dmgs=(release/*.dmg)
-          zips=(release/*.zip)
+          dmgs=(
+            release/vk-bot-desktop-macos-arm64.dmg
+            release/vk-bot-desktop-macos-x64.dmg
+          )
+          zips=(
+            release/vk-bot-desktop-macos-arm64.zip
+            release/vk-bot-desktop-macos-x64.zip
+          )
 
-          if [ "${#dmgs[@]}" -eq 0 ] || [ "${#zips[@]}" -eq 0 ]; then
-            echo "::error::Expected .dmg and .zip macOS artifacts."
-            ls -la release || true
-            exit 1
-          fi
+          for artifact in "${dmgs[@]}" "${zips[@]}"; do
+            if [ ! -f "$artifact" ]; then
+              echo "::error file=$artifact::Expected stable macOS release artifact was not created."
+              ls -la release || true
+              exit 1
+            fi
+          done
 
           for dmg in "${dmgs[@]}"; do
             echo "Mounting DMG: $dmg"
@@ -186,14 +207,45 @@ jobs:
             ditto "$mounted_app" "$installed_app"
             hdiutil detach "$mount_dir"
 
+            app_info="$installed_app/Contents/Info.plist"
+            executable="$(/usr/libexec/PlistBuddy -c 'Print :CFBundleExecutable' "$app_info")"
+            bundle_id="$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$app_info")"
+
+            if [ "$bundle_id" != "team.deep.vk-bot-desktop" ]; then
+              echo "::error file=$dmg::Unexpected macOS app bundle identifier: $bundle_id"
+              exit 1
+            fi
+
+            if [ ! -x "$installed_app/Contents/MacOS/$executable" ]; then
+              echo "::error file=$dmg::Mounted app executable is missing or not executable."
+              find "$installed_app/Contents" -maxdepth 3 -print
+              exit 1
+            fi
+
             codesign --verify --deep --strict --verbose=2 "$installed_app"
-            spctl --assess --type execute --verbose=4 "$installed_app"
-            xcrun stapler validate "$installed_app"
+
+            if [ "$MACOS_BUILD_MODE" = "signed" ]; then
+              spctl --assess --type execute --verbose=4 "$installed_app"
+              xcrun stapler validate "$installed_app"
+            else
+              codesign --display --verbose=2 "$installed_app" 2>&1 | tee "$RUNNER_TEMP/macos-codesign.txt"
+              if ! grep -Fq 'Signature=adhoc' "$RUNNER_TEMP/macos-codesign.txt"; then
+                echo "::error file=$dmg::Expected ad-hoc macOS signature for no-Apple-account build."
+                exit 1
+              fi
+            fi
           done
 
           for zip in "${zips[@]}"; do
             echo "Testing ZIP archive: $zip"
             unzip -t "$zip"
+            zip_dir="$(mktemp -d)"
+            ditto -x -k "$zip" "$zip_dir"
+            if ! find "$zip_dir" -maxdepth 2 -type d -name 'VK Bot Desktop.app' -print -quit | grep -q .; then
+              echo "::error file=$zip::ZIP archive does not contain VK Bot Desktop.app."
+              find "$zip_dir" -maxdepth 3 -print
+              exit 1
+            fi
           done
 
       - name: Smoke test Windows release artifacts
@@ -234,7 +286,7 @@ jobs:
           }
 
       - name: Compute SHA256 sums (Linux/macOS)
-        if: matrix.os == 'ubuntu-latest' || (matrix.os == 'macos-latest' && steps.mac_secrets.outputs.has_secrets == 'true')
+        if: matrix.os == 'ubuntu-latest' || matrix.os == 'macos-latest'
         run: |
           cd release
           checksum_file="SHA256SUMS-${{ matrix.os }}.txt"
@@ -275,6 +327,7 @@ jobs:
         shell: bash
         env:
           MACOS_SIGNING_SECRETS_AVAILABLE: ${{ steps.mac_secrets.outputs.has_secrets }}
+          MACOS_BUILD_MODE: ${{ steps.mac_secrets.outputs.mode }}
         run: |
           mkdir -p release
           {
@@ -285,9 +338,15 @@ jobs:
             echo "tag=${{ github.event.inputs.tag || github.ref_name }}"
             echo "target_sha=${{ github.event.inputs.target_sha || github.sha }}"
             echo "builder_os=${{ matrix.os }}"
-            if [ "${{ matrix.os }}" = "macos-latest" ] && [ "$MACOS_SIGNING_SECRETS_AVAILABLE" != "true" ]; then
-              echo "macos_artifacts=skipped"
-              echo "macos_skip_reason=missing signing/notarization secrets"
+            if [ "${{ matrix.os }}" = "macos-latest" ]; then
+              echo "macos_artifacts=$MACOS_BUILD_MODE"
+              if [ "$MACOS_SIGNING_SECRETS_AVAILABLE" = "true" ]; then
+                echo "macos_notarization=enabled"
+              else
+                echo "macos_notarization=skipped"
+                echo "macos_signature=ad-hoc"
+                echo "macos_skip_reason=missing signing/notarization secrets"
+              fi
             fi
           } > "release/provenance-${{ matrix.os }}.txt"
 
@@ -340,6 +399,10 @@ jobs:
           set -euo pipefail
 
           required_assets=(
+            vk-bot-desktop-macos-arm64.dmg
+            vk-bot-desktop-macos-x64.dmg
+            vk-bot-desktop-macos-arm64.zip
+            vk-bot-desktop-macos-x64.zip
             vk-bot-desktop-linux-x64.AppImage
             vk-bot-desktop-linux-x64.deb
             vk-bot-desktop-linux-x64.tar.gz
@@ -408,17 +471,20 @@ jobs:
             url="https://github.com/${GITHUB_REPOSITORY}/releases/download/${TAG}/${asset}"
             status="$(
               curl \
-                --head \
+                --fail \
                 --location \
                 --silent \
                 --show-error \
-                --retry 3 \
+                --retry 10 \
+                --retry-all-errors \
+                --retry-delay 5 \
+                --range 0-0 \
                 --output /dev/null \
                 --write-out '%{http_code}' \
-                "$url"
+                "$url" || true
             )"
 
-            if [ "$status" != "200" ]; then
+            if [ "$status" != "200" ] && [ "$status" != "206" ]; then
               echo "::error file=dist/$asset::Published release asset URL returned HTTP $status."
               echo "$url"
               exit 1

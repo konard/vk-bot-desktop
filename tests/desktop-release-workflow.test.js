@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs';
 const packageJson = JSON.parse(readFileSync('package.json', 'utf8'));
 const releaseWorkflow = readWorkflow('.github/workflows/release.yml');
 const electronWorkflow = readWorkflow('.github/workflows/electron-release.yml');
+const adhocSignScript = readWorkflow('scripts/adhoc-sign-mac.cjs');
 
 function readWorkflow(filePath) {
   return readFileSync(filePath, 'utf8').replaceAll('\r\n', '\n');
@@ -82,6 +83,9 @@ describe('desktop release workflow', () => {
     expect(electronWorkflow).toContain('Verify published release asset links');
     expect(electronWorkflow).toContain('gh release view "$TAG" --json assets');
     expect(electronWorkflow).toContain('--write-out');
+    expect(electronWorkflow).toContain('--range 0-0');
+    expect(electronWorkflow).toContain('--retry-all-errors');
+    expect(electronWorkflow).not.toContain('--head');
   });
 
   it('uses stable artifact names for latest download links', () => {
@@ -102,36 +106,42 @@ describe('desktop release workflow', () => {
       'vk-bot-desktop-windows-portable-${arch}.${ext}'
     );
     expect(electronWorkflow).toContain('Validate stable release asset names');
+    expect(electronWorkflow).toContain('vk-bot-desktop-macos-arm64.dmg');
+    expect(electronWorkflow).toContain('vk-bot-desktop-macos-x64.dmg');
+    expect(electronWorkflow).toContain('vk-bot-desktop-macos-arm64.zip');
+    expect(electronWorkflow).toContain('vk-bot-desktop-macos-x64.zip');
     expect(electronWorkflow).toContain('vk-bot-desktop-linux-x64.AppImage');
     expect(electronWorkflow).toContain('vk-bot-desktop-linux-x64.deb');
     expect(electronWorkflow).toContain('vk-bot-desktop-linux-x64.tar.gz');
   });
 
-  it('signs, notarizes, and assesses macOS artifacts instead of publishing unsigned DMGs', () => {
-    const macBuildStep = workflowStep(
+  it('keeps signed and notarized macOS publishing when Apple secrets are configured', () => {
+    const macSignedBuildStep = workflowStep(
       electronWorkflow,
-      'Build Electron artifacts \\(macOS\\)'
+      'Build Electron artifacts \\(macOS signed\\)'
     );
     const macSmokeStep = workflowStep(
       electronWorkflow,
       'Smoke test macOS release artifacts'
     );
 
-    expect(macBuildStep).not.toContain('CSC_IDENTITY_AUTO_DISCOVERY:');
-    expect(macBuildStep).toContain('CSC_LINK: ${{ secrets.MAC_CSC_LINK }}');
-    expect(macBuildStep).toContain(
+    expect(macSignedBuildStep).not.toContain('CSC_IDENTITY_AUTO_DISCOVERY:');
+    expect(macSignedBuildStep).toContain(
+      'CSC_LINK: ${{ secrets.MAC_CSC_LINK }}'
+    );
+    expect(macSignedBuildStep).toContain(
       'CSC_KEY_PASSWORD: ${{ secrets.MAC_CSC_KEY_PASSWORD }}'
     );
-    expect(macBuildStep).toContain(
+    expect(macSignedBuildStep).toContain(
       'APPLE_API_KEY: ${{ secrets.APPLE_API_KEY }}'
     );
-    expect(macBuildStep).toContain(
+    expect(macSignedBuildStep).toContain(
       'APPLE_API_KEY_ID: ${{ secrets.APPLE_API_KEY_ID }}'
     );
-    expect(macBuildStep).toContain(
+    expect(macSignedBuildStep).toContain(
       'APPLE_API_ISSUER: ${{ secrets.APPLE_API_ISSUER }}'
     );
-    expect(macBuildStep).toContain(
+    expect(macSignedBuildStep).toContain(
       'DEBUG: electron-builder,electron-notarize*'
     );
     expect(packageJson.build?.mac?.hardenedRuntime).toBe(true);
@@ -145,14 +155,18 @@ describe('desktop release workflow', () => {
     expect(macSmokeStep).toContain('xcrun stapler validate');
   });
 
-  it('skips macOS artifacts without signing secrets instead of blocking Linux and Windows releases', () => {
+  it('builds ad-hoc signed macOS artifacts without Apple secrets', () => {
     const macSecretsStep = workflowStep(
       electronWorkflow,
       'Check macOS signing secrets'
     );
-    const macBuildStep = workflowStep(
+    const macSignedBuildStep = workflowStep(
       electronWorkflow,
-      'Build Electron artifacts \\(macOS\\)'
+      'Build Electron artifacts \\(macOS signed\\)'
+    );
+    const macAdhocBuildStep = workflowStep(
+      electronWorkflow,
+      'Build Electron artifacts \\(macOS ad-hoc\\)'
     );
     const macSmokeStep = workflowStep(
       electronWorkflow,
@@ -161,22 +175,45 @@ describe('desktop release workflow', () => {
 
     expect(macSecretsStep).toContain('id: mac_secrets');
     expect(macSecretsStep).toContain('has_secrets=false');
+    expect(macSecretsStep).toContain('mode=adhoc');
     expect(macSecretsStep).toContain(
       '::warning::Missing required macOS signing/notarization secrets'
+    );
+    expect(macSecretsStep).toContain(
+      'Building ad-hoc signed macOS artifacts without notarization'
     );
     expect(macSecretsStep).not.toContain('exit 1');
     expect(electronWorkflow).not.toContain(
       '::error::Missing required macOS signing/notarization secrets'
     );
-    expect(macBuildStep).toContain(
+    expect(macSignedBuildStep).toContain(
       "steps.mac_secrets.outputs.has_secrets == 'true'"
     );
+    expect(macAdhocBuildStep).toContain(
+      "steps.mac_secrets.outputs.has_secrets != 'true'"
+    );
+    expect(macAdhocBuildStep).toContain("CSC_IDENTITY_AUTO_DISCOVERY: 'false'");
+    expect(macAdhocBuildStep).toContain("MACOS_ADHOC_SIGN: '1'");
+    expect(macAdhocBuildStep).toContain('-c.mac.notarize=false');
+    expect(macAdhocBuildStep).toContain(
+      '-c.mac.sign=./scripts/adhoc-sign-mac.cjs'
+    );
+    expect(adhocSignScript).toContain('@electron/osx-sign');
+    expect(adhocSignScript).toContain("identity: '-'");
+    expect(adhocSignScript).toContain('identityValidation: false');
+    expect(adhocSignScript).toContain("timestamp: 'none'");
     expect(macSmokeStep).toContain(
-      "steps.mac_secrets.outputs.has_secrets == 'true'"
+      'MACOS_BUILD_MODE: ${{ steps.mac_secrets.outputs.mode }}'
+    );
+    expect(macSmokeStep).toContain('Signature=adhoc');
+    expect(macSmokeStep).not.toContain(
+      "if: matrix.os == 'macos-latest' && steps.mac_secrets.outputs.has_secrets == 'true'"
     );
     expect(electronWorkflow).toContain('if-no-files-found: ignore');
   });
+});
 
+describe('desktop release workflow smoke tests', () => {
   it('smoke-tests platform installers after building and before uploading', () => {
     const linuxSmokeIndex = electronWorkflow.indexOf(
       '- name: Smoke test Linux release artifacts'
