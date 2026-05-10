@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.9.7
+
+### Patch Changes
+
+- 8d84a55: Build ad-hoc signed macOS release artifacts when Apple signing and notarization secrets are not configured.
+
 ## 0.9.6
 
 ### Patch Changes
