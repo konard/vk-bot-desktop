@@ -20,6 +20,7 @@
 //
 // Outputs (written to GITHUB_OUTPUT):
 //   mjs-changed, js-changed, package-changed, docs-changed,
+//   html-changed, site-changed, pages-changed, links-changed,
 //   workflow-changed, any-code-changed
 
 import { execSync } from 'child_process';
@@ -123,10 +124,30 @@ function detectChanges() {
   const docsChanged = changedFiles.some((file) => file.endsWith('.md'));
   setOutput('docs-changed', docsChanged ? 'true' : 'false');
 
+  const htmlChanged = changedFiles.some((file) => file.endsWith('.html'));
+  setOutput('html-changed', htmlChanged ? 'true' : 'false');
+
+  const siteChanged = changedFiles.some((file) => file.startsWith('site/'));
+  setOutput('site-changed', siteChanged ? 'true' : 'false');
+
   const workflowChanged = changedFiles.some((file) =>
     file.startsWith('.github/workflows/')
   );
   setOutput('workflow-changed', workflowChanged ? 'true' : 'false');
+
+  const pagesChanged = changedFiles.some(
+    (file) =>
+      file.startsWith('site/') ||
+      file === 'scripts/build-site.mjs' ||
+      file === 'scripts/test-pages-e2e.mjs' ||
+      file === 'package.json' ||
+      file === 'package-lock.json' ||
+      file === '.github/workflows/js.yml'
+  );
+  setOutput('pages-changed', pagesChanged ? 'true' : 'false');
+
+  const linksChanged = docsChanged || htmlChanged || workflowChanged;
+  setOutput('links-changed', linksChanged ? 'true' : 'false');
 
   const codeChangedFiles = changedFiles.filter(
     (file) => !isExcludedFromCodeChanges(file)

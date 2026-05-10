@@ -1,10 +1,15 @@
 import { describe, it, expect } from 'test-anywhere';
 import { readFileSync } from 'node:fs';
 
+import { expectedDesktopReleaseAssetNames } from '../scripts/check-release-needed.mjs';
+
 const packageJson = JSON.parse(readFileSync('package.json', 'utf8'));
-const releaseWorkflow = readWorkflow('.github/workflows/release.yml');
-const electronWorkflow = readWorkflow('.github/workflows/electron-release.yml');
+const releaseWorkflow = readWorkflow('.github/workflows/js.yml');
+const electronWorkflow = releaseWorkflow;
 const adhocSignScript = readWorkflow('scripts/adhoc-sign-mac.cjs');
+const validateReleaseAssetsScript = readWorkflow(
+  'scripts/validate-release-assets.mjs'
+);
 
 function readWorkflow(filePath) {
   return readFileSync(filePath, 'utf8').replaceAll('\r\n', '\n');
@@ -36,7 +41,7 @@ function workflowStep(workflow, stepName) {
   )?.[0];
 }
 
-describe('release workflow dispatch', () => {
+describe('release workflow orchestration', () => {
   it('does not publish packages to npm from release jobs', () => {
     const automaticRelease = workflowJob(releaseWorkflow, 'release');
     const instantRelease = workflowJob(releaseWorkflow, 'instant-release');
@@ -49,25 +54,27 @@ describe('release workflow dispatch', () => {
     expect(releaseJobs).not.toContain('id-token: write');
   });
 
-  it('dispatches the Electron release workflow with an exact tag and commit', () => {
+  it('keeps desktop release jobs in the same workflow with an exact tag and commit', () => {
     const automaticRelease = workflowJob(releaseWorkflow, 'release');
     const instantRelease = workflowJob(releaseWorkflow, 'instant-release');
 
     for (const job of [automaticRelease, instantRelease]) {
-      expect(job).toContain('actions: write');
-      expect(job).toContain('node scripts/dispatch-and-watch-workflow.mjs');
-      expect(job).toContain('--workflow electron-release.yml');
-      expect(job).toContain('--ref main');
       expect(job).toContain(
-        '--field "tag=${{ steps.release_version.outputs.tag }}"'
+        'release-tag: ${{ steps.release_version.outputs.tag }}'
       );
       expect(job).toContain(
-        '--field "target_sha=${{ steps.release_target.outputs.sha }}"'
+        'target-sha: ${{ steps.release_target.outputs.sha }}'
       );
-      expect(job).toContain(
-        '--match-head-sha "${{ steps.release_target.outputs.sha }}"'
-      );
+      expect(job).not.toContain('dispatch-and-watch-workflow.mjs');
     }
+
+    expect(releaseWorkflow).toContain('desktop-release-context:');
+    expect(releaseWorkflow).toContain('desktop-build:');
+    expect(releaseWorkflow).toContain('desktop-publish:');
+    expect(releaseWorkflow).toContain(
+      'ref: ${{ needs.desktop-release-context.outputs.target-sha }}'
+    );
+    expect(releaseWorkflow).not.toContain('--workflow electron-release.yml');
   });
 });
 
@@ -102,6 +109,11 @@ describe('desktop release workflow', () => {
 
   it('uses versioned artifact names for release download links', () => {
     const build = packageJson.build;
+    const validateStep = workflowStep(
+      electronWorkflow,
+      'Validate versioned release asset names'
+    );
+    const expectedAssetNames = expectedDesktopReleaseAssetNames('${VERSION}');
 
     expect(Object.hasOwn(build, 'tar')).toBe(false);
     expect(build.linux.artifactName).toBe(
@@ -128,24 +140,31 @@ describe('desktop release workflow', () => {
     expect(electronWorkflow).toContain(
       'Validate versioned release asset names'
     );
-    expect(electronWorkflow).toContain(
+    expect(validateReleaseAssetsScript).toContain(
+      'expectedDesktopReleaseAssetNames'
+    );
+    expect(expectedAssetNames).toContain(
       'vk-bot-desktop-macos-arm64-${VERSION}.dmg'
     );
-    expect(electronWorkflow).toContain(
+    expect(expectedAssetNames).toContain(
       'vk-bot-desktop-macos-x64-${VERSION}.zip'
     );
-    expect(electronWorkflow).toContain(
+    expect(expectedAssetNames).toContain(
       'vk-bot-desktop-linux-arm64-${VERSION}.AppImage'
     );
-    expect(electronWorkflow).toContain(
+    expect(expectedAssetNames).toContain(
       'vk-bot-desktop-linux-x64-${VERSION}.tar.gz'
     );
-    expect(electronWorkflow).toContain(
+    expect(expectedAssetNames).toContain(
       'vk-bot-desktop-windows-installer-arm64-${VERSION}.exe'
     );
-    expect(electronWorkflow).toContain(
+    expect(expectedAssetNames).toContain(
       'vk-bot-desktop-windows-portable-x64-${VERSION}.exe'
     );
+    expect(validateStep).toContain(
+      'node scripts/validate-release-assets.mjs --dist dist --tag "${{ needs.desktop-release-context.outputs.release-tag }}"'
+    );
+    expect(validateStep).not.toContain("require('./package.json').version");
   });
 
   it('uses system FPM for native Linux arm64 Debian builds', () => {

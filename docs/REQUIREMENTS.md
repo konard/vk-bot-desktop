@@ -7,6 +7,8 @@ This document normalizes the product and release requirements collected from:
   behavior.
 - Issue #3: temporary desktop-only release distribution.
 - Issue #6: target-platform installation validation and release download page.
+- Issue #20: single JavaScript workflow and synchronized desktop artifact
+  publication.
 
 ## Product Scope
 
@@ -102,7 +104,7 @@ local bot execution and remote execution over SSH.
     workflow run, tag, target commit, and builder OS.
 11. Release artifacts should be covered by GitHub artifact attestations when
     GitHub Actions supports attestations for the release workflow.
-12. The automated release path must run tests before dispatching release builds.
+12. The automated release path must run tests before building release artifacts.
 13. Version bumps and changelog updates should remain changeset-driven.
 14. If a version bump reaches main but artifact publication fails, a later main
     run should retry the GitHub Release without requiring another changeset.
@@ -122,12 +124,15 @@ local bot execution and remote execution over SSH.
     attached, the page must not synthesize a direct asset URL.
 20. The download page should include expandable checksum/provenance verification
     instructions for regular and advanced users.
-21. Parent release workflows must wait for dispatched desktop artifact workflows
-    and fail if the child workflow fails, so release dispatch cannot produce a
-    false-positive green CI run.
+21. Release workflow orchestration must keep versioning, desktop artifact
+    builds, and GitHub Release publication in `.github/workflows/js.yml`, so
+    one workflow result covers the full release path.
 22. Silent Windows installer smoke tests must not auto-launch the desktop app
     after install; app launch is a separate runtime behavior from installer
     artifact validation.
+23. Release asset validation must derive the expected version from the release
+    tag and target commit selected by the workflow, not from a stale checkout in
+    the publish job.
 
 ## Testing And Documentation
 

@@ -1,9 +1,7 @@
 import { describe, it, expect } from 'test-anywhere';
 import { readFileSync } from 'node:fs';
 
-const releaseWorkflow = readWorkflow('.github/workflows/release.yml');
-const linksWorkflow = readWorkflow('.github/workflows/links.yml');
-const pagesWorkflow = readWorkflow('.github/workflows/pages.yml');
+const jsWorkflow = readWorkflow('.github/workflows/js.yml');
 const packageJson = JSON.parse(readFileSync('package.json', 'utf8'));
 
 function readWorkflow(filePath) {
@@ -47,7 +45,7 @@ function getTimeoutMinutes(workflow, jobName) {
 }
 
 describe('CI timeout policy', () => {
-  it('sets timeout-minutes for every release workflow job', () => {
+  it('sets timeout-minutes for every JavaScript workflow job', () => {
     const expectedTimeouts = {
       'detect-changes': 5,
       'test-compilation': 5,
@@ -60,34 +58,20 @@ describe('CI timeout policy', () => {
       release: 90,
       'instant-release': 90,
       'changeset-pr': 10,
+      'link-checker': 10,
+      'pages-build': 10,
+      'pages-deploy': 10,
+      'desktop-release-context': 5,
+      'desktop-build': 45,
+      'desktop-publish': 10,
     };
 
-    expect(listWorkflowJobs(releaseWorkflow).sort()).toEqual(
+    expect(listWorkflowJobs(jsWorkflow).sort()).toEqual(
       Object.keys(expectedTimeouts).sort()
     );
 
     for (const [jobName, timeout] of Object.entries(expectedTimeouts)) {
-      expect(getTimeoutMinutes(releaseWorkflow, jobName)).toBe(timeout);
-    }
-  });
-
-  it('sets timeout-minutes for every link workflow job', () => {
-    expect(listWorkflowJobs(linksWorkflow)).toEqual(['link-checker']);
-    expect(getTimeoutMinutes(linksWorkflow, 'link-checker')).toBe(10);
-  });
-
-  it('sets timeout-minutes for every Pages workflow job', () => {
-    const expectedTimeouts = {
-      build: 10,
-      deploy: 10,
-    };
-
-    expect(listWorkflowJobs(pagesWorkflow).sort()).toEqual(
-      Object.keys(expectedTimeouts).sort()
-    );
-
-    for (const [jobName, timeout] of Object.entries(expectedTimeouts)) {
-      expect(getTimeoutMinutes(pagesWorkflow, jobName)).toBe(timeout);
+      expect(getTimeoutMinutes(jsWorkflow, jobName)).toBe(timeout);
     }
   });
 
@@ -111,6 +95,6 @@ describe('CI timeout policy', () => {
     expect(packageJson.scripts.test).toBe(
       'node --test --test-timeout=30000 tests/*.test.js'
     );
-    expect(releaseWorkflow).toContain('run: bun test --timeout 30000');
+    expect(jsWorkflow).toContain('run: bun test --timeout 30000');
   });
 });

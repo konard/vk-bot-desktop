@@ -2,7 +2,7 @@ import { describe, it, expect } from 'test-anywhere';
 import { existsSync, readFileSync } from 'node:fs';
 
 const packageJson = JSON.parse(readFileSync('package.json', 'utf8'));
-const pagesWorkflowPath = '.github/workflows/pages.yml';
+const pagesWorkflowPath = '.github/workflows/js.yml';
 const pagesWorkflow = existsSync(pagesWorkflowPath)
   ? readFileSync(pagesWorkflowPath, 'utf8').replaceAll('\r\n', '\n')
   : '';
@@ -30,7 +30,7 @@ describe('GitHub Pages download site', () => {
     expect(packageJson.scripts['build:site']).toBe(
       'node scripts/build-site.mjs'
     );
-    expect(pagesWorkflow).toContain('scripts/test-pages-e2e.mjs');
+    expect(pagesWorkflow).toContain('npm run test:pages:e2e');
     expect(existsSync('scripts/build-site.mjs')).toBe(true);
     expect(existsSync('site/downloads.js')).toBe(true);
     expect(siteIndex).toContain('<div id="root"></div>');

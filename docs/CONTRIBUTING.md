@@ -117,10 +117,11 @@ The release process is fully automated:
 2. **CI detects changesets** - On push to main, CI checks for pending changesets
 3. **Version bump** - Package version is updated based on changeset type
 4. **Changelog update** - `CHANGELOG.md` is updated automatically
-5. **Release dispatch** - CI dispatches the Electron release workflow with the
-   exact version tag and target commit
-6. **Desktop artifacts** - Linux, Windows, and macOS binaries are uploaded to a
-   GitHub Release with SHA256 checksums
+5. **Release context** - CI resolves the exact version tag and target commit in
+   `.github/workflows/js.yml`
+6. **Desktop artifacts** - Linux, Windows, and macOS binaries are built,
+   smoke-tested, and uploaded to a GitHub Release with SHA256 checksums from
+   the same workflow run
 
 For now, npm publishing is intentionally skipped. GitHub Releases are the only
 supported distribution channel until package publishing is reintroduced.
