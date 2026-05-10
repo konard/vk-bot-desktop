@@ -77,15 +77,16 @@ Automated release workflows ensure:
 - **No manual version management** - Versions update automatically
 - **Desktop-only distribution** - GitHub Releases are the current release
   source of truth while npm publishing is paused
-- **Validated releases only** - All checks must pass before release dispatch
+- **Validated releases only** - All checks must pass before release artifacts
+  are built and published
 - **Verifiable artifacts** - Desktop builds include SHA256 checksums and build
   provenance
 - **Install-tested artifacts** - Release jobs inspect or install the built
   package on the target runner before upload, including Gatekeeper assessment
   for macOS DMGs
-- **Watched child workflows** - Parent release jobs dispatch the Electron
-  release workflow, watch the matching child run, and fail if that child run
-  fails
+- **Single release workflow** - Versioning, desktop artifact builds, and GitHub
+  Release publication run in `.github/workflows/js.yml` with one resolved tag
+  and target commit
 - **Dual trigger modes** - Both automatic (on merge) and manual (workflow dispatch)
 
 ### 8. CI/CD Pipeline Features
@@ -136,7 +137,7 @@ Slow test matrix only runs after all fast checks pass. This dramatically reduces
 In addition to the ESLint `max-lines` rule (which only covers source files), a separate CI check enforces the 1500-line limit on:
 
 - All `.mjs` files (including scripts)
-- `.github/workflows/release.yml` (to prevent workflow bloat)
+- `.github/workflows/js.yml` (to prevent workflow bloat)
 
 This is enforced by `scripts/check-file-line-limits.sh`.
 
@@ -166,9 +167,8 @@ a test, network call, package install, or release step hangs:
   Actions' six-hour default.
 - Matrix test jobs have a 10-minute cap per runtime and operating
   system.
-- Release jobs have 90 minutes for versioning, GitHub API retries, desktop
-  workflow dispatch, and watching the downstream Electron release result without
-  allowing an unbounded release run.
+- Release jobs have 90 minutes for versioning and GitHub API retries, while
+  desktop build and publish jobs have separate caps in the same workflow.
 - The broken link checker has 10 minutes for slow external hosts and
   Web Archive fallback probes.
 
@@ -184,17 +184,20 @@ Current timeout bands:
 | `changeset-check`         | 10 min |
 | `lint`                    | 10 min |
 | `test` per runtime and OS | 10 min |
-| `links.yml` link checker  | 10 min |
-| `pages.yml` site build    | 10 min |
-| `pages.yml` site deploy   | 10 min |
+| `link-checker`            | 10 min |
+| `pages-build`             | 10 min |
+| `pages-deploy`            | 10 min |
 | `changeset-pr`            | 10 min |
+| `desktop-release-context` | 5 min  |
+| `desktop-build`           | 45 min |
+| `desktop-publish`         | 10 min |
 | `release`                 | 90 min |
 | `instant-release`         | 90 min |
 
 ### 15. Release Landing Page
 
-The GitHub Pages workflow builds the React download page from `site/` and
-deploys it with the official Pages artifact flow. The page detects language,
+The `pages-build` and `pages-deploy` jobs build the React download page from
+`site/` and deploy it with the official Pages artifact flow. The page detects language,
 theme, and operating system in the browser, then falls back to a full OS chooser
 with direct links only for assets that GitHub's latest Release API reports for
 the selected release. Desktop release assets use versioned filenames, cover x64

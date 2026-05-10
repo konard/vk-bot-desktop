@@ -1,0 +1,213 @@
+bun test v1.3.13 (bf2e2cec)
+
+tests/create-github-release.test.js:
+(pass) create-github-release release title formatting > parses language from CLI arguments and environment defaults [1.00ms]
+(pass) create-github-release release title formatting > builds a human-readable release name from a language-prefixed tag [1.00ms]
+(pass) create-github-release.mjs > uses gh api and reports successful creation only for exit code 0 [1.00ms]
+(pass) create-github-release.mjs > throws when gh api exits non-zero with an unexpected error
+(pass) create-github-release.mjs > treats already_exists as an idempotent gh api result
+(pass) create-github-release.mjs > passes release payload to gh api and reports success only on exit code 0 [63.00ms]
+(pass) create-github-release.mjs > passes a human-readable release name for language-prefixed tags [56.00ms]
+(pass) create-github-release.mjs > fails when gh api exits non-zero with an unexpected error [65.00ms]
+(pass) create-github-release.mjs > treats already_exists as an explicit idempotent skip [57.00ms]
+
+tests/dispatch-and-watch-workflow.test.js:
+(pass) dispatch-and-watch-workflow.mjs > extracts a workflow run id from gh workflow run output [1.00ms]
+(pass) dispatch-and-watch-workflow.mjs > picks the newest workflow run for the requested target commit
+https://github.com/konard/vk-bot-desktop/actions/runs/25636588014
+(pass) dispatch-and-watch-workflow.mjs > watches the dispatched run and returns the downstream failure status [1.00ms]
+(pass) dispatch-and-watch-workflow.mjs fallback polling > finds the child run by head SHA when dispatch output has no run URL
+
+tests/index.test.js:
+(pass) add function > should add two positive numbers
+(pass) add function > should add negative numbers
+(pass) add function > should add zero
+(pass) multiply function > should multiply two positive numbers
+(pass) multiply function > should multiply by zero
+(pass) multiply function > should multiply negative numbers
+
+tests/birthday-greetings.test.js:
+(pass) birthday greetings > contains exactly 10 entries
+(pass) birthday greetings > every greeting has at most 2 emojis
+(pass) birthday greetings > every greeting is a non-empty Russian-language string [1.00ms]
+(pass) birthday greetings > does not pick the same index twice in a row
+
+tests/validate-release-assets.test.js:
+(pass) validate-release-assets.mjs > validates release assets from the tag version, not the checkout package version
+(pass) validate-release-assets.mjs > reports each missing release asset with a GitHub annotation path [1.00ms]
+
+tests/bot-lifecycle.test.js:
+(pass) buildStatusCommand > uses the default session name [1.00ms]
+(pass) buildStatusCommand > honors a custom session name
+(pass) buildStartCommand > defaults to screen isolation with the session name
+(pass) buildStartCommand > builds a docker invocation with image and session name
+(pass) buildStartCommand > passes through a custom command
+(pass) buildStopCommand > uses --stop with the session
+(pass) isRunning > returns true when stdout indicates running
+(pass) isRunning > returns false when exit code != 0
+(pass) isRunning > returns false when stdout has no running keyword
+(pass) isRunning > throws when runCommand is missing
+(pass) startBot/stopBot > startBot invokes runCommand with the start argv [1.00ms]
+(pass) startBot/stopBot > stopBot invokes runCommand with the stop argv
+(pass) ensureMutualExclusion > rejects unknown targetMode
+(pass) ensureMutualExclusion > returns stoppedOther=false when no other runner is provided
+(pass) ensureMutualExclusion > stops the remote bot when starting local and remote is running
+(pass) ensureMutualExclusion > does not stop the remote bot when it is not running
+(pass) ensureMutualExclusion > treats runner errors as not-running
+(pass) ensureMutualExclusion > stops the local bot when starting server
+
+tests/invitation-messages.test.js:
+(pass) invitation messages > contains exactly 10 entries
+(pass) invitation messages > every message is a non-empty Russian-language string
+(pass) invitation messages > does not pick the same index twice in a row
+(pass) invitation messages > accepts a custom list
+(pass) invitation messages > returns empty string for empty list
+
+tests/logger.test.js:
+(pass) redact > masks long token-like strings [1.00ms]
+(pass) redact > masks query-style secrets
+(pass) redact > masks secret-named object properties
+(pass) redact > handles circular references
+(pass) redact > does not mask short ids
+(pass) logger sinks > routes log lines to registered sinks with redaction
+
+tests/release-badge.test.js:
+(pass) release badge version normalization > strips a plain v prefix for backward compatibility
+(pass) release badge version normalization > strips a js-v prefix from multi-language release tags
+(pass) release badge version normalization > strips a rust-v prefix from multi-language release tags
+(pass) release badge version normalization > escapes hyphens in prerelease versions for shields.io static badge paths
+(pass) release badge version normalization > builds a valid shields.io badge URL for prefixed tags
+(pass) release badge version normalization > builds a valid shields.io badge URL for prefixed prerelease tags
+
+tests/ci-timeouts.test.js:
+(pass) CI timeout policy > sets timeout-minutes for every JavaScript workflow job [3.00ms]
+(pass) CI timeout policy > parses workflow files checked out with Windows line endings
+(pass) CI timeout policy > caps individual Node.js and Bun tests at 30 seconds
+
+tests/friend-prioritization.test.js:
+(pass) computePotentialAcceptanceQuota > returns floor(totalIncomingSeen * 10%) - totalAcceptedEver
+(pass) computePotentialAcceptanceQuota > clamps to zero when already over quota
+(pass) computePotentialAcceptanceQuota > honours a custom percentage
+(pass) selectIncomingRequests > respects the lifetime 10% quota across runs
+(pass) selectIncomingRequests > falls back to current batch size when no lifetime stats provided
+(pass) selectIncomingRequests > above the limit only accepts requests with mutuals
+(pass) selectIncomingRequests > returns nothing when capacity is exhausted
+(pass) selectIncomingRequests > returns nothing for empty input
+(pass) pickPrioritySendList > returns priority IDs not yet in friends
+(pass) pickPrioritySendList > respects remaining capacity
+(pass) pickDeactivatedToDelete > returns banned/deleted friends excluding priority list [1.00ms]
+
+tests/desktop-release-workflow.test.js:
+(pass) release workflow orchestration > does not publish packages to npm from release jobs
+(pass) release workflow orchestration > keeps desktop release jobs in the same workflow with an exact tag and commit [1.00ms]
+(pass) desktop release workflow > builds desktop artifacts for Linux, macOS, and Windows releases
+(pass) desktop release workflow > uses versioned artifact names for release download links
+(pass) desktop release workflow > uses system FPM for native Linux arm64 Debian builds
+(pass) desktop release workflow > normalizes Linux artifact architecture names before validation [1.00ms]
+(pass) desktop release workflow macOS signing > keeps signed and notarized macOS publishing when Apple secrets are configured
+(pass) desktop release workflow macOS signing > builds ad-hoc signed macOS artifacts without Apple secrets
+(pass) desktop release workflow smoke tests > smoke-tests platform installers after building and before uploading
+(pass) desktop release workflow smoke tests > configures a Linux maintainer for deb artifacts
+(pass) desktop release workflow smoke tests > hashes Linux and macOS artifacts without splitting filenames on spaces
+
+tests/fetch-outgoing-requests.test.js:
+(pass) fetchOutgoingRequestIds > returns [] when vk client is missing
+(pass) fetchOutgoingRequestIds > returns [] when friends.getRequests is missing [1.00ms]
+(pass) fetchOutgoingRequestIds > returns the items array from the VK response
+(pass) fetchOutgoingRequestIds > returns [] when items is not an array
+
+tests/pages-site.test.js:
+(pass) GitHub Pages download site > has a reproducible React build script
+(pass) GitHub Pages download site > deploys the built site with the official GitHub Pages actions
+(pass) GitHub Pages download site > detects language, theme, and operating system for the primary download
+(pass) GitHub Pages download site > loads latest release assets without synthesizing absent asset links
+(pass) GitHub Pages download site > runs browser-commander e2e checks before and after Pages deployment
+(pass) GitHub Pages download site > requires macOS assets in the built-site release fixture
+(pass) GitHub Pages download site > has expandable verification instructions and OS-specific preview chrome
+
+tests/tag-prefix.test.js:
+(pass) tag prefix logic > defaults to "v" prefix (backward compatible)
+(pass) tag prefix logic > supports "js-v" prefix for multi-language repos
+(pass) tag prefix logic > supports "rust-v" prefix
+(pass) tag prefix logic > supports empty prefix
+(pass) tag prefix logic > works with pre-release versions
+
+tests/ssh-installer.test.js:
+(pass) buildInstallScript > emits a docker isolation invocation
+(pass) buildInstallScript > emits a screen isolation invocation
+(pass) buildInstallScript > stops any prior session before starting a new one
+(pass) buildInstallScript > uses screen isolation by default
+(pass) buildInstallScript > throws when the bundle archive is missing [1.00ms]
+(pass) buildInstallScript > throws on unknown isolation
+(pass) buildInstallScript > escapes the remote dir
+(pass) buildInstallPlan > returns plan metadata alongside the script
+
+tests/setup-npm.test.js:
+(pass) setup-npm version requirements > compares semantic versions numerically
+(pass) setup-npm version requirements > requires npm 11.5.1 or later
+(pass) setup-npm version requirements > requires Node.js 22.14.0 or later
+(pass) setup-npm version requirements > selects the latest npm 11 tarball that satisfies trusted publishing
+
+tests/i18n.test.js:
+(pass) detectLocale > returns ru for Russian language tags
+(pass) detectLocale > falls back to en for unknown locales
+(pass) translate > returns the translated string when available
+(pass) translate > falls back to English when key missing in target locale
+(pass) translate > returns the key itself when nothing matches
+
+tests/check-file-line-limits.test.js:
+(pass) check-file-line-limits.sh > defines a warning band below the hard limit
+(pass) check-file-line-limits.sh > warns without failing for files above the warning threshold [14.00ms]
+(pass) check-file-line-limits.sh > still fails files over the hard limit [10.00ms]
+(pass) check-file-line-limits.sh > normalizes padded wc output from BSD-like environments [13.00ms]
+
+tests/stats.test.js:
+(pass) isoWeek > returns the ISO week number for known dates [2.00ms]
+(pass) pathsForDate > produces total + month + week paths
+(pass) StatsStore > throws when rootDir missing [1.00ms]
+(pass) StatsStore > records accepted friends in three files [4.00ms]
+(pass) StatsStore > accumulates across multiple calls in the same week [3.00ms]
+(pass) StatsStore > isolates weeks: new week file when the date changes [3.00ms]
+(pass) StatsStore > records initial friends count once and never overwrites [3.00ms]
+(pass) StatsStore > snapshot returns empty objects when no data exists
+
+tests/site-downloads.test.js:
+(pass) Pages release download helpers > resolves versioned download links from actual release assets
+(pass) Pages release download helpers > prefers versioned assets while tolerating legacy assets during migration
+(pass) Pages release download helpers > derives user-visible asset names from the latest release version
+(pass) Pages release download helpers > uses the release page rather than a synthetic checksum URL when missing
+(pass) Pages release download helpers > keeps stable option groups for all supported operating systems
+
+tests/theme.test.js:
+(pass) resolveTheme > honors explicit light or dark preferences
+(pass) resolveTheme > falls back to system theme when preference is auto
+(pass) resolveTheme > defaults to light when system theme is missing
+(pass) applyTheme > writes data-theme to the document element
+(pass) watchSystemTheme > returns a no-op when matchMedia is unavailable
+(pass) watchSystemTheme > listens via addEventListener and reports dark/light
+
+tests/package-info.test.js:
+(pass) package info helpers > reads scoped package names and versions from package.json content [1.00ms]
+(pass) package info helpers > formats npm package specifiers from the derived package name
+(pass) package info helpers > formats changeset headers from the derived package name
+(pass) package info helpers > matches changesets for the derived package name only
+(pass) package info helpers > reports missing package names clearly
+
+tests/check-release-needed.test.js:
+(pass) desktop release detection > builds GitHub release tags from the package version
+(pass) desktop release detection > releases through a version bump when changesets exist
+(pass) desktop release detection > skips release when the current GitHub Release already has artifacts
+(pass) desktop release detection > retries release without a bump when the GitHub Release is incomplete
+(pass) desktop release detection > requires checksum, provenance, and all desktop platform assets
+(pass) desktop release detection > checks GitHub Release artifact completeness with gh release view
+(pass) desktop release detection > treats missing GitHub Releases as unpublished
+(pass) desktop release detection > fails closed on unexpected gh release errors [1.00ms]
+
+tests/lino-store.test.js:
+(pass) LinoStore > round-trips a config through formatIndented/parseIndented [3.00ms]
+(pass) LinoStore > local config overrides global [1.00ms]
+(pass) LinoStore > returns empty object when no config files exist [1.00ms]
+
+ 157 pass
+ 0 fail
+Ran 157 tests across 25 files. [429.00ms]

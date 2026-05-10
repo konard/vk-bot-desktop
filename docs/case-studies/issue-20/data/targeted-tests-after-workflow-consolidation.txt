@@ -1,0 +1,201 @@
+TAP version 13
+# Subtest: check-file-line-limits.sh
+    # Subtest: defines a warning band below the hard limit
+    ok 1 - defines a warning band below the hard limit
+      ---
+      duration_ms: 1.053323
+      ...
+    # Subtest: warns without failing for files above the warning threshold
+    ok 2 - warns without failing for files above the warning threshold
+      ---
+      duration_ms: 18.735285
+      ...
+    # Subtest: still fails files over the hard limit
+    ok 3 - still fails files over the hard limit
+      ---
+      duration_ms: 12.181766
+      ...
+    # Subtest: normalizes padded wc output from BSD-like environments
+    ok 4 - normalizes padded wc output from BSD-like environments
+      ---
+      duration_ms: 9.75368
+      ...
+    1..4
+ok 1 - check-file-line-limits.sh
+  ---
+  duration_ms: 43.009583
+  type: 'suite'
+  ...
+# Subtest: CI timeout policy
+    # Subtest: sets timeout-minutes for every JavaScript workflow job
+    ok 1 - sets timeout-minutes for every JavaScript workflow job
+      ---
+      duration_ms: 5.080609
+      ...
+    # Subtest: parses workflow files checked out with Windows line endings
+    ok 2 - parses workflow files checked out with Windows line endings
+      ---
+      duration_ms: 0.255902
+      ...
+    # Subtest: caps individual Node.js and Bun tests at 30 seconds
+    ok 3 - caps individual Node.js and Bun tests at 30 seconds
+      ---
+      duration_ms: 0.198066
+      ...
+    1..3
+ok 2 - CI timeout policy
+  ---
+  duration_ms: 6.519868
+  type: 'suite'
+  ...
+# Subtest: release workflow orchestration
+    # Subtest: does not publish packages to npm from release jobs
+    ok 1 - does not publish packages to npm from release jobs
+      ---
+      duration_ms: 2.527405
+      ...
+    # Subtest: keeps desktop release jobs in the same workflow with an exact tag and commit
+    ok 2 - keeps desktop release jobs in the same workflow with an exact tag and commit
+      ---
+      duration_ms: 0.44848
+      ...
+    1..2
+ok 3 - release workflow orchestration
+  ---
+  duration_ms: 4.645889
+  type: 'suite'
+  ...
+# Subtest: desktop release workflow
+    # Subtest: builds desktop artifacts for Linux, macOS, and Windows releases
+    ok 1 - builds desktop artifacts for Linux, macOS, and Windows releases
+      ---
+      duration_ms: 0.449321
+      ...
+    # Subtest: uses versioned artifact names for release download links
+    ok 2 - uses versioned artifact names for release download links
+      ---
+      duration_ms: 0.386037
+      ...
+    # Subtest: uses system FPM for native Linux arm64 Debian builds
+    ok 3 - uses system FPM for native Linux arm64 Debian builds
+      ---
+      duration_ms: 0.232988
+      ...
+    # Subtest: normalizes Linux artifact architecture names before validation
+    ok 4 - normalizes Linux artifact architecture names before validation
+      ---
+      duration_ms: 0.277334
+      ...
+    1..4
+ok 4 - desktop release workflow
+  ---
+  duration_ms: 1.54639
+  type: 'suite'
+  ...
+# Subtest: desktop release workflow macOS signing
+    # Subtest: keeps signed and notarized macOS publishing when Apple secrets are configured
+    ok 1 - keeps signed and notarized macOS publishing when Apple secrets are configured
+      ---
+      duration_ms: 0.339968
+      ...
+    # Subtest: builds ad-hoc signed macOS artifacts without Apple secrets
+    ok 2 - builds ad-hoc signed macOS artifacts without Apple secrets
+      ---
+      duration_ms: 0.418816
+      ...
+    1..2
+ok 5 - desktop release workflow macOS signing
+  ---
+  duration_ms: 0.912422
+  type: 'suite'
+  ...
+# Subtest: desktop release workflow smoke tests
+    # Subtest: smoke-tests platform installers after building and before uploading
+    ok 1 - smoke-tests platform installers after building and before uploading
+      ---
+      duration_ms: 0.223103
+      ...
+    # Subtest: configures a Linux maintainer for deb artifacts
+    ok 2 - configures a Linux maintainer for deb artifacts
+      ---
+      duration_ms: 0.270413
+      ...
+    # Subtest: hashes Linux and macOS artifacts without splitting filenames on spaces
+    ok 3 - hashes Linux and macOS artifacts without splitting filenames on spaces
+      ---
+      duration_ms: 0.193099
+      ...
+    1..3
+ok 6 - desktop release workflow smoke tests
+  ---
+  duration_ms: 0.808196
+  type: 'suite'
+  ...
+# Subtest: GitHub Pages download site
+    # Subtest: has a reproducible React build script
+    ok 1 - has a reproducible React build script
+      ---
+      duration_ms: 1.116989
+      ...
+    # Subtest: deploys the built site with the official GitHub Pages actions
+    ok 2 - deploys the built site with the official GitHub Pages actions
+      ---
+      duration_ms: 0.343193
+      ...
+    # Subtest: detects language, theme, and operating system for the primary download
+    ok 3 - detects language, theme, and operating system for the primary download
+      ---
+      duration_ms: 0.152948
+      ...
+    # Subtest: loads latest release assets without synthesizing absent asset links
+    ok 4 - loads latest release assets without synthesizing absent asset links
+      ---
+      duration_ms: 0.223014
+      ...
+    # Subtest: runs browser-commander e2e checks before and after Pages deployment
+    ok 5 - runs browser-commander e2e checks before and after Pages deployment
+      ---
+      duration_ms: 1.169536
+      ...
+    # Subtest: requires macOS assets in the built-site release fixture
+    ok 6 - requires macOS assets in the built-site release fixture
+      ---
+      duration_ms: 0.300019
+      ...
+    # Subtest: has expandable verification instructions and OS-specific preview chrome
+    ok 7 - has expandable verification instructions and OS-specific preview chrome
+      ---
+      duration_ms: 1.020745
+      ...
+    1..7
+ok 7 - GitHub Pages download site
+  ---
+  duration_ms: 5.653105
+  type: 'suite'
+  ...
+# Subtest: validate-release-assets.mjs
+    # Subtest: validates release assets from the tag version, not the checkout package version
+    ok 1 - validates release assets from the tag version, not the checkout package version
+      ---
+      duration_ms: 1.351619
+      ...
+    # Subtest: reports each missing release asset with a GitHub annotation path
+    ok 2 - reports each missing release asset with a GitHub annotation path
+      ---
+      duration_ms: 0.33523
+      ...
+    1..2
+ok 8 - validate-release-assets.mjs
+  ---
+  duration_ms: 2.742086
+  type: 'suite'
+  ...
+1..8
+# tests 27
+# suites 8
+# pass 27
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 96.879187
