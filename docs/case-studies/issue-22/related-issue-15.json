@@ -1,0 +1,28 @@
+{
+  "body": "We need to include version of application in the downloaded file.\n\nAt our site https://konard.github.io/vk-bot-desktop download links names does not include version, that leads to problems with understanding which version is downloaded, and which is not on local machine.\n\nhttps://github.com/konard/vk-bot-desktop/releases/download/v0.9.7/vk-bot-desktop-macos-arm64.dmg\n\nSo it should be like `vk-bot-desktop-macos-arm64-0.9.7.dmg` for all OS and all architectures.\n\nAlso on download page we should make expandable instructions on how to verify checks for regular users and advanced users, with focus on regular users. We should use some software users trust for checksums and verifications.\n\nAlso may be there is software that verifies that builds are reproducible, meaning source code matches 100% the binary, so if user wants to check the security of the system he absolutely can do it by reading source code, no trust required.\n\nAlso we need to add visual touch, screenshot of the system should be inside styled window border that reminds selected OS, like macOS, windows, ubuntu.\n\nWe also need to ensure we support both arm64 and x64 for also windows and linux.\n\nSo we should care about our user as much as we can.\n\nWe need to download all logs and data related about the issue to this repository, make sure we compile that data to `./docs/case-studies/issue-{id}` folder, and use it to do deep case study analysis (also make sure to search online for additional facts and data), in which we will reconstruct timeline/sequence of events, list of each and all requirements from the issue, find root causes of the each problem, and propose possible solutions and solution plans for each requirement (we should also check known existing components/libraries, that solve similar problem or can help in solutions).\n\nIf there is not enough data to find actual root cause, add debug output and verbose mode if not present, that will allow us to find root cause on next iteration.\n\nIf issue related to any other repository/project, where we can report issues on GitHub, please do so. Each issue must contain reproducible examples, workarounds and suggestions for fix the issue in code.\n\nPlease plan and execute everything in a single pull request, you have unlimited time and context, as context auto-compacts and you can continue indefinitely, until it is each and every requirement fully addressed, and everything is totally done.",
+  "createdAt": "2026-05-10T16:38:52Z",
+  "labels": [
+    {
+      "id": "LA_kwDOSYpSBs8AAAACigeUyA",
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "id": "LA_kwDOSYpSBs8AAAACigeUzg",
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "id": "LA_kwDOSYpSBs8AAAACigeU3w",
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    }
+  ],
+  "number": 15,
+  "state": "CLOSED",
+  "title": "UI/UX of application download landing page",
+  "updatedAt": "2026-05-10T18:32:18Z"
+}

@@ -9,6 +9,8 @@ This document normalizes the product and release requirements collected from:
 - Issue #6: target-platform installation validation and release download page.
 - Issue #20: single JavaScript workflow and synchronized desktop artifact
   publication.
+- Issue #22: release workflow skip-cascade prevention for desktop artifact
+  publication.
 
 ## Product Scope
 
@@ -133,6 +135,10 @@ local bot execution and remote execution over SSH.
 23. Release asset validation must derive the expected version from the release
     tag and target commit selected by the workflow, not from a stale checkout in
     the publish job.
+24. Desktop artifact build and publication jobs must explicitly handle skipped
+    optional release-mode jobs so a workflow run cannot report success after
+    versioning a release while skipping the binary build and GitHub Release
+    upload path.
 
 ## Testing And Documentation
 

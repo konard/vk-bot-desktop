@@ -1,0 +1,115 @@
+TAP version 13
+# Subtest: release workflow orchestration
+    # Subtest: does not publish packages to npm from release jobs
+    ok 1 - does not publish packages to npm from release jobs
+      ---
+      duration_ms: 2.995913
+      ...
+    # Subtest: keeps desktop release jobs in the same workflow with an exact tag and commit
+    ok 2 - keeps desktop release jobs in the same workflow with an exact tag and commit
+      ---
+      duration_ms: 0.541248
+      ...
+    # Subtest: runs desktop jobs after optional release modes are skipped
+    not ok 3 - runs desktop jobs after optional release modes are skipped
+      ---
+      duration_ms: 0.962087
+      location: '/tmp/gh-issue-solver-1778444187483/node_modules/test-anywhere/src/index.js:174:12'
+      failureType: 'testCodeFailure'
+      error: 'Expected "  desktop-build:\\n    name: Build desktop (${{ matrix.platform }} ${{ matrix.arch }})\\n    needs: [desktop-release-context]\\n    if: needs.desktop-release-context.outputs.should-publish == \'true\'\\n    strategy:\\n      fail-fast: false\\n      matrix:\\n        include:\\n          - os: ubuntu-latest\\n            platform: linux\\n            arch: x64\\n          - os: ubuntu-24.04-arm\\n            platform: linux\\n            arch: arm64\\n          - os: macos-latest\\n            platform: macos\\n            arch: x64-arm64\\n          - os: windows-latest\\n            platform: windows\\n            arch: x64\\n          - os: windows-11-arm\\n            platform: windows\\n            arch: arm64\\n    runs-on: ${{ matrix.os }}\\n    timeout-minutes: 45\\n    permissions:\\n      contents: read\\n    steps:\\n      - uses: actions/checkout@v6\\n        with:\\n          ref: ${{ needs.desktop-release-context.outputs.target-sha }}\\n\\n      - uses: actions/setup-node@v6\\n        with:\\n          node-version: \'20.x\'\\n\\n      - name: Install dependencies\\n        run: npm install --no-audit --no-fund\\n\\n      - name: Build renderer bundle\\n        run: npm run build:renderer\\n\\n      - name: Install system FPM (Linux arm64)\\n        if: matrix.platform == \'linux\' && matrix.arch == \'arm64\'\\n        run: |\\n          sudo apt-get update\\n          sudo apt-get install -y ruby ruby-dev build-essential\\n          sudo gem install --no-document fpm\\n\\n      - name: Check macOS signing secrets\\n        id: mac_secrets\\n        if: matrix.platform == \'macos\'\\n        shell: bash\\n        env:\\n          MAC_CSC_LINK: ${{ secrets.MAC_CSC_LINK }}\\n          MAC_CSC_KEY_PASSWORD: ${{ secrets.MAC_CSC_KEY_PASSWORD }}\\n          APPLE_API_KEY: ${{ secrets.APPLE_API_KEY }}\\n          APPLE_API_KEY_ID: ${{ secrets.APPLE_API_KEY_ID }}\\n          APPLE_API_ISSUER: ${{ secrets.APPLE_API_ISSUER }}\\n        run: |\\n          set -euo pipefail\\n          missing=()\\n          for name in MAC_CSC_LINK MAC_CSC_KEY_PASSWORD APPLE_API_KEY APPLE_API_KEY_ID APPLE_API_ISSUER; do\\n            if [ -z \\"${!name}\\" ]; then\\n              missing+=(\\"$name\\")\\n            fi\\n          done\\n\\n          if [ \\"${#missing[@]}\\" -gt 0 ]; then\\n            echo \\"has_secrets=false\\" >> \\"$GITHUB_OUTPUT\\"\\n            echo \\"mode=adhoc\\" >> \\"$GITHUB_OUTPUT\\"\\n            echo \\"::warning::Missing required macOS signing/notarization secrets: ${missing[*]}\\"\\n            echo \\"Building ad-hoc signed macOS artifacts without notarization for direct testing.\\"\\n          else\\n            echo \\"has_secrets=true\\" >> \\"$GITHUB_OUTPUT\\"\\n            echo \\"mode=signed\\" >> \\"$GITHUB_OUTPUT\\"\\n          fi\\n\\n      - name: Build Electron artifacts (Linux)\\n        if: matrix.platform == \'linux\'\\n        env:\\n          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}\\n        shell: bash\\n        run: |\\n          if [ \\"${{ matrix.arch }}\\" = \\"arm64\\" ]; then\\n            export USE_SYSTEM_FPM=true\\n          fi\\n\\n          npx electron-builder --linux --${{ matrix.arch }} --publish never\\n\\n      - name: Build Electron artifacts (macOS signed)\\n        if: matrix.platform == \'macos\' && steps.mac_secrets.outputs.has_secrets == \'true\'\\n        env:\\n          CSC_LINK: ${{ secrets.MAC_CSC_LINK }}\\n          CSC_KEY_PASSWORD: ${{ secrets.MAC_CSC_KEY_PASSWORD }}\\n          APPLE_API_KEY: ${{ secrets.APPLE_API_KEY }}\\n          APPLE_API_KEY_ID: ${{ secrets.APPLE_API_KEY_ID }}\\n          APPLE_API_ISSUER: ${{ secrets.APPLE_API_ISSUER }}\\n          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}\\n          DEBUG: electron-builder,electron-notarize*\\n        run: npx electron-builder --mac --x64 --arm64 --publish never\\n\\n      - name: Build Electron artifacts (macOS ad-hoc)\\n        if: matrix.platform == \'macos\' && steps.mac_secrets.outputs.has_secrets != \'true\'\\n        env:\\n          CSC_IDENTITY_AUTO_DISCOVERY: \'false\'\\n          MACOS_ADHOC_SIGN: \'1\'\\n          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}\\n          DEBUG: electron-builder,electron-osx-sign*\\n        run: npx electron-builder --mac --x64 --arm64 --publish never -c.mac.notarize=false -c.mac.sign=./scripts/adhoc-sign-mac.cjs\\n\\n      - name: Build Electron artifacts (Windows)\\n        if: matrix.platform == \'windows\'\\n        env:\\n          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}\\n        run: npx electron-builder --win --${{ matrix.arch }} --publish never\\n\\n      - name: Normalize Linux release artifact names\\n        if: matrix.platform == \'linux\'\\n        shell: bash\\n        run: |\\n          set -euo pipefail\\n          VERSION=\\"$(node -p \\"require(\'./package.json\').version\\")\\"\\n          ARCH=\\"${{ matrix.arch }}\\"\\n\\n          normalize_artifact() {\\n            local source=\\"$1\\"\\n            local target=\\"$2\\"\\n\\n            if [ \\"$source\\" = \\"$target\\" ] || [ ! -f \\"$source\\" ]; then\\n              return\\n            fi\\n\\n            if [ -f \\"$target\\" ]; then\\n              echo \\"::error file=$target::Cannot normalize $source because the target already exists.\\"\\n              exit 1\\n            fi\\n\\n            mv \\"$source\\" \\"$target\\"\\n            echo \\"Renamed $(basename \\"$source\\") -> $(basename \\"$target\\")\\"\\n          }\\n\\n          if [ \\"$ARCH\\" = \\"x64\\" ]; then\\n            normalize_artifact \\\\\\n              \\"release/vk-bot-desktop-linux-x86_64-${VERSION}.AppImage\\" \\\\\\n              \\"release/vk-bot-desktop-linux-x64-${VERSION}.AppImage\\"\\n            normalize_artifact \\\\\\n              \\"release/vk-bot-desktop-linux-amd64-${VERSION}.deb\\" \\\\\\n              \\"release/vk-bot-desktop-linux-x64-${VERSION}.deb\\"\\n          elif [ \\"$ARCH\\" = \\"arm64\\" ]; then\\n            normalize_artifact \\\\\\n              \\"release/vk-bot-desktop-linux-aarch64-${VERSION}.AppImage\\" \\\\\\n              \\"release/vk-bot-desktop-linux-arm64-${VERSION}.AppImage\\"\\n            normalize_artifact \\\\\\n              \\"release/vk-bot-desktop-linux-aarch64-${VERSION}.deb\\" \\\\\\n              \\"release/vk-bot-desktop-linux-arm64-${VERSION}.deb\\"\\n          fi\\n\\n          find release -maxdepth 1 -type f -printf \'%f\\\\n\' | sort\\n\\n      - name: Smoke test Linux release artifacts\\n        if: matrix.platform == \'linux\'\\n        shell: bash\\n        run: |\\n          set -euo pipefail\\n          VERSION=\\"$(node -p \\"require(\'./package.json\').version\\")\\"\\n          ARCH=\\"${{ matrix.arch }}\\"\\n\\n          required_linux_artifacts=(\\n            \\"release/vk-bot-desktop-linux-${ARCH}-${VERSION}.AppImage\\"\\n            \\"release/vk-bot-desktop-linux-${ARCH}-${VERSION}.deb\\"\\n            \\"release/vk-bot-desktop-linux-${ARCH}-${VERSION}.tar.gz\\"\\n          )\\n\\n          for artifact in \\"${required_linux_artifacts[@]}\\"; do\\n            if [ ! -f \\"$artifact\\" ]; then\\n              echo \\"::error file=$artifact::Expected versioned Linux release artifact was not created.\\"\\n              ls -la release || true\\n              exit 1\\n            fi\\n          done\\n\\n          debs=(\\"release/vk-bot-desktop-linux-${ARCH}-${VERSION}.deb\\")\\n          appimages=(\\"release/vk-bot-desktop-linux-${ARCH}-${VERSION}.AppImage\\")\\n          tarballs=(\\"release/vk-bot-desktop-linux-${ARCH}-${VERSION}.tar.gz\\")\\n\\n          for deb in \\"${debs[@]}\\"; do\\n            echo \\"Inspecting Debian package: $deb\\"\\n            dpkg-deb --info \\"$deb\\"\\n            dpkg-deb --contents \\"$deb\\" | tee \\"$RUNNER_TEMP/deb-contents.txt\\"\\n            if ! grep -Eq \'/(opt|usr)/(bin|lib|share)/\' \\"$RUNNER_TEMP/deb-contents.txt\\"; then\\n              echo \\"::error file=$deb::Debian package does not contain an installable app payload.\\"\\n              exit 1\\n            fi\\n          done\\n\\n          for appimage in \\"${appimages[@]}\\"; do\\n            echo \\"Extracting AppImage payload: $appimage\\"\\n            chmod +x \\"$appimage\\"\\n            extract_dir=\\"$(mktemp -d)\\"\\n            artifact_path=\\"$(realpath \\"$appimage\\")\\"\\n            (cd \\"$extract_dir\\" && \\"$artifact_path\\" --appimage-extract >/dev/null)\\n            test -d \\"$extract_dir/squashfs-root\\"\\n            find \\"$extract_dir/squashfs-root\\" -maxdepth 4 -type f | sort > \\"$RUNNER_TEMP/appimage-contents.txt\\"\\n            sed -n \'1,100p\' \\"$RUNNER_TEMP/appimage-contents.txt\\"\\n            find \\"$extract_dir/squashfs-root\\" -maxdepth 4 -type f -name \'*.desktop\' -print -quit | grep -q .\\n          done\\n\\n          for tarball in \\"${tarballs[@]}\\"; do\\n            echo \\"Inspecting tarball: $tarball\\"\\n            tar -tzf \\"$tarball\\" > \\"$RUNNER_TEMP/tarball-contents.txt\\"\\n            sed -n \'1,100p\' \\"$RUNNER_TEMP/tarball-contents.txt\\"\\n            grep -Eq \'VK Bot Desktop|vk-bot-desktop|resources/app\' \\"$RUNNER_TEMP/tarball-contents.txt\\"\\n          done\\n\\n      - name: Smoke test macOS release artifacts\\n        if: matrix.platform == \'macos\'\\n        shell: bash\\n        env:\\n          MACOS_BUILD_MODE: ${{ steps.mac_secrets.outputs.mode }}\\n        run: |\\n          set -euo pipefail\\n          shopt -s nullglob\\n          VERSION=\\"$(node -p \\"require(\'./package.json\').version\\")\\"\\n\\n          dmgs=(\\n            \\"release/vk-bot-desktop-macos-arm64-${VERSION}.dmg\\"\\n            \\"release/vk-bot-desktop-macos-x64-${VERSION}.dmg\\"\\n          )\\n          zips=(\\n            \\"release/vk-bot-desktop-macos-arm64-${VERSION}.zip\\"\\n            \\"release/vk-bot-desktop-macos-x64-${VERSION}.zip\\"\\n          )\\n\\n          for artifact in \\"${dmgs[@]}\\" \\"${zips[@]}\\"; do\\n            if [ ! -f \\"$artifact\\" ]; then\\n              echo \\"::error file=$artifact::Expected versioned macOS release artifact was not created.\\"\\n              ls -la release || true\\n              exit 1\\n            fi\\n          done\\n\\n          for dmg in \\"${dmgs[@]}\\"; do\\n            echo \\"Mounting DMG: $dmg\\"\\n            mount_dir=\\"$(mktemp -d)\\"\\n            hdiutil attach \\"$dmg\\" -mountpoint \\"$mount_dir\\" -nobrowse -readonly\\n            mounted_app=\\"$mount_dir/VK'... 7898 more characters
+      code: 'ERR_TEST_FAILURE'
+      stack: |-
+        Object.toContain (file:///tmp/gh-issue-solver-1778444187483/node_modules/test-anywhere/src/index.js:566:15)
+        TestContext.<anonymous> (file:///tmp/gh-issue-solver-1778444187483/tests/desktop-release-workflow.test.js:92:26)
+        Test.runInAsyncScope (node:async_hooks:206:9)
+        Test.run (node:internal/test_runner/test:796:25)
+        Suite.processPendingSubtests (node:internal/test_runner/test:526:18)
+        Test.postRun (node:internal/test_runner/test:889:19)
+        Test.run (node:internal/test_runner/test:835:12)
+        async Suite.processPendingSubtests (node:internal/test_runner/test:526:7)
+      ...
+    1..3
+not ok 1 - release workflow orchestration
+  ---
+  duration_ms: 5.639702
+  type: 'suite'
+  location: '/tmp/gh-issue-solver-1778444187483/node_modules/test-anywhere/src/index.js:205:12'
+  failureType: 'subtestsFailed'
+  error: '1 subtest failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: desktop release workflow
+    # Subtest: builds desktop artifacts for Linux, macOS, and Windows releases
+    ok 1 - builds desktop artifacts for Linux, macOS, and Windows releases
+      ---
+      duration_ms: 1.121605
+      ...
+    # Subtest: uses versioned artifact names for release download links
+    ok 2 - uses versioned artifact names for release download links
+      ---
+      duration_ms: 0.495841
+      ...
+    # Subtest: uses system FPM for native Linux arm64 Debian builds
+    ok 3 - uses system FPM for native Linux arm64 Debian builds
+      ---
+      duration_ms: 0.350874
+      ...
+    # Subtest: normalizes Linux artifact architecture names before validation
+    ok 4 - normalizes Linux artifact architecture names before validation
+      ---
+      duration_ms: 0.250333
+      ...
+    1..4
+ok 2 - desktop release workflow
+  ---
+  duration_ms: 2.518621
+  type: 'suite'
+  ...
+# Subtest: desktop release workflow macOS signing
+    # Subtest: keeps signed and notarized macOS publishing when Apple secrets are configured
+    ok 1 - keeps signed and notarized macOS publishing when Apple secrets are configured
+      ---
+      duration_ms: 0.393538
+      ...
+    # Subtest: builds ad-hoc signed macOS artifacts without Apple secrets
+    ok 2 - builds ad-hoc signed macOS artifacts without Apple secrets
+      ---
+      duration_ms: 0.440598
+      ...
+    1..2
+ok 3 - desktop release workflow macOS signing
+  ---
+  duration_ms: 1.072492
+  type: 'suite'
+  ...
+# Subtest: desktop release workflow smoke tests
+    # Subtest: smoke-tests platform installers after building and before uploading
+    ok 1 - smoke-tests platform installers after building and before uploading
+      ---
+      duration_ms: 0.366286
+      ...
+    # Subtest: configures a Linux maintainer for deb artifacts
+    ok 2 - configures a Linux maintainer for deb artifacts
+      ---
+      duration_ms: 0.196864
+      ...
+    # Subtest: hashes Linux and macOS artifacts without splitting filenames on spaces
+    ok 3 - hashes Linux and macOS artifacts without splitting filenames on spaces
+      ---
+      duration_ms: 0.303633
+      ...
+    1..3
+ok 4 - desktop release workflow smoke tests
+  ---
+  duration_ms: 1.004501
+  type: 'suite'
+  ...
+1..4
+# tests 12
+# suites 4
+# pass 11
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 93.574805

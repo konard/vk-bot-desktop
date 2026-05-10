@@ -1,0 +1,13 @@
+[
+  {
+    "conclusion": "",
+    "createdAt": "2026-05-10T20:16:38Z",
+    "databaseId": 25638720362,
+    "displayTitle": "[WIP] CI/CD produced not binary releases in GitHub Releases",
+    "event": "pull_request",
+    "headSha": "4d0e37d62985c7e9c100890c031bce9e4aec9981",
+    "status": "in_progress",
+    "url": "https://github.com/konard/vk-bot-desktop/actions/runs/25638720362",
+    "workflowName": "JavaScript CI/CD"
+  }
+]

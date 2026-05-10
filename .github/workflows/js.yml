@@ -810,7 +810,11 @@ jobs:
   desktop-build:
     name: Build desktop (${{ matrix.platform }} ${{ matrix.arch }})
     needs: [desktop-release-context]
-    if: needs.desktop-release-context.outputs.should-publish == 'true'
+    if: |
+      always() &&
+      !cancelled() &&
+      needs.desktop-release-context.result == 'success' &&
+      needs.desktop-release-context.outputs.should-publish == 'true'
     strategy:
       fail-fast: false
       matrix:
@@ -1241,7 +1245,12 @@ jobs:
     needs: [desktop-release-context, desktop-build]
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    if: needs.desktop-release-context.outputs.should-publish == 'true'
+    if: |
+      always() &&
+      !cancelled() &&
+      needs.desktop-release-context.result == 'success' &&
+      needs.desktop-build.result == 'success' &&
+      needs.desktop-release-context.outputs.should-publish == 'true'
     permissions:
       contents: write
       id-token: write

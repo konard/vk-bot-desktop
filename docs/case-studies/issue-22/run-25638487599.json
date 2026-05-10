@@ -1,0 +1,1745 @@
+{
+  "conclusion": "success",
+  "createdAt": "2026-05-10T20:05:40Z",
+  "databaseId": 25638487599,
+  "displayTitle": "Merge pull request #21 from konard/issue-20-f41343d25099",
+  "event": "push",
+  "headBranch": "main",
+  "headSha": "430e960d8666866007aa8c625e2b6118251d931f",
+  "jobs": [
+    {
+      "completedAt": "2026-05-10T20:05:48Z",
+      "conclusion": "success",
+      "databaseId": 75254550001,
+      "name": "Detect Changes",
+      "startedAt": "2026-05-10T20:05:42Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-05-10T20:05:43Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-05-10T20:05:42Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:05:45Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v6",
+          "number": 2,
+          "startedAt": "2026-05-10T20:05:43Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:05:46Z",
+          "conclusion": "success",
+          "name": "Detect changes",
+          "number": 3,
+          "startedAt": "2026-05-10T20:05:45Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:05:46Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v6",
+          "number": 6,
+          "startedAt": "2026-05-10T20:05:46Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:05:46Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 7,
+          "startedAt": "2026-05-10T20:05:46Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/konard/vk-bot-desktop/actions/runs/25638487599/job/75254550001"
+    },
+    {
+      "completedAt": "2026-05-10T20:05:40Z",
+      "conclusion": "skipped",
+      "databaseId": 75254550083,
+      "name": "Create Changeset PR",
+      "startedAt": "2026-05-10T20:05:40Z",
+      "status": "completed",
+      "steps": [],
+      "url": "https://github.com/konard/vk-bot-desktop/actions/runs/25638487599/job/75254550083"
+    },
+    {
+      "completedAt": "2026-05-10T20:05:40Z",
+      "conclusion": "skipped",
+      "databaseId": 75254550125,
+      "name": "Instant Release",
+      "startedAt": "2026-05-10T20:05:40Z",
+      "status": "completed",
+      "steps": [],
+      "url": "https://github.com/konard/vk-bot-desktop/actions/runs/25638487599/job/75254550125"
+    },
+    {
+      "completedAt": "2026-05-10T20:05:40Z",
+      "conclusion": "skipped",
+      "databaseId": 75254550176,
+      "name": "Check for Manual Version Changes",
+      "startedAt": "2026-05-10T20:05:40Z",
+      "status": "completed",
+      "steps": [],
+      "url": "https://github.com/konard/vk-bot-desktop/actions/runs/25638487599/job/75254550176"
+    },
+    {
+      "completedAt": "2026-05-10T20:06:24Z",
+      "conclusion": "success",
+      "databaseId": 75254558078,
+      "name": "Lint and Format Check",
+      "startedAt": "2026-05-10T20:05:50Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-05-10T20:05:51Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-05-10T20:05:50Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:05:53Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v6",
+          "number": 2,
+          "startedAt": "2026-05-10T20:05:51Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:05:53Z",
+          "conclusion": "skipped",
+          "name": "Simulate fresh merge with base branch (PR only)",
+          "number": 3,
+          "startedAt": "2026-05-10T20:05:53Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:05:53Z",
+          "conclusion": "success",
+          "name": "Setup Node.js",
+          "number": 4,
+          "startedAt": "2026-05-10T20:05:53Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:12Z",
+          "conclusion": "success",
+          "name": "Install dependencies",
+          "number": 5,
+          "startedAt": "2026-05-10T20:05:53Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:13Z",
+          "conclusion": "success",
+          "name": "Run ESLint",
+          "number": 6,
+          "startedAt": "2026-05-10T20:06:12Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:16Z",
+          "conclusion": "success",
+          "name": "Check formatting",
+          "number": 7,
+          "startedAt": "2026-05-10T20:06:13Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:16Z",
+          "conclusion": "success",
+          "name": "Check code duplication",
+          "number": 8,
+          "startedAt": "2026-05-10T20:06:16Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:23Z",
+          "conclusion": "success",
+          "name": "Check for secrets",
+          "number": 9,
+          "startedAt": "2026-05-10T20:06:16Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:23Z",
+          "conclusion": "success",
+          "name": "Post Setup Node.js",
+          "number": 17,
+          "startedAt": "2026-05-10T20:06:23Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:23Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v6",
+          "number": 18,
+          "startedAt": "2026-05-10T20:06:23Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:23Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 19,
+          "startedAt": "2026-05-10T20:06:23Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/konard/vk-bot-desktop/actions/runs/25638487599/job/75254558078"
+    },
+    {
+      "completedAt": "2026-05-10T20:05:54Z",
+      "conclusion": "success",
+      "databaseId": 75254558081,
+      "name": "Check File Line Limits",
+      "startedAt": "2026-05-10T20:05:49Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-05-10T20:05:51Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-05-10T20:05:50Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:05:52Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v6",
+          "number": 2,
+          "startedAt": "2026-05-10T20:05:51Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:05:52Z",
+          "conclusion": "skipped",
+          "name": "Simulate fresh merge with base branch (PR only)",
+          "number": 3,
+          "startedAt": "2026-05-10T20:05:52Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:05:52Z",
+          "conclusion": "success",
+          "name": "Check file line limits",
+          "number": 4,
+          "startedAt": "2026-05-10T20:05:52Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:05:52Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v6",
+          "number": 8,
+          "startedAt": "2026-05-10T20:05:52Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:05:52Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 9,
+          "startedAt": "2026-05-10T20:05:52Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/konard/vk-bot-desktop/actions/runs/25638487599/job/75254558081"
+    },
+    {
+      "completedAt": "2026-05-10T20:06:01Z",
+      "conclusion": "success",
+      "databaseId": 75254558083,
+      "name": "Validate Documentation",
+      "startedAt": "2026-05-10T20:05:56Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-05-10T20:05:57Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-05-10T20:05:56Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:05:59Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v6",
+          "number": 2,
+          "startedAt": "2026-05-10T20:05:57Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:05:59Z",
+          "conclusion": "success",
+          "name": "Check documentation file sizes",
+          "number": 3,
+          "startedAt": "2026-05-10T20:05:59Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:05:59Z",
+          "conclusion": "success",
+          "name": "Check required documentation files exist",
+          "number": 4,
+          "startedAt": "2026-05-10T20:05:59Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:05:59Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v6",
+          "number": 8,
+          "startedAt": "2026-05-10T20:05:59Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:05:59Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 9,
+          "startedAt": "2026-05-10T20:05:59Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/konard/vk-bot-desktop/actions/runs/25638487599/job/75254558083"
+    },
+    {
+      "completedAt": "2026-05-10T20:05:54Z",
+      "conclusion": "success",
+      "databaseId": 75254558091,
+      "name": "Test Compilation",
+      "startedAt": "2026-05-10T20:05:49Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-05-10T20:05:50Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-05-10T20:05:50Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:05:52Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v6",
+          "number": 2,
+          "startedAt": "2026-05-10T20:05:50Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:05:53Z",
+          "conclusion": "success",
+          "name": "Check .mjs syntax",
+          "number": 3,
+          "startedAt": "2026-05-10T20:05:52Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:05:54Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v6",
+          "number": 6,
+          "startedAt": "2026-05-10T20:05:53Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:05:54Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 7,
+          "startedAt": "2026-05-10T20:05:54Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/konard/vk-bot-desktop/actions/runs/25638487599/job/75254558091"
+    },
+    {
+      "completedAt": "2026-05-10T20:05:58Z",
+      "conclusion": "success",
+      "databaseId": 75254558116,
+      "name": "Check Links",
+      "startedAt": "2026-05-10T20:05:50Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-05-10T20:05:51Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-05-10T20:05:50Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:05:53Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v6",
+          "number": 2,
+          "startedAt": "2026-05-10T20:05:51Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:05:56Z",
+          "conclusion": "success",
+          "name": "Check links with lychee",
+          "number": 3,
+          "startedAt": "2026-05-10T20:05:53Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:05:56Z",
+          "conclusion": "skipped",
+          "name": "Check broken links against Web Archive",
+          "number": 4,
+          "startedAt": "2026-05-10T20:05:56Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:05:56Z",
+          "conclusion": "skipped",
+          "name": "Fail if broken links found and no web archive fallback",
+          "number": 5,
+          "startedAt": "2026-05-10T20:05:56Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:05:56Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v6",
+          "number": 10,
+          "startedAt": "2026-05-10T20:05:56Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:05:56Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 11,
+          "startedAt": "2026-05-10T20:05:56Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/konard/vk-bot-desktop/actions/runs/25638487599/job/75254558116"
+    },
+    {
+      "completedAt": "2026-05-10T20:05:48Z",
+      "conclusion": "skipped",
+      "databaseId": 75254558255,
+      "name": "Build Pages site",
+      "startedAt": "2026-05-10T20:05:48Z",
+      "status": "completed",
+      "steps": [],
+      "url": "https://github.com/konard/vk-bot-desktop/actions/runs/25638487599/job/75254558255"
+    },
+    {
+      "completedAt": "2026-05-10T20:05:48Z",
+      "conclusion": "skipped",
+      "databaseId": 75254558299,
+      "name": "Check for Changesets",
+      "startedAt": "2026-05-10T20:05:48Z",
+      "status": "completed",
+      "steps": [],
+      "url": "https://github.com/konard/vk-bot-desktop/actions/runs/25638487599/job/75254558299"
+    },
+    {
+      "completedAt": "2026-05-10T20:05:48Z",
+      "conclusion": "skipped",
+      "databaseId": 75254558306,
+      "name": "Deploy Pages site",
+      "startedAt": "2026-05-10T20:05:48Z",
+      "status": "completed",
+      "steps": [],
+      "url": "https://github.com/konard/vk-bot-desktop/actions/runs/25638487599/job/75254558306"
+    },
+    {
+      "completedAt": "2026-05-10T20:06:59Z",
+      "conclusion": "success",
+      "databaseId": 75254593003,
+      "name": "Test (node on ubuntu-latest)",
+      "startedAt": "2026-05-10T20:06:26Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-05-10T20:06:30Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-05-10T20:06:27Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:32Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v6",
+          "number": 2,
+          "startedAt": "2026-05-10T20:06:30Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:32Z",
+          "conclusion": "skipped",
+          "name": "Simulate fresh merge with base branch (PR only)",
+          "number": 3,
+          "startedAt": "2026-05-10T20:06:32Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:38Z",
+          "conclusion": "success",
+          "name": "Setup Node.js",
+          "number": 4,
+          "startedAt": "2026-05-10T20:06:32Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:56Z",
+          "conclusion": "success",
+          "name": "Install dependencies (Node.js)",
+          "number": 5,
+          "startedAt": "2026-05-10T20:06:38Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:57Z",
+          "conclusion": "success",
+          "name": "Run tests (Node.js)",
+          "number": 6,
+          "startedAt": "2026-05-10T20:06:56Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:57Z",
+          "conclusion": "skipped",
+          "name": "Setup Bun",
+          "number": 7,
+          "startedAt": "2026-05-10T20:06:57Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:57Z",
+          "conclusion": "skipped",
+          "name": "Install dependencies (Bun)",
+          "number": 8,
+          "startedAt": "2026-05-10T20:06:57Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:57Z",
+          "conclusion": "skipped",
+          "name": "Run tests (Bun)",
+          "number": 9,
+          "startedAt": "2026-05-10T20:06:57Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:57Z",
+          "conclusion": "skipped",
+          "name": "Setup Deno",
+          "number": 10,
+          "startedAt": "2026-05-10T20:06:57Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:57Z",
+          "conclusion": "skipped",
+          "name": "Run tests (Deno)",
+          "number": 11,
+          "startedAt": "2026-05-10T20:06:57Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:57Z",
+          "conclusion": "success",
+          "name": "Post Setup Node.js",
+          "number": 21,
+          "startedAt": "2026-05-10T20:06:57Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:58Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v6",
+          "number": 22,
+          "startedAt": "2026-05-10T20:06:57Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:58Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 23,
+          "startedAt": "2026-05-10T20:06:58Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/konard/vk-bot-desktop/actions/runs/25638487599/job/75254593003"
+    },
+    {
+      "completedAt": "2026-05-10T20:06:37Z",
+      "conclusion": "success",
+      "databaseId": 75254593006,
+      "name": "Test (deno on ubuntu-latest)",
+      "startedAt": "2026-05-10T20:06:26Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-05-10T20:06:28Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-05-10T20:06:27Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:30Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v6",
+          "number": 2,
+          "startedAt": "2026-05-10T20:06:28Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:30Z",
+          "conclusion": "skipped",
+          "name": "Simulate fresh merge with base branch (PR only)",
+          "number": 3,
+          "startedAt": "2026-05-10T20:06:30Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:30Z",
+          "conclusion": "skipped",
+          "name": "Setup Node.js",
+          "number": 4,
+          "startedAt": "2026-05-10T20:06:30Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:30Z",
+          "conclusion": "skipped",
+          "name": "Install dependencies (Node.js)",
+          "number": 5,
+          "startedAt": "2026-05-10T20:06:30Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:30Z",
+          "conclusion": "skipped",
+          "name": "Run tests (Node.js)",
+          "number": 6,
+          "startedAt": "2026-05-10T20:06:30Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:30Z",
+          "conclusion": "skipped",
+          "name": "Setup Bun",
+          "number": 7,
+          "startedAt": "2026-05-10T20:06:30Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:30Z",
+          "conclusion": "skipped",
+          "name": "Install dependencies (Bun)",
+          "number": 8,
+          "startedAt": "2026-05-10T20:06:30Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:30Z",
+          "conclusion": "skipped",
+          "name": "Run tests (Bun)",
+          "number": 9,
+          "startedAt": "2026-05-10T20:06:30Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:31Z",
+          "conclusion": "success",
+          "name": "Setup Deno",
+          "number": 10,
+          "startedAt": "2026-05-10T20:06:30Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:35Z",
+          "conclusion": "success",
+          "name": "Run tests (Deno)",
+          "number": 11,
+          "startedAt": "2026-05-10T20:06:31Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:35Z",
+          "conclusion": "success",
+          "name": "Post Setup Deno",
+          "number": 21,
+          "startedAt": "2026-05-10T20:06:35Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:35Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v6",
+          "number": 22,
+          "startedAt": "2026-05-10T20:06:35Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:35Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 23,
+          "startedAt": "2026-05-10T20:06:35Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/konard/vk-bot-desktop/actions/runs/25638487599/job/75254593006"
+    },
+    {
+      "completedAt": "2026-05-10T20:06:48Z",
+      "conclusion": "success",
+      "databaseId": 75254593009,
+      "name": "Test (bun on ubuntu-latest)",
+      "startedAt": "2026-05-10T20:06:26Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-05-10T20:06:29Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-05-10T20:06:27Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:30Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v6",
+          "number": 2,
+          "startedAt": "2026-05-10T20:06:29Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:30Z",
+          "conclusion": "skipped",
+          "name": "Simulate fresh merge with base branch (PR only)",
+          "number": 3,
+          "startedAt": "2026-05-10T20:06:30Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:30Z",
+          "conclusion": "skipped",
+          "name": "Setup Node.js",
+          "number": 4,
+          "startedAt": "2026-05-10T20:06:30Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:30Z",
+          "conclusion": "skipped",
+          "name": "Install dependencies (Node.js)",
+          "number": 5,
+          "startedAt": "2026-05-10T20:06:30Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:30Z",
+          "conclusion": "skipped",
+          "name": "Run tests (Node.js)",
+          "number": 6,
+          "startedAt": "2026-05-10T20:06:30Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:32Z",
+          "conclusion": "success",
+          "name": "Setup Bun",
+          "number": 7,
+          "startedAt": "2026-05-10T20:06:30Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:45Z",
+          "conclusion": "success",
+          "name": "Install dependencies (Bun)",
+          "number": 8,
+          "startedAt": "2026-05-10T20:06:32Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:45Z",
+          "conclusion": "success",
+          "name": "Run tests (Bun)",
+          "number": 9,
+          "startedAt": "2026-05-10T20:06:45Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:45Z",
+          "conclusion": "skipped",
+          "name": "Setup Deno",
+          "number": 10,
+          "startedAt": "2026-05-10T20:06:45Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:45Z",
+          "conclusion": "skipped",
+          "name": "Run tests (Deno)",
+          "number": 11,
+          "startedAt": "2026-05-10T20:06:45Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:45Z",
+          "conclusion": "success",
+          "name": "Post Setup Bun",
+          "number": 21,
+          "startedAt": "2026-05-10T20:06:45Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:46Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v6",
+          "number": 22,
+          "startedAt": "2026-05-10T20:06:45Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:46Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 23,
+          "startedAt": "2026-05-10T20:06:46Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/konard/vk-bot-desktop/actions/runs/25638487599/job/75254593009"
+    },
+    {
+      "completedAt": "2026-05-10T20:06:42Z",
+      "conclusion": "success",
+      "databaseId": 75254593014,
+      "name": "Test (deno on macos-latest)",
+      "startedAt": "2026-05-10T20:06:27Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-05-10T20:06:29Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-05-10T20:06:27Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:31Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v6",
+          "number": 2,
+          "startedAt": "2026-05-10T20:06:29Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:31Z",
+          "conclusion": "skipped",
+          "name": "Simulate fresh merge with base branch (PR only)",
+          "number": 3,
+          "startedAt": "2026-05-10T20:06:31Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:31Z",
+          "conclusion": "skipped",
+          "name": "Setup Node.js",
+          "number": 4,
+          "startedAt": "2026-05-10T20:06:31Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:31Z",
+          "conclusion": "skipped",
+          "name": "Install dependencies (Node.js)",
+          "number": 5,
+          "startedAt": "2026-05-10T20:06:31Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:31Z",
+          "conclusion": "skipped",
+          "name": "Run tests (Node.js)",
+          "number": 6,
+          "startedAt": "2026-05-10T20:06:31Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:31Z",
+          "conclusion": "skipped",
+          "name": "Setup Bun",
+          "number": 7,
+          "startedAt": "2026-05-10T20:06:31Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:31Z",
+          "conclusion": "skipped",
+          "name": "Install dependencies (Bun)",
+          "number": 8,
+          "startedAt": "2026-05-10T20:06:31Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:31Z",
+          "conclusion": "skipped",
+          "name": "Run tests (Bun)",
+          "number": 9,
+          "startedAt": "2026-05-10T20:06:31Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:33Z",
+          "conclusion": "success",
+          "name": "Setup Deno",
+          "number": 10,
+          "startedAt": "2026-05-10T20:06:31Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:38Z",
+          "conclusion": "success",
+          "name": "Run tests (Deno)",
+          "number": 11,
+          "startedAt": "2026-05-10T20:06:33Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:38Z",
+          "conclusion": "success",
+          "name": "Post Setup Deno",
+          "number": 21,
+          "startedAt": "2026-05-10T20:06:38Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:39Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v6",
+          "number": 22,
+          "startedAt": "2026-05-10T20:06:38Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:39Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 23,
+          "startedAt": "2026-05-10T20:06:39Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/konard/vk-bot-desktop/actions/runs/25638487599/job/75254593014"
+    },
+    {
+      "completedAt": "2026-05-10T20:07:03Z",
+      "conclusion": "success",
+      "databaseId": 75254593017,
+      "name": "Test (deno on windows-latest)",
+      "startedAt": "2026-05-10T20:06:26Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-05-10T20:06:27Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-05-10T20:06:26Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:33Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v6",
+          "number": 2,
+          "startedAt": "2026-05-10T20:06:28Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:33Z",
+          "conclusion": "skipped",
+          "name": "Simulate fresh merge with base branch (PR only)",
+          "number": 3,
+          "startedAt": "2026-05-10T20:06:33Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:33Z",
+          "conclusion": "skipped",
+          "name": "Setup Node.js",
+          "number": 4,
+          "startedAt": "2026-05-10T20:06:33Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:33Z",
+          "conclusion": "skipped",
+          "name": "Install dependencies (Node.js)",
+          "number": 5,
+          "startedAt": "2026-05-10T20:06:33Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:33Z",
+          "conclusion": "skipped",
+          "name": "Run tests (Node.js)",
+          "number": 6,
+          "startedAt": "2026-05-10T20:06:33Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:33Z",
+          "conclusion": "skipped",
+          "name": "Setup Bun",
+          "number": 7,
+          "startedAt": "2026-05-10T20:06:33Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:33Z",
+          "conclusion": "skipped",
+          "name": "Install dependencies (Bun)",
+          "number": 8,
+          "startedAt": "2026-05-10T20:06:33Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:33Z",
+          "conclusion": "skipped",
+          "name": "Run tests (Bun)",
+          "number": 9,
+          "startedAt": "2026-05-10T20:06:33Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:43Z",
+          "conclusion": "success",
+          "name": "Setup Deno",
+          "number": 10,
+          "startedAt": "2026-05-10T20:06:33Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:59Z",
+          "conclusion": "success",
+          "name": "Run tests (Deno)",
+          "number": 11,
+          "startedAt": "2026-05-10T20:06:43Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:59Z",
+          "conclusion": "success",
+          "name": "Post Setup Deno",
+          "number": 21,
+          "startedAt": "2026-05-10T20:06:59Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:07:02Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v6",
+          "number": 22,
+          "startedAt": "2026-05-10T20:06:59Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:07:02Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 23,
+          "startedAt": "2026-05-10T20:07:02Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/konard/vk-bot-desktop/actions/runs/25638487599/job/75254593017"
+    },
+    {
+      "completedAt": "2026-05-10T20:06:42Z",
+      "conclusion": "success",
+      "databaseId": 75254593019,
+      "name": "Test (bun on macos-latest)",
+      "startedAt": "2026-05-10T20:06:26Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-05-10T20:06:29Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-05-10T20:06:27Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:31Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v6",
+          "number": 2,
+          "startedAt": "2026-05-10T20:06:29Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:31Z",
+          "conclusion": "skipped",
+          "name": "Simulate fresh merge with base branch (PR only)",
+          "number": 3,
+          "startedAt": "2026-05-10T20:06:31Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:31Z",
+          "conclusion": "skipped",
+          "name": "Setup Node.js",
+          "number": 4,
+          "startedAt": "2026-05-10T20:06:31Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:31Z",
+          "conclusion": "skipped",
+          "name": "Install dependencies (Node.js)",
+          "number": 5,
+          "startedAt": "2026-05-10T20:06:31Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:31Z",
+          "conclusion": "skipped",
+          "name": "Run tests (Node.js)",
+          "number": 6,
+          "startedAt": "2026-05-10T20:06:31Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:33Z",
+          "conclusion": "success",
+          "name": "Setup Bun",
+          "number": 7,
+          "startedAt": "2026-05-10T20:06:31Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:38Z",
+          "conclusion": "success",
+          "name": "Install dependencies (Bun)",
+          "number": 8,
+          "startedAt": "2026-05-10T20:06:33Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:39Z",
+          "conclusion": "success",
+          "name": "Run tests (Bun)",
+          "number": 9,
+          "startedAt": "2026-05-10T20:06:38Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:39Z",
+          "conclusion": "skipped",
+          "name": "Setup Deno",
+          "number": 10,
+          "startedAt": "2026-05-10T20:06:39Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:39Z",
+          "conclusion": "skipped",
+          "name": "Run tests (Deno)",
+          "number": 11,
+          "startedAt": "2026-05-10T20:06:39Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:39Z",
+          "conclusion": "success",
+          "name": "Post Setup Bun",
+          "number": 21,
+          "startedAt": "2026-05-10T20:06:39Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:39Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v6",
+          "number": 22,
+          "startedAt": "2026-05-10T20:06:39Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:40Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 23,
+          "startedAt": "2026-05-10T20:06:39Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/konard/vk-bot-desktop/actions/runs/25638487599/job/75254593019"
+    },
+    {
+      "completedAt": "2026-05-10T20:06:50Z",
+      "conclusion": "success",
+      "databaseId": 75254593020,
+      "name": "Test (node on macos-latest)",
+      "startedAt": "2026-05-10T20:06:26Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-05-10T20:06:30Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-05-10T20:06:27Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:32Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v6",
+          "number": 2,
+          "startedAt": "2026-05-10T20:06:30Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:32Z",
+          "conclusion": "skipped",
+          "name": "Simulate fresh merge with base branch (PR only)",
+          "number": 3,
+          "startedAt": "2026-05-10T20:06:32Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:33Z",
+          "conclusion": "success",
+          "name": "Setup Node.js",
+          "number": 4,
+          "startedAt": "2026-05-10T20:06:32Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:45Z",
+          "conclusion": "success",
+          "name": "Install dependencies (Node.js)",
+          "number": 5,
+          "startedAt": "2026-05-10T20:06:33Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:47Z",
+          "conclusion": "success",
+          "name": "Run tests (Node.js)",
+          "number": 6,
+          "startedAt": "2026-05-10T20:06:45Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:47Z",
+          "conclusion": "skipped",
+          "name": "Setup Bun",
+          "number": 7,
+          "startedAt": "2026-05-10T20:06:47Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:47Z",
+          "conclusion": "skipped",
+          "name": "Install dependencies (Bun)",
+          "number": 8,
+          "startedAt": "2026-05-10T20:06:47Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:47Z",
+          "conclusion": "skipped",
+          "name": "Run tests (Bun)",
+          "number": 9,
+          "startedAt": "2026-05-10T20:06:47Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:47Z",
+          "conclusion": "skipped",
+          "name": "Setup Deno",
+          "number": 10,
+          "startedAt": "2026-05-10T20:06:47Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:47Z",
+          "conclusion": "skipped",
+          "name": "Run tests (Deno)",
+          "number": 11,
+          "startedAt": "2026-05-10T20:06:47Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:47Z",
+          "conclusion": "success",
+          "name": "Post Setup Node.js",
+          "number": 21,
+          "startedAt": "2026-05-10T20:06:47Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:47Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v6",
+          "number": 22,
+          "startedAt": "2026-05-10T20:06:47Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:48Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 23,
+          "startedAt": "2026-05-10T20:06:47Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/konard/vk-bot-desktop/actions/runs/25638487599/job/75254593020"
+    },
+    {
+      "completedAt": "2026-05-10T20:09:10Z",
+      "conclusion": "success",
+      "databaseId": 75254593024,
+      "name": "Test (bun on windows-latest)",
+      "startedAt": "2026-05-10T20:06:26Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-05-10T20:06:28Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-05-10T20:06:27Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:34Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v6",
+          "number": 2,
+          "startedAt": "2026-05-10T20:06:28Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:34Z",
+          "conclusion": "skipped",
+          "name": "Simulate fresh merge with base branch (PR only)",
+          "number": 3,
+          "startedAt": "2026-05-10T20:06:34Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:34Z",
+          "conclusion": "skipped",
+          "name": "Setup Node.js",
+          "number": 4,
+          "startedAt": "2026-05-10T20:06:34Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:34Z",
+          "conclusion": "skipped",
+          "name": "Install dependencies (Node.js)",
+          "number": 5,
+          "startedAt": "2026-05-10T20:06:34Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:34Z",
+          "conclusion": "skipped",
+          "name": "Run tests (Node.js)",
+          "number": 6,
+          "startedAt": "2026-05-10T20:06:34Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:41Z",
+          "conclusion": "success",
+          "name": "Setup Bun",
+          "number": 7,
+          "startedAt": "2026-05-10T20:06:34Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:09:05Z",
+          "conclusion": "success",
+          "name": "Install dependencies (Bun)",
+          "number": 8,
+          "startedAt": "2026-05-10T20:06:41Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:09:07Z",
+          "conclusion": "success",
+          "name": "Run tests (Bun)",
+          "number": 9,
+          "startedAt": "2026-05-10T20:09:05Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:09:07Z",
+          "conclusion": "skipped",
+          "name": "Setup Deno",
+          "number": 10,
+          "startedAt": "2026-05-10T20:09:07Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:09:07Z",
+          "conclusion": "skipped",
+          "name": "Run tests (Deno)",
+          "number": 11,
+          "startedAt": "2026-05-10T20:09:07Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:09:07Z",
+          "conclusion": "success",
+          "name": "Post Setup Bun",
+          "number": 21,
+          "startedAt": "2026-05-10T20:09:07Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:09:09Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v6",
+          "number": 22,
+          "startedAt": "2026-05-10T20:09:07Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:09:09Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 23,
+          "startedAt": "2026-05-10T20:09:09Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/konard/vk-bot-desktop/actions/runs/25638487599/job/75254593024"
+    },
+    {
+      "completedAt": "2026-05-10T20:08:39Z",
+      "conclusion": "success",
+      "databaseId": 75254593030,
+      "name": "Test (node on windows-latest)",
+      "startedAt": "2026-05-10T20:06:26Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-05-10T20:06:28Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-05-10T20:06:27Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:33Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v6",
+          "number": 2,
+          "startedAt": "2026-05-10T20:06:28Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:33Z",
+          "conclusion": "skipped",
+          "name": "Simulate fresh merge with base branch (PR only)",
+          "number": 3,
+          "startedAt": "2026-05-10T20:06:33Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:06:37Z",
+          "conclusion": "success",
+          "name": "Setup Node.js",
+          "number": 4,
+          "startedAt": "2026-05-10T20:06:33Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:08:33Z",
+          "conclusion": "success",
+          "name": "Install dependencies (Node.js)",
+          "number": 5,
+          "startedAt": "2026-05-10T20:06:37Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:08:35Z",
+          "conclusion": "success",
+          "name": "Run tests (Node.js)",
+          "number": 6,
+          "startedAt": "2026-05-10T20:08:33Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:08:35Z",
+          "conclusion": "skipped",
+          "name": "Setup Bun",
+          "number": 7,
+          "startedAt": "2026-05-10T20:08:35Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:08:35Z",
+          "conclusion": "skipped",
+          "name": "Install dependencies (Bun)",
+          "number": 8,
+          "startedAt": "2026-05-10T20:08:35Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:08:35Z",
+          "conclusion": "skipped",
+          "name": "Run tests (Bun)",
+          "number": 9,
+          "startedAt": "2026-05-10T20:08:35Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:08:35Z",
+          "conclusion": "skipped",
+          "name": "Setup Deno",
+          "number": 10,
+          "startedAt": "2026-05-10T20:08:35Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:08:35Z",
+          "conclusion": "skipped",
+          "name": "Run tests (Deno)",
+          "number": 11,
+          "startedAt": "2026-05-10T20:08:35Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:08:36Z",
+          "conclusion": "success",
+          "name": "Post Setup Node.js",
+          "number": 21,
+          "startedAt": "2026-05-10T20:08:35Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:08:38Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v6",
+          "number": 22,
+          "startedAt": "2026-05-10T20:08:36Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:08:38Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 23,
+          "startedAt": "2026-05-10T20:08:38Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/konard/vk-bot-desktop/actions/runs/25638487599/job/75254593030"
+    },
+    {
+      "completedAt": "2026-05-10T20:09:55Z",
+      "conclusion": "success",
+      "databaseId": 75254755283,
+      "name": "Release",
+      "startedAt": "2026-05-10T20:09:14Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-05-10T20:09:16Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-05-10T20:09:15Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:09:18Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v6",
+          "number": 2,
+          "startedAt": "2026-05-10T20:09:16Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:09:22Z",
+          "conclusion": "success",
+          "name": "Setup Node.js",
+          "number": 3,
+          "startedAt": "2026-05-10T20:09:18Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:09:44Z",
+          "conclusion": "success",
+          "name": "Install dependencies",
+          "number": 4,
+          "startedAt": "2026-05-10T20:09:22Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:09:44Z",
+          "conclusion": "success",
+          "name": "Check for changesets",
+          "number": 5,
+          "startedAt": "2026-05-10T20:09:44Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:09:44Z",
+          "conclusion": "success",
+          "name": "Check if release is needed",
+          "number": 6,
+          "startedAt": "2026-05-10T20:09:44Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:09:44Z",
+          "conclusion": "skipped",
+          "name": "Merge multiple changesets",
+          "number": 7,
+          "startedAt": "2026-05-10T20:09:44Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:09:52Z",
+          "conclusion": "success",
+          "name": "Version packages and commit to main",
+          "number": 8,
+          "startedAt": "2026-05-10T20:09:44Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:09:52Z",
+          "conclusion": "success",
+          "name": "Determine release version",
+          "number": 9,
+          "startedAt": "2026-05-10T20:09:52Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:09:52Z",
+          "conclusion": "success",
+          "name": "Resolve release target commit",
+          "number": 10,
+          "startedAt": "2026-05-10T20:09:52Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:09:52Z",
+          "conclusion": "success",
+          "name": "Post Setup Node.js",
+          "number": 19,
+          "startedAt": "2026-05-10T20:09:52Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:09:52Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v6",
+          "number": 20,
+          "startedAt": "2026-05-10T20:09:52Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:09:52Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 21,
+          "startedAt": "2026-05-10T20:09:52Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/konard/vk-bot-desktop/actions/runs/25638487599/job/75254755283"
+    },
+    {
+      "completedAt": "2026-05-10T20:10:01Z",
+      "conclusion": "success",
+      "databaseId": 75254799153,
+      "name": "Resolve desktop release context",
+      "startedAt": "2026-05-10T20:09:57Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-05-10T20:09:58Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-05-10T20:09:58Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:09:58Z",
+          "conclusion": "success",
+          "name": "Resolve release tag and target SHA",
+          "number": 2,
+          "startedAt": "2026-05-10T20:09:58Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-05-10T20:09:58Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 3,
+          "startedAt": "2026-05-10T20:09:58Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/konard/vk-bot-desktop/actions/runs/25638487599/job/75254799153"
+    },
+    {
+      "completedAt": "2026-05-10T20:10:01Z",
+      "conclusion": "skipped",
+      "databaseId": 75254803519,
+      "name": "Build desktop (${{ matrix.platform }} ${{ matrix.arch }})",
+      "startedAt": "2026-05-10T20:10:01Z",
+      "status": "completed",
+      "steps": [],
+      "url": "https://github.com/konard/vk-bot-desktop/actions/runs/25638487599/job/75254803519"
+    },
+    {
+      "completedAt": "2026-05-10T20:10:01Z",
+      "conclusion": "skipped",
+      "databaseId": 75254803598,
+      "name": "Publish GitHub release",
+      "startedAt": "2026-05-10T20:10:01Z",
+      "status": "completed",
+      "steps": [],
+      "url": "https://github.com/konard/vk-bot-desktop/actions/runs/25638487599/job/75254803598"
+    }
+  ],
+  "updatedAt": "2026-05-10T20:10:02Z",
+  "url": "https://github.com/konard/vk-bot-desktop/actions/runs/25638487599",
+  "workflowName": "JavaScript CI/CD"
+}

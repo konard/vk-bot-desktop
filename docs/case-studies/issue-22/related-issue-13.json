@@ -1,0 +1,22 @@
+{
+  "body": "I want it to be done without Apple Developer account, so it is like self signed or something, and can be install it directly on my machine for testing, before any official distribution via App Store and Apple Developer account.\n\nIs it technically possible to make it work, I don't care about warnings or additional dialogs on installation, all I care for it to work.\n\n<img width=\"1824\" height=\"1097\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/edbe3e79-e451-42a1-be09-07f6a87435a0\" />\n\nRight now at https://konard.github.io/vk-bot-desktop it is written `Not available in latest release`, that stops me from testing it on macOS.\n\nWe need double check for all issues, and fix them all. And we need to have unit/integration/e2e tests, to ensure regressions will never happen again, and it should be tested both locally for pull requests, and after publish of GitHub Pages and Desktop GitHub Releases. We need to make sure our app is really working with all e2e tests possible.\n\nUse https://github.com/link-foundation/browser-commander and also if there exists e2e testing framework for electron applications also use it to full potential, we need strict verification that each application on each platform is working.\n\nUse all the best practices from CI/CD templates (check full file tree to compare for all GitHub workflow and CI/CD scripts file), if the same issue is found in template report issue also in templates:\n- https://github.com/link-foundation/js-ai-driven-development-pipeline-template\n- https://github.com/link-foundation/rust-ai-driven-development-pipeline-template\n- https://github.com/link-foundation/python-ai-driven-development-pipeline-template\n- https://github.com/link-foundation/csharp-ai-driven-development-pipeline-template\n\nWe should compare all files, so we don't have more CI/CD errors in the future and reuse all the best practices from these templates.\n\nWe need to download all logs and data related about the issue to this repository, make sure we compile that data to `./docs/case-studies/issue-{id}` folder, and use it to do deep case study analysis (also make sure to search online for additional facts and data), in which we will reconstruct timeline/sequence of events, list of each and all requirements from the issue, find root causes of the each problem, and propose possible solutions and solution plans for each requirement (we should also check known existing components/libraries, that solve similar problem or can help in solutions).\n\nIf there is not enough data to find actual root cause, add debug output and verbose mode if not present, that will allow us to find root cause on next iteration.\n\nIf issue related to any other repository/project, where we can report issues on GitHub, please do so. Each issue must contain reproducible examples, workarounds and suggestions for fix the issue in code.\n\nPlease plan and execute everything in a single pull request, you have unlimited time and context, as context auto-compacts and you can continue indefinitely, until it is each and every requirement fully addressed, and everything is totally done.\n",
+  "createdAt": "2026-05-10T13:49:28Z",
+  "labels": [
+    {
+      "id": "LA_kwDOSYpSBs8AAAACigeUyA",
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "id": "LA_kwDOSYpSBs8AAAACigeVAw",
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    }
+  ],
+  "number": 13,
+  "state": "CLOSED",
+  "title": "Can we do something to make macOS build available?",
+  "updatedAt": "2026-05-10T14:54:53Z"
+}
