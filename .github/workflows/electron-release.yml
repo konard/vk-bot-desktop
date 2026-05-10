@@ -59,6 +59,13 @@ jobs:
       - name: Build renderer bundle
         run: npm run build:renderer
 
+      - name: Install system FPM (Linux arm64)
+        if: matrix.platform == 'linux' && matrix.arch == 'arm64'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ruby ruby-dev build-essential
+          sudo gem install --no-document fpm
+
       - name: Check macOS signing secrets
         id: mac_secrets
         if: matrix.platform == 'macos'
@@ -92,7 +99,13 @@ jobs:
         if: matrix.platform == 'linux'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx electron-builder --linux --${{ matrix.arch }} --publish never
+        shell: bash
+        run: |
+          if [ "${{ matrix.arch }}" = "arm64" ]; then
+            export USE_SYSTEM_FPM=true
+          fi
+
+          npx electron-builder --linux --${{ matrix.arch }} --publish never
 
       - name: Build Electron artifacts (macOS signed)
         if: matrix.platform == 'macos' && steps.mac_secrets.outputs.has_secrets == 'true'
@@ -120,6 +133,49 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx electron-builder --win --${{ matrix.arch }} --publish never
+
+      - name: Normalize Linux release artifact names
+        if: matrix.platform == 'linux'
+        shell: bash
+        run: |
+          set -euo pipefail
+          VERSION="$(node -p "require('./package.json').version")"
+          ARCH="${{ matrix.arch }}"
+
+          normalize_artifact() {
+            local source="$1"
+            local target="$2"
+
+            if [ "$source" = "$target" ] || [ ! -f "$source" ]; then
+              return
+            fi
+
+            if [ -f "$target" ]; then
+              echo "::error file=$target::Cannot normalize $source because the target already exists."
+              exit 1
+            fi
+
+            mv "$source" "$target"
+            echo "Renamed $(basename "$source") -> $(basename "$target")"
+          }
+
+          if [ "$ARCH" = "x64" ]; then
+            normalize_artifact \
+              "release/vk-bot-desktop-linux-x86_64-${VERSION}.AppImage" \
+              "release/vk-bot-desktop-linux-x64-${VERSION}.AppImage"
+            normalize_artifact \
+              "release/vk-bot-desktop-linux-amd64-${VERSION}.deb" \
+              "release/vk-bot-desktop-linux-x64-${VERSION}.deb"
+          elif [ "$ARCH" = "arm64" ]; then
+            normalize_artifact \
+              "release/vk-bot-desktop-linux-aarch64-${VERSION}.AppImage" \
+              "release/vk-bot-desktop-linux-arm64-${VERSION}.AppImage"
+            normalize_artifact \
+              "release/vk-bot-desktop-linux-aarch64-${VERSION}.deb" \
+              "release/vk-bot-desktop-linux-arm64-${VERSION}.deb"
+          fi
+
+          find release -maxdepth 1 -type f -printf '%f\n' | sort
 
       - name: Smoke test Linux release artifacts
         if: matrix.platform == 'linux'
