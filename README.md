@@ -28,12 +28,12 @@ include the version so cached installers stay unambiguous.
 
 | Platform            | Artifact examples                                      |
 | ------------------- | ------------------------------------------------------ |
-| macOS Apple silicon | `vk-bot-desktop-macos-arm64-0.9.8.dmg`, `.zip`         |
-| macOS Intel         | `vk-bot-desktop-macos-x64-0.9.8.dmg`, `.zip`           |
-| Windows x64         | `vk-bot-desktop-windows-installer-x64-0.9.8.exe`       |
-| Windows arm64       | `vk-bot-desktop-windows-installer-arm64-0.9.8.exe`     |
-| Linux x64           | `vk-bot-desktop-linux-x64-0.9.8.AppImage`, `.deb`      |
-| Linux arm64         | `vk-bot-desktop-linux-arm64-0.9.8.AppImage`, `.deb`    |
+| macOS Apple silicon | `vk-bot-desktop-macos-arm64-0.9.9.dmg`, `.zip`         |
+| macOS Intel         | `vk-bot-desktop-macos-x64-0.9.9.dmg`, `.zip`           |
+| Windows x64         | `vk-bot-desktop-windows-installer-x64-0.9.9.exe`       |
+| Windows arm64       | `vk-bot-desktop-windows-installer-arm64-0.9.9.exe`     |
+| Linux x64           | `vk-bot-desktop-linux-x64-0.9.9.AppImage`, `.deb`      |
+| Linux arm64         | `vk-bot-desktop-linux-arm64-0.9.9.AppImage`, `.deb`    |
 | Verification        | `SHA256SUMS.txt`, `BUILD-PROVENANCE.txt`, attestations |
 
 Verify the SHA-256 checksum against `SHA256SUMS.txt` from the same release:
@@ -45,14 +45,14 @@ sha256sum -c SHA256SUMS.txt
 On Windows, PowerShell can compute the same SHA-256 value:
 
 ```powershell
-Get-FileHash .\vk-bot-desktop-windows-installer-x64-0.9.8.exe -Algorithm SHA256
+Get-FileHash .\vk-bot-desktop-windows-installer-x64-0.9.9.exe -Algorithm SHA256
 ```
 
 For stronger supply-chain checks, inspect `BUILD-PROVENANCE.txt` and verify
 GitHub artifact attestations when they are attached to the release:
 
 ```sh
-gh attestation verify ./vk-bot-desktop-linux-x64-0.9.8.AppImage --repo konard/vk-bot-desktop
+gh attestation verify ./vk-bot-desktop-linux-x64-0.9.9.AppImage --repo konard/vk-bot-desktop
 ```
 
 The download page is published from this repository with GitHub Pages after

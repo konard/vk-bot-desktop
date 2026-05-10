@@ -145,7 +145,8 @@
       "artifactName": "vk-bot-desktop-windows-installer-${arch}-${version}.${ext}",
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
-      "perMachine": false
+      "perMachine": false,
+      "runAfterFinish": false
     },
     "portable": {
       "artifactName": "vk-bot-desktop-windows-portable-${arch}-${version}.${ext}"

@@ -83,6 +83,9 @@ Automated release workflows ensure:
 - **Install-tested artifacts** - Release jobs inspect or install the built
   package on the target runner before upload, including Gatekeeper assessment
   for macOS DMGs
+- **Watched child workflows** - Parent release jobs dispatch the Electron
+  release workflow, watch the matching child run, and fail if that child run
+  fails
 - **Dual trigger modes** - Both automatic (on merge) and manual (workflow dispatch)
 
 ### 8. CI/CD Pipeline Features
@@ -163,8 +166,9 @@ a test, network call, package install, or release step hangs:
   Actions' six-hour default.
 - Matrix test jobs have a 10-minute cap per runtime and operating
   system.
-- Release jobs have 30 minutes for versioning, GitHub API retries, and desktop
-  workflow dispatch without allowing an unbounded release run.
+- Release jobs have 90 minutes for versioning, GitHub API retries, desktop
+  workflow dispatch, and watching the downstream Electron release result without
+  allowing an unbounded release run.
 - The broken link checker has 10 minutes for slow external hosts and
   Web Archive fallback probes.
 
@@ -184,8 +188,8 @@ Current timeout bands:
 | `pages.yml` site build    | 10 min |
 | `pages.yml` site deploy   | 10 min |
 | `changeset-pr`            | 10 min |
-| `release`                 | 30 min |
-| `instant-release`         | 30 min |
+| `release`                 | 90 min |
+| `instant-release`         | 90 min |
 
 ### 15. Release Landing Page
 

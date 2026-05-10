@@ -1,0 +1,160 @@
+TAP version 13
+# Subtest: CI timeout policy
+    # Subtest: sets timeout-minutes for every release workflow job
+    ok 1 - sets timeout-minutes for every release workflow job
+      ---
+      duration_ms: 1.721801
+      ...
+    # Subtest: sets timeout-minutes for every link workflow job
+    ok 2 - sets timeout-minutes for every link workflow job
+      ---
+      duration_ms: 0.9181
+      ...
+    # Subtest: sets timeout-minutes for every Pages workflow job
+    ok 3 - sets timeout-minutes for every Pages workflow job
+      ---
+      duration_ms: 0.228611
+      ...
+    # Subtest: parses workflow files checked out with Windows line endings
+    ok 4 - parses workflow files checked out with Windows line endings
+      ---
+      duration_ms: 0.119548
+      ...
+    # Subtest: caps individual Node.js and Bun tests at 30 seconds
+    ok 5 - caps individual Node.js and Bun tests at 30 seconds
+      ---
+      duration_ms: 0.103234
+      ...
+    1..5
+ok 1 - CI timeout policy
+  ---
+  duration_ms: 4.299139
+  type: 'suite'
+  ...
+# Subtest: release workflow dispatch
+    # Subtest: does not publish packages to npm from release jobs
+    ok 1 - does not publish packages to npm from release jobs
+      ---
+      duration_ms: 1.067825
+      ...
+    # Subtest: dispatches the Electron release workflow with an exact tag and commit
+    ok 2 - dispatches the Electron release workflow with an exact tag and commit
+      ---
+      duration_ms: 1.806967
+      ...
+    1..2
+ok 2 - release workflow dispatch
+  ---
+  duration_ms: 4.07279
+  type: 'suite'
+  ...
+# Subtest: desktop release workflow
+    # Subtest: builds desktop artifacts for Linux, macOS, and Windows releases
+    ok 1 - builds desktop artifacts for Linux, macOS, and Windows releases
+      ---
+      duration_ms: 0.357924
+      ...
+    # Subtest: uses versioned artifact names for release download links
+    ok 2 - uses versioned artifact names for release download links
+      ---
+      duration_ms: 0.182672
+      ...
+    # Subtest: uses system FPM for native Linux arm64 Debian builds
+    ok 3 - uses system FPM for native Linux arm64 Debian builds
+      ---
+      duration_ms: 0.244325
+      ...
+    # Subtest: normalizes Linux artifact architecture names before validation
+    ok 4 - normalizes Linux artifact architecture names before validation
+      ---
+      duration_ms: 0.28128
+      ...
+    1..4
+ok 3 - desktop release workflow
+  ---
+  duration_ms: 1.28579
+  type: 'suite'
+  ...
+# Subtest: desktop release workflow macOS signing
+    # Subtest: keeps signed and notarized macOS publishing when Apple secrets are configured
+    ok 1 - keeps signed and notarized macOS publishing when Apple secrets are configured
+      ---
+      duration_ms: 0.299708
+      ...
+    # Subtest: builds ad-hoc signed macOS artifacts without Apple secrets
+    ok 2 - builds ad-hoc signed macOS artifacts without Apple secrets
+      ---
+      duration_ms: 0.289222
+      ...
+    1..2
+ok 4 - desktop release workflow macOS signing
+  ---
+  duration_ms: 0.777561
+  type: 'suite'
+  ...
+# Subtest: desktop release workflow smoke tests
+    # Subtest: smoke-tests platform installers after building and before uploading
+    ok 1 - smoke-tests platform installers after building and before uploading
+      ---
+      duration_ms: 0.122633
+      ...
+    # Subtest: configures a Linux maintainer for deb artifacts
+    ok 2 - configures a Linux maintainer for deb artifacts
+      ---
+      duration_ms: 0.46937
+      ...
+    # Subtest: hashes Linux and macOS artifacts without splitting filenames on spaces
+    ok 3 - hashes Linux and macOS artifacts without splitting filenames on spaces
+      ---
+      duration_ms: 0.208911
+      ...
+    1..3
+ok 5 - desktop release workflow smoke tests
+  ---
+  duration_ms: 0.927174
+  type: 'suite'
+  ...
+# https://github.com/konard/vk-bot-desktop/actions/runs/25636588014
+# Subtest: dispatch-and-watch-workflow.mjs
+    # Subtest: extracts a workflow run id from gh workflow run output
+    ok 1 - extracts a workflow run id from gh workflow run output
+      ---
+      duration_ms: 0.643451
+      ...
+    # Subtest: picks the newest workflow run for the requested target commit
+    ok 2 - picks the newest workflow run for the requested target commit
+      ---
+      duration_ms: 0.201451
+      ...
+    # Subtest: watches the dispatched run and returns the downstream failure status
+    ok 3 - watches the dispatched run and returns the downstream failure status
+      ---
+      duration_ms: 1.119242
+      ...
+    1..3
+ok 6 - dispatch-and-watch-workflow.mjs
+  ---
+  duration_ms: 2.855443
+  type: 'suite'
+  ...
+# Subtest: dispatch-and-watch-workflow.mjs fallback polling
+    # Subtest: finds the child run by head SHA when dispatch output has no run URL
+    ok 1 - finds the child run by head SHA when dispatch output has no run URL
+      ---
+      duration_ms: 0.484944
+      ...
+    1..1
+ok 7 - dispatch-and-watch-workflow.mjs fallback polling
+  ---
+  duration_ms: 0.5758
+  type: 'suite'
+  ...
+1..7
+# tests 20
+# suites 7
+# pass 20
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 87.658202

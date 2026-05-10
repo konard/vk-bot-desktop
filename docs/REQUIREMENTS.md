@@ -96,7 +96,7 @@ local bot execution and remote execution over SSH.
    and Linux when the target-platform runners can build and smoke-test them.
 8. Release artifact filenames must include the application version, platform,
    architecture, and format, for example
-   `vk-bot-desktop-macos-arm64-0.9.8.dmg`.
+   `vk-bot-desktop-macos-arm64-0.9.9.dmg`.
 9. Release artifacts must include SHA256 checksums.
 10. Release artifacts must include enough provenance to identify repository,
     workflow run, tag, target commit, and builder OS.
@@ -122,6 +122,12 @@ local bot execution and remote execution over SSH.
     attached, the page must not synthesize a direct asset URL.
 20. The download page should include expandable checksum/provenance verification
     instructions for regular and advanced users.
+21. Parent release workflows must wait for dispatched desktop artifact workflows
+    and fail if the child workflow fails, so release dispatch cannot produce a
+    false-positive green CI run.
+22. Silent Windows installer smoke tests must not auto-launch the desktop app
+    after install; app launch is a separate runtime behavior from installer
+    artifact validation.
 
 ## Testing And Documentation
 

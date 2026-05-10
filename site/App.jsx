@@ -186,7 +186,7 @@ function detectOperatingSystem() {
 }
 
 function verificationCommands(release) {
-  const version = releaseVersion(release) || '0.9.8';
+  const version = releaseVersion(release) || '0.9.9';
 
   return [
     {

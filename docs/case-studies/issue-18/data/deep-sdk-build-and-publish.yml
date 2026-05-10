@@ -1,0 +1,18 @@
+name: Build And Publish
+
+on: 
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-publish:
+    uses: ./.github/workflows/build-and-publish-reusable-workflow.yml
+    with:
+      app-name: sdk
+    secrets: 
+      csc-key-password:  ${{ secrets.CSC_KEY_PASSWORD }}
+      csc-link: ${{ secrets.CSC_LINK }}
+      appleid: ${{ secrets.APPLEID }}
+      appleidpass: ${{ secrets.APPLEIDPASS }}

@@ -1,0 +1,158 @@
+TAP version 13
+# Subtest: release workflow dispatch
+    # Subtest: does not publish packages to npm from release jobs
+    ok 1 - does not publish packages to npm from release jobs
+      ---
+      duration_ms: 1.16473
+      ...
+    # Subtest: dispatches the Electron release workflow with an exact tag and commit
+    not ok 2 - dispatches the Electron release workflow with an exact tag and commit
+      ---
+      duration_ms: 1.263346
+      location: '/tmp/gh-issue-solver-1778438543282/node_modules/test-anywhere/src/index.js:174:12'
+      failureType: 'testCodeFailure'
+      error: 'Expected "  release:\\n    name: Release\\n    needs: [lint, test]\\n    # Typical run is well under 10min. 30min gives versioning and GitHub\\n    # workflow dispatch room for retries without allowing a 6h hang.\\n    timeout-minutes: 30\\n    # Use !cancelled() instead of always() so cancellation propagates correctly (hive-mind issue #1278)\\n    # This is needed because lint/test jobs have a transitive dependency on changeset-check\\n    if: |\\n      !cancelled() &&\\n      github.ref == \'refs/heads/main\' &&\\n      github.event_name == \'push\' &&\\n      needs.lint.result == \'success\' &&\\n      needs.test.result == \'success\'\\n    runs-on: ubuntu-latest\\n    # Permissions required to version main and dispatch the Electron release workflow.\\n    permissions:\\n      contents: write\\n      pull-requests: write\\n      actions: write\\n    steps:\\n      - uses: actions/checkout@v6\\n        with:\\n          fetch-depth: 0\\n\\n      - name: Setup Node.js\\n        uses: actions/setup-node@v6\\n        with:\\n          node-version: \'24.x\'\\n\\n      - name: Install dependencies\\n        run: npm install\\n\\n      - name: Check for changesets\\n        id: check_changesets\\n        run: node scripts/check-changesets.mjs\\n\\n      - name: Check if release is needed\\n        id: check_release\\n        env:\\n          HAS_CHANGESETS: ${{ steps.check_changesets.outputs.has_changesets }}\\n          REPOSITORY: ${{ github.repository }}\\n          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}\\n        run: node scripts/check-release-needed.mjs\\n\\n      - name: Merge multiple changesets\\n        if: steps.check_changesets.outputs.has_changesets == \'true\' && steps.check_changesets.outputs.changeset_count > 1\\n        run: |\\n          echo \\"Multiple changesets detected, merging...\\"\\n          node scripts/merge-changesets.mjs\\n\\n      - name: Version packages and commit to main\\n        if: steps.check_changesets.outputs.has_changesets == \'true\'\\n        id: version\\n        run: node scripts/version-and-commit.mjs --mode changeset\\n\\n      - name: Determine release version\\n        id: release_version\\n        if: >-\\n          steps.version.outputs.version_committed == \'true\' ||\\n          steps.version.outputs.already_released == \'true\' ||\\n          (steps.check_release.outputs.should_release == \'true\' && steps.check_release.outputs.skip_bump == \'true\')\\n        run: |\\n          VERSION=\\"${{ steps.version.outputs.new_version }}\\"\\n          if [ -z \\"$VERSION\\" ]; then\\n            VERSION=\\"$(node -p \\"JSON.parse(require(\'node:fs\').readFileSync(\'package.json\', \'utf8\')).version\\")\\"\\n          fi\\n\\n          echo \\"version=$VERSION\\" >> \\"$GITHUB_OUTPUT\\"\\n          echo \\"tag=v$VERSION\\" >> \\"$GITHUB_OUTPUT\\"\\n\\n      - name: Resolve release target commit\\n        id: release_target\\n        if: >-\\n          steps.version.outputs.version_committed == \'true\' ||\\n          steps.version.outputs.already_released == \'true\' ||\\n          (steps.check_release.outputs.should_release == \'true\' && steps.check_release.outputs.skip_bump == \'true\')\\n        run: |\\n          git fetch origin main\\n          SHA=\\"$(git rev-parse origin/main)\\"\\n          echo \\"sha=$SHA\\" >> \\"$GITHUB_OUTPUT\\"\\n\\n      - name: Trigger desktop artifact release\\n        if: >-\\n          steps.version.outputs.version_committed == \'true\' ||\\n          steps.version.outputs.already_released == \'true\' ||\\n          (steps.check_release.outputs.should_release == \'true\' && steps.check_release.outputs.skip_bump == \'true\')\\n        env:\\n          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}\\n        run: |\\n          gh workflow run electron-release.yml \\\\\\n            --repo \\"${{ github.repository }}\\" \\\\\\n            --ref main \\\\\\n            --field tag=\\"${{ steps.release_version.outputs.tag }}\\" \\\\\\n            --field target_sha=\\"${{ steps.release_target.outputs.sha }}\\"\\n\\n  # Manual Instant Release - triggered via workflow_dispatch with instant mode\\n  # This job versions main, then dispatches the Electron release workflow." to contain "node scripts/dispatch-and-watch-workflow.mjs"'
+      code: 'ERR_TEST_FAILURE'
+      stack: |-
+        Object.toContain (file:///tmp/gh-issue-solver-1778438543282/node_modules/test-anywhere/src/index.js:566:15)
+        TestContext.<anonymous> (file:///tmp/gh-issue-solver-1778438543282/tests/desktop-release-workflow.test.js:58:19)
+        Test.runInAsyncScope (node:async_hooks:206:9)
+        Test.run (node:internal/test_runner/test:796:25)
+        Suite.processPendingSubtests (node:internal/test_runner/test:526:18)
+        Test.postRun (node:internal/test_runner/test:889:19)
+        Test.run (node:internal/test_runner/test:835:12)
+        async Promise.all (index 0)
+        async Suite.run (node:internal/test_runner/test:1135:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+      ...
+    1..2
+not ok 1 - release workflow dispatch
+  ---
+  duration_ms: 3.379156
+  type: 'suite'
+  location: '/tmp/gh-issue-solver-1778438543282/node_modules/test-anywhere/src/index.js:205:12'
+  failureType: 'subtestsFailed'
+  error: '1 subtest failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: desktop release workflow
+    # Subtest: builds desktop artifacts for Linux, macOS, and Windows releases
+    ok 1 - builds desktop artifacts for Linux, macOS, and Windows releases
+      ---
+      duration_ms: 0.319327
+      ...
+    # Subtest: uses versioned artifact names for release download links
+    ok 2 - uses versioned artifact names for release download links
+      ---
+      duration_ms: 0.123985
+      ...
+    # Subtest: uses system FPM for native Linux arm64 Debian builds
+    ok 3 - uses system FPM for native Linux arm64 Debian builds
+      ---
+      duration_ms: 0.200318
+      ...
+    # Subtest: normalizes Linux artifact architecture names before validation
+    ok 4 - normalizes Linux artifact architecture names before validation
+      ---
+      duration_ms: 0.186067
+      ...
+    1..4
+ok 2 - desktop release workflow
+  ---
+  duration_ms: 1.05096
+  type: 'suite'
+  ...
+# Subtest: desktop release workflow macOS signing
+    # Subtest: keeps signed and notarized macOS publishing when Apple secrets are configured
+    ok 1 - keeps signed and notarized macOS publishing when Apple secrets are configured
+      ---
+      duration_ms: 0.291676
+      ...
+    # Subtest: builds ad-hoc signed macOS artifacts without Apple secrets
+    ok 2 - builds ad-hoc signed macOS artifacts without Apple secrets
+      ---
+      duration_ms: 0.279999
+      ...
+    1..2
+ok 3 - desktop release workflow macOS signing
+  ---
+  duration_ms: 0.736189
+  type: 'suite'
+  ...
+# Subtest: desktop release workflow smoke tests
+    # Subtest: smoke-tests platform installers after building and before uploading
+    not ok 1 - smoke-tests platform installers after building and before uploading
+      ---
+      duration_ms: 0.226138
+      location: '/tmp/gh-issue-solver-1778438543282/node_modules/test-anywhere/src/index.js:174:12'
+      failureType: 'testCodeFailure'
+      error: 'Expected undefined to be false'
+      code: 'ERR_TEST_FAILURE'
+      stack: |-
+        Object.toBe (file:///tmp/gh-issue-solver-1778438543282/node_modules/test-anywhere/src/index.js:391:15)
+        TestContext.<anonymous> (file:///tmp/gh-issue-solver-1778438543282/tests/desktop-release-workflow.test.js:322:51)
+        Test.runInAsyncScope (node:async_hooks:206:9)
+        Test.run (node:internal/test_runner/test:796:25)
+        Test.start (node:internal/test_runner/test:702:17)
+        node:internal/test_runner/test:1133:71
+        node:internal/per_context/primordials:482:82
+        new Promise (<anonymous>)
+        new SafePromise (node:internal/per_context/primordials:450:29)
+        node:internal/per_context/primordials:482:9
+      ...
+    # Subtest: configures a Linux maintainer for deb artifacts
+    ok 2 - configures a Linux maintainer for deb artifacts
+      ---
+      duration_ms: 0.275992
+      ...
+    # Subtest: hashes Linux and macOS artifacts without splitting filenames on spaces
+    ok 3 - hashes Linux and macOS artifacts without splitting filenames on spaces
+      ---
+      duration_ms: 0.163715
+      ...
+    1..3
+not ok 4 - desktop release workflow smoke tests
+  ---
+  duration_ms: 0.804292
+  type: 'suite'
+  location: '/tmp/gh-issue-solver-1778438543282/node_modules/test-anywhere/src/index.js:205:12'
+  failureType: 'subtestsFailed'
+  error: '1 subtest failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# node:internal/modules/esm/resolve:283
+#     throw new ERR_MODULE_NOT_FOUND(
+#           ^
+# Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/tmp/gh-issue-solver-1778438543282/scripts/dispatch-and-watch-workflow.mjs' imported from /tmp/gh-issue-solver-1778438543282/tests/dispatch-and-watch-workflow.test.js
+#     at finalizeResolution (node:internal/modules/esm/resolve:283:11)
+#     at moduleResolve (node:internal/modules/esm/resolve:952:10)
+#     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+#     at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+#     at \#cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+#     at ModuleLoader.resolve (node:internal/modules/esm/loader:640:38)
+#     at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:264:38)
+#     at ModuleJob._link (node:internal/modules/esm/module_job:168:49) {
+#   code: 'ERR_MODULE_NOT_FOUND',
+#   url: 'file:///tmp/gh-issue-solver-1778438543282/scripts/dispatch-and-watch-workflow.mjs'
+# }
+# Node.js v20.20.2
+# Subtest: /tmp/gh-issue-solver-1778438543282/tests/dispatch-and-watch-workflow.test.js
+not ok 2 - /tmp/gh-issue-solver-1778438543282/tests/dispatch-and-watch-workflow.test.js
+  ---
+  duration_ms: 41.681801
+  location: '/tmp/gh-issue-solver-1778438543282/tests/dispatch-and-watch-workflow.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+1..5
+# tests 12
+# suites 4
+# pass 9
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 69.966455
