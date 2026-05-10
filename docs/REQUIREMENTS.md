@@ -11,6 +11,8 @@ This document normalizes the product and release requirements collected from:
   publication.
 - Issue #22: release workflow skip-cascade prevention for desktop artifact
   publication.
+- Issue #24: macOS Gatekeeper first-launch instructions for ad-hoc signed
+  builds without an Apple Developer ID.
 
 ## Product Scope
 
@@ -115,9 +117,12 @@ local bot execution and remote execution over SSH.
 16. Static documentation should avoid direct latest-download links for versioned
     binary assets; the download page must render direct asset links returned by
     the latest Release API and must not synthesize absent asset URLs.
-17. macOS release artifacts must be signed, notarized, and assessed before
-    upload; unsigned downloaded DMGs must not be published as successful macOS
-    releases.
+17. macOS release artifacts must be signed before upload. When an Apple
+    Developer ID is configured in CI secrets, builds must be Developer-ID
+    signed, notarized, and assessed; otherwise builds must be ad-hoc signed
+    (`identity: '-'`, `notarize: false`) so the artifact carries a stable code
+    signature even without notarization. Unsigned downloaded DMGs must not be
+    published as successful macOS releases.
 18. Release jobs should smoke-test installable artifacts on their target
     platform after building and before uploading.
 19. A GitHub Pages React download page should detect language, theme, and
@@ -139,6 +144,13 @@ local bot execution and remote execution over SSH.
     optional release-mode jobs so a workflow run cannot report success after
     versioning a release while skipping the binary build and GitHub Release
     upload path.
+25. When macOS release artifacts are ad-hoc signed (no Apple Developer ID
+    available), the project must document the first-launch Gatekeeper bypass
+    in both the repository README and the GitHub Pages download page. The
+    documentation must cover the Terminal `xattr -dr com.apple.quarantine`
+    workflow and the macOS 15 Sequoia System Settings → Privacy & Security
+    → "Open Anyway" workflow, in both English and Russian on the download
+    page, and must remind readers to verify the SHA-256 checksum first.
 
 ## Testing And Documentation
 

@@ -385,6 +385,52 @@ h1 {
   color: var(--muted);
 }
 
+.install-macos {
+  display: grid;
+  gap: 16px;
+  padding: 34px 0 28px;
+  border-top: 1px solid var(--line);
+}
+
+.install-macos h2 {
+  margin-top: 6px;
+  font-size: 2rem;
+  letter-spacing: 0;
+}
+
+.install-macos-why,
+.install-macos-footer {
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.install-macos-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 16px;
+}
+
+.install-macos details {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px 16px;
+  background: var(--surface);
+}
+
+.install-macos summary {
+  cursor: pointer;
+  font-weight: 850;
+}
+
+.install-macos ol {
+  display: grid;
+  gap: 8px;
+  margin: 14px 0 0;
+  padding-left: 22px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
 .verification {
   display: grid;
   gap: 20px;
@@ -494,6 +540,10 @@ h1 {
   }
 
   .verification-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .install-macos-grid {
     grid-template-columns: 1fr;
   }
 }

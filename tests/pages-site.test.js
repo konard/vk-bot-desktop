@@ -120,4 +120,15 @@ describe('GitHub Pages download site', () => {
     expect(siteApp).toContain('className={`hero-media ${previewOs}`}');
     expect(siteDownloads).toContain('PROVENANCE_ASSET_NAME');
   });
+
+  it('documents the macOS Gatekeeper first-launch workflow for ad-hoc builds', () => {
+    expect(siteApp).toContain('install-macos');
+    expect(siteApp).toContain('installMacosTitle');
+    expect(siteApp).toContain('installMacosTerminalTitle');
+    expect(siteApp).toContain('installMacosSettingsTitle');
+    expect(siteApp).toContain('MACOS_INSTALL_COMMAND');
+    expect(siteApp).toContain('xattr -dr com.apple.quarantine');
+    expect(siteApp).toContain('Open the app on macOS');
+    expect(siteApp).toContain('Открытие приложения на macOS');
+  });
 });

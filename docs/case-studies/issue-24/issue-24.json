@@ -1,0 +1,23 @@
+{
+  "author": {
+    "id": "MDQ6VXNlcjE0MzE5MDQ=",
+    "is_bot": false,
+    "login": "konard",
+    "name": "Konstantin Diachenko"
+  },
+  "body": "<img width=\"328\" height=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7b71fa08-090b-4e5a-8d97-2f914a15e6de\" />\n\n```\n“VK Bot Desktop” Not Opened\n\nApple could not verify “VK Bot Desktop” is free of malware that may harm your Mac or compromise your privacy.\n```\n\nWe need to find a way to allow our application to be installed and executed for testing on macOS. This error message I get on macOS 15.7.2, and our application version is 0.9.12.\n\nDouble check may be we can updated Electron to latest version (and all other dependencies we have to the latest versions available in NPM), use best practices from the internet, there should be a way to actually do all steps we can without apple developer account, to actually execute and test our application on macOS.\n\nOr may be there is a way to bypass checks, that user can do on the system. We need to explore all options, the best way is ability to user just execute the application.\n\nThat is critical bug, that needs fixing.\n\nCheck out previous issues, and double check all requirements are recorded in ./docs/REQUIREMENTS.md, and are fully fullfilled.\n\n- https://github.com/konard/vk-bot-desktop/issues/22\n- https://github.com/konard/vk-bot-desktop/issues/20\n- https://github.com/konard/vk-bot-desktop/issues/18\n- and so on.\n\nUse all the best practices from CI/CD templates (check full file tree to compare for all GitHub workflow and CI/CD scripts file), if the same issue is found in template report issue also in templates:\n\n- https://github.com/link-foundation/js-ai-driven-development-pipeline-template\n- https://github.com/link-foundation/rust-ai-driven-development-pipeline-template\n- https://github.com/deep-foundation/sdk\n\nWe should compare all files, so we don't have more CI/CD errors in the future and reuse all the best practices from these templates.\n\nWe need to download all logs and data related about the issue to this repository, make sure we compile that data to ./docs/case-studies/issue-{id} folder, and use it to do deep case study analysis (also make sure to search online for additional facts and data), in which we will reconstruct timeline/sequence of events, list of each and all requirements from the issue, find root causes of the each problem, and propose possible solutions and solution plans for each requirement (we should also check known existing components/libraries, that solve similar problem or can help in solutions).\n\nIf there is not enough data to find actual root cause, add debug output and verbose mode if not present, that will allow us to find root cause on next iteration.\n\nIf issue related to any other repository/project, where we can report issues on GitHub, please do so. Each issue must contain reproducible examples, workarounds and suggestions for fix the issue in code.\n\nPlease plan and execute everything in a single pull request, you have unlimited time and context, as context auto-compacts and you can continue indefinitely, until it is each and every requirement fully addressed, and everything is totally done.\n\n",
+  "createdAt": "2026-05-10T21:15:07Z",
+  "labels": [
+    {
+      "id": "LA_kwDOSYpSBs8AAAACigeUyA",
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    }
+  ],
+  "number": 24,
+  "state": "OPEN",
+  "title": "“VK Bot Desktop” Not Opened",
+  "updatedAt": "2026-05-10T21:15:07Z",
+  "url": "https://github.com/konard/vk-bot-desktop/issues/24"
+}
