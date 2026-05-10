@@ -1,0 +1,24 @@
+trailofbits/algo:playbooks/tmpfs/macos.yml: /usr/sbin/diskutil erasevolume HFS+ "{{ tmpfs_volume_name }}" $(hdiutil attach -nomount ram://64000)
+nomic-ai/gpt4all:.circleci/continue_config.yml: hdiutil attach qt-online-installer-macOS-x64-4.8.1.dmg
+nomic-ai/gpt4all:.circleci/continue_config.yml: hdiutil attach build/upload/gpt4all-installer-darwin-signed.dmg
+fikovnik/ShiftIt:.travis.yml: - hdiutil attach XQuartz-2.7.6.dmg
+mono/mono:scripts/ci/mono-mono-signing.yml: hdiutil attach mac_entitled_to_sign.dmg
+mono/mono:scripts/ci/mono-mono-signing.yml: hdiutil attach mono-to-sign.dmg
+OpenMathLib/OpenBLAS:azure-pipelines.yml: hdiutil attach webimage.dmg
+DataDog/ansible-datadog:tasks/pkg-macos.yml: ansible.builtin.command: hdiutil attach /tmp/datadog-agent.dmg -mountpoint "/Volumes/datadog_agent"
+performancecopilot/pcp:.cirrus.yml: MOUNT_OUTPUT=$(hdiutil attach "$DMG_PATH" | tail -1) # Mount the DMG
+infosecB/LOOBins:LOOBins/hdiutil.yml: code: hdiutil attach malicious.dmg
+infosecB/LOOBins:LOOBins/hdiutil.yml: code: hdiutil attach malicious.iso
+tg123/commandlinefu.cn:_data/hdiutil_attach_somefile_dmg.yaml: hdiutil attach somefile.dmg
+samtupy/nvgt:install/action.yml: hdiutil attach "$DMG" -mountpoint "$MOUNT"
+Radfordhound/HedgeLib:appveyor.yml: VOLUME=`hdiutil attach Dependencies/vulkan-sdk.dmg | grep Volumes | awk '{print $3}'`
+autopkg/grahampugh-recipes:JMP/JMP.pkg.recipe.yaml: hdiutil attach ${DIR}/JMP_${MAJOR}.dmg -nobrowse
+autopkg/grahampugh-recipes:JMP/JMP.pkg.recipe.yaml: hdiutil attach /Volumes/JMP_${MAJOR}_${MINOR}/JMP/JMP/${MAJOR}_${MINOR}/Macintosh/JMP-Install.dmg -nobrowse
+mpereira/macbook-playbook:roles/vlc/tasks/main.yml: cmd: hdiutil attach -nobrowse "{{ vlc_dmg }}"
+sandstorm/macosx-with-ansible:tasks/dmg-install.yml: - command: hdiutil attach ./tmp/{{ appName }}.dmg -nobrowse -mountpoint ./tmp/{{ appName }}
+librepilot/LibrePilot:.travis.yml: - hdiutil attach SDL-1.2.15.dmg
+MiniZinc/MiniZincIDE:.gitlab-ci.yml: - hdiutil attach -mountpoint signed_bundle signed_bundle.sparseimage
+umlaeute/Gem:.git-ci/gitlab-iem.yml: - test ! -f "${dmg}" || pddisk=$(hdiutil attach "${dmg}" 2>/dev/null | egrep "^/.*/Volumes/" | tail -1 | awk '{print $NF}')
+aerogear/aerogear-digger-installer:java/tasks/osx.yml: shell: hdiutil attach "{{ osx_jdk_archive_path }}"
+eth-its/autopkg-mac-recipes-yaml:PKG_Recipes/MOE.pkg.recipe.yaml: hdiutil attach $DIR/%latest_file%.dmg -nobrowse -mountpoint $APPPATH
+tensult/mac-setup-playbooks:roles/installer/tasks/mount.yml: command: hdiutil attach "{{app_name}}.dmg" chdir={{downloads}} -mountpoint "{{mount_path}}/{{app_name}}"

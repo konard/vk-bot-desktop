@@ -1,0 +1,187 @@
+TAP version 13
+# Subtest: desktop release workflow
+    # Subtest: does not publish packages to npm from release jobs
+    ok 1 - does not publish packages to npm from release jobs
+      ---
+      duration_ms: 1.143409
+      ...
+    # Subtest: dispatches the Electron release workflow with an exact tag and commit
+    ok 2 - dispatches the Electron release workflow with an exact tag and commit
+      ---
+      duration_ms: 0.35463
+      ...
+    # Subtest: builds desktop artifacts for Linux, macOS, and Windows releases
+    ok 3 - builds desktop artifacts for Linux, macOS, and Windows releases
+      ---
+      duration_ms: 0.118688
+      ...
+    # Subtest: uses stable artifact names for latest download links
+    not ok 4 - uses stable artifact names for latest download links
+      ---
+      duration_ms: 1.169287
+      location: '/tmp/gh-issue-solver-1778403819132/node_modules/test-anywhere/src/index.js:174:12'
+      failureType: 'testCodeFailure'
+      error: 'Expected undefined to be "vk-bot-desktop-linux-${arch}.AppImage"'
+      code: 'ERR_TEST_FAILURE'
+      stack: |-
+        Object.toBe (file:///tmp/gh-issue-solver-1778403819132/node_modules/test-anywhere/src/index.js:391:15)
+        TestContext.<anonymous> (file:///tmp/gh-issue-solver-1778403819132/tests/desktop-release-workflow.test.js:75:55)
+        Test.runInAsyncScope (node:async_hooks:206:9)
+        Test.run (node:internal/test_runner/test:796:25)
+        Suite.processPendingSubtests (node:internal/test_runner/test:526:18)
+        Test.postRun (node:internal/test_runner/test:889:19)
+        Test.run (node:internal/test_runner/test:835:12)
+        async Suite.processPendingSubtests (node:internal/test_runner/test:526:7)
+      ...
+    # Subtest: signs, notarizes, and assesses macOS artifacts instead of publishing unsigned DMGs
+    not ok 5 - signs, notarizes, and assesses macOS artifacts instead of publishing unsigned DMGs
+      ---
+      duration_ms: 0.282692
+      location: '/tmp/gh-issue-solver-1778403819132/node_modules/test-anywhere/src/index.js:174:12'
+      failureType: 'testCodeFailure'
+      error: 'Expected "- name: Build Electron artifacts (macOS)\\n        if: matrix.os == \'macos-latest\'\\n        env:\\n          # Disable code-signing for unsigned releases. Users verify via SHA256SUMS.\\n          CSC_IDENTITY_AUTO_DISCOVERY: \'false\'\\n          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}\\n        run: npx electron-builder --mac --publish never\\n" not to contain "CSC_IDENTITY_AUTO_DISCOVERY:"'
+      code: 'ERR_TEST_FAILURE'
+      stack: |-
+        Object.toContain (file:///tmp/gh-issue-solver-1778403819132/node_modules/test-anywhere/src/index.js:452:17)
+        TestContext.<anonymous> (file:///tmp/gh-issue-solver-1778403819132/tests/desktop-release-workflow.test.js:106:30)
+        Test.runInAsyncScope (node:async_hooks:206:9)
+        Test.run (node:internal/test_runner/test:796:25)
+        Suite.processPendingSubtests (node:internal/test_runner/test:526:18)
+        Test.postRun (node:internal/test_runner/test:889:19)
+        Test.run (node:internal/test_runner/test:835:12)
+        async Suite.processPendingSubtests (node:internal/test_runner/test:526:7)
+      ...
+    # Subtest: smoke-tests platform installers after building and before uploading
+    not ok 6 - smoke-tests platform installers after building and before uploading
+      ---
+      duration_ms: 0.136194
+      location: '/tmp/gh-issue-solver-1778403819132/node_modules/test-anywhere/src/index.js:174:12'
+      failureType: 'testCodeFailure'
+      error: 'Expected -1 to be greater than -1'
+      code: 'ERR_TEST_FAILURE'
+      stack: |-
+        Object.toBeGreaterThan (file:///tmp/gh-issue-solver-1778403819132/node_modules/test-anywhere/src/index.js:611:15)
+        TestContext.<anonymous> (file:///tmp/gh-issue-solver-1778403819132/tests/desktop-release-workflow.test.js:144:29)
+        Test.runInAsyncScope (node:async_hooks:206:9)
+        Test.run (node:internal/test_runner/test:796:25)
+        Suite.processPendingSubtests (node:internal/test_runner/test:526:18)
+        Test.postRun (node:internal/test_runner/test:889:19)
+        Test.run (node:internal/test_runner/test:835:12)
+        async Suite.processPendingSubtests (node:internal/test_runner/test:526:7)
+      ...
+    # Subtest: configures a Linux maintainer for deb artifacts
+    ok 7 - configures a Linux maintainer for deb artifacts
+      ---
+      duration_ms: 0.134971
+      ...
+    # Subtest: hashes Linux and macOS artifacts without splitting filenames on spaces
+    ok 8 - hashes Linux and macOS artifacts without splitting filenames on spaces
+      ---
+      duration_ms: 0.098577
+      ...
+    1..8
+not ok 1 - desktop release workflow
+  ---
+  duration_ms: 4.7846
+  type: 'suite'
+  location: '/tmp/gh-issue-solver-1778403819132/node_modules/test-anywhere/src/index.js:205:12'
+  failureType: 'subtestsFailed'
+  error: '3 subtests failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: GitHub Pages download site
+    # Subtest: has a reproducible React build script
+    not ok 1 - has a reproducible React build script
+      ---
+      duration_ms: 0.755949
+      location: '/tmp/gh-issue-solver-1778403819132/node_modules/test-anywhere/src/index.js:174:12'
+      failureType: 'testCodeFailure'
+      error: 'Expected undefined to be "node scripts/build-site.mjs"'
+      code: 'ERR_TEST_FAILURE'
+      stack: |-
+        Object.toBe (file:///tmp/gh-issue-solver-1778403819132/node_modules/test-anywhere/src/index.js:391:15)
+        TestContext.<anonymous> (file:///tmp/gh-issue-solver-1778403819132/tests/pages-site.test.js:18:47)
+        Test.runInAsyncScope (node:async_hooks:206:9)
+        Test.run (node:internal/test_runner/test:796:25)
+        Test.start (node:internal/test_runner/test:702:17)
+        node:internal/test_runner/test:1133:71
+        node:internal/per_context/primordials:482:82
+        new Promise (<anonymous>)
+        new SafePromise (node:internal/per_context/primordials:450:29)
+        node:internal/per_context/primordials:482:9
+      ...
+    # Subtest: deploys the built site with the official GitHub Pages actions
+    not ok 2 - deploys the built site with the official GitHub Pages actions
+      ---
+      duration_ms: 0.119659
+      location: '/tmp/gh-issue-solver-1778403819132/node_modules/test-anywhere/src/index.js:174:12'
+      failureType: 'testCodeFailure'
+      error: 'Expected "" to contain "actions/configure-pages@v5"'
+      code: 'ERR_TEST_FAILURE'
+      stack: |-
+        Object.toContain (file:///tmp/gh-issue-solver-1778403819132/node_modules/test-anywhere/src/index.js:566:15)
+        TestContext.<anonymous> (file:///tmp/gh-issue-solver-1778403819132/tests/pages-site.test.js:27:27)
+        Test.runInAsyncScope (node:async_hooks:206:9)
+        Test.run (node:internal/test_runner/test:796:25)
+        Suite.processPendingSubtests (node:internal/test_runner/test:526:18)
+        Test.postRun (node:internal/test_runner/test:889:19)
+        Test.run (node:internal/test_runner/test:835:12)
+        async Promise.all (index 0)
+        async Suite.run (node:internal/test_runner/test:1135:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:526:7)
+      ...
+    # Subtest: detects language, theme, and operating system for the primary download
+    not ok 3 - detects language, theme, and operating system for the primary download
+      ---
+      duration_ms: 0.133149
+      location: '/tmp/gh-issue-solver-1778403819132/node_modules/test-anywhere/src/index.js:174:12'
+      failureType: 'testCodeFailure'
+      error: 'Expected "" to contain "navigator.languages"'
+      code: 'ERR_TEST_FAILURE'
+      stack: |-
+        Object.toContain (file:///tmp/gh-issue-solver-1778403819132/node_modules/test-anywhere/src/index.js:566:15)
+        TestContext.<anonymous> (file:///tmp/gh-issue-solver-1778403819132/tests/pages-site.test.js:37:21)
+        Test.runInAsyncScope (node:async_hooks:206:9)
+        Test.run (node:internal/test_runner/test:796:25)
+        Suite.processPendingSubtests (node:internal/test_runner/test:526:18)
+        Test.postRun (node:internal/test_runner/test:889:19)
+        Test.run (node:internal/test_runner/test:835:12)
+        async Suite.processPendingSubtests (node:internal/test_runner/test:526:7)
+      ...
+    # Subtest: loads latest release assets and keeps direct fallback download links
+    not ok 4 - loads latest release assets and keeps direct fallback download links
+      ---
+      duration_ms: 0.084717
+      location: '/tmp/gh-issue-solver-1778403819132/node_modules/test-anywhere/src/index.js:174:12'
+      failureType: 'testCodeFailure'
+      error: 'Expected "" to contain "https://api.github.com/repos/konard/vk-bot-desktop/releases/latest"'
+      code: 'ERR_TEST_FAILURE'
+      stack: |-
+        Object.toContain (file:///tmp/gh-issue-solver-1778403819132/node_modules/test-anywhere/src/index.js:566:15)
+        TestContext.<anonymous> (file:///tmp/gh-issue-solver-1778403819132/tests/pages-site.test.js:46:21)
+        Test.runInAsyncScope (node:async_hooks:206:9)
+        Test.run (node:internal/test_runner/test:796:25)
+        Suite.processPendingSubtests (node:internal/test_runner/test:526:18)
+        Test.postRun (node:internal/test_runner/test:889:19)
+        Test.run (node:internal/test_runner/test:835:12)
+        async Suite.processPendingSubtests (node:internal/test_runner/test:526:7)
+      ...
+    1..4
+not ok 2 - GitHub Pages download site
+  ---
+  duration_ms: 2.733263
+  type: 'suite'
+  location: '/tmp/gh-issue-solver-1778403819132/node_modules/test-anywhere/src/index.js:205:12'
+  failureType: 'subtestsFailed'
+  error: '4 subtests failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+1..2
+# tests 12
+# suites 2
+# pass 5
+# fail 7
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 63.744276

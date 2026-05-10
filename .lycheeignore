@@ -24,3 +24,8 @@ https://medium\.com
 
 # Web Archive returns 502 to link checkers (bot protection)
 https://web\.archive\.org
+
+# These direct latest-release asset links become valid when the release workflow
+# publishes the stable artifact names added for issue #6.
+https://github\.com/konard/vk-bot-desktop/releases/latest/download/vk-bot-desktop-
+https://github\.com/konard/vk-bot-desktop/releases/latest/download/SHA256SUMS\.txt

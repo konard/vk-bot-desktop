@@ -48,6 +48,30 @@ jobs:
       - name: Build renderer bundle
         run: npm run build:renderer
 
+      - name: Validate macOS signing secrets
+        if: matrix.os == 'macos-latest'
+        shell: bash
+        env:
+          MAC_CSC_LINK: ${{ secrets.MAC_CSC_LINK }}
+          MAC_CSC_KEY_PASSWORD: ${{ secrets.MAC_CSC_KEY_PASSWORD }}
+          APPLE_API_KEY: ${{ secrets.APPLE_API_KEY }}
+          APPLE_API_KEY_ID: ${{ secrets.APPLE_API_KEY_ID }}
+          APPLE_API_ISSUER: ${{ secrets.APPLE_API_ISSUER }}
+        run: |
+          set -euo pipefail
+          missing=()
+          for name in MAC_CSC_LINK MAC_CSC_KEY_PASSWORD APPLE_API_KEY APPLE_API_KEY_ID APPLE_API_ISSUER; do
+            if [ -z "${!name}" ]; then
+              missing+=("$name")
+            fi
+          done
+
+          if [ "${#missing[@]}" -gt 0 ]; then
+            echo "::error::Missing required macOS signing/notarization secrets: ${missing[*]}"
+            echo "Unsigned DMGs are not published because downloaded macOS apps can be blocked as damaged by Gatekeeper."
+            exit 1
+          fi
+
       - name: Build Electron artifacts (Linux)
         if: matrix.os == 'ubuntu-latest'
         env:
@@ -57,16 +81,147 @@ jobs:
       - name: Build Electron artifacts (macOS)
         if: matrix.os == 'macos-latest'
         env:
-          # Disable code-signing for unsigned releases. Users verify via SHA256SUMS.
-          CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+          CSC_LINK: ${{ secrets.MAC_CSC_LINK }}
+          CSC_KEY_PASSWORD: ${{ secrets.MAC_CSC_KEY_PASSWORD }}
+          APPLE_API_KEY: ${{ secrets.APPLE_API_KEY }}
+          APPLE_API_KEY_ID: ${{ secrets.APPLE_API_KEY_ID }}
+          APPLE_API_ISSUER: ${{ secrets.APPLE_API_ISSUER }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx electron-builder --mac --publish never
+          DEBUG: electron-builder,electron-notarize*
+        run: npx electron-builder --mac --x64 --arm64 --publish never
 
       - name: Build Electron artifacts (Windows)
         if: matrix.os == 'windows-latest'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx electron-builder --win --publish never
+
+      - name: Smoke test Linux release artifacts
+        if: matrix.os == 'ubuntu-latest'
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+
+          debs=(release/*.deb)
+          appimages=(release/*.AppImage)
+          tarballs=(release/*.tar.gz)
+
+          if [ "${#debs[@]}" -eq 0 ] || [ "${#appimages[@]}" -eq 0 ] || [ "${#tarballs[@]}" -eq 0 ]; then
+            echo "::error::Expected .deb, .AppImage, and .tar.gz Linux artifacts."
+            ls -la release || true
+            exit 1
+          fi
+
+          for deb in "${debs[@]}"; do
+            echo "Inspecting Debian package: $deb"
+            dpkg-deb --info "$deb"
+            dpkg-deb --contents "$deb" | tee "$RUNNER_TEMP/deb-contents.txt"
+            if ! grep -Eq '/(opt|usr)/(bin|lib|share)/' "$RUNNER_TEMP/deb-contents.txt"; then
+              echo "::error file=$deb::Debian package does not contain an installable app payload."
+              exit 1
+            fi
+          done
+
+          for appimage in "${appimages[@]}"; do
+            echo "Extracting AppImage payload: $appimage"
+            chmod +x "$appimage"
+            extract_dir="$(mktemp -d)"
+            artifact_path="$(realpath "$appimage")"
+            (cd "$extract_dir" && "$artifact_path" --appimage-extract >/dev/null)
+            test -d "$extract_dir/squashfs-root"
+            find "$extract_dir/squashfs-root" -maxdepth 4 -type f | sort > "$RUNNER_TEMP/appimage-contents.txt"
+            sed -n '1,100p' "$RUNNER_TEMP/appimage-contents.txt"
+            find "$extract_dir/squashfs-root" -maxdepth 4 -type f -name '*.desktop' -print -quit | grep -q .
+          done
+
+          for tarball in "${tarballs[@]}"; do
+            echo "Inspecting tarball: $tarball"
+            tar -tzf "$tarball" > "$RUNNER_TEMP/tarball-contents.txt"
+            sed -n '1,100p' "$RUNNER_TEMP/tarball-contents.txt"
+            grep -Eq 'VK Bot Desktop|vk-bot-desktop|resources/app' "$RUNNER_TEMP/tarball-contents.txt"
+          done
+
+      - name: Smoke test macOS release artifacts
+        if: matrix.os == 'macos-latest'
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+
+          dmgs=(release/*.dmg)
+          zips=(release/*.zip)
+
+          if [ "${#dmgs[@]}" -eq 0 ] || [ "${#zips[@]}" -eq 0 ]; then
+            echo "::error::Expected .dmg and .zip macOS artifacts."
+            ls -la release || true
+            exit 1
+          fi
+
+          for dmg in "${dmgs[@]}"; do
+            echo "Mounting DMG: $dmg"
+            mount_dir="$(mktemp -d)"
+            hdiutil attach "$dmg" -mountpoint "$mount_dir" -nobrowse -readonly
+            mounted_app="$mount_dir/VK Bot Desktop.app"
+            installed_app="$RUNNER_TEMP/VK Bot Desktop.app"
+
+            if [ ! -d "$mounted_app" ]; then
+              echo "::error file=$dmg::Mounted DMG does not contain VK Bot Desktop.app."
+              find "$mount_dir" -maxdepth 2 -print
+              hdiutil detach "$mount_dir"
+              exit 1
+            fi
+
+            rm -rf "$installed_app"
+            ditto "$mounted_app" "$installed_app"
+            hdiutil detach "$mount_dir"
+
+            codesign --verify --deep --strict --verbose=2 "$installed_app"
+            spctl --assess --type execute --verbose=4 "$installed_app"
+            xcrun stapler validate "$installed_app"
+          done
+
+          for zip in "${zips[@]}"; do
+            echo "Testing ZIP archive: $zip"
+            unzip -t "$zip"
+          done
+
+      - name: Smoke test Windows release artifacts
+        if: matrix.os == 'windows-latest'
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $installers = @(Get-ChildItem -Path release -Filter '*installer*.exe' -File)
+          $portableApps = @(Get-ChildItem -Path release -Filter '*portable*.exe' -File)
+
+          if ($installers.Count -eq 0 -or $portableApps.Count -eq 0) {
+            Get-ChildItem -Path release -File | Format-Table -AutoSize
+            throw 'Expected installer and portable Windows executables.'
+          }
+
+          foreach ($installer in $installers) {
+            $installDir = Join-Path $env:RUNNER_TEMP 'vk-bot-desktop-install'
+            Remove-Item -Recurse -Force -ErrorAction SilentlyContinue $installDir
+            New-Item -ItemType Directory -Path $installDir | Out-Null
+
+            $process = Start-Process -FilePath $installer.FullName -ArgumentList @('/S', "/D=$installDir") -Wait -PassThru
+            if ($process.ExitCode -ne 0) {
+              throw "Installer failed with exit code $($process.ExitCode): $($installer.FullName)"
+            }
+
+            $installedExe = Join-Path $installDir 'VK Bot Desktop.exe'
+            if (!(Test-Path $installedExe)) {
+              Get-ChildItem -Recurse -Force $installDir | Format-Table -AutoSize
+              throw "Installed application executable not found at $installedExe"
+            }
+          }
+
+          foreach ($portable in $portableApps) {
+            if ($portable.Length -le 0) {
+              throw "Portable executable is empty: $($portable.FullName)"
+            }
+            Write-Host "Portable artifact: $($portable.Name) ($($portable.Length) bytes)"
+          }
 
       - name: Compute SHA256 sums (Linux/macOS)
         if: matrix.os != 'windows-latest'

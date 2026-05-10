@@ -31,7 +31,8 @@
     "electron:build": "npm run build:renderer && electron-builder --publish never",
     "electron:build:linux": "npm run build:renderer && electron-builder --linux --publish never",
     "electron:build:mac": "npm run build:renderer && electron-builder --mac --publish never",
-    "electron:build:win": "npm run build:renderer && electron-builder --win --publish never"
+    "electron:build:win": "npm run build:renderer && electron-builder --win --publish never",
+    "build:site": "node scripts/build-site.mjs"
   },
   "keywords": [
     "vk",
@@ -96,13 +97,59 @@
         "dmg",
         "zip"
       ],
-      "category": "public.app-category.social-networking"
+      "category": "public.app-category.social-networking",
+      "artifactName": "vk-bot-desktop-macos-${arch}.${ext}",
+      "hardenedRuntime": true,
+      "notarize": true,
+      "entitlements": "build/entitlements.mac.plist",
+      "entitlementsInherit": "build/entitlements.mac.plist"
     },
     "win": {
       "target": [
         "nsis",
         "portable"
       ]
+    },
+    "appImage": {
+      "artifactName": "vk-bot-desktop-linux-${arch}.AppImage"
+    },
+    "deb": {
+      "artifactName": "vk-bot-desktop-linux-${arch}.deb"
+    },
+    "tar": {
+      "artifactName": "vk-bot-desktop-linux-${arch}.tar.gz"
+    },
+    "dmg": {
+      "artifactName": "vk-bot-desktop-macos-${arch}.dmg",
+      "title": "Install VK Bot Desktop",
+      "backgroundColor": "#f4f6f5",
+      "iconSize": 96,
+      "iconTextSize": 14,
+      "window": {
+        "width": 620,
+        "height": 420
+      },
+      "contents": [
+        {
+          "x": 185,
+          "y": 220
+        },
+        {
+          "x": 435,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "nsis": {
+      "artifactName": "vk-bot-desktop-windows-installer-${arch}.${ext}",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": false
+    },
+    "portable": {
+      "artifactName": "vk-bot-desktop-windows-portable-${arch}.${ext}"
     }
   },
   "lint-staged": {

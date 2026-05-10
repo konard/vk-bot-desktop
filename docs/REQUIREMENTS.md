@@ -6,6 +6,7 @@ This document normalizes the product and release requirements collected from:
 - PR #2 comment `4412616546`: additional stats, lifecycle, defaults, and UI
   behavior.
 - Issue #3: temporary desktop-only release distribution.
+- Issue #6: target-platform installation validation and release download page.
 
 ## Product Scope
 
@@ -99,6 +100,17 @@ local bot execution and remote execution over SSH.
     run should retry the GitHub Release without requiring another changeset.
 12. Manual release mode should use the same desktop artifact publication path as
     automatic releases.
+13. Release artifact names should remain stable so
+    `/releases/latest/download/...` links work from documentation and the
+    download page.
+14. macOS release artifacts must be signed, notarized, and assessed before
+    upload; unsigned downloaded DMGs must not be published as successful macOS
+    releases.
+15. Release jobs should smoke-test installable artifacts on their target
+    platform after building and before uploading.
+16. A GitHub Pages React download page should detect language, theme, and
+    operating system, then fall back to a full OS chooser when detection or
+    release API access is unavailable.
 
 ## Testing And Documentation
 

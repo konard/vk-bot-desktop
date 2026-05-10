@@ -63,12 +63,99 @@ describe('desktop release workflow', () => {
     expect(electronWorkflow).toContain('os: macos-latest');
     expect(electronWorkflow).toContain('os: windows-latest');
     expect(electronWorkflow).toContain('npx electron-builder --linux');
-    expect(electronWorkflow).toContain('npx electron-builder --mac');
+    expect(electronWorkflow).toContain(
+      'npx electron-builder --mac --x64 --arm64'
+    );
     expect(electronWorkflow).toContain('npx electron-builder --win');
     expect(electronWorkflow).toContain('release/SHA256SUMS-*.txt');
     expect(electronWorkflow).toContain('release/provenance-*.txt');
     expect(electronWorkflow).toContain('dist/BUILD-PROVENANCE.txt');
     expect(electronWorkflow).toContain('gh release upload "$TAG" dist/*');
+  });
+
+  it('uses stable artifact names for latest download links', () => {
+    expect(packageJson.build?.appImage?.artifactName).toBe(
+      'vk-bot-desktop-linux-${arch}.AppImage'
+    );
+    expect(packageJson.build?.deb?.artifactName).toBe(
+      'vk-bot-desktop-linux-${arch}.deb'
+    );
+    expect(packageJson.build?.tar?.artifactName).toBe(
+      'vk-bot-desktop-linux-${arch}.tar.gz'
+    );
+    expect(packageJson.build?.dmg?.artifactName).toBe(
+      'vk-bot-desktop-macos-${arch}.dmg'
+    );
+    expect(packageJson.build?.mac?.artifactName).toBe(
+      'vk-bot-desktop-macos-${arch}.${ext}'
+    );
+    expect(packageJson.build?.nsis?.artifactName).toBe(
+      'vk-bot-desktop-windows-installer-${arch}.${ext}'
+    );
+    expect(packageJson.build?.portable?.artifactName).toBe(
+      'vk-bot-desktop-windows-portable-${arch}.${ext}'
+    );
+  });
+
+  it('signs, notarizes, and assesses macOS artifacts instead of publishing unsigned DMGs', () => {
+    const macBuildStep = electronWorkflow.match(
+      /- name: Build Electron artifacts \(macOS\)[\s\S]*?(?=\n {6}- name:)/
+    )?.[0];
+    const macSmokeStep = electronWorkflow.match(
+      /- name: Smoke test macOS release artifacts[\s\S]*?(?=\n {6}- name:)/
+    )?.[0];
+
+    expect(macBuildStep).not.toContain('CSC_IDENTITY_AUTO_DISCOVERY:');
+    expect(macBuildStep).toContain('CSC_LINK: ${{ secrets.MAC_CSC_LINK }}');
+    expect(macBuildStep).toContain(
+      'CSC_KEY_PASSWORD: ${{ secrets.MAC_CSC_KEY_PASSWORD }}'
+    );
+    expect(macBuildStep).toContain(
+      'APPLE_API_KEY: ${{ secrets.APPLE_API_KEY }}'
+    );
+    expect(macBuildStep).toContain(
+      'APPLE_API_KEY_ID: ${{ secrets.APPLE_API_KEY_ID }}'
+    );
+    expect(macBuildStep).toContain(
+      'APPLE_API_ISSUER: ${{ secrets.APPLE_API_ISSUER }}'
+    );
+    expect(macBuildStep).toContain(
+      'DEBUG: electron-builder,electron-notarize*'
+    );
+    expect(packageJson.build?.mac?.hardenedRuntime).toBe(true);
+    expect(packageJson.build?.mac?.notarize).toBe(true);
+    expect(packageJson.build?.mac?.entitlements).toBe(
+      'build/entitlements.mac.plist'
+    );
+    expect(macSmokeStep).toContain('hdiutil attach');
+    expect(macSmokeStep).toContain('codesign --verify --deep --strict');
+    expect(macSmokeStep).toContain('spctl --assess --type execute');
+    expect(macSmokeStep).toContain('xcrun stapler validate');
+  });
+
+  it('smoke-tests platform installers after building and before uploading', () => {
+    const linuxSmokeIndex = electronWorkflow.indexOf(
+      '- name: Smoke test Linux release artifacts'
+    );
+    const macSmokeIndex = electronWorkflow.indexOf(
+      '- name: Smoke test macOS release artifacts'
+    );
+    const windowsSmokeIndex = electronWorkflow.indexOf(
+      '- name: Smoke test Windows release artifacts'
+    );
+    const uploadIndex = electronWorkflow.indexOf('- name: Upload artifacts');
+
+    expect(linuxSmokeIndex).toBeGreaterThan(-1);
+    expect(macSmokeIndex).toBeGreaterThan(-1);
+    expect(windowsSmokeIndex).toBeGreaterThan(-1);
+    expect(linuxSmokeIndex).toBeLessThan(uploadIndex);
+    expect(macSmokeIndex).toBeLessThan(uploadIndex);
+    expect(windowsSmokeIndex).toBeLessThan(uploadIndex);
+    expect(electronWorkflow).toContain('dpkg-deb --contents');
+    expect(electronWorkflow).toContain('--appimage-extract');
+    expect(electronWorkflow).toContain('Start-Process -FilePath');
+    expect(electronWorkflow).toContain('/S');
+    expect(electronWorkflow).toContain('/D=');
   });
 
   it('configures a Linux maintainer for deb artifacts', () => {
