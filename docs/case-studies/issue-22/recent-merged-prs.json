@@ -1,0 +1,72 @@
+[
+  {
+    "headRefName": "issue-20-f41343d25099",
+    "mergedAt": "2026-05-10T20:05:37Z",
+    "number": 21,
+    "title": "Fix release artifact publishing in single JavaScript workflow",
+    "url": "https://github.com/konard/vk-bot-desktop/pull/21"
+  },
+  {
+    "headRefName": "issue-18-8dbdafb20a80",
+    "mergedAt": "2026-05-10T19:10:08Z",
+    "number": 19,
+    "title": "Fix release workflow false positives",
+    "url": "https://github.com/konard/vk-bot-desktop/pull/19"
+  },
+  {
+    "headRefName": "issue-15-a34bf7d3d42f",
+    "mergedAt": "2026-05-10T18:32:17Z",
+    "number": 17,
+    "title": "Fix Linux release publishing for versioned downloads",
+    "url": "https://github.com/konard/vk-bot-desktop/pull/17"
+  },
+  {
+    "headRefName": "issue-15-9ea339e71924",
+    "mergedAt": "2026-05-10T17:18:33Z",
+    "number": 16,
+    "title": "Version desktop release downloads and verification page",
+    "url": "https://github.com/konard/vk-bot-desktop/pull/16"
+  },
+  {
+    "headRefName": "issue-13-c24281c684e3",
+    "mergedAt": "2026-05-10T14:54:52Z",
+    "number": 14,
+    "title": "Fix macOS release availability without Apple signing secrets",
+    "url": "https://github.com/konard/vk-bot-desktop/pull/14"
+  },
+  {
+    "headRefName": "issue-11-5a698e976ba3",
+    "mergedAt": "2026-05-10T13:32:43Z",
+    "number": 12,
+    "title": "Fix release download links and Pages asset validation",
+    "url": "https://github.com/konard/vk-bot-desktop/pull/12"
+  },
+  {
+    "headRefName": "issue-8-93b95b3c1197",
+    "mergedAt": "2026-05-10T12:38:25Z",
+    "number": 10,
+    "title": "Fix stable Linux release asset names",
+    "url": "https://github.com/konard/vk-bot-desktop/pull/10"
+  },
+  {
+    "headRefName": "issue-8-d06a42598e1e",
+    "mergedAt": "2026-05-10T11:59:43Z",
+    "number": 9,
+    "title": "Fix Electron release publishing and Pages e2e checks",
+    "url": "https://github.com/konard/vk-bot-desktop/pull/9"
+  },
+  {
+    "headRefName": "issue-6-4b296eea2cf6",
+    "mergedAt": "2026-05-10T09:47:09Z",
+    "number": 7,
+    "title": "Fix install-tested desktop releases and download page",
+    "url": "https://github.com/konard/vk-bot-desktop/pull/7"
+  },
+  {
+    "headRefName": "issue-3-056428691864",
+    "mergedAt": "2026-05-09T20:13:29Z",
+    "number": 5,
+    "title": "fix: Complete desktop release artifact builds",
+    "url": "https://github.com/konard/vk-bot-desktop/pull/5"
+  }
+]

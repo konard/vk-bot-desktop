@@ -76,6 +76,38 @@ describe('release workflow orchestration', () => {
     );
     expect(releaseWorkflow).not.toContain('--workflow electron-release.yml');
   });
+
+  it('runs desktop jobs after optional release modes are skipped', () => {
+    const desktopContext = workflowJob(
+      releaseWorkflow,
+      'desktop-release-context'
+    );
+    const desktopBuild = workflowJob(releaseWorkflow, 'desktop-build');
+    const desktopPublish = workflowJob(releaseWorkflow, 'desktop-publish');
+
+    expect(desktopContext).toContain('needs: [release, instant-release]');
+    expect(desktopContext).toContain('always()');
+    expect(desktopContext).toContain('!cancelled()');
+
+    expect(desktopBuild).toContain('always()');
+    expect(desktopBuild).toContain('!cancelled()');
+    expect(desktopBuild).toContain(
+      "needs.desktop-release-context.result == 'success'"
+    );
+    expect(desktopBuild).toContain(
+      "needs.desktop-release-context.outputs.should-publish == 'true'"
+    );
+
+    expect(desktopPublish).toContain('always()');
+    expect(desktopPublish).toContain('!cancelled()');
+    expect(desktopPublish).toContain(
+      "needs.desktop-release-context.result == 'success'"
+    );
+    expect(desktopPublish).toContain("needs.desktop-build.result == 'success'");
+    expect(desktopPublish).toContain(
+      "needs.desktop-release-context.outputs.should-publish == 'true'"
+    );
+  });
 });
 
 describe('desktop release workflow', () => {
