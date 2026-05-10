@@ -55,12 +55,17 @@ describe('release workflow dispatch', () => {
 
     for (const job of [automaticRelease, instantRelease]) {
       expect(job).toContain('actions: write');
-      expect(job).toContain('gh workflow run electron-release.yml');
+      expect(job).toContain('node scripts/dispatch-and-watch-workflow.mjs');
+      expect(job).toContain('--workflow electron-release.yml');
+      expect(job).toContain('--ref main');
       expect(job).toContain(
-        '--field tag="${{ steps.release_version.outputs.tag }}"'
+        '--field "tag=${{ steps.release_version.outputs.tag }}"'
       );
       expect(job).toContain(
-        '--field target_sha="${{ steps.release_target.outputs.sha }}"'
+        '--field "target_sha=${{ steps.release_target.outputs.sha }}"'
+      );
+      expect(job).toContain(
+        '--match-head-sha "${{ steps.release_target.outputs.sha }}"'
       );
     }
   });
@@ -314,6 +319,7 @@ describe('desktop release workflow smoke tests', () => {
     expect(electronWorkflow).toContain('Start-Process -FilePath');
     expect(electronWorkflow).toContain('/S');
     expect(electronWorkflow).toContain('/D=');
+    expect(packageJson.build.nsis.runAfterFinish).toBe(false);
   });
 
   it('configures a Linux maintainer for deb artifacts', () => {

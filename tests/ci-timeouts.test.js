@@ -57,8 +57,8 @@ describe('CI timeout policy', () => {
       lint: 10,
       test: 10,
       'validate-docs': 5,
-      release: 30,
-      'instant-release': 30,
+      release: 90,
+      'instant-release': 90,
       'changeset-pr': 10,
     };
 

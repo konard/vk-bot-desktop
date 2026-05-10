@@ -6,7 +6,9 @@ on:
       - main
   pull_request:
     types: [opened, synchronize, reopened]
-  # Manual release support - consolidated here for versioning and release dispatch.
+  # Manual release support - consolidated here to work with npm trusted publishing
+  # npm only allows ONE workflow file as trusted publisher, so all publishing
+  # must go through this workflow (release.yml)
   workflow_dispatch:
     inputs:
       release_mode:
@@ -349,7 +351,6 @@ jobs:
           REQUIRED_FILES=(
             "docs/BEST-PRACTICES.md"
             "docs/CONTRIBUTING.md"
-            "docs/REQUIREMENTS.md"
             "README.md"
             "CHANGELOG.md"
           )
@@ -377,10 +378,9 @@ jobs:
   release:
     name: Release
     needs: [lint, test]
-    # Includes versioning plus the downstream Electron release watch. The child
-    # workflow has its own job timeouts; this cap prevents false-positive parent
-    # success without allowing an unbounded release run.
-    timeout-minutes: 90
+    # Typical run is well under 10min. 30min gives npm and GitHub
+    # release APIs room for retries without allowing a 6h hang.
+    timeout-minutes: 30
     # Use !cancelled() instead of always() so cancellation propagates correctly (hive-mind issue #1278)
     # This is needed because lint/test jobs have a transitive dependency on changeset-check
     if: |
@@ -390,11 +390,14 @@ jobs:
       needs.lint.result == 'success' &&
       needs.test.result == 'success'
     runs-on: ubuntu-latest
-    # Permissions required to version main and dispatch the Electron release workflow.
+    # Permissions required for npm OIDC trusted publishing
     permissions:
       contents: write
       pull-requests: write
-      actions: write
+      id-token: write
+    outputs:
+      published: ${{ steps.publish.outputs.published }}
+      published_version: ${{ steps.publish.outputs.published_version }}
     steps:
       - uses: actions/checkout@v6
         with:
@@ -404,9 +407,13 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: '24.x'
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
         run: npm install
+
+      - name: Update npm for OIDC trusted publishing
+        run: node scripts/setup-npm.mjs
 
       - name: Check for changesets
         id: check_changesets
@@ -416,8 +423,6 @@ jobs:
         id: check_release
         env:
           HAS_CHANGESETS: ${{ steps.check_changesets.outputs.has_changesets }}
-          REPOSITORY: ${{ github.repository }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node scripts/check-release-needed.mjs
 
       - name: Merge multiple changesets
@@ -431,62 +436,45 @@ jobs:
         id: version
         run: node scripts/version-and-commit.mjs --mode changeset
 
-      - name: Determine release version
-        id: release_version
+      - name: Publish to npm
+        # Run if version was committed, if a previous attempt already committed (for re-runs),
+        # or if check-release-needed detected an unpublished version (self-healing, issue #36)
         if: >-
           steps.version.outputs.version_committed == 'true' ||
           steps.version.outputs.already_released == 'true' ||
           (steps.check_release.outputs.should_release == 'true' && steps.check_release.outputs.skip_bump == 'true')
-        run: |
-          VERSION="${{ steps.version.outputs.new_version }}"
-          if [ -z "$VERSION" ]; then
-            VERSION="$(node -p "JSON.parse(require('node:fs').readFileSync('package.json', 'utf8')).version")"
-          fi
+        id: publish
+        run: node scripts/publish-to-npm.mjs --should-pull
 
-          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
-          echo "tag=v$VERSION" >> "$GITHUB_OUTPUT"
-
-      - name: Resolve release target commit
-        id: release_target
-        if: >-
-          steps.version.outputs.version_committed == 'true' ||
-          steps.version.outputs.already_released == 'true' ||
-          (steps.check_release.outputs.should_release == 'true' && steps.check_release.outputs.skip_bump == 'true')
-        run: |
-          git fetch origin main
-          SHA="$(git rev-parse origin/main)"
-          echo "sha=$SHA" >> "$GITHUB_OUTPUT"
-
-      - name: Trigger and verify desktop artifact release
-        if: >-
-          steps.version.outputs.version_committed == 'true' ||
-          steps.version.outputs.already_released == 'true' ||
-          (steps.check_release.outputs.should_release == 'true' && steps.check_release.outputs.skip_bump == 'true')
+      - name: Create GitHub Release
+        if: steps.publish.outputs.published == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          node scripts/dispatch-and-watch-workflow.mjs \
-            --repo "${{ github.repository }}" \
-            --workflow electron-release.yml \
-            --ref main \
-            --field "tag=${{ steps.release_version.outputs.tag }}" \
-            --field "target_sha=${{ steps.release_target.outputs.sha }}" \
-            --match-head-sha "${{ steps.release_target.outputs.sha }}"
+        run: node scripts/create-github-release.mjs --release-version "${{ steps.publish.outputs.published_version }}" --repository "${{ github.repository }}"
+
+      - name: Format GitHub release notes
+        if: steps.publish.outputs.published == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/format-github-release.mjs --release-version "${{ steps.publish.outputs.published_version }}" --repository "${{ github.repository }}" --commit-sha "${{ github.sha }}"
 
   # Manual Instant Release - triggered via workflow_dispatch with instant mode
-  # This job versions main, then dispatches the Electron release workflow.
+  # This job is in release.yml because npm trusted publishing
+  # only allows one workflow file to be registered as a trusted publisher
   instant-release:
     name: Instant Release
     if: github.event_name == 'workflow_dispatch' && github.event.inputs.release_mode == 'instant'
     runs-on: ubuntu-latest
-    # Same release envelope as the automated release path, including the
-    # downstream Electron release watch.
-    timeout-minutes: 90
-    # Permissions required to version main and dispatch the Electron release workflow.
+    # Same publish envelope as the automated release path.
+    timeout-minutes: 30
+    # Permissions required for npm OIDC trusted publishing
     permissions:
       contents: write
       pull-requests: write
-      actions: write
+      id-token: write
+    outputs:
+      published: ${{ steps.publish.outputs.published }}
+      published_version: ${{ steps.publish.outputs.published_version }}
     steps:
       - uses: actions/checkout@v6
         with:
@@ -496,46 +484,80 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: '24.x'
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
         run: npm install
+
+      - name: Update npm for OIDC trusted publishing
+        run: node scripts/setup-npm.mjs
 
       - name: Version packages and commit to main
         id: version
         run: node scripts/version-and-commit.mjs --mode instant --bump-type "${{ github.event.inputs.bump_type }}" --description "${{ github.event.inputs.description }}"
 
-      - name: Determine release version
-        id: release_version
+      - name: Publish to npm
+        # Run if version was committed OR if a previous attempt already committed (for re-runs)
         if: steps.version.outputs.version_committed == 'true' || steps.version.outputs.already_released == 'true'
-        run: |
-          VERSION="${{ steps.version.outputs.new_version }}"
-          if [ -z "$VERSION" ]; then
-            VERSION="$(node -p "JSON.parse(require('node:fs').readFileSync('package.json', 'utf8')).version")"
-          fi
+        id: publish
+        run: node scripts/publish-to-npm.mjs
 
-          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
-          echo "tag=v$VERSION" >> "$GITHUB_OUTPUT"
-
-      - name: Resolve release target commit
-        id: release_target
-        if: steps.version.outputs.version_committed == 'true' || steps.version.outputs.already_released == 'true'
-        run: |
-          git fetch origin main
-          SHA="$(git rev-parse origin/main)"
-          echo "sha=$SHA" >> "$GITHUB_OUTPUT"
-
-      - name: Trigger and verify desktop artifact release
-        if: steps.version.outputs.version_committed == 'true' || steps.version.outputs.already_released == 'true'
+      - name: Create GitHub Release
+        if: steps.publish.outputs.published == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          node scripts/dispatch-and-watch-workflow.mjs \
-            --repo "${{ github.repository }}" \
-            --workflow electron-release.yml \
-            --ref main \
-            --field "tag=${{ steps.release_version.outputs.tag }}" \
-            --field "target_sha=${{ steps.release_target.outputs.sha }}" \
-            --match-head-sha "${{ steps.release_target.outputs.sha }}"
+        run: node scripts/create-github-release.mjs --release-version "${{ steps.publish.outputs.published_version }}" --repository "${{ github.repository }}"
+
+      - name: Format GitHub release notes
+        if: steps.publish.outputs.published == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/format-github-release.mjs --release-version "${{ steps.publish.outputs.published_version }}" --repository "${{ github.repository }}" --commit-sha "${{ github.sha }}"
+
+  # Optional Docker Hub publishing for packages that also ship Docker images.
+  # Set vars.DOCKERHUB_IMAGE to enable this path, then configure
+  # vars.DOCKERHUB_USERNAME and secrets.DOCKERHUB_TOKEN.
+  docker-publish:
+    name: Optional Docker Hub Publish
+    needs: [release, instant-release]
+    timeout-minutes: 30
+    if: |
+      !cancelled() &&
+      (
+        (needs.release.result == 'success' && needs.release.outputs.published == 'true') ||
+        (needs.instant-release.result == 'success' && needs.instant-release.outputs.published == 'true')
+      )
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      DOCKER_CONTEXT: ${{ vars.DOCKER_CONTEXT }}
+      DOCKERFILE: ${{ vars.DOCKERFILE }}
+      DOCKERHUB_IMAGE: ${{ vars.DOCKERHUB_IMAGE }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+      DOCKERHUB_USERNAME: ${{ vars.DOCKERHUB_USERNAME }}
+      RELEASE_VERSION: ${{ needs.release.outputs.published_version || needs.instant-release.outputs.published_version }}
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Check Docker publish configuration
+        id: docker_config
+        run: node scripts/check-docker-publish.mjs
+
+      - name: Wait for npm package availability before Docker publish
+        if: steps.docker_config.outputs.enabled == 'true'
+        run: node scripts/wait-for-npm.mjs --release-version "${{ env.RELEASE_VERSION }}"
+
+      - name: Publish Docker image to Docker Hub
+        if: steps.docker_config.outputs.enabled == 'true'
+        uses: ./.github/actions/publish-dockerhub
+        with:
+          context: ${{ steps.docker_config.outputs.context }}
+          file: ${{ steps.docker_config.outputs.dockerfile }}
+          image: ${{ steps.docker_config.outputs.image }}
+          token: ${{ env.DOCKERHUB_TOKEN }}
+          username: ${{ env.DOCKERHUB_USERNAME }}
+          version: ${{ env.RELEASE_VERSION }}
 
   # Manual Changeset PR - creates a pull request with the changeset for review
   changeset-pr:
@@ -592,4 +614,4 @@ jobs:
             1. Review the changeset in this PR
             2. Merge this PR to main
             3. The automated release workflow will create a version PR
-            4. Merge the version PR to dispatch desktop builds and publish GitHub Release artifacts
+            4. Merge the version PR to publish to npm and create a GitHub release
