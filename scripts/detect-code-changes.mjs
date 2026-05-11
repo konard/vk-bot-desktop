@@ -5,11 +5,19 @@
 // Detects what types of files changed in the latest commit and outputs
 // results for use in GitHub Actions workflow conditions.
 //
-// For PRs: GitHub Actions checks out a synthetic merge commit, so we
-// compare HEAD^2^ to HEAD^2 (the PR head's per-commit diff).
-// For pushes: compares HEAD^ to HEAD.
-// This ensures a commit touching only non-code files skips tests,
-// even when earlier commits in the same PR changed code.
+// Diff strategy is selected by $GITHUB_EVENT_NAME:
+// - pull_request: GitHub Actions checks out a synthetic merge commit, so
+//   HEAD is the merge, HEAD^ is the base, HEAD^2 is the PR head. We
+//   compare HEAD^2^ to HEAD^2 to get the per-commit diff of the PR head.
+// - push (and everything else): HEAD is the real commit, including real
+//   merge commits landed on main via "Merge pull request". We compare
+//   HEAD^ to HEAD, which on a merge commit follows the first-parent line
+//   and surfaces the full content brought into main by the merge.
+//
+// Counting parents on HEAD is intentionally NOT used to pick the diff
+// strategy. Real merge commits exist on push events too, and treating
+// them like pull_request synthetic merges caused issue #28 (Pages skipped
+// after every "Merge pull request" landing on main).
 //
 // Excluded from code changes (don't require changesets):
 // - Markdown files in any folder
@@ -22,9 +30,18 @@
 //   mjs-changed, js-changed, package-changed, docs-changed,
 //   html-changed, site-changed, pages-changed, links-changed,
 //   workflow-changed, any-code-changed
+//
+// Verbose tracing: set CI_DETECT_VERBOSE=1 (or pass --verbose) to print
+// the event metadata and chosen diff command alongside the change list,
+// for after-the-fact diagnosis of misclassified runs.
 
 import { execSync } from 'child_process';
 import { appendFileSync } from 'fs';
+
+const verbose =
+  process.env.CI_DETECT_VERBOSE === '1' ||
+  process.env.CI_DETECT_VERBOSE === 'true' ||
+  process.argv.includes('--verbose');
 
 function exec(command) {
   try {
@@ -44,21 +61,28 @@ function setOutput(name, value) {
   console.log(`${name}=${value}`);
 }
 
-function isMergeCommit() {
-  const parentCount = exec('git cat-file -p HEAD')
+function parentCount() {
+  return exec('git cat-file -p HEAD')
     .split('\n')
     .filter((line) => line.startsWith('parent ')).length;
-  return parentCount > 1;
 }
 
 function getChangedFiles() {
-  // GitHub Actions checks out a synthetic merge commit for pull_request
-  // events: HEAD is the merge commit, HEAD^ is the base branch, HEAD^2
-  // is the actual PR head. To get the per-commit diff (what the latest
-  // push actually changed), we compare HEAD^2^ to HEAD^2.
-  // For push events, HEAD is the real commit, so HEAD^ to HEAD works.
-  if (isMergeCommit()) {
-    console.log('Merge commit detected (pull_request event)');
+  const eventName = process.env.GITHUB_EVENT_NAME || '';
+  const ref = process.env.GITHUB_REF || '';
+  const parents = parentCount();
+
+  if (verbose || !process.env.GITHUB_OUTPUT) {
+    // Print event metadata to help diagnose misclassified runs without
+    // having to re-run the workflow. Echoed unconditionally outside CI
+    // so local invocations are also self-documenting.
+    console.log(`Event: ${eventName || '(unset)'}`);
+    console.log(`Ref:   ${ref || '(unset)'}`);
+    console.log(`Parents on HEAD: ${parents}`);
+  }
+
+  if (eventName === 'pull_request' && parents > 1) {
+    console.log('pull_request event with synthetic merge commit');
     console.log('Comparing HEAD^2^ to HEAD^2 (per-commit diff of PR head)');
     try {
       const output = exec('git diff --name-only HEAD^2^ HEAD^2');
@@ -72,7 +96,7 @@ function getChangedFiles() {
     }
   }
 
-  console.log('Comparing HEAD^ to HEAD');
+  console.log('Comparing HEAD^ to HEAD (first-parent diff)');
   try {
     const output = exec('git diff --name-only HEAD^ HEAD');
     return output ? output.split('\n').filter(Boolean) : [];
