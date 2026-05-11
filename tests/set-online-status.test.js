@@ -2,19 +2,22 @@ import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 
 import { setOnlineStatus } from '../src/bot/triggers/set-online-status.js';
-import { addSink, clearSinks } from '../src/bot/logger.js';
+import { addSink, removeSink } from '../src/bot/logger.js';
 
-// Each test lives in its own `describe` block because Deno's node:test shim
-// runs sibling async `it()` blocks via `Promise.all`, which would race over
-// the logger's module-level sinks array. `describe` blocks are serialized,
-// so this layout keeps the captured-logs harness deterministic on both
-// Node's native runner and Deno's shim.
-
+// Use addSink/removeSink (not clearSinks) so concurrent tests under Deno's
+// node:test shim don't wipe each other's sinks or the default stderr sink.
+//
+// Each test is wrapped in its own `describe()` block because Deno's node:test
+// shim runs sibling async `it()` blocks via `Promise.all`. With multiple
+// capture sinks active at once, every sink receives every test's log line,
+// breaking the `captured.length === 1` assertions. `describe` blocks are
+// serialized on both Node and Deno, so this layout keeps each test's
+// captured-logs window exclusive.
 function withCapturedLogs(fn) {
   const captured = [];
-  clearSinks();
-  addSink((line) => captured.push(line));
-  return Promise.resolve(fn(captured)).finally(() => clearSinks());
+  const sink = (line) => captured.push(line);
+  addSink(sink);
+  return Promise.resolve(fn(captured)).finally(() => removeSink(sink));
 }
 
 describe('setOnlineStatus: healthy call', () => {

@@ -1,7 +1,7 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 
-import { redact, logger, addSink, clearSinks } from '../src/bot/logger.js';
+import { redact, logger, addSink, removeSink } from '../src/bot/logger.js';
 
 describe('redact', () => {
   it('masks long token-like strings', () => {
@@ -44,12 +44,12 @@ describe('redact', () => {
 describe('logger sinks', () => {
   it('routes log lines to registered sinks with redaction', () => {
     const captured = [];
-    clearSinks();
-    addSink((line) => captured.push(line));
+    const sink = (line) => captured.push(line);
+    addSink(sink);
     try {
       logger.info(`token=${'x'.repeat(50)}`);
     } finally {
-      clearSinks();
+      removeSink(sink);
     }
     assert.equal(captured.length, 1);
     assert.match(captured[0], /token=\*\*\*/);
@@ -58,14 +58,14 @@ describe('logger sinks', () => {
 
   it('pretty-prints object arguments with indentation', () => {
     const captured = [];
-    clearSinks();
-    addSink((line) => captured.push(line));
+    const sink = (line) => captured.push(line);
+    addSink(sink);
     try {
       logger.error('Could not set online status', {
         error: new Error('Unknown method passed.'),
       });
     } finally {
-      clearSinks();
+      removeSink(sink);
     }
     assert.equal(captured.length, 1);
     // Pretty-printed JSON contains newlines and two-space indents.

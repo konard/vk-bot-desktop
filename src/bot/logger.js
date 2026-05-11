@@ -129,6 +129,13 @@ export function addSink(sink) {
   sinks.push(sink);
 }
 
+export function removeSink(sink) {
+  const idx = sinks.indexOf(sink);
+  if (idx !== -1) {
+    sinks.splice(idx, 1);
+  }
+}
+
 export function clearSinks() {
   sinks.length = 0;
 }
