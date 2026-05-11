@@ -1,7 +1,14 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 
-import { redact, logger, addSink, clearSinks } from '../src/bot/logger.js';
+import {
+  redact,
+  logger,
+  addSink,
+  removeSink,
+  setVerbose,
+  isVerbose,
+} from '../src/bot/logger.js';
 
 describe('redact', () => {
   it('masks long token-like strings', () => {
@@ -44,15 +51,68 @@ describe('redact', () => {
 describe('logger sinks', () => {
   it('routes log lines to registered sinks with redaction', () => {
     const captured = [];
-    clearSinks();
-    addSink((line) => captured.push(line));
+    const sink = (line) => captured.push(line);
+    addSink(sink);
     try {
       logger.info(`token=${'x'.repeat(50)}`);
     } finally {
-      clearSinks();
+      removeSink(sink);
     }
     assert.equal(captured.length, 1);
     assert.match(captured[0], /token=\*\*\*/);
+    assert.match(captured[0], /\[info\]/);
+  });
+
+  it('pretty-prints object arguments with indentation', () => {
+    const captured = [];
+    const sink = (line) => captured.push(line);
+    addSink(sink);
+    try {
+      logger.error('Could not set online status', {
+        error: new Error('Unknown method passed.'),
+      });
+    } finally {
+      removeSink(sink);
+    }
+    assert.equal(captured.length, 1);
+    // Pretty-printed JSON contains newlines and two-space indents.
+    assert.match(captured[0], /\n {2}"error":/);
+    assert.match(captured[0], /\n {4}"message":/);
+  });
+});
+
+describe('verbose mode', () => {
+  it('is enabled by default so debug lines reach sinks', () => {
+    const previous = isVerbose();
+    setVerbose(true);
+    const captured = [];
+    const sink = (line) => captured.push(line);
+    addSink(sink);
+    try {
+      logger.debug('verbose probe');
+    } finally {
+      removeSink(sink);
+      setVerbose(previous);
+    }
+    assert.equal(captured.length, 1);
+    assert.match(captured[0], /\[debug\]/);
+    assert.match(captured[0], /verbose probe/);
+  });
+
+  it('suppresses debug lines when toggled off', () => {
+    const previous = isVerbose();
+    setVerbose(false);
+    const captured = [];
+    const sink = (line) => captured.push(line);
+    addSink(sink);
+    try {
+      logger.debug('hidden');
+      logger.info('shown');
+    } finally {
+      removeSink(sink);
+      setVerbose(previous);
+    }
+    assert.equal(captured.length, 1);
     assert.match(captured[0], /\[info\]/);
   });
 });

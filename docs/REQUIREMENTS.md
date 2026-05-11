@@ -48,6 +48,21 @@ local bot execution and remote execution over SSH.
 15. Provide 10 short default birthday greetings and choose randomly before
     sending.
 16. Keep every bot behavior individually toggleable.
+17. The bot runner must keep the Node event loop alive while triggers are
+    scheduled; scheduling helpers must not `.unref()` their timer handles
+    (regression from issue #32 — bot exited with code 0 after the first
+    trigger).
+18. The bot must log verbosely by default during the early iterations of
+    the project, so users don't have to enable a flag before filing a bug
+    report. `VK_BOT_DESKTOP_VERBOSE=0` opts out (see issue #32).
+19. Each bot session must persist its own copy of the redacted log under
+    the application directory (`<globalDir>/logs/<timestamp>-<pid>.log`),
+    regardless of whether the session succeeds or fails, so reporters can
+    attach raw evidence instead of a screenshot (issue #32).
+20. Trigger lifecycle must be observable in verbose mode — each trigger
+    invocation logs a `Checking for '<name>' trigger...` line before the
+    call and a `'<name>' trigger executed in N ms` line on success,
+    mirroring the `executeTrigger` pattern used by `konard/vk-bot`.
 
 ## Configuration And Storage
 

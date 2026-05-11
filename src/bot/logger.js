@@ -6,6 +6,13 @@
  *   stdout, stderr, files, or IPC.
  * - Provide deterministic output suitable for inclusion in user bug reports.
  *
+ * Levels: 'debug' | 'info' | 'warn' | 'error'.
+ *
+ * Verbose mode (the default for now, see issue #32) prints every level,
+ * including 'debug', so users can attach a full session log to their bug
+ * reports without re-running the bot. Set `VK_BOT_DESKTOP_VERBOSE=0` (or
+ * call `setVerbose(false)`) to suppress 'debug' lines.
+ *
  * Redaction rules (applied in order):
  *
  * 1. Strings that look like a VK access token (long base64-ish run of >= 40
@@ -110,7 +117,7 @@ function format(level, args) {
       return r;
     }
     try {
-      return JSON.stringify(r);
+      return JSON.stringify(r, null, 2);
     } catch {
       return '[unserializable]';
     }
@@ -129,11 +136,49 @@ export function addSink(sink) {
   sinks.push(sink);
 }
 
+export function removeSink(sink) {
+  const idx = sinks.indexOf(sink);
+  if (idx !== -1) {
+    sinks.splice(idx, 1);
+  }
+}
+
 export function clearSinks() {
   sinks.length = 0;
 }
 
+// Verbose by default — see issue #32. Toggle with VK_BOT_DESKTOP_VERBOSE
+// (anything other than "0" / "false" / "" stays verbose).
+// The env read is wrapped in try/catch so the module still loads under
+// runtimes that gate env access behind explicit permissions (e.g. Deno
+// without `--allow-env`), in which case we fall back to the default.
+let verbose = (() => {
+  let raw = null;
+  try {
+    if (typeof process !== 'undefined') {
+      raw = process.env?.VK_BOT_DESKTOP_VERBOSE ?? null;
+    }
+  } catch {
+    raw = null;
+  }
+  if (raw === undefined || raw === null || raw === '') {
+    return true;
+  }
+  return raw !== '0' && raw.toLowerCase() !== 'false';
+})();
+
+export function setVerbose(value) {
+  verbose = Boolean(value);
+}
+
+export function isVerbose() {
+  return verbose;
+}
+
 function emit(level, args) {
+  if (level === 'debug' && !verbose) {
+    return;
+  }
   const line = format(level, args);
   for (const sink of sinks) {
     try {
