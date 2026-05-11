@@ -23,8 +23,11 @@ function scheduleEvery(ms, action, name) {
     if (stopped) {
       return;
     }
+    const start = Date.now();
+    logger.debug(`Checking for '${name}' trigger...`);
     try {
       await action();
+      logger.debug(`'${name}' trigger executed in ${Date.now() - start} ms`);
     } catch (error) {
       logger.error('Trigger threw', { name, error });
     }
@@ -127,14 +130,25 @@ const isDirectRun =
 
 if (isDirectRun) {
   (async () => {
+    const { openSessionLog } = await import('./session-log.js');
+    let session;
+    try {
+      session = await openSessionLog();
+      logger.info('Session log opened', { file: session.filePath });
+    } catch (error) {
+      logger.warn('Could not open session log', { error });
+    }
     try {
       const { LinoStore } = await import('../lino-store.js');
       const store = new LinoStore();
       const config = await store.loadLayered();
       const handle = await startBot({ config });
-      const shutdown = () => {
+      const shutdown = async () => {
         logger.info('Stopping bot');
         handle.stop();
+        if (session) {
+          await session.close();
+        }
         process.exit(0);
       };
       process.on('SIGINT', shutdown);
@@ -142,6 +156,9 @@ if (isDirectRun) {
       logger.info('Bot started');
     } catch (error) {
       logger.error('Bot failed to start', { error });
+      if (session) {
+        await session.close();
+      }
       process.exit(1);
     }
   })();
