@@ -250,3 +250,95 @@ With the fix in this PR, step 3 instead produces successful
   `pages-changed` outputs.
 - Once merged, the next `main` push and the next release tag push must
   show non-skipped `Build Pages site` and `Deploy Pages site` jobs.
+
+## Follow-Up: Run 25668347176 (PR #30)
+
+After PR #29 merged, the next `main` push (release 0.9.15 on commit
+`6b035f8`, run [25668347176](https://github.com/konard/vk-bot-desktop/actions/runs/25668347176))
+no longer skipped Pages: `Build Pages site` succeeded and the artifact
+was deployed. The run still reported failure because the new step
+`Test published Pages site after deploy` aborted with:
+
+```
+Error: Release request failed: 403
+    at fetchLatestRelease (file:///.../scripts/test-pages-e2e.mjs:175:11)
+```
+
+### Root cause
+
+`scripts/test-pages-e2e.mjs` in `--url` mode calls
+`https://api.github.com/repos/konard/vk-bot-desktop/releases/latest`
+without a token unless `GH_TOKEN` is set in the environment. The new
+"Test published Pages site after deploy" step in
+`.github/workflows/js.yml` did not pass `GH_TOKEN`, so the request was
+unauthenticated. Hosted GitHub Actions runners share an IP-pool quota
+of 60 requests/hour for unauthenticated calls; the same pool is used by
+every workflow on every repository, so the limit is effectively always
+exhausted on busy runner pools. Authenticated requests use the per-token
+5000 requests/hour quota and would not run out.
+
+The `Build Pages site` step does not hit this code path because it runs
+the script with `--site-dir`, which uses an in-process fixture
+(`makeReleaseFixture`) and intercepts `RELEASE_API_URL` via Playwright's
+`page.route`.
+
+### Captured evidence
+
+- `data/run-25668347176.json` — job-level summary showing
+  `Deploy Pages site` failed while `Build Pages site` succeeded.
+- `data/run-25668347176-deploy-pages.txt` — log slice for the
+  `Deploy Pages site` job, including the 403 stack trace at
+  `2026-05-11T11:52:37.7692134Z`. The full multi-megabyte workflow
+  log is not committed.
+- `data/issue-28-comments.json` — refreshed comment list linking the
+  follow-up failure to PR #29.
+
+### Fix in this PR (PR #30)
+
+1. `.github/workflows/js.yml` — pass `GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}`
+   to the post-deploy `Test published Pages site after deploy` step so
+   the Release API call runs authenticated. The pre-deploy step is
+   unchanged because it uses the fixture, not the API.
+2. `scripts/test-pages-e2e.mjs` — on a failing Release API response,
+   print the `x-ratelimit-*` headers, whether the request was
+   authenticated, and the truncated response body to standard error
+   before throwing. A future 403 will then be self-diagnosing from the
+   workflow log without re-running, addressing the
+   "verbose tracing for the next iteration" clause from issue #28.
+3. `tests/pages-site.test.js` — two regression tests: one asserts the
+   workflow step has `GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}` set, the
+   other asserts the script emits the rate-limit diagnostics. Both
+   prevent a refactor from silently re-introducing the regression.
+4. `docs/REQUIREMENTS.md` — added requirements #31 and #32 encoding the
+   authenticated-call contract and the rate-limit verbose-output
+   contract.
+
+### How to reproduce
+
+1. Locally, unset `GH_TOKEN` and run
+   `node scripts/test-pages-e2e.mjs --url https://konard.github.io/vk-bot-desktop/`
+   from a runner IP that has already exceeded the 60/hr unauthenticated
+   quota. The script aborts with
+   `Release request failed: 403 (authenticated=false)`.
+2. Set `GH_TOKEN=$(gh auth token)` and re-run; the script proceeds to
+   the Playwright validation phase.
+
+The fix is verified by:
+
+- `node --test tests/pages-site.test.js` (11/11 pass locally).
+- After this PR merges to main, the next `main` push run must show
+  `Deploy Pages site` and its `Test published Pages site after deploy`
+  step both succeed.
+
+### Upstream observation
+
+`link-foundation/js-ai-driven-development-pipeline-template`'s
+`.github/workflows/links.yml` already passes `GITHUB_TOKEN` to its
+`lycheeverse/lychee-action@v2` step for the same reason
+(unauthenticated GitHub API requests on hosted runners hit the IP-pool
+quota). Our consolidated `js.yml` follows the same pattern for every
+other GitHub-API-touching step (`Release`, `Publish GitHub release`,
+`Resolve desktop release context`, etc.). The post-deploy Pages smoke
+test was the lone exception until this PR. No upstream issue is filed
+because the template does not have a Pages-deploy-followed-by-API-smoke
+step that could exhibit the same bug.

@@ -175,6 +175,20 @@ local bot execution and remote execution over SSH.
     (`CI_DETECT_VERBOSE=1` or `--verbose`) that prints the event name, ref,
     parent count, and chosen diff command, so misclassified runs can be
     diagnosed from the workflow log without re-running.
+31. The post-deploy GitHub Pages smoke test must call the GitHub Release
+    API with `GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}` set on the workflow
+    step, so the request runs authenticated. Hosted runners share a
+    60/hr IP-pool quota for unauthenticated requests; authenticated
+    requests get the 5000/hr per-token quota. Without the token the
+    smoke test intermittently fails with `Release request failed: 403`
+    after a successful Pages deploy, marking the workflow run as failed
+    even though the page itself was published correctly (issue #28
+    follow-up; run `25668347176`).
+32. When the GitHub Release API call fails, the smoke test must print
+    the rate-limit headers (`x-ratelimit-*`), whether the request was
+    authenticated, and the truncated response body to standard error,
+    so a future regression is diagnosable from the workflow log without
+    re-running.
 
 ## Testing And Documentation
 

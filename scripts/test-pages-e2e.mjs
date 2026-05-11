@@ -164,15 +164,37 @@ async function fetchLatestRelease() {
   const headers = {
     accept: 'application/vnd.github+json',
   };
+  const authenticated = Boolean(process.env.GH_TOKEN);
 
-  if (process.env.GH_TOKEN) {
+  if (authenticated) {
     headers.authorization = `Bearer ${process.env.GH_TOKEN}`;
   }
 
   const response = await fetch(RELEASE_API_URL, { headers });
 
   if (!response.ok) {
-    throw new Error(`Release request failed: ${response.status}`);
+    // Print the rate-limit headers and body on failure so a future 403/429
+    // is self-diagnosing from the workflow log. Unauthenticated requests
+    // on shared runner IPs hit GitHub's 60/hr quota quickly; authenticated
+    // requests get 5000/hr per token (issue #28).
+    const rateLimit = {
+      remaining: response.headers.get('x-ratelimit-remaining'),
+      limit: response.headers.get('x-ratelimit-limit'),
+      reset: response.headers.get('x-ratelimit-reset'),
+      used: response.headers.get('x-ratelimit-used'),
+      resource: response.headers.get('x-ratelimit-resource'),
+    };
+    const body = await response.text().catch(() => '<no body>');
+
+    console.error(
+      `Release request failed: ${response.status} (authenticated=${authenticated})`
+    );
+    console.error(`Rate limit headers: ${JSON.stringify(rateLimit)}`);
+    console.error(`Response body: ${body.slice(0, 500)}`);
+
+    throw new Error(
+      `Release request failed: ${response.status} (authenticated=${authenticated})`
+    );
   }
 
   return response.json();
