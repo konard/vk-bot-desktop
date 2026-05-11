@@ -1,0 +1,261 @@
+Deploy Pages site	Set up job	﻿2026-05-11T11:51:40.4906172Z Current runner version: '2.334.0'
+Deploy Pages site	Set up job	2026-05-11T11:51:40.4930796Z ##[group]Runner Image Provisioner
+Deploy Pages site	Set up job	2026-05-11T11:51:40.4931603Z Hosted Compute Agent
+Deploy Pages site	Set up job	2026-05-11T11:51:40.4932143Z Version: 20260213.493
+Deploy Pages site	Set up job	2026-05-11T11:51:40.4932748Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+Deploy Pages site	Set up job	2026-05-11T11:51:40.4933508Z Build Date: 2026-02-13T00:28:41Z
+Deploy Pages site	Set up job	2026-05-11T11:51:40.4934350Z Worker ID: {148f8191-41a1-4d51-abeb-4bb8d4693657}
+Deploy Pages site	Set up job	2026-05-11T11:51:40.4935086Z Azure Region: westus
+Deploy Pages site	Set up job	2026-05-11T11:51:40.4935642Z ##[endgroup]
+Deploy Pages site	Set up job	2026-05-11T11:51:40.4937027Z ##[group]Operating System
+Deploy Pages site	Set up job	2026-05-11T11:51:40.4937731Z Ubuntu
+Deploy Pages site	Set up job	2026-05-11T11:51:40.4938197Z 24.04.4
+Deploy Pages site	Set up job	2026-05-11T11:51:40.4938651Z LTS
+Deploy Pages site	Set up job	2026-05-11T11:51:40.4939053Z ##[endgroup]
+Deploy Pages site	Set up job	2026-05-11T11:51:40.4939655Z ##[group]Runner Image
+Deploy Pages site	Set up job	2026-05-11T11:51:40.4940159Z Image: ubuntu-24.04
+Deploy Pages site	Set up job	2026-05-11T11:51:40.4940655Z Version: 20260413.86.1
+Deploy Pages site	Set up job	2026-05-11T11:51:40.4941757Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260413.86/images/ubuntu/Ubuntu2404-Readme.md
+Deploy Pages site	Set up job	2026-05-11T11:51:40.4943353Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260413.86
+Deploy Pages site	Set up job	2026-05-11T11:51:40.4944470Z ##[endgroup]
+Deploy Pages site	Set up job	2026-05-11T11:51:40.4945508Z ##[group]GITHUB_TOKEN Permissions
+Deploy Pages site	Set up job	2026-05-11T11:51:40.4947976Z Contents: read
+Deploy Pages site	Set up job	2026-05-11T11:51:40.4948550Z Metadata: read
+Deploy Pages site	Set up job	2026-05-11T11:51:40.4949045Z Pages: write
+Deploy Pages site	Set up job	2026-05-11T11:51:40.4949609Z ##[endgroup]
+Deploy Pages site	Set up job	2026-05-11T11:51:40.4951575Z Secret source: Actions
+Deploy Pages site	Set up job	2026-05-11T11:51:40.4952303Z Prepare workflow directory
+Deploy Pages site	Set up job	2026-05-11T11:51:40.5286569Z Prepare all required actions
+Deploy Pages site	Set up job	2026-05-11T11:51:40.5329930Z Getting action download info
+Deploy Pages site	Set up job	2026-05-11T11:51:41.0442695Z Download action repository 'actions/checkout@v6' (SHA:de0fac2e4500dabe0009e67214ff5f5447ce83dd)
+Deploy Pages site	Set up job	2026-05-11T11:51:41.4229248Z Download action repository 'actions/setup-node@v6' (SHA:48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e)
+Deploy Pages site	Set up job	2026-05-11T11:51:41.9227981Z Download action repository 'actions/deploy-pages@v4' (SHA:d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e)
+Deploy Pages site	Set up job	2026-05-11T11:51:42.5813382Z Complete job name: Deploy Pages site
+Deploy Pages site	Run actions/checkout@v6	﻿2026-05-11T11:51:42.6578420Z ##[group]Run actions/checkout@v6
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.6579309Z with:
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.6579686Z   repository: konard/vk-bot-desktop
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.6580481Z   token: ***
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.6580832Z   ssh-strict: true
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.6581201Z   ssh-user: git
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.6581592Z   persist-credentials: true
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.6582058Z   clean: true
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.6582457Z   sparse-checkout-cone-mode: true
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.6582973Z   fetch-depth: 1
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.6583349Z   fetch-tags: false
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.6583958Z   show-progress: true
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.6584367Z   lfs: false
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.6584714Z   submodules: false
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.6585112Z   set-safe-directory: true
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.6586121Z ##[endgroup]
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.7557481Z Syncing repository: konard/vk-bot-desktop
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.7559352Z ##[group]Getting Git version info
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.7560278Z Working directory is '/home/runner/work/vk-bot-desktop/vk-bot-desktop'
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.7561618Z [command]/usr/bin/git version
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.7592271Z git version 2.53.0
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.7647784Z ##[endgroup]
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.7664948Z Temporarily overriding HOME='/home/runner/work/_temp/9515a29f-8821-4461-8e12-53553484841e' before making global git config changes
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.7668360Z Adding repository directory to the temporary git global config as a safe directory
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.7671286Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/vk-bot-desktop/vk-bot-desktop
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.7704083Z Deleting the contents of '/home/runner/work/vk-bot-desktop/vk-bot-desktop'
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.7708725Z ##[group]Initializing the repository
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.7714330Z [command]/usr/bin/git init /home/runner/work/vk-bot-desktop/vk-bot-desktop
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.7793600Z hint: Using 'master' as the name for the initial branch. This default branch name
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.7796011Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.7798573Z hint: to use in all of your new repositories, which will suppress this warning,
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.7800207Z hint: call:
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.7800790Z hint:
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.7801823Z hint: 	git config --global init.defaultBranch <name>
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.7802973Z hint:
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.7804333Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.7806461Z hint: 'development'. The just-created branch can be renamed via this command:
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.7808129Z hint:
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.7808741Z hint: 	git branch -m <name>
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.7809475Z hint:
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.7810640Z hint: Disable this message with "git config set advice.defaultBranchName false"
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.7813035Z Initialized empty Git repository in /home/runner/work/vk-bot-desktop/vk-bot-desktop/.git/
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.7816188Z [command]/usr/bin/git remote add origin https://github.com/konard/vk-bot-desktop
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.7838614Z ##[endgroup]
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.7839898Z ##[group]Disabling automatic garbage collection
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.7842911Z [command]/usr/bin/git config --local gc.auto 0
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.7871848Z ##[endgroup]
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.7873070Z ##[group]Setting up auth
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.7874337Z Removing SSH command configuration
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.7880244Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.7913253Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.8187442Z Removing HTTP extra header
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.8192611Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.8222511Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.8434779Z Removing includeIf entries pointing to credentials config files
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.8441808Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.8475446Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.8700490Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-cae141da-e88f-4034-816d-88259807ad8a.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.8738433Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git.path /home/runner/work/_temp/git-credentials-cae141da-e88f-4034-816d-88259807ad8a.config
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.8769526Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-cae141da-e88f-4034-816d-88259807ad8a.config
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.8799611Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-cae141da-e88f-4034-816d-88259807ad8a.config
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.8831905Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-cae141da-e88f-4034-816d-88259807ad8a.config
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.8864361Z ##[endgroup]
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.8865487Z ##[group]Fetching the repository
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:42.8872507Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +6b035f84613bb142c303231a2967aafbef917fd3:refs/remotes/origin/main
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:44.6256117Z From https://github.com/konard/vk-bot-desktop
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:44.6257137Z  * [new ref]         6b035f84613bb142c303231a2967aafbef917fd3 -> origin/main
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:44.6293119Z [command]/usr/bin/git branch --list --remote origin/main
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:44.6316525Z   origin/main
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:44.6324837Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:44.6348991Z 6b035f84613bb142c303231a2967aafbef917fd3
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:44.6353019Z ##[endgroup]
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:44.6353928Z ##[group]Determining the checkout info
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:44.6354740Z ##[endgroup]
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:44.6361126Z [command]/usr/bin/git sparse-checkout disable
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:44.6402657Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:44.6430085Z ##[group]Checking out the ref
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:44.6444151Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:44.7577988Z Switched to a new branch 'main'
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:44.7578854Z branch 'main' set up to track 'origin/main'.
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:44.7595417Z ##[endgroup]
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:44.7639091Z [command]/usr/bin/git log -1 --format=%H
+Deploy Pages site	Run actions/checkout@v6	2026-05-11T11:51:44.7666156Z 6b035f84613bb142c303231a2967aafbef917fd3
+Deploy Pages site	Setup Node.js	﻿2026-05-11T11:51:44.7912437Z ##[group]Run actions/setup-node@v6
+Deploy Pages site	Setup Node.js	2026-05-11T11:51:44.7912728Z with:
+Deploy Pages site	Setup Node.js	2026-05-11T11:51:44.7912901Z   node-version: 24.x
+Deploy Pages site	Setup Node.js	2026-05-11T11:51:44.7913096Z   check-latest: false
+Deploy Pages site	Setup Node.js	2026-05-11T11:51:44.7913424Z   token: ***
+Deploy Pages site	Setup Node.js	2026-05-11T11:51:44.7913611Z   package-manager-cache: true
+Deploy Pages site	Setup Node.js	2026-05-11T11:51:44.7914077Z ##[endgroup]
+Deploy Pages site	Setup Node.js	2026-05-11T11:51:44.9487586Z Found in cache @ /opt/hostedtoolcache/node/24.14.1/x64
+Deploy Pages site	Setup Node.js	2026-05-11T11:51:44.9491759Z ##[group]Environment details
+Deploy Pages site	Setup Node.js	2026-05-11T11:51:48.3577750Z node: v24.14.1
+Deploy Pages site	Setup Node.js	2026-05-11T11:51:48.3578107Z npm: 11.11.0
+Deploy Pages site	Setup Node.js	2026-05-11T11:51:48.3579182Z yarn: 1.22.22
+Deploy Pages site	Setup Node.js	2026-05-11T11:51:48.3580371Z ##[endgroup]
+Deploy Pages site	Deploy to GitHub Pages	﻿2026-05-11T11:51:48.3789564Z ##[group]Run actions/deploy-pages@v4
+Deploy Pages site	Deploy to GitHub Pages	2026-05-11T11:51:48.3789877Z with:
+Deploy Pages site	Deploy to GitHub Pages	2026-05-11T11:51:48.3790210Z   token: ***
+Deploy Pages site	Deploy to GitHub Pages	2026-05-11T11:51:48.3790379Z   timeout: 600000
+Deploy Pages site	Deploy to GitHub Pages	2026-05-11T11:51:48.3790553Z   error_count: 10
+Deploy Pages site	Deploy to GitHub Pages	2026-05-11T11:51:48.3790723Z   reporting_interval: 5000
+Deploy Pages site	Deploy to GitHub Pages	2026-05-11T11:51:48.3790950Z   artifact_name: github-pages
+Deploy Pages site	Deploy to GitHub Pages	2026-05-11T11:51:48.3791149Z   preview: false
+Deploy Pages site	Deploy to GitHub Pages	2026-05-11T11:51:48.3791323Z ##[endgroup]
+Deploy Pages site	Deploy to GitHub Pages	2026-05-11T11:51:48.8791731Z Fetching artifact metadata for "github-pages" in this workflow run
+Deploy Pages site	Deploy to GitHub Pages	2026-05-11T11:51:49.1660861Z Found 1 artifact(s)
+Deploy Pages site	Deploy to GitHub Pages	2026-05-11T11:51:49.1685355Z Creating Pages deployment with payload:
+Deploy Pages site	Deploy to GitHub Pages	2026-05-11T11:51:49.1685973Z {
+Deploy Pages site	Deploy to GitHub Pages	2026-05-11T11:51:49.1686384Z 	"artifact_id": 6917658140,
+Deploy Pages site	Deploy to GitHub Pages	2026-05-11T11:51:49.1687163Z 	"pages_build_version": "6b035f84613bb142c303231a2967aafbef917fd3",
+Deploy Pages site	Deploy to GitHub Pages	2026-05-11T11:51:49.1722971Z 	"oidc_token": "***"
+Deploy Pages site	Deploy to GitHub Pages	2026-05-11T11:51:49.1723225Z }
+Deploy Pages site	Deploy to GitHub Pages	2026-05-11T11:51:49.6087700Z Created deployment for 6b035f84613bb142c303231a2967aafbef917fd3, ID: 6b035f84613bb142c303231a2967aafbef917fd3
+Deploy Pages site	Deploy to GitHub Pages	2026-05-11T11:51:54.6115951Z Getting Pages deployment status...
+Deploy Pages site	Deploy to GitHub Pages	2026-05-11T11:51:54.8774945Z Reported success!
+Deploy Pages site	Install browser e2e dependencies	﻿2026-05-11T11:51:54.8968921Z ##[group]Run npm install --no-save --package-lock=false --no-audit --no-fund browser-commander@0.8.0 playwright@1.59.1
+Deploy Pages site	Install browser e2e dependencies	2026-05-11T11:51:54.8969785Z ^[[36;1mnpm install --no-save --package-lock=false --no-audit --no-fund browser-commander@0.8.0 playwright@1.59.1^[[0m
+Deploy Pages site	Install browser e2e dependencies	2026-05-11T11:51:54.8999265Z shell: /usr/bin/bash -e {0}
+Deploy Pages site	Install browser e2e dependencies	2026-05-11T11:51:54.8999508Z env:
+Deploy Pages site	Install browser e2e dependencies	2026-05-11T11:51:54.8999692Z   PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+Deploy Pages site	Install browser e2e dependencies	2026-05-11T11:51:54.8999942Z ##[endgroup]
+Deploy Pages site	Install browser e2e dependencies	2026-05-11T11:52:08.2559491Z npm warn deprecated @npmcli/move-file@2.0.1: This functionality has been moved to @npmcli/fs
+Deploy Pages site	Install browser e2e dependencies	2026-05-11T11:52:08.3039968Z npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+Deploy Pages site	Install browser e2e dependencies	2026-05-11T11:52:08.3055868Z npm warn deprecated npmlog@6.0.2: This package is no longer supported.
+Deploy Pages site	Install browser e2e dependencies	2026-05-11T11:52:08.3232653Z npm warn deprecated are-we-there-yet@3.0.1: This package is no longer supported.
+Deploy Pages site	Install browser e2e dependencies	2026-05-11T11:52:08.6245907Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+Deploy Pages site	Install browser e2e dependencies	2026-05-11T11:52:09.0245583Z npm warn deprecated gauge@4.0.4: This package is no longer supported.
+Deploy Pages site	Install browser e2e dependencies	2026-05-11T11:52:09.0703575Z npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+Deploy Pages site	Install browser e2e dependencies	2026-05-11T11:52:09.3825060Z npm warn deprecated boolean@3.2.0: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+Deploy Pages site	Install browser e2e dependencies	2026-05-11T11:52:09.7786586Z npm warn deprecated glob@8.1.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+Deploy Pages site	Install browser e2e dependencies	2026-05-11T11:52:09.9358358Z npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
+Deploy Pages site	Install browser e2e dependencies	2026-05-11T11:52:10.2895644Z npm warn deprecated tar@6.2.1: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+Deploy Pages site	Install browser e2e dependencies	2026-05-11T11:52:11.3619967Z npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+Deploy Pages site	Install browser e2e dependencies	2026-05-11T11:52:27.5248676Z 
+Deploy Pages site	Install browser e2e dependencies	2026-05-11T11:52:27.5249389Z added 712 packages in 33s
+Deploy Pages site	Install Chromium for browser e2e tests	﻿2026-05-11T11:52:27.5925841Z ##[group]Run npx playwright install chromium
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:27.5926261Z ^[[36;1mnpx playwright install chromium^[[0m
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:27.5949530Z shell: /usr/bin/bash -e {0}
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:27.5949782Z ##[endgroup]
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:28.1752864Z Downloading Chrome for Testing 147.0.7727.15 (playwright chromium v1217) from https://cdn.playwright.dev/builds/cft/147.0.7727.15/linux64/chrome-linux64.zip
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:29.0135094Z |                                                                                |   0% of 170.4 MiB
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:29.1688302Z |■■■■■■■■                                                                        |  10% of 170.4 MiB
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:29.2541418Z |■■■■■■■■■■■■■■■■                                                                |  20% of 170.4 MiB
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:29.3453317Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 170.4 MiB
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:29.4354540Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 170.4 MiB
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:29.5508488Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 170.4 MiB
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:29.6502392Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 170.4 MiB
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:29.7371997Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 170.4 MiB
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:29.8246323Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 170.4 MiB
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:29.9371522Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 170.4 MiB
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:30.0304322Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 170.4 MiB
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:32.7146045Z Chrome for Testing 147.0.7727.15 (playwright chromium v1217) downloaded to /home/runner/.cache/ms-playwright/chromium-1217
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:32.7151795Z Downloading FFmpeg (playwright ffmpeg v1011) from https://cdn.playwright.dev/dbazure/download/playwright/builds/ffmpeg/1011/ffmpeg-linux.zip
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:33.4472272Z |                                                                                |   0% of 2.3 MiB
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:33.4532298Z |■■■■■■■■                                                                        |  10% of 2.3 MiB
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:33.4563625Z |■■■■■■■■■■■■■■■■                                                                |  20% of 2.3 MiB
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:33.4576647Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 2.3 MiB
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:33.4594777Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 2.3 MiB
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:33.4609380Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 2.3 MiB
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:33.4636658Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 2.3 MiB
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:33.4647159Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 2.3 MiB
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:33.4665428Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 2.3 MiB
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:33.4685294Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 2.3 MiB
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:33.4695712Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 2.3 MiB
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:33.5289393Z FFmpeg (playwright ffmpeg v1011) downloaded to /home/runner/.cache/ms-playwright/ffmpeg-1011
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:33.5292712Z Downloading Chrome Headless Shell 147.0.7727.15 (playwright chromium-headless-shell v1217) from https://cdn.playwright.dev/builds/cft/147.0.7727.15/linux64/chrome-headless-shell-linux64.zip
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:34.3187281Z |                                                                                |   0% of 112 MiB
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:34.5153127Z |■■■■■■■■                                                                        |  10% of 112 MiB
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:34.5770672Z |■■■■■■■■■■■■■■■■                                                                |  20% of 112 MiB
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:34.6463291Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 112 MiB
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:34.7126455Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 112 MiB
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:34.7820213Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 112 MiB
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:34.8489956Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 112 MiB
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:34.9171610Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 112 MiB
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:34.9867377Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 112 MiB
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:35.0536076Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 112 MiB
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:35.1231524Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 112 MiB
+Deploy Pages site	Install Chromium for browser e2e tests	2026-05-11T11:52:37.1320255Z Chrome Headless Shell 147.0.7727.15 (playwright chromium-headless-shell v1217) downloaded to /home/runner/.cache/ms-playwright/chromium_headless_shell-1217
+Deploy Pages site	Test published Pages site after deploy	﻿2026-05-11T11:52:37.1599278Z ##[group]Run npm run test:pages:e2e -- --url "https://konard.github.io/vk-bot-desktop/"
+Deploy Pages site	Test published Pages site after deploy	2026-05-11T11:52:37.1599935Z ^[[36;1mnpm run test:pages:e2e -- --url "https://konard.github.io/vk-bot-desktop/"^[[0m
+Deploy Pages site	Test published Pages site after deploy	2026-05-11T11:52:37.1622824Z shell: /usr/bin/bash -e {0}
+Deploy Pages site	Test published Pages site after deploy	2026-05-11T11:52:37.1623071Z ##[endgroup]
+Deploy Pages site	Test published Pages site after deploy	2026-05-11T11:52:37.3724148Z 
+Deploy Pages site	Test published Pages site after deploy	2026-05-11T11:52:37.3725042Z > vk-bot-desktop@0.9.14 test:pages:e2e
+Deploy Pages site	Test published Pages site after deploy	2026-05-11T11:52:37.3726101Z > node scripts/test-pages-e2e.mjs --url https://konard.github.io/vk-bot-desktop/
+Deploy Pages site	Test published Pages site after deploy	2026-05-11T11:52:37.3726729Z 
+Deploy Pages site	Test published Pages site after deploy	2026-05-11T11:52:37.7692134Z Error: Release request failed: 403
+Deploy Pages site	Test published Pages site after deploy	2026-05-11T11:52:37.7694153Z     at fetchLatestRelease (file:///home/runner/work/vk-bot-desktop/vk-bot-desktop/scripts/test-pages-e2e.mjs:175:11)
+Deploy Pages site	Test published Pages site after deploy	2026-05-11T11:52:37.7697663Z     at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+Deploy Pages site	Test published Pages site after deploy	2026-05-11T11:52:37.7699525Z     at async main (file:///home/runner/work/vk-bot-desktop/vk-bot-desktop/scripts/test-pages-e2e.mjs:322:7)
+Deploy Pages site	Test published Pages site after deploy	2026-05-11T11:52:37.8250008Z ##[error]Process completed with exit code 1.
+Deploy Pages site	Post Run actions/checkout@v6	﻿2026-05-11T11:52:37.8336694Z Post job cleanup.
+Deploy Pages site	Post Run actions/checkout@v6	2026-05-11T11:52:37.9170278Z [command]/usr/bin/git version
+Deploy Pages site	Post Run actions/checkout@v6	2026-05-11T11:52:37.9208029Z git version 2.53.0
+Deploy Pages site	Post Run actions/checkout@v6	2026-05-11T11:52:37.9282217Z Temporarily overriding HOME='/home/runner/work/_temp/b654fae5-c5b4-44a6-8ddc-6847867ec8c5' before making global git config changes
+Deploy Pages site	Post Run actions/checkout@v6	2026-05-11T11:52:37.9284674Z Adding repository directory to the temporary git global config as a safe directory
+Deploy Pages site	Post Run actions/checkout@v6	2026-05-11T11:52:37.9288495Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/vk-bot-desktop/vk-bot-desktop
+Deploy Pages site	Post Run actions/checkout@v6	2026-05-11T11:52:37.9320366Z Removing SSH command configuration
+Deploy Pages site	Post Run actions/checkout@v6	2026-05-11T11:52:37.9327735Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Deploy Pages site	Post Run actions/checkout@v6	2026-05-11T11:52:37.9361456Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Deploy Pages site	Post Run actions/checkout@v6	2026-05-11T11:52:37.9589917Z Removing HTTP extra header
+Deploy Pages site	Post Run actions/checkout@v6	2026-05-11T11:52:37.9595872Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Deploy Pages site	Post Run actions/checkout@v6	2026-05-11T11:52:37.9630572Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Deploy Pages site	Post Run actions/checkout@v6	2026-05-11T11:52:37.9848790Z Removing includeIf entries pointing to credentials config files
+Deploy Pages site	Post Run actions/checkout@v6	2026-05-11T11:52:37.9856619Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Deploy Pages site	Post Run actions/checkout@v6	2026-05-11T11:52:37.9881425Z includeif.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git.path
+Deploy Pages site	Post Run actions/checkout@v6	2026-05-11T11:52:37.9882594Z includeif.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git/worktrees/*.path
+Deploy Pages site	Post Run actions/checkout@v6	2026-05-11T11:52:37.9883255Z includeif.gitdir:/github/workspace/.git.path
+Deploy Pages site	Post Run actions/checkout@v6	2026-05-11T11:52:37.9884530Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+Deploy Pages site	Post Run actions/checkout@v6	2026-05-11T11:52:37.9892839Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git.path
+Deploy Pages site	Post Run actions/checkout@v6	2026-05-11T11:52:37.9914769Z /home/runner/work/_temp/git-credentials-cae141da-e88f-4034-816d-88259807ad8a.config
+Deploy Pages site	Post Run actions/checkout@v6	2026-05-11T11:52:37.9925576Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git.path /home/runner/work/_temp/git-credentials-cae141da-e88f-4034-816d-88259807ad8a.config
+Deploy Pages site	Post Run actions/checkout@v6	2026-05-11T11:52:37.9960197Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git/worktrees/*.path
+Deploy Pages site	Post Run actions/checkout@v6	2026-05-11T11:52:37.9982853Z /home/runner/work/_temp/git-credentials-cae141da-e88f-4034-816d-88259807ad8a.config
+Deploy Pages site	Post Run actions/checkout@v6	2026-05-11T11:52:37.9992649Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-cae141da-e88f-4034-816d-88259807ad8a.config
+Deploy Pages site	Post Run actions/checkout@v6	2026-05-11T11:52:38.0024039Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+Deploy Pages site	Post Run actions/checkout@v6	2026-05-11T11:52:38.0044450Z /github/runner_temp/git-credentials-cae141da-e88f-4034-816d-88259807ad8a.config
+Deploy Pages site	Post Run actions/checkout@v6	2026-05-11T11:52:38.0053918Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-cae141da-e88f-4034-816d-88259807ad8a.config
+Deploy Pages site	Post Run actions/checkout@v6	2026-05-11T11:52:38.0086121Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+Deploy Pages site	Post Run actions/checkout@v6	2026-05-11T11:52:38.0106855Z /github/runner_temp/git-credentials-cae141da-e88f-4034-816d-88259807ad8a.config
+Deploy Pages site	Post Run actions/checkout@v6	2026-05-11T11:52:38.0118310Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-cae141da-e88f-4034-816d-88259807ad8a.config
+Deploy Pages site	Post Run actions/checkout@v6	2026-05-11T11:52:38.0150377Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Deploy Pages site	Post Run actions/checkout@v6	2026-05-11T11:52:38.0380070Z Removing credentials config '/home/runner/work/_temp/git-credentials-cae141da-e88f-4034-816d-88259807ad8a.config'
+Deploy Pages site	Complete job	﻿2026-05-11T11:52:38.0529552Z Evaluate and set environment url
+Deploy Pages site	Complete job	2026-05-11T11:52:38.0532902Z Evaluated environment url: https://konard.github.io/vk-bot-desktop/
+Deploy Pages site	Complete job	2026-05-11T11:52:38.0534326Z Cleaning up orphan processes
+Deploy Pages site	Complete job	2026-05-11T11:52:38.0847300Z ##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/deploy-pages@v4. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Node.js 20 will be removed from the runner on September 16th, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

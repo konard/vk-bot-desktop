@@ -747,6 +747,14 @@ jobs:
         run: npx playwright install chromium
 
       - name: Test published Pages site after deploy
+        # Pass GITHUB_TOKEN so the GitHub Release API call inside the e2e
+        # script runs authenticated. Unauthenticated requests share a 60/hr
+        # IP-pool rate limit on hosted runners; authenticated requests get
+        # the per-token 5000/hr limit. Without this env, the post-deploy
+        # smoke test fails with `Release request failed: 403` (issue #28
+        # follow-up; run 25668347176).
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run test:pages:e2e -- --url "${{ steps.deployment.outputs.page_url }}"
 
   desktop-release-context:

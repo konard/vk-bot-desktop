@@ -118,6 +118,45 @@ describe('GitHub Pages download site', () => {
     );
   });
 
+  it('authenticates the post-deploy GitHub Release API call', () => {
+    // Regression for issue #28 follow-up (run 25668347176): without
+    // GH_TOKEN, the GitHub Release API call inside the post-deploy
+    // smoke test shares the 60/hr unauthenticated IP-pool limit on
+    // hosted runners and intermittently returns 403, failing the
+    // workflow even though Pages itself deployed correctly. The
+    // workflow must pass the standard GITHUB_TOKEN so the request
+    // gets the 5000/hr per-token limit. See REQUIREMENTS.md #31.
+    const postDeployStepStart = pagesWorkflow.indexOf(
+      'Test published Pages site after deploy'
+    );
+    const postDeployStepEnd = pagesWorkflow.indexOf(
+      'desktop-release-context:',
+      postDeployStepStart
+    );
+
+    expect(postDeployStepStart).toBeGreaterThan(-1);
+    expect(postDeployStepEnd).toBeGreaterThan(postDeployStepStart);
+
+    const postDeployStep = pagesWorkflow.slice(
+      postDeployStepStart,
+      postDeployStepEnd
+    );
+
+    expect(postDeployStep).toContain('GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}');
+  });
+
+  it('prints rate-limit diagnostics when the Release API call fails', () => {
+    // Regression for issue #28 follow-up: a 403 from the Release API
+    // must self-diagnose by printing the x-ratelimit-* headers,
+    // whether the request was authenticated, and the truncated
+    // response body, so future regressions are diagnosable from the
+    // workflow log without re-running. See REQUIREMENTS.md #32.
+    expect(pagesE2e).toContain('x-ratelimit-remaining');
+    expect(pagesE2e).toContain('x-ratelimit-limit');
+    expect(pagesE2e).toContain('x-ratelimit-reset');
+    expect(pagesE2e).toContain('authenticated=');
+  });
+
   it('requires macOS assets in the built-site release fixture', () => {
     const localReleaseAssets = e2eLocalReleaseAssets();
 
