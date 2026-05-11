@@ -32,15 +32,11 @@ function scheduleEvery(ms, action, name) {
       return;
     }
     timeoutHandle = setTimeout(run, ms);
-    if (typeof timeoutHandle.unref === 'function') {
-      timeoutHandle.unref();
-    }
   };
   // Fire on the next tick so the caller gets a stop handle synchronously.
+  // Note: we intentionally do NOT call .unref() here. Doing so allowed the
+  // bot process to exit before any trigger ran (see docs/case-studies/issue-32).
   timeoutHandle = setTimeout(run, 0);
-  if (typeof timeoutHandle.unref === 'function') {
-    timeoutHandle.unref();
-  }
   return () => {
     stopped = true;
     clearTimeout(timeoutHandle);

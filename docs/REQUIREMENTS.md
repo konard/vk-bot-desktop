@@ -48,6 +48,15 @@ local bot execution and remote execution over SSH.
 15. Provide 10 short default birthday greetings and choose randomly before
     sending.
 16. Keep every bot behavior individually toggleable.
+17. The OAuth flow must request every scope the bot's triggers depend on,
+    including the `offline` scope required by `account.setOnline`. Without it
+    VK returns API error code 3 ("Unknown method passed") for the
+    `Keep online status` trigger — see
+    `docs/case-studies/issue-32/README.md`.
+18. The bot runner must keep the Node event loop alive while triggers are
+    scheduled; scheduling helpers must not `.unref()` their timer handles
+    (regression from issue #32 — bot exited with code 0 after the first
+    trigger).
 
 ## Configuration And Storage
 

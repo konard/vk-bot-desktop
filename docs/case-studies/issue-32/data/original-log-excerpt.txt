@@ -1,0 +1,3 @@
+2026-05-11T13:12:11.365Z [info] Bot started
+2026-05-11T13:12:11.948Z [warn] Could not set online status {"error":{"name":"APIError","message":"Code №3 - Unknown method passed","stack":"APIError: Code №3 - Unknown method passed\n    at SequentialWorker.execute (file:///Applications/VK%20Bot%20Desktop.app/Contents/Resources/app.asar/node_modules/vk-io/lib/index.mjs:1854:44)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"}}
+Bot exited with code 0

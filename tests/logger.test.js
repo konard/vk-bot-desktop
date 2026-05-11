@@ -55,4 +55,21 @@ describe('logger sinks', () => {
     assert.match(captured[0], /token=\*\*\*/);
     assert.match(captured[0], /\[info\]/);
   });
+
+  it('pretty-prints object arguments with indentation', () => {
+    const captured = [];
+    clearSinks();
+    addSink((line) => captured.push(line));
+    try {
+      logger.error('Could not set online status', {
+        error: new Error('Unknown method passed.'),
+      });
+    } finally {
+      clearSinks();
+    }
+    assert.equal(captured.length, 1);
+    // Pretty-printed JSON contains newlines and two-space indents.
+    assert.match(captured[0], /\n {2}"error":/);
+    assert.match(captured[0], /\n {4}"message":/);
+  });
 });

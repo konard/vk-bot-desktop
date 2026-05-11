@@ -110,7 +110,7 @@ function format(level, args) {
       return r;
     }
     try {
-      return JSON.stringify(r);
+      return JSON.stringify(r, null, 2);
     } catch {
       return '[unserializable]';
     }
