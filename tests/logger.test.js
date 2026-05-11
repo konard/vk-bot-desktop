@@ -1,7 +1,14 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 
-import { redact, logger, addSink, removeSink } from '../src/bot/logger.js';
+import {
+  redact,
+  logger,
+  addSink,
+  removeSink,
+  setVerbose,
+  isVerbose,
+} from '../src/bot/logger.js';
 
 describe('redact', () => {
   it('masks long token-like strings', () => {
@@ -71,5 +78,41 @@ describe('logger sinks', () => {
     // Pretty-printed JSON contains newlines and two-space indents.
     assert.match(captured[0], /\n {2}"error":/);
     assert.match(captured[0], /\n {4}"message":/);
+  });
+});
+
+describe('verbose mode', () => {
+  it('is enabled by default so debug lines reach sinks', () => {
+    const previous = isVerbose();
+    setVerbose(true);
+    const captured = [];
+    const sink = (line) => captured.push(line);
+    addSink(sink);
+    try {
+      logger.debug('verbose probe');
+    } finally {
+      removeSink(sink);
+      setVerbose(previous);
+    }
+    assert.equal(captured.length, 1);
+    assert.match(captured[0], /\[debug\]/);
+    assert.match(captured[0], /verbose probe/);
+  });
+
+  it('suppresses debug lines when toggled off', () => {
+    const previous = isVerbose();
+    setVerbose(false);
+    const captured = [];
+    const sink = (line) => captured.push(line);
+    addSink(sink);
+    try {
+      logger.debug('hidden');
+      logger.info('shown');
+    } finally {
+      removeSink(sink);
+      setVerbose(previous);
+    }
+    assert.equal(captured.length, 1);
+    assert.match(captured[0], /\[info\]/);
   });
 });

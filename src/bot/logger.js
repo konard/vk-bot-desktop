@@ -6,6 +6,13 @@
  *   stdout, stderr, files, or IPC.
  * - Provide deterministic output suitable for inclusion in user bug reports.
  *
+ * Levels: 'debug' | 'info' | 'warn' | 'error'.
+ *
+ * Verbose mode (the default for now, see issue #32) prints every level,
+ * including 'debug', so users can attach a full session log to their bug
+ * reports without re-running the bot. Set `VK_BOT_DESKTOP_VERBOSE=0` (or
+ * call `setVerbose(false)`) to suppress 'debug' lines.
+ *
  * Redaction rules (applied in order):
  *
  * 1. Strings that look like a VK access token (long base64-ish run of >= 40
@@ -140,7 +147,29 @@ export function clearSinks() {
   sinks.length = 0;
 }
 
+// Verbose by default — see issue #32. Toggle with VK_BOT_DESKTOP_VERBOSE
+// (anything other than "0" / "false" / "" stays verbose).
+let verbose = (() => {
+  const raw =
+    typeof process !== 'undefined' ? process.env?.VK_BOT_DESKTOP_VERBOSE : null;
+  if (raw === undefined || raw === null || raw === '') {
+    return true;
+  }
+  return raw !== '0' && raw.toLowerCase() !== 'false';
+})();
+
+export function setVerbose(value) {
+  verbose = Boolean(value);
+}
+
+export function isVerbose() {
+  return verbose;
+}
+
 function emit(level, args) {
+  if (level === 'debug' && !verbose) {
+    return;
+  }
   const line = format(level, args);
   for (const sink of sinks) {
     try {
