@@ -659,12 +659,18 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     needs: [detect-changes]
+    # Build whenever the deploy must run, plus on PRs that touch
+    # site/build files so PR feedback stays fast.
+    # Main pushes and release tags must always rebuild so the deployed
+    # download page reflects the latest Release API data (see issue #28
+    # and REQUIREMENTS Release And Distribution #19, #26).
     if: |
       always() &&
       !cancelled() &&
-      !startsWith(github.ref, 'refs/tags/') &&
-      ((github.event_name == 'workflow_dispatch' && github.event.inputs.release_mode == 'checks') ||
-      needs.detect-changes.outputs.pages-changed == 'true')
+      ((github.event_name == 'push' && github.ref == 'refs/heads/main') ||
+      (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')) ||
+      (github.event_name == 'workflow_dispatch' && github.event.inputs.release_mode == 'checks') ||
+      (github.event_name == 'pull_request' && needs.detect-changes.outputs.pages-changed == 'true'))
     permissions:
       contents: read
       pages: write
@@ -694,20 +700,22 @@ jobs:
         run: npm run test:pages:e2e -- --site-dir site/dist
 
       - name: Configure GitHub Pages
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v'))
         uses: actions/configure-pages@v5
         with:
           enablement: true
 
       - name: Upload GitHub Pages artifact
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v'))
         uses: actions/upload-pages-artifact@v4
         with:
           path: site/dist
 
   pages-deploy:
     name: Deploy Pages site
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    # Deploy on every main push and on every release tag push, so the
+    # download page never stays stale relative to GitHub Releases.
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v'))
     needs: [pages-build]
     runs-on: ubuntu-latest
     timeout-minutes: 10

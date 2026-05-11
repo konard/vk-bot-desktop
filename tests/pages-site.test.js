@@ -42,13 +42,34 @@ describe('GitHub Pages download site', () => {
     expect(pagesWorkflow).toContain('actions/upload-pages-artifact@v4');
     expect(pagesWorkflow).toContain('actions/deploy-pages@v4');
     expect(pagesWorkflow).toContain('enablement: true');
+    // Regression for issue #28: the deploy job must trigger on both
+    // main-branch pushes AND tag pushes, so the download page is
+    // never stale relative to the latest GitHub Release.
     expect(pagesWorkflow).toContain(
-      "if: github.event_name == 'push' && github.ref == 'refs/heads/main'"
+      "if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v'))"
     );
     expect(pagesWorkflow).toContain('path: site/dist');
     expect(pagesWorkflow).toContain('pages: write');
     expect(pagesWorkflow).toContain('id-token: write');
     expect(pagesWorkflow).toContain('timeout-minutes: 10');
+  });
+
+  it('rebuilds on every main push and tag push, not only when site files change', () => {
+    // Regression for issue #28: the previous condition gated pages-build
+    // on `pages-changed`, which left main/tag pushes that did not touch
+    // site files with a silently skipped deploy. The current condition
+    // must include both `refs/heads/main` and `refs/tags/v*` pushes.
+    expect(pagesWorkflow).toContain(
+      "(github.event_name == 'push' && github.ref == 'refs/heads/main')"
+    );
+    expect(pagesWorkflow).toContain(
+      "(github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v'))"
+    );
+    // The PR path is still gated on pages-changed so PR feedback stays
+    // fast for unrelated PRs.
+    expect(pagesWorkflow).toContain(
+      "(github.event_name == 'pull_request' && needs.detect-changes.outputs.pages-changed == 'true')"
+    );
   });
 
   it('detects language, theme, and operating system for the primary download', () => {
