@@ -1,0 +1,8 @@
+konard/vk-bot-desktop:site/index.html: <link rel="preload" href="assets/app-preview.png" as="image" />
+konard/vk-bot-desktop:docs/case-studies/issue-6/data/current-cicd-site-files.txt: site/assets/app-preview.png
+konard/vk-bot-desktop:docs/case-studies/issue-6/data/current-cicd-site-files.txt: site/dist/assets/app-preview.png
+konard/vk-bot-desktop:site/App.jsx: src="assets/app-preview.png"
+konard/vk-bot-desktop:docs/case-studies/issue-11/ci-logs/pages-main-25628940953.log: Build Pages site	Upload GitHub Pages artifact	2026-05-10T12:39:27.1058314Z ./assets/app-preview.png
+konard/vk-bot-desktop:docs/case-studies/issue-6/data/current-file-tree.txt: site/assets/app-preview.png
+konard/vk-bot-desktop:docs/case-studies/issue-15/data/file-tree.txt: site/assets/app-preview.png
+konard/vk-bot-desktop:tests/pages-site.test.js: expect(siteIndex).toContain('assets/app-preview.png');

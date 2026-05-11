@@ -4,6 +4,7 @@ import {
   RELEASES_URL,
   assetNameFor,
   assetsByName,
+  downloadFamilies,
   downloadOptions,
   groupedOptions,
   primaryOptionFor,
@@ -119,5 +120,30 @@ describe('Pages release download helpers', () => {
     expect(
       assetNameFor(primaryOptionFor('windows'), { tag_name: 'v0.9.8' })
     ).toBe('vk-bot-desktop-windows-installer-x64-0.9.8.exe');
+  });
+
+  it('groups primary installer downloads with smaller format alternatives', () => {
+    const families = downloadFamilies();
+
+    expect(families.map((group) => group.os)).toEqual([
+      'macos',
+      'windows',
+      'linux',
+    ]);
+    expect(families[0].families.map((family) => family.primary.id)).toEqual([
+      'macos-arm64',
+      'macos-x64',
+    ]);
+    expect(
+      families[0].families[0].secondary.map((option) => option.id)
+    ).toEqual(['macos-arm64-zip']);
+    expect(families[1].families.map((family) => family.primary.id)).toEqual([
+      'windows-x64',
+      'windows-portable-x64',
+    ]);
+    expect(families[2].families.map((family) => family.primary.id)).toEqual([
+      'linux-appimage-x64',
+      'linux-appimage-arm64',
+    ]);
   });
 });

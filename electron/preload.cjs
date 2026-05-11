@@ -9,6 +9,8 @@ contextBridge.exposeInMainWorld('vkbot', {
   saveConfig: (config) => ipcRenderer.invoke('vkbot:save-config', config),
   startLocal: (config) => ipcRenderer.invoke('vkbot:start-local', config),
   stopLocal: () => ipcRenderer.invoke('vkbot:stop-local'),
+  getStatus: () => ipcRenderer.invoke('vkbot:get-status'),
+  openTokenUrl: (url) => ipcRenderer.invoke('vkbot:open-token-url', url),
   buildServerScript: (options) =>
     ipcRenderer.invoke('vkbot:server-script', options),
   readStats: () => ipcRenderer.invoke('vkbot:read-stats'),
@@ -17,5 +19,15 @@ contextBridge.exposeInMainWorld('vkbot', {
     const listener = (_event, line) => handler(line);
     ipcRenderer.on('vkbot:log', listener);
     return () => ipcRenderer.removeListener('vkbot:log', listener);
+  },
+  onStatus: (handler) => {
+    const listener = (_event, status) => handler(status);
+    ipcRenderer.on('vkbot:status', listener);
+    return () => ipcRenderer.removeListener('vkbot:status', listener);
+  },
+  onToken: (handler) => {
+    const listener = (_event, token) => handler(token);
+    ipcRenderer.on('vkbot:token', listener);
+    return () => ipcRenderer.removeListener('vkbot:token', listener);
   },
 });

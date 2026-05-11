@@ -4,7 +4,7 @@ import {
   RELEASES_URL,
   assetNameFor,
   assetsByName,
-  groupedOptions,
+  downloadFamilies,
   primaryOptionFor,
   releaseVersion,
   resolveDownloadAsset,
@@ -51,14 +51,23 @@ const copy = {
     verify: 'Verify downloads with SHA256SUMS.txt from the same release.',
     provenance: 'Build provenance',
     verifyTitle: 'Verify your download',
-    verifyRegular: 'Regular check',
-    verifyAdvanced: 'Advanced check',
+    verifyRegular: 'UI check',
+    verifyAdvanced: 'Command-line check',
+    verifyUiIntro:
+      'Select the downloaded file and SHA256SUMS.txt. The check runs locally in this browser.',
+    verifyFile: 'Downloaded file',
+    verifyChecksumFile: 'SHA256SUMS.txt',
+    verifyResultIdle: 'Choose both files to compare the SHA-256 checksum.',
+    verifyResultWorking: 'Calculating checksum...',
+    verifyResultMissing: 'No matching line was found for this filename.',
+    verifyResultMatch: 'Checksum matches.',
+    verifyResultMismatch: 'Checksum does not match.',
     regularStepOne:
       'Download the app and SHA256SUMS.txt from the same release.',
     regularStepTwo:
-      'Open the built-in checksum tool for your system and compare the SHA-256 value.',
+      'Use the form below to select both files. They stay on your device.',
     regularStepThree:
-      'Install only when the value matches the line for the file you downloaded.',
+      'Install only when the page reports that the checksum matches.',
     windowsCommand: 'Windows PowerShell',
     macosCommand: 'macOS Terminal',
     linuxCommand: 'Linux Terminal',
@@ -121,14 +130,23 @@ const copy = {
     verify: 'Проверяйте загрузки через SHA256SUMS.txt из того же релиза.',
     provenance: 'Происхождение сборки',
     verifyTitle: 'Проверка загрузки',
-    verifyRegular: 'Обычная проверка',
-    verifyAdvanced: 'Расширенная проверка',
+    verifyRegular: 'Проверка в интерфейсе',
+    verifyAdvanced: 'Проверка в командной строке',
+    verifyUiIntro:
+      'Выберите скачанный файл и SHA256SUMS.txt. Проверка выполняется локально в браузере.',
+    verifyFile: 'Скачанный файл',
+    verifyChecksumFile: 'SHA256SUMS.txt',
+    verifyResultIdle: 'Выберите оба файла, чтобы сравнить SHA-256.',
+    verifyResultWorking: 'Считаем контрольную сумму...',
+    verifyResultMissing: 'Для этого имени файла нет строки в SHA256SUMS.txt.',
+    verifyResultMatch: 'Контрольная сумма совпадает.',
+    verifyResultMismatch: 'Контрольная сумма не совпадает.',
     regularStepOne:
       'Скачайте приложение и SHA256SUMS.txt из одного и того же релиза.',
     regularStepTwo:
-      'Откройте встроенную проверку контрольных сумм для вашей системы и сравните SHA-256.',
+      'Выберите оба файла в форме ниже. Они остаются на вашем устройстве.',
     regularStepThree:
-      'Устанавливайте файл только если значение совпало со строкой для скачанного файла.',
+      'Устанавливайте файл только если страница сообщает о совпадении.',
     windowsCommand: 'Windows PowerShell',
     macosCommand: 'macOS Terminal',
     linuxCommand: 'Linux Terminal',
@@ -234,13 +252,165 @@ function verificationCommands(release) {
   ];
 }
 
+function previewImageFor(locale, theme) {
+  return `assets/app-preview-${locale}-${theme}.png`;
+}
+
+async function sha256Hex(file) {
+  const buffer = await file.arrayBuffer();
+  const hash = await crypto.subtle.digest('SHA-256', buffer);
+  return Array.from(new Uint8Array(hash))
+    .map((byte) => byte.toString(16).padStart(2, '0'))
+    .join('');
+}
+
+function checksumForFile(textValue, fileName) {
+  const lines = String(textValue || '').split(/\r?\n/);
+  for (const line of lines) {
+    const match = line.trim().match(/^([a-fA-F0-9]{64})\s+\*?(.+)$/);
+    if (match && match[2].trim() === fileName) {
+      return match[1].toLowerCase();
+    }
+  }
+  return undefined;
+}
+
+function DownloadOptionLink({
+  option,
+  releaseAssets,
+  release,
+  locale,
+  compact,
+}) {
+  const asset = resolveDownloadAsset(option, releaseAssets, release);
+  const href = asset?.browser_download_url;
+  const displayName = asset?.name || assetNameFor(option, release);
+  const className = compact ? 'download-chip' : 'download-primary-card';
+
+  return href ? (
+    <a href={href} className={className}>
+      <span>{text(locale, option.labelKey)}</span>
+      {!compact ? <code>{displayName}</code> : null}
+    </a>
+  ) : (
+    <div className={`${className} unavailable`} aria-disabled="true">
+      <span>{text(locale, option.labelKey)}</span>
+      {!compact ? <code>{displayName}</code> : null}
+    </div>
+  );
+}
+
+function DownloadFamily({ family, releaseAssets, release, locale }) {
+  return (
+    <div className="download-family">
+      <DownloadOptionLink
+        option={family.primary}
+        releaseAssets={releaseAssets}
+        release={release}
+        locale={locale}
+      />
+      <div className="download-secondary-list">
+        {family.secondary.map((option) => (
+          <DownloadOptionLink
+            key={option.id}
+            option={option}
+            releaseAssets={releaseAssets}
+            release={release}
+            locale={locale}
+            compact
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function VerificationTool({ locale }) {
+  const [file, setFile] = useState(null);
+  const [checksumFile, setChecksumFile] = useState(null);
+  const [result, setResult] = useState({ state: 'idle' });
+
+  useEffect(() => {
+    if (!file || !checksumFile) {
+      setResult({ state: 'idle' });
+      return undefined;
+    }
+
+    let active = true;
+    setResult({ state: 'working' });
+    Promise.all([sha256Hex(file), checksumFile.text()])
+      .then(([actualHash, checksumText]) => {
+        if (!active) {
+          return;
+        }
+        const expectedHash = checksumForFile(checksumText, file.name);
+        if (!expectedHash) {
+          setResult({ state: 'missing' });
+          return;
+        }
+        setResult({
+          state: actualHash === expectedHash ? 'match' : 'mismatch',
+          actualHash,
+          expectedHash,
+        });
+      })
+      .catch(() => {
+        if (active) {
+          setResult({ state: 'missing' });
+        }
+      });
+
+    return () => {
+      active = false;
+    };
+  }, [file, checksumFile]);
+
+  const resultKey =
+    result.state === 'working'
+      ? 'verifyResultWorking'
+      : result.state === 'missing'
+        ? 'verifyResultMissing'
+        : result.state === 'match'
+          ? 'verifyResultMatch'
+          : result.state === 'mismatch'
+            ? 'verifyResultMismatch'
+            : 'verifyResultIdle';
+
+  return (
+    <div className="verification-tool">
+      <p>{text(locale, 'verifyUiIntro')}</p>
+      <div className="verification-inputs">
+        <label>
+          {text(locale, 'verifyFile')}
+          <input
+            type="file"
+            onChange={(event) => setFile(event.target.files?.[0] || null)}
+          />
+        </label>
+        <label>
+          {text(locale, 'verifyChecksumFile')}
+          <input
+            type="file"
+            accept=".txt,text/plain"
+            onChange={(event) =>
+              setChecksumFile(event.target.files?.[0] || null)
+            }
+          />
+        </label>
+      </div>
+      <div className={`verification-result ${result.state}`} role="status">
+        {text(locale, resultKey)}
+      </div>
+    </div>
+  );
+}
+
 export const MACOS_INSTALL_COMMAND =
   'sudo xattr -dr com.apple.quarantine "/Applications/VK Bot Desktop.app"';
 
 export default function App() {
   const [locale, setLocale] = useState(() => detectLocale());
   const [theme, setTheme] = useState(() => detectTheme());
-  const [detectedOs] = useState(() => detectOperatingSystem());
   const [selectedOs, setSelectedOs] = useState(() => detectOperatingSystem());
   const [release, setRelease] = useState(null);
   const [releaseStatus, setReleaseStatus] = useState('loading');
@@ -391,8 +561,11 @@ export default function App() {
               </span>
             </div>
             <img
-              src="assets/app-preview.png"
+              src={previewImageFor(locale, theme)}
               alt={text(locale, 'previewAlt')}
+              onError={(event) => {
+                event.currentTarget.src = 'assets/app-preview.png';
+              }}
             />
           </div>
         </div>
@@ -404,47 +577,18 @@ export default function App() {
           <h2 id="downloads-title">{text(locale, 'release')}</h2>
         </div>
         <div className="download-grid">
-          {groupedOptions().map((group) => (
+          {downloadFamilies().map((group) => (
             <div className="download-group" key={group.os}>
               <h3>{text(locale, group.os)}</h3>
-              {group.options.map((option) => {
-                const asset = resolveDownloadAsset(
-                  option,
-                  releaseAssets,
-                  release
-                );
-                const href = asset?.browser_download_url;
-                const displayName =
-                  asset?.name || assetNameFor(option, release);
-                const className =
-                  option.os === detectedOs
-                    ? 'download-row detected'
-                    : 'download-row';
-
-                return href ? (
-                  <a key={option.id} href={href} className={className}>
-                    <span>{text(locale, option.labelKey)}</span>
-                    <code>{displayName}</code>
-                  </a>
-                ) : (
-                  <div
-                    key={option.id}
-                    className={`${className} unavailable`}
-                    aria-disabled="true"
-                  >
-                    <span>{text(locale, option.labelKey)}</span>
-                    <code>{displayName}</code>
-                    <small>
-                      {text(
-                        locale,
-                        releaseStatus === 'loading'
-                          ? 'downloadChecking'
-                          : 'downloadUnavailable'
-                      )}
-                    </small>
-                  </div>
-                );
-              })}
+              {group.families.map((family) => (
+                <DownloadFamily
+                  key={family.id}
+                  family={family}
+                  releaseAssets={releaseAssets}
+                  release={release}
+                  locale={locale}
+                />
+              ))}
             </div>
           ))}
         </div>
@@ -459,6 +603,14 @@ export default function App() {
         <p className="install-macos-why">{text(locale, 'installMacosWhy')}</p>
         <div className="install-macos-grid">
           <details open>
+            <summary>{text(locale, 'installMacosSettingsTitle')}</summary>
+            <ol>
+              <li>{text(locale, 'installMacosSettingsStep1')}</li>
+              <li>{text(locale, 'installMacosSettingsStep2')}</li>
+              <li>{text(locale, 'installMacosSettingsStep3')}</li>
+            </ol>
+          </details>
+          <details>
             <summary>{text(locale, 'installMacosTerminalTitle')}</summary>
             <ol>
               <li>{text(locale, 'installMacosTerminalStep')}</li>
@@ -469,14 +621,6 @@ export default function App() {
                 <code>{MACOS_INSTALL_COMMAND}</code>
               </div>
             </div>
-          </details>
-          <details>
-            <summary>{text(locale, 'installMacosSettingsTitle')}</summary>
-            <ol>
-              <li>{text(locale, 'installMacosSettingsStep1')}</li>
-              <li>{text(locale, 'installMacosSettingsStep2')}</li>
-              <li>{text(locale, 'installMacosSettingsStep3')}</li>
-            </ol>
           </details>
         </div>
         <p className="install-macos-footer">
@@ -497,14 +641,7 @@ export default function App() {
               <li>{text(locale, 'regularStepTwo')}</li>
               <li>{text(locale, 'regularStepThree')}</li>
             </ol>
-            <div className="command-list">
-              {verificationCommands(release).map((item) => (
-                <div key={item.key}>
-                  <strong>{text(locale, item.key)}</strong>
-                  <code>{item.command}</code>
-                </div>
-              ))}
-            </div>
+            <VerificationTool locale={locale} />
           </details>
           <details>
             <summary>{text(locale, 'verifyAdvanced')}</summary>
@@ -513,6 +650,12 @@ export default function App() {
               <li>{text(locale, 'advancedStepTwo')}</li>
             </ol>
             <div className="command-list">
+              {verificationCommands(release).map((item) => (
+                <div key={item.key}>
+                  <strong>{text(locale, item.key)}</strong>
+                  <code>{item.command}</code>
+                </div>
+              ))}
               <div>
                 <strong>GitHub CLI</strong>
                 <code>

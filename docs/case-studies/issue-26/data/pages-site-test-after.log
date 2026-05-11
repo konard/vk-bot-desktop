@@ -1,0 +1,57 @@
+TAP version 13
+# Subtest: GitHub Pages download site
+    # Subtest: has a reproducible React build script
+    ok 1 - has a reproducible React build script
+      ---
+      duration_ms: 0.986194
+      ...
+    # Subtest: deploys the built site with the official GitHub Pages actions
+    ok 2 - deploys the built site with the official GitHub Pages actions
+      ---
+      duration_ms: 0.251916
+      ...
+    # Subtest: detects language, theme, and operating system for the primary download
+    ok 3 - detects language, theme, and operating system for the primary download
+      ---
+      duration_ms: 0.186389
+      ...
+    # Subtest: loads latest release assets without synthesizing absent asset links
+    ok 4 - loads latest release assets without synthesizing absent asset links
+      ---
+      duration_ms: 0.235711
+      ...
+    # Subtest: runs browser-commander e2e checks before and after Pages deployment
+    ok 5 - runs browser-commander e2e checks before and after Pages deployment
+      ---
+      duration_ms: 0.273979
+      ...
+    # Subtest: requires macOS assets in the built-site release fixture
+    ok 6 - requires macOS assets in the built-site release fixture
+      ---
+      duration_ms: 0.225828
+      ...
+    # Subtest: has expandable verification instructions and OS-specific preview chrome
+    ok 7 - has expandable verification instructions and OS-specific preview chrome
+      ---
+      duration_ms: 1.229717
+      ...
+    # Subtest: documents the macOS Gatekeeper first-launch workflow for ad-hoc builds
+    ok 8 - documents the macOS Gatekeeper first-launch workflow for ad-hoc builds
+      ---
+      duration_ms: 0.252156
+      ...
+    1..8
+ok 1 - GitHub Pages download site
+  ---
+  duration_ms: 5.053717
+  type: 'suite'
+  ...
+1..1
+# tests 8
+# suites 1
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 71.346288

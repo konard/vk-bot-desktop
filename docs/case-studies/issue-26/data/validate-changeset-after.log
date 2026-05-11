@@ -1,0 +1,11 @@
+Validating changesets added by this PR...
+Detected single-language repository (package.json in root)
+Package: vk-bot-desktop
+Warning: Could not determine PR diff, checking all changesets in directory
+Found 1 changeset file(s) added by this PR
+Added changesets:
+  - steady-token-flow.md
+Validating changeset: .changeset/steady-token-flow.md
+Changeset validation passed
+   Type: patch
+   Description: Add VK token acquisition helpers, desktop run-status controls, localized app preview screenshots, and browser-based download verification.

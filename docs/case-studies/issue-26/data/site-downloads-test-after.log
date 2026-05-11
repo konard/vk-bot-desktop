@@ -1,0 +1,47 @@
+TAP version 13
+# Subtest: Pages release download helpers
+    # Subtest: resolves versioned download links from actual release assets
+    ok 1 - resolves versioned download links from actual release assets
+      ---
+      duration_ms: 1.403106
+      ...
+    # Subtest: prefers versioned assets while tolerating legacy assets during migration
+    ok 2 - prefers versioned assets while tolerating legacy assets during migration
+      ---
+      duration_ms: 0.233969
+      ...
+    # Subtest: derives user-visible asset names from the latest release version
+    ok 3 - derives user-visible asset names from the latest release version
+      ---
+      duration_ms: 0.171597
+      ...
+    # Subtest: uses the release page rather than a synthetic checksum URL when missing
+    ok 4 - uses the release page rather than a synthetic checksum URL when missing
+      ---
+      duration_ms: 0.225446
+      ...
+    # Subtest: keeps stable option groups for all supported operating systems
+    ok 5 - keeps stable option groups for all supported operating systems
+      ---
+      duration_ms: 0.414589
+      ...
+    # Subtest: groups primary installer downloads with smaller format alternatives
+    ok 6 - groups primary installer downloads with smaller format alternatives
+      ---
+      duration_ms: 0.262913
+      ...
+    1..6
+ok 1 - Pages release download helpers
+  ---
+  duration_ms: 3.848919
+  type: 'suite'
+  ...
+1..1
+# tests 6
+# suites 1
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 67.237482
