@@ -10,39 +10,49 @@ const {
   startOauthCallbackServer,
 } = require('../electron/oauth-callback.cjs');
 
-describe('Electron OAuth localhost callback', () => {
+const isDenoRuntime = typeof Deno !== 'undefined';
+
+describe('Electron OAuth localhost callback markup', () => {
   it('serves a page that posts the URL fragment token back to the app', () => {
     const html = callbackPageHtml();
 
     assert.match(html, /access_token/);
     assert.match(html, new RegExp(TOKEN_POST_PATH));
   });
+});
 
-  it('accepts a token handoff from the callback page', async () => {
-    let receivedToken = '';
-    const callback = await startOauthCallbackServer({
-      port: 0,
-      onToken: (token) => {
-        receivedToken = token;
-      },
-    });
-
-    try {
-      const origin = `http://${callback.host}:${callback.port}`;
-      const page = await fetch(`${origin}${CALLBACK_PATH}`);
-      assert.equal(page.status, 200);
-      assert.match(await page.text(), /Reading VK token/);
-
-      const response = await fetch(`${origin}${TOKEN_POST_PATH}`, {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ token: '  vk1.a.localhost_token  ' }),
+// Deno CI intentionally runs with `deno test --allow-read`, without network
+// permission. Node still exercises the localhost callback server end-to-end.
+describe(
+  'Electron OAuth localhost callback server',
+  { skip: isDenoRuntime },
+  () => {
+    it('accepts a token handoff from the callback page', async () => {
+      let receivedToken = '';
+      const callback = await startOauthCallbackServer({
+        port: 0,
+        onToken: (token) => {
+          receivedToken = token;
+        },
       });
 
-      assert.equal(response.status, 200);
-      assert.equal(receivedToken, 'vk1.a.localhost_token');
-    } finally {
-      await callback.close();
-    }
-  });
-});
+      try {
+        const origin = `http://${callback.host}:${callback.port}`;
+        const page = await fetch(`${origin}${CALLBACK_PATH}`);
+        assert.equal(page.status, 200);
+        assert.match(await page.text(), /Reading VK token/);
+
+        const response = await fetch(`${origin}${TOKEN_POST_PATH}`, {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ token: '  vk1.a.localhost_token  ' }),
+        });
+
+        assert.equal(response.status, 200);
+        assert.equal(receivedToken, 'vk1.a.localhost_token');
+      } finally {
+        await callback.close();
+      }
+    });
+  }
+);
