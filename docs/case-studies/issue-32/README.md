@@ -72,6 +72,12 @@ Both symptoms appear together in the screenshot the user attached, see
 6. **R6** – File upstream issues at related projects with reproducible
    examples, workarounds, and fix suggestions.
 7. **R7** – Execute every fix in a single pull request.
+8. **R8** – Run the bot in verbose mode by default during the early
+   iterations of this project, so users don't have to flip a flag before
+   reporting a bug.
+9. **R9** – Persist a copy of every bot session's log (success or failure)
+   under the application directory, so when a user reports a problem we can
+   read the raw evidence instead of guessing.
 
 ## Root Causes
 
@@ -108,28 +114,48 @@ default, matching the reference repo's behaviour. Implemented in
 `tests/runner-schedule.test.js` (asserts the forked child stays alive past
 400 ms and that "trigger fired" appears in stdout).
 
-### Root cause 2: VK access token lacked the `offline` scope
+### Why VK returned code 3 here: still undetermined
 
-`account.setOnline` is documented to require the `offline` scope (bitmask
-`65536`). The Kate Mobile OAuth URL we currently embed in the desktop app
-asks for scope `1073737727` (`all bits except offline`), so the access token
-returned by the implicit flow simply does not authorize this method. VK then
-responds with API error code 3 (`Unknown method passed`), which is
-historically what VK returns when the token cannot use the method — even
-though the wording suggests the method does not exist.
+The trigger source matches the reference repository (`konard/vk-bot`) byte
+for byte, and the same `vk.api.account.setOnline()` call is known to work
+there. We attempted several specific hypotheses before concluding we don't
+yet have enough data:
 
-The trigger source itself is fine — it matches the reference. The fix is
-operational: either request the `offline` scope at OAuth time, or emit a
-clear log message so the user understands which permission is missing.
+- **"The Kate Mobile token lacks the `offline` scope."** Checked the bitmask
+  `1073737727` the desktop app currently requests against the public
+  scope-name list at
+  [`dsblv/vk-api-scopes`](https://github.com/dsblv/vk-api-scopes):
+  `1073737727 & 65536 === 65536`, so the `offline` scope is in fact granted.
+  The only well-known scope missing from `1073737727` is `messages` (bit
+  `4096`), which has no documented relationship to `account.setOnline`.
+- **"The method was removed."** The official VK API schema at
+  [`VKCOM/vk-api-schema`](https://github.com/VKCOM/vk-api-schema) still
+  lists `account.setOnline` with `access_token_type: ["user"]` and no
+  documented scope restriction.
+- **"vk-io drives a deprecated endpoint."** vk-io 4.10.1 already targets
+  `api.vk.ru/method/...`; the September 2025 `vk.com → vk.ru` domain
+  migration is not the trigger.
 
-**Fix in this PR**: when `vk.api.account.setOnline()` rejects with VK code
-3, the trigger now logs a targeted warning that names the missing scope and
-points the user at this case study, instead of just dumping the raw VK
-error. The actual scope-update of the OAuth URL is intentionally **not**
-included here so that this PR stays scoped to the runner / logging fixes;
-it is filed as a follow-up requirement in
-[`docs/REQUIREMENTS.md`](../../REQUIREMENTS.md) and tracked in #32's
-follow-up label.
+Because we cannot reproduce the failure from a clean room (we have only the
+reporter's screenshot), we explicitly choose **not** to encode any of the
+above speculation in the code or the user-facing logs. Per the PR feedback
+on #33: _"We don't need to add a guesses in code, we need to find root
+cause and fix it."_
+
+**What this PR does instead**:
+
+1. The `set-online-status` trigger logs the **raw** VK error verbatim,
+   pretty-printed by the logger. No "likely / probably" wording is added,
+   and the trigger no longer special-cases code 3.
+2. The bot runs in **verbose mode by default** (see `R8`), so every trigger
+   invocation emits a `debug` line before and after the call. This is the
+   same lifecycle pattern `konard/vk-bot` uses in `executeTrigger`.
+3. Each session's full log is **persisted to disk** under
+   `<application-dir>/logs/` (see `R9`), so the next bug report can ship
+   raw evidence instead of a screenshot.
+
+When a new occurrence comes in with the full session log, we'll be able to
+pinpoint the real cause and fix it without guessing.
 
 ### Root cause 3: Logger emitted single-line JSON, making errors hard to read
 
@@ -146,36 +172,43 @@ object arguments with indentation"), which asserts the log line contains
 
 ## Online Research
 
-- VK API error reference for code `3` ("Unknown method passed"):
-  <https://dev.vk.com/en/reference/errors>. VK has historically used this
-  code for "method exists but cannot be called with the current token", not
-  only for typos in the method name. This matches the symptom: the method
-  is present in `vk-io`, but the token is implicit-flow Kate Mobile without
-  `offline` scope.
+- VK API error reference for code `3` ("Unknown method passed"): tracked in
+  the official VK API documentation. The wording suggests "method does not
+  exist", but in practice VK is known to return this code in several
+  unrelated situations; without a fresh reproduction we cannot say which
+  one applied to this user.
+- VK API schema:
+  [`VKCOM/vk-api-schema`](https://github.com/VKCOM/vk-api-schema) — the
+  schema entry for `account.setOnline` is `account/methods.json` and lists
+  `access_token_type: ["user"]` with no scope restriction.
+- VK scope bitmask reference:
+  [`dsblv/vk-api-scopes`](https://github.com/dsblv/vk-api-scopes) — used to
+  verify that the Kate Mobile mask `1073737727` includes `offline` (65536)
+  and excludes only `messages` (4096) among the well-known names.
 - vk-io upstream behaviour: `vk.api.account.setOnline()` is a plain
-  passthrough that constructs `POST /method/account.setOnline?…` and bubbles
-  up `APIError` instances unchanged
+  passthrough that constructs `POST /method/account.setOnline?…` and
+  bubbles up `APIError` instances unchanged
   (`/node_modules/vk-io/lib/index.mjs:1854`).
 - Node.js `Timeout.unref()` documentation
   (<https://nodejs.org/api/timers.html#timeoutunref>) is explicit that an
   unref'd timer "will not require the Node.js event loop to remain active".
   This is consistent with the observed early exit.
 - VK domain migration `vk.com` → `vk.ru` (September 2025) is unrelated to
-  error code 3 (a token without scope still fails the same way on both
-  domains), but it remains a follow-up risk that's tracked elsewhere.
+  error code 3; vk-io 4.10.1 already drives `api.vk.ru/method/...`.
 
 ## Solution Plan
 
-| #   | Requirement | Solution                                                                                                                                                  | Status in PR #33               |
-| --- | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
-| 1   | R1          | Identify and explain VK code 3 in the trigger; surface a scope-specific warning instead of silent failure.                                                | Done                           |
-| 2   | R1          | Remove `.unref()` from `scheduleEvery` so the bot stays alive past the first trigger.                                                                     | Done                           |
-| 3   | R2          | Diff vk-bot-desktop file tree against konard/vk-bot for the affected paths (scheduling, set-online-status). Reference snapshots stored under `data/`.     | Done                           |
-| 4   | R3          | Pretty-print every JSON argument in the logger.                                                                                                           | Done                           |
-| 5   | R4          | This document, plus the `data/` folder.                                                                                                                   | Done                           |
-| 6   | R5          | Bot already runs with verbose redaction logging. The current data was sufficient for root-causing; no extra debug flags introduced.                       | Done                           |
-| 7   | R6          | No third-party upstream fix is needed (vk-io behaves correctly; Node behaves as documented). Follow-up to update OAuth scopes is tracked in REQUIREMENTS. | Done (no upstream issue filed) |
-| 8   | R7          | All fixes ship in PR #33.                                                                                                                                 | Done                           |
+| #   | Requirement | Solution                                                                                                                                                                                                                 | Status in PR #33               |
+| --- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------ |
+| 1   | R1          | Investigated and disproved the offline-scope hypothesis (`1073737727 & 65536 === 65536`). Without a clean-room reproduction, we log the raw VK error verbatim instead of speculating, and gather full logs (R5, R8, R9). | Done                           |
+| 2   | R1          | Remove `.unref()` from `scheduleEvery` so the bot stays alive past the first trigger.                                                                                                                                    | Done                           |
+| 3   | R2          | Diff vk-bot-desktop file tree against konard/vk-bot for the affected paths (scheduling, set-online-status). Reference snapshots stored under `data/`. Lifecycle debug logs mirror `executeTrigger` from konard/vk-bot.   | Done                           |
+| 4   | R3          | Pretty-print every JSON argument in the logger.                                                                                                                                                                          | Done                           |
+| 5   | R4          | This document, plus the `data/` folder.                                                                                                                                                                                  | Done                           |
+| 6   | R5, R8      | Logger is verbose-by-default (override via `VK_BOT_DESKTOP_VERBOSE=0`); each trigger invocation emits start / duration `debug` lines.                                                                                    | Done                           |
+| 7   | R6          | No third-party upstream fix is needed (vk-io behaves correctly; Node behaves as documented). No upstream issue filed; we'll revisit if the persisted logs (R9) reveal a vk-io bug.                                       | Done (no upstream issue filed) |
+| 8   | R7          | All fixes ship in PR #33.                                                                                                                                                                                                | Done                           |
+| 9   | R9          | `src/bot/session-log.js` opens a per-session log file under `<globalDir>/logs/` and attaches it as a redacted logger sink for the lifetime of the runner.                                                                | Done                           |
 
 ## Regression Tests Added
 
@@ -185,17 +218,30 @@ object arguments with indentation"), which asserts the log line contains
     alive past 400 ms — the exact regression that caused `Bot exited with
 code 0`.
 - `tests/set-online-status.test.js`
-  - VK code 3 → logger emits the scope-specific warning.
-  - Other VK errors → logger emits the generic warning unchanged.
+  - Healthy call → logger emits the success line.
+  - VK error → logger emits the generic warning with the raw VK error
+    pretty-printed inside, and **no** speculative wording (`likely`,
+    `maybe`, `probably`, `presumably`).
 - `tests/logger.test.js` (extended)
   - Pretty-printed JSON output is asserted by matching `\n  "error":`.
+  - Verbose mode is on by default; `setVerbose(false)` suppresses `debug`
+    lines.
+- `tests/session-log.test.js`
+  - `openSessionLog` writes logger output to a file under the configured
+    directory and redacts secrets along the way.
 
 ## Files Changed
 
-- `src/bot/runner.js` — remove `.unref()` from `scheduleEvery` timers.
-- `src/bot/logger.js` — `JSON.stringify(r, null, 2)`.
-- `src/bot/triggers/set-online-status.js` — detect VK code 3 and log a
-  scope-specific warning that points to this case study.
+- `src/bot/runner.js` — remove `.unref()` from `scheduleEvery` timers;
+  emit `debug` lines around each trigger invocation; open a session log
+  file in the direct-run block.
+- `src/bot/logger.js` — `JSON.stringify(r, null, 2)`; add verbose-by-default
+  with `VK_BOT_DESKTOP_VERBOSE` override; expose `addSink` / `removeSink` /
+  `setVerbose` / `isVerbose`.
+- `src/bot/triggers/set-online-status.js` — log the raw VK error verbatim;
+  no special-casing of VK code 3.
+- `src/bot/session-log.js` (new) — per-session log file sink under
+  `<globalDir>/logs/`.
 - `tests/runner-schedule.test.js` (new), `tests/fixtures/runner-fixture.mjs`
   (new), `tests/set-online-status.test.js` (new),
-  `tests/logger.test.js` (extended).
+  `tests/session-log.test.js` (new), `tests/logger.test.js` (extended).
