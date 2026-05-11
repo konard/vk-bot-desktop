@@ -1,0 +1,113 @@
+  detect-changes:
+    name: Detect Changes
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    if: github.event_name != 'workflow_dispatch' && !startsWith(github.ref, 'refs/tags/')
+    outputs:
+      mjs-changed: ${{ steps.changes.outputs.mjs-changed }}
+      js-changed: ${{ steps.changes.outputs.js-changed }}
+      package-changed: ${{ steps.changes.outputs.package-changed }}
+      docs-changed: ${{ steps.changes.outputs.docs-changed }}
+      html-changed: ${{ steps.changes.outputs.html-changed }}
+      site-changed: ${{ steps.changes.outputs.site-changed }}
+      pages-changed: ${{ steps.changes.outputs.pages-changed }}
+      links-changed: ${{ steps.changes.outputs.links-changed }}
+      workflow-changed: ${{ steps.changes.outputs.workflow-changed }}
+      any-code-changed: ${{ steps.changes.outputs.any-code-changed }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Detect changes
+        id: changes
+        run: node scripts/detect-code-changes.mjs
+
+  # === FAST CHECKS - run before slow tests for fastest feedback ===
+  pages-build:
+    name: Build Pages site
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: [detect-changes]
+    if: |
+      always() &&
+      !cancelled() &&
+      !startsWith(github.ref, 'refs/tags/') &&
+      ((github.event_name == 'workflow_dispatch' && github.event.inputs.release_mode == 'checks') ||
+      needs.detect-changes.outputs.pages-changed == 'true')
+    permissions:
+      contents: read
+      pages: write
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24.x'
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Build site
+        run: npm run build:site
+
+      - name: Install browser e2e dependencies
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: npm install --no-save --package-lock=false --no-audit --no-fund browser-commander@0.8.0 playwright@1.59.1
+
+      - name: Install Chromium for browser e2e tests
+        run: npx playwright install chromium
+
+      - name: Test built Pages site before deploy
+        run: npm run test:pages:e2e -- --site-dir site/dist
+
+      - name: Configure GitHub Pages
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Upload GitHub Pages artifact
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site/dist
+
+  pages-deploy:
+    name: Deploy Pages site
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: [pages-build]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24.x'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Install browser e2e dependencies
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: npm install --no-save --package-lock=false --no-audit --no-fund browser-commander@0.8.0 playwright@1.59.1
+
+      - name: Install Chromium for browser e2e tests
+        run: npx playwright install chromium
+
+      - name: Test published Pages site after deploy
+        run: npm run test:pages:e2e -- --url "${{ steps.deployment.outputs.page_url }}"
+

@@ -13,6 +13,10 @@ This document normalizes the product and release requirements collected from:
   publication.
 - Issue #24: macOS Gatekeeper first-launch instructions for ad-hoc signed
   builds without an Apple Developer ID.
+- Issue #28: GitHub Pages download page must republish on every main push and
+  every release tag push, even when no `site/` files changed; CI change
+  detection must distinguish real merge commits on `main` from `pull_request`
+  synthetic merge commits.
 
 ## Product Scope
 
@@ -151,6 +155,26 @@ local bot execution and remote execution over SSH.
     workflow and the macOS 15 Sequoia System Settings → Privacy & Security
     → "Open Anyway" workflow, in both English and Russian on the download
     page, and must remind readers to verify the SHA-256 checksum first.
+26. Every push to `main` must rebuild and republish the GitHub Pages
+    download page, so the published page is never stale relative to the
+    latest GitHub Release. Republishing must NOT be gated on whether the
+    push touched `site/` files, because release-tag and main-branch pushes
+    can change the latest-release contents without touching the site source.
+27. Every push of a release tag matching `refs/tags/v*` must rebuild and
+    republish the GitHub Pages download page for the same reason.
+28. Pull-request runs may keep Pages build/deploy gated on a file-level
+    change-detection signal so unrelated PRs do not pay the deploy cost.
+29. CI change detection (`scripts/detect-code-changes.mjs`) must select its
+    git diff strategy from `$GITHUB_EVENT_NAME`, not from the parent count
+    of `HEAD`. A real merge commit landed on `main` via the "Merge pull
+    request" button has two parents but is a `push` event, and must be
+    compared with `HEAD^..HEAD` (first-parent diff). Only `pull_request`
+    events with multi-parent HEADs use the synthetic-merge `HEAD^2^..HEAD^2`
+    diff.
+30. CI change detection must support an opt-in verbose mode
+    (`CI_DETECT_VERBOSE=1` or `--verbose`) that prints the event name, ref,
+    parent count, and chosen diff command, so misclassified runs can be
+    diagnosed from the workflow log without re-running.
 
 ## Testing And Documentation
 
@@ -166,3 +190,13 @@ local bot execution and remote execution over SSH.
    solution plans.
 7. When root cause cannot be proven from available data, add opt-in debug output
    or verbose tracing for the next iteration.
+8. Workflow-contract tests must lock in the conditions under which the
+   GitHub Pages site is built and deployed (every main push, every release
+   tag push, and changed-files-only for pull requests), so a future workflow
+   refactor cannot silently re-introduce the issue #28 regression.
+9. The CI change-detection script must have unit tests that exercise the
+   three real-world commit shapes: plain non-merge push commit, real merge
+   commit on `main` from a "Merge pull request" landing, and `pull_request`
+   synthetic merge commit. The tests must run against temporary git
+   fixtures so regressions in diff-strategy selection fail locally and in
+   CI, not only after a real Pages deploy is silently skipped.
