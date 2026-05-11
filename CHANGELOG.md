@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.9.14
+
+### Patch Changes
+
+- d427531: Add VK token acquisition helpers, desktop run-status controls, localized app preview screenshots, and browser-based download verification.
+
 ## 0.9.13
 
 ### Patch Changes
