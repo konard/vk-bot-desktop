@@ -31,10 +31,10 @@ describe('setOnlineStatus: healthy call', () => {
   });
 });
 
-describe('setOnlineStatus: VK code 3', () => {
-  it('emits a code-3 hint when VK returns "Unknown method passed"', async () => {
+describe('setOnlineStatus: VK error is logged verbatim', () => {
+  it('forwards the VK error into the log without adding speculation', async () => {
     await withCapturedLogs(async (captured) => {
-      const err = new Error('Unknown method passed.');
+      const err = new Error('Code №3 - Unknown method passed');
       err.code = 3;
       const vk = {
         api: {
@@ -47,15 +47,20 @@ describe('setOnlineStatus: VK code 3', () => {
       };
       await setOnlineStatus({ vk });
       assert.equal(captured.length, 1);
-      assert.match(captured[0], /code 3/);
-      assert.match(captured[0], /offline.*scope|scope.*offline/);
-      assert.match(captured[0], /docs\/case-studies\/issue-32/);
+      assert.match(captured[0], /Could not set online status/);
+      // The full VK error must be visible in the log.
+      assert.match(captured[0], /Unknown method passed/);
+      // Pretty-printed JSON brings the error message onto its own indented
+      // line, so the user/log reader can quickly find it.
+      assert.match(captured[0], /\n {4}"message":/);
+      // No speculative wording sneaks in.
+      assert.doesNotMatch(captured[0], /likely|maybe|probably|presumably/i);
     });
   });
 });
 
 describe('setOnlineStatus: other errors', () => {
-  it('falls back to the generic warning for other errors', async () => {
+  it('logs the generic warning for non-VK errors too', async () => {
     await withCapturedLogs(async (captured) => {
       const vk = {
         api: {
@@ -69,7 +74,7 @@ describe('setOnlineStatus: other errors', () => {
       await setOnlineStatus({ vk });
       assert.equal(captured.length, 1);
       assert.match(captured[0], /Could not set online status/);
-      assert.doesNotMatch(captured[0], /code 3/);
+      assert.match(captured[0], /boom/);
     });
   });
 });
