@@ -2,7 +2,15 @@
 
 const path = require('path');
 const { fork, spawn } = require('child_process');
-const { app, BrowserWindow, ipcMain, nativeTheme } = require('electron');
+const { app, BrowserWindow, ipcMain, nativeTheme, shell } = require('electron');
+const { startOauthCallbackServer } = require('./oauth-callback.cjs');
+
+const ALLOWED_TOKEN_URLS = new Set([
+  'https://oauth.vk.com/authorize?client_id=2685278&scope=1073737727&redirect_uri=https://oauth.vk.com/blank.html&display=page&response_type=token&revoke=1',
+  'https://oauth.vk.com/authorize?client_id=2685278&scope=1073737727&redirect_uri=http://localhost:26852/vk-oauth&display=page&response_type=token&revoke=1',
+]);
+const LOCALHOST_TOKEN_URL =
+  'https://oauth.vk.com/authorize?client_id=2685278&scope=1073737727&redirect_uri=http://localhost:26852/vk-oauth&display=page&response_type=token&revoke=1';
 
 function runLocalCommand(argv) {
   return new Promise((resolve) => {
@@ -27,6 +35,35 @@ function runLocalCommand(argv) {
 
 let mainWindow;
 let botProcess = null;
+let oauthCallback = null;
+
+function botStatus() {
+  return { running: Boolean(botProcess) };
+}
+
+function sendBotStatus() {
+  mainWindow?.webContents.send('vkbot:status', botStatus());
+}
+
+async function closeOauthCallback() {
+  const current = oauthCallback;
+  oauthCallback = null;
+  if (current) {
+    await current.close().catch(() => {});
+  }
+}
+
+async function prepareOauthCallback() {
+  await closeOauthCallback();
+  oauthCallback = await startOauthCallbackServer({
+    onToken: (token) => {
+      mainWindow?.webContents.send('vkbot:token', token);
+      setTimeout(() => {
+        closeOauthCallback();
+      }, 1000);
+    },
+  });
+}
 
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -57,6 +94,7 @@ app.on('window-all-closed', () => {
     botProcess.kill();
     botProcess = null;
   }
+  closeOauthCallback();
   if (process.platform !== 'darwin') {
     app.quit();
   }
@@ -86,8 +124,22 @@ ipcMain.handle('vkbot:load-config', async () => {
   return store.loadLayered();
 });
 
+ipcMain.handle('vkbot:get-status', () => botStatus());
+
+ipcMain.handle('vkbot:open-token-url', async (_event, url) => {
+  if (!ALLOWED_TOKEN_URLS.has(url)) {
+    throw new Error('Unsupported token URL');
+  }
+  if (url === LOCALHOST_TOKEN_URL) {
+    await prepareOauthCallback();
+  }
+  await shell.openExternal(url);
+  return { ok: true };
+});
+
 ipcMain.handle('vkbot:start-local', async (_event, config) => {
   if (botProcess) {
+    sendBotStatus();
     return { ok: true, alreadyRunning: true };
   }
   let stoppedOther = false;
@@ -115,9 +167,11 @@ ipcMain.handle('vkbot:start-local', async (_event, config) => {
   botProcess.stderr.on('data', (chunk) =>
     mainWindow?.webContents.send('vkbot:log', chunk.toString())
   );
+  sendBotStatus();
   botProcess.on('exit', (code) => {
     mainWindow?.webContents.send('vkbot:log', `Bot exited with code ${code}\n`);
     botProcess = null;
+    sendBotStatus();
   });
   return { ok: true, stoppedOther };
 });
@@ -127,6 +181,7 @@ ipcMain.handle('vkbot:stop-local', () => {
     botProcess.kill();
     botProcess = null;
   }
+  sendBotStatus();
   return { ok: true };
 });
 

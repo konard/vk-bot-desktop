@@ -1,0 +1,5 @@
+konard/vk:README.md: https://oauth.vk.com/authorize?client_id=7907795&scope=friends&redirect_uri=https://oauth.vk.com/blank.html&display=page&response_type=token&revoke=1
+konard/social_ethosa:social_ethosa/net/vkauth.py: url1 = ("https://oauth.vk.com/authorize?client_id=2685278"
+konard/vk-browser:index.html: const authUrl = `https://oauth.vk.com/authorize?client_id=${KATE_MOBILE_APP_ID}&scope=${SCOPE}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&display=page&response_type=token&revoke=1`;
+konard/vk-bot:README.md: https://oauth.vk.com/authorize?client_id=2685278&scope=1073737727&redirect_uri=https://oauth.vk.com/blank.html&display=page&response_type=token&revoke=1
+konard/broadcast:html/vk.html: const authUrl = `https://oauth.vk.com/authorize?client_id=${appId}&display=page&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${scopes.join(',')}&response_type=token&v=5.131`;

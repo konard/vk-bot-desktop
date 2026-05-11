@@ -196,3 +196,60 @@ export function groupedOptions() {
     options: downloadOptions.filter((option) => option.os === os),
   }));
 }
+
+export function optionById(id) {
+  return downloadOptions.find((option) => option.id === id);
+}
+
+export function downloadFamilies() {
+  return [
+    {
+      os: 'macos',
+      families: [
+        {
+          id: 'macos-arm64',
+          primary: optionById('macos-arm64'),
+          secondary: [optionById('macos-arm64-zip')],
+        },
+        {
+          id: 'macos-x64',
+          primary: optionById('macos-x64'),
+          secondary: [optionById('macos-x64-zip')],
+        },
+      ],
+    },
+    {
+      os: 'windows',
+      families: [
+        {
+          id: 'windows-installer',
+          primary: optionById('windows-x64'),
+          secondary: [optionById('windows-arm64')],
+        },
+        {
+          id: 'windows-portable',
+          primary: optionById('windows-portable-x64'),
+          secondary: [optionById('windows-portable-arm64')],
+        },
+      ],
+    },
+    {
+      os: 'linux',
+      families: [
+        {
+          id: 'linux-x64',
+          primary: optionById('linux-appimage-x64'),
+          secondary: [optionById('linux-deb-x64'), optionById('linux-tar-x64')],
+        },
+        {
+          id: 'linux-arm64',
+          primary: optionById('linux-appimage-arm64'),
+          secondary: [
+            optionById('linux-deb-arm64'),
+            optionById('linux-tar-arm64'),
+          ],
+        },
+      ],
+    },
+  ];
+}

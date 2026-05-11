@@ -2,6 +2,8 @@
 
 Cross-platform desktop app that wraps [`konard/vk-bot`](https://github.com/konard/vk-bot) in a React + Electron UI. Runs the bot locally or on a remote SSH host inside Docker or `screen`.
 
+![VK Bot Desktop landing page in English dark theme](docs/screenshots/issue-26-pages-en-dark.png)
+
 ## Features
 
 - **Local mode**: run the bot inside the desktop app, no Docker required, dependencies installed automatically on first launch.

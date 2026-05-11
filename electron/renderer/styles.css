@@ -1,21 +1,29 @@
 :root {
-  --bg: #ffffff;
-  --fg: #1a1a1a;
-  --muted: #6a6a6a;
-  --border: #d0d0d0;
-  --accent: #4a76a8;
+  --bg: #f7f8f6;
+  --surface: #ffffff;
+  --surface-strong: #eef1ed;
+  --fg: #1d2422;
+  --muted: #5d6965;
+  --border: #d8ded9;
+  --accent: #0f8b6f;
+  --accent-strong: #0a5c4b;
   --accent-fg: #ffffff;
   --danger: #c0392b;
   --warning: #d35400;
+  --shadow: 0 18px 44px rgba(29, 36, 34, 0.12);
 }
 
 [data-theme='dark'] {
-  --bg: #1c1f26;
-  --fg: #e6e9ef;
-  --muted: #9aa3b2;
-  --border: #2f3543;
-  --accent: #6691c2;
-  --accent-fg: #0a0d12;
+  --bg: #151918;
+  --surface: #202725;
+  --surface-strong: #2a332f;
+  --fg: #eef4ef;
+  --muted: #a8b5ae;
+  --border: #3b4641;
+  --accent: #4fc3a0;
+  --accent-strong: #9fe4cc;
+  --accent-fg: #10201b;
+  --shadow: 0 18px 44px rgba(0, 0, 0, 0.32);
 }
 
 * {
@@ -33,21 +41,66 @@ body {
 }
 
 .app {
-  max-width: 760px;
+  max-width: 840px;
   margin: 0 auto;
-  padding: 24px;
+  padding: 28px 24px 36px;
 }
 
 .app h1 {
-  margin: 0 0 16px;
-  font-size: 22px;
+  margin: 0;
+  font-size: 28px;
+}
+
+.app-header {
+  display: grid;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.mode-row {
+  display: flex;
+  justify-content: center;
 }
 
 .toolbar {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+  align-items: end;
   margin-bottom: 16px;
+}
+
+.select-field,
+.status-field {
+  display: grid;
+  gap: 5px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.select-field select {
+  min-height: 36px;
+}
+
+.status-field {
+  min-width: 112px;
+}
+
+.run-status {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0 12px;
+  color: var(--muted);
+  background: var(--surface);
+}
+
+.run-status.active {
+  border-color: var(--accent);
+  color: var(--accent-strong);
 }
 
 .field {
@@ -63,8 +116,9 @@ body {
 
 .field input,
 .field select,
-.field textarea {
-  background: var(--bg);
+.field textarea,
+.select-field select {
+  background: var(--surface);
   color: var(--fg);
   border: 1px solid var(--border);
   border-radius: 6px;
@@ -91,10 +145,16 @@ button {
   background: var(--accent);
   color: var(--accent-fg);
   border: 0;
+  min-height: 36px;
   padding: 8px 14px;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   font: inherit;
+  font-weight: 700;
+}
+
+button:hover:not(:disabled) {
+  background: var(--accent-strong);
 }
 
 button.secondary {
@@ -103,8 +163,16 @@ button.secondary {
   border: 1px solid var(--accent);
 }
 
+button.secondary:hover:not(:disabled) {
+  color: var(--accent-fg);
+}
+
 button.danger {
   background: var(--danger);
+}
+
+.run-toggle {
+  min-width: 112px;
 }
 
 button:disabled {
@@ -113,7 +181,7 @@ button:disabled {
 }
 
 .log {
-  background: var(--bg);
+  background: var(--surface);
   color: var(--fg);
   border: 1px solid var(--border);
   border-radius: 6px;
@@ -187,12 +255,64 @@ button:disabled {
   flex-wrap: wrap;
   gap: 12px 20px;
   align-items: baseline;
-  background: var(--bg);
+  background: var(--surface);
   border: 1px solid var(--border);
   border-left: 4px solid var(--accent);
   border-radius: 6px;
   padding: 10px 14px;
   margin: 0 0 16px;
+}
+
+.segmented-field {
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+}
+
+.segmented-label {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.segmented-control {
+  display: inline-flex;
+  width: fit-content;
+  padding: 4px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+}
+
+.segmented-control button {
+  min-width: 120px;
+  border: 0;
+  border-radius: 7px;
+  color: var(--muted);
+  background: transparent;
+}
+
+.segmented-control button:hover {
+  color: var(--fg);
+  background: var(--surface-strong);
+}
+
+.segmented-control button.active,
+.segmented-control button.active:hover {
+  color: var(--surface);
+  background: var(--fg);
+}
+
+.mode-segment .segmented-control button {
+  min-height: 42px;
+  font-size: 16px;
+}
+
+.token-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .stats-banner strong {
@@ -253,5 +373,34 @@ button:disabled {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .app {
+    padding: 20px 14px 28px;
+  }
+
+  .app h1 {
+    font-size: 24px;
+  }
+
+  .toolbar,
+  .token-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .segmented-control {
+    width: 100%;
+  }
+
+  .segmented-control button {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
   }
 }

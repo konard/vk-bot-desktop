@@ -8,6 +8,11 @@ import {
   resolveTheme,
   watchSystemTheme,
 } from './theme.js';
+import {
+  KATE_MOBILE_TOKEN_URL,
+  LOCALHOST_TOKEN_URL,
+  extractVkAccessToken,
+} from './vk-token.js';
 
 const DEFAULT_INVITATIONS = [
   'Приму заявки в друзья.',
@@ -43,6 +48,8 @@ const FEATURE_KEYS = [
   ['sendInvitationPosts', 'featureSendInvitationPosts'],
   ['sendBirthdayCongratulations', 'featureSendBirthday'],
 ];
+
+const TOKEN_AUTO_SAVE_DELAY_MS = 650;
 
 const DEFAULT_FORM = {
   mode: 'local',
@@ -237,6 +244,27 @@ function Section({ title, defaultOpen = false, children }) {
   );
 }
 
+function SegmentedControl({ label, value, options, onChange, className = '' }) {
+  return (
+    <div className={`segmented-field ${className}`}>
+      <span className="segmented-label">{label}</span>
+      <div className="segmented-control" role="group" aria-label={label}>
+        {options.map((option) => (
+          <button
+            key={option.value}
+            type="button"
+            className={value === option.value ? 'active' : ''}
+            aria-pressed={value === option.value}
+            onClick={() => onChange(option.value)}
+          >
+            {option.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function StatsBanner({ stats, t }) {
   const total = Number(stats?.total?.acceptedFriends || 0);
   const month = Number(stats?.month?.acceptedFriends || 0);
@@ -288,12 +316,16 @@ export default function App({ api }) {
 
   const [form, setForm] = useState(DEFAULT_FORM);
   const [running, setRunning] = useState(false);
+  const [botBusy, setBotBusy] = useState(false);
   const [logLines, setLogLines] = useState([]);
   const [scriptPreview, setScriptPreview] = useState('');
   const [stats, setStats] = useState(null);
   const [toasts, setToasts] = useState([]);
   const logRef = useRef(null);
   const toastIdRef = useRef(0);
+  const formRef = useRef(form);
+  const savedTokenRef = useRef('');
+  const tokenAutoSaveReadyRef = useRef(false);
 
   const showToast = useCallback((text, kind = 'info') => {
     toastIdRef.current += 1;
@@ -303,6 +335,10 @@ export default function App({ api }) {
       setToasts((prev) => prev.filter((toast) => toast.id !== id));
     }, 3500);
   }, []);
+
+  useEffect(() => {
+    formRef.current = form;
+  }, [form]);
 
   const refreshStats = useCallback(async () => {
     if (!api?.readStats) {
@@ -318,12 +354,30 @@ export default function App({ api }) {
 
   useEffect(() => {
     if (!api?.loadConfig) {
-      return;
+      tokenAutoSaveReadyRef.current = true;
+      return undefined;
     }
+    let active = true;
     api
       .loadConfig()
-      .then((config) => setForm(configToForm(config)))
-      .catch(() => {});
+      .then((config) => {
+        if (!active) {
+          return;
+        }
+        const nextForm = configToForm(config);
+        nextForm.vkToken = extractVkAccessToken(nextForm.vkToken);
+        savedTokenRef.current = nextForm.vkToken;
+        setForm(nextForm);
+        tokenAutoSaveReadyRef.current = true;
+      })
+      .catch(() => {
+        if (active) {
+          tokenAutoSaveReadyRef.current = true;
+        }
+      });
+    return () => {
+      active = false;
+    };
   }, [api]);
 
   useEffect(() => {
@@ -331,6 +385,33 @@ export default function App({ api }) {
     const id = setInterval(refreshStats, 15000);
     return () => clearInterval(id);
   }, [refreshStats]);
+
+  const refreshBotStatus = useCallback(async () => {
+    if (!api?.getStatus) {
+      return;
+    }
+    try {
+      const status = await api.getStatus();
+      setRunning(Boolean(status?.running));
+    } catch {
+      // ignore
+    }
+  }, [api]);
+
+  useEffect(() => {
+    refreshBotStatus();
+    const id = setInterval(refreshBotStatus, 3000);
+    return () => clearInterval(id);
+  }, [refreshBotStatus]);
+
+  useEffect(() => {
+    if (!api?.onStatus) {
+      return undefined;
+    }
+    return api.onStatus((status) => {
+      setRunning(Boolean(status?.running));
+    });
+  }, [api]);
 
   useEffect(() => {
     if (!api?.onLog) {
@@ -372,34 +453,119 @@ export default function App({ api }) {
     });
   }, []);
 
+  useEffect(() => {
+    if (!tokenAutoSaveReadyRef.current || !api?.saveConfig) {
+      return undefined;
+    }
+    const token = form.vkToken;
+    if (token === savedTokenRef.current) {
+      return undefined;
+    }
+    const id = setTimeout(async () => {
+      try {
+        await api.saveConfig(formToConfig(formRef.current));
+        savedTokenRef.current = formRef.current.vkToken;
+        showToast(
+          savedTokenRef.current ? t('notifTokenSaved') : t('notifTokenCleared'),
+          'success'
+        );
+      } catch {
+        showToast(t('notifTokenSaveFailed'), 'warn');
+      }
+    }, TOKEN_AUTO_SAVE_DELAY_MS);
+    return () => clearTimeout(id);
+  }, [api, form.vkToken, showToast, t]);
+
   const onSave = useCallback(async () => {
     if (!api?.saveConfig) {
       return;
     }
     await api.saveConfig(formToConfig(form));
-  }, [api, form]);
+    savedTokenRef.current = form.vkToken;
+    showToast(t('notifConfigSaved'), 'success');
+  }, [api, form, showToast, t]);
+
+  const onTokenChange = useCallback(
+    (value) => {
+      onField(['vkToken'], extractVkAccessToken(value));
+    },
+    [onField]
+  );
+
+  useEffect(() => {
+    if (!api?.onToken) {
+      return undefined;
+    }
+    return api.onToken((token) => {
+      onTokenChange(token);
+      showToast(t('notifTokenReceived'), 'success');
+    });
+  }, [api, onTokenChange, showToast, t]);
+
+  const onOpenTokenUrl = useCallback(
+    async (url) => {
+      try {
+        if (api?.openTokenUrl) {
+          await api.openTokenUrl(url);
+        } else if (typeof window !== 'undefined') {
+          window.open(url, '_blank', 'noopener,noreferrer');
+        }
+        showToast(t('notifTokenUrlOpened'), 'info');
+      } catch {
+        showToast(t('notifTokenUrlFailed'), 'warn');
+      }
+    },
+    [api, showToast, t]
+  );
 
   const onStart = useCallback(async () => {
     if (!api?.startLocal) {
       return;
     }
-    const result = await api.startLocal(formToConfig(form));
-    setRunning(true);
-    if (result?.stoppedOther) {
-      showToast(t('notifSwitched'), 'info');
+    setBotBusy(true);
+    try {
+      if (api.saveConfig) {
+        await api.saveConfig(formToConfig(form));
+        savedTokenRef.current = form.vkToken;
+      }
+      const result = await api.startLocal(formToConfig(form));
+      setRunning(true);
+      if (result?.stoppedOther) {
+        showToast(t('notifSwitched'), 'info');
+      }
+      showToast(t('notifStarted'), 'success');
+      refreshStats();
+      refreshBotStatus();
+    } catch {
+      showToast(t('notifStartFailed'), 'warn');
+      refreshBotStatus();
+    } finally {
+      setBotBusy(false);
     }
-    showToast(t('notifStarted'), 'success');
-    refreshStats();
-  }, [api, form, refreshStats, showToast, t]);
+  }, [api, form, refreshBotStatus, refreshStats, showToast, t]);
 
   const onStop = useCallback(async () => {
     if (!api?.stopLocal) {
       return;
     }
-    await api.stopLocal();
-    setRunning(false);
-    showToast(t('notifStopped'), 'warn');
-  }, [api, showToast, t]);
+    setBotBusy(true);
+    try {
+      await api.stopLocal();
+      setRunning(false);
+      showToast(t('notifStopped'), 'warn');
+      refreshBotStatus();
+    } finally {
+      setBotBusy(false);
+    }
+  }, [api, refreshBotStatus, showToast, t]);
+
+  const onToggleRunning = useCallback(() => {
+    if (running) {
+      onStop();
+    } else {
+      onStart();
+    }
+  }, [onStart, onStop, running]);
 
   const onGenerateScript = useCallback(async () => {
     if (!api?.buildServerScript) {
@@ -447,23 +613,31 @@ export default function App({ api }) {
   return (
     <div className="app">
       <Toasts toasts={toasts} />
-      <h1>{t('appTitle')}</h1>
+      <header className="app-header">
+        <h1>{t('appTitle')}</h1>
+        <div className="mode-row">
+          <SegmentedControl
+            label={t('mode')}
+            value={form.mode}
+            className="mode-segment"
+            onChange={(value) => onField(['mode'], value)}
+            options={[
+              { value: 'local', label: t('modeLocal') },
+              { value: 'server', label: t('modeServer') },
+            ]}
+          />
+        </div>
+      </header>
       <StatsBanner stats={stats} t={t} />
       <div className="toolbar">
-        <label>
-          {t('mode')}
-          {': '}
-          <select
-            value={form.mode}
-            onChange={(event) => onField(['mode'], event.target.value)}
-          >
-            <option value="local">{t('modeLocal')}</option>
-            <option value="server">{t('modeServer')}</option>
-          </select>
+        <label className="status-field">
+          {t('execution')}
+          <span className={running ? 'run-status active' : 'run-status'}>
+            {running ? t('statusRunning') : t('statusStopped')}
+          </span>
         </label>
-        <label>
+        <label className="select-field">
           {t('theme')}
-          {': '}
           <select
             value={theme}
             onChange={(event) => setTheme(event.target.value)}
@@ -473,9 +647,8 @@ export default function App({ api }) {
             <option value="dark">{t('themeDark')}</option>
           </select>
         </label>
-        <label>
+        <label className="select-field">
           {t('language')}
-          {': '}
           <select
             value={locale}
             onChange={(event) => setLocale(event.target.value)}
@@ -484,16 +657,13 @@ export default function App({ api }) {
             <option value="ru">Русский</option>
           </select>
         </label>
-        <button type="button" onClick={onStart} disabled={running}>
-          {t('start')}
-        </button>
         <button
           type="button"
-          className="danger"
-          onClick={onStop}
-          disabled={!running}
+          className={running ? 'run-toggle danger' : 'run-toggle'}
+          onClick={onToggleRunning}
+          disabled={botBusy}
         >
-          {t('stop')}
+          {botBusy ? t('working') : running ? t('stop') : t('start')}
         </button>
         <button type="button" className="secondary" onClick={onSave}>
           {t('saveConfig')}
@@ -507,9 +677,25 @@ export default function App({ api }) {
           type="password"
           autoComplete="off"
           value={form.vkToken}
-          onChange={(event) => onField(['vkToken'], event.target.value)}
+          onChange={(event) => onTokenChange(event.target.value)}
         />
         <span className="help">{t('vkTokenHelp')}</span>
+        <div className="token-actions">
+          <button
+            type="button"
+            className="secondary"
+            onClick={() => onOpenTokenUrl(KATE_MOBILE_TOKEN_URL)}
+          >
+            {t('getKateMobileToken')}
+          </button>
+          <button
+            type="button"
+            className="secondary"
+            onClick={() => onOpenTokenUrl(LOCALHOST_TOKEN_URL)}
+          >
+            {t('getLocalhostToken')}
+          </button>
+        </div>
       </div>
 
       <div className="section">

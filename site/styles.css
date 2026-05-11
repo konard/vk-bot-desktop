@@ -344,41 +344,72 @@ h1 {
   font-size: 1rem;
 }
 
-.download-row {
+.download-family {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.download-primary-card {
   display: grid;
   gap: 4px;
-  min-height: 74px;
+  min-height: 82px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  padding: 13px 14px;
+  padding: 15px 16px;
   background: var(--surface);
   text-decoration: none;
 }
 
-.download-row.detected {
+.download-primary-card:hover {
   border-color: var(--accent);
 }
 
-.download-row.unavailable {
+.download-primary-card.unavailable {
   color: var(--muted);
   background: var(--surface-strong);
 }
 
-.download-row span {
+.download-primary-card span {
   font-weight: 800;
 }
 
-.download-row code {
+.download-primary-card code {
   overflow-wrap: anywhere;
   color: var(--muted);
   font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
   font-size: 0.78rem;
 }
 
-.download-row small {
-  color: var(--muted);
+.download-secondary-list {
+  display: grid;
+  min-width: 78px;
+  gap: 8px;
+}
+
+.download-chip {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 6px 10px;
+  color: var(--text);
+  background: var(--surface);
+  text-decoration: none;
   font-size: 0.78rem;
   font-weight: 700;
+}
+
+.download-chip:hover {
+  border-color: var(--accent);
+}
+
+.download-chip.unavailable {
+  color: var(--muted);
+  background: var(--surface-strong);
 }
 
 .verify-note {
@@ -406,7 +437,7 @@ h1 {
 
 .install-macos-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  grid-template-columns: 1fr;
   gap: 16px;
 }
 
@@ -446,7 +477,7 @@ h1 {
 
 .verification-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  grid-template-columns: 1fr;
   gap: 16px;
 }
 
@@ -475,6 +506,60 @@ h1 {
   margin-top: 14px;
   color: var(--muted);
   line-height: 1.45;
+}
+
+.verification-tool {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.verification-tool p {
+  margin: 0;
+}
+
+.verification-inputs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.verification-inputs label {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.verification-inputs input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 9px;
+  color: var(--text);
+  background: var(--surface-strong);
+  font: inherit;
+}
+
+.verification-result {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: var(--muted);
+  background: var(--surface-strong);
+  font-weight: 800;
+}
+
+.verification-result.match {
+  border-color: var(--accent);
+  color: var(--accent-strong);
+}
+
+.verification-result.mismatch,
+.verification-result.missing {
+  border-color: var(--warm);
+  color: var(--warm);
 }
 
 .command-list {
@@ -539,11 +624,7 @@ h1 {
     grid-template-columns: 1fr;
   }
 
-  .verification-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .install-macos-grid {
+  .verification-inputs {
     grid-template-columns: 1fr;
   }
 }
@@ -558,5 +639,13 @@ h1 {
   .os-tabs button {
     min-width: 0;
     padding-inline: 8px;
+  }
+
+  .download-family {
+    grid-template-columns: 1fr;
+  }
+
+  .download-secondary-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

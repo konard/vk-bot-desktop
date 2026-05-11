@@ -1,0 +1,9 @@
+
+> vk-bot-desktop@0.9.13 build:site
+> node scripts/build-site.mjs
+
+
+  site/dist/assets/site.js      1.0mb ⚠️
+  site/dist/assets/site.js.map  1.7mb
+
+⚡ Done in 86ms

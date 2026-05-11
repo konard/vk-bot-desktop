@@ -69,7 +69,8 @@ describe('GitHub Pages download site', () => {
     expect(siteApp).toContain('resolveChecksumHref');
     expect(siteDownloads).toContain('assetNameFor');
     expect(siteApp).toContain('downloadUnavailable');
-    expect(siteApp).toContain('className={`${className} unavailable`}');
+    expect(siteApp).toContain('download-primary-card');
+    expect(siteApp).toContain('download-chip');
     expect(siteApp).not.toContain('/releases/latest/download/vk-bot-desktop-');
     expect(siteDownloads).not.toContain(
       '/releases/latest/download/vk-bot-desktop-'
@@ -114,9 +115,12 @@ describe('GitHub Pages download site', () => {
   it('has expandable verification instructions and OS-specific preview chrome', () => {
     expect(siteApp).toContain('verifyRegular');
     expect(siteApp).toContain('verifyAdvanced');
+    expect(siteApp).toContain('VerificationTool');
+    expect(siteApp).toContain('crypto.subtle.digest');
     expect(siteApp).toContain('gh attestation verify');
     expect(siteApp).toContain('resolveProvenanceHref');
     expect(siteApp).toContain('window-frame');
+    expect(siteApp).toContain('previewImageFor(locale, theme)');
     expect(siteApp).toContain('className={`hero-media ${previewOs}`}');
     expect(siteDownloads).toContain('PROVENANCE_ASSET_NAME');
   });
@@ -130,5 +134,8 @@ describe('GitHub Pages download site', () => {
     expect(siteApp).toContain('xattr -dr com.apple.quarantine');
     expect(siteApp).toContain('Open the app on macOS');
     expect(siteApp).toContain('Открытие приложения на macOS');
+    expect(
+      siteApp.indexOf("installMacosSettingsTitle')}</summary>")
+    ).toBeLessThan(siteApp.indexOf("installMacosTerminalTitle')}</summary>"));
   });
 });
