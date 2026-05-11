@@ -149,9 +149,18 @@ export function clearSinks() {
 
 // Verbose by default — see issue #32. Toggle with VK_BOT_DESKTOP_VERBOSE
 // (anything other than "0" / "false" / "" stays verbose).
+// The env read is wrapped in try/catch so the module still loads under
+// runtimes that gate env access behind explicit permissions (e.g. Deno
+// without `--allow-env`), in which case we fall back to the default.
 let verbose = (() => {
-  const raw =
-    typeof process !== 'undefined' ? process.env?.VK_BOT_DESKTOP_VERBOSE : null;
+  let raw = null;
+  try {
+    if (typeof process !== 'undefined') {
+      raw = process.env?.VK_BOT_DESKTOP_VERBOSE ?? null;
+    }
+  } catch {
+    raw = null;
+  }
   if (raw === undefined || raw === null || raw === '') {
     return true;
   }
