@@ -2,14 +2,6 @@ import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 
 import { createVkClient } from '../src/bot/vk-client.js';
-import { addSink, removeSink, setVerbose } from '../src/bot/logger.js';
-
-function withCapturedLogs(fn) {
-  const captured = [];
-  const sink = (line) => captured.push(line);
-  addSink(sink);
-  return Promise.resolve(fn(captured)).finally(() => removeSink(sink));
-}
 
 class FakeAPIRequest {
   constructor({ api, method, params = {}, headers = {} }) {
@@ -35,19 +27,37 @@ class FakeVK {
   }
 }
 
-function makeFakeVkIo() {
-  // Each fake module exposes a fresh APIRequest class so the install hook
-  // does not bleed between tests (the wrapper installs once per class).
+// Build a fresh fake vk-io module (with its own APIRequest class) plus a
+// fresh log capture for each test. The per-call hook overrides ensure that
+// concurrent test runners (Deno) do not share verbose flags or log sinks.
+function makeFixture({ verbose = true } = {}) {
   class APIRequest extends FakeAPIRequest {}
-  return {
-    APIRequest,
-    VK: FakeVK,
+  const captured = [];
+  const fakeLogger = {
+    debug: (...args) => captured.push({ level: 'debug', args }),
+    info: (...args) => captured.push({ level: 'info', args }),
+    warn: (...args) => captured.push({ level: 'warn', args }),
+    error: (...args) => captured.push({ level: 'error', args }),
   };
+  return {
+    vkIoModule: { APIRequest, VK: FakeVK },
+    hook: {
+      isVerbose: () => verbose,
+      logger: fakeLogger,
+    },
+    captured,
+  };
+}
+
+function joinedMessage(entry) {
+  return entry.args
+    .map((a) => (typeof a === 'string' ? a : JSON.stringify(a)))
+    .join(' ');
 }
 
 describe('createVkClient', () => {
   it('returns a VK instance constructed with the given token', async () => {
-    const vkIoModule = makeFakeVkIo();
+    const { vkIoModule } = makeFixture();
     const vk = await createVkClient({
       token: 'vk1.a.test_token',
       vkIoModule,
@@ -57,15 +67,15 @@ describe('createVkClient', () => {
   });
 
   it('throws when no token is provided', async () => {
-    await assert.rejects(() => createVkClient({ vkIoModule: makeFakeVkIo() }), {
+    const { vkIoModule } = makeFixture();
+    await assert.rejects(() => createVkClient({ vkIoModule }), {
       message: /token is required/,
     });
   });
 
   it('logs request and response when verbose mode is on', async () => {
-    setVerbose(true);
-    const vkIoModule = makeFakeVkIo();
-    await createVkClient({ token: 'tok', vkIoModule });
+    const { vkIoModule, hook, captured } = makeFixture({ verbose: true });
+    await createVkClient({ token: 'tok', vkIoModule, hook });
     const request = new vkIoModule.APIRequest({
       api: {
         options: {
@@ -78,23 +88,20 @@ describe('createVkClient', () => {
       method: 'friends.add',
       params: { user_id: 42 },
     });
-    await withCapturedLogs(async (captured) => {
-      const result = await request.make();
-      assert.deepEqual(result, { response: { id: 1 } });
-      const requestLog = captured.find((l) => l.includes('VK API request'));
-      assert.ok(requestLog, 'request log must be emitted');
-      assert.match(requestLog, /friends\.add/);
-      assert.match(requestLog, /api\.vk\.ru/);
-      const responseLog = captured.find((l) => l.includes('VK API response'));
-      assert.ok(responseLog, 'response log must be emitted');
-      assert.match(responseLog, /friends\.add/);
-    });
+    const result = await request.make();
+    assert.deepEqual(result, { response: { id: 1 } });
+    const requestLog = captured.find((e) => e.args[0] === 'VK API request');
+    assert.ok(requestLog, 'request log must be emitted');
+    assert.equal(requestLog.args[1].method, 'friends.add');
+    assert.match(requestLog.args[1].url, /api\.vk\.ru/);
+    const responseLog = captured.find((e) => e.args[0] === 'VK API response');
+    assert.ok(responseLog, 'response log must be emitted');
+    assert.equal(responseLog.args[1].method, 'friends.add');
   });
 
   it('logs an APIError-shaped response (code 3) verbatim', async () => {
-    setVerbose(true);
-    const vkIoModule = makeFakeVkIo();
-    await createVkClient({ token: 'tok', vkIoModule });
+    const { vkIoModule, hook, captured } = makeFixture({ verbose: true });
+    await createVkClient({ token: 'tok', vkIoModule, hook });
     const request = new vkIoModule.APIRequest({
       api: {
         options: {
@@ -112,21 +119,18 @@ describe('createVkClient', () => {
       method: 'account.setOnline',
       params: {},
     });
-    await withCapturedLogs(async (captured) => {
-      const result = await request.make();
-      assert.equal(result.error.error_code, 3);
-      const responseLog = captured.find((l) => l.includes('VK API response'));
-      assert.ok(responseLog);
-      assert.match(responseLog, /account\.setOnline/);
-      assert.match(responseLog, /Unknown method passed/);
-      assert.match(responseLog, /"errorCode": 3/);
-    });
+    const result = await request.make();
+    assert.equal(result.error.error_code, 3);
+    const responseLog = captured.find((e) => e.args[0] === 'VK API response');
+    assert.ok(responseLog);
+    assert.equal(responseLog.args[1].method, 'account.setOnline');
+    assert.equal(responseLog.args[1].errorMsg, 'Unknown method passed.');
+    assert.equal(responseLog.args[1].errorCode, 3);
   });
 
   it('skips request/response logging when verbose is off', async () => {
-    setVerbose(false);
-    const vkIoModule = makeFakeVkIo();
-    await createVkClient({ token: 'tok', vkIoModule });
+    const { vkIoModule, hook, captured } = makeFixture({ verbose: false });
+    await createVkClient({ token: 'tok', vkIoModule, hook });
     const request = new vkIoModule.APIRequest({
       api: {
         options: {
@@ -139,20 +143,16 @@ describe('createVkClient', () => {
       method: 'friends.get',
       params: {},
     });
-    await withCapturedLogs(async (captured) => {
-      await request.make();
-      assert.equal(
-        captured.filter((l) => l.includes('VK API request')).length,
-        0
-      );
-    });
-    setVerbose(true);
+    await request.make();
+    assert.equal(
+      captured.filter((e) => e.args[0] === 'VK API request').length,
+      0
+    );
   });
 
   it('redacts access_token from logged params', async () => {
-    setVerbose(true);
-    const vkIoModule = makeFakeVkIo();
-    await createVkClient({ token: 'tok', vkIoModule });
+    const { vkIoModule, hook, captured } = makeFixture({ verbose: true });
+    await createVkClient({ token: 'tok', vkIoModule, hook });
     const request = new vkIoModule.APIRequest({
       api: {
         options: {
@@ -168,10 +168,8 @@ describe('createVkClient', () => {
         access_token: 'super-secret-token-value-1234567890',
       },
     });
-    await withCapturedLogs(async (captured) => {
-      await request.make();
-      const all = captured.join('\n');
-      assert.doesNotMatch(all, /super-secret-token-value/);
-    });
+    await request.make();
+    const all = captured.map(joinedMessage).join('\n');
+    assert.doesNotMatch(all, /super-secret-token-value/);
   });
 });

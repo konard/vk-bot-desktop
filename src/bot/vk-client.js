@@ -58,19 +58,21 @@ function safeHeaders(headers) {
   }
 }
 
-function installRawHttpHook(APIRequest) {
+function installRawHttpHook(APIRequest, hookOptions = {}) {
   if (APIRequest.prototype[PATCHED]) {
     return;
   }
   APIRequest.prototype[PATCHED] = true;
+  const verbosePredicate = hookOptions.isVerbose ?? isVerbose;
+  const log = hookOptions.logger ?? logger;
   const originalMake = APIRequest.prototype.make;
   APIRequest.prototype.make = async function patchedMake(...args) {
-    if (!isVerbose()) {
+    if (!verbosePredicate()) {
       return originalMake.apply(this, args);
     }
     const { options } = this.api;
     const url = `${options.apiBaseUrl}/${this.method}`;
-    logger.debug('VK API request', {
+    log.debug('VK API request', {
       method: this.method,
       url,
       retry: this.retries,
@@ -86,7 +88,7 @@ function installRawHttpHook(APIRequest) {
     });
     try {
       const result = await originalMake.apply(this, args);
-      logger.debug('VK API response', {
+      log.debug('VK API response', {
         method: this.method,
         retry: this.retries,
         hasError: result?.error !== undefined,
@@ -98,7 +100,7 @@ function installRawHttpHook(APIRequest) {
       });
       return result;
     } catch (error) {
-      logger.error('VK API transport error', {
+      log.error('VK API transport error', {
         method: this.method,
         retry: this.retries,
         url,
@@ -109,13 +111,13 @@ function installRawHttpHook(APIRequest) {
   };
 }
 
-export async function createVkClient({ token, vkIoModule } = {}) {
+export async function createVkClient({ token, vkIoModule, hook } = {}) {
   if (!token) {
     throw new Error('createVkClient: token is required');
   }
   const vkIo = vkIoModule || (await import('vk-io'));
   if (vkIo.APIRequest) {
-    installRawHttpHook(vkIo.APIRequest);
+    installRawHttpHook(vkIo.APIRequest, hook);
   }
   const vk = new vkIo.VK({ token });
   return vk;
