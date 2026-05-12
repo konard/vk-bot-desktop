@@ -10,31 +10,38 @@ import {
   watchSystemTheme,
 } from './theme.js';
 import { KATE_MOBILE_TOKEN_URL, extractVkAccessToken } from './vk-token.js';
+import { maskVkToken } from './vk-token-mask.js';
 
 const DEFAULT_INVITATIONS = [
   'Приму заявки в друзья.',
-  'Открыт для новых знакомств. Жду заявку.',
-  'Если хочется пообщаться — добавляйся в друзья.',
-  'Готов принять заявку в друзья.',
+  'Жду заявку в друзья — давай знакомиться.',
+  'Если хочется пообщаться — добавляйтесь в друзья.',
+  'Принимаю заявки в друзья.',
   'Можно подружиться. Жду заявку в друзья.',
-  'Принимаю заявки в друзья — пиши, познакомимся.',
+  'Принимаю заявки в друзья — пишите, познакомимся.',
   'Заявки в друзья приветствуются.',
-  'Добавляйся в друзья, рад буду общению.',
-  'Открыт для новых друзей. Заявки принимаются.',
-  'Жду заявок в друзья — буду рад познакомиться.',
+  'Добавляйтесь в друзья — будет приятно пообщаться.',
+  'Новые друзья приветствуются. Заявки принимаются.',
+  'Жду заявок в друзья — давайте знакомиться.',
 ];
 
 const DEFAULT_GREETINGS = [
   '🎉 Поздравляю с днём рождения!',
   'С днём рождения! 🎂',
-  '🎈 Поздравляю с праздником!',
-  'Желаю всего самого лучшего! 🌟',
+  '🎈 С днём рождения! Хорошего праздника.',
+  'С днём рождения! Желаю всего самого лучшего. 🌟',
   '🥳 С днём рождения!',
-  'Счастья и здоровья! 💐',
+  'С днём рождения! Счастья и здоровья. 💐',
   '🎁 С днём рождения! Пусть всё получится.',
-  'Радости и улыбок! ☀️',
+  'С днём рождения! Радости и улыбок. ☀️',
   'С днём рождения! Пусть мечты сбываются. ✨',
-  'Поздравляю! Удачи во всём. 🍀',
+  'С днём рождения! Удачи во всём. 🍀',
+];
+
+const DEFAULT_INVITATION_COMMUNITIES = [
+  64758790, 34985835, 24261502, 53294903, 33764742, 8337923, 94946045,
+  194360448, 39130136, 198580397, 195285978, 47350356, 61413825, 30345825,
+  180442247, 214787806,
 ];
 
 const FEATURE_KEYS = [
@@ -46,43 +53,32 @@ const FEATURE_KEYS = [
   ['sendBirthdayCongratulations', 'featureSendBirthday'],
 ];
 
-const TOKEN_AUTO_SAVE_DELAY_MS = 650;
+const AUTO_SAVE_DELAY_MS = 800;
 
 const DEFAULT_FORM = {
   mode: 'local',
   vkToken: '',
   priorityFriendIds: '',
   invitationMessages: DEFAULT_INVITATIONS.join('\n'),
-  invitationCommunities: '',
+  invitationCommunities: DEFAULT_INVITATION_COMMUNITIES.join('\n'),
   birthdayGreetings: DEFAULT_GREETINGS.join('\n'),
   ssh: { host: '', user: '', port: '22', keyPath: '' },
   isolation: 'screen',
   features: Object.fromEntries(FEATURE_KEYS.map(([key]) => [key, true])),
 };
 
-function csvToList(value) {
-  return String(value || '')
-    .split(',')
-    .map((entry) => entry.trim())
-    .filter(Boolean);
-}
-
-function listToCsv(list) {
-  return Array.isArray(list) ? list.join(', ') : '';
-}
-
-function linesToList(value) {
-  return String(value || '')
-    .split('\n')
-    .map((line) => line.trim())
-    .filter(Boolean);
-}
-
 function listToLines(list, fallback) {
   if (Array.isArray(list) && list.length > 0) {
     return list.join('\n');
   }
   return fallback.join('\n');
+}
+
+function linesToList(value) {
+  return String(value || '')
+    .split(/[\r\n,;]+/u)
+    .map((line) => line.trim())
+    .filter(Boolean);
 }
 
 function configToForm(config) {
@@ -98,12 +94,17 @@ function configToForm(config) {
   return {
     mode: config.mode === 'server' ? 'server' : 'local',
     vkToken: config.vk?.token || '',
-    priorityFriendIds: listToCsv(config.priorityFriendIds),
+    priorityFriendIds: Array.isArray(config.priorityFriendIds)
+      ? config.priorityFriendIds.join('\n')
+      : '',
     invitationMessages: listToLines(
       config.invitationPost?.messages,
       DEFAULT_INVITATIONS
     ),
-    invitationCommunities: listToCsv(config.invitationPost?.communities),
+    invitationCommunities: listToLines(
+      config.invitationPost?.communities,
+      DEFAULT_INVITATION_COMMUNITIES.map(String)
+    ),
     birthdayGreetings: listToLines(config.birthdayGreetings, DEFAULT_GREETINGS),
     ssh: {
       host: config.server?.host || '',
@@ -121,11 +122,11 @@ function formToConfig(form) {
   return {
     mode: form.mode,
     vk: { token: form.vkToken },
-    priorityFriendIds: csvToList(form.priorityFriendIds),
+    priorityFriendIds: linesToList(form.priorityFriendIds),
     invitationPost: {
       text: messages[0] || DEFAULT_INVITATIONS[0],
       messages,
-      communities: csvToList(form.invitationCommunities),
+      communities: linesToList(form.invitationCommunities),
     },
     birthdayGreetings: linesToList(form.birthdayGreetings),
     server: {
@@ -243,7 +244,7 @@ function Section({ title, defaultOpen = false, children }) {
 
 function SegmentedControl({ label, value, options, onChange, className = '' }) {
   return (
-    <div className={`segmented-field ${className}`}>
+    <div className={`segmented-field ${className}`.trim()}>
       <span className="segmented-label">{label}</span>
       <div className="segmented-control" role="group" aria-label={label}>
         {options.map((option) => (
@@ -306,6 +307,202 @@ function Toasts({ toasts }) {
   );
 }
 
+function AutosizeTextarea({ id, value, onChange, rows = 3, ariaLabel }) {
+  const ref = useRef(null);
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) {
+      return;
+    }
+    // Only autosize while the user has not manually resized. We detect a
+    // manual resize by watching for style.height being set externally.
+    const previous = node.style.height;
+    node.style.height = 'auto';
+    const next = `${node.scrollHeight + 2}px`;
+    node.style.height = next;
+    // If the browser ignored us (e.g. very small viewports), fall back.
+    if (!node.style.height) {
+      node.style.height = previous;
+    }
+  }, [value]);
+  return (
+    <textarea
+      ref={ref}
+      id={id}
+      rows={rows}
+      value={value}
+      aria-label={ariaLabel}
+      onChange={(event) => onChange(event.target.value)}
+      className="autosize"
+    />
+  );
+}
+
+const THEME_EMOJI = { auto: '🌓', light: '☀️', dark: '🌙' };
+const LOCALE_EMOJI = { en: '🇬🇧', ru: '🇷🇺' };
+const MODE_EMOJI = { local: '💻', server: '🌐' };
+
+function TokenField({
+  t,
+  token,
+  validation,
+  validating,
+  onChange,
+  onReset,
+  onOpenTokenUrl,
+}) {
+  const [focused, setFocused] = useState(false);
+  const masked = maskVkToken(token);
+  const display = focused ? token : masked;
+  let icon = '·';
+  let iconClass = 'token-validity unknown';
+  if (validating) {
+    icon = '…';
+    iconClass = 'token-validity checking';
+  } else if (validation?.valid) {
+    icon = '✓';
+    iconClass = 'token-validity valid';
+  } else if (token && validation && !validation.valid) {
+    icon = '✗';
+    iconClass = 'token-validity invalid';
+  }
+  return (
+    <div className="field token-field">
+      <label htmlFor="vk-token">{t('vkToken')}</label>
+      <div className="token-row">
+        <input
+          id="vk-token"
+          type={focused ? 'text' : 'password'}
+          autoComplete="off"
+          spellCheck={false}
+          value={focused ? token : display}
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
+          onChange={(event) => onChange(event.target.value)}
+        />
+        <span className={iconClass} aria-hidden="true" title={icon}>
+          {icon}
+        </span>
+        <button
+          type="button"
+          className="secondary compact"
+          onClick={() => onOpenTokenUrl(KATE_MOBILE_TOKEN_URL)}
+        >
+          {t('getKateMobileToken')}
+        </button>
+        <button
+          type="button"
+          className="secondary compact"
+          onClick={onReset}
+          disabled={!token}
+        >
+          {t('resetToken')}
+        </button>
+      </div>
+      <span className="help">{t('vkTokenHelp')}</span>
+      {validation && token && !validation.valid && !validating ? (
+        <span className="help token-help-warn">
+          {t('tokenInvalidHelp')}
+          {validation.message ? ` (${validation.message})` : ''}
+        </span>
+      ) : null}
+      {validation && validation.valid ? (
+        <span className="help token-help-ok">
+          {t('tokenValidHelp')}
+          {validation.firstName
+            ? ` — ${validation.firstName} ${validation.lastName || ''}`.trim()
+            : ''}
+        </span>
+      ) : null}
+    </div>
+  );
+}
+
+function HeaderControls({
+  t,
+  locale,
+  setLocale,
+  theme,
+  setTheme,
+  mode,
+  setMode,
+  running,
+  botBusy,
+  tokenValid,
+  onToggleRunning,
+}) {
+  const stateEmoji = botBusy ? '⏳' : running ? '⏸️' : '▶️';
+  const stateLabel = botBusy ? t('working') : running ? t('stop') : t('start');
+  return (
+    <header className="app-header">
+      <div className="header-row">
+        <label className="header-control header-left">
+          <span className="header-control-label">{t('language')}</span>
+          <select
+            value={locale}
+            onChange={(event) => setLocale(event.target.value)}
+            aria-label={t('language')}
+          >
+            <option value="en">{LOCALE_EMOJI.en} English</option>
+            <option value="ru">{LOCALE_EMOJI.ru} Русский</option>
+          </select>
+        </label>
+        <div className="header-control header-center">
+          <SegmentedControl
+            label={t('mode')}
+            value={mode}
+            className="mode-segment"
+            onChange={setMode}
+            options={[
+              {
+                value: 'local',
+                label: `${MODE_EMOJI.local} ${t('modeLocal')}`,
+              },
+              {
+                value: 'server',
+                label: `${MODE_EMOJI.server} ${t('modeServer')}`,
+              },
+            ]}
+          />
+        </div>
+        <label className="header-control header-right">
+          <span className="header-control-label">{t('theme')}</span>
+          <select
+            value={theme}
+            onChange={(event) => setTheme(event.target.value)}
+            aria-label={t('theme')}
+          >
+            <option value="auto">
+              {THEME_EMOJI.auto} {t('themeAuto')}
+            </option>
+            <option value="light">
+              {THEME_EMOJI.light} {t('themeLight')}
+            </option>
+            <option value="dark">
+              {THEME_EMOJI.dark} {t('themeDark')}
+            </option>
+          </select>
+        </label>
+      </div>
+      <div className="start-row">
+        <button
+          type="button"
+          className={`run-toggle big ${running ? 'danger' : ''}`.trim()}
+          onClick={onToggleRunning}
+          disabled={botBusy || (!running && !tokenValid)}
+          aria-label={stateLabel}
+          title={!tokenValid && !running ? t('tokenRequiredHelp') : stateLabel}
+        >
+          <span className="run-toggle-emoji" aria-hidden="true">
+            {stateEmoji}
+          </span>
+          <span className="run-toggle-text">{stateLabel}</span>
+        </button>
+      </div>
+    </header>
+  );
+}
+
 export default function App({ api }) {
   const [locale, setLocale] = useLocale(api);
   const [theme, setTheme] = useTheme(api);
@@ -318,11 +515,14 @@ export default function App({ api }) {
   const [scriptPreview, setScriptPreview] = useState('');
   const [stats, setStats] = useState(null);
   const [toasts, setToasts] = useState([]);
+  const [tokenValidation, setTokenValidation] = useState(null);
+  const [tokenValidating, setTokenValidating] = useState(false);
+  const [hasPrefilled, setHasPrefilled] = useState(false);
   const logRef = useRef(null);
   const toastIdRef = useRef(0);
   const formRef = useRef(form);
-  const savedTokenRef = useRef('');
-  const tokenAutoSaveReadyRef = useRef(false);
+  const savedConfigRef = useRef('');
+  const autoSaveReadyRef = useRef(false);
 
   const showToast = useCallback((text, kind = 'info') => {
     toastIdRef.current += 1;
@@ -353,7 +553,7 @@ export default function App({ api }) {
 
   useEffect(() => {
     if (!api?.loadConfig) {
-      tokenAutoSaveReadyRef.current = true;
+      autoSaveReadyRef.current = true;
       return undefined;
     }
     let active = true;
@@ -365,13 +565,21 @@ export default function App({ api }) {
         }
         const nextForm = configToForm(config);
         nextForm.vkToken = extractVkAccessToken(nextForm.vkToken);
-        savedTokenRef.current = nextForm.vkToken;
         setForm(nextForm);
-        tokenAutoSaveReadyRef.current = true;
+        savedConfigRef.current = JSON.stringify(formToConfig(nextForm));
+        // Only flag as already-prefilled when the stored config already
+        // contains a non-default communities list; otherwise we still want
+        // to prefill outgoing IDs into priority on first successful
+        // token validation.
+        setHasPrefilled(
+          Array.isArray(config?.invitationPost?.communities) &&
+            config.invitationPost.communities.length > 0
+        );
+        autoSaveReadyRef.current = true;
       })
       .catch(() => {
         if (active) {
-          tokenAutoSaveReadyRef.current = true;
+          autoSaveReadyRef.current = true;
         }
       });
     return () => {
@@ -452,36 +660,55 @@ export default function App({ api }) {
     });
   }, []);
 
+  // Validate token after it stops changing.
   useEffect(() => {
-    if (!tokenAutoSaveReadyRef.current || !api?.saveConfig) {
+    if (!api?.validateToken) {
       return undefined;
     }
-    const token = form.vkToken;
-    if (token === savedTokenRef.current) {
+    const token = form.vkToken.trim();
+    if (!token) {
+      setTokenValidation(null);
+      setTokenValidating(false);
+      return undefined;
+    }
+    setTokenValidating(true);
+    const id = setTimeout(async () => {
+      try {
+        const result = await api.validateToken(token);
+        setTokenValidation(result);
+      } catch {
+        setTokenValidation({ valid: false, reason: 'exception' });
+      } finally {
+        setTokenValidating(false);
+      }
+    }, 500);
+    return () => {
+      clearTimeout(id);
+      setTokenValidating(false);
+    };
+  }, [api, form.vkToken]);
+
+  // Auto-save every field change after a debounce. Replaces the old
+  // explicit "Save configuration" button. We snapshot the serialized
+  // config so we don't fire a save when only ephemeral state changes.
+  useEffect(() => {
+    if (!autoSaveReadyRef.current || !api?.saveConfig) {
+      return undefined;
+    }
+    const serialized = JSON.stringify(formToConfig(form));
+    if (serialized === savedConfigRef.current) {
       return undefined;
     }
     const id = setTimeout(async () => {
       try {
-        await api.saveConfig(formToConfig(formRef.current));
-        savedTokenRef.current = formRef.current.vkToken;
-        showToast(
-          savedTokenRef.current ? t('notifTokenSaved') : t('notifTokenCleared'),
-          'success'
-        );
+        await api.saveConfig(JSON.parse(serialized));
+        savedConfigRef.current = serialized;
+        showToast(t('notifConfigSaved'), 'success');
       } catch {
-        showToast(t('notifTokenSaveFailed'), 'warn');
+        showToast(t('notifConfigSaveFailed'), 'warn');
       }
-    }, TOKEN_AUTO_SAVE_DELAY_MS);
+    }, AUTO_SAVE_DELAY_MS);
     return () => clearTimeout(id);
-  }, [api, form.vkToken, showToast, t]);
-
-  const onSave = useCallback(async () => {
-    if (!api?.saveConfig) {
-      return;
-    }
-    await api.saveConfig(formToConfig(form));
-    savedTokenRef.current = form.vkToken;
-    showToast(t('notifConfigSaved'), 'success');
   }, [api, form, showToast, t]);
 
   const onTokenChange = useCallback(
@@ -501,6 +728,19 @@ export default function App({ api }) {
     });
   }, [api, onTokenChange, showToast, t]);
 
+  const onResetToken = useCallback(async () => {
+    onField(['vkToken'], '');
+    setTokenValidation(null);
+    if (running && api?.stopLocal) {
+      try {
+        await api.stopLocal();
+        showToast(t('notifStopped'), 'warn');
+      } catch {
+        // ignore
+      }
+    }
+  }, [api, onField, running, showToast, t]);
+
   const onOpenTokenUrl = useCallback(
     async (url) => {
       try {
@@ -517,16 +757,14 @@ export default function App({ api }) {
     [api, showToast, t]
   );
 
+  const tokenValid = Boolean(tokenValidation?.valid);
+
   const onStart = useCallback(async () => {
     if (!api?.startLocal) {
       return;
     }
     setBotBusy(true);
     try {
-      if (api.saveConfig) {
-        await api.saveConfig(formToConfig(form));
-        savedTokenRef.current = form.vkToken;
-      }
       const result = await api.startLocal(formToConfig(form));
       setRunning(true);
       if (result?.stoppedOther) {
@@ -599,14 +837,79 @@ export default function App({ api }) {
     if (Array.isArray(ids) && ids.length > 0) {
       setForm((prev) => ({
         ...prev,
-        priorityFriendIds: ids.join(', '),
+        priorityFriendIds: ids.join('\n'),
       }));
+      showToast(t('notifPriorityFilled'), 'success');
+    } else {
+      showToast(t('notifPriorityEmpty'), 'info');
     }
-  }, [api, form.vkToken]);
+  }, [api, form.vkToken, showToast, t]);
 
   const onClearPriority = useCallback(() => {
     setForm((prev) => ({ ...prev, priorityFriendIds: '' }));
   }, []);
+
+  const onResetInvitationMessages = useCallback(() => {
+    setForm((prev) => ({
+      ...prev,
+      invitationMessages: DEFAULT_INVITATIONS.join('\n'),
+    }));
+  }, []);
+  const onClearInvitationMessages = useCallback(() => {
+    setForm((prev) => ({ ...prev, invitationMessages: '' }));
+  }, []);
+  const onResetInvitationCommunities = useCallback(() => {
+    setForm((prev) => ({
+      ...prev,
+      invitationCommunities: DEFAULT_INVITATION_COMMUNITIES.join('\n'),
+    }));
+  }, []);
+  const onClearInvitationCommunities = useCallback(() => {
+    setForm((prev) => ({ ...prev, invitationCommunities: '' }));
+  }, []);
+  const onResetBirthdayGreetings = useCallback(() => {
+    setForm((prev) => ({
+      ...prev,
+      birthdayGreetings: DEFAULT_GREETINGS.join('\n'),
+    }));
+  }, []);
+  const onClearBirthdayGreetings = useCallback(() => {
+    setForm((prev) => ({ ...prev, birthdayGreetings: '' }));
+  }, []);
+
+  // Prefill priority IDs from outgoing requests the first time the
+  // token is validated as good.
+  useEffect(() => {
+    if (!tokenValid || hasPrefilled || !api?.fetchOutgoing) {
+      return;
+    }
+    let active = true;
+    api
+      .fetchOutgoing(form.vkToken)
+      .then((ids) => {
+        if (!active) {
+          return;
+        }
+        if (Array.isArray(ids) && ids.length > 0) {
+          setForm((prev) => {
+            if (prev.priorityFriendIds.trim()) {
+              return prev;
+            }
+            return { ...prev, priorityFriendIds: ids.join('\n') };
+          });
+          showToast(t('notifPriorityPrefilled'), 'info');
+        }
+        setHasPrefilled(true);
+      })
+      .catch(() => {
+        if (active) {
+          setHasPrefilled(true);
+        }
+      });
+    return () => {
+      active = false;
+    };
+  }, [api, form.vkToken, hasPrefilled, showToast, t, tokenValid]);
 
   const features = useMemo(
     () =>
@@ -625,83 +928,30 @@ export default function App({ api }) {
   return (
     <div className="app">
       <Toasts toasts={toasts} />
-      <header className="app-header">
-        <h1>{t('appTitle')}</h1>
-        <div className="mode-row">
-          <SegmentedControl
-            label={t('mode')}
-            value={form.mode}
-            className="mode-segment"
-            onChange={(value) => onField(['mode'], value)}
-            options={[
-              { value: 'local', label: t('modeLocal') },
-              { value: 'server', label: t('modeServer') },
-            ]}
-          />
-        </div>
-      </header>
+      <HeaderControls
+        t={t}
+        locale={locale}
+        setLocale={setLocale}
+        theme={theme}
+        setTheme={setTheme}
+        mode={form.mode}
+        setMode={(value) => onField(['mode'], value)}
+        running={running}
+        botBusy={botBusy}
+        tokenValid={tokenValid}
+        onToggleRunning={onToggleRunning}
+      />
       <StatsBanner stats={stats} t={t} />
-      <div className="toolbar">
-        <label className="status-field">
-          {t('execution')}
-          <span className={running ? 'run-status active' : 'run-status'}>
-            {running ? t('statusRunning') : t('statusStopped')}
-          </span>
-        </label>
-        <label className="select-field">
-          {t('theme')}
-          <select
-            value={theme}
-            onChange={(event) => setTheme(event.target.value)}
-          >
-            <option value="auto">{t('themeAuto')}</option>
-            <option value="light">{t('themeLight')}</option>
-            <option value="dark">{t('themeDark')}</option>
-          </select>
-        </label>
-        <label className="select-field">
-          {t('language')}
-          <select
-            value={locale}
-            onChange={(event) => setLocale(event.target.value)}
-          >
-            <option value="en">English</option>
-            <option value="ru">Русский</option>
-          </select>
-        </label>
-        <button
-          type="button"
-          className={running ? 'run-toggle danger' : 'run-toggle'}
-          onClick={onToggleRunning}
-          disabled={botBusy}
-        >
-          {botBusy ? t('working') : running ? t('stop') : t('start')}
-        </button>
-        <button type="button" className="secondary" onClick={onSave}>
-          {t('saveConfig')}
-        </button>
-      </div>
 
-      <div className="field">
-        <label htmlFor="vk-token">{t('vkToken')}</label>
-        <input
-          id="vk-token"
-          type="password"
-          autoComplete="off"
-          value={form.vkToken}
-          onChange={(event) => onTokenChange(event.target.value)}
-        />
-        <span className="help">{t('vkTokenHelp')}</span>
-        <div className="token-actions">
-          <button
-            type="button"
-            className="secondary"
-            onClick={() => onOpenTokenUrl(KATE_MOBILE_TOKEN_URL)}
-          >
-            {t('getKateMobileToken')}
-          </button>
-        </div>
-      </div>
+      <TokenField
+        t={t}
+        token={form.vkToken}
+        validation={tokenValidation}
+        validating={tokenValidating}
+        onChange={onTokenChange}
+        onReset={onResetToken}
+        onOpenTokenUrl={onOpenTokenUrl}
+      />
 
       <div className="section">
         <h2>{t('features')}</h2>
@@ -711,20 +961,19 @@ export default function App({ api }) {
       <Section title={t('sectionPriority')}>
         <div className="field">
           <label htmlFor="priority-ids">{t('priorityFriendIds')}</label>
-          <textarea
+          <AutosizeTextarea
             id="priority-ids"
-            rows={3}
             value={form.priorityFriendIds}
-            onChange={(event) =>
-              onField(['priorityFriendIds'], event.target.value)
-            }
+            onChange={(value) => onField(['priorityFriendIds'], value)}
+            ariaLabel={t('priorityFriendIds')}
           />
           <span className="help">{t('priorityFriendIdsHelp')}</span>
-          <div className="row inline-actions">
+          <div className="inline-actions">
             <button
               type="button"
               className="secondary"
               onClick={onFillPriorityFromOutgoing}
+              disabled={!tokenValid}
             >
               {t('fillFromOutgoing')}
             </button>
@@ -742,29 +991,58 @@ export default function App({ api }) {
       <Section title={t('sectionInvitations')}>
         <div className="field">
           <label htmlFor="invitation-messages">{t('invitationMessages')}</label>
-          <textarea
+          <AutosizeTextarea
             id="invitation-messages"
-            rows={6}
             value={form.invitationMessages}
-            onChange={(event) =>
-              onField(['invitationMessages'], event.target.value)
-            }
+            onChange={(value) => onField(['invitationMessages'], value)}
+            rows={6}
+            ariaLabel={t('invitationMessages')}
           />
           <span className="help">{t('invitationMessagesHelp')}</span>
+          <div className="inline-actions">
+            <button
+              type="button"
+              className="secondary"
+              onClick={onResetInvitationMessages}
+            >
+              {t('resetToDefault')}
+            </button>
+            <button
+              type="button"
+              className="secondary"
+              onClick={onClearInvitationMessages}
+            >
+              {t('clearList')}
+            </button>
+          </div>
         </div>
         <div className="field">
           <label htmlFor="invite-communities">
             {t('invitationCommunities')}
           </label>
-          <textarea
+          <AutosizeTextarea
             id="invite-communities"
-            rows={2}
             value={form.invitationCommunities}
-            onChange={(event) =>
-              onField(['invitationCommunities'], event.target.value)
-            }
+            onChange={(value) => onField(['invitationCommunities'], value)}
+            ariaLabel={t('invitationCommunities')}
           />
           <span className="help">{t('invitationCommunitiesHelp')}</span>
+          <div className="inline-actions">
+            <button
+              type="button"
+              className="secondary"
+              onClick={onResetInvitationCommunities}
+            >
+              {t('resetToDefault')}
+            </button>
+            <button
+              type="button"
+              className="secondary"
+              onClick={onClearInvitationCommunities}
+            >
+              {t('clearList')}
+            </button>
+          </div>
         </div>
       </Section>
 
@@ -773,15 +1051,30 @@ export default function App({ api }) {
           <label htmlFor="birthday-greetings">
             {t('birthdayGreetingsLabel')}
           </label>
-          <textarea
+          <AutosizeTextarea
             id="birthday-greetings"
-            rows={6}
             value={form.birthdayGreetings}
-            onChange={(event) =>
-              onField(['birthdayGreetings'], event.target.value)
-            }
+            onChange={(value) => onField(['birthdayGreetings'], value)}
+            rows={6}
+            ariaLabel={t('birthdayGreetingsLabel')}
           />
           <span className="help">{t('birthdayGreetingsHelp')}</span>
+          <div className="inline-actions">
+            <button
+              type="button"
+              className="secondary"
+              onClick={onResetBirthdayGreetings}
+            >
+              {t('resetToDefault')}
+            </button>
+            <button
+              type="button"
+              className="secondary"
+              onClick={onClearBirthdayGreetings}
+            >
+              {t('clearList')}
+            </button>
+          </div>
         </div>
       </Section>
 

@@ -33,6 +33,16 @@ describe('birthday greetings', () => {
     }
   });
 
+  it('every greeting contains the core phrase "с днём рождения"', () => {
+    const corePhrase = /с\s+днём\s+рождения/iu;
+    for (const greeting of BIRTHDAY_GREETINGS) {
+      assert.ok(
+        corePhrase.test(greeting),
+        `Birthday greeting "${greeting}" is missing the core phrase "с днём рождения"`
+      );
+    }
+  });
+
   it('does not pick the same index twice in a row', () => {
     resetBirthdayGreetingState();
     let seq = 0;

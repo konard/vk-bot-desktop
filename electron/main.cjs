@@ -277,3 +277,31 @@ ipcMain.handle('vkbot:fetch-outgoing', async (_event, token) => {
     return [];
   }
 });
+
+ipcMain.handle('vkbot:validate-token', async (_event, token) => {
+  const trimmed = String(token ?? '').trim();
+  if (!trimmed) {
+    return { valid: false, reason: 'empty' };
+  }
+  try {
+    const { VK } = await import('vk-io');
+    const vk = new VK({ token: trimmed });
+    const response = await vk.api.users.get({});
+    const user = Array.isArray(response) ? response[0] : null;
+    if (!user || !user.id) {
+      return { valid: false, reason: 'no-user' };
+    }
+    return {
+      valid: true,
+      userId: user.id,
+      firstName: user.first_name,
+      lastName: user.last_name,
+    };
+  } catch (error) {
+    return {
+      valid: false,
+      reason: 'api-error',
+      message: String(error?.message || error || ''),
+    };
+  }
+});

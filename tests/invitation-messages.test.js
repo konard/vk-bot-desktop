@@ -48,4 +48,32 @@ describe('invitation messages', () => {
       ''
     );
   });
+
+  it('every default message is gender-neutral', () => {
+    // Russian short adjectives that betray the speaker's gender. The list is
+    // not exhaustive — it covers the masculine forms that previously slipped
+    // into the defaults (готов, открыт, рад, etc.) and a few obvious
+    // feminine counterparts so we catch a future regression in either
+    // direction.
+    const gendered = [
+      /\bготов\b/i,
+      /\bготова\b/i,
+      /\bоткрыт\b/i,
+      /\bоткрыта\b/i,
+      /\bрад\b/i,
+      /\bрада\b/i,
+      /\bсчастлив\b/i,
+      /\bсчастлива\b/i,
+      /\bуверен\b/i,
+      /\bуверена\b/i,
+    ];
+    for (const message of INVITATION_MESSAGES) {
+      for (const pattern of gendered) {
+        assert.ok(
+          !pattern.test(message),
+          `Default invitation message "${message}" contains gendered word ${pattern}`
+        );
+      }
+    }
+  });
 });

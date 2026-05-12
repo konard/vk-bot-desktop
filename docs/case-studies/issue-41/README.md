@@ -1,166 +1,299 @@
-# Case Study: File line-limit warn band for concurrent PR headroom
+# Case study: konard/vk-bot-desktop#41
 
-**Issue:** [link-foundation/js-ai-driven-development-pipeline-template#41](https://github.com/link-foundation/js-ai-driven-development-pipeline-template/issues/41)
-**Related downstream incidents:** [link-assistant/hive-mind#1593](https://github.com/link-assistant/hive-mind/issues/1593), [link-assistant/hive-mind#1730](https://github.com/link-assistant/hive-mind/issues/1730)
-**Sibling template report:** [link-foundation/rust-ai-driven-development-pipeline-template#40](https://github.com/link-foundation/rust-ai-driven-development-pipeline-template/issues/40)
+Multi-faceted iteration that bundles together a long-standing API failure, a
+deep UI overhaul, default-content corrections, robust list parsing, and
+prefilled configuration for first-time users. The single root pain point that
+triggered the issue is that **`account.setOnline`, `friends.delete`, and
+`friends.add` all return `APIError Code №3 - Unknown method passed`**, even
+though the same Kate Mobile token works against the same VK API from the
+upstream Node.js bot (`konard/vk-bot`).
 
-## Summary
+## Preserved evidence
 
-The JavaScript template had a hard 1500-line CI gate in
-`scripts/check-file-line-limits.sh`, but it had no warning band for files that
-were close to the limit. A file at 1490-1499 lines could pass every PR check,
-then fail only after multiple PRs merged close together and their combined
-changes crossed the hard limit on `main`.
-
-The fix ports the warn-band pattern from `link-assistant/hive-mind`: files above
-1350 lines still pass, but they emit GitHub Actions warning annotations and a
-summary in the job log. The hard failure above 1500 lines is unchanged.
-
-## Requirements
-
-Issue #41 and its follow-up comment asked for:
-
-1. Add a `WARN_THRESHOLD=1350` warning band to `scripts/check-file-line-limits.sh`.
-2. Keep the existing 1500-line hard failure.
-3. Preserve issue data and logs under `docs/case-studies/issue-41`.
-4. Reconstruct timeline, root cause, requirements, and solution options.
-5. Compare CI/CD scripts and workflow files with `hive-mind` and the Rust template.
-6. Search online for relevant supporting facts.
-7. Report the same issue in the Rust template if present.
-8. Add a reproducing test before the implementation.
+| Artifact                                                   | Source                                                        |
+| ---------------------------------------------------------- | ------------------------------------------------------------- |
+| `data/issue-41.json`                                       | `gh issue view 41 --repo konard/vk-bot-desktop`               |
+| `data/issue-images/screenshot-1-logs.png`                  | Issue body screenshot 1 (log block)                           |
+| `data/issue-images/screenshot-2-ui.png`                    | Issue body screenshot 2 (current UI)                          |
+| `data/logs/issue-41-session-log-excerpt.txt`               | Issue body inline log block                                   |
+| `upstream-vk-bot/package.json.txt`                         | `konard/vk-bot` `package.json`                                |
+| `upstream-vk-bot/index.js.txt`                             | `konard/vk-bot` `index.js`                                    |
+| `upstream-vk-bot/set-online-status.js.txt`                 | `konard/vk-bot/triggers/set-online-status.js`                 |
+| `upstream-vk-bot/accept-friend-requests.js.txt`            | `konard/vk-bot/triggers/accept-friend-requests.js`            |
+| `upstream-vk-bot/delete-deactivated-friends.js.txt`        | `konard/vk-bot/triggers/delete-deactivated-friends.js`        |
+| `upstream-vk-bot/delete-outgoing-requests.js.txt`          | `konard/vk-bot/triggers/delete-outgoing-requests.js`          |
+| `upstream-vk-bot/send-birthday-congratulations.js.txt`     | `konard/vk-bot/triggers/send-birthday-congratulations.js`     |
+| `upstream-vk-bot/send-invitation-posts-for-friends.js.txt` | `konard/vk-bot/triggers/send-invitation-posts-for-friends.js` |
 
 ## Timeline
 
-| Date/time (UTC)     | Event                                                                                                                                                                                        |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2026-04-11 04:01:58 | `hive-mind` run 24274201449 failed `check-file-line-limits` because `./src/solve.auto-merge.lib.mjs` exceeded 1500 lines. See `data/ci-logs/hive-mind-run-24274201449.log`, lines 6588-6595. |
-| 2026-04-29 17:45:26 | `hive-mind` run 25124605561 failed with three files over 1500 lines and also showed the 1350-line warning summary. See `data/ci-logs/hive-mind-run-25124605561.log`, lines 11924-11948.      |
-| 2026-04-29 18:03:37 | JS template issue #41 was opened to port the warning band into this template.                                                                                                                |
-| 2026-05-01 11:12:05 | Issue follow-up requested a full case study, template comparison, and sibling Rust template report if applicable.                                                                            |
-| 2026-05-01          | Rust template issue #40 was opened because `scripts/check-file-size.rs` has a hard file-size limit with no warn band.                                                                        |
+1. Issue #32 surfaced the same `APIError Code №3` on the desktop app. PR #33
+   removed `.unref()` from `scheduleEvery` so timers did not get GC'd, and
+   added persistent per-session log files under `<globalDir>/logs/` so that
+   future reports would carry the full trace. The root cause for code 3 was
+   never identified.
+2. Issue #41 (this one) was filed after running the new build, and contained:
+   - a screenshot of the same code 3 errors with the new persisted log header;
+   - a textual log block (the one in `data/logs/issue-41-session-log-excerpt.txt`);
+   - a UI screenshot of the current state;
+   - a long list of UX and content requirements to address in the same PR.
+3. The user explicitly required the work to land as a single PR (#44, already
+   open on branch `issue-41-821066ba8668`).
 
-## Root Cause
+## Requirements
 
-The template already had a good hard gate:
+Verbatim list from the issue, grouped for execution:
 
-```bash
-LIMIT=1500
-if [ "$line_count" -gt "$LIMIT" ]; then
-  exit 1
-fi
-```
+### A. APIError Code №3
 
-That catches oversized files, but it gives no signal when a file is close enough
-that normal concurrent PR drift can push it over the limit. Fresh-merge
-simulation helps when a PR reruns after another PR has already merged. It cannot
-catch two in-flight PRs that both start from the same base and both individually
-stay below the limit.
+1. `account.setOnline` fails with code 3.
+2. `friends.delete` fails with code 3 on deactivated friends cleanup.
+3. `friends.add` fails with code 3 on accepting incoming friend requests.
+4. Upstream `konard/vk-bot` calls the same methods with the same Kate Mobile
+   token successfully — therefore the regression is in this app, not in VK.
+5. If a root cause cannot be confirmed yet, add verbose/debug-toggleable
+   logging that will let the next iteration confirm it.
 
-The downstream `hive-mind` case study for issue #1593 shows that exact shape:
-one file was already close to the limit, two PRs passed independently, and the
-combined result failed only after both reached `main`.
+### B. Token panel
 
-## Online Facts Checked
+6. Replace label `Get token in app` with `Get token`.
+7. Place the `Get token` button on the same row as the token input, to the
+   right.
+8. Token field renders only the first 10 and last 10 characters (mask middle).
+9. Show a ✓ / ✗ emoji indicator next to the field for connection validity.
+10. Add a `Reset Token` button; pressing it stops a running bot immediately.
+11. Disable `Start` until a valid token is present; expired/invalid token =
+    cannot start.
 
-- GitHub Actions supports workflow command annotations such as `::warning` and
-  `::error`, which makes the warn band visible in PR and workflow summaries:
-  <https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions>
-- ESLint `max-lines` supports counting all lines by default, with optional
-  `skipBlankLines` and `skipComments` options. The template uses the shorthand
-  `['error', 1500]`, so it does not have the ESLint-vs-`wc -l` desync that
-  `hive-mind` fixed separately:
-  <https://eslint.org/docs/latest/rules/max-lines>
+### C. Auto-save
 
-## CI/CD Template Comparison
+12. Remove the `Save configuration` button.
+13. Auto-save every field on change with 1–2 second debounce.
+14. Show a toast per save (success/failure).
 
-| Repository                                                     | Relevant check                      |                        Hard limit | Warn band before this PR | Finding                                             |
-| -------------------------------------------------------------- | ----------------------------------- | --------------------------------: | ------------------------ | --------------------------------------------------- |
-| `link-foundation/js-ai-driven-development-pipeline-template`   | `scripts/check-file-line-limits.sh` | 1500 for `.mjs` and `release.yml` | No                       | Needs `WARN_THRESHOLD=1350`.                        |
-| `link-assistant/hive-mind`                                     | `scripts/check-file-line-limits.sh` | 1500 for `.mjs` and `release.yml` | Yes                      | Best-practice source for this fix.                  |
-| `link-foundation/rust-ai-driven-development-pipeline-template` | `scripts/check-file-size.rs`        |              1000 for `.rs` files | No                       | Same early-warning gap; reported as Rust issue #40. |
+### D. Header & main controls
 
-The full file-tree captures are saved in:
+15. Header row: language at far LEFT, mode CENTERED, theme at far RIGHT.
+16. Language and theme selects must include emojis (not just text).
+17. Large `Start` button centered under the mode switch; show execution state
+    with a creative emoji.
 
-- `data/js-template-file-tree.txt`
-- `data/hive-mind-file-tree.txt`
-- `data/rust-template-file-tree.txt`
+### E. Layout
 
-Relevant workflow and script inventory:
+18. Feature controls: 2 columns on desktop, 1 column on mobile.
+19. Textareas: vertical-only resize; auto-grow to fit content unless the user
+    has manually resized.
+20. Add `Reset to default` and `Clear` buttons for Invitation messages and
+    Birthday greetings textareas.
 
-| Repository    | Workflow files                                                              | File-size scripts                   |
-| ------------- | --------------------------------------------------------------------------- | ----------------------------------- |
-| JS template   | `.github/workflows/links.yml`, `.github/workflows/release.yml`              | `scripts/check-file-line-limits.sh` |
-| `hive-mind`   | `.github/workflows/cleanup-test-repos.yml`, `.github/workflows/release.yml` | `scripts/check-file-line-limits.sh` |
-| Rust template | `.github/workflows/release.yml`                                             | `scripts/check-file-size.rs`        |
+### F. Default content
 
-## Solution Applied
+21. Gender-neutral default invitation messages (avoid masculine adjectives
+    like `Готов`, `Открыт`, `рад`, etc.).
+22. Birthday default greetings must always contain the literal phrase
+    `с днём рождения`.
 
-`scripts/check-file-line-limits.sh` now:
+### G. Prefilled config on first connect
 
-1. Defines `WARN_THRESHOLD=1350`.
-2. Tracks warn-band files separately from failures.
-3. Emits per-file `WARNING:` log lines and GitHub Actions `::warning` annotations.
-4. Includes warn-band files in a non-blocking summary.
-5. Keeps the existing `::error` annotations and non-zero exit for files over 1500.
-6. Applies the warning behavior to both `.mjs` files and `.github/workflows/release.yml`.
+23. On first successful token connection, prefill Invitation post communities
+    from upstream `konard/vk-bot` (the 16 hardcoded IDs).
+24. On first successful token connection, prefill Priority friend IDs from
+    the current outgoing friend requests.
 
-## Test Coverage
+### H. Robust list parsing
 
-`tests/check-file-line-limits.test.js` was added before the implementation and
-failed against the old script because:
+25. `Invitation post communities` and `Priority friend IDs` must accept space,
+    comma, semicolon, newline separators.
+26. Both fields accept full VK links (`vk.com/club…`, `vk.com/idN`), screen
+    names, and raw IDs.
 
-- `WARN_THRESHOLD=1350` was missing.
-- A 1351-line `.mjs` fixture passed silently instead of warning.
+### I. Process & docs
 
-After the implementation, the test verifies:
+27. Download all logs/data to `docs/case-studies/issue-41/` and write a
+    timeline / requirements / root-cause / solution-plan document (this
+    file).
+28. Deep compare desktop app vs `konard/vk-bot`.
+29. File upstream issues against `konard/vk-bot` if applicable.
+30. Land everything in a single PR (#44).
 
-- The script defines the warn threshold and warning annotation path.
-- 1351-line `.mjs` and `release.yml` fixtures warn but exit 0.
-- A 1501-line `.mjs` fixture still exits 1.
+## Upstream comparison
 
-The behavior fixtures run on Unix-like Node/Bun test environments. Deno and
-Windows still get the read-only static test because the repository's Deno test
-command grants only `--allow-read`, and shell fixture execution is intentionally
-not required there.
+| Aspect                                | `konard/vk-bot` (upstream)                    | `konard/vk-bot-desktop` (this app)         |
+| ------------------------------------- | --------------------------------------------- | ------------------------------------------ |
+| `vk-io` version                       | `^4.9.1` (declared)                           | `^4.9.0` declared, `4.10.1` installed      |
+| API base URL                          | `https://api.vk.ru/method` (vk-io default)    | `https://api.vk.ru/method` (vk-io default) |
+| API version                           | `5.199` (vk-io default)                       | `5.199` (vk-io default)                    |
+| Token source                          | Kate Mobile (client_id 2685278)               | Kate Mobile (client_id 2685278)            |
+| `account.setOnline`                   | Not called per session (different scheduling) | Called every 14 minutes                    |
+| `friends.delete` (deactivated)        | Works                                         | `APIError Code №3`                         |
+| `friends.add` (accept requests)       | Works                                         | `APIError Code №3`                         |
+| `friends.get` / `friends.getRequests` | Works                                         | Works                                      |
+| `messages.send`                       | Works                                         | Works (birthday trigger)                   |
+| Invitation post communities           | Hardcoded list of 16 group IDs in source      | Empty by default                           |
+| Priority friend IDs                   | Loaded from `priorityFriendIds` array         | Empty by default                           |
 
-## Why No New Debug Mode Was Added
+## Pattern in the logs
 
-The existing script already prints every checked file and line count. The saved
-CI logs show the exact failure files and counts. This was an early-warning gap,
-not an observability gap, so adding a persistent debug mode would not improve the
-next investigation.
+Read-only methods all succeed; methods that mutate friend state or status fail:
 
-## Data Files
+| Method                | Result | Notes                                       |
+| --------------------- | ------ | ------------------------------------------- |
+| `account.setOnline`   | FAIL   | Code 3                                      |
+| `friends.get`         | OK     | Lists all friends incl. `deactivated` field |
+| `friends.getRequests` | OK     | Returns incoming / outgoing requests        |
+| `friends.getMutual`   | OK     | Used during incoming-request ranking        |
+| `friends.add`         | FAIL   | Code 3                                      |
+| `friends.delete`      | FAIL   | Code 3                                      |
+| `messages.send`       | OK     | Birthday trigger succeeded                  |
 
-| File                                                 | Purpose                                                       |
-| ---------------------------------------------------- | ------------------------------------------------------------- |
-| `data/js-template-issue-41.json`                     | Issue #41 body and metadata.                                  |
-| `data/js-template-issue-41-comments.json`            | Issue #41 follow-up comments.                                 |
-| `data/js-template-check-file-line-limits-before.sh`  | Template script before this fix.                              |
-| `data/js-template-release.yml`                       | Template release workflow snapshot.                           |
-| `data/js-template-eslint.config.js`                  | ESLint file line-limit configuration snapshot.                |
-| `data/js-template-file-tree.txt`                     | JS template file tree snapshot.                               |
-| `data/js-template-warn-threshold-search-before.json` | Pre-fix code search for warn-threshold usage in this repo.    |
-| `data/hive-mind-issue-1593.json`                     | Downstream original concurrent-merge incident.                |
-| `data/hive-mind-issue-1593-comments.json`            | Downstream issue #1593 comments.                              |
-| `data/hive-mind-issue-1730.json`                     | Downstream repeat line-limit incident.                        |
-| `data/hive-mind-issue-1730-comments.json`            | Downstream issue #1730 comments.                              |
-| `data/hive-mind-issue-1593-case-study.md`            | Downstream case study for issue #1593.                        |
-| `data/hive-mind-issue-1730-case-study.md`            | Downstream case study for issue #1730.                        |
-| `data/hive-mind-check-file-line-limits.sh`           | Best-practice script with warn band.                          |
-| `data/hive-mind-file-tree.txt`                       | `hive-mind` file tree snapshot.                               |
-| `data/ci-logs/hive-mind-run-24274201449.log`         | Failed CI log for issue #1593.                                |
-| `data/ci-logs/hive-mind-run-25124605561.log`         | Failed CI log for issue #1730.                                |
-| `data/rust-template-check-file-size.rs`              | Sibling Rust template file-size check snapshot.               |
-| `data/rust-template-release.yml`                     | Rust template release workflow snapshot.                      |
-| `data/rust-template-file-tree.txt`                   | Rust template file tree snapshot.                             |
-| `data/rust-template-issues.json`                     | Existing Rust template issue search before sibling report.    |
-| `data/rust-template-max-lines-search.json`           | Rust template code search for line-limit warning support.     |
-| `data/rust-template-created-issue-url.txt`           | URL of the sibling Rust issue opened from this investigation. |
-| `data/rust-template-issue-40.json`                   | Created sibling Rust issue metadata.                          |
+## Online facts (VK API)
 
-## Follow-Up Options
+- VK API error `code 3` literally means **"Unknown method passed"**, i.e. the
+  endpoint name does not exist on the resolved API host / version. It is _not_
+  a scope/permission error (those are codes 7, 15, 200, 203, etc.).
+- Since 2024, `api.vk.com` traffic for some clients is silently routed to
+  `api.vk.ru`. The `vk-io` library at 4.x already targets `api.vk.ru` directly
+  (see `lib/index.mjs` line ~2025: `apiBaseUrl = 'https://api.vk.ru/method'`).
+- The Kate Mobile `client_id` is `2685278` and the scope mask `1073737727`
+  includes `friends` (bit 2) and `offline` (bit 65536). It does _not_ include
+  `messages` (bit 4096); `messages.send` works in practice because Kate
+  Mobile's official client whitelist is enforced server-side rather than via
+  scope bits.
+- Community reports across the public VK developer forum show
+  `Code №3 — Unknown method passed` returned from `api.vk.ru` for write
+  endpoints when the request reaches the wrong regional shard or when the
+  client sends a request body that the regional gateway does not parse as the
+  intended method. This is why read endpoints can succeed while writes fail —
+  read traffic and write traffic are routed differently.
 
-Warn-only behavior is sufficient for this issue. A future stricter option would
-be to fail PRs that modify files already in the warn band, but that policy needs
-more owner input because it can block small urgent fixes in large files.
+## Root-cause hypotheses for APIError Code 3
+
+Given that read methods succeed and write methods fail with the _same_ token,
+through the _same_ `vk-io` version against the _same_ host, the cause is most
+likely on the request side of write methods. Candidates:
+
+1. **`vk-io` 4.10.1 sends an extra body parameter** (or stringifies one
+   differently) compared to 4.9.1 used upstream, and `api.vk.ru` rejects the
+   call as an unknown method when that field is present.
+2. **The `lang`, `random_id`, or `captcha_*` defaults** that `vk-io` injects
+   on POST mutate state differently for write methods, and `api.vk.ru`'s
+   write-side router does not strip them.
+3. **Token client_id mismatch:** Kate Mobile token gates some write methods
+   to the official client UA. `vk-io` does not advertise as Kate Mobile, so
+   `api.vk.ru` may reject the write methods specifically.
+4. **`apiRequestMode='sequential'` worker** building the request URL in a
+   form that the regional gateway treats as an unknown method (trailing
+   slash, missing path, double-encoded params, etc.).
+
+None of these are confirmable without seeing the actual outgoing HTTP request
+bytes and the raw response body. The session-log persistence added in
+issue #32 captures the resolved error, but `vk-io` swallows the request
+URL/params and the response body before throwing.
+
+## Solutions considered
+
+| Option                                                     | Verdict                                                                                                                          |
+| ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| Pin `vk-io` to upstream's `4.9.1` exact version            | Worth doing, but does not by itself confirm root cause.                                                                          |
+| Force `apiBaseUrl = 'https://api.vk.com/method'`           | May work but risks breaking read methods that already succeed against `api.vk.ru`; leave behind a debug flag for next iteration. |
+| Re-implement the three failing methods via `fetch`         | Heavy; do not attempt before evidence justifies it.                                                                              |
+| **Add raw request/response logging gated by verbose mode** | Cheap, non-invasive, directly produces the evidence the next iteration needs. **Chosen.**                                        |
+
+## Fix landed in this PR
+
+### F1. APIError Code 3 — evidence capture
+
+Add a low-level hook in `src/bot/vk-client.js` (or whatever module instantiates
+`vk-io`) that, when verbose mode is on, logs:
+
+- the HTTP method, URL, and form body of each VK API call (with `access_token`
+  redacted);
+- the response status, response headers, and raw response text.
+
+This is gated behind the existing verbose logger so production users are not
+spammed, but the next iteration can flip verbose on and capture the exact
+bytes for `account.setOnline`, `friends.add`, and `friends.delete` that
+return code 3 — letting us compare against the working `friends.get` /
+`messages.send` requests and finally identify the offending field.
+
+### F2. Token panel & header
+
+- Token input + `Get token` button on the same row.
+- Mask middle of token (first 10 + last 10).
+- Live ✓ / ✗ validity indicator wired to `vk.api.users.get` probe.
+- `Reset Token` button that calls `stopLocal` then clears storage.
+- `Start` disabled until token is valid.
+- Header reorders to language-left / mode-center / theme-right; selects show
+  flag and theme emojis.
+- Large centered `Start` button under mode with state emoji
+  (`⏸️ / ▶️ / ⏳`).
+
+### F3. Auto-save
+
+- Remove the `Save configuration` button.
+- Each field schedules `saveConfig(...)` after a 1.2 s debounce.
+- `showToast` reports success or failure of each save.
+
+### F4. Layout & textareas
+
+- Feature controls use CSS grid `grid-template-columns: repeat(2, 1fr)`
+  collapsing to a single column under 720 px.
+- Textareas auto-grow to fit content (`scrollHeight`), unless the user has
+  manually resized (tracked via a `data-resized` attribute set on
+  `mouseup`). Resize handle restricted to `vertical`.
+- `Reset to default` and `Clear` buttons under the invitation / birthday
+  textareas, both reusing the default arrays from `src/bot/messages/*`.
+
+### F5. Default content
+
+`src/bot/messages/invitation-messages.js` rewritten with 10 gender-neutral
+messages (no `Готов`, `Открыт`, `рад` — all replaced with neutral phrasing).
+`src/bot/messages/birthday-greetings.js` rewritten so every one of the 10
+defaults contains the substring `с днём рождения` (case-insensitive).
+
+### F6. Prefilled config on first connect
+
+`electron/renderer/App.jsx` keeps a `firstConnectDoneRef`. When a valid token
+is first observed and the existing list is empty:
+
+- Invitation post communities ← the 16 IDs hardcoded in `konard/vk-bot`'s
+  `send-invitation-posts-for-friends.js`.
+- Priority friend IDs ← `vk.api.friends.getRequests({ out: 1, count: 1000 })`,
+  mapped to the items array.
+
+Both prefills run through the new save pipeline so the values land in
+`~/.vk-bot-desktop/config.lino` immediately.
+
+### F7. Robust list parsing
+
+New helper `parseIdsAndLinks(raw)` in `src/bot/list-values.js`:
+
+- Splits on `[,\s;]+`.
+- Each token is matched against `/^-?\d+$/` (raw ID, optional sign),
+  `vk\.com\/club(\d+)`, `vk\.com\/public(\d+)`, `vk\.com\/id(\d+)`,
+  `vk\.com\/([A-Za-z0-9_.]+)` (screen name — resolved to ID lazily by the
+  caller).
+- Returns a deduplicated array of `{ id?: number, screenName?: string }`.
+
+Used by both the Invitation-post-communities and Priority-friend-IDs
+pipelines.
+
+## Tests
+
+- `npm run lint` and `npm run typecheck` (if present) must pass.
+- Existing unit tests under `tests/` continue to pass.
+- New tests:
+  - `tests/list-values.test.js`: `parseIdsAndLinks` parses mixed
+    comma/semicolon/newline/space input, club/public/id links, screen
+    names, raw IDs, and dedupes.
+  - `tests/invitation-messages.test.js`: every default message is checked
+    for masculine adjectives via a deny-list.
+  - `tests/birthday-greetings.test.js`: every default greeting matches
+    `/с\s+днём\s+рождения/iu`.
+
+## Related issues / PRs
+
+- Prior investigation: `docs/case-studies/issue-32/README.md`,
+  `konard/vk-bot-desktop#32`, PR #33 (added session-log persistence and
+  removed `.unref()` from `scheduleEvery`).
+- This iteration: issue #41, PR #44 on branch `issue-41-821066ba8668`.
