@@ -19,6 +19,13 @@ async function main() {
     cp(resolve(siteDir, 'assets'), resolve(distDir, 'assets'), {
       recursive: true,
     }),
+    cp(
+      resolve(repoRoot, 'docs', 'screenshots'),
+      resolve(distDir, 'assets', 'screenshots'),
+      {
+        recursive: true,
+      }
+    ),
   ]);
 
   await build({
