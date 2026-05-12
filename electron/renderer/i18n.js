@@ -23,8 +23,7 @@ export const TRANSLATIONS = {
     vkToken: 'VK access token',
     vkTokenHelp:
       'Paste the full VK redirect URL or the token itself. Token changes are saved automatically and kept on this device only.',
-    getKateMobileToken: 'Get Kate Mobile token',
-    getLocalhostToken: 'Experimental localhost redirect',
+    getKateMobileToken: 'Get token in app',
     priorityFriendIds: 'Priority friend IDs',
     priorityFriendIdsHelp:
       'Comma-separated VK numeric user IDs. The bot will always send a request to these users and will never auto-delete them when they appear deactivated.',
@@ -67,8 +66,8 @@ export const TRANSLATIONS = {
     notifTokenSaved: 'Token saved to configuration',
     notifTokenCleared: 'Token removed from configuration',
     notifTokenSaveFailed: 'Token was not saved',
-    notifTokenReceived: 'Token received from browser',
-    notifTokenUrlOpened: 'Token page opened in your browser',
+    notifTokenReceived: 'Token received from VK authorization',
+    notifTokenUrlOpened: 'VK authorization window opened',
     notifTokenUrlFailed: 'Token page could not be opened',
     notifStartFailed: 'Bot failed to start',
     working: 'Working...',
@@ -105,8 +104,7 @@ export const TRANSLATIONS = {
     vkToken: 'VK access token',
     vkTokenHelp:
       'Вставьте полный URL редиректа VK или сам токен. Изменения токена сохраняются автоматически и остаются только на этом устройстве.',
-    getKateMobileToken: 'Получить токен Kate Mobile',
-    getLocalhostToken: 'Экспериментальный localhost редирект',
+    getKateMobileToken: 'Получить токен в приложении',
     priorityFriendIds: 'Приоритетные ID друзей',
     priorityFriendIdsHelp:
       'ID пользователей через запятую. Бот всегда отправит им заявку и не удалит их при автоочистке.',
@@ -149,8 +147,8 @@ export const TRANSLATIONS = {
     notifTokenSaved: 'Токен сохранён в настройках',
     notifTokenCleared: 'Токен удалён из настроек',
     notifTokenSaveFailed: 'Не удалось сохранить токен',
-    notifTokenReceived: 'Токен получен из браузера',
-    notifTokenUrlOpened: 'Страница токена открыта в браузере',
+    notifTokenReceived: 'Токен получен из авторизации VK',
+    notifTokenUrlOpened: 'Окно авторизации VK открыто',
     notifTokenUrlFailed: 'Не удалось открыть страницу токена',
     notifStartFailed: 'Не удалось запустить бота',
     working: 'Подождите...',

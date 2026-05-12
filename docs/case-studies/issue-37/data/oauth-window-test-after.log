@@ -1,0 +1,59 @@
+TAP version 13
+# Subtest: VK OAuth blank-page redirect helpers
+    # Subtest: extracts the access token from the VK blank-page fragment
+    ok 1 - extracts the access token from the VK blank-page fragment
+      ---
+      duration_ms: 1.014965
+      ...
+    # Subtest: recognizes VK blank-page redirects without accepting unrelated URLs
+    ok 2 - recognizes VK blank-page redirects without accepting unrelated URLs
+      ---
+      duration_ms: 0.148672
+      ...
+    # Subtest: allows only VK authorization navigation hosts in the embedded window
+    ok 3 - allows only VK authorization navigation hosts in the embedded window
+      ---
+      duration_ms: 0.191897
+      ...
+    1..3
+ok 1 - VK OAuth blank-page redirect helpers
+  ---
+  duration_ms: 2.188267
+  type: 'suite'
+  ...
+# Subtest: VK token helpers
+    # Subtest: keeps the Kate Mobile blank-page OAuth URL requested by issue 26
+    ok 1 - keeps the Kate Mobile blank-page OAuth URL requested by issue 26
+      ---
+      duration_ms: 0.643321
+      ...
+    # Subtest: extracts access_token from pasted VK redirect URLs
+    ok 2 - extracts access_token from pasted VK redirect URLs
+      ---
+      duration_ms: 0.545505
+      ...
+    # Subtest: accepts a raw token without changing it beyond trimming whitespace
+    ok 3 - accepts a raw token without changing it beyond trimming whitespace
+      ---
+      duration_ms: 0.155632
+      ...
+    # Subtest: wires the VK blank-page OAuth URL through an Electron auth window
+    ok 4 - wires the VK blank-page OAuth URL through an Electron auth window
+      ---
+      duration_ms: 0.590452
+      ...
+    1..4
+ok 2 - VK token helpers
+  ---
+  duration_ms: 4.154442
+  type: 'suite'
+  ...
+1..2
+# tests 7
+# suites 2
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 54.938325
