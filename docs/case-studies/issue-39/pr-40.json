@@ -1,0 +1,241 @@
+{
+  "baseRefName": "main",
+  "body": "## 🤖 AI-Powered Solution Draft\n\nThis pull request is being automatically generated to solve issue #39.\n\n### 📋 Issue Reference\nFixes #39\n\n### 🚧 Status\n**Work in Progress** - The AI assistant is currently analyzing and implementing the solution draft.\n\n### 📝 Implementation Details\n_Details will be added as the solution draft is developed..._\n\n---\n*This PR was created automatically by the AI issue solver*",
+  "comments": [],
+  "commits": [
+    {
+      "authoredDate": "2026-05-12T15:17:26Z",
+      "authors": [
+        {
+          "email": "drakonard@gmail.com",
+          "id": "MDQ6VXNlcjE0MzE5MDQ=",
+          "login": "konard",
+          "name": "konard"
+        }
+      ],
+      "committedDate": "2026-05-12T15:17:26Z",
+      "messageBody": "Adding .gitkeep for PR creation (default mode).\nThis file will be removed when the task is complete.\n\nIssue: https://github.com/konard/vk-bot-desktop/issues/39",
+      "messageHeadline": "Initial commit with task details",
+      "oid": "2d7ef8f46b72631640b6aaad61e13c9785f84d4f"
+    }
+  ],
+  "headRefName": "issue-39-5d7ef40481ba",
+  "isDraft": true,
+  "number": 40,
+  "reviews": [],
+  "state": "OPEN",
+  "statusCheckRollup": [
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-05-12T15:18:00Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/konard/vk-bot-desktop/actions/runs/25743942255/job/75601831653",
+      "name": "Detect Changes",
+      "startedAt": "2026-05-12T15:17:56Z",
+      "status": "COMPLETED",
+      "workflowName": "JavaScript CI/CD"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-05-12T15:18:04Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/konard/vk-bot-desktop/actions/runs/25743942255/job/75601831635",
+      "name": "Check for Manual Version Changes",
+      "startedAt": "2026-05-12T15:17:56Z",
+      "status": "COMPLETED",
+      "workflowName": "JavaScript CI/CD"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-05-12T15:17:53Z",
+      "conclusion": "SKIPPED",
+      "detailsUrl": "https://github.com/konard/vk-bot-desktop/actions/runs/25743942255/job/75601832681",
+      "name": "Instant Release",
+      "startedAt": "2026-05-12T15:17:53Z",
+      "status": "COMPLETED",
+      "workflowName": "JavaScript CI/CD"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-05-12T15:17:53Z",
+      "conclusion": "SKIPPED",
+      "detailsUrl": "https://github.com/konard/vk-bot-desktop/actions/runs/25743942255/job/75601832461",
+      "name": "Create Changeset PR",
+      "startedAt": "2026-05-12T15:17:53Z",
+      "status": "COMPLETED",
+      "workflowName": "JavaScript CI/CD"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-05-12T15:18:00Z",
+      "conclusion": "SKIPPED",
+      "detailsUrl": "https://github.com/konard/vk-bot-desktop/actions/runs/25743942255/job/75601859304",
+      "name": "Test Compilation",
+      "startedAt": "2026-05-12T15:18:01Z",
+      "status": "COMPLETED",
+      "workflowName": "JavaScript CI/CD"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-05-12T15:18:00Z",
+      "conclusion": "SKIPPED",
+      "detailsUrl": "https://github.com/konard/vk-bot-desktop/actions/runs/25743942255/job/75601859227",
+      "name": "Check File Line Limits",
+      "startedAt": "2026-05-12T15:18:01Z",
+      "status": "COMPLETED",
+      "workflowName": "JavaScript CI/CD"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-05-12T15:18:00Z",
+      "conclusion": "SKIPPED",
+      "detailsUrl": "https://github.com/konard/vk-bot-desktop/actions/runs/25743942255/job/75601858911",
+      "name": "Check for Changesets",
+      "startedAt": "2026-05-12T15:18:00Z",
+      "status": "COMPLETED",
+      "workflowName": "JavaScript CI/CD"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-05-12T15:18:00Z",
+      "conclusion": "SKIPPED",
+      "detailsUrl": "https://github.com/konard/vk-bot-desktop/actions/runs/25743942255/job/75601859462",
+      "name": "Lint and Format Check",
+      "startedAt": "2026-05-12T15:18:01Z",
+      "status": "COMPLETED",
+      "workflowName": "JavaScript CI/CD"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-05-12T15:18:00Z",
+      "conclusion": "SKIPPED",
+      "detailsUrl": "https://github.com/konard/vk-bot-desktop/actions/runs/25743942255/job/75601859171",
+      "name": "Validate Documentation",
+      "startedAt": "2026-05-12T15:18:01Z",
+      "status": "COMPLETED",
+      "workflowName": "JavaScript CI/CD"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-05-12T15:18:00Z",
+      "conclusion": "SKIPPED",
+      "detailsUrl": "https://github.com/konard/vk-bot-desktop/actions/runs/25743942255/job/75601858730",
+      "name": "Check Links",
+      "startedAt": "2026-05-12T15:18:00Z",
+      "status": "COMPLETED",
+      "workflowName": "JavaScript CI/CD"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-05-12T15:18:00Z",
+      "conclusion": "SKIPPED",
+      "detailsUrl": "https://github.com/konard/vk-bot-desktop/actions/runs/25743942255/job/75601859289",
+      "name": "Build Pages site",
+      "startedAt": "2026-05-12T15:18:01Z",
+      "status": "COMPLETED",
+      "workflowName": "JavaScript CI/CD"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-05-12T15:18:44Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/konard/vk-bot-desktop/actions/runs/25743942255/job/75601859296",
+      "name": "Test (node on ubuntu-latest)",
+      "startedAt": "2026-05-12T15:18:10Z",
+      "status": "COMPLETED",
+      "workflowName": "JavaScript CI/CD"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-05-12T15:18:23Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/konard/vk-bot-desktop/actions/runs/25743942255/job/75601859351",
+      "name": "Test (bun on ubuntu-latest)",
+      "startedAt": "2026-05-12T15:18:04Z",
+      "status": "COMPLETED",
+      "workflowName": "JavaScript CI/CD"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-05-12T15:18:16Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/konard/vk-bot-desktop/actions/runs/25743942255/job/75601859827",
+      "name": "Test (deno on ubuntu-latest)",
+      "startedAt": "2026-05-12T15:18:03Z",
+      "status": "COMPLETED",
+      "workflowName": "JavaScript CI/CD"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-05-12T15:18:49Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/konard/vk-bot-desktop/actions/runs/25743942255/job/75601859256",
+      "name": "Test (node on macos-latest)",
+      "startedAt": "2026-05-12T15:18:07Z",
+      "status": "COMPLETED",
+      "workflowName": "JavaScript CI/CD"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-05-12T15:18:28Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/konard/vk-bot-desktop/actions/runs/25743942255/job/75601859240",
+      "name": "Test (bun on macos-latest)",
+      "startedAt": "2026-05-12T15:18:05Z",
+      "status": "COMPLETED",
+      "workflowName": "JavaScript CI/CD"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-05-12T15:18:28Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/konard/vk-bot-desktop/actions/runs/25743942255/job/75601859341",
+      "name": "Test (deno on macos-latest)",
+      "startedAt": "2026-05-12T15:18:06Z",
+      "status": "COMPLETED",
+      "workflowName": "JavaScript CI/CD"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "0001-01-01T00:00:00Z",
+      "conclusion": "",
+      "detailsUrl": "https://github.com/konard/vk-bot-desktop/actions/runs/25743942255/job/75601859408",
+      "name": "Test (node on windows-latest)",
+      "startedAt": "2026-05-12T15:18:03Z",
+      "status": "IN_PROGRESS",
+      "workflowName": "JavaScript CI/CD"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "0001-01-01T00:00:00Z",
+      "conclusion": "",
+      "detailsUrl": "https://github.com/konard/vk-bot-desktop/actions/runs/25743942255/job/75601859384",
+      "name": "Test (bun on windows-latest)",
+      "startedAt": "2026-05-12T15:18:04Z",
+      "status": "IN_PROGRESS",
+      "workflowName": "JavaScript CI/CD"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-05-12T15:18:55Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/konard/vk-bot-desktop/actions/runs/25743942255/job/75601859577",
+      "name": "Test (deno on windows-latest)",
+      "startedAt": "2026-05-12T15:18:03Z",
+      "status": "COMPLETED",
+      "workflowName": "JavaScript CI/CD"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-05-12T15:18:00Z",
+      "conclusion": "SKIPPED",
+      "detailsUrl": "https://github.com/konard/vk-bot-desktop/actions/runs/25743942255/job/75601859430",
+      "name": "Deploy Pages site",
+      "startedAt": "2026-05-12T15:18:01Z",
+      "status": "COMPLETED",
+      "workflowName": "JavaScript CI/CD"
+    }
+  ],
+  "title": "[WIP] delete-deactivated-friends trigger does not work in local mode",
+  "url": "https://github.com/konard/vk-bot-desktop/pull/40"
+}

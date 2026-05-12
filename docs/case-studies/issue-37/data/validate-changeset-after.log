@@ -1,0 +1,13 @@
+Validating changesets added by this PR...
+Detected single-language repository (package.json in root)
+Package: vk-bot-desktop
+Warning: Could not determine PR diff, checking all changesets in directory
+Found 1 changeset file(s) added by this PR
+Added changesets:
+  - embedded-vk-oauth-window.md
+Validating changeset: .changeset/embedded-vk-oauth-window.md
+Changeset validation passed
+   Type: patch
+   Description: Replace the rejected localhost VK OAuth redirect with an embedded Electron
+authorization window that captures the `oauth.vk.com/blank.html` token redirect
+automatically.

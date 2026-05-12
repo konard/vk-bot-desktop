@@ -45,6 +45,53 @@ describe('LinoStore', { skip: isDenoRuntime }, () => {
     }
   });
 
+  it('normalizes empty and scalar list fields after loading lino config', async () => {
+    const { store, cleanup } = await makeStore();
+    try {
+      await store.saveConfig(
+        {
+          priorityFriendIds: [],
+          invitationPost: {
+            text: 'Custom invitation',
+            messages: ['Custom invitation'],
+            communities: ['123'],
+          },
+          birthdayGreetings: ['Custom greeting'],
+        },
+        'global'
+      );
+      const loaded = await store.loadLayered();
+      assert.equal(Object.hasOwn(loaded, 'priorityFriendIds'), false);
+      const merged = mergeWithDefaults({
+        ...loaded,
+        birthdayGreetings: 'Single greeting',
+      });
+
+      assert.deepEqual(merged.priorityFriendIds, []);
+      assert.deepEqual(merged.invitationPost.messages, ['Custom invitation']);
+      assert.deepEqual(merged.invitationPost.communities, [123]);
+      assert.deepEqual(merged.birthdayGreetings, ['Single greeting']);
+    } finally {
+      await cleanup();
+    }
+  });
+
+  it('normalizes legacy bare-key list shapes from existing config files', () => {
+    const merged = mergeWithDefaults({
+      priorityFriendIds: {},
+      invitationPost: {
+        messages: {},
+        communities: {},
+      },
+      birthdayGreetings: {},
+    });
+
+    assert.deepEqual(merged.priorityFriendIds, []);
+    assert.deepEqual(merged.invitationPost.messages, []);
+    assert.deepEqual(merged.invitationPost.communities, []);
+    assert.deepEqual(merged.birthdayGreetings, []);
+  });
+
   it('local config overrides global', async () => {
     const { store, cleanup } = await makeStore();
     try {

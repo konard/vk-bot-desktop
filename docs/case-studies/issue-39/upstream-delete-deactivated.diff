@@ -1,0 +1,80 @@
+--- /tmp/vk-bot-upstream/triggers/delete-deactivated-friends.js	2026-05-12 15:22:49.540266506 +0000
++++ src/bot/triggers/delete-deactivated-friends.js	2026-05-12 15:17:25.543602943 +0000
+@@ -1,36 +1,48 @@
+-const { getAllFriends } = require('../friends-cache');
+-const { sleep, priorityFriendIds, second, ms } = require('../utils');
++import logger from '../logger.js';
++import { pickDeactivatedToDelete } from '../friend-prioritization.js';
+
+-async function deleteDeactivatedFriends({ vk }) {
+-  const deactivatedValues = ['banned', 'deleted'];
+-  const deletedFriendsIds = [];
++const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+-  const allFriends = await getAllFriends({ context: { vk } });
+-
+-  const deactivatedFriends = allFriends.filter(friend => friend.deactivated && deactivatedValues.includes(friend.deactivated));
+-  for (const friend of deactivatedFriends) {
+-    if (priorityFriendIds.includes(friend.id)) {
+-      console.log(`Skipping deletion of deactivated friend ${friend.id} because it is in priority friends list.`);
+-      continue;
++async function loadFriendsWithStatus({ vk }) {
++  const items = [];
++  for (let offset = 0; offset < 10000; offset += 5000) {
++    const response = await vk.api.friends.get({
++      count: 5000,
++      offset,
++      fields: 'deactivated',
++    });
++    if (!response.items || response.items.length === 0) {
++      break;
+     }
+-    try {
+-      deletedFriendsIds.push(friend.id);
+-      await vk.api.friends.delete({ user_id: friend.id });
+-      console.log('Deactivated friend', friend.id, 'was deleted');
+-    } catch (error) {
+-      console.error(`Failed to delete deactivated friend: ${error}`);
++    items.push(...response.items);
++    if (response.items.length < 5000) {
++      break;
+     }
+-    await sleep((5 * second) / ms);
+   }
++  return items;
+ }
+
+-const trigger = {
+-  name: "DeleteDeactivatedFriends",
+-  action: async (context) => {
+-    return await deleteDeactivatedFriends(context);
++export async function deleteDeactivatedFriends({ vk, config }) {
++  try {
++    const friends = await loadFriendsWithStatus({ vk });
++    const toDelete = pickDeactivatedToDelete({
++      friends,
++      priorityFriendIds: config.priorityFriendIds || [],
++    });
++    logger.info('Deactivated friends to delete', { count: toDelete.length });
++    for (const friend of toDelete) {
++      try {
++        await vk.api.friends.delete({ user_id: friend.id });
++        logger.info('Deactivated friend deleted', { userId: friend.id });
++      } catch (error) {
++        logger.warn('Failed to delete deactivated friend', {
++          userId: friend.id,
++          error,
++        });
++      }
++      await sleep(5000);
++    }
++  } catch (error) {
++    logger.error('Could not delete deactivated friends', { error });
+   }
+-};
+-
+-module.exports = {
+-  trigger
+-};
+\ No newline at end of file
++}

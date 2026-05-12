@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { detectLocale, translate } from './i18n.js';
+import { copyTextToClipboard } from './clipboard.js';
 import {
   applyTheme,
   loadStoredTheme,
@@ -8,11 +9,7 @@ import {
   resolveTheme,
   watchSystemTheme,
 } from './theme.js';
-import {
-  KATE_MOBILE_TOKEN_URL,
-  LOCALHOST_TOKEN_URL,
-  extractVkAccessToken,
-} from './vk-token.js';
+import { KATE_MOBILE_TOKEN_URL, extractVkAccessToken } from './vk-token.js';
 
 const DEFAULT_INVITATIONS = [
   'Приму заявки в друзья.',
@@ -336,6 +333,8 @@ export default function App({ api }) {
     }, 3500);
   }, []);
 
+  const logText = useMemo(() => logLines.join(''), [logLines]);
+
   useEffect(() => {
     formRef.current = form;
   }, [form]);
@@ -567,6 +566,19 @@ export default function App({ api }) {
     }
   }, [onStart, onStop, running]);
 
+  const onCopyLog = useCallback(async () => {
+    if (!logText) {
+      showToast(t('notifNoLogToCopy'), 'info');
+      return;
+    }
+    try {
+      await copyTextToClipboard(logText, { api });
+      showToast(t('notifLogCopied'), 'success');
+    } catch {
+      showToast(t('notifLogCopyFailed'), 'warn');
+    }
+  }, [api, logText, showToast, t]);
+
   const onGenerateScript = useCallback(async () => {
     if (!api?.buildServerScript) {
       return;
@@ -687,13 +699,6 @@ export default function App({ api }) {
             onClick={() => onOpenTokenUrl(KATE_MOBILE_TOKEN_URL)}
           >
             {t('getKateMobileToken')}
-          </button>
-          <button
-            type="button"
-            className="secondary"
-            onClick={() => onOpenTokenUrl(LOCALHOST_TOKEN_URL)}
-          >
-            {t('getLocalhostToken')}
           </button>
         </div>
       </div>
@@ -856,7 +861,17 @@ export default function App({ api }) {
       ) : null}
 
       <div className="section">
-        <h2>{t('log')}</h2>
+        <div className="section-heading">
+          <h2>{t('log')}</h2>
+          <button
+            type="button"
+            className="secondary compact"
+            onClick={onCopyLog}
+            disabled={!logText}
+          >
+            {t('copyLog')}
+          </button>
+        </div>
         {running ? (
           <p className="help" style={{ marginTop: 0 }}>
             {t('runningHint')}

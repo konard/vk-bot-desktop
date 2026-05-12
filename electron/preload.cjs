@@ -11,6 +11,7 @@ contextBridge.exposeInMainWorld('vkbot', {
   stopLocal: () => ipcRenderer.invoke('vkbot:stop-local'),
   getStatus: () => ipcRenderer.invoke('vkbot:get-status'),
   openTokenUrl: (url) => ipcRenderer.invoke('vkbot:open-token-url', url),
+  copyText: (text) => ipcRenderer.invoke('vkbot:copy-text', text),
   buildServerScript: (options) =>
     ipcRenderer.invoke('vkbot:server-script', options),
   readStats: () => ipcRenderer.invoke('vkbot:read-stats'),

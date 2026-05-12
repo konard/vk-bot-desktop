@@ -1,0 +1,220 @@
+TAP version 13
+# Subtest: pickOutgoingToCancel
+    # Subtest: returns the capacity-needed slice excluding priority friends
+    ok 1 - returns the capacity-needed slice excluding priority friends
+      ---
+      duration_ms: 1.143556
+      ...
+    # Subtest: treats malformed priority IDs from empty lino arrays as empty
+    ok 2 - treats malformed priority IDs from empty lino arrays as empty
+      ---
+      duration_ms: 0.192396
+      ...
+    1..2
+ok 1 - pickOutgoingToCancel
+  ---
+  duration_ms: 2.33758
+  type: 'suite'
+  ...
+# Subtest: computePotentialAcceptanceQuota
+    # Subtest: returns floor(totalIncomingSeen * 10%) - totalAcceptedEver
+    ok 1 - returns floor(totalIncomingSeen * 10%) - totalAcceptedEver
+      ---
+      duration_ms: 3.807005
+      ...
+    # Subtest: clamps to zero when already over quota
+    ok 2 - clamps to zero when already over quota
+      ---
+      duration_ms: 0.17413
+      ...
+    # Subtest: honours a custom percentage
+    ok 3 - honours a custom percentage
+      ---
+      duration_ms: 0.177495
+      ...
+    1..3
+ok 2 - computePotentialAcceptanceQuota
+  ---
+  duration_ms: 5.34491
+  type: 'suite'
+  ...
+# Subtest: selectIncomingRequests
+    # Subtest: respects the lifetime 10% quota across runs
+    ok 1 - respects the lifetime 10% quota across runs
+      ---
+      duration_ms: 2.727352
+      ...
+    # Subtest: falls back to current batch size when no lifetime stats provided
+    ok 2 - falls back to current batch size when no lifetime stats provided
+      ---
+      duration_ms: 0.190945
+      ...
+    # Subtest: above the limit only accepts requests with mutuals
+    ok 3 - above the limit only accepts requests with mutuals
+      ---
+      duration_ms: 0.172858
+      ...
+    # Subtest: returns nothing when capacity is exhausted
+    ok 4 - returns nothing when capacity is exhausted
+      ---
+      duration_ms: 0.101722
+      ...
+    # Subtest: returns nothing for empty input
+    ok 5 - returns nothing for empty input
+      ---
+      duration_ms: 0.134451
+      ...
+    1..5
+ok 3 - selectIncomingRequests
+  ---
+  duration_ms: 6.77872
+  type: 'suite'
+  ...
+# Subtest: pickPrioritySendList
+    # Subtest: returns priority IDs not yet in friends
+    ok 1 - returns priority IDs not yet in friends
+      ---
+      duration_ms: 0.218566
+      ...
+    # Subtest: respects remaining capacity
+    ok 2 - respects remaining capacity
+      ---
+      duration_ms: 0.110054
+      ...
+    1..2
+ok 4 - pickPrioritySendList
+  ---
+  duration_ms: 0.459987
+  type: 'suite'
+  ...
+# Subtest: pickDeactivatedToDelete
+    # Subtest: returns banned/deleted friends excluding priority list
+    ok 1 - returns banned/deleted friends excluding priority list
+      ---
+      duration_ms: 0.207049
+      ...
+    # Subtest: treats malformed priority IDs from empty lino arrays as empty
+    ok 2 - treats malformed priority IDs from empty lino arrays as empty
+      ---
+      duration_ms: 0.146529
+      ...
+    1..2
+ok 5 - pickDeactivatedToDelete
+  ---
+  duration_ms: 0.48891
+  type: 'suite'
+  ...
+# Subtest: detectLocale
+    # Subtest: returns ru for Russian language tags
+    ok 1 - returns ru for Russian language tags
+      ---
+      duration_ms: 0.704061
+      ...
+    # Subtest: falls back to en for unknown locales
+    ok 2 - falls back to en for unknown locales
+      ---
+      duration_ms: 0.14091
+      ...
+    1..2
+ok 6 - detectLocale
+  ---
+  duration_ms: 3.66931
+  type: 'suite'
+  ...
+# Subtest: translate
+    # Subtest: returns the translated string when available
+    ok 1 - returns the translated string when available
+      ---
+      duration_ms: 0.262361
+      ...
+    # Subtest: falls back to English when key missing in target locale
+    ok 2 - falls back to English when key missing in target locale
+      ---
+      duration_ms: 0.141912
+      ...
+    # Subtest: returns the key itself when nothing matches
+    ok 3 - returns the key itself when nothing matches
+      ---
+      duration_ms: 0.097185
+      ...
+    1..3
+ok 7 - translate
+  ---
+  duration_ms: 0.667858
+  type: 'suite'
+  ...
+# Subtest: LinoStore
+    # Subtest: round-trips a config through formatIndented/parseIndented
+    ok 1 - round-trips a config through formatIndented/parseIndented
+      ---
+      duration_ms: 22.328768
+      ...
+    # Subtest: normalizes empty and scalar list fields after loading lino config
+    ok 2 - normalizes empty and scalar list fields after loading lino config
+      ---
+      duration_ms: 3.788186
+      ...
+    # Subtest: normalizes legacy bare-key list shapes from existing config files
+    ok 3 - normalizes legacy bare-key list shapes from existing config files
+      ---
+      duration_ms: 0.303233
+      ...
+    # Subtest: local config overrides global
+    ok 4 - local config overrides global
+      ---
+      duration_ms: 3.726174
+      ...
+    # Subtest: returns empty object when no config files exist
+    ok 5 - returns empty object when no config files exist
+      ---
+      duration_ms: 2.29678
+      ...
+    1..5
+ok 8 - LinoStore
+  ---
+  duration_ms: 33.83602
+  type: 'suite'
+  ...
+# Subtest: renderer clipboard helper
+    # Subtest: prefers the Electron preload API when available
+    ok 1 - prefers the Electron preload API when available
+      ---
+      duration_ms: 0.536702
+      ...
+    # Subtest: falls back to navigator.clipboard.writeText outside Electron
+    ok 2 - falls back to navigator.clipboard.writeText outside Electron
+      ---
+      duration_ms: 0.108302
+      ...
+    # Subtest: throws when no clipboard implementation is available
+    ok 3 - throws when no clipboard implementation is available
+      ---
+      duration_ms: 1.844303
+      ...
+    1..3
+ok 9 - renderer clipboard helper
+  ---
+  duration_ms: 3.171936
+  type: 'suite'
+  ...
+# Subtest: Electron clipboard bridge
+    # Subtest: exposes a copyText preload API backed by Electron clipboard.writeText
+    ok 1 - exposes a copyText preload API backed by Electron clipboard.writeText
+      ---
+      duration_ms: 0.438685
+      ...
+    1..1
+ok 10 - Electron clipboard bridge
+  ---
+  duration_ms: 0.553757
+  type: 'suite'
+  ...
+1..10
+# tests 28
+# suites 10
+# pass 28
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 149.665064

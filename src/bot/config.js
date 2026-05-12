@@ -45,48 +45,59 @@ export const DEFAULT_CONFIG = {
   birthdayGreetings: [...BIRTHDAY_GREETINGS],
 };
 
-function isPlainObject(value) {
-  return value && typeof value === 'object' && !Array.isArray(value);
-}
-
-function normalizeArray(value, fallback) {
-  if (value === undefined) {
-    return fallback;
-  }
+function normalizeList(value, { numeric = false } = {}) {
+  let items;
   if (Array.isArray(value)) {
-    return value;
+    items = value;
+  } else if (value === undefined || value === null) {
+    items = [];
+  } else if (typeof value === 'object') {
+    items = [];
+  } else {
+    items = [value];
   }
-  if (value === null) {
-    return [];
+
+  if (numeric) {
+    return items
+      .map((item) => Number(item))
+      .filter((item) => Number.isFinite(item));
   }
-  if (isPlainObject(value)) {
-    const entries = Object.entries(value);
-    if (entries.length === 0) {
-      return [];
-    }
-    if (entries.every(([, child]) => isPlainObject(child))) {
-      return entries.map(([key]) => key);
-    }
-  }
-  return [value];
+
+  return items
+    .map((item) => String(item).trim())
+    .filter((item) => item.length > 0);
 }
 
-function mergeValue(defaultValue, overlayValue) {
-  if (Array.isArray(defaultValue)) {
-    return normalizeArray(overlayValue, [...defaultValue]);
+export function normalizeConfigLists(config) {
+  if (!config || typeof config !== 'object' || Array.isArray(config)) {
+    return config;
   }
-  if (isPlainObject(defaultValue)) {
-    const merged = {};
-    const keys = new Set([
-      ...Object.keys(defaultValue),
-      ...Object.keys(isPlainObject(overlayValue) ? overlayValue : {}),
-    ]);
-    for (const key of keys) {
-      merged[key] = mergeValue(defaultValue[key], overlayValue?.[key]);
+  const out = { ...config };
+  if ('priorityFriendIds' in out) {
+    out.priorityFriendIds = normalizeList(out.priorityFriendIds, {
+      numeric: true,
+    });
+  }
+  if (
+    out.invitationPost &&
+    typeof out.invitationPost === 'object' &&
+    !Array.isArray(out.invitationPost)
+  ) {
+    out.invitationPost = { ...out.invitationPost };
+    if ('messages' in out.invitationPost) {
+      out.invitationPost.messages = normalizeList(out.invitationPost.messages);
     }
-    return merged;
+    if ('communities' in out.invitationPost) {
+      out.invitationPost.communities = normalizeList(
+        out.invitationPost.communities,
+        { numeric: true }
+      );
+    }
   }
-  return overlayValue === undefined ? defaultValue : overlayValue;
+  if ('birthdayGreetings' in out) {
+    out.birthdayGreetings = normalizeList(out.birthdayGreetings);
+  }
+  return out;
 }
 
 /**
@@ -94,8 +105,24 @@ function mergeValue(defaultValue, overlayValue) {
  * global file or a project-local override.
  */
 export function mergeWithDefaults(overlay) {
-  if (!overlay || typeof overlay !== 'object') {
-    return JSON.parse(JSON.stringify(DEFAULT_CONFIG));
+  const result = JSON.parse(JSON.stringify(DEFAULT_CONFIG));
+  const normalizedOverlay = normalizeConfigLists(overlay);
+  if (!normalizedOverlay || typeof normalizedOverlay !== 'object') {
+    return result;
   }
-  return mergeValue(DEFAULT_CONFIG, overlay);
+  for (const [section, value] of Object.entries(normalizedOverlay)) {
+    if (
+      value &&
+      typeof value === 'object' &&
+      !Array.isArray(value) &&
+      result[section] &&
+      typeof result[section] === 'object' &&
+      !Array.isArray(result[section])
+    ) {
+      result[section] = { ...result[section], ...value };
+    } else {
+      result[section] = value;
+    }
+  }
+  return result;
 }
