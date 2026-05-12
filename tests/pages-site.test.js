@@ -196,6 +196,11 @@ describe('GitHub Pages download site', () => {
     expect(siteApp).toContain('issue-31-macos-done.png');
     expect(siteApp).toContain('issue-31-macos-open-anyway-settings.png');
     expect(siteApp).toContain('issue-31-macos-open-anyway-confirm.png');
+    expect(siteApp).toContain('assets/screenshots/');
+    expect(siteApp).not.toContain('../docs/screenshots/');
+    expect(readFileSync('scripts/build-site.mjs', 'utf8')).toContain(
+      "resolve(distDir, 'assets', 'screenshots')"
+    );
     expect(siteApp).toContain('install-macos-screenshots');
     expect(siteApp).toContain('Open the app on macOS');
     expect(siteApp).toContain('Открытие приложения на macOS');
