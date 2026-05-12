@@ -19,7 +19,7 @@ TAP version 13
       error: |-
         Expected values to be strictly deep-equal:
         + actual - expected
-        
+
         + {}
         - []
       code: 'ERR_ASSERTION'

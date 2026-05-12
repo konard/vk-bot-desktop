@@ -1,5 +1,5 @@
 
-> vk-bot-desktop@0.9.18 test
+> vk-bot-desktop@0.9.19 test
 > node --test --test-timeout=30000 tests/*.test.js
 
 TAP version 13
@@ -7,446 +7,446 @@ TAP version 13
     # Subtest: contains exactly 10 entries
     ok 1 - contains exactly 10 entries
       ---
-      duration_ms: 0.685974
+      duration_ms: 7.81526
       ...
     # Subtest: every greeting has at most 2 emojis
     ok 2 - every greeting has at most 2 emojis
       ---
-      duration_ms: 0.432235
+      duration_ms: 0.715378
       ...
     # Subtest: every greeting is a non-empty Russian-language string
     ok 3 - every greeting is a non-empty Russian-language string
       ---
-      duration_ms: 0.129703
+      duration_ms: 0.144826
       ...
     # Subtest: does not pick the same index twice in a row
     ok 4 - does not pick the same index twice in a row
       ---
-      duration_ms: 1.443545
+      duration_ms: 11.683264
       ...
     1..4
 ok 1 - birthday greetings
   ---
-  duration_ms: 3.597191
+  duration_ms: 21.645379
   type: 'suite'
   ...
 # Subtest: bot config defaults
     # Subtest: normalizes empty array fields parsed from lino as empty objects
     ok 1 - normalizes empty array fields parsed from lino as empty objects
       ---
-      duration_ms: 0.990619
+      duration_ms: 4.456073
       ...
     # Subtest: preserves default invitation messages when only communities are saved
     ok 2 - preserves default invitation messages when only communities are saved
       ---
-      duration_ms: 0.136584
+      duration_ms: 1.559148
       ...
     1..2
 ok 2 - bot config defaults
   ---
-  duration_ms: 1.862781
+  duration_ms: 6.882646
   type: 'suite'
   ...
 # Subtest: buildStatusCommand
     # Subtest: uses the default session name
     ok 1 - uses the default session name
       ---
-      duration_ms: 2.75949
+      duration_ms: 1.239781
       ...
     # Subtest: honors a custom session name
     ok 2 - honors a custom session name
       ---
-      duration_ms: 0.519375
+      duration_ms: 0.146379
       ...
     1..2
 ok 3 - buildStatusCommand
   ---
-  duration_ms: 7.62873
+  duration_ms: 8.526691
   type: 'suite'
   ...
 # Subtest: buildStartCommand
     # Subtest: defaults to screen isolation with the session name
     ok 1 - defaults to screen isolation with the session name
       ---
-      duration_ms: 8.589956
+      duration_ms: 0.237525
       ...
     # Subtest: builds a docker invocation with image and session name
     ok 2 - builds a docker invocation with image and session name
       ---
-      duration_ms: 0.18087
+      duration_ms: 0.145066
       ...
     # Subtest: passes through a custom command
     ok 3 - passes through a custom command
       ---
-      duration_ms: 0.159558
+      duration_ms: 0.11386
       ...
     1..3
 ok 4 - buildStartCommand
   ---
-  duration_ms: 9.188891
+  duration_ms: 0.655438
   type: 'suite'
   ...
 # Subtest: buildStopCommand
     # Subtest: uses --stop with the session
     ok 1 - uses --stop with the session
       ---
-      duration_ms: 0.188301
+      duration_ms: 13.091316
       ...
     1..1
 ok 5 - buildStopCommand
   ---
-  duration_ms: 0.431354
+  duration_ms: 13.383463
   type: 'suite'
   ...
 # Subtest: isRunning
     # Subtest: returns true when stdout indicates running
     ok 1 - returns true when stdout indicates running
       ---
-      duration_ms: 0.342683
+      duration_ms: 1.304728
       ...
     # Subtest: returns false when exit code != 0
     ok 2 - returns false when exit code != 0
       ---
-      duration_ms: 0.099238
+      duration_ms: 0.14724
       ...
     # Subtest: returns false when stdout has no running keyword
     ok 3 - returns false when stdout has no running keyword
       ---
-      duration_ms: 0.166858
+      duration_ms: 0.176985
       ...
     # Subtest: throws when runCommand is missing
     ok 4 - throws when runCommand is missing
       ---
-      duration_ms: 0.386537
+      duration_ms: 0.410033
       ...
     1..4
 ok 6 - isRunning
   ---
-  duration_ms: 1.164347
+  duration_ms: 2.25689
   type: 'suite'
   ...
 # Subtest: startBot/stopBot
     # Subtest: startBot invokes runCommand with the start argv
     ok 1 - startBot invokes runCommand with the start argv
       ---
-      duration_ms: 0.214199
+      duration_ms: 0.235542
       ...
     # Subtest: stopBot invokes runCommand with the stop argv
     ok 2 - stopBot invokes runCommand with the stop argv
       ---
-      duration_ms: 0.134952
+      duration_ms: 11.752407
       ...
     1..2
 ok 7 - startBot/stopBot
   ---
-  duration_ms: 0.431755
+  duration_ms: 12.153416
   type: 'suite'
   ...
 # Subtest: ensureMutualExclusion
     # Subtest: rejects unknown targetMode
     ok 1 - rejects unknown targetMode
       ---
-      duration_ms: 3.968044
+      duration_ms: 0.409912
       ...
     # Subtest: returns stoppedOther=false when no other runner is provided
     ok 2 - returns stoppedOther=false when no other runner is provided
       ---
-      duration_ms: 3.510272
+      duration_ms: 0.099579
       ...
     # Subtest: stops the remote bot when starting local and remote is running
     ok 3 - stops the remote bot when starting local and remote is running
       ---
-      duration_ms: 0.378105
+      duration_ms: 0.158136
       ...
     # Subtest: does not stop the remote bot when it is not running
     ok 4 - does not stop the remote bot when it is not running
       ---
-      duration_ms: 7.207001
+      duration_ms: 0.079859
       ...
     # Subtest: treats runner errors as not-running
     ok 5 - treats runner errors as not-running
       ---
-      duration_ms: 0.555139
+      duration_ms: 0.11398
       ...
     # Subtest: stops the local bot when starting server
     ok 6 - stops the local bot when starting server
       ---
-      duration_ms: 0.549811
+      duration_ms: 2.270872
       ...
     1..6
 ok 8 - ensureMutualExclusion
   ---
-  duration_ms: 16.835436
+  duration_ms: 3.370912
   type: 'suite'
   ...
 # Subtest: check-file-line-limits.sh
     # Subtest: defines a warning band below the hard limit
     ok 1 - defines a warning band below the hard limit
       ---
-      duration_ms: 0.776709
+      duration_ms: 13.811902
       ...
     # Subtest: warns without failing for files above the warning threshold
     ok 2 - warns without failing for files above the warning threshold
       ---
-      duration_ms: 30.718075
+      duration_ms: 88.352618
       ...
     # Subtest: still fails files over the hard limit
     ok 3 - still fails files over the hard limit
       ---
-      duration_ms: 17.043698
+      duration_ms: 68.651533
       ...
     # Subtest: normalizes padded wc output from BSD-like environments
     ok 4 - normalizes padded wc output from BSD-like environments
       ---
-      duration_ms: 20.053252
+      duration_ms: 42.304725
       ...
     1..4
 ok 9 - check-file-line-limits.sh
   ---
-  duration_ms: 69.656733
+  duration_ms: 214.250537
   type: 'suite'
   ...
 # Subtest: desktop release detection
     # Subtest: builds GitHub release tags from the package version
     ok 1 - builds GitHub release tags from the package version
       ---
-      duration_ms: 0.76361
+      duration_ms: 1.231569
       ...
     # Subtest: releases through a version bump when changesets exist
     ok 2 - releases through a version bump when changesets exist
       ---
-      duration_ms: 0.182503
+      duration_ms: 0.304385
       ...
     # Subtest: skips release when the current GitHub Release already has artifacts
     ok 3 - skips release when the current GitHub Release already has artifacts
       ---
-      duration_ms: 0.079969
+      duration_ms: 0.125878
       ...
     # Subtest: retries release without a bump when the GitHub Release is incomplete
     ok 4 - retries release without a bump when the GitHub Release is incomplete
       ---
-      duration_ms: 0.06653
+      duration_ms: 0.095092
       ...
     # Subtest: requires checksum, provenance, and all desktop platform assets
     ok 5 - requires checksum, provenance, and all desktop platform assets
       ---
-      duration_ms: 0.305816
+      duration_ms: 0.414539
       ...
     # Subtest: checks GitHub Release artifact completeness with gh release view
     ok 6 - checks GitHub Release artifact completeness with gh release view
       ---
-      duration_ms: 0.502021
+      duration_ms: 1.002106
       ...
     # Subtest: treats missing GitHub Releases as unpublished
     ok 7 - treats missing GitHub Releases as unpublished
       ---
-      duration_ms: 0.241661
+      duration_ms: 0.296523
       ...
     # Subtest: fails closed on unexpected gh release errors
     ok 8 - fails closed on unexpected gh release errors
       ---
-      duration_ms: 0.2009
+      duration_ms: 0.350665
       ...
     1..8
 ok 10 - desktop release detection
   ---
-  duration_ms: 3.331123
+  duration_ms: 26.633657
   type: 'suite'
   ...
 # Subtest: CI timeout policy
     # Subtest: sets timeout-minutes for every JavaScript workflow job
     ok 1 - sets timeout-minutes for every JavaScript workflow job
       ---
-      duration_ms: 6.474817
+      duration_ms: 16.691912
       ...
     # Subtest: parses workflow files checked out with Windows line endings
     ok 2 - parses workflow files checked out with Windows line endings
       ---
-      duration_ms: 0.1879
+      duration_ms: 0.215631
       ...
     # Subtest: caps individual Node.js and Bun tests at 30 seconds
     ok 3 - caps individual Node.js and Bun tests at 30 seconds
       ---
-      duration_ms: 0.129794
+      duration_ms: 0.123404
       ...
     1..3
 ok 11 - CI timeout policy
   ---
-  duration_ms: 7.620037
+  duration_ms: 28.072926
   type: 'suite'
   ...
 # Subtest: create-github-release release title formatting
     # Subtest: parses language from CLI arguments and environment defaults
     ok 1 - parses language from CLI arguments and environment defaults
       ---
-      duration_ms: 0.784531
+      duration_ms: 1.090218
       ...
     # Subtest: builds a human-readable release name from a language-prefixed tag
     ok 2 - builds a human-readable release name from a language-prefixed tag
       ---
-      duration_ms: 0.651532
+      duration_ms: 5.491119
       ...
     1..2
 ok 12 - create-github-release release title formatting
   ---
-  duration_ms: 7.050737
+  duration_ms: 14.542614
   type: 'suite'
   ...
 # Subtest: create-github-release.mjs
     # Subtest: uses gh api and reports successful creation only for exit code 0
     ok 1 - uses gh api and reports successful creation only for exit code 0
       ---
-      duration_ms: 0.390484
+      duration_ms: 0.553046
       ...
     # Subtest: throws when gh api exits non-zero with an unexpected error
     ok 2 - throws when gh api exits non-zero with an unexpected error
       ---
-      duration_ms: 0.257223
+      duration_ms: 0.337424
       ...
     # Subtest: treats already_exists as an idempotent gh api result
     ok 3 - treats already_exists as an idempotent gh api result
       ---
-      duration_ms: 0.184786
+      duration_ms: 0.295671
       ...
     # Subtest: passes release payload to gh api and reports success only on exit code 0
     ok 4 - passes release payload to gh api and reports success only on exit code 0
       ---
-      duration_ms: 202.470866
+      duration_ms: 328.590557
       ...
     # Subtest: passes a human-readable release name for language-prefixed tags
     ok 5 - passes a human-readable release name for language-prefixed tags
       ---
-      duration_ms: 128.257129
+      duration_ms: 204.232078
       ...
     # Subtest: fails when gh api exits non-zero with an unexpected error
     ok 6 - fails when gh api exits non-zero with an unexpected error
       ---
-      duration_ms: 118.602364
+      duration_ms: 192.535424
       ...
     # Subtest: treats already_exists as an explicit idempotent skip
     ok 7 - treats already_exists as an explicit idempotent skip
       ---
-      duration_ms: 121.119453
+      duration_ms: 236.116444
       ...
     1..7
 ok 13 - create-github-release.mjs
   ---
-  duration_ms: 574.405156
+  duration_ms: 963.336765
   type: 'suite'
   ...
 # Subtest: release workflow orchestration
     # Subtest: does not publish packages to npm from release jobs
     ok 1 - does not publish packages to npm from release jobs
       ---
-      duration_ms: 2.032364
+      duration_ms: 3.843038
       ...
     # Subtest: keeps desktop release jobs in the same workflow with an exact tag and commit
     ok 2 - keeps desktop release jobs in the same workflow with an exact tag and commit
       ---
-      duration_ms: 0.56241
+      duration_ms: 0.457443
       ...
     # Subtest: runs desktop jobs after optional release modes are skipped
     ok 3 - runs desktop jobs after optional release modes are skipped
       ---
-      duration_ms: 0.703931
+      duration_ms: 1.626789
       ...
     1..3
 ok 14 - release workflow orchestration
   ---
-  duration_ms: 4.13253
+  duration_ms: 7.006181
   type: 'suite'
   ...
 # Subtest: desktop release workflow
     # Subtest: builds desktop artifacts for Linux, macOS, and Windows releases
     ok 1 - builds desktop artifacts for Linux, macOS, and Windows releases
       ---
-      duration_ms: 0.413668
+      duration_ms: 0.408991
       ...
     # Subtest: uses versioned artifact names for release download links
     ok 2 - uses versioned artifact names for release download links
       ---
-      duration_ms: 0.336912
+      duration_ms: 1.328463
       ...
     # Subtest: uses system FPM for native Linux arm64 Debian builds
     ok 3 - uses system FPM for native Linux arm64 Debian builds
       ---
-      duration_ms: 0.366347
+      duration_ms: 0.368821
       ...
     # Subtest: normalizes Linux artifact architecture names before validation
     ok 4 - normalizes Linux artifact architecture names before validation
       ---
-      duration_ms: 0.302681
+      duration_ms: 0.337103
       ...
     1..4
 ok 15 - desktop release workflow
   ---
-  duration_ms: 2.233785
+  duration_ms: 2.723858
   type: 'suite'
   ...
 # Subtest: desktop release workflow macOS signing
     # Subtest: keeps signed and notarized macOS publishing when Apple secrets are configured
     ok 1 - keeps signed and notarized macOS publishing when Apple secrets are configured
       ---
-      duration_ms: 0.31496
+      duration_ms: 1.168055
       ...
     # Subtest: builds ad-hoc signed macOS artifacts without Apple secrets
     ok 2 - builds ad-hoc signed macOS artifacts without Apple secrets
       ---
-      duration_ms: 0.460197
+      duration_ms: 0.372947
       ...
     1..2
 ok 16 - desktop release workflow macOS signing
   ---
-  duration_ms: 0.93056
+  duration_ms: 1.692397
   type: 'suite'
   ...
 # Subtest: desktop release workflow smoke tests
     # Subtest: smoke-tests platform installers after building and before uploading
     ok 1 - smoke-tests platform installers after building and before uploading
       ---
-      duration_ms: 0.30757
+      duration_ms: 0.373918
       ...
     # Subtest: configures a Linux maintainer for deb artifacts
     ok 2 - configures a Linux maintainer for deb artifacts
       ---
-      duration_ms: 0.148782
+      duration_ms: 0.199599
       ...
     # Subtest: hashes Linux and macOS artifacts without splitting filenames on spaces
     ok 3 - hashes Linux and macOS artifacts without splitting filenames on spaces
       ---
-      duration_ms: 0.310703
+      duration_ms: 0.260239
       ...
     1..3
 ok 17 - desktop release workflow smoke tests
   ---
-  duration_ms: 0.880135
+  duration_ms: 0.945503
   type: 'suite'
   ...
 # Subtest: detect-code-changes.mjs
     # Subtest: treats a push of a real merge commit on main with first-parent diff
     ok 1 - treats a push of a real merge commit on main with first-parent diff
       ---
-      duration_ms: 352.281627
+      duration_ms: 385.760688
       ...
     # Subtest: uses HEAD^2 diff for pull_request synthetic merge commits
     ok 2 - uses HEAD^2 diff for pull_request synthetic merge commits
       ---
-      duration_ms: 210.114549
+      duration_ms: 358.903818
       ...
     # Subtest: uses HEAD^..HEAD on a plain non-merge push commit
     ok 3 - uses HEAD^..HEAD on a plain non-merge push commit
       ---
-      duration_ms: 149.185947
+      duration_ms: 211.201654
       ...
     # Subtest: regression: issue \#28 - "Merge pull request" of a non-site PR on main does not classify as pull_request
     ok 4 - regression: issue \#28 - "Merge pull request" of a non-site PR on main does not classify as pull_request
       ---
-      duration_ms: 246.003535
+      duration_ms: 322.002672
       ...
     1..4
 ok 18 - detect-code-changes.mjs
   ---
-  duration_ms: 963.449753
+  duration_ms: 1289.498066
   type: 'suite'
   ...
 # https://github.com/konard/vk-bot-desktop/actions/runs/25636588014
@@ -454,554 +454,554 @@ ok 18 - detect-code-changes.mjs
     # Subtest: extracts a workflow run id from gh workflow run output
     ok 1 - extracts a workflow run id from gh workflow run output
       ---
-      duration_ms: 1.17845
+      duration_ms: 0.841997
       ...
     # Subtest: picks the newest workflow run for the requested target commit
     ok 2 - picks the newest workflow run for the requested target commit
       ---
-      duration_ms: 0.319476
+      duration_ms: 0.196333
       ...
     # Subtest: watches the dispatched run and returns the downstream failure status
     ok 3 - watches the dispatched run and returns the downstream failure status
       ---
-      duration_ms: 4.84198
+      duration_ms: 1.130228
       ...
     1..3
 ok 19 - dispatch-and-watch-workflow.mjs
   ---
-  duration_ms: 12.871388
+  duration_ms: 3.200248
   type: 'suite'
   ...
 # Subtest: dispatch-and-watch-workflow.mjs fallback polling
     # Subtest: finds the child run by head SHA when dispatch output has no run URL
     ok 1 - finds the child run by head SHA when dispatch output has no run URL
       ---
-      duration_ms: 0.657972
+      duration_ms: 0.400317
       ...
     1..1
 ok 20 - dispatch-and-watch-workflow.mjs fallback polling
   ---
-  duration_ms: 0.819934
+  duration_ms: 0.500717
   type: 'suite'
   ...
 # Subtest: fetchOutgoingRequestIds
     # Subtest: returns [] when vk client is missing
     ok 1 - returns [] when vk client is missing
       ---
-      duration_ms: 1.09815
+      duration_ms: 1.310507
       ...
     # Subtest: returns [] when friends.getRequests is missing
     ok 2 - returns [] when friends.getRequests is missing
       ---
-      duration_ms: 0.23381
+      duration_ms: 0.242922
       ...
     # Subtest: returns the items array from the VK response
     ok 3 - returns the items array from the VK response
       ---
-      duration_ms: 0.215763
+      duration_ms: 4.650864
       ...
     # Subtest: returns [] when items is not an array
     ok 4 - returns [] when items is not an array
       ---
-      duration_ms: 4.964903
+      duration_ms: 1.31205
       ...
     1..4
 ok 21 - fetchOutgoingRequestIds
   ---
-  duration_ms: 11.782973
+  duration_ms: 17.315424
   type: 'suite'
   ...
 # Subtest: computePotentialAcceptanceQuota
     # Subtest: returns floor(totalIncomingSeen * 10%) - totalAcceptedEver
     ok 1 - returns floor(totalIncomingSeen * 10%) - totalAcceptedEver
       ---
-      duration_ms: 5.402076
+      duration_ms: 4.027724
       ...
     # Subtest: clamps to zero when already over quota
     ok 2 - clamps to zero when already over quota
       ---
-      duration_ms: 0.18696
+      duration_ms: 0.160059
       ...
     # Subtest: honours a custom percentage
     ok 3 - honours a custom percentage
       ---
-      duration_ms: 0.193179
+      duration_ms: 0.144375
       ...
     1..3
 ok 22 - computePotentialAcceptanceQuota
   ---
-  duration_ms: 6.932771
+  duration_ms: 8.552319
   type: 'suite'
   ...
 # Subtest: selectIncomingRequests
     # Subtest: respects the lifetime 10% quota across runs
     ok 1 - respects the lifetime 10% quota across runs
       ---
-      duration_ms: 0.889358
+      duration_ms: 7.178058
       ...
     # Subtest: falls back to current batch size when no lifetime stats provided
     ok 2 - falls back to current batch size when no lifetime stats provided
       ---
-      duration_ms: 0.184676
+      duration_ms: 0.206228
       ...
     # Subtest: above the limit only accepts requests with mutuals
     ok 3 - above the limit only accepts requests with mutuals
       ---
-      duration_ms: 0.118066
+      duration_ms: 0.173499
       ...
     # Subtest: returns nothing when capacity is exhausted
     ok 4 - returns nothing when capacity is exhausted
       ---
-      duration_ms: 0.142813
+      duration_ms: 0.142022
       ...
     # Subtest: returns nothing for empty input
     ok 5 - returns nothing for empty input
       ---
-      duration_ms: 0.132467
+      duration_ms: 0.137175
       ...
     1..5
 ok 23 - selectIncomingRequests
   ---
-  duration_ms: 1.890452
+  duration_ms: 8.19125
   type: 'suite'
   ...
 # Subtest: pickPrioritySendList
     # Subtest: returns priority IDs not yet in friends
     ok 1 - returns priority IDs not yet in friends
       ---
-      duration_ms: 0.216233
+      duration_ms: 0.246638
       ...
     # Subtest: respects remaining capacity
     ok 2 - respects remaining capacity
       ---
-      duration_ms: 0.125398
+      duration_ms: 0.116254
       ...
     1..2
 ok 24 - pickPrioritySendList
   ---
-  duration_ms: 0.476412
+  duration_ms: 0.508869
   type: 'suite'
   ...
 # Subtest: pickDeactivatedToDelete
     # Subtest: returns banned/deleted friends excluding priority list
     ok 1 - returns banned/deleted friends excluding priority list
       ---
-      duration_ms: 0.213829
+      duration_ms: 0.206077
       ...
     1..1
 ok 25 - pickDeactivatedToDelete
   ---
-  duration_ms: 0.342711
+  duration_ms: 0.416262
   type: 'suite'
   ...
 # Subtest: detectLocale
     # Subtest: returns ru for Russian language tags
     ok 1 - returns ru for Russian language tags
       ---
-      duration_ms: 0.646354
+      duration_ms: 0.906343
       ...
     # Subtest: falls back to en for unknown locales
     ok 2 - falls back to en for unknown locales
       ---
-      duration_ms: 0.111206
+      duration_ms: 0.164286
       ...
     1..2
 ok 26 - detectLocale
   ---
-  duration_ms: 1.735782
+  duration_ms: 10.930891
   type: 'suite'
   ...
 # Subtest: translate
     # Subtest: returns the translated string when available
     ok 1 - returns the translated string when available
       ---
-      duration_ms: 0.38106
+      duration_ms: 0.519515
       ...
     # Subtest: falls back to English when key missing in target locale
     ok 2 - falls back to English when key missing in target locale
       ---
-      duration_ms: 0.169533
+      duration_ms: 0.219567
       ...
     # Subtest: returns the key itself when nothing matches
     ok 3 - returns the key itself when nothing matches
       ---
-      duration_ms: 0.250213
+      duration_ms: 0.12037
       ...
     1..3
 ok 27 - translate
   ---
-  duration_ms: 1.047924
+  duration_ms: 1.124029
   type: 'suite'
   ...
 # Subtest: add function
     # Subtest: should add two positive numbers
     ok 1 - should add two positive numbers
       ---
-      duration_ms: 0.642629
+      duration_ms: 3.655769
       ...
     # Subtest: should add negative numbers
     ok 2 - should add negative numbers
       ---
-      duration_ms: 0.092849
+      duration_ms: 0.179688
       ...
     # Subtest: should add zero
     ok 3 - should add zero
       ---
-      duration_ms: 0.10064
+      duration_ms: 0.128552
       ...
     1..3
 ok 28 - add function
   ---
-  duration_ms: 1.768992
+  duration_ms: 4.983862
   type: 'suite'
   ...
 # Subtest: multiply function
     # Subtest: should multiply two positive numbers
     ok 1 - should multiply two positive numbers
       ---
-      duration_ms: 0.096604
+      duration_ms: 0.168652
       ...
     # Subtest: should multiply by zero
     ok 2 - should multiply by zero
       ---
-      duration_ms: 0.098617
+      duration_ms: 0.177815
       ...
     # Subtest: should multiply negative numbers
     ok 3 - should multiply negative numbers
       ---
-      duration_ms: 0.064016
+      duration_ms: 0.116524
       ...
     1..3
 ok 29 - multiply function
   ---
-  duration_ms: 0.385776
+  duration_ms: 0.630843
   type: 'suite'
   ...
 # Subtest: invitation messages
     # Subtest: contains exactly 10 entries
     ok 1 - contains exactly 10 entries
       ---
-      duration_ms: 0.512606
+      duration_ms: 5.790406
       ...
     # Subtest: every message is a non-empty Russian-language string
     ok 2 - every message is a non-empty Russian-language string
       ---
-      duration_ms: 0.275141
+      duration_ms: 0.376563
       ...
     # Subtest: does not pick the same index twice in a row
     ok 3 - does not pick the same index twice in a row
       ---
-      duration_ms: 0.205837
+      duration_ms: 0.236283
       ...
     # Subtest: accepts a custom list
     ok 4 - accepts a custom list
       ---
-      duration_ms: 2.509086
+      duration_ms: 1.143668
       ...
     # Subtest: returns empty string for empty list
     ok 5 - returns empty string for empty list
       ---
-      duration_ms: 0.200559
+      duration_ms: 0.099238
       ...
     1..5
 ok 30 - invitation messages
   ---
-  duration_ms: 4.478817
+  duration_ms: 8.637407
   type: 'suite'
   ...
 # Subtest: LinoStore
     # Subtest: round-trips a config through formatIndented/parseIndented
     ok 1 - round-trips a config through formatIndented/parseIndented
       ---
-      duration_ms: 9.950797
+      duration_ms: 25.997107
       ...
     # Subtest: local config overrides global
     ok 2 - local config overrides global
       ---
-      duration_ms: 3.790599
+      duration_ms: 9.450882
       ...
     # Subtest: keeps empty invitation communities iterable after loading config
     ok 3 - keeps empty invitation communities iterable after loading config
       ---
-      duration_ms: 2.831457
+      duration_ms: 5.678759
       ...
     # Subtest: returns empty object when no config files exist
     ok 4 - returns empty object when no config files exist
       ---
-      duration_ms: 1.023919
+      duration_ms: 1.433891
       ...
     1..4
 ok 31 - LinoStore
   ---
-  duration_ms: 18.640703
+  duration_ms: 43.729403
   type: 'suite'
   ...
-# 2026-05-12T15:37:30.309Z [info] token=***
-# 2026-05-12T15:37:30.311Z [debug] verbose probe
-# 2026-05-12T15:37:30.311Z [info] shown
-# 2026-05-12T15:37:30.310Z [error] Could not set online status {
+# 2026-05-12T15:49:36.890Z [info] token=***
+# 2026-05-12T15:49:36.901Z [error] Could not set online status {
 #   "error": {
 #     "name": "Error",
 #     "message": "Unknown method passed.",
 #     "stack": "Error: Unknown method passed.\\n    at TestContext.<anonymous> (file:///tmp/gh-issue-solver-1778599373526/tests/logger.test.js:72:16)\\n    at Test.runInAsyncScope (node:async_hooks:206:9)\\n    at Test.run (node:internal/test_runner/test:796:25)\\n    at Suite.processPendingSubtests (node:internal/test_runner/test:526:18)\\n    at Test.postRun (node:internal/test_runner/test:889:19)\\n    at Test.run (node:internal/test_runner/test:835:12)\\n    at async Promise.all (index 0)\\n    at async Suite.run (node:internal/test_runner/test:1135:7)\\n    at async Test.processPendingSubtests (node:internal/test_runner/test:526:7)"
 #   }
 # }
+# 2026-05-12T15:49:36.902Z [debug] verbose probe
+# 2026-05-12T15:49:36.903Z [info] shown
 # Subtest: redact
     # Subtest: masks long token-like strings
     ok 1 - masks long token-like strings
       ---
-      duration_ms: 1.346961
+      duration_ms: 1.953637
       ...
     # Subtest: masks query-style secrets
     ok 2 - masks query-style secrets
       ---
-      duration_ms: 0.143024
+      duration_ms: 0.304004
       ...
     # Subtest: masks secret-named object properties
     ok 3 - masks secret-named object properties
       ---
-      duration_ms: 0.153389
+      duration_ms: 0.235311
       ...
     # Subtest: handles circular references
     ok 4 - handles circular references
       ---
-      duration_ms: 0.172658
+      duration_ms: 1.82786
       ...
     # Subtest: does not mask short ids
     ok 5 - does not mask short ids
       ---
-      duration_ms: 0.079628
+      duration_ms: 0.183583
       ...
     1..5
 ok 32 - redact
   ---
-  duration_ms: 3.900784
+  duration_ms: 16.259217
   type: 'suite'
   ...
 # Subtest: logger sinks
     # Subtest: routes log lines to registered sinks with redaction
     ok 1 - routes log lines to registered sinks with redaction
       ---
-      duration_ms: 0.820775
+      duration_ms: 11.443896
       ...
     # Subtest: pretty-prints object arguments with indentation
     ok 2 - pretty-prints object arguments with indentation
       ---
-      duration_ms: 0.451194
+      duration_ms: 0.783429
       ...
     1..2
 ok 33 - logger sinks
   ---
-  duration_ms: 1.423166
+  duration_ms: 12.483659
   type: 'suite'
   ...
 # Subtest: verbose mode
     # Subtest: is enabled by default so debug lines reach sinks
     ok 1 - is enabled by default so debug lines reach sinks
       ---
-      duration_ms: 0.222002
+      duration_ms: 0.335983
       ...
     # Subtest: suppresses debug lines when toggled off
     ok 2 - suppresses debug lines when toggled off
       ---
-      duration_ms: 0.242312
+      duration_ms: 0.235011
       ...
     1..2
 ok 34 - verbose mode
   ---
-  duration_ms: 0.625243
+  duration_ms: 0.777591
   type: 'suite'
   ...
 # Subtest: Electron OAuth localhost callback markup
     # Subtest: serves a page that posts the URL fragment token back to the app
     ok 1 - serves a page that posts the URL fragment token back to the app
       ---
-      duration_ms: 4.242173
+      duration_ms: 2.074448
       ...
     1..1
 ok 35 - Electron OAuth localhost callback markup
   ---
-  duration_ms: 4.939375
+  duration_ms: 2.80571
   type: 'suite'
   ...
 # Subtest: Electron OAuth localhost callback server
     # Subtest: accepts a token handoff from the callback page
     ok 1 - accepts a token handoff from the callback page
       ---
-      duration_ms: 91.331556
+      duration_ms: 131.651038
       ...
     1..1
 ok 36 - Electron OAuth localhost callback server
   ---
-  duration_ms: 91.704143
+  duration_ms: 132.179958
   type: 'suite'
   ...
 # Subtest: package info helpers
     # Subtest: reads scoped package names and versions from package.json content
     ok 1 - reads scoped package names and versions from package.json content
       ---
-      duration_ms: 1.595011
+      duration_ms: 0.737982
       ...
     # Subtest: formats npm package specifiers from the derived package name
     ok 2 - formats npm package specifiers from the derived package name
       ---
-      duration_ms: 0.182012
+      duration_ms: 0.177996
       ...
     # Subtest: formats changeset headers from the derived package name
     ok 3 - formats changeset headers from the derived package name
       ---
-      duration_ms: 0.1478
+      duration_ms: 0.162122
       ...
     # Subtest: matches changesets for the derived package name only
     ok 4 - matches changesets for the derived package name only
       ---
-      duration_ms: 0.279367
+      duration_ms: 0.255521
       ...
     # Subtest: reports missing package names clearly
     ok 5 - reports missing package names clearly
       ---
-      duration_ms: 0.141802
+      duration_ms: 0.137516
       ...
     1..5
 ok 37 - package info helpers
   ---
-  duration_ms: 3.216182
+  duration_ms: 5.897275
   type: 'suite'
   ...
 # Subtest: GitHub Pages download site
     # Subtest: has a reproducible React build script
     ok 1 - has a reproducible React build script
       ---
-      duration_ms: 0.846033
+      duration_ms: 1.227332
       ...
     # Subtest: deploys the built site with the official GitHub Pages actions
     ok 2 - deploys the built site with the official GitHub Pages actions
       ---
-      duration_ms: 0.270313
+      duration_ms: 4.447681
       ...
     # Subtest: rebuilds on every main push and tag push, not only when site files change
     ok 3 - rebuilds on every main push and tag push, not only when site files change
       ---
-      duration_ms: 0.109244
+      duration_ms: 0.346006
       ...
     # Subtest: detects language, theme, and operating system for the primary download
     ok 4 - detects language, theme, and operating system for the primary download
       ---
-      duration_ms: 2.039796
+      duration_ms: 0.194029
       ...
     # Subtest: loads latest release assets without synthesizing absent asset links
     ok 5 - loads latest release assets without synthesizing absent asset links
       ---
-      duration_ms: 0.196502
+      duration_ms: 1.673659
       ...
     # Subtest: runs browser-commander e2e checks before and after Pages deployment
     ok 6 - runs browser-commander e2e checks before and after Pages deployment
       ---
-      duration_ms: 0.16088
+      duration_ms: 0.403132
       ...
     # Subtest: authenticates the post-deploy GitHub Release API call
     ok 7 - authenticates the post-deploy GitHub Release API call
       ---
-      duration_ms: 0.105196
+      duration_ms: 0.231906
       ...
     # Subtest: prints rate-limit diagnostics when the Release API call fails
     ok 8 - prints rate-limit diagnostics when the Release API call fails
       ---
-      duration_ms: 0.085428
+      duration_ms: 0.179397
       ...
     # Subtest: requires macOS assets in the built-site release fixture
     ok 9 - requires macOS assets in the built-site release fixture
       ---
-      duration_ms: 0.245818
+      duration_ms: 0.250534
       ...
     # Subtest: has expandable verification instructions and OS-specific preview chrome
     ok 10 - has expandable verification instructions and OS-specific preview chrome
       ---
-      duration_ms: 0.176965
+      duration_ms: 0.176644
       ...
     # Subtest: documents the macOS Gatekeeper first-launch workflow for ad-hoc builds
     ok 11 - documents the macOS Gatekeeper first-launch workflow for ad-hoc builds
       ---
-      duration_ms: 0.269853
+      duration_ms: 0.230944
       ...
     1..11
 ok 38 - GitHub Pages download site
   ---
-  duration_ms: 6.385645
+  duration_ms: 23.225248
   type: 'suite'
   ...
 # Subtest: release badge version normalization
     # Subtest: strips a plain v prefix for backward compatibility
     ok 1 - strips a plain v prefix for backward compatibility
       ---
-      duration_ms: 1.388063
+      duration_ms: 1.170508
       ...
     # Subtest: strips a js-v prefix from multi-language release tags
     ok 2 - strips a js-v prefix from multi-language release tags
       ---
-      duration_ms: 0.203313
+      duration_ms: 0.4351
       ...
     # Subtest: strips a rust-v prefix from multi-language release tags
     ok 3 - strips a rust-v prefix from multi-language release tags
       ---
-      duration_ms: 0.092038
+      duration_ms: 0.160299
       ...
     # Subtest: escapes hyphens in prerelease versions for shields.io static badge paths
     ok 4 - escapes hyphens in prerelease versions for shields.io static badge paths
       ---
-      duration_ms: 0.091416
+      duration_ms: 0.151076
       ...
     # Subtest: builds a valid shields.io badge URL for prefixed tags
     ok 5 - builds a valid shields.io badge URL for prefixed tags
       ---
-      duration_ms: 0.122022
+      duration_ms: 0.203935
       ...
     # Subtest: builds a valid shields.io badge URL for prefixed prerelease tags
     ok 6 - builds a valid shields.io badge URL for prefixed prerelease tags
       ---
-      duration_ms: 0.124495
+      duration_ms: 0.189133
       ...
     1..6
 ok 39 - release badge version normalization
   ---
-  duration_ms: 3.195081
+  duration_ms: 10.003776
   type: 'suite'
   ...
-# 2026-05-12T15:37:30.620Z [debug] Checking for 'set-online-status' trigger...
-# 2026-05-12T15:37:30.621Z [info] Online status is set
-# 2026-05-12T15:37:30.621Z [debug] 'set-online-status' trigger executed in 1 ms
-# 2026-05-12T15:37:30.621Z [debug] Checking for 'accept-friend-requests' trigger...
-# 2026-05-12T15:37:30.621Z [error] Could not accept friend requests {
+# 2026-05-12T15:49:37.232Z [debug] Checking for 'set-online-status' trigger...
+# 2026-05-12T15:49:37.233Z [info] Online status is set
+# 2026-05-12T15:49:37.233Z [debug] 'set-online-status' trigger executed in 1 ms
+# 2026-05-12T15:49:37.233Z [debug] Checking for 'accept-friend-requests' trigger...
+# 2026-05-12T15:49:37.236Z [error] Could not accept friend requests {
 #   "error": {
 #     "name": "TypeError",
 #     "message": "Cannot read properties of undefined (reading 'get')",
 #     "stack": "TypeError: Cannot read properties of undefined (reading 'get')\\n    at loadFriends (file:///tmp/gh-issue-solver-1778599373526/src/bot/triggers/accept-friend-requests.js:20:43)\\n    at acceptFriendRequests (file:///tmp/gh-issue-solver-1778599373526/src/bot/triggers/accept-friend-requests.js:184:27)\\n    at file:///tmp/gh-issue-solver-1778599373526/src/bot/runner.js:75:15\\n    at Timeout.run [as _onTimeout] (file:///tmp/gh-issue-solver-1778599373526/src/bot/runner.js:29:13)\\n    at listOnTimeout (node:internal/timers:581:17)\\n    at process.processTimers (node:internal/timers:519:7)"
 #   }
 # }
-# 2026-05-12T15:37:30.622Z [debug] 'accept-friend-requests' trigger executed in 1 ms
-# 2026-05-12T15:37:30.622Z [debug] Checking for 'delete-deactivated-friends' trigger...
-# 2026-05-12T15:37:30.622Z [error] Could not delete deactivated friends {
+# 2026-05-12T15:49:37.237Z [error] Could not delete deactivated friends {
 #   "error": {
 #     "name": "TypeError",
 #     "message": "Cannot read properties of undefined (reading 'get')",
 #     "stack": "TypeError: Cannot read properties of undefined (reading 'get')\\n    at loadFriendsWithStatus (file:///tmp/gh-issue-solver-1778599373526/src/bot/triggers/delete-deactivated-friends.js:9:43)\\n    at deleteDeactivatedFriends (file:///tmp/gh-issue-solver-1778599373526/src/bot/triggers/delete-deactivated-friends.js:27:27)\\n    at file:///tmp/gh-issue-solver-1778599373526/src/bot/runner.js:84:15\\n    at Timeout.run [as _onTimeout] (file:///tmp/gh-issue-solver-1778599373526/src/bot/runner.js:29:13)\\n    at listOnTimeout (node:internal/timers:581:17)\\n    at process.processTimers (node:internal/timers:519:7)"
 #   }
 # }
-# 2026-05-12T15:37:30.623Z [error] Could not delete outgoing friend requests {
+# 2026-05-12T15:49:37.237Z [debug] 'accept-friend-requests' trigger executed in 4 ms
+# 2026-05-12T15:49:37.237Z [debug] Checking for 'delete-deactivated-friends' trigger...
+# 2026-05-12T15:49:37.237Z [debug] 'delete-deactivated-friends' trigger executed in 0 ms
+# 2026-05-12T15:49:37.237Z [debug] Checking for 'delete-outgoing-friend-requests' trigger...
+# 2026-05-12T15:49:37.237Z [error] Could not delete outgoing friend requests {
 #   "error": {
 #     "name": "TypeError",
 #     "message": "Cannot read properties of undefined (reading 'getRequests')",
 #     "stack": "TypeError: Cannot read properties of undefined (reading 'getRequests')\\n    at deleteOutgoingFriendRequests (file:///tmp/gh-issue-solver-1778599373526/src/bot/triggers/delete-outgoing-friend-requests.js:33:43)\\n    at file:///tmp/gh-issue-solver-1778599373526/src/bot/runner.js:94:15\\n    at Timeout.run [as _onTimeout] (file:///tmp/gh-issue-solver-1778599373526/src/bot/runner.js:29:13)\\n    at listOnTimeout (node:internal/timers:581:17)\\n    at process.processTimers (node:internal/timers:519:7)"
 #   }
 # }
-# 2026-05-12T15:37:30.622Z [debug] 'delete-deactivated-friends' trigger executed in 0 ms
-# 2026-05-12T15:37:30.623Z [debug] Checking for 'delete-outgoing-friend-requests' trigger...
-# 2026-05-12T15:37:30.623Z [debug] 'delete-outgoing-friend-requests' trigger executed in 0 ms
-# 2026-05-12T15:37:30.623Z [debug] Checking for 'send-invitation-posts' trigger...
-# 2026-05-12T15:37:30.623Z [info] No invitation-post communities configured; skipping
-# 2026-05-12T15:37:30.623Z [debug] 'send-invitation-posts' trigger executed in 0 ms
-# 2026-05-12T15:37:30.623Z [debug] Checking for 'send-birthday-congratulations' trigger...
-# 2026-05-12T15:37:30.623Z [error] Trigger threw {
+# 2026-05-12T15:49:37.240Z [debug] 'delete-outgoing-friend-requests' trigger executed in 3 ms
+# 2026-05-12T15:49:37.240Z [debug] Checking for 'send-invitation-posts' trigger...
+# 2026-05-12T15:49:37.240Z [info] No invitation-post communities configured; skipping
+# 2026-05-12T15:49:37.240Z [debug] 'send-invitation-posts' trigger executed in 0 ms
+# 2026-05-12T15:49:37.240Z [debug] Checking for 'send-birthday-congratulations' trigger...
+# 2026-05-12T15:49:37.241Z [error] Trigger threw {
 #   "name": "send-birthday-congratulations",
 #   "error": {
 #     "name": "TypeError",
@@ -1013,59 +1013,59 @@ ok 39 - release badge version normalization
     # Subtest: fires the online-status trigger at least once and keeps the process alive
     ok 1 - fires the online-status trigger at least once and keeps the process alive
       ---
-      duration_ms: 52.738943
+      duration_ms: 57.786551
       ...
     # Subtest: does not exit prematurely when run as a forked child (regression for issue \#32)
     ok 2 - does not exit prematurely when run as a forked child (regression for issue \#32)
       ---
-      duration_ms: 420.151232
+      duration_ms: 424.325168
       ...
     1..2
 ok 40 - startBot scheduling
   ---
-  duration_ms: 475.876395
+  duration_ms: 483.349048
   type: 'suite'
   ...
-# 2026-05-12T15:37:30.679Z [info] first line from session-log test
-# 2026-05-12T15:37:30.680Z [warn] second line {
+# 2026-05-12T15:49:37.164Z [info] first line from session-log test
+# 2026-05-12T15:49:37.167Z [warn] second line {
 #   "detail": "value"
 # }
 # Subtest: openSessionLog: writes log lines to a session file
     # Subtest: creates a file under the given directory and persists logger output
     ok 1 - creates a file under the given directory and persists logger output
       ---
-      duration_ms: 29.140709
+      duration_ms: 13.400258
       ...
     1..1
 ok 41 - openSessionLog: writes log lines to a session file
   ---
-  duration_ms: 31.136619
+  duration_ms: 14.475413
   type: 'suite'
   ...
-# 2026-05-12T15:37:30.722Z [info] vk {
+# 2026-05-12T15:49:37.177Z [info] vk {
 #   "token": "***"
 # }
 # Subtest: openSessionLog: redacts secrets in persisted logs
     # Subtest: writes the masked representation, not the raw token
     ok 1 - writes the masked representation, not the raw token
       ---
-      duration_ms: 35.221008
+      duration_ms: 6.330312
       ...
     1..1
 ok 42 - openSessionLog: redacts secrets in persisted logs
   ---
-  duration_ms: 37.585338
+  duration_ms: 6.609358
   type: 'suite'
   ...
-# 2026-05-12T15:37:30.649Z [info] Online status is set
-# 2026-05-12T15:37:30.654Z [warn] Could not set online status {
+# 2026-05-12T15:49:37.216Z [info] Online status is set
+# 2026-05-12T15:49:37.221Z [warn] Could not set online status {
 #   "error": {
 #     "name": "Error",
 #     "message": "Code №3 - Unknown method passed",
 #     "stack": "Error: Code №3 - Unknown method passed\\n    at file:///tmp/gh-issue-solver-1778599373526/tests/set-online-status.test.js:37:19\\n    at withCapturedLogs (file:///tmp/gh-issue-solver-1778599373526/tests/set-online-status.test.js:20:26)\\n    at TestContext.<anonymous> (file:///tmp/gh-issue-solver-1778599373526/tests/set-online-status.test.js:36:11)\\n    at Test.runInAsyncScope (node:async_hooks:206:9)\\n    at Test.run (node:internal/test_runner/test:796:25)\\n    at Test.start (node:internal/test_runner/test:702:17)\\n    at node:internal/test_runner/test:1133:71\\n    at node:internal/per_context/primordials:482:82\\n    at new Promise (<anonymous>)\\n    at new SafePromise (node:internal/per_context/primordials:450:29)"
 #   }
 # }
-# 2026-05-12T15:37:30.655Z [warn] Could not set online status {
+# 2026-05-12T15:49:37.222Z [warn] Could not set online status {
 #   "error": {
 #     "name": "Error",
 #     "message": "boom",
@@ -1076,347 +1076,347 @@ ok 42 - openSessionLog: redacts secrets in persisted logs
     # Subtest: logs success on a healthy call
     ok 1 - logs success on a healthy call
       ---
-      duration_ms: 4.045821
+      duration_ms: 4.503034
       ...
     1..1
 ok 43 - setOnlineStatus: healthy call
   ---
-  duration_ms: 4.945844
+  duration_ms: 6.578143
   type: 'suite'
   ...
 # Subtest: setOnlineStatus: VK error is logged verbatim
     # Subtest: forwards the VK error into the log without adding speculation
     ok 1 - forwards the VK error into the log without adding speculation
       ---
-      duration_ms: 1.28582
+      duration_ms: 0.925982
       ...
     1..1
 ok 44 - setOnlineStatus: VK error is logged verbatim
   ---
-  duration_ms: 1.43422
+  duration_ms: 1.040754
   type: 'suite'
   ...
 # Subtest: setOnlineStatus: other errors
     # Subtest: logs the generic warning for non-VK errors too
     ok 1 - logs the generic warning for non-VK errors too
       ---
-      duration_ms: 0.578273
+      duration_ms: 0.32799
       ...
     1..1
 ok 45 - setOnlineStatus: other errors
   ---
-  duration_ms: 0.694747
+  duration_ms: 0.412947
   type: 'suite'
   ...
 # Subtest: setup-npm version requirements
     # Subtest: compares semantic versions numerically
     ok 1 - compares semantic versions numerically
       ---
-      duration_ms: 0.987103
+      duration_ms: 2.651789
       ...
     # Subtest: requires npm 11.5.1 or later
     ok 2 - requires npm 11.5.1 or later
       ---
-      duration_ms: 0.209963
+      duration_ms: 0.253919
       ...
     # Subtest: requires Node.js 22.14.0 or later
     ok 3 - requires Node.js 22.14.0 or later
       ---
-      duration_ms: 0.224265
+      duration_ms: 0.272377
       ...
     # Subtest: selects the latest npm 11 tarball that satisfies trusted publishing
     ok 4 - selects the latest npm 11 tarball that satisfies trusted publishing
       ---
-      duration_ms: 0.396493
+      duration_ms: 0.856048
       ...
     1..4
 ok 46 - setup-npm version requirements
   ---
-  duration_ms: 2.8399
+  duration_ms: 7.544024
   type: 'suite'
   ...
 # Subtest: Pages release download helpers
     # Subtest: resolves versioned download links from actual release assets
     ok 1 - resolves versioned download links from actual release assets
       ---
-      duration_ms: 1.402084
+      duration_ms: 6.508768
       ...
     # Subtest: prefers versioned assets while tolerating legacy assets during migration
     ok 2 - prefers versioned assets while tolerating legacy assets during migration
       ---
-      duration_ms: 0.211907
+      duration_ms: 0.294309
       ...
     # Subtest: derives user-visible asset names from the latest release version
     ok 3 - derives user-visible asset names from the latest release version
       ---
-      duration_ms: 0.185958
+      duration_ms: 0.150956
       ...
     # Subtest: uses the release page rather than a synthetic checksum URL when missing
     ok 4 - uses the release page rather than a synthetic checksum URL when missing
       ---
-      duration_ms: 0.19385
+      duration_ms: 0.146909
       ...
     # Subtest: keeps stable option groups for all supported operating systems
     ok 5 - keeps stable option groups for all supported operating systems
       ---
-      duration_ms: 1.640499
+      duration_ms: 0.248711
       ...
     # Subtest: groups primary installer downloads with smaller format alternatives
     ok 6 - groups primary installer downloads with smaller format alternatives
       ---
-      duration_ms: 0.269693
+      duration_ms: 0.177986
       ...
     1..6
 ok 47 - Pages release download helpers
   ---
-  duration_ms: 5.038412
+  duration_ms: 8.673361
   type: 'suite'
   ...
 # Subtest: buildInstallScript
     # Subtest: emits a docker isolation invocation
     ok 1 - emits a docker isolation invocation
       ---
-      duration_ms: 0.927625
+      duration_ms: 1.137969
       ...
     # Subtest: emits a screen isolation invocation
     ok 2 - emits a screen isolation invocation
       ---
-      duration_ms: 1.483296
+      duration_ms: 1.933527
       ...
     # Subtest: stops any prior session before starting a new one
     ok 3 - stops any prior session before starting a new one
       ---
-      duration_ms: 0.255262
+      duration_ms: 0.639795
       ...
     # Subtest: uses screen isolation by default
     ok 4 - uses screen isolation by default
       ---
-      duration_ms: 0.2077
+      duration_ms: 0.222502
       ...
     # Subtest: throws when the bundle archive is missing
     ok 5 - throws when the bundle archive is missing
       ---
-      duration_ms: 0.37479
+      duration_ms: 0.409211
       ...
     # Subtest: throws on unknown isolation
     ok 6 - throws on unknown isolation
       ---
-      duration_ms: 0.130335
+      duration_ms: 0.145107
       ...
     # Subtest: escapes the remote dir
     ok 7 - escapes the remote dir
       ---
-      duration_ms: 0.12059
+      duration_ms: 0.138046
       ...
     1..7
 ok 48 - buildInstallScript
   ---
-  duration_ms: 7.151278
+  duration_ms: 6.984779
   type: 'suite'
   ...
 # Subtest: buildInstallPlan
     # Subtest: returns plan metadata alongside the script
     ok 1 - returns plan metadata alongside the script
       ---
-      duration_ms: 0.265646
+      duration_ms: 0.380378
       ...
     1..1
 ok 49 - buildInstallPlan
   ---
-  duration_ms: 0.462521
+  duration_ms: 0.639505
   type: 'suite'
   ...
 # Subtest: isoWeek
     # Subtest: returns the ISO week number for known dates
     ok 1 - returns the ISO week number for known dates
       ---
-      duration_ms: 0.75027
+      duration_ms: 1.194584
       ...
     1..1
 ok 50 - isoWeek
   ---
-  duration_ms: 1.647309
+  duration_ms: 5.604058
   type: 'suite'
   ...
 # Subtest: pathsForDate
     # Subtest: produces total + month + week paths
     ok 1 - produces total + month + week paths
       ---
-      duration_ms: 0.376572
+      duration_ms: 0.496231
       ...
     1..1
 ok 51 - pathsForDate
   ---
-  duration_ms: 0.485825
+  duration_ms: 0.639074
   type: 'suite'
   ...
 # Subtest: StatsStore
     # Subtest: throws when rootDir missing
     ok 1 - throws when rootDir missing
       ---
-      duration_ms: 0.356261
+      duration_ms: 0.769929
       ...
     # Subtest: records accepted friends in three files
     ok 2 - records accepted friends in three files
       ---
-      duration_ms: 22.559323
+      duration_ms: 40.004831
       ...
     # Subtest: accumulates across multiple calls in the same week
     ok 3 - accumulates across multiple calls in the same week
       ---
-      duration_ms: 19.274698
+      duration_ms: 23.779105
       ...
     # Subtest: isolates weeks: new week file when the date changes
     ok 4 - isolates weeks: new week file when the date changes
       ---
-      duration_ms: 16.352286
+      duration_ms: 19.136773
       ...
     # Subtest: records initial friends count once and never overwrites
     ok 5 - records initial friends count once and never overwrites
       ---
-      duration_ms: 2.604348
+      duration_ms: 5.784507
       ...
     # Subtest: snapshot returns empty objects when no data exists
     ok 6 - snapshot returns empty objects when no data exists
       ---
-      duration_ms: 3.04685
+      duration_ms: 13.990879
       ...
     1..6
 ok 52 - StatsStore
   ---
-  duration_ms: 64.995905
+  duration_ms: 104.586657
   type: 'suite'
   ...
 # Subtest: tag prefix logic
     # Subtest: defaults to "v" prefix (backward compatible)
     ok 1 - defaults to "v" prefix (backward compatible)
       ---
-      duration_ms: 5.850916
+      duration_ms: 5.310139
       ...
     # Subtest: supports "js-v" prefix for multi-language repos
     ok 2 - supports "js-v" prefix for multi-language repos
       ---
-      duration_ms: 0.179458
+      duration_ms: 0.195993
       ...
     # Subtest: supports "rust-v" prefix
     ok 3 - supports "rust-v" prefix
       ---
-      duration_ms: 0.162273
+      duration_ms: 0.186629
       ...
     # Subtest: supports empty prefix
     ok 4 - supports empty prefix
       ---
-      duration_ms: 0.281039
+      duration_ms: 0.115373
       ...
     # Subtest: works with pre-release versions
     ok 5 - works with pre-release versions
       ---
-      duration_ms: 0.160299
+      duration_ms: 0.098356
       ...
     1..5
 ok 53 - tag prefix logic
   ---
-  duration_ms: 13.158827
+  duration_ms: 7.240932
   type: 'suite'
   ...
 # Subtest: resolveTheme
     # Subtest: honors explicit light or dark preferences
     ok 1 - honors explicit light or dark preferences
       ---
-      duration_ms: 0.70348
+      duration_ms: 0.85742
       ...
     # Subtest: falls back to system theme when preference is auto
     ok 2 - falls back to system theme when preference is auto
       ---
-      duration_ms: 0.144837
+      duration_ms: 0.171617
       ...
     # Subtest: defaults to light when system theme is missing
     ok 3 - defaults to light when system theme is missing
       ---
-      duration_ms: 1.341172
+      duration_ms: 4.959635
       ...
     1..3
 ok 54 - resolveTheme
   ---
-  duration_ms: 3.103794
+  duration_ms: 7.325077
   type: 'suite'
   ...
 # Subtest: applyTheme
     # Subtest: writes data-theme to the document element
     ok 1 - writes data-theme to the document element
       ---
-      duration_ms: 0.208432
+      duration_ms: 0.293588
       ...
     1..1
 ok 55 - applyTheme
   ---
-  duration_ms: 0.309222
+  duration_ms: 0.433728
   type: 'suite'
   ...
 # Subtest: watchSystemTheme
     # Subtest: returns a no-op when matchMedia is unavailable
     ok 1 - returns a no-op when matchMedia is unavailable
       ---
-      duration_ms: 0.191426
+      duration_ms: 0.215382
       ...
     # Subtest: listens via addEventListener and reports dark/light
     ok 2 - listens via addEventListener and reports dark/light
       ---
-      duration_ms: 0.61695
+      duration_ms: 3.963899
       ...
     1..2
 ok 56 - watchSystemTheme
   ---
-  duration_ms: 0.982617
+  duration_ms: 4.38608
   type: 'suite'
   ...
 # Subtest: validate-release-assets.mjs
     # Subtest: validates release assets from the tag version, not the checkout package version
     ok 1 - validates release assets from the tag version, not the checkout package version
       ---
-      duration_ms: 1.291237
+      duration_ms: 4.154954
       ...
     # Subtest: reports each missing release asset with a GitHub annotation path
     ok 2 - reports each missing release asset with a GitHub annotation path
       ---
-      duration_ms: 0.33508
+      duration_ms: 0.329171
       ...
     1..2
 ok 57 - validate-release-assets.mjs
   ---
-  duration_ms: 2.687624
+  duration_ms: 5.382486
   type: 'suite'
   ...
 # Subtest: VK token helpers
     # Subtest: keeps the Kate Mobile blank-page OAuth URL requested by issue 26
     ok 1 - keeps the Kate Mobile blank-page OAuth URL requested by issue 26
       ---
-      duration_ms: 0.73025
+      duration_ms: 0.845382
       ...
     # Subtest: builds the experimental localhost redirect OAuth URL
     ok 2 - builds the experimental localhost redirect OAuth URL
       ---
-      duration_ms: 0.145227
+      duration_ms: 0.206628
       ...
     # Subtest: extracts access_token from pasted VK redirect URLs
     ok 3 - extracts access_token from pasted VK redirect URLs
       ---
-      duration_ms: 1.778736
+      duration_ms: 4.86261
       ...
     # Subtest: accepts a raw token without changing it beyond trimming whitespace
     ok 4 - accepts a raw token without changing it beyond trimming whitespace
       ---
-      duration_ms: 0.196043
+      duration_ms: 0.280148
       ...
     # Subtest: wires the whitelisted token URLs through Electron IPC
     ok 5 - wires the whitelisted token URLs through Electron IPC
       ---
-      duration_ms: 0.543572
+      duration_ms: 0.827486
       ...
     1..5
 ok 58 - VK token helpers
   ---
-  duration_ms: 4.625205
+  duration_ms: 10.085459
   type: 'suite'
   ...
 1..58
@@ -1427,4 +1427,4 @@ ok 58 - VK token helpers
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 1331.453636
+# duration_ms 2123.473552

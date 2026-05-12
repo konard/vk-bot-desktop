@@ -1,652 +1,20 @@
-Initialize vk-io@4.10.1
-Initialize eslint@9.39.4
-Initialize lino-arguments@0.3.0
-Initialize test-anywhere@0.8.50
-Initialize electron-builder@25.1.8
-Initialize react@18.3.1
-Initialize eslint-config-prettier@10.1.8
-Initialize node-ssh@13.2.1
-Initialize lino-objects-codec@0.3.6
-Initialize husky@9.1.7
-Initialize react-dom@18.3.1
-Initialize eslint-plugin-prettier@5.5.5
-Initialize lint-staged@16.4.0
-Initialize electron@33.4.11
-Initialize esbuild@0.24.2
-Initialize jscpd@4.1.1
-Initialize @changesets/cli@2.31.0
-Initialize prettier@3.8.3
-Initialize form-data-encoder@1.9.0
-Initialize formdata-node@4.4.1
-Initialize debug@4.4.3
-Initialize inspectable@2.1.1
-Initialize abort-controller@3.0.0
-Initialize middleware-io@2.8.1
-Initialize node-fetch@3.3.2
-Initialize fast-deep-equal@3.1.3
-Initialize @eslint/core@0.17.0
-Initialize @eslint/plugin-kit@0.4.1
-Initialize @humanwhocodes/retry@0.4.3
-Initialize @eslint-community/eslint-utils@4.9.1
-Initialize @eslint-community/regexpp@4.12.2
-Initialize file-entry-cache@8.0.0
-Initialize cross-spawn@7.0.6
-Initialize optionator@0.9.4
-Initialize esutils@2.0.3
-Initialize @eslint/js@9.39.4
-Initialize @types/estree@1.0.9
-Initialize eslint-scope@8.4.0
-Initialize @eslint/config-helpers@0.4.2
-Initialize @humanfs/node@0.16.8
-Initialize imurmurhash@0.1.4
-Initialize minimatch@3.1.5
-Initialize @humanwhocodes/module-importer@1.0.1
-Initialize natural-compare@1.4.0
-Initialize eslint-visitor-keys@4.2.1
-Initialize @eslint/eslintrc@3.3.5
-Initialize is-glob@4.0.3
-Initialize ajv@6.15.0
-Initialize espree@10.4.0
-Initialize chalk@4.1.2
-Initialize ignore@5.3.2
-Initialize find-up@5.0.0
-Initialize glob-parent@6.0.2
-Initialize esquery@1.7.0
-Initialize json-stable-stringify-without-jsonify@1.0.1
-Initialize lodash.merge@4.6.2
-Initialize escape-string-regexp@4.0.0
-Initialize @eslint/config-array@0.21.2
-Initialize lino-env@0.2.8
-Initialize links-notation@0.11.2
-Initialize getenv@2.0.0
-Initialize yargs@17.7.2
-Initialize app-builder-lib@25.1.8
-Initialize builder-util@25.1.7
-Initialize builder-util-runtime@9.2.10
-Initialize dmg-builder@25.1.8
-Initialize fs-extra@10.1.0
-Initialize lazy-val@1.0.5
-Initialize simple-update-notifier@2.0.0
-Initialize is-ci@3.0.1
-Initialize loose-envify@1.4.0
-Initialize is-stream@2.0.1
-Initialize shell-escape@0.2.0
-Initialize ssh2@1.17.0
-Initialize make-dir@3.1.0
-Initialize sb-promise-queue@2.1.1
-Initialize sb-scandir@3.1.1
-Initialize scheduler@0.23.2
-Initialize prettier-linter-helpers@1.0.1
-Initialize synckit@0.11.12
-Initialize string-argv@0.3.2
-Initialize listr2@9.0.5
-Initialize tinyexec@1.1.2
-Initialize picomatch@4.0.4
-Initialize yaml@2.9.0
-Initialize commander@14.0.3
-Initialize @types/node@20.19.41
-Initialize extract-zip@2.0.1
-Initialize @electron/get@2.0.3
-Initialize @esbuild/linux-x64@0.24.2
-Initialize commander@5.1.0
-Initialize @jscpd/core@4.1.1
-Initialize @jscpd/tokenizer@4.1.1
-Initialize @jscpd/html-reporter@4.1.1
-Initialize @jscpd/badge-reporter@4.1.1
-Initialize @jscpd/finder@4.1.1
-Initialize colors@1.4.0
-Initialize fs-extra@11.3.5
-Initialize jscpd-sarif-reporter@4.1.1
-Initialize resolve-from@5.0.0
-Initialize term-size@2.2.1
-Initialize picocolors@1.1.1
-Initialize @changesets/logger@0.1.1
-Initialize @changesets/changelog-git@0.2.1
-Initialize @changesets/read@0.6.7
-Initialize @inquirer/external-editor@1.0.3
-Initialize semver@7.8.0
-Initialize @changesets/get-dependents-graph@2.1.4
-Initialize enquirer@2.4.1
-Initialize mri@1.2.0
-Initialize spawndamnit@3.0.1
-Initialize @changesets/assemble-release-plan@6.0.10
-Initialize @changesets/get-release-plan@4.0.16
-Initialize @changesets/should-skip-package@0.1.2
-Initialize fs-extra@7.0.1
-Initialize @manypkg/get-packages@1.1.3
-Initialize ansi-colors@4.1.3
-Initialize @changesets/write@0.4.0
-Initialize @changesets/apply-release-plan@7.1.1
-Initialize @changesets/config@3.1.4
-Initialize @changesets/errors@0.2.0
-Initialize @changesets/pre@2.0.2
-Initialize @changesets/git@3.0.4
-Initialize @changesets/types@6.1.0
-Initialize package-manager-detector@0.2.11
-Initialize node-domexception@1.0.0
-Initialize web-streams-polyfill@4.0.0-beta.3
-Initialize ms@2.1.3
-Initialize event-target-shim@5.0.1
-Initialize formdata-polyfill@4.0.10
-Initialize data-uri-to-buffer@4.0.1
-Initialize fetch-blob@3.2.0
-Initialize @types/json-schema@7.0.15
-Initialize levn@0.4.1
-Initialize eslint-visitor-keys@3.4.3
-Initialize flat-cache@4.0.1
-Initialize path-key@3.1.1
-Initialize which@2.0.2
-Initialize shebang-command@2.0.0
-Initialize fast-levenshtein@2.0.6
-Initialize deep-is@0.1.4
-Initialize word-wrap@1.2.5
-Initialize prelude-ls@1.2.1
-Initialize type-check@0.4.0
-Initialize esrecurse@4.3.0
-Initialize estraverse@5.3.0
-Initialize @humanfs/types@0.15.0
-Initialize @humanfs/core@0.19.2
-Initialize brace-expansion@1.1.14
-Initialize strip-json-comments@3.1.1
-Initialize js-yaml@4.1.1
-Initialize globals@14.0.0
-Initialize import-fresh@3.3.1
-Initialize is-extglob@2.1.1
-Initialize json-schema-traverse@0.4.1
-Initialize uri-js@4.4.1
-Initialize fast-json-stable-stringify@2.1.0
-Initialize acorn@8.16.0
-Initialize acorn-jsx@5.3.2
-Initialize supports-color@7.2.0
-Initialize ansi-styles@4.3.0
-Initialize locate-path@6.0.0
-Initialize path-exists@4.0.0
-Initialize @eslint/object-schema@2.1.7
-Initialize cliui@8.0.1
-Initialize escalade@3.2.0
-Initialize string-width@4.2.3
-Initialize get-caller-file@2.0.5
-Initialize require-directory@2.1.1
-Initialize yargs-parser@21.1.1
-Initialize y18n@5.0.8
-Initialize async-exit-hook@2.0.1
-Initialize isbinaryfile@5.0.7
-Initialize form-data@4.0.5
-Initialize temp-file@3.4.0
-Initialize @malept/flatpak-bundler@0.4.0
-Initialize dotenv@16.6.1
-Initialize resedit@1.7.2
-Initialize @electron/notarize@2.5.0
-Initialize tar@6.2.1
-Initialize chromium-pickle-js@0.2.0
-Initialize minimatch@10.2.5
-Initialize ejs@3.1.10
-Initialize config-file-ts@0.2.8-rc1
-Initialize bluebird-lst@1.0.9
-Initialize @types/fs-extra@9.0.13
-Initialize electron-builder-squirrel-windows@25.1.8
-Initialize sanitize-filename@1.6.4
-Initialize hosted-git-info@4.1.0
-Initialize @electron/osx-sign@1.3.1
-Initialize @electron/rebuild@3.6.1
-Initialize @develar/schema-utils@2.6.5
-Initialize dotenv-expand@11.0.7
-Initialize json5@2.2.3
-Initialize @electron/universal@2.0.1
-Initialize electron-publish@25.1.7
-Initialize http-proxy-agent@7.0.2
-Initialize 7zip-bin@5.2.0
-Initialize https-proxy-agent@7.0.6
-Initialize app-builder-bin@5.0.0-alpha.10
-Initialize stat-mode@1.0.0
-Initialize source-map-support@0.5.21
-Initialize @types/debug@4.1.13
-Initialize sax@1.6.0
-Initialize iconv-lite@0.6.3
-Initialize jsonfile@6.2.1
-Initialize graceful-fs@4.2.11
-Initialize universalify@2.0.1
-Initialize ci-info@3.9.0
-Initialize js-tokens@4.0.0
-Initialize asn1@0.2.6
-Initialize bcrypt-pbkdf@1.0.2
-Initialize cpu-features@0.0.10
-Initialize nan@2.27.0
-Initialize semver@6.3.1
-Initialize fast-diff@1.3.0
-Initialize @pkgr/core@0.2.9
-Initialize log-update@6.1.0
-Initialize cli-truncate@5.2.0
-Initialize colorette@2.0.20
-Initialize rfdc@1.4.1
-Initialize wrap-ansi@9.0.2
-Initialize eventemitter3@5.0.4
-Initialize undici-types@6.21.0
-Initialize yauzl@2.10.0
-Initialize get-stream@5.2.0
-Initialize @types/yauzl@2.10.3
-Initialize sumchecker@3.0.1
-Initialize global-agent@3.0.0
-Initialize progress@2.0.3
-Initialize got@11.8.6
-Initialize fs-extra@8.1.0
-Initialize env-paths@2.2.1
-Initialize prismjs@1.30.0
-Initialize spark-md5@3.0.2
-Initialize pug@3.0.4
-Initialize badgen@3.3.2
-Initialize fast-glob@3.3.3
-Initialize markdown-table@2.0.0
-Initialize blamer@1.0.7
-Initialize bytes@3.1.2
-Initialize cli-table3@0.6.5
-Initialize node-sarif-builder@3.4.0
-Initialize p-filter@2.1.0
-Initialize @changesets/parse@0.4.3
-Initialize iconv-lite@0.7.2
-Initialize chardet@2.1.1
-Initialize strip-ansi@6.0.1
-Initialize signal-exit@4.1.0
-Initialize jsonfile@4.0.0
-Initialize universalify@0.1.2
-Initialize @manypkg/find-root@1.1.0
-Initialize read-yaml-file@1.1.0
-Initialize @babel/runtime@7.29.2
-Initialize @changesets/types@4.1.0
-Initialize globby@11.1.0
-Initialize human-id@4.1.3
-Initialize prettier@2.8.8
-Initialize @changesets/get-version-range-type@0.4.0
-Initialize outdent@0.5.0
-Initialize detect-indent@6.1.0
-Initialize lodash.startcase@4.4.0
-Initialize micromatch@4.0.8
-Initialize extendable-error@0.1.7
-Initialize is-subdir@1.2.0
-Initialize quansync@0.2.11
-Initialize web-streams-polyfill@3.3.3
-Initialize keyv@4.5.4
-Initialize flatted@3.4.2
-Initialize isexe@2.0.0
-Initialize shebang-regex@3.0.0
-Initialize balanced-match@1.0.2
-Initialize concat-map@0.0.1
-Initialize argparse@2.0.1
-Initialize resolve-from@4.0.0
-Initialize parent-module@1.0.1
-Initialize punycode@2.3.1
-Initialize has-flag@4.0.0
-Initialize color-convert@2.0.1
-Initialize p-locate@5.0.0
-Initialize wrap-ansi@7.0.0
-Initialize emoji-regex@8.0.0
-Initialize is-fullwidth-code-point@3.0.0
-Initialize hasown@2.0.3
-Initialize asynckit@0.4.0
-Initialize mime-types@2.1.35
-Initialize combined-stream@1.0.8
-Initialize es-set-tostringtag@2.1.0
-Initialize tmp-promise@3.0.3
-Initialize lodash@4.18.1
-Initialize fs-extra@9.1.0
-Initialize pe-library@0.4.1
-Initialize promise-retry@2.0.1
-Initialize yallist@4.0.0
-Initialize fs-minipass@2.1.0
-Initialize chownr@2.0.0
-Initialize mkdirp@1.0.4
-Initialize minizlib@2.1.2
-Initialize minipass@5.0.0
-Initialize brace-expansion@5.0.6
-Initialize jake@10.9.4
-Initialize glob@10.5.0
-Initialize typescript@5.9.3
-Initialize bluebird@3.7.2
-Initialize archiver@5.3.2
-Initialize truncate-utf8-bytes@1.0.2
-Initialize lru-cache@6.0.0
-Initialize isbinaryfile@4.0.10
-Initialize minimist@1.2.8
-Initialize plist@3.1.1
-Initialize compare-version@0.1.2
-Initialize ora@5.4.1
-Initialize read-binary-file-arch@1.0.6
-Initialize node-abi@3.92.0
-Initialize node-api-version@0.2.1
-Initialize @malept/cross-spawn-promise@2.0.0
-Initialize node-gyp@9.4.1
-Initialize detect-libc@2.1.2
-Initialize ajv-keywords@3.5.2
-Initialize @electron/asar@3.4.1
-Initialize minimatch@9.0.9
-Initialize dir-compare@4.2.0
-Initialize mime@2.6.0
-Initialize agent-base@7.1.4
-Initialize source-map@0.6.1
-Initialize buffer-from@1.1.2
-Initialize @types/ms@2.1.0
-Initialize safer-buffer@2.1.2
-Initialize tweetnacl@0.14.5
-Initialize buildcheck@0.0.7
-Initialize strip-ansi@7.2.0
-Initialize slice-ansi@7.1.2
-Initialize cli-cursor@5.0.0
-Initialize ansi-escapes@7.3.0
-Initialize slice-ansi@8.0.0
-Initialize string-width@8.2.1
-Initialize ansi-styles@6.2.3
-Initialize string-width@7.2.0
-Initialize fd-slicer@1.1.0
-Initialize buffer-crc32@0.2.13
-Initialize pump@3.0.4
-Initialize serialize-error@7.0.1
-Initialize matcher@3.0.0
-Initialize boolean@3.2.0
-Initialize roarr@2.15.4
-Initialize es6-error@4.1.1
-Initialize p-cancelable@2.1.1
-Initialize lowercase-keys@2.0.0
-Initialize http2-wrapper@1.0.3
-Initialize @sindresorhus/is@4.6.0
-Initialize @szmarczak/http-timer@4.0.6
-Initialize @types/responselike@1.0.3
-Initialize cacheable-lookup@5.0.4
-Initialize decompress-response@6.0.0
-Initialize responselike@2.0.1
-Initialize @types/cacheable-request@6.0.3
-Initialize cacheable-request@7.0.4
-Initialize pug-code-gen@3.0.4
-Initialize pug-runtime@3.0.1
-Initialize pug-linker@4.0.0
-Initialize pug-lexer@5.0.1
-Initialize pug-strip-comments@2.0.0
-Initialize pug-filters@4.0.0
-Initialize pug-load@3.0.0
-Initialize pug-parser@6.0.0
-Initialize @nodelib/fs.walk@1.2.8
-Initialize glob-parent@5.1.2
-Initialize merge2@1.4.1
-Initialize @nodelib/fs.stat@2.0.5
-Initialize repeat-string@1.6.1
-Initialize execa@4.1.0
-Initialize @colors/colors@1.5.0
-Initialize @types/sarif@2.1.7
-Initialize p-map@2.1.0
-Initialize ansi-regex@5.0.1
-Initialize @types/node@12.20.55
-Initialize find-up@4.1.0
-Initialize js-yaml@3.14.2
-Initialize strip-bom@3.0.0
-Initialize pify@4.0.1
-Initialize slash@3.0.0
-Initialize array-union@2.1.0
-Initialize dir-glob@3.0.1
-Initialize braces@3.0.3
-Initialize picomatch@2.3.2
-Initialize better-path-resolve@1.0.0
-Initialize json-buffer@3.0.1
-Initialize callsites@3.1.0
-Initialize color-name@1.1.4
-Initialize p-limit@3.1.0
-Initialize function-bind@1.1.2
-Initialize mime-db@1.52.0
-Initialize delayed-stream@1.0.0
-Initialize has-tostringtag@1.0.2
-Initialize get-intrinsic@1.3.0
-Initialize es-errors@1.3.0
-Initialize tmp@0.2.5
-Initialize at-least-node@1.0.0
-Initialize err-code@2.0.3
-Initialize retry@0.12.0
-Initialize minipass@3.3.6
-Initialize balanced-match@4.0.4
-Initialize async@3.2.6
-Initialize filelist@1.0.6
-Initialize foreground-child@3.3.1
-Initialize jackspeak@3.4.3
-Initialize minipass@7.1.3
-Initialize path-scurry@1.11.1
-Initialize package-json-from-dist@1.0.1
-Initialize archiver-utils@2.1.0
-Initialize readable-stream@3.6.2
-Initialize readdir-glob@1.1.3
-Initialize zip-stream@4.1.1
-Initialize tar-stream@2.2.0
-Initialize utf8-byte-length@1.0.5
-Initialize base64-js@1.5.1
-Initialize xmlbuilder@15.1.1
-Initialize @xmldom/xmldom@0.9.10
-Initialize cli-spinners@2.9.2
-Initialize is-interactive@1.0.0
-Initialize log-symbols@4.1.0
-Initialize wcwidth@1.0.1
-Initialize is-unicode-supported@0.1.0
-Initialize cli-cursor@3.1.0
-Initialize bl@4.1.0
-Initialize exponential-backoff@3.1.3
-Initialize make-fetch-happen@10.2.1
-Initialize npmlog@6.0.2
-Initialize rimraf@3.0.2
-Initialize nopt@6.0.0
-Initialize glob@7.2.3
-Initialize brace-expansion@2.1.0
-Initialize ansi-regex@6.2.2
-Initialize is-fullwidth-code-point@5.1.0
-Initialize restore-cursor@5.1.0
-Initialize environment@1.1.0
-Initialize get-east-asian-width@1.6.0
-Initialize emoji-regex@10.6.0
-Initialize pend@1.2.0
-Initialize end-of-stream@1.4.5
-Initialize once@1.4.0
-Initialize type-fest@0.13.1
-Initialize detect-node@2.1.0
-Initialize globalthis@1.0.4
-Initialize semver-compare@1.0.0
-Initialize sprintf-js@1.1.3
-Initialize json-stringify-safe@5.0.1
-Initialize resolve-alpn@1.2.1
-Initialize quick-lru@5.1.1
-Initialize defer-to-connect@2.0.1
-Initialize mimic-response@3.1.0
-Initialize @types/http-cache-semantics@4.2.0
-Initialize @types/keyv@3.1.4
-Initialize clone-response@1.0.3
-Initialize http-cache-semantics@4.2.0
-Initialize normalize-url@6.1.0
-Initialize with@7.0.2
-Initialize void-elements@3.1.0
-Initialize pug-attrs@3.0.0
-Initialize doctypes@1.1.0
-Initialize constantinople@4.0.1
-Initialize js-stringify@1.0.2
-Initialize pug-error@2.1.0
-Initialize pug-walk@2.0.0
-Initialize is-expression@4.0.0
-Initialize character-parser@2.2.0
-Initialize resolve@1.22.12
-Initialize jstransformer@1.0.0
-Initialize object-assign@4.1.1
-Initialize token-stream@1.0.0
-Initialize fastq@1.20.1
-Initialize @nodelib/fs.scandir@2.1.5
-Initialize strip-final-newline@2.0.0
-Initialize human-signals@1.1.1
-Initialize onetime@5.1.2
-Initialize signal-exit@3.0.7
-Initialize npm-run-path@4.0.1
-Initialize merge-stream@2.0.0
-Initialize locate-path@5.0.0
-Initialize argparse@1.0.10
-Initialize esprima@4.0.1
-Initialize path-type@4.0.0
-Initialize fill-range@7.1.1
-Initialize is-windows@1.0.2
-Initialize yocto-queue@0.1.0
-Initialize has-symbols@1.1.0
-Initialize gopd@1.2.0
-Initialize call-bind-apply-helpers@1.0.2
-Initialize math-intrinsics@1.1.0
-Initialize es-object-atoms@1.1.1
-Initialize get-proto@1.0.1
-Initialize es-define-property@1.0.1
-Initialize minimatch@5.1.9
-Initialize @pkgjs/parseargs@0.11.0
-Initialize @isaacs/cliui@8.0.2
-Initialize lru-cache@10.4.3
-Initialize lazystream@1.0.1
-Initialize lodash.defaults@4.2.0
-Initialize lodash.isplainobject@4.0.6
-Initialize lodash.difference@4.5.0
-Initialize lodash.union@4.6.0
-Initialize normalize-path@3.0.0
-Initialize readable-stream@2.3.8
-Initialize lodash.flatten@4.4.0
-Initialize inherits@2.0.4
-Initialize string_decoder@1.3.0
-Initialize util-deprecate@1.0.2
-Initialize compress-commons@4.1.2
-Initialize archiver-utils@3.0.4
-Initialize fs-constants@1.0.0
-Initialize defaults@1.0.4
-Initialize restore-cursor@3.1.0
-Initialize buffer@5.7.1
-Initialize negotiator@0.6.4
-Initialize minipass-fetch@2.1.2
-Initialize ssri@9.0.1
-Initialize minipass-flush@1.0.7
-Initialize http-proxy-agent@5.0.0
-Initialize minipass-pipeline@1.2.4
-Initialize cacache@16.1.3
-Initialize lru-cache@7.18.3
-Initialize minipass-collect@1.0.2
-Initialize socks-proxy-agent@7.0.0
-Initialize is-lambda@1.0.1
-Initialize agentkeepalive@4.6.0
-Initialize https-proxy-agent@5.0.1
-Initialize are-we-there-yet@3.0.1
-Initialize set-blocking@2.0.0
-Initialize console-control-strings@1.1.0
-Initialize gauge@4.0.4
-Initialize abbrev@1.1.1
-Initialize inflight@1.0.6
-Initialize path-is-absolute@1.0.1
-Initialize fs.realpath@1.0.0
-Initialize onetime@7.0.0
-Initialize wrappy@1.0.2
-Initialize define-properties@1.2.1
-Initialize mimic-response@1.0.1
-Initialize @babel/parser@7.29.3
-Initialize @babel/types@7.29.0
-Initialize assert-never@1.4.0
-Initialize babel-walk@3.0.0-canary-5
-Initialize acorn@7.4.1
-Initialize is-regex@1.2.1
-Initialize supports-preserve-symlinks-flag@1.0.0
-Initialize is-core-module@2.16.2
-Initialize path-parse@1.0.7
-Initialize is-promise@2.2.2
-Initialize promise@7.3.1
-Initialize reusify@1.1.0
-Initialize run-parallel@1.2.0
-Initialize mimic-fn@2.1.0
-Initialize p-locate@4.1.0
-Initialize sprintf-js@1.0.3
-Initialize to-regex-range@5.0.1
-Initialize dunder-proto@1.0.1
-Initialize wrap-ansi@8.1.0
-Initialize string-width@5.1.2
-Initialize core-util-is@1.0.2
-Initialize isarray@1.0.0
-Initialize safe-buffer@5.1.2
-Initialize string_decoder@1.1.1
-Initialize process-nextick-args@2.0.1
-Initialize safe-buffer@5.2.1
-Initialize crc32-stream@4.0.3
-Initialize clone@1.0.4
-Initialize ieee754@1.2.1
-Initialize minipass-sized@1.0.3
-Initialize encoding@0.1.13
-Initialize @tootallnate/once@2.0.1
-Initialize agent-base@6.0.2
-Initialize @npmcli/fs@2.1.2
-Initialize unique-filename@2.0.1
-Initialize glob@8.1.0
-Initialize promise-inflight@1.0.1
-Initialize infer-owner@1.0.4
-Initialize p-map@4.0.0
-Initialize @npmcli/move-file@2.0.1
-Initialize socks@2.8.9
-Initialize humanize-ms@1.2.1
-Initialize delegates@1.0.0
-Initialize color-support@1.1.3
-Initialize aproba@2.1.0
-Initialize has-unicode@2.0.1
-Initialize wide-align@1.1.5
-Initialize mimic-function@5.0.1
-Initialize object-keys@1.1.1
-Initialize define-data-property@1.1.4
-Initialize has-property-descriptors@1.0.2
-Initialize @babel/helper-validator-identifier@7.28.5
-Initialize @babel/helper-string-parser@7.27.1
-Initialize call-bound@1.0.4
-Initialize asap@2.0.6
-Initialize queue-microtask@1.2.3
-Initialize p-limit@2.3.0
-Initialize is-number@7.0.0
-Initialize eastasianwidth@0.2.0
-Initialize emoji-regex@9.2.2
-Initialize crc-32@1.2.2
-Initialize @gar/promisify@1.1.3
-Initialize unique-slug@3.0.0
-Initialize aggregate-error@3.1.0
-Initialize ip-address@10.2.0
-Initialize smart-buffer@4.2.0
-Initialize p-try@2.2.0
-Initialize clean-stack@2.2.0
-Initialize indent-string@4.0.0
-╭ Warning
-│
-│  The following packages are deprecated:
-│  npm:tar@6.2.1 (Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me)
-│  npm:node-domexception@1.0.0 (Use your platform's native DOMException instead)
-│  npm:glob@10.5.0 (Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me)
-│  npm:boolean@3.2.0 (Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.)
-│  npm:rimraf@3.0.2 (Rimraf versions prior to v4 are no longer supported)
-│  npm:glob@7.2.3 (Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me)
-│  npm:npmlog@6.0.2 (This package is no longer supported.)
-│  npm:are-we-there-yet@3.0.1 (This package is no longer supported.)
-│  npm:inflight@1.0.6 (This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.)
-│  npm:glob@8.1.0 (Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me)
-│  npm:gauge@4.0.4 (This package is no longer supported.)
-│  npm:@npmcli/move-file@2.0.1 (This functionality has been moved to @npmcli/fs)
-╰─
-╭ Warning
-│
-│  Ignored build scripts for packages:
-│  npm:electron@33.4.11
-│  npm:ssh2@1.17.0
-│  npm:cpu-features@0.0.10
-│
-│  Run "deno approve-scripts" to run build scripts.
-╰─
 running 1 test from ./tests/birthday-greetings.test.js
 birthday greetings ...
   contains exactly 10 entries ... ok (2ms)
   every greeting has at most 2 emojis ... ok (3ms)
-  every greeting is a non-empty Russian-language string ... ok (4ms)
-  does not pick the same index twice in a row ... ok (4ms)
+  every greeting is a non-empty Russian-language string ... ok (1ms)
+  does not pick the same index twice in a row ... ok (1ms)
 birthday greetings ... ok (5ms)
 running 1 test from ./tests/bot-config.test.js
 bot config defaults ...
-  normalizes empty array fields parsed from lino as empty objects ... ok (2ms)
+  normalizes empty array fields parsed from lino as empty objects ... ok (4ms)
   preserves default invitation messages when only communities are saved ... ok (1ms)
-bot config defaults ... ok (5ms)
+bot config defaults ... ok (11ms)
 running 6 tests from ./tests/bot-lifecycle.test.js
 buildStatusCommand ...
   uses the default session name ... ok (0ms)
-  honors a custom session name ... ok (1ms)
-buildStatusCommand ... ok (1ms)
+  honors a custom session name ... ok (0ms)
+buildStatusCommand ... ok (3ms)
 buildStartCommand ...
   defaults to screen isolation with the session name ... ok (0ms)
   builds a docker invocation with image and session name ... ok (0ms)
@@ -657,35 +25,35 @@ buildStopCommand ...
 buildStopCommand ... ok (0ms)
 isRunning ...
   returns true when stdout indicates running ... ok (1ms)
-  returns false when exit code != 0 ... ok (0ms)
-  returns false when stdout has no running keyword ... ok (0ms)
-  throws when runCommand is missing ... ok (0ms)
-isRunning ... ok (1ms)
+  returns false when exit code != 0 ... ok (4ms)
+  returns false when stdout has no running keyword ... ok (4ms)
+  throws when runCommand is missing ... ok (3ms)
+isRunning ... ok (4ms)
 startBot/stopBot ...
-  startBot invokes runCommand with the start argv ... ok (5ms)
-  stopBot invokes runCommand with the stop argv ... ok (5ms)
-startBot/stopBot ... ok (5ms)
+  startBot invokes runCommand with the start argv ... ok (13ms)
+  stopBot invokes runCommand with the stop argv ... ok (13ms)
+startBot/stopBot ... ok (13ms)
 ensureMutualExclusion ...
-  rejects unknown targetMode ... ok (1ms)
-  returns stoppedOther=false when no other runner is provided ... ok (1ms)
+  rejects unknown targetMode ... ok (2ms)
+  returns stoppedOther=false when no other runner is provided ... ok (0ms)
   does not stop the remote bot when it is not running ... ok (1ms)
   treats runner errors as not-running ... ok (1ms)
   stops the remote bot when starting local and remote is running ... ok (1ms)
   stops the local bot when starting server ... ok (1ms)
-ensureMutualExclusion ... ok (1ms)
+ensureMutualExclusion ... ok (5ms)
 running 1 test from ./tests/check-file-line-limits.test.js
 defines a warning band below the hard limit ... ok (0ms)
 running 8 tests from ./tests/check-release-needed.test.js
-builds GitHub release tags from the package version ... ok (0ms)
+builds GitHub release tags from the package version ... ok (6ms)
 releases through a version bump when changesets exist ... ok (0ms)
 skips release when the current GitHub Release already has artifacts ... ok (0ms)
 retries release without a bump when the GitHub Release is incomplete ... ok (0ms)
-requires checksum, provenance, and all desktop platform assets ... ok (6ms)
+requires checksum, provenance, and all desktop platform assets ... ok (14ms)
 checks GitHub Release artifact completeness with gh release view ... ok (0ms)
 treats missing GitHub Releases as unpublished ... ok (0ms)
 fails closed on unexpected gh release errors ... ok (0ms)
 running 3 tests from ./tests/ci-timeouts.test.js
-sets timeout-minutes for every JavaScript workflow job ... ok (7ms)
+sets timeout-minutes for every JavaScript workflow job ... ok (13ms)
 parses workflow files checked out with Windows line endings ... ok (0ms)
 caps individual Node.js and Bun tests at 30 seconds ... ok (0ms)
 running 5 tests from ./tests/create-github-release.test.js
@@ -695,7 +63,7 @@ uses gh api and reports successful creation only for exit code 0 ... ok (0ms)
 throws when gh api exits non-zero with an unexpected error ... ok (0ms)
 treats already_exists as an idempotent gh api result ... ok (0ms)
 running 12 tests from ./tests/desktop-release-workflow.test.js
-does not publish packages to npm from release jobs ... ok (0ms)
+does not publish packages to npm from release jobs ... ok (3ms)
 keeps desktop release jobs in the same workflow with an exact tag and commit ... ok (0ms)
 runs desktop jobs after optional release modes are skipped ... ok (0ms)
 builds desktop artifacts for Linux, macOS, and Windows releases ... ok (0ms)
@@ -703,7 +71,7 @@ uses versioned artifact names for release download links ... ok (0ms)
 uses system FPM for native Linux arm64 Debian builds ... ok (0ms)
 normalizes Linux artifact architecture names before validation ... ok (0ms)
 keeps signed and notarized macOS publishing when Apple secrets are configured ... ok (0ms)
-builds ad-hoc signed macOS artifacts without Apple secrets ... ok (0ms)
+builds ad-hoc signed macOS artifacts without Apple secrets ... ok (1ms)
 smoke-tests platform installers after building and before uploading ... ok (0ms)
 configures a Linux maintainer for deb artifacts ... ok (0ms)
 hashes Linux and macOS artifacts without splitting filenames on spaces ... ok (0ms)
@@ -716,25 +84,25 @@ watches the dispatched run and returns the downstream failure status ...
 ------- post-test output -------
 https://github.com/konard/vk-bot-desktop/actions/runs/25636588014
 ----- post-test output end -----
-watches the dispatched run and returns the downstream failure status ... ok (0ms)
+watches the dispatched run and returns the downstream failure status ... ok (1ms)
 finds the child run by head SHA when dispatch output has no run URL ... ok (0ms)
 running 1 test from ./tests/fetch-outgoing-requests.test.js
 fetchOutgoingRequestIds ...
-  returns [] when vk client is missing ... ok (0ms)
-  returns [] when friends.getRequests is missing ... ok (0ms)
-  returns the items array from the VK response ... ok (0ms)
-  returns [] when items is not an array ... ok (0ms)
+  returns [] when vk client is missing ... ok (1ms)
+  returns [] when friends.getRequests is missing ... ok (1ms)
+  returns the items array from the VK response ... ok (1ms)
+  returns [] when items is not an array ... ok (1ms)
 fetchOutgoingRequestIds ... ok (1ms)
 running 4 tests from ./tests/friend-prioritization.test.js
 computePotentialAcceptanceQuota ...
-  returns floor(totalIncomingSeen * 10%) - totalAcceptedEver ... ok (1ms)
+  returns floor(totalIncomingSeen * 10%) - totalAcceptedEver ... ok (0ms)
   clamps to zero when already over quota ... ok (0ms)
   honours a custom percentage ... ok (0ms)
-computePotentialAcceptanceQuota ... ok (2ms)
+computePotentialAcceptanceQuota ... ok (1ms)
 selectIncomingRequests ...
-  respects the lifetime 10% quota across runs ... ok (1ms)
+  respects the lifetime 10% quota across runs ... ok (2ms)
   falls back to current batch size when no lifetime stats provided ... ok (1ms)
-  above the limit only accepts requests with mutuals ... ok (0ms)
+  above the limit only accepts requests with mutuals ... ok (1ms)
   returns nothing when capacity is exhausted ... ok (0ms)
   returns nothing for empty input ... ok (0ms)
 selectIncomingRequests ... ok (1ms)
@@ -751,7 +119,7 @@ detectLocale ...
   falls back to en for unknown locales ... ok (0ms)
 detectLocale ... ok (1ms)
 translate ...
-  returns the translated string when available ... ok (1ms)
+  returns the translated string when available ... ok (0ms)
   falls back to English when key missing in target locale ... ok (0ms)
   returns the key itself when nothing matches ... ok (0ms)
 translate ... ok (0ms)
@@ -764,27 +132,27 @@ should multiply by zero ... ok (0ms)
 should multiply negative numbers ... ok (0ms)
 running 1 test from ./tests/invitation-messages.test.js
 invitation messages ...
-  contains exactly 10 entries ... ok (1ms)
+  contains exactly 10 entries ... ok (0ms)
   every message is a non-empty Russian-language string ... ok (1ms)
-  does not pick the same index twice in a row ... ok (0ms)
-  accepts a custom list ... ok (0ms)
-  returns empty string for empty list ... ok (0ms)
-invitation messages ... ok (2ms)
+  does not pick the same index twice in a row ... ok (1ms)
+  accepts a custom list ... ok (1ms)
+  returns empty string for empty list ... ok (1ms)
+invitation messages ... ok (1ms)
 running 1 test from ./tests/lino-store.test.js
 LinoStore ... ignored (0ms)
 running 3 tests from ./tests/logger.test.js
 redact ...
   masks long token-like strings ... ok (1ms)
-  masks query-style secrets ... ok (2ms)
-  masks secret-named object properties ... ok (2ms)
+  masks query-style secrets ... ok (1ms)
+  masks secret-named object properties ... ok (1ms)
   handles circular references ... ok (1ms)
-  does not mask short ids ... ok (1ms)
-redact ... ok (3ms)
+  does not mask short ids ... ok (0ms)
+redact ... ok (4ms)
 logger sinks ...
   routes log lines to registered sinks with redaction ...
 ------- post-test output -------
-2026-05-12T15:37:32.160Z [info] token=***
-2026-05-12T15:37:32.161Z [error] Could not set online status {
+2026-05-12T15:49:38.417Z [info] token=***
+2026-05-12T15:49:38.418Z [error] Could not set online status {
   "error": {
     "name": "Error",
     "message": "Unknown method passed.",
@@ -798,11 +166,11 @@ logger sinks ... ok (1ms)
 verbose mode ...
   is enabled by default so debug lines reach sinks ...
 ------- post-test output -------
-2026-05-12T15:37:32.162Z [debug] verbose probe
-2026-05-12T15:37:32.162Z [info] shown
+2026-05-12T15:49:38.419Z [debug] verbose probe
+2026-05-12T15:49:38.419Z [info] shown
 ----- post-test output end -----
-  is enabled by default so debug lines reach sinks ... ok (1ms)
-  suppresses debug lines when toggled off ... ok (1ms)
+  is enabled by default so debug lines reach sinks ... ok (0ms)
+  suppresses debug lines when toggled off ... ok (0ms)
 verbose mode ... ok (0ms)
 running 2 tests from ./tests/oauth-callback.test.js
 Electron OAuth localhost callback markup ...
@@ -816,7 +184,7 @@ formats changeset headers from the derived package name ... ok (0ms)
 matches changesets for the derived package name only ... ok (0ms)
 reports missing package names clearly ... ok (0ms)
 running 11 tests from ./tests/pages-site.test.js
-has a reproducible React build script ... ok (0ms)
+has a reproducible React build script ... ok (7ms)
 deploys the built site with the official GitHub Pages actions ... ok (0ms)
 rebuilds on every main push and tag push, not only when site files change ... ok (0ms)
 detects language, theme, and operating system for the primary download ... ok (0ms)
@@ -838,48 +206,48 @@ running 1 test from ./tests/runner-schedule.test.js
 startBot scheduling ...
   fires the online-status trigger at least once and keeps the process alive ...
 ------- post-test output -------
-2026-05-12T15:37:32.537Z [debug] Checking for 'set-online-status' trigger...
-2026-05-12T15:37:32.537Z [info] Online status is set
-2026-05-12T15:37:32.537Z [debug] 'set-online-status' trigger executed in 0 ms
-2026-05-12T15:37:32.537Z [debug] Checking for 'accept-friend-requests' trigger...
-2026-05-12T15:37:32.538Z [warn] Stats store unavailable; running without persistence {
+2026-05-12T15:49:39.911Z [debug] Checking for 'set-online-status' trigger...
+2026-05-12T15:49:39.914Z [info] Online status is set
+2026-05-12T15:49:39.915Z [debug] 'set-online-status' trigger executed in 4 ms
+2026-05-12T15:49:39.915Z [debug] Checking for 'accept-friend-requests' trigger...
+2026-05-12T15:49:39.920Z [debug] 'accept-friend-requests' trigger executed in 5 ms
+2026-05-12T15:49:39.920Z [debug] Checking for 'delete-deactivated-friends' trigger...
+2026-05-12T15:49:39.920Z [debug] 'delete-deactivated-friends' trigger executed in 0 ms
+2026-05-12T15:49:39.921Z [debug] Checking for 'delete-outgoing-friend-requests' trigger...
+2026-05-12T15:49:39.921Z [debug] 'delete-outgoing-friend-requests' trigger executed in 0 ms
+2026-05-12T15:49:39.921Z [debug] Checking for 'send-invitation-posts' trigger...
+2026-05-12T15:49:39.921Z [info] No invitation-post communities configured; skipping
+2026-05-12T15:49:39.921Z [debug] 'send-invitation-posts' trigger executed in 0 ms
+2026-05-12T15:49:39.921Z [debug] Checking for 'send-birthday-congratulations' trigger...
+2026-05-12T15:49:39.919Z [warn] Stats store unavailable; running without persistence {
   "error": {
     "name": "NotCapable",
     "message": "Requires env access to \"VK_BOT_DESKTOP_GLOBAL_DIR\", run again with the --allow-env flag",
     "stack": "NotCapable: Requires env access to \"VK_BOT_DESKTOP_GLOBAL_DIR\", run again with the --allow-env flag\n    at Object.getEnv [as get] (ext:deno_os/30_os.js:124:10)\n    at denoEnvGet (ext:deno_node/_process/process.ts:35:21)\n    at Object.get (ext:deno_node/_process/process.ts:52:22)\n    at defaultGlobalDir (file:///tmp/gh-issue-solver-1778599373526/src/lino-store.js:23:17)\n    at new LinoStore (file:///tmp/gh-issue-solver-1778599373526/src/lino-store.js:251:35)\n    at resolveStats (file:///tmp/gh-issue-solver-1778599373526/src/bot/triggers/accept-friend-requests.js:139:19)\n    at acceptFriendRequests (file:///tmp/gh-issue-solver-1778599373526/src/bot/triggers/accept-friend-requests.js:183:19)\n    at file:///tmp/gh-issue-solver-1778599373526/src/bot/runner.js:75:15\n    at run (file:///tmp/gh-issue-solver-1778599373526/src/bot/runner.js:29:13)\n    at Timeout.wrappedCallback [as _onTimeout] (ext:deno_web/02_timers.js:50:7)"
   }
 }
-2026-05-12T15:37:32.538Z [error] Could not accept friend requests {
+2026-05-12T15:49:39.920Z [error] Could not accept friend requests {
   "error": {
     "name": "TypeError",
     "message": "Cannot read properties of undefined (reading 'get')",
     "stack": "TypeError: Cannot read properties of undefined (reading 'get')\n    at loadFriends (file:///tmp/gh-issue-solver-1778599373526/src/bot/triggers/accept-friend-requests.js:20:43)\n    at acceptFriendRequests (file:///tmp/gh-issue-solver-1778599373526/src/bot/triggers/accept-friend-requests.js:184:27)\n    at file:///tmp/gh-issue-solver-1778599373526/src/bot/runner.js:75:15\n    at run (file:///tmp/gh-issue-solver-1778599373526/src/bot/runner.js:29:13)\n    at Timeout.wrappedCallback [as _onTimeout] (ext:deno_web/02_timers.js:50:7)\n    at invokeCallback (ext:deno_node/internal/timers.mjs:160:13)\n    at Object.cb [as _onTimeout] (ext:deno_node/internal/timers.mjs:198:16)\n    at listOnTimeout (ext:core/02_timers.js:307:17)\n    at Object.processTimers (ext:core/02_timers.js:250:7)\n    at __eventLoopTick (ext:core/01_core.js:461:33)"
   }
 }
-2026-05-12T15:37:32.538Z [debug] 'accept-friend-requests' trigger executed in 1 ms
-2026-05-12T15:37:32.538Z [debug] Checking for 'delete-deactivated-friends' trigger...
-2026-05-12T15:37:32.539Z [error] Could not delete deactivated friends {
+2026-05-12T15:49:39.920Z [error] Could not delete deactivated friends {
   "error": {
     "name": "TypeError",
     "message": "Cannot read properties of undefined (reading 'get')",
     "stack": "TypeError: Cannot read properties of undefined (reading 'get')\n    at loadFriendsWithStatus (file:///tmp/gh-issue-solver-1778599373526/src/bot/triggers/delete-deactivated-friends.js:9:43)\n    at deleteDeactivatedFriends (file:///tmp/gh-issue-solver-1778599373526/src/bot/triggers/delete-deactivated-friends.js:27:27)\n    at file:///tmp/gh-issue-solver-1778599373526/src/bot/runner.js:84:15\n    at run (file:///tmp/gh-issue-solver-1778599373526/src/bot/runner.js:29:13)\n    at Timeout.wrappedCallback [as _onTimeout] (ext:deno_web/02_timers.js:50:7)\n    at invokeCallback (ext:deno_node/internal/timers.mjs:160:13)\n    at Object.cb [as _onTimeout] (ext:deno_node/internal/timers.mjs:198:16)\n    at listOnTimeout (ext:core/02_timers.js:307:17)\n    at Object.processTimers (ext:core/02_timers.js:250:7)\n    at __eventLoopTick (ext:core/01_core.js:461:33)"
   }
 }
-2026-05-12T15:37:32.539Z [debug] 'delete-deactivated-friends' trigger executed in 1 ms
-2026-05-12T15:37:32.539Z [debug] Checking for 'delete-outgoing-friend-requests' trigger...
-2026-05-12T15:37:32.539Z [error] Could not delete outgoing friend requests {
+2026-05-12T15:49:39.921Z [error] Could not delete outgoing friend requests {
   "error": {
     "name": "TypeError",
     "message": "Cannot read properties of undefined (reading 'getRequests')",
     "stack": "TypeError: Cannot read properties of undefined (reading 'getRequests')\n    at deleteOutgoingFriendRequests (file:///tmp/gh-issue-solver-1778599373526/src/bot/triggers/delete-outgoing-friend-requests.js:33:43)\n    at file:///tmp/gh-issue-solver-1778599373526/src/bot/runner.js:94:15\n    at run (file:///tmp/gh-issue-solver-1778599373526/src/bot/runner.js:29:13)\n    at Timeout.wrappedCallback [as _onTimeout] (ext:deno_web/02_timers.js:50:7)\n    at invokeCallback (ext:deno_node/internal/timers.mjs:160:13)\n    at Object.cb [as _onTimeout] (ext:deno_node/internal/timers.mjs:198:16)\n    at listOnTimeout (ext:core/02_timers.js:307:17)\n    at Object.processTimers (ext:core/02_timers.js:250:7)\n    at __eventLoopTick (ext:core/01_core.js:461:33)"
   }
 }
-2026-05-12T15:37:32.539Z [debug] 'delete-outgoing-friend-requests' trigger executed in 0 ms
-2026-05-12T15:37:32.539Z [debug] Checking for 'send-invitation-posts' trigger...
-2026-05-12T15:37:32.539Z [info] No invitation-post communities configured; skipping
-2026-05-12T15:37:32.539Z [debug] 'send-invitation-posts' trigger executed in 0 ms
-2026-05-12T15:37:32.539Z [debug] Checking for 'send-birthday-congratulations' trigger...
-2026-05-12T15:37:32.540Z [error] Trigger threw {
+2026-05-12T15:49:39.922Z [error] Trigger threw {
   "name": "send-birthday-congratulations",
   "error": {
     "name": "TypeError",
@@ -888,9 +256,9 @@ startBot scheduling ...
   }
 }
 ----- post-test output end -----
-  fires the online-status trigger at least once and keeps the process alive ... ok (52ms)
+  fires the online-status trigger at least once and keeps the process alive ... ok (53ms)
   does not exit prematurely when run as a forked child (regression for issue #32) ... ignored (0ms)
-startBot scheduling ... ok (52ms)
+startBot scheduling ... ok (53ms)
 running 2 tests from ./tests/session-log.test.js
 openSessionLog: writes log lines to a session file ... ignored (0ms)
 openSessionLog: redacts secrets in persisted logs ... ignored (0ms)
@@ -898,14 +266,14 @@ running 3 tests from ./tests/set-online-status.test.js
 setOnlineStatus: healthy call ...
   logs success on a healthy call ...
 ------- post-test output -------
-2026-05-12T15:37:32.742Z [info] Online status is set
+2026-05-12T15:49:40.474Z [info] Online status is set
 ----- post-test output end -----
-  logs success on a healthy call ... ok (0ms)
-setOnlineStatus: healthy call ... ok (1ms)
+  logs success on a healthy call ... ok (1ms)
+setOnlineStatus: healthy call ... ok (2ms)
 setOnlineStatus: VK error is logged verbatim ...
   forwards the VK error into the log without adding speculation ...
 ------- post-test output -------
-2026-05-12T15:37:32.743Z [warn] Could not set online status {
+2026-05-12T15:49:40.476Z [warn] Could not set online status {
   "error": {
     "name": "Error",
     "message": "Code №3 - Unknown method passed",
@@ -914,11 +282,11 @@ setOnlineStatus: VK error is logged verbatim ...
 }
 ----- post-test output end -----
   forwards the VK error into the log without adding speculation ... ok (1ms)
-setOnlineStatus: VK error is logged verbatim ... ok (1ms)
+setOnlineStatus: VK error is logged verbatim ... ok (4ms)
 setOnlineStatus: other errors ...
   logs the generic warning for non-VK errors too ...
 ------- post-test output -------
-2026-05-12T15:37:32.744Z [warn] Could not set online status {
+2026-05-12T15:49:40.481Z [warn] Could not set online status {
   "error": {
     "name": "Error",
     "message": "boom",
@@ -926,11 +294,11 @@ setOnlineStatus: other errors ...
   }
 }
 ----- post-test output end -----
-  logs the generic warning for non-VK errors too ... ok (0ms)
+  logs the generic warning for non-VK errors too ... ok (1ms)
 setOnlineStatus: other errors ... ok (0ms)
 running 4 tests from ./tests/setup-npm.test.js
-compares semantic versions numerically ... ok (0ms)
-requires npm 11.5.1 or later ... ok (0ms)
+compares semantic versions numerically ... ok (1ms)
+requires npm 11.5.1 or later ... ok (1ms)
 requires Node.js 22.14.0 or later ... ok (0ms)
 selects the latest npm 11 tarball that satisfies trusted publishing ... ok (0ms)
 running 6 tests from ./tests/site-downloads.test.js
@@ -944,12 +312,12 @@ running 2 tests from ./tests/ssh-installer.test.js
 buildInstallScript ...
   emits a docker isolation invocation ... ok (2ms)
   emits a screen isolation invocation ... ok (2ms)
-  stops any prior session before starting a new one ... ok (1ms)
-  uses screen isolation by default ... ok (1ms)
-  throws when the bundle archive is missing ... ok (2ms)
+  stops any prior session before starting a new one ... ok (2ms)
+  uses screen isolation by default ... ok (2ms)
+  throws when the bundle archive is missing ... ok (1ms)
   throws on unknown isolation ... ok (1ms)
   escapes the remote dir ... ok (1ms)
-buildInstallScript ... ok (4ms)
+buildInstallScript ... ok (3ms)
 buildInstallPlan ...
   returns plan metadata alongside the script ... ok (0ms)
 buildInstallPlan ... ok (0ms)
@@ -970,7 +338,7 @@ works with pre-release versions ... ok (0ms)
 running 3 tests from ./tests/theme.test.js
 resolveTheme ...
   honors explicit light or dark preferences ... ok (0ms)
-  falls back to system theme when preference is auto ... ok (0ms)
+  falls back to system theme when preference is auto ... ok (1ms)
   defaults to light when system theme is missing ... ok (1ms)
 resolveTheme ... ok (1ms)
 applyTheme ...
@@ -978,7 +346,7 @@ applyTheme ...
 applyTheme ... ok (0ms)
 watchSystemTheme ...
   returns a no-op when matchMedia is unavailable ... ok (0ms)
-  listens via addEventListener and reports dark/light ... ok (0ms)
+  listens via addEventListener and reports dark/light ... ok (1ms)
 watchSystemTheme ... ok (0ms)
 running 2 tests from ./tests/validate-release-assets.test.js
 validates release assets from the tag version, not the checkout package version ... ok (0ms)
@@ -986,11 +354,10 @@ reports each missing release asset with a GitHub annotation path ... ok (0ms)
 running 1 test from ./tests/vk-token.test.js
 VK token helpers ...
   keeps the Kate Mobile blank-page OAuth URL requested by issue 26 ... ok (1ms)
-  builds the experimental localhost redirect OAuth URL ... ok (1ms)
-  extracts access_token from pasted VK redirect URLs ... ok (1ms)
+  builds the experimental localhost redirect OAuth URL ... ok (2ms)
+  extracts access_token from pasted VK redirect URLs ... ok (2ms)
   accepts a raw token without changing it beyond trimming whitespace ... ok (1ms)
   wires the whitelisted token URLs through Electron IPC ... ok (1ms)
 VK token helpers ... ok (2ms)
 
-ok | 110 passed (84 steps) | 0 failed | 6 ignored (1 step) (2s)
-
+ok | 110 passed (84 steps) | 0 failed | 6 ignored (1 step) (5s)

@@ -135,7 +135,10 @@ The selected fix is the schema-aware merge.
 2. Focused tests after the fix:
    `node --test --test-timeout=30000 tests/bot-config.test.js tests/lino-store.test.js`
    passed.
-3. Full project checks are recorded in the PR after implementation.
+3. Post-merge project checks passed and are recorded in `artifacts/`:
+   `npm test`, `bun test --timeout 30000`, `deno test --allow-read`,
+   `npm run check`, `secretlint`, `check-file-line-limits.sh`,
+   `check-mjs-syntax.sh`, and `validate-changeset.mjs`.
 
 ## References
 

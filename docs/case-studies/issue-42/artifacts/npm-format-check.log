@@ -1,5 +1,5 @@
 
-> vk-bot-desktop@0.9.18 format:check
+> vk-bot-desktop@0.9.19 format:check
 > prettier --check .
 
 Checking formatting...
