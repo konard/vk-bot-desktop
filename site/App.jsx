@@ -410,15 +410,15 @@ export const MACOS_INSTALL_COMMAND =
 
 const MACOS_GATEKEEPER_SCREENSHOTS = [
   {
-    src: '../docs/screenshots/issue-31-macos-done.png',
+    src: 'assets/screenshots/issue-31-macos-done.png',
     alt: 'macOS warning dialog with Done button',
   },
   {
-    src: '../docs/screenshots/issue-31-macos-open-anyway-settings.png',
+    src: 'assets/screenshots/issue-31-macos-open-anyway-settings.png',
     alt: 'macOS Privacy & Security settings with Open Anyway button',
   },
   {
-    src: '../docs/screenshots/issue-31-macos-open-anyway-confirm.png',
+    src: 'assets/screenshots/issue-31-macos-open-anyway-confirm.png',
     alt: 'macOS confirmation dialog with Open Anyway button',
   },
 ];
