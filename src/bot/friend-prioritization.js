@@ -11,6 +11,8 @@
  * accept requests from users with whom we share at least one mutual friend.
  */
 
+import { asList } from './list-values.js';
+
 export const DEFAULT_LIMITS = {
   maxFriends: 10000,
   topPercentMutuals: 10,
@@ -87,9 +89,9 @@ export function pickPrioritySendList({
   currentFriendIds = [],
   remainingCapacity = Infinity,
 } = {}) {
-  const friendsSet = new Set(currentFriendIds);
+  const friendsSet = new Set(asList(currentFriendIds));
   const out = [];
-  for (const id of priorityFriendIds) {
+  for (const id of asList(priorityFriendIds)) {
     if (out.length >= remainingCapacity) {
       break;
     }
@@ -109,7 +111,7 @@ export function pickDeactivatedToDelete({
   priorityFriendIds = [],
   deactivatedValues = ['banned', 'deleted'],
 } = {}) {
-  const protectedSet = new Set(priorityFriendIds);
+  const protectedSet = new Set(asList(priorityFriendIds));
   return friends.filter(
     (f) =>
       f.deactivated &&

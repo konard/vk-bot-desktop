@@ -2,7 +2,14 @@
 
 const path = require('path');
 const { fork, spawn } = require('child_process');
-const { app, BrowserWindow, ipcMain, nativeTheme, shell } = require('electron');
+const {
+  app,
+  BrowserWindow,
+  clipboard,
+  ipcMain,
+  nativeTheme,
+  shell,
+} = require('electron');
 const {
   extractVkOAuthBlankToken,
   isAllowedVkAuthNavigation,
@@ -183,6 +190,11 @@ ipcMain.handle('vkbot:open-token-url', async (_event, url) => {
     throw new Error('Unsupported token URL');
   }
   await openOauthWindow(url);
+  return { ok: true };
+});
+
+ipcMain.handle('vkbot:copy-text', (_event, text) => {
+  clipboard.writeText(String(text ?? ''));
   return { ok: true };
 });
 

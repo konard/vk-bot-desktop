@@ -22,6 +22,9 @@ This document normalizes the product and release requirements collected from:
 - Issue #32: bot runtime observability and lifecycle fixes.
 - Issue #37: VK localhost OAuth redirect rejection and embedded authorization
   window token capture.
+- Issue #39: local-mode deactivated-friend cleanup must tolerate empty
+  persisted priority lists, and the desktop log panel must provide one-click
+  log copying.
 
 ## Product Scope
 
@@ -68,6 +71,10 @@ local bot execution and remote execution over SSH.
     invocation logs a `Checking for '<name>' trigger...` line before the
     call and a `'<name>' trigger executed in N ms` line on success,
     mirroring the `executeTrigger` pattern used by `konard/vk-bot`.
+21. Priority-list handling must be defensive at the config and trigger
+    boundaries: empty or legacy Links Notation list values must not crash
+    deactivated-friend deletion, outgoing-request cancellation, or priority
+    send-list selection.
 
 ## Configuration And Storage
 
@@ -79,6 +86,8 @@ local bot execution and remote execution over SSH.
 4. Use `lino-arguments` for CLI options.
 5. Redact tokens, passwords, cookies, and similar secrets from logs.
 6. Provide verbose logs by default so users can diagnose bot behavior.
+7. Config list fields loaded from Links Notation must normalize empty,
+   scalar, and legacy bare-key shapes before being merged with defaults.
 
 ## Execution Modes
 
@@ -108,13 +117,15 @@ local bot execution and remote execution over SSH.
    configuration.
 9. Prefill defaults for priority friends, invitation messages, birthday
    messages, and other required settings.
-10. Provide a VK token acquisition action that uses the Kate Mobile standalone
+10. The log panel must provide a copy button that copies the visible log text
+    through the desktop clipboard bridge.
+11. Provide a VK token acquisition action that uses the Kate Mobile standalone
     OAuth URL with `redirect_uri=https://oauth.vk.com/blank.html`.
-11. The desktop app must open that OAuth URL in a constrained Electron
+12. The desktop app must open that OAuth URL in a constrained Electron
     authorization window, capture the final
     `https://oauth.vk.com/blank.html#access_token=...` navigation, send only
     the token to the renderer, and close the authorization window.
-12. The desktop app must not expose the rejected
+13. The desktop app must not expose the rejected
     `http://localhost:26852/vk-oauth` OAuth redirect as a user-facing token
     acquisition path for the Kate Mobile app id, because VK rejects that
     redirect URI before the local callback page can run.

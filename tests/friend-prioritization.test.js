@@ -151,4 +151,19 @@ describe('pickDeactivatedToDelete', () => {
       [1, 2]
     );
   });
+
+  it('treats malformed priority IDs from empty lino arrays as empty', () => {
+    const out = pickDeactivatedToDelete({
+      friends: [
+        { id: 1, deactivated: 'banned' },
+        { id: 2, deactivated: 'deleted' },
+      ],
+      priorityFriendIds: {},
+    });
+
+    assert.deepEqual(
+      out.map((f) => f.id),
+      [1, 2]
+    );
+  });
 });

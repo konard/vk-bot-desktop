@@ -1,0 +1,1283 @@
+
+> vk-bot-desktop@0.9.18 test
+> node --test --test-timeout=30000 tests/*.test.js tests/friend-prioritization.test.js tests/lino-store.test.js tests/renderer-clipboard.test.js
+
+TAP version 13
+# Subtest: birthday greetings
+    # Subtest: contains exactly 10 entries
+    ok 1 - contains exactly 10 entries
+      ---
+      duration_ms: 0.61613
+      ...
+    # Subtest: every greeting has at most 2 emojis
+    ok 2 - every greeting has at most 2 emojis
+      ---
+      duration_ms: 0.404875
+      ...
+    # Subtest: every greeting is a non-empty Russian-language string
+    ok 3 - every greeting is a non-empty Russian-language string
+      ---
+      duration_ms: 0.114901
+      ...
+    # Subtest: does not pick the same index twice in a row
+    ok 4 - does not pick the same index twice in a row
+      ---
+      duration_ms: 1.243296
+      ...
+    1..4
+ok 1 - birthday greetings
+  ---
+  duration_ms: 3.24805
+  type: 'suite'
+  ...
+# Subtest: buildStatusCommand
+    # Subtest: uses the default session name
+    ok 1 - uses the default session name
+      ---
+      duration_ms: 0.999662
+      ...
+    # Subtest: honors a custom session name
+    ok 2 - honors a custom session name
+      ---
+      duration_ms: 0.118617
+      ...
+    1..2
+ok 2 - buildStatusCommand
+  ---
+  duration_ms: 2.098312
+  type: 'suite'
+  ...
+# Subtest: buildStartCommand
+    # Subtest: defaults to screen isolation with the session name
+    ok 1 - defaults to screen isolation with the session name
+      ---
+      duration_ms: 0.192847
+      ...
+    # Subtest: builds a docker invocation with image and session name
+    ok 2 - builds a docker invocation with image and session name
+      ---
+      duration_ms: 0.082304
+      ...
+    # Subtest: passes through a custom command
+    ok 3 - passes through a custom command
+      ---
+      duration_ms: 0.071457
+      ...
+    1..3
+ok 3 - buildStartCommand
+  ---
+  duration_ms: 0.452275
+  type: 'suite'
+  ...
+# Subtest: buildStopCommand
+    # Subtest: uses --stop with the session
+    ok 1 - uses --stop with the session
+      ---
+      duration_ms: 0.097195
+      ...
+    1..1
+ok 4 - buildStopCommand
+  ---
+  duration_ms: 0.255001
+  type: 'suite'
+  ...
+# Subtest: isRunning
+    # Subtest: returns true when stdout indicates running
+    ok 1 - returns true when stdout indicates running
+      ---
+      duration_ms: 0.330373
+      ...
+    # Subtest: returns false when exit code != 0
+    ok 2 - returns false when exit code != 0
+      ---
+      duration_ms: 0.094001
+      ...
+    # Subtest: returns false when stdout has no running keyword
+    ok 3 - returns false when stdout has no running keyword
+      ---
+      duration_ms: 0.134681
+      ...
+    # Subtest: throws when runCommand is missing
+    ok 4 - throws when runCommand is missing
+      ---
+      duration_ms: 0.410284
+      ...
+    1..4
+ok 5 - isRunning
+  ---
+  duration_ms: 1.14503
+  type: 'suite'
+  ...
+# Subtest: startBot/stopBot
+    # Subtest: startBot invokes runCommand with the start argv
+    ok 1 - startBot invokes runCommand with the start argv
+      ---
+      duration_ms: 0.226939
+      ...
+    # Subtest: stopBot invokes runCommand with the stop argv
+    ok 2 - stopBot invokes runCommand with the stop argv
+      ---
+      duration_ms: 0.108502
+      ...
+    1..2
+ok 6 - startBot/stopBot
+  ---
+  duration_ms: 0.414219
+  type: 'suite'
+  ...
+# Subtest: ensureMutualExclusion
+    # Subtest: rejects unknown targetMode
+    ok 1 - rejects unknown targetMode
+      ---
+      duration_ms: 0.224695
+      ...
+    # Subtest: returns stoppedOther=false when no other runner is provided
+    ok 2 - returns stoppedOther=false when no other runner is provided
+      ---
+      duration_ms: 0.079057
+      ...
+    # Subtest: stops the remote bot when starting local and remote is running
+    ok 3 - stops the remote bot when starting local and remote is running
+      ---
+      duration_ms: 0.12769
+      ...
+    # Subtest: does not stop the remote bot when it is not running
+    ok 4 - does not stop the remote bot when it is not running
+      ---
+      duration_ms: 0.059849
+      ...
+    # Subtest: treats runner errors as not-running
+    ok 5 - treats runner errors as not-running
+      ---
+      duration_ms: 0.092247
+      ...
+    # Subtest: stops the local bot when starting server
+    ok 6 - stops the local bot when starting server
+      ---
+      duration_ms: 0.152297
+      ...
+    1..6
+ok 7 - ensureMutualExclusion
+  ---
+  duration_ms: 0.894877
+  type: 'suite'
+  ...
+# node:internal/modules/esm/resolve:873
+#   throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+#         ^
+# Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'test-anywhere' imported from /tmp/gh-issue-solver-1778599044034/tests/check-file-line-limits.test.js
+#     at packageResolve (node:internal/modules/esm/resolve:873:9)
+#     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+#     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+#     at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+#     at \#cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+#     at ModuleLoader.resolve (node:internal/modules/esm/loader:640:38)
+#     at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:264:38)
+#     at ModuleJob._link (node:internal/modules/esm/module_job:168:49) {
+#   code: 'ERR_MODULE_NOT_FOUND'
+# }
+# Node.js v20.20.2
+# Subtest: /tmp/gh-issue-solver-1778599044034/tests/check-file-line-limits.test.js
+not ok 3 - /tmp/gh-issue-solver-1778599044034/tests/check-file-line-limits.test.js
+  ---
+  duration_ms: 39.784831
+  location: '/tmp/gh-issue-solver-1778599044034/tests/check-file-line-limits.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# node:internal/modules/esm/resolve:873
+#   throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+#         ^
+# Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'test-anywhere' imported from /tmp/gh-issue-solver-1778599044034/tests/check-release-needed.test.js
+#     at packageResolve (node:internal/modules/esm/resolve:873:9)
+#     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+#     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+#     at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+#     at \#cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+#     at ModuleLoader.resolve (node:internal/modules/esm/loader:640:38)
+#     at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:264:38)
+#     at ModuleJob._link (node:internal/modules/esm/module_job:168:49) {
+#   code: 'ERR_MODULE_NOT_FOUND'
+# }
+# Node.js v20.20.2
+# Subtest: /tmp/gh-issue-solver-1778599044034/tests/check-release-needed.test.js
+not ok 4 - /tmp/gh-issue-solver-1778599044034/tests/check-release-needed.test.js
+  ---
+  duration_ms: 45.48396
+  location: '/tmp/gh-issue-solver-1778599044034/tests/check-release-needed.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# node:internal/modules/esm/resolve:873
+#   throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+#         ^
+# Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'test-anywhere' imported from /tmp/gh-issue-solver-1778599044034/tests/ci-timeouts.test.js
+#     at packageResolve (node:internal/modules/esm/resolve:873:9)
+#     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+#     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+#     at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+#     at \#cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+#     at ModuleLoader.resolve (node:internal/modules/esm/loader:640:38)
+#     at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:264:38)
+#     at ModuleJob._link (node:internal/modules/esm/module_job:168:49) {
+#   code: 'ERR_MODULE_NOT_FOUND'
+# }
+# Node.js v20.20.2
+# Subtest: /tmp/gh-issue-solver-1778599044034/tests/ci-timeouts.test.js
+not ok 5 - /tmp/gh-issue-solver-1778599044034/tests/ci-timeouts.test.js
+  ---
+  duration_ms: 39.049514
+  location: '/tmp/gh-issue-solver-1778599044034/tests/ci-timeouts.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# node:internal/modules/esm/resolve:873
+#   throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+#         ^
+# Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'test-anywhere' imported from /tmp/gh-issue-solver-1778599044034/tests/create-github-release.test.js
+#     at packageResolve (node:internal/modules/esm/resolve:873:9)
+#     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+#     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+#     at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+#     at \#cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+#     at ModuleLoader.resolve (node:internal/modules/esm/loader:640:38)
+#     at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:264:38)
+#     at ModuleJob._link (node:internal/modules/esm/module_job:168:49) {
+#   code: 'ERR_MODULE_NOT_FOUND'
+# }
+# Node.js v20.20.2
+# Subtest: /tmp/gh-issue-solver-1778599044034/tests/create-github-release.test.js
+not ok 6 - /tmp/gh-issue-solver-1778599044034/tests/create-github-release.test.js
+  ---
+  duration_ms: 49.46903
+  location: '/tmp/gh-issue-solver-1778599044034/tests/create-github-release.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# node:internal/modules/esm/resolve:873
+#   throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+#         ^
+# Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'test-anywhere' imported from /tmp/gh-issue-solver-1778599044034/tests/desktop-release-workflow.test.js
+#     at packageResolve (node:internal/modules/esm/resolve:873:9)
+#     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+#     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+#     at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+#     at \#cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+#     at ModuleLoader.resolve (node:internal/modules/esm/loader:640:38)
+#     at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:264:38)
+#     at ModuleJob._link (node:internal/modules/esm/module_job:168:49) {
+#   code: 'ERR_MODULE_NOT_FOUND'
+# }
+# Node.js v20.20.2
+# Subtest: /tmp/gh-issue-solver-1778599044034/tests/desktop-release-workflow.test.js
+not ok 7 - /tmp/gh-issue-solver-1778599044034/tests/desktop-release-workflow.test.js
+  ---
+  duration_ms: 37.25261
+  location: '/tmp/gh-issue-solver-1778599044034/tests/desktop-release-workflow.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# node:internal/modules/esm/resolve:873
+#   throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+#         ^
+# Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'test-anywhere' imported from /tmp/gh-issue-solver-1778599044034/tests/detect-code-changes.test.js
+#     at packageResolve (node:internal/modules/esm/resolve:873:9)
+#     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+#     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+#     at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+#     at \#cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+#     at ModuleLoader.resolve (node:internal/modules/esm/loader:640:38)
+#     at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:264:38)
+#     at ModuleJob._link (node:internal/modules/esm/module_job:168:49) {
+#   code: 'ERR_MODULE_NOT_FOUND'
+# }
+# Node.js v20.20.2
+# Subtest: /tmp/gh-issue-solver-1778599044034/tests/detect-code-changes.test.js
+not ok 8 - /tmp/gh-issue-solver-1778599044034/tests/detect-code-changes.test.js
+  ---
+  duration_ms: 41.847402
+  location: '/tmp/gh-issue-solver-1778599044034/tests/detect-code-changes.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# node:internal/modules/esm/resolve:873
+#   throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+#         ^
+# Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'test-anywhere' imported from /tmp/gh-issue-solver-1778599044034/tests/dispatch-and-watch-workflow.test.js
+#     at packageResolve (node:internal/modules/esm/resolve:873:9)
+#     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+#     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+#     at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+#     at \#cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+#     at ModuleLoader.resolve (node:internal/modules/esm/loader:640:38)
+#     at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:264:38)
+#     at ModuleJob._link (node:internal/modules/esm/module_job:168:49) {
+#   code: 'ERR_MODULE_NOT_FOUND'
+# }
+# Node.js v20.20.2
+# Subtest: /tmp/gh-issue-solver-1778599044034/tests/dispatch-and-watch-workflow.test.js
+not ok 9 - /tmp/gh-issue-solver-1778599044034/tests/dispatch-and-watch-workflow.test.js
+  ---
+  duration_ms: 35.076621
+  location: '/tmp/gh-issue-solver-1778599044034/tests/dispatch-and-watch-workflow.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: fetchOutgoingRequestIds
+    # Subtest: returns [] when vk client is missing
+    ok 1 - returns [] when vk client is missing
+      ---
+      duration_ms: 1.36583
+      ...
+    # Subtest: returns [] when friends.getRequests is missing
+    ok 2 - returns [] when friends.getRequests is missing
+      ---
+      duration_ms: 0.202492
+      ...
+    # Subtest: returns the items array from the VK response
+    ok 3 - returns the items array from the VK response
+      ---
+      duration_ms: 0.235662
+      ...
+    # Subtest: returns [] when items is not an array
+    ok 4 - returns [] when items is not an array
+      ---
+      duration_ms: 0.906283
+      ...
+    1..4
+ok 15 - fetchOutgoingRequestIds
+  ---
+  duration_ms: 3.726634
+  type: 'suite'
+  ...
+# Subtest: computePotentialAcceptanceQuota
+    # Subtest: returns floor(totalIncomingSeen * 10%) - totalAcceptedEver
+    ok 1 - returns floor(totalIncomingSeen * 10%) - totalAcceptedEver
+      ---
+      duration_ms: 1.610856
+      ...
+    # Subtest: clamps to zero when already over quota
+    ok 2 - clamps to zero when already over quota
+      ---
+      duration_ms: 0.090546
+      ...
+    # Subtest: honours a custom percentage
+    ok 3 - honours a custom percentage
+      ---
+      duration_ms: 0.104716
+      ...
+    1..3
+ok 16 - computePotentialAcceptanceQuota
+  ---
+  duration_ms: 2.515686
+  type: 'suite'
+  ...
+# Subtest: selectIncomingRequests
+    # Subtest: respects the lifetime 10% quota across runs
+    ok 1 - respects the lifetime 10% quota across runs
+      ---
+      duration_ms: 3.022222
+      ...
+    # Subtest: falls back to current batch size when no lifetime stats provided
+    ok 2 - falls back to current batch size when no lifetime stats provided
+      ---
+      duration_ms: 0.136704
+      ...
+    # Subtest: above the limit only accepts requests with mutuals
+    ok 3 - above the limit only accepts requests with mutuals
+      ---
+      duration_ms: 0.097936
+      ...
+    # Subtest: returns nothing when capacity is exhausted
+    ok 4 - returns nothing when capacity is exhausted
+      ---
+      duration_ms: 0.075292
+      ...
+    # Subtest: returns nothing for empty input
+    ok 5 - returns nothing for empty input
+      ---
+      duration_ms: 0.117666
+      ...
+    1..5
+ok 17 - selectIncomingRequests
+  ---
+  duration_ms: 3.763829
+  type: 'suite'
+  ...
+# Subtest: pickPrioritySendList
+    # Subtest: returns priority IDs not yet in friends
+    ok 1 - returns priority IDs not yet in friends
+      ---
+      duration_ms: 0.180499
+      ...
+    # Subtest: respects remaining capacity
+    ok 2 - respects remaining capacity
+      ---
+      duration_ms: 0.789068
+      ...
+    1..2
+ok 18 - pickPrioritySendList
+  ---
+  duration_ms: 1.216126
+  type: 'suite'
+  ...
+# Subtest: pickDeactivatedToDelete
+    # Subtest: returns banned/deleted friends excluding priority list
+    ok 1 - returns banned/deleted friends excluding priority list
+      ---
+      duration_ms: 0.397513
+      ...
+    # Subtest: treats malformed priority IDs from empty lino arrays as empty
+    not ok 2 - treats malformed priority IDs from empty lino arrays as empty
+      ---
+      duration_ms: 0.349932
+      location: '/tmp/gh-issue-solver-1778599044034/tests/friend-prioritization.test.js:155:3'
+      failureType: 'testCodeFailure'
+      error: 'object is not iterable (cannot read property Symbol(Symbol.iterator))'
+      code: 'ERR_TEST_FAILURE'
+      name: 'TypeError'
+      stack: |-
+        new Set (<anonymous>)
+        pickDeactivatedToDelete (file:///tmp/gh-issue-solver-1778599044034/src/bot/friend-prioritization.js:112:24)
+        TestContext.<anonymous> (file:///tmp/gh-issue-solver-1778599044034/tests/friend-prioritization.test.js:156:17)
+        Test.runInAsyncScope (node:async_hooks:206:9)
+        Test.run (node:internal/test_runner/test:796:25)
+        Suite.processPendingSubtests (node:internal/test_runner/test:526:18)
+        Test.postRun (node:internal/test_runner/test:889:19)
+        Test.run (node:internal/test_runner/test:835:12)
+        async Promise.all (index 0)
+        async Suite.run (node:internal/test_runner/test:1135:7)
+      ...
+    1..2
+not ok 19 - pickDeactivatedToDelete
+  ---
+  duration_ms: 1.092531
+  type: 'suite'
+  location: '/tmp/gh-issue-solver-1778599044034/tests/friend-prioritization.test.js:138:1'
+  failureType: 'subtestsFailed'
+  error: '1 subtest failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: detectLocale
+    # Subtest: returns ru for Russian language tags
+    ok 1 - returns ru for Russian language tags
+      ---
+      duration_ms: 0.557232
+      ...
+    # Subtest: falls back to en for unknown locales
+    ok 2 - falls back to en for unknown locales
+      ---
+      duration_ms: 0.105928
+      ...
+    1..2
+ok 20 - detectLocale
+  ---
+  duration_ms: 1.479208
+  type: 'suite'
+  ...
+# Subtest: translate
+    # Subtest: returns the translated string when available
+    ok 1 - returns the translated string when available
+      ---
+      duration_ms: 0.27484
+      ...
+    # Subtest: falls back to English when key missing in target locale
+    ok 2 - falls back to English when key missing in target locale
+      ---
+      duration_ms: 0.117695
+      ...
+    # Subtest: returns the key itself when nothing matches
+    ok 3 - returns the key itself when nothing matches
+      ---
+      duration_ms: 0.068191
+      ...
+    1..3
+ok 21 - translate
+  ---
+  duration_ms: 0.612634
+  type: 'suite'
+  ...
+# node:internal/modules/esm/resolve:873
+#   throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+#         ^
+# Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'test-anywhere' imported from /tmp/gh-issue-solver-1778599044034/tests/index.test.js
+#     at packageResolve (node:internal/modules/esm/resolve:873:9)
+#     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+#     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+#     at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+#     at \#cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+#     at ModuleLoader.resolve (node:internal/modules/esm/loader:640:38)
+#     at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:264:38)
+#     at ModuleJob._link (node:internal/modules/esm/module_job:168:49) {
+#   code: 'ERR_MODULE_NOT_FOUND'
+# }
+# Node.js v20.20.2
+# Subtest: /tmp/gh-issue-solver-1778599044034/tests/index.test.js
+not ok 13 - /tmp/gh-issue-solver-1778599044034/tests/index.test.js
+  ---
+  duration_ms: 47.35303
+  location: '/tmp/gh-issue-solver-1778599044034/tests/index.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: invitation messages
+    # Subtest: contains exactly 10 entries
+    ok 1 - contains exactly 10 entries
+      ---
+      duration_ms: 0.480637
+      ...
+    # Subtest: every message is a non-empty Russian-language string
+    ok 2 - every message is a non-empty Russian-language string
+      ---
+      duration_ms: 0.226117
+      ...
+    # Subtest: does not pick the same index twice in a row
+    ok 3 - does not pick the same index twice in a row
+      ---
+      duration_ms: 0.18096
+      ...
+    # Subtest: accepts a custom list
+    ok 4 - accepts a custom list
+      ---
+      duration_ms: 0.69646
+      ...
+    # Subtest: returns empty string for empty list
+    ok 5 - returns empty string for empty list
+      ---
+      duration_ms: 0.096204
+      ...
+    1..5
+ok 23 - invitation messages
+  ---
+  duration_ms: 2.39803
+  type: 'suite'
+  ...
+# Subtest: LinoStore
+    # Subtest: round-trips a config through formatIndented/parseIndented
+    ok 1 - round-trips a config through formatIndented/parseIndented
+      ---
+      duration_ms: 9.5176
+      ...
+    # Subtest: normalizes empty and scalar list fields after loading lino config
+    not ok 2 - normalizes empty and scalar list fields after loading lino config
+      ---
+      duration_ms: 4.826376
+      location: '/tmp/gh-issue-solver-1778599044034/tests/lino-store.test.js:48:3'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly deep-equal:
+        + actual - expected
+
+        + {}
+        - []
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected:
+      actual:
+      operator: 'deepStrictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///tmp/gh-issue-solver-1778599044034/tests/lino-store.test.js:69:14)
+        async Test.run (node:internal/test_runner/test:797:9)
+        async Suite.processPendingSubtests (node:internal/test_runner/test:526:7)
+      ...
+    # Subtest: local config overrides global
+    ok 3 - local config overrides global
+      ---
+      duration_ms: 3.624793
+      ...
+    # Subtest: returns empty object when no config files exist
+    ok 4 - returns empty object when no config files exist
+      ---
+      duration_ms: 2.796636
+      ...
+    1..4
+not ok 24 - LinoStore
+  ---
+  duration_ms: 22.082501
+  type: 'suite'
+  location: '/tmp/gh-issue-solver-1778599044034/tests/lino-store.test.js:26:1'
+  failureType: 'subtestsFailed'
+  error: '1 subtest failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# 2026-05-12T15:28:17.252Z [info] token=***
+# 2026-05-12T15:28:17.253Z [error] Could not set online status {
+#   "error": {
+#     "name": "Error",
+#     "message": "Unknown method passed.",
+#     "stack": "Error: Unknown method passed.\\n    at TestContext.<anonymous> (file:///tmp/gh-issue-solver-1778599044034/tests/logger.test.js:72:16)\\n    at Test.runInAsyncScope (node:async_hooks:206:9)\\n    at Test.run (node:internal/test_runner/test:796:25)\\n    at Suite.processPendingSubtests (node:internal/test_runner/test:526:18)\\n    at Test.postRun (node:internal/test_runner/test:889:19)\\n    at Test.run (node:internal/test_runner/test:835:12)\\n    at async Promise.all (index 0)\\n    at async Suite.run (node:internal/test_runner/test:1135:7)\\n    at async Test.processPendingSubtests (node:internal/test_runner/test:526:7)"
+#   }
+# }
+# 2026-05-12T15:28:17.254Z [debug] verbose probe
+# 2026-05-12T15:28:17.254Z [info] shown
+# Subtest: redact
+    # Subtest: masks long token-like strings
+    ok 1 - masks long token-like strings
+      ---
+      duration_ms: 0.945892
+      ...
+    # Subtest: masks query-style secrets
+    ok 2 - masks query-style secrets
+      ---
+      duration_ms: 0.209804
+      ...
+    # Subtest: masks secret-named object properties
+    ok 3 - masks secret-named object properties
+      ---
+      duration_ms: 0.148392
+      ...
+    # Subtest: handles circular references
+    ok 4 - handles circular references
+      ---
+      duration_ms: 0.172617
+      ...
+    # Subtest: does not mask short ids
+    ok 5 - does not mask short ids
+      ---
+      duration_ms: 0.096364
+      ...
+    1..5
+ok 25 - redact
+  ---
+  duration_ms: 3.977729
+  type: 'suite'
+  ...
+# Subtest: logger sinks
+    # Subtest: routes log lines to registered sinks with redaction
+    ok 1 - routes log lines to registered sinks with redaction
+      ---
+      duration_ms: 1.35321
+      ...
+    # Subtest: pretty-prints object arguments with indentation
+    ok 2 - pretty-prints object arguments with indentation
+      ---
+      duration_ms: 0.605745
+      ...
+    1..2
+ok 26 - logger sinks
+  ---
+  duration_ms: 2.15635
+  type: 'suite'
+  ...
+# Subtest: verbose mode
+    # Subtest: is enabled by default so debug lines reach sinks
+    ok 1 - is enabled by default so debug lines reach sinks
+      ---
+      duration_ms: 0.335751
+      ...
+    # Subtest: suppresses debug lines when toggled off
+    ok 2 - suppresses debug lines when toggled off
+      ---
+      duration_ms: 0.230094
+      ...
+    1..2
+ok 27 - verbose mode
+  ---
+  duration_ms: 0.771733
+  type: 'suite'
+  ...
+# Subtest: Electron OAuth localhost callback markup
+    # Subtest: serves a page that posts the URL fragment token back to the app
+    ok 1 - serves a page that posts the URL fragment token back to the app
+      ---
+      duration_ms: 1.740208
+      ...
+    1..1
+ok 28 - Electron OAuth localhost callback markup
+  ---
+  duration_ms: 2.402367
+  type: 'suite'
+  ...
+# Subtest: Electron OAuth localhost callback server
+    # Subtest: accepts a token handoff from the callback page
+    ok 1 - accepts a token handoff from the callback page
+      ---
+      duration_ms: 43.374992
+      ...
+    1..1
+ok 29 - Electron OAuth localhost callback server
+  ---
+  duration_ms: 43.678946
+  type: 'suite'
+  ...
+# node:internal/modules/esm/resolve:873
+#   throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+#         ^
+# Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'test-anywhere' imported from /tmp/gh-issue-solver-1778599044034/tests/package-info.test.js
+#     at packageResolve (node:internal/modules/esm/resolve:873:9)
+#     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+#     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+#     at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+#     at \#cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+#     at ModuleLoader.resolve (node:internal/modules/esm/loader:640:38)
+#     at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:264:38)
+#     at ModuleJob._link (node:internal/modules/esm/module_job:168:49) {
+#   code: 'ERR_MODULE_NOT_FOUND'
+# }
+# Node.js v20.20.2
+# Subtest: /tmp/gh-issue-solver-1778599044034/tests/package-info.test.js
+not ok 18 - /tmp/gh-issue-solver-1778599044034/tests/package-info.test.js
+  ---
+  duration_ms: 32.79889
+  location: '/tmp/gh-issue-solver-1778599044034/tests/package-info.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# node:internal/modules/esm/resolve:873
+#   throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+#         ^
+# Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'test-anywhere' imported from /tmp/gh-issue-solver-1778599044034/tests/pages-site.test.js
+#     at packageResolve (node:internal/modules/esm/resolve:873:9)
+#     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+#     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+#     at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+#     at \#cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+#     at ModuleLoader.resolve (node:internal/modules/esm/loader:640:38)
+#     at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:264:38)
+#     at ModuleJob._link (node:internal/modules/esm/module_job:168:49) {
+#   code: 'ERR_MODULE_NOT_FOUND'
+# }
+# Node.js v20.20.2
+# Subtest: /tmp/gh-issue-solver-1778599044034/tests/pages-site.test.js
+not ok 19 - /tmp/gh-issue-solver-1778599044034/tests/pages-site.test.js
+  ---
+  duration_ms: 30.51407
+  location: '/tmp/gh-issue-solver-1778599044034/tests/pages-site.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# node:internal/modules/esm/resolve:873
+#   throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+#         ^
+# Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'test-anywhere' imported from /tmp/gh-issue-solver-1778599044034/tests/release-badge.test.js
+#     at packageResolve (node:internal/modules/esm/resolve:873:9)
+#     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+#     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+#     at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+#     at \#cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+#     at ModuleLoader.resolve (node:internal/modules/esm/loader:640:38)
+#     at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:264:38)
+#     at ModuleJob._link (node:internal/modules/esm/module_job:168:49) {
+#   code: 'ERR_MODULE_NOT_FOUND'
+# }
+# Node.js v20.20.2
+# Subtest: /tmp/gh-issue-solver-1778599044034/tests/release-badge.test.js
+not ok 20 - /tmp/gh-issue-solver-1778599044034/tests/release-badge.test.js
+  ---
+  duration_ms: 39.162673
+  location: '/tmp/gh-issue-solver-1778599044034/tests/release-badge.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# node:internal/modules/esm/resolve:283
+#     throw new ERR_MODULE_NOT_FOUND(
+#           ^
+# Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/tmp/gh-issue-solver-1778599044034/electron/renderer/clipboard.js' imported from /tmp/gh-issue-solver-1778599044034/tests/renderer-clipboard.test.js
+#     at finalizeResolution (node:internal/modules/esm/resolve:283:11)
+#     at moduleResolve (node:internal/modules/esm/resolve:952:10)
+#     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+#     at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+#     at \#cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+#     at ModuleLoader.resolve (node:internal/modules/esm/loader:640:38)
+#     at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:264:38)
+#     at ModuleJob._link (node:internal/modules/esm/module_job:168:49) {
+#   code: 'ERR_MODULE_NOT_FOUND',
+#   url: 'file:///tmp/gh-issue-solver-1778599044034/electron/renderer/clipboard.js'
+# }
+# Node.js v20.20.2
+# Subtest: /tmp/gh-issue-solver-1778599044034/tests/renderer-clipboard.test.js
+not ok 21 - /tmp/gh-issue-solver-1778599044034/tests/renderer-clipboard.test.js
+  ---
+  duration_ms: 40.678636
+  location: '/tmp/gh-issue-solver-1778599044034/tests/renderer-clipboard.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# 2026-05-12T15:28:17.325Z [debug] Checking for 'set-online-status' trigger...
+# 2026-05-12T15:28:17.326Z [info] Online status is set
+# 2026-05-12T15:28:17.326Z [debug] 'set-online-status' trigger executed in 1 ms
+# 2026-05-12T15:28:17.326Z [debug] Checking for 'accept-friend-requests' trigger...
+# 2026-05-12T15:28:17.326Z [debug] 'accept-friend-requests' trigger executed in 0 ms
+# 2026-05-12T15:28:17.327Z [debug] Checking for 'delete-deactivated-friends' trigger...
+# 2026-05-12T15:28:17.327Z [debug] 'delete-deactivated-friends' trigger executed in 0 ms
+# 2026-05-12T15:28:17.327Z [debug] Checking for 'delete-outgoing-friend-requests' trigger...
+# 2026-05-12T15:28:17.326Z [error] Could not accept friend requests {
+#   "error": {
+#     "name": "TypeError",
+#     "message": "Cannot read properties of undefined (reading 'get')",
+#     "stack": "TypeError: Cannot read properties of undefined (reading 'get')\\n    at loadFriends (file:///tmp/gh-issue-solver-1778599044034/src/bot/triggers/accept-friend-requests.js:20:43)\\n    at acceptFriendRequests (file:///tmp/gh-issue-solver-1778599044034/src/bot/triggers/accept-friend-requests.js:184:27)\\n    at file:///tmp/gh-issue-solver-1778599044034/src/bot/runner.js:75:15\\n    at Timeout.run [as _onTimeout] (file:///tmp/gh-issue-solver-1778599044034/src/bot/runner.js:29:13)\\n    at listOnTimeout (node:internal/timers:581:17)\\n    at process.processTimers (node:internal/timers:519:7)"
+#   }
+# }
+# 2026-05-12T15:28:17.327Z [error] Could not delete deactivated friends {
+#   "error": {
+#     "name": "TypeError",
+#     "message": "Cannot read properties of undefined (reading 'get')",
+#     "stack": "TypeError: Cannot read properties of undefined (reading 'get')\\n    at loadFriendsWithStatus (file:///tmp/gh-issue-solver-1778599044034/src/bot/triggers/delete-deactivated-friends.js:9:43)\\n    at deleteDeactivatedFriends (file:///tmp/gh-issue-solver-1778599044034/src/bot/triggers/delete-deactivated-friends.js:27:27)\\n    at file:///tmp/gh-issue-solver-1778599044034/src/bot/runner.js:84:15\\n    at Timeout.run [as _onTimeout] (file:///tmp/gh-issue-solver-1778599044034/src/bot/runner.js:29:13)\\n    at listOnTimeout (node:internal/timers:581:17)\\n    at process.processTimers (node:internal/timers:519:7)"
+#   }
+# }
+# 2026-05-12T15:28:17.327Z [error] Could not delete outgoing friend requests {
+#   "error": {
+#     "name": "TypeError",
+#     "message": "Cannot read properties of undefined (reading 'getRequests')",
+#     "stack": "TypeError: Cannot read properties of undefined (reading 'getRequests')\\n    at deleteOutgoingFriendRequests (file:///tmp/gh-issue-solver-1778599044034/src/bot/triggers/delete-outgoing-friend-requests.js:33:43)\\n    at file:///tmp/gh-issue-solver-1778599044034/src/bot/runner.js:94:15\\n    at Timeout.run [as _onTimeout] (file:///tmp/gh-issue-solver-1778599044034/src/bot/runner.js:29:13)\\n    at listOnTimeout (node:internal/timers:581:17)\\n    at process.processTimers (node:internal/timers:519:7)"
+#   }
+# }
+# 2026-05-12T15:28:17.327Z [debug] 'delete-outgoing-friend-requests' trigger executed in 0 ms
+# 2026-05-12T15:28:17.327Z [debug] Checking for 'send-invitation-posts' trigger...
+# 2026-05-12T15:28:17.327Z [info] No invitation-post communities configured; skipping
+# 2026-05-12T15:28:17.327Z [debug] 'send-invitation-posts' trigger executed in 0 ms
+# 2026-05-12T15:28:17.328Z [debug] Checking for 'send-birthday-congratulations' trigger...
+# 2026-05-12T15:28:17.328Z [error] Trigger threw {
+#   "name": "send-birthday-congratulations",
+#   "error": {
+#     "name": "TypeError",
+#     "message": "Cannot read properties of undefined (reading 'get')",
+#     "stack": "TypeError: Cannot read properties of undefined (reading 'get')\\n    at collectFriendsWithBirthday (file:///tmp/gh-issue-solver-1778599044034/src/bot/triggers/send-birthday-congratulations.js:68:43)\\n    at sendBirthdayCongratulations (file:///tmp/gh-issue-solver-1778599044034/src/bot/triggers/send-birthday-congratulations.js:37:25)\\n    at file:///tmp/gh-issue-solver-1778599044034/src/bot/runner.js:112:15\\n    at Timeout.run [as _onTimeout] (file:///tmp/gh-issue-solver-1778599044034/src/bot/runner.js:29:13)\\n    at listOnTimeout (node:internal/timers:581:17)\\n    at process.processTimers (node:internal/timers:519:7)"
+#   }
+# }
+# Subtest: startBot scheduling
+    # Subtest: fires the online-status trigger at least once and keeps the process alive
+    ok 1 - fires the online-status trigger at least once and keeps the process alive
+      ---
+      duration_ms: 52.39539
+      ...
+    # Subtest: does not exit prematurely when run as a forked child (regression for issue \#32)
+    ok 2 - does not exit prematurely when run as a forked child (regression for issue \#32)
+      ---
+      duration_ms: 408.037795
+      ...
+    1..2
+ok 34 - startBot scheduling
+  ---
+  duration_ms: 461.653697
+  type: 'suite'
+  ...
+# 2026-05-12T15:28:17.324Z [info] first line from session-log test
+# 2026-05-12T15:28:17.325Z [warn] second line {
+#   "detail": "value"
+# }
+# Subtest: openSessionLog: writes log lines to a session file
+    # Subtest: creates a file under the given directory and persists logger output
+    ok 1 - creates a file under the given directory and persists logger output
+      ---
+      duration_ms: 5.44543
+      ...
+    1..1
+ok 35 - openSessionLog: writes log lines to a session file
+  ---
+  duration_ms: 6.198795
+  type: 'suite'
+  ...
+# 2026-05-12T15:28:17.329Z [info] vk {
+#   "token": "***"
+# }
+# Subtest: openSessionLog: redacts secrets in persisted logs
+    # Subtest: writes the masked representation, not the raw token
+    ok 1 - writes the masked representation, not the raw token
+      ---
+      duration_ms: 2.788975
+      ...
+    1..1
+ok 36 - openSessionLog: redacts secrets in persisted logs
+  ---
+  duration_ms: 3.032017
+  type: 'suite'
+  ...
+# 2026-05-12T15:28:17.327Z [info] Online status is set
+# 2026-05-12T15:28:17.330Z [warn] Could not set online status {
+#   "error": {
+#     "name": "Error",
+#     "message": "Code №3 - Unknown method passed",
+#     "stack": "Error: Code №3 - Unknown method passed\\n    at file:///tmp/gh-issue-solver-1778599044034/tests/set-online-status.test.js:37:19\\n    at withCapturedLogs (file:///tmp/gh-issue-solver-1778599044034/tests/set-online-status.test.js:20:26)\\n    at TestContext.<anonymous> (file:///tmp/gh-issue-solver-1778599044034/tests/set-online-status.test.js:36:11)\\n    at Test.runInAsyncScope (node:async_hooks:206:9)\\n    at Test.run (node:internal/test_runner/test:796:25)\\n    at Test.start (node:internal/test_runner/test:702:17)\\n    at node:internal/test_runner/test:1133:71\\n    at node:internal/per_context/primordials:482:82\\n    at new Promise (<anonymous>)\\n    at new SafePromise (node:internal/per_context/primordials:450:29)"
+#   }
+# }
+# 2026-05-12T15:28:17.331Z [warn] Could not set online status {
+#   "error": {
+#     "name": "Error",
+#     "message": "boom",
+#     "stack": "Error: boom\\n    at Object.setOnline (file:///tmp/gh-issue-solver-1778599044034/tests/set-online-status.test.js:69:21)\\n    at setOnlineStatus (file:///tmp/gh-issue-solver-1778599044034/src/bot/triggers/set-online-status.js:5:26)\\n    at file:///tmp/gh-issue-solver-1778599044034/tests/set-online-status.test.js:74:13\\n    at withCapturedLogs (file:///tmp/gh-issue-solver-1778599044034/tests/set-online-status.test.js:20:26)\\n    at TestContext.<anonymous> (file:///tmp/gh-issue-solver-1778599044034/tests/set-online-status.test.js:64:11)\\n    at Test.runInAsyncScope (node:async_hooks:206:9)\\n    at Test.run (node:internal/test_runner/test:796:25)\\n    at Test.start (node:internal/test_runner/test:702:17)\\n    at node:internal/test_runner/test:1133:71\\n    at node:internal/per_context/primordials:482:82"
+#   }
+# }
+# Subtest: setOnlineStatus: healthy call
+    # Subtest: logs success on a healthy call
+    ok 1 - logs success on a healthy call
+      ---
+      duration_ms: 2.381997
+      ...
+    1..1
+ok 37 - setOnlineStatus: healthy call
+  ---
+  duration_ms: 3.051186
+  type: 'suite'
+  ...
+# Subtest: setOnlineStatus: VK error is logged verbatim
+    # Subtest: forwards the VK error into the log without adding speculation
+    ok 1 - forwards the VK error into the log without adding speculation
+      ---
+      duration_ms: 0.744231
+      ...
+    1..1
+ok 38 - setOnlineStatus: VK error is logged verbatim
+  ---
+  duration_ms: 0.840125
+  type: 'suite'
+  ...
+# Subtest: setOnlineStatus: other errors
+    # Subtest: logs the generic warning for non-VK errors too
+    ok 1 - logs the generic warning for non-VK errors too
+      ---
+      duration_ms: 0.33546
+      ...
+    1..1
+ok 39 - setOnlineStatus: other errors
+  ---
+  duration_ms: 0.420889
+  type: 'suite'
+  ...
+# node:internal/modules/esm/resolve:873
+#   throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+#         ^
+# Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'test-anywhere' imported from /tmp/gh-issue-solver-1778599044034/tests/setup-npm.test.js
+#     at packageResolve (node:internal/modules/esm/resolve:873:9)
+#     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+#     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+#     at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+#     at \#cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+#     at ModuleLoader.resolve (node:internal/modules/esm/loader:640:38)
+#     at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:264:38)
+#     at ModuleJob._link (node:internal/modules/esm/module_job:168:49) {
+#   code: 'ERR_MODULE_NOT_FOUND'
+# }
+# Node.js v20.20.2
+# Subtest: /tmp/gh-issue-solver-1778599044034/tests/setup-npm.test.js
+not ok 25 - /tmp/gh-issue-solver-1778599044034/tests/setup-npm.test.js
+  ---
+  duration_ms: 29.705492
+  location: '/tmp/gh-issue-solver-1778599044034/tests/setup-npm.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# node:internal/modules/esm/resolve:873
+#   throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+#         ^
+# Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'test-anywhere' imported from /tmp/gh-issue-solver-1778599044034/tests/site-downloads.test.js
+#     at packageResolve (node:internal/modules/esm/resolve:873:9)
+#     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+#     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+#     at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+#     at \#cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+#     at ModuleLoader.resolve (node:internal/modules/esm/loader:640:38)
+#     at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:264:38)
+#     at ModuleJob._link (node:internal/modules/esm/module_job:168:49) {
+#   code: 'ERR_MODULE_NOT_FOUND'
+# }
+# Node.js v20.20.2
+# Subtest: /tmp/gh-issue-solver-1778599044034/tests/site-downloads.test.js
+not ok 26 - /tmp/gh-issue-solver-1778599044034/tests/site-downloads.test.js
+  ---
+  duration_ms: 34.68744
+  location: '/tmp/gh-issue-solver-1778599044034/tests/site-downloads.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: buildInstallScript
+    # Subtest: emits a docker isolation invocation
+    ok 1 - emits a docker isolation invocation
+      ---
+      duration_ms: 0.825082
+      ...
+    # Subtest: emits a screen isolation invocation
+    ok 2 - emits a screen isolation invocation
+      ---
+      duration_ms: 1.448372
+      ...
+    # Subtest: stops any prior session before starting a new one
+    ok 3 - stops any prior session before starting a new one
+      ---
+      duration_ms: 0.230464
+      ...
+    # Subtest: uses screen isolation by default
+    ok 4 - uses screen isolation by default
+      ---
+      duration_ms: 0.20791
+      ...
+    # Subtest: throws when the bundle archive is missing
+    ok 5 - throws when the bundle archive is missing
+      ---
+      duration_ms: 0.488398
+      ...
+    # Subtest: throws on unknown isolation
+    ok 6 - throws on unknown isolation
+      ---
+      duration_ms: 0.137726
+      ...
+    # Subtest: escapes the remote dir
+    ok 7 - escapes the remote dir
+      ---
+      duration_ms: 0.125417
+      ...
+    1..7
+ok 42 - buildInstallScript
+  ---
+  duration_ms: 4.700218
+  type: 'suite'
+  ...
+# Subtest: buildInstallPlan
+    # Subtest: returns plan metadata alongside the script
+    ok 1 - returns plan metadata alongside the script
+      ---
+      duration_ms: 0.319236
+      ...
+    1..1
+ok 43 - buildInstallPlan
+  ---
+  duration_ms: 0.543942
+  type: 'suite'
+  ...
+# Subtest: isoWeek
+    # Subtest: returns the ISO week number for known dates
+    ok 1 - returns the ISO week number for known dates
+      ---
+      duration_ms: 0.895507
+      ...
+    1..1
+ok 44 - isoWeek
+  ---
+  duration_ms: 1.866175
+  type: 'suite'
+  ...
+# Subtest: pathsForDate
+    # Subtest: produces total + month + week paths
+    ok 1 - produces total + month + week paths
+      ---
+      duration_ms: 0.339978
+      ...
+    1..1
+ok 45 - pathsForDate
+  ---
+  duration_ms: 0.449141
+  type: 'suite'
+  ...
+# Subtest: StatsStore
+    # Subtest: throws when rootDir missing
+    ok 1 - throws when rootDir missing
+      ---
+      duration_ms: 0.312937
+      ...
+    # Subtest: records accepted friends in three files
+    ok 2 - records accepted friends in three files
+      ---
+      duration_ms: 10.14639
+      ...
+    # Subtest: accumulates across multiple calls in the same week
+    ok 3 - accumulates across multiple calls in the same week
+      ---
+      duration_ms: 10.458485
+      ...
+    # Subtest: isolates weeks: new week file when the date changes
+    ok 4 - isolates weeks: new week file when the date changes
+      ---
+      duration_ms: 11.943493
+      ...
+    # Subtest: records initial friends count once and never overwrites
+    ok 5 - records initial friends count once and never overwrites
+      ---
+      duration_ms: 1.981208
+      ...
+    # Subtest: snapshot returns empty objects when no data exists
+    ok 6 - snapshot returns empty objects when no data exists
+      ---
+      duration_ms: 1.86274
+      ...
+    1..6
+ok 46 - StatsStore
+  ---
+  duration_ms: 37.507251
+  type: 'suite'
+  ...
+# node:internal/modules/esm/resolve:873
+#   throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+#         ^
+# Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'test-anywhere' imported from /tmp/gh-issue-solver-1778599044034/tests/tag-prefix.test.js
+#     at packageResolve (node:internal/modules/esm/resolve:873:9)
+#     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+#     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+#     at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+#     at \#cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+#     at ModuleLoader.resolve (node:internal/modules/esm/loader:640:38)
+#     at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:264:38)
+#     at ModuleJob._link (node:internal/modules/esm/module_job:168:49) {
+#   code: 'ERR_MODULE_NOT_FOUND'
+# }
+# Node.js v20.20.2
+# Subtest: /tmp/gh-issue-solver-1778599044034/tests/tag-prefix.test.js
+not ok 29 - /tmp/gh-issue-solver-1778599044034/tests/tag-prefix.test.js
+  ---
+  duration_ms: 37.980907
+  location: '/tmp/gh-issue-solver-1778599044034/tests/tag-prefix.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: resolveTheme
+    # Subtest: honors explicit light or dark preferences
+    ok 1 - honors explicit light or dark preferences
+      ---
+      duration_ms: 0.535109
+      ...
+    # Subtest: falls back to system theme when preference is auto
+    ok 2 - falls back to system theme when preference is auto
+      ---
+      duration_ms: 0.111697
+      ...
+    # Subtest: defaults to light when system theme is missing
+    ok 3 - defaults to light when system theme is missing
+      ---
+      duration_ms: 1.781491
+      ...
+    1..3
+ok 48 - resolveTheme
+  ---
+  duration_ms: 3.245595
+  type: 'suite'
+  ...
+# Subtest: applyTheme
+    # Subtest: writes data-theme to the document element
+    ok 1 - writes data-theme to the document element
+      ---
+      duration_ms: 0.182142
+      ...
+    1..1
+ok 49 - applyTheme
+  ---
+  duration_ms: 0.263122
+  type: 'suite'
+  ...
+# Subtest: watchSystemTheme
+    # Subtest: returns a no-op when matchMedia is unavailable
+    ok 1 - returns a no-op when matchMedia is unavailable
+      ---
+      duration_ms: 0.136874
+      ...
+    # Subtest: listens via addEventListener and reports dark/light
+    ok 2 - listens via addEventListener and reports dark/light
+      ---
+      duration_ms: 0.657421
+      ...
+    1..2
+ok 50 - watchSystemTheme
+  ---
+  duration_ms: 0.945192
+  type: 'suite'
+  ...
+# node:internal/modules/esm/resolve:873
+#   throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+#         ^
+# Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'test-anywhere' imported from /tmp/gh-issue-solver-1778599044034/tests/validate-release-assets.test.js
+#     at packageResolve (node:internal/modules/esm/resolve:873:9)
+#     at moduleResolve (node:internal/modules/esm/resolve:946:18)
+#     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+#     at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+#     at \#cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+#     at ModuleLoader.resolve (node:internal/modules/esm/loader:640:38)
+#     at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:264:38)
+#     at ModuleJob._link (node:internal/modules/esm/module_job:168:49) {
+#   code: 'ERR_MODULE_NOT_FOUND'
+# }
+# Node.js v20.20.2
+# Subtest: /tmp/gh-issue-solver-1778599044034/tests/validate-release-assets.test.js
+not ok 31 - /tmp/gh-issue-solver-1778599044034/tests/validate-release-assets.test.js
+  ---
+  duration_ms: 36.323393
+  location: '/tmp/gh-issue-solver-1778599044034/tests/validate-release-assets.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: VK token helpers
+    # Subtest: keeps the Kate Mobile blank-page OAuth URL requested by issue 26
+    ok 1 - keeps the Kate Mobile blank-page OAuth URL requested by issue 26
+      ---
+      duration_ms: 0.745322
+      ...
+    # Subtest: builds the experimental localhost redirect OAuth URL
+    ok 2 - builds the experimental localhost redirect OAuth URL
+      ---
+      duration_ms: 0.156634
+      ...
+    # Subtest: extracts access_token from pasted VK redirect URLs
+    ok 3 - extracts access_token from pasted VK redirect URLs
+      ---
+      duration_ms: 1.45993
+      ...
+    # Subtest: accepts a raw token without changing it beyond trimming whitespace
+    ok 4 - accepts a raw token without changing it beyond trimming whitespace
+      ---
+      duration_ms: 0.28139
+      ...
+    # Subtest: wires the whitelisted token URLs through Electron IPC
+    ok 5 - wires the whitelisted token URLs through Electron IPC
+      ---
+      duration_ms: 0.63572
+      ...
+    1..5
+ok 52 - VK token helpers
+  ---
+  duration_ms: 4.469583
+  type: 'suite'
+  ...
+1..52
+# tests 113
+# suites 36
+# pass 95
+# fail 18
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 718.794313

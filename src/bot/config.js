@@ -45,16 +45,72 @@ export const DEFAULT_CONFIG = {
   birthdayGreetings: [...BIRTHDAY_GREETINGS],
 };
 
+function normalizeList(value, { numeric = false } = {}) {
+  let items;
+  if (Array.isArray(value)) {
+    items = value;
+  } else if (value === undefined || value === null) {
+    items = [];
+  } else if (typeof value === 'object') {
+    items = [];
+  } else {
+    items = [value];
+  }
+
+  if (numeric) {
+    return items
+      .map((item) => Number(item))
+      .filter((item) => Number.isFinite(item));
+  }
+
+  return items
+    .map((item) => String(item).trim())
+    .filter((item) => item.length > 0);
+}
+
+export function normalizeConfigLists(config) {
+  if (!config || typeof config !== 'object' || Array.isArray(config)) {
+    return config;
+  }
+  const out = { ...config };
+  if ('priorityFriendIds' in out) {
+    out.priorityFriendIds = normalizeList(out.priorityFriendIds, {
+      numeric: true,
+    });
+  }
+  if (
+    out.invitationPost &&
+    typeof out.invitationPost === 'object' &&
+    !Array.isArray(out.invitationPost)
+  ) {
+    out.invitationPost = { ...out.invitationPost };
+    if ('messages' in out.invitationPost) {
+      out.invitationPost.messages = normalizeList(out.invitationPost.messages);
+    }
+    if ('communities' in out.invitationPost) {
+      out.invitationPost.communities = normalizeList(
+        out.invitationPost.communities,
+        { numeric: true }
+      );
+    }
+  }
+  if ('birthdayGreetings' in out) {
+    out.birthdayGreetings = normalizeList(out.birthdayGreetings);
+  }
+  return out;
+}
+
 /**
  * Friends are merged from layered config so the user can edit either the
  * global file or a project-local override.
  */
 export function mergeWithDefaults(overlay) {
   const result = JSON.parse(JSON.stringify(DEFAULT_CONFIG));
-  if (!overlay || typeof overlay !== 'object') {
+  const normalizedOverlay = normalizeConfigLists(overlay);
+  if (!normalizedOverlay || typeof normalizedOverlay !== 'object') {
     return result;
   }
-  for (const [section, value] of Object.entries(overlay)) {
+  for (const [section, value] of Object.entries(normalizedOverlay)) {
     if (
       value &&
       typeof value === 'object' &&

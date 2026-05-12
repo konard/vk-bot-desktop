@@ -1,0 +1,193 @@
+TAP version 13
+# Subtest: computePotentialAcceptanceQuota
+    # Subtest: returns floor(totalIncomingSeen * 10%) - totalAcceptedEver
+    ok 1 - returns floor(totalIncomingSeen * 10%) - totalAcceptedEver
+      ---
+      duration_ms: 5.448045
+      ...
+    # Subtest: clamps to zero when already over quota
+    ok 2 - clamps to zero when already over quota
+      ---
+      duration_ms: 0.158506
+      ...
+    # Subtest: honours a custom percentage
+    ok 3 - honours a custom percentage
+      ---
+      duration_ms: 0.170074
+      ...
+    1..3
+ok 1 - computePotentialAcceptanceQuota
+  ---
+  duration_ms: 10.313048
+  type: 'suite'
+  ...
+# Subtest: selectIncomingRequests
+    # Subtest: respects the lifetime 10% quota across runs
+    ok 1 - respects the lifetime 10% quota across runs
+      ---
+      duration_ms: 0.915457
+      ...
+    # Subtest: falls back to current batch size when no lifetime stats provided
+    ok 2 - falls back to current batch size when no lifetime stats provided
+      ---
+      duration_ms: 1.885365
+      ...
+    # Subtest: above the limit only accepts requests with mutuals
+    ok 3 - above the limit only accepts requests with mutuals
+      ---
+      duration_ms: 2.182598
+      ...
+    # Subtest: returns nothing when capacity is exhausted
+    ok 4 - returns nothing when capacity is exhausted
+      ---
+      duration_ms: 0.189743
+      ...
+    # Subtest: returns nothing for empty input
+    ok 5 - returns nothing for empty input
+      ---
+      duration_ms: 0.356462
+      ...
+    1..5
+ok 2 - selectIncomingRequests
+  ---
+  duration_ms: 6.284754
+  type: 'suite'
+  ...
+# Subtest: pickPrioritySendList
+    # Subtest: returns priority IDs not yet in friends
+    ok 1 - returns priority IDs not yet in friends
+      ---
+      duration_ms: 0.259869
+      ...
+    # Subtest: respects remaining capacity
+    ok 2 - respects remaining capacity
+      ---
+      duration_ms: 0.156384
+      ...
+    1..2
+ok 3 - pickPrioritySendList
+  ---
+  duration_ms: 0.578343
+  type: 'suite'
+  ...
+# Subtest: pickDeactivatedToDelete
+    # Subtest: returns banned/deleted friends excluding priority list
+    ok 1 - returns banned/deleted friends excluding priority list
+      ---
+      duration_ms: 0.263964
+      ...
+    # Subtest: treats malformed priority IDs from empty lino arrays as empty
+    not ok 2 - treats malformed priority IDs from empty lino arrays as empty
+      ---
+      duration_ms: 0.347168
+      location: '/tmp/gh-issue-solver-1778599044034/tests/friend-prioritization.test.js:155:3'
+      failureType: 'testCodeFailure'
+      error: 'object is not iterable (cannot read property Symbol(Symbol.iterator))'
+      code: 'ERR_TEST_FAILURE'
+      name: 'TypeError'
+      stack: |-
+        new Set (<anonymous>)
+        pickDeactivatedToDelete (file:///tmp/gh-issue-solver-1778599044034/src/bot/friend-prioritization.js:112:24)
+        TestContext.<anonymous> (file:///tmp/gh-issue-solver-1778599044034/tests/friend-prioritization.test.js:156:17)
+        Test.runInAsyncScope (node:async_hooks:206:9)
+        Test.run (node:internal/test_runner/test:796:25)
+        Suite.processPendingSubtests (node:internal/test_runner/test:526:18)
+        Test.postRun (node:internal/test_runner/test:889:19)
+        Test.run (node:internal/test_runner/test:835:12)
+        async Promise.all (index 0)
+        async Suite.run (node:internal/test_runner/test:1135:7)
+      ...
+    1..2
+not ok 4 - pickDeactivatedToDelete
+  ---
+  duration_ms: 0.880805
+  type: 'suite'
+  location: '/tmp/gh-issue-solver-1778599044034/tests/friend-prioritization.test.js:138:1'
+  failureType: 'subtestsFailed'
+  error: '1 subtest failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: LinoStore
+    # Subtest: round-trips a config through formatIndented/parseIndented
+    ok 1 - round-trips a config through formatIndented/parseIndented
+      ---
+      duration_ms: 32.95251
+      ...
+    # Subtest: normalizes empty and scalar list fields after loading lino config
+    not ok 2 - normalizes empty and scalar list fields after loading lino config
+      ---
+      duration_ms: 12.266053
+      location: '/tmp/gh-issue-solver-1778599044034/tests/lino-store.test.js:48:3'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly deep-equal:
+        + actual - expected
+
+        + {}
+        - []
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected:
+      actual:
+      operator: 'deepStrictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///tmp/gh-issue-solver-1778599044034/tests/lino-store.test.js:69:14)
+        async Test.run (node:internal/test_runner/test:797:9)
+        async Suite.processPendingSubtests (node:internal/test_runner/test:526:7)
+      ...
+    # Subtest: local config overrides global
+    ok 3 - local config overrides global
+      ---
+      duration_ms: 13.306678
+      ...
+    # Subtest: returns empty object when no config files exist
+    ok 4 - returns empty object when no config files exist
+      ---
+      duration_ms: 6.420748
+      ...
+    1..4
+not ok 5 - LinoStore
+  ---
+  duration_ms: 66.46126
+  type: 'suite'
+  location: '/tmp/gh-issue-solver-1778599044034/tests/lino-store.test.js:26:1'
+  failureType: 'subtestsFailed'
+  error: '1 subtest failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# node:internal/modules/esm/resolve:283
+#     throw new ERR_MODULE_NOT_FOUND(
+#           ^
+# Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/tmp/gh-issue-solver-1778599044034/electron/renderer/clipboard.js' imported from /tmp/gh-issue-solver-1778599044034/tests/renderer-clipboard.test.js
+#     at finalizeResolution (node:internal/modules/esm/resolve:283:11)
+#     at moduleResolve (node:internal/modules/esm/resolve:952:10)
+#     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+#     at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+#     at \#cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+#     at ModuleLoader.resolve (node:internal/modules/esm/loader:640:38)
+#     at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:264:38)
+#     at ModuleJob._link (node:internal/modules/esm/module_job:168:49) {
+#   code: 'ERR_MODULE_NOT_FOUND',
+#   url: 'file:///tmp/gh-issue-solver-1778599044034/electron/renderer/clipboard.js'
+# }
+# Node.js v20.20.2
+# Subtest: /tmp/gh-issue-solver-1778599044034/tests/renderer-clipboard.test.js
+not ok 3 - /tmp/gh-issue-solver-1778599044034/tests/renderer-clipboard.test.js
+  ---
+  duration_ms: 83.856784
+  location: '/tmp/gh-issue-solver-1778599044034/tests/renderer-clipboard.test.js:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+1..6
+# tests 17
+# suites 5
+# pass 14
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 197.373962
