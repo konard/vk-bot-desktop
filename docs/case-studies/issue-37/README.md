@@ -159,3 +159,10 @@ Saved local logs:
 - `data/secretlint-after.log` - CI secret scan pass.
 - `data/renderer-static-server.log` - local static server log for the renderer
   screenshot.
+
+After merging `origin/main`, the final verification was repeated and saved in
+the matching `*-after-merge.log` files under `data/`. `npm ci` still fails on
+the merged branch because the repository lockfile is missing existing
+`electron-builder` transitive dependencies; local verification used
+`npm install --package-lock=false --no-audit --no-fund`, matching the repository
+workflow without introducing unrelated lockfile churn.
