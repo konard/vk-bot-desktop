@@ -2,7 +2,14 @@
 
 const path = require('path');
 const { fork, spawn } = require('child_process');
-const { app, BrowserWindow, ipcMain, nativeTheme, shell } = require('electron');
+const {
+  app,
+  BrowserWindow,
+  clipboard,
+  ipcMain,
+  nativeTheme,
+  shell,
+} = require('electron');
 const { startOauthCallbackServer } = require('./oauth-callback.cjs');
 
 const ALLOWED_TOKEN_URLS = new Set([
@@ -134,6 +141,11 @@ ipcMain.handle('vkbot:open-token-url', async (_event, url) => {
     await prepareOauthCallback();
   }
   await shell.openExternal(url);
+  return { ok: true };
+});
+
+ipcMain.handle('vkbot:copy-text', (_event, text) => {
+  clipboard.writeText(String(text ?? ''));
   return { ok: true };
 });
 

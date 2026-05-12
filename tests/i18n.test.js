@@ -24,6 +24,8 @@ describe('translate', () => {
   it('returns the translated string when available', () => {
     assert.equal(translate('en', 'start'), 'Start');
     assert.equal(translate('ru', 'start'), 'Запустить');
+    assert.equal(translate('en', 'copyLog'), 'Copy log');
+    assert.equal(translate('ru', 'copyLog'), 'Скопировать журнал');
   });
 
   it('falls back to English when key missing in target locale', () => {

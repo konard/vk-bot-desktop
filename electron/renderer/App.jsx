@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { detectLocale, translate } from './i18n.js';
+import { copyTextToClipboard } from './clipboard.js';
 import {
   applyTheme,
   loadStoredTheme,
@@ -336,6 +337,8 @@ export default function App({ api }) {
     }, 3500);
   }, []);
 
+  const logText = useMemo(() => logLines.join(''), [logLines]);
+
   useEffect(() => {
     formRef.current = form;
   }, [form]);
@@ -566,6 +569,19 @@ export default function App({ api }) {
       onStart();
     }
   }, [onStart, onStop, running]);
+
+  const onCopyLog = useCallback(async () => {
+    if (!logText) {
+      showToast(t('notifNoLogToCopy'), 'info');
+      return;
+    }
+    try {
+      await copyTextToClipboard(logText, { api });
+      showToast(t('notifLogCopied'), 'success');
+    } catch {
+      showToast(t('notifLogCopyFailed'), 'warn');
+    }
+  }, [api, logText, showToast, t]);
 
   const onGenerateScript = useCallback(async () => {
     if (!api?.buildServerScript) {
@@ -856,7 +872,17 @@ export default function App({ api }) {
       ) : null}
 
       <div className="section">
-        <h2>{t('log')}</h2>
+        <div className="section-heading">
+          <h2>{t('log')}</h2>
+          <button
+            type="button"
+            className="secondary compact"
+            onClick={onCopyLog}
+            disabled={!logText}
+          >
+            {t('copyLog')}
+          </button>
+        </div>
         {running ? (
           <p className="help" style={{ marginTop: 0 }}>
             {t('runningHint')}

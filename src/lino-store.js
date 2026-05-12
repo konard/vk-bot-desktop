@@ -104,6 +104,9 @@ function formatScalarArray(key, items, pad) {
 }
 
 function formatArrayChild(key, items, indent, pad) {
+  if (items.length === 0) {
+    return '';
+  }
   if (items.every(isScalar) && items.length > 0) {
     return formatScalarArray(key, items, pad);
   }

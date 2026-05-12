@@ -17,6 +17,9 @@ This document normalizes the product and release requirements collected from:
   every release tag push, even when no `site/` files changed; CI change
   detection must distinguish real merge commits on `main` from `pull_request`
   synthetic merge commits.
+- Issue #39: local-mode deactivated-friend cleanup must tolerate empty
+  persisted priority lists, and the desktop log panel must provide one-click
+  log copying.
 
 ## Product Scope
 
@@ -63,6 +66,10 @@ local bot execution and remote execution over SSH.
     invocation logs a `Checking for '<name>' trigger...` line before the
     call and a `'<name>' trigger executed in N ms` line on success,
     mirroring the `executeTrigger` pattern used by `konard/vk-bot`.
+21. Priority-list handling must be defensive at the config and trigger
+    boundaries: empty or legacy Links Notation list values must not crash
+    deactivated-friend deletion, outgoing-request cancellation, or priority
+    send-list selection.
 
 ## Configuration And Storage
 
@@ -74,6 +81,8 @@ local bot execution and remote execution over SSH.
 4. Use `lino-arguments` for CLI options.
 5. Redact tokens, passwords, cookies, and similar secrets from logs.
 6. Provide verbose logs by default so users can diagnose bot behavior.
+7. Config list fields loaded from Links Notation must normalize empty,
+   scalar, and legacy bare-key shapes before being merged with defaults.
 
 ## Execution Modes
 
@@ -103,6 +112,8 @@ local bot execution and remote execution over SSH.
    configuration.
 9. Prefill defaults for priority friends, invitation messages, birthday
    messages, and other required settings.
+10. The log panel must provide a copy button that copies the visible log text
+    through the desktop clipboard bridge.
 
 ## Release And Distribution
 

@@ -1,0 +1,5 @@
+
+> vk-bot-desktop@0.9.18 check:duplication
+> jscpd .
+
+[3m[90mtime[39m[23m: 1.741ms

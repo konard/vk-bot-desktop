@@ -1,4 +1,5 @@
 import logger from '../logger.js';
+import { asList } from '../list-values.js';
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -19,8 +20,8 @@ export function pickOutgoingToCancel({
   if (capacityNeeded <= 0) {
     return [];
   }
-  const protectedSet = new Set(priorityFriendIds);
-  const cancellable = outgoing.filter((id) => !protectedSet.has(id));
+  const protectedSet = new Set(asList(priorityFriendIds));
+  const cancellable = asList(outgoing).filter((id) => !protectedSet.has(id));
   return cancellable.slice(0, Math.min(capacityNeeded, hardCap));
 }
 

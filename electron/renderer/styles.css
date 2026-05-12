@@ -217,6 +217,23 @@ button:disabled {
   margin: 0 0 8px;
 }
 
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.section-heading h2 {
+  margin: 0;
+}
+
+button.compact {
+  min-height: 30px;
+  padding: 5px 10px;
+}
+
 .section-toggle {
   background: transparent;
   color: var(--fg);
