@@ -192,6 +192,11 @@ describe('GitHub Pages download site', () => {
     expect(siteApp).toContain('installMacosSettingsTitle');
     expect(siteApp).toContain('MACOS_INSTALL_COMMAND');
     expect(siteApp).toContain('xattr -dr com.apple.quarantine');
+    expect(siteApp).toContain('MACOS_GATEKEEPER_SCREENSHOTS');
+    expect(siteApp).toContain('issue-31-macos-done.png');
+    expect(siteApp).toContain('issue-31-macos-open-anyway-settings.png');
+    expect(siteApp).toContain('issue-31-macos-open-anyway-confirm.png');
+    expect(siteApp).toContain('install-macos-screenshots');
     expect(siteApp).toContain('Open the app on macOS');
     expect(siteApp).toContain('Открытие приложения на macOS');
     expect(

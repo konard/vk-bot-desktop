@@ -408,6 +408,21 @@ function VerificationTool({ locale }) {
 export const MACOS_INSTALL_COMMAND =
   'sudo xattr -dr com.apple.quarantine "/Applications/VK Bot Desktop.app"';
 
+const MACOS_GATEKEEPER_SCREENSHOTS = [
+  {
+    src: '../docs/screenshots/issue-31-macos-done.png',
+    alt: 'macOS warning dialog with Done button',
+  },
+  {
+    src: '../docs/screenshots/issue-31-macos-open-anyway-settings.png',
+    alt: 'macOS Privacy & Security settings with Open Anyway button',
+  },
+  {
+    src: '../docs/screenshots/issue-31-macos-open-anyway-confirm.png',
+    alt: 'macOS confirmation dialog with Open Anyway button',
+  },
+];
+
 export default function App() {
   const [locale, setLocale] = useState(() => detectLocale());
   const [theme, setTheme] = useState(() => detectTheme());
@@ -609,6 +624,16 @@ export default function App() {
               <li>{text(locale, 'installMacosSettingsStep2')}</li>
               <li>{text(locale, 'installMacosSettingsStep3')}</li>
             </ol>
+            <div className="install-macos-screenshots">
+              {MACOS_GATEKEEPER_SCREENSHOTS.map((screenshot) => (
+                <img
+                  key={screenshot.src}
+                  src={screenshot.src}
+                  alt={screenshot.alt}
+                  loading="lazy"
+                />
+              ))}
+            </div>
           </details>
           <details>
             <summary>{text(locale, 'installMacosTerminalTitle')}</summary>
