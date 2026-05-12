@@ -1,0 +1,363 @@
+running 1 test from ./tests/birthday-greetings.test.js
+birthday greetings ...
+  contains exactly 10 entries ... ok (2ms)
+  every greeting has at most 2 emojis ... ok (3ms)
+  every greeting is a non-empty Russian-language string ... ok (1ms)
+  does not pick the same index twice in a row ... ok (1ms)
+birthday greetings ... ok (5ms)
+running 1 test from ./tests/bot-config.test.js
+bot config defaults ...
+  normalizes empty array fields parsed from lino as empty objects ... ok (4ms)
+  preserves default invitation messages when only communities are saved ... ok (1ms)
+bot config defaults ... ok (11ms)
+running 6 tests from ./tests/bot-lifecycle.test.js
+buildStatusCommand ...
+  uses the default session name ... ok (0ms)
+  honors a custom session name ... ok (0ms)
+buildStatusCommand ... ok (3ms)
+buildStartCommand ...
+  defaults to screen isolation with the session name ... ok (0ms)
+  builds a docker invocation with image and session name ... ok (0ms)
+  passes through a custom command ... ok (0ms)
+buildStartCommand ... ok (0ms)
+buildStopCommand ...
+  uses --stop with the session ... ok (0ms)
+buildStopCommand ... ok (0ms)
+isRunning ...
+  returns true when stdout indicates running ... ok (1ms)
+  returns false when exit code != 0 ... ok (4ms)
+  returns false when stdout has no running keyword ... ok (4ms)
+  throws when runCommand is missing ... ok (3ms)
+isRunning ... ok (4ms)
+startBot/stopBot ...
+  startBot invokes runCommand with the start argv ... ok (13ms)
+  stopBot invokes runCommand with the stop argv ... ok (13ms)
+startBot/stopBot ... ok (13ms)
+ensureMutualExclusion ...
+  rejects unknown targetMode ... ok (2ms)
+  returns stoppedOther=false when no other runner is provided ... ok (0ms)
+  does not stop the remote bot when it is not running ... ok (1ms)
+  treats runner errors as not-running ... ok (1ms)
+  stops the remote bot when starting local and remote is running ... ok (1ms)
+  stops the local bot when starting server ... ok (1ms)
+ensureMutualExclusion ... ok (5ms)
+running 1 test from ./tests/check-file-line-limits.test.js
+defines a warning band below the hard limit ... ok (0ms)
+running 8 tests from ./tests/check-release-needed.test.js
+builds GitHub release tags from the package version ... ok (6ms)
+releases through a version bump when changesets exist ... ok (0ms)
+skips release when the current GitHub Release already has artifacts ... ok (0ms)
+retries release without a bump when the GitHub Release is incomplete ... ok (0ms)
+requires checksum, provenance, and all desktop platform assets ... ok (14ms)
+checks GitHub Release artifact completeness with gh release view ... ok (0ms)
+treats missing GitHub Releases as unpublished ... ok (0ms)
+fails closed on unexpected gh release errors ... ok (0ms)
+running 3 tests from ./tests/ci-timeouts.test.js
+sets timeout-minutes for every JavaScript workflow job ... ok (13ms)
+parses workflow files checked out with Windows line endings ... ok (0ms)
+caps individual Node.js and Bun tests at 30 seconds ... ok (0ms)
+running 5 tests from ./tests/create-github-release.test.js
+parses language from CLI arguments and environment defaults ... ok (0ms)
+builds a human-readable release name from a language-prefixed tag ... ok (0ms)
+uses gh api and reports successful creation only for exit code 0 ... ok (0ms)
+throws when gh api exits non-zero with an unexpected error ... ok (0ms)
+treats already_exists as an idempotent gh api result ... ok (0ms)
+running 12 tests from ./tests/desktop-release-workflow.test.js
+does not publish packages to npm from release jobs ... ok (3ms)
+keeps desktop release jobs in the same workflow with an exact tag and commit ... ok (0ms)
+runs desktop jobs after optional release modes are skipped ... ok (0ms)
+builds desktop artifacts for Linux, macOS, and Windows releases ... ok (0ms)
+uses versioned artifact names for release download links ... ok (0ms)
+uses system FPM for native Linux arm64 Debian builds ... ok (0ms)
+normalizes Linux artifact architecture names before validation ... ok (0ms)
+keeps signed and notarized macOS publishing when Apple secrets are configured ... ok (0ms)
+builds ad-hoc signed macOS artifacts without Apple secrets ... ok (1ms)
+smoke-tests platform installers after building and before uploading ... ok (0ms)
+configures a Linux maintainer for deb artifacts ... ok (0ms)
+hashes Linux and macOS artifacts without splitting filenames on spaces ... ok (0ms)
+running 1 test from ./tests/detect-code-changes.test.js
+skipped on Deno or Windows runner ... ignored (0ms)
+running 4 tests from ./tests/dispatch-and-watch-workflow.test.js
+extracts a workflow run id from gh workflow run output ... ok (0ms)
+picks the newest workflow run for the requested target commit ... ok (0ms)
+watches the dispatched run and returns the downstream failure status ...
+------- post-test output -------
+https://github.com/konard/vk-bot-desktop/actions/runs/25636588014
+----- post-test output end -----
+watches the dispatched run and returns the downstream failure status ... ok (1ms)
+finds the child run by head SHA when dispatch output has no run URL ... ok (0ms)
+running 1 test from ./tests/fetch-outgoing-requests.test.js
+fetchOutgoingRequestIds ...
+  returns [] when vk client is missing ... ok (1ms)
+  returns [] when friends.getRequests is missing ... ok (1ms)
+  returns the items array from the VK response ... ok (1ms)
+  returns [] when items is not an array ... ok (1ms)
+fetchOutgoingRequestIds ... ok (1ms)
+running 4 tests from ./tests/friend-prioritization.test.js
+computePotentialAcceptanceQuota ...
+  returns floor(totalIncomingSeen * 10%) - totalAcceptedEver ... ok (0ms)
+  clamps to zero when already over quota ... ok (0ms)
+  honours a custom percentage ... ok (0ms)
+computePotentialAcceptanceQuota ... ok (1ms)
+selectIncomingRequests ...
+  respects the lifetime 10% quota across runs ... ok (2ms)
+  falls back to current batch size when no lifetime stats provided ... ok (1ms)
+  above the limit only accepts requests with mutuals ... ok (1ms)
+  returns nothing when capacity is exhausted ... ok (0ms)
+  returns nothing for empty input ... ok (0ms)
+selectIncomingRequests ... ok (1ms)
+pickPrioritySendList ...
+  returns priority IDs not yet in friends ... ok (1ms)
+  respects remaining capacity ... ok (0ms)
+pickPrioritySendList ... ok (0ms)
+pickDeactivatedToDelete ...
+  returns banned/deleted friends excluding priority list ... ok (0ms)
+pickDeactivatedToDelete ... ok (0ms)
+running 2 tests from ./tests/i18n.test.js
+detectLocale ...
+  returns ru for Russian language tags ... ok (0ms)
+  falls back to en for unknown locales ... ok (0ms)
+detectLocale ... ok (1ms)
+translate ...
+  returns the translated string when available ... ok (0ms)
+  falls back to English when key missing in target locale ... ok (0ms)
+  returns the key itself when nothing matches ... ok (0ms)
+translate ... ok (0ms)
+running 6 tests from ./tests/index.test.js
+should add two positive numbers ... ok (0ms)
+should add negative numbers ... ok (0ms)
+should add zero ... ok (0ms)
+should multiply two positive numbers ... ok (0ms)
+should multiply by zero ... ok (0ms)
+should multiply negative numbers ... ok (0ms)
+running 1 test from ./tests/invitation-messages.test.js
+invitation messages ...
+  contains exactly 10 entries ... ok (0ms)
+  every message is a non-empty Russian-language string ... ok (1ms)
+  does not pick the same index twice in a row ... ok (1ms)
+  accepts a custom list ... ok (1ms)
+  returns empty string for empty list ... ok (1ms)
+invitation messages ... ok (1ms)
+running 1 test from ./tests/lino-store.test.js
+LinoStore ... ignored (0ms)
+running 3 tests from ./tests/logger.test.js
+redact ...
+  masks long token-like strings ... ok (1ms)
+  masks query-style secrets ... ok (1ms)
+  masks secret-named object properties ... ok (1ms)
+  handles circular references ... ok (1ms)
+  does not mask short ids ... ok (0ms)
+redact ... ok (4ms)
+logger sinks ...
+  routes log lines to registered sinks with redaction ...
+------- post-test output -------
+2026-05-12T15:49:38.417Z [info] token=***
+2026-05-12T15:49:38.418Z [error] Could not set online status {
+  "error": {
+    "name": "Error",
+    "message": "Unknown method passed.",
+    "stack": "Error: Unknown method passed.\n    at Object.fn (file:///tmp/gh-issue-solver-1778599373526/tests/logger.test.js:72:16)\n    at fn (node:test:156:33)\n    at innerWrapped (ext:cli/40_test.js:230:11)\n    at Object.outerWrapped [as fn] (ext:cli/40_test.js:173:20)\n    at TestContext.step (ext:cli/40_test.js:564:37)\n    at TestSuite.addTest (node:test:151:40)\n    at test (node:test:301:25)\n    at file:///tmp/gh-issue-solver-1778599373526/tests/logger.test.js:66:3\n    at node:test:275:7\n    at innerWrapped (ext:cli/40_test.js:230:11)"
+  }
+}
+----- post-test output end -----
+  routes log lines to registered sinks with redaction ... ok (2ms)
+  pretty-prints object arguments with indentation ... ok (1ms)
+logger sinks ... ok (1ms)
+verbose mode ...
+  is enabled by default so debug lines reach sinks ...
+------- post-test output -------
+2026-05-12T15:49:38.419Z [debug] verbose probe
+2026-05-12T15:49:38.419Z [info] shown
+----- post-test output end -----
+  is enabled by default so debug lines reach sinks ... ok (0ms)
+  suppresses debug lines when toggled off ... ok (0ms)
+verbose mode ... ok (0ms)
+running 2 tests from ./tests/oauth-callback.test.js
+Electron OAuth localhost callback markup ...
+  serves a page that posts the URL fragment token back to the app ... ok (0ms)
+Electron OAuth localhost callback markup ... ok (1ms)
+Electron OAuth localhost callback server ... ignored (0ms)
+running 5 tests from ./tests/package-info.test.js
+reads scoped package names and versions from package.json content ... ok (0ms)
+formats npm package specifiers from the derived package name ... ok (0ms)
+formats changeset headers from the derived package name ... ok (0ms)
+matches changesets for the derived package name only ... ok (0ms)
+reports missing package names clearly ... ok (0ms)
+running 11 tests from ./tests/pages-site.test.js
+has a reproducible React build script ... ok (7ms)
+deploys the built site with the official GitHub Pages actions ... ok (0ms)
+rebuilds on every main push and tag push, not only when site files change ... ok (0ms)
+detects language, theme, and operating system for the primary download ... ok (0ms)
+loads latest release assets without synthesizing absent asset links ... ok (0ms)
+runs browser-commander e2e checks before and after Pages deployment ... ok (0ms)
+authenticates the post-deploy GitHub Release API call ... ok (0ms)
+prints rate-limit diagnostics when the Release API call fails ... ok (0ms)
+requires macOS assets in the built-site release fixture ... ok (0ms)
+has expandable verification instructions and OS-specific preview chrome ... ok (0ms)
+documents the macOS Gatekeeper first-launch workflow for ad-hoc builds ... ok (0ms)
+running 6 tests from ./tests/release-badge.test.js
+strips a plain v prefix for backward compatibility ... ok (0ms)
+strips a js-v prefix from multi-language release tags ... ok (0ms)
+strips a rust-v prefix from multi-language release tags ... ok (0ms)
+escapes hyphens in prerelease versions for shields.io static badge paths ... ok (0ms)
+builds a valid shields.io badge URL for prefixed tags ... ok (0ms)
+builds a valid shields.io badge URL for prefixed prerelease tags ... ok (0ms)
+running 1 test from ./tests/runner-schedule.test.js
+startBot scheduling ...
+  fires the online-status trigger at least once and keeps the process alive ...
+------- post-test output -------
+2026-05-12T15:49:39.911Z [debug] Checking for 'set-online-status' trigger...
+2026-05-12T15:49:39.914Z [info] Online status is set
+2026-05-12T15:49:39.915Z [debug] 'set-online-status' trigger executed in 4 ms
+2026-05-12T15:49:39.915Z [debug] Checking for 'accept-friend-requests' trigger...
+2026-05-12T15:49:39.920Z [debug] 'accept-friend-requests' trigger executed in 5 ms
+2026-05-12T15:49:39.920Z [debug] Checking for 'delete-deactivated-friends' trigger...
+2026-05-12T15:49:39.920Z [debug] 'delete-deactivated-friends' trigger executed in 0 ms
+2026-05-12T15:49:39.921Z [debug] Checking for 'delete-outgoing-friend-requests' trigger...
+2026-05-12T15:49:39.921Z [debug] 'delete-outgoing-friend-requests' trigger executed in 0 ms
+2026-05-12T15:49:39.921Z [debug] Checking for 'send-invitation-posts' trigger...
+2026-05-12T15:49:39.921Z [info] No invitation-post communities configured; skipping
+2026-05-12T15:49:39.921Z [debug] 'send-invitation-posts' trigger executed in 0 ms
+2026-05-12T15:49:39.921Z [debug] Checking for 'send-birthday-congratulations' trigger...
+2026-05-12T15:49:39.919Z [warn] Stats store unavailable; running without persistence {
+  "error": {
+    "name": "NotCapable",
+    "message": "Requires env access to \"VK_BOT_DESKTOP_GLOBAL_DIR\", run again with the --allow-env flag",
+    "stack": "NotCapable: Requires env access to \"VK_BOT_DESKTOP_GLOBAL_DIR\", run again with the --allow-env flag\n    at Object.getEnv [as get] (ext:deno_os/30_os.js:124:10)\n    at denoEnvGet (ext:deno_node/_process/process.ts:35:21)\n    at Object.get (ext:deno_node/_process/process.ts:52:22)\n    at defaultGlobalDir (file:///tmp/gh-issue-solver-1778599373526/src/lino-store.js:23:17)\n    at new LinoStore (file:///tmp/gh-issue-solver-1778599373526/src/lino-store.js:251:35)\n    at resolveStats (file:///tmp/gh-issue-solver-1778599373526/src/bot/triggers/accept-friend-requests.js:139:19)\n    at acceptFriendRequests (file:///tmp/gh-issue-solver-1778599373526/src/bot/triggers/accept-friend-requests.js:183:19)\n    at file:///tmp/gh-issue-solver-1778599373526/src/bot/runner.js:75:15\n    at run (file:///tmp/gh-issue-solver-1778599373526/src/bot/runner.js:29:13)\n    at Timeout.wrappedCallback [as _onTimeout] (ext:deno_web/02_timers.js:50:7)"
+  }
+}
+2026-05-12T15:49:39.920Z [error] Could not accept friend requests {
+  "error": {
+    "name": "TypeError",
+    "message": "Cannot read properties of undefined (reading 'get')",
+    "stack": "TypeError: Cannot read properties of undefined (reading 'get')\n    at loadFriends (file:///tmp/gh-issue-solver-1778599373526/src/bot/triggers/accept-friend-requests.js:20:43)\n    at acceptFriendRequests (file:///tmp/gh-issue-solver-1778599373526/src/bot/triggers/accept-friend-requests.js:184:27)\n    at file:///tmp/gh-issue-solver-1778599373526/src/bot/runner.js:75:15\n    at run (file:///tmp/gh-issue-solver-1778599373526/src/bot/runner.js:29:13)\n    at Timeout.wrappedCallback [as _onTimeout] (ext:deno_web/02_timers.js:50:7)\n    at invokeCallback (ext:deno_node/internal/timers.mjs:160:13)\n    at Object.cb [as _onTimeout] (ext:deno_node/internal/timers.mjs:198:16)\n    at listOnTimeout (ext:core/02_timers.js:307:17)\n    at Object.processTimers (ext:core/02_timers.js:250:7)\n    at __eventLoopTick (ext:core/01_core.js:461:33)"
+  }
+}
+2026-05-12T15:49:39.920Z [error] Could not delete deactivated friends {
+  "error": {
+    "name": "TypeError",
+    "message": "Cannot read properties of undefined (reading 'get')",
+    "stack": "TypeError: Cannot read properties of undefined (reading 'get')\n    at loadFriendsWithStatus (file:///tmp/gh-issue-solver-1778599373526/src/bot/triggers/delete-deactivated-friends.js:9:43)\n    at deleteDeactivatedFriends (file:///tmp/gh-issue-solver-1778599373526/src/bot/triggers/delete-deactivated-friends.js:27:27)\n    at file:///tmp/gh-issue-solver-1778599373526/src/bot/runner.js:84:15\n    at run (file:///tmp/gh-issue-solver-1778599373526/src/bot/runner.js:29:13)\n    at Timeout.wrappedCallback [as _onTimeout] (ext:deno_web/02_timers.js:50:7)\n    at invokeCallback (ext:deno_node/internal/timers.mjs:160:13)\n    at Object.cb [as _onTimeout] (ext:deno_node/internal/timers.mjs:198:16)\n    at listOnTimeout (ext:core/02_timers.js:307:17)\n    at Object.processTimers (ext:core/02_timers.js:250:7)\n    at __eventLoopTick (ext:core/01_core.js:461:33)"
+  }
+}
+2026-05-12T15:49:39.921Z [error] Could not delete outgoing friend requests {
+  "error": {
+    "name": "TypeError",
+    "message": "Cannot read properties of undefined (reading 'getRequests')",
+    "stack": "TypeError: Cannot read properties of undefined (reading 'getRequests')\n    at deleteOutgoingFriendRequests (file:///tmp/gh-issue-solver-1778599373526/src/bot/triggers/delete-outgoing-friend-requests.js:33:43)\n    at file:///tmp/gh-issue-solver-1778599373526/src/bot/runner.js:94:15\n    at run (file:///tmp/gh-issue-solver-1778599373526/src/bot/runner.js:29:13)\n    at Timeout.wrappedCallback [as _onTimeout] (ext:deno_web/02_timers.js:50:7)\n    at invokeCallback (ext:deno_node/internal/timers.mjs:160:13)\n    at Object.cb [as _onTimeout] (ext:deno_node/internal/timers.mjs:198:16)\n    at listOnTimeout (ext:core/02_timers.js:307:17)\n    at Object.processTimers (ext:core/02_timers.js:250:7)\n    at __eventLoopTick (ext:core/01_core.js:461:33)"
+  }
+}
+2026-05-12T15:49:39.922Z [error] Trigger threw {
+  "name": "send-birthday-congratulations",
+  "error": {
+    "name": "TypeError",
+    "message": "Cannot read properties of undefined (reading 'get')",
+    "stack": "TypeError: Cannot read properties of undefined (reading 'get')\n    at collectFriendsWithBirthday (file:///tmp/gh-issue-solver-1778599373526/src/bot/triggers/send-birthday-congratulations.js:68:43)\n    at sendBirthdayCongratulations (file:///tmp/gh-issue-solver-1778599373526/src/bot/triggers/send-birthday-congratulations.js:37:25)\n    at file:///tmp/gh-issue-solver-1778599373526/src/bot/runner.js:112:15\n    at run (file:///tmp/gh-issue-solver-1778599373526/src/bot/runner.js:29:13)\n    at Timeout.wrappedCallback [as _onTimeout] (ext:deno_web/02_timers.js:50:7)\n    at invokeCallback (ext:deno_node/internal/timers.mjs:160:13)\n    at Object.cb [as _onTimeout] (ext:deno_node/internal/timers.mjs:198:16)\n    at listOnTimeout (ext:core/02_timers.js:307:17)\n    at Object.processTimers (ext:core/02_timers.js:250:7)\n    at __eventLoopTick (ext:core/01_core.js:461:33)"
+  }
+}
+----- post-test output end -----
+  fires the online-status trigger at least once and keeps the process alive ... ok (53ms)
+  does not exit prematurely when run as a forked child (regression for issue #32) ... ignored (0ms)
+startBot scheduling ... ok (53ms)
+running 2 tests from ./tests/session-log.test.js
+openSessionLog: writes log lines to a session file ... ignored (0ms)
+openSessionLog: redacts secrets in persisted logs ... ignored (0ms)
+running 3 tests from ./tests/set-online-status.test.js
+setOnlineStatus: healthy call ...
+  logs success on a healthy call ...
+------- post-test output -------
+2026-05-12T15:49:40.474Z [info] Online status is set
+----- post-test output end -----
+  logs success on a healthy call ... ok (1ms)
+setOnlineStatus: healthy call ... ok (2ms)
+setOnlineStatus: VK error is logged verbatim ...
+  forwards the VK error into the log without adding speculation ...
+------- post-test output -------
+2026-05-12T15:49:40.476Z [warn] Could not set online status {
+  "error": {
+    "name": "Error",
+    "message": "Code №3 - Unknown method passed",
+    "stack": "Error: Code №3 - Unknown method passed\n    at file:///tmp/gh-issue-solver-1778599373526/tests/set-online-status.test.js:37:19\n    at withCapturedLogs (file:///tmp/gh-issue-solver-1778599373526/tests/set-online-status.test.js:20:26)\n    at Object.fn (file:///tmp/gh-issue-solver-1778599373526/tests/set-online-status.test.js:36:11)\n    at fn (node:test:156:33)\n    at innerWrapped (ext:cli/40_test.js:230:11)\n    at Object.outerWrapped [as fn] (ext:cli/40_test.js:173:20)\n    at TestContext.step (ext:cli/40_test.js:564:37)\n    at TestSuite.addTest (node:test:151:40)\n    at test (node:test:301:25)\n    at file:///tmp/gh-issue-solver-1778599373526/tests/set-online-status.test.js:35:3"
+  }
+}
+----- post-test output end -----
+  forwards the VK error into the log without adding speculation ... ok (1ms)
+setOnlineStatus: VK error is logged verbatim ... ok (4ms)
+setOnlineStatus: other errors ...
+  logs the generic warning for non-VK errors too ...
+------- post-test output -------
+2026-05-12T15:49:40.481Z [warn] Could not set online status {
+  "error": {
+    "name": "Error",
+    "message": "boom",
+    "stack": "Error: boom\n    at Object.setOnline (file:///tmp/gh-issue-solver-1778599373526/tests/set-online-status.test.js:69:21)\n    at setOnlineStatus (file:///tmp/gh-issue-solver-1778599373526/src/bot/triggers/set-online-status.js:5:26)\n    at file:///tmp/gh-issue-solver-1778599373526/tests/set-online-status.test.js:74:13\n    at withCapturedLogs (file:///tmp/gh-issue-solver-1778599373526/tests/set-online-status.test.js:20:26)\n    at Object.fn (file:///tmp/gh-issue-solver-1778599373526/tests/set-online-status.test.js:64:11)\n    at fn (node:test:156:33)\n    at innerWrapped (ext:cli/40_test.js:230:11)\n    at Object.outerWrapped [as fn] (ext:cli/40_test.js:173:20)\n    at TestContext.step (ext:cli/40_test.js:564:37)\n    at TestSuite.addTest (node:test:151:40)"
+  }
+}
+----- post-test output end -----
+  logs the generic warning for non-VK errors too ... ok (1ms)
+setOnlineStatus: other errors ... ok (0ms)
+running 4 tests from ./tests/setup-npm.test.js
+compares semantic versions numerically ... ok (1ms)
+requires npm 11.5.1 or later ... ok (1ms)
+requires Node.js 22.14.0 or later ... ok (0ms)
+selects the latest npm 11 tarball that satisfies trusted publishing ... ok (0ms)
+running 6 tests from ./tests/site-downloads.test.js
+resolves versioned download links from actual release assets ... ok (0ms)
+prefers versioned assets while tolerating legacy assets during migration ... ok (0ms)
+derives user-visible asset names from the latest release version ... ok (0ms)
+uses the release page rather than a synthetic checksum URL when missing ... ok (0ms)
+keeps stable option groups for all supported operating systems ... ok (0ms)
+groups primary installer downloads with smaller format alternatives ... ok (0ms)
+running 2 tests from ./tests/ssh-installer.test.js
+buildInstallScript ...
+  emits a docker isolation invocation ... ok (2ms)
+  emits a screen isolation invocation ... ok (2ms)
+  stops any prior session before starting a new one ... ok (2ms)
+  uses screen isolation by default ... ok (2ms)
+  throws when the bundle archive is missing ... ok (1ms)
+  throws on unknown isolation ... ok (1ms)
+  escapes the remote dir ... ok (1ms)
+buildInstallScript ... ok (3ms)
+buildInstallPlan ...
+  returns plan metadata alongside the script ... ok (0ms)
+buildInstallPlan ... ok (0ms)
+running 3 tests from ./tests/stats.test.js
+isoWeek ...
+  returns the ISO week number for known dates ... ok (1ms)
+isoWeek ... ok (1ms)
+pathsForDate ...
+  produces total + month + week paths ... ok (0ms)
+pathsForDate ... ok (0ms)
+StatsStore ... ignored (0ms)
+running 5 tests from ./tests/tag-prefix.test.js
+defaults to "v" prefix (backward compatible) ... ok (0ms)
+supports "js-v" prefix for multi-language repos ... ok (0ms)
+supports "rust-v" prefix ... ok (0ms)
+supports empty prefix ... ok (0ms)
+works with pre-release versions ... ok (0ms)
+running 3 tests from ./tests/theme.test.js
+resolveTheme ...
+  honors explicit light or dark preferences ... ok (0ms)
+  falls back to system theme when preference is auto ... ok (1ms)
+  defaults to light when system theme is missing ... ok (1ms)
+resolveTheme ... ok (1ms)
+applyTheme ...
+  writes data-theme to the document element ... ok (0ms)
+applyTheme ... ok (0ms)
+watchSystemTheme ...
+  returns a no-op when matchMedia is unavailable ... ok (0ms)
+  listens via addEventListener and reports dark/light ... ok (1ms)
+watchSystemTheme ... ok (0ms)
+running 2 tests from ./tests/validate-release-assets.test.js
+validates release assets from the tag version, not the checkout package version ... ok (0ms)
+reports each missing release asset with a GitHub annotation path ... ok (0ms)
+running 1 test from ./tests/vk-token.test.js
+VK token helpers ...
+  keeps the Kate Mobile blank-page OAuth URL requested by issue 26 ... ok (1ms)
+  builds the experimental localhost redirect OAuth URL ... ok (2ms)
+  extracts access_token from pasted VK redirect URLs ... ok (2ms)
+  accepts a raw token without changing it beyond trimming whitespace ... ok (1ms)
+  wires the whitelisted token URLs through Electron IPC ... ok (1ms)
+VK token helpers ... ok (2ms)
+
+ok | 110 passed (84 steps) | 0 failed | 6 ignored (1 step) (5s)

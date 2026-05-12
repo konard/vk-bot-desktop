@@ -1,0 +1,9 @@
+
+> vk-bot-desktop@0.9.19 lint
+> eslint .
+
+
+/tmp/gh-issue-solver-1778599373526/src/bot/runner.js
+  49:8  warning  Async function 'startBot' has a complexity of 28. Maximum allowed is 15  complexity
+
+✖ 1 problem (0 errors, 1 warning)

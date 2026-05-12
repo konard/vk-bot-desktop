@@ -108,6 +108,25 @@ describe('LinoStore', { skip: isDenoRuntime }, () => {
     }
   });
 
+  it('keeps empty invitation communities iterable after loading config', async () => {
+    const { store, cleanup } = await makeStore();
+    try {
+      await store.saveConfig(
+        {
+          vk: { token: 'vk1.a.testtoken_ok' },
+          features: { sendInvitationPosts: true },
+          invitationPost: { communities: [] },
+        },
+        'global'
+      );
+      const loaded = await store.loadLayered();
+      const config = mergeWithDefaults(loaded);
+      assert.deepEqual(config.invitationPost.communities, []);
+    } finally {
+      await cleanup();
+    }
+  });
+
   it('returns empty object when no config files exist', async () => {
     const { store, cleanup } = await makeStore();
     try {

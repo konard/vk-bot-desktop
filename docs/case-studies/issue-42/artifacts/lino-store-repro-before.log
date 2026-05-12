@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: LinoStore
+    # Subtest: round-trips a config through formatIndented/parseIndented
+    ok 1 - round-trips a config through formatIndented/parseIndented
+      ---
+      duration_ms: 10.18014
+      ...
+    # Subtest: local config overrides global
+    ok 2 - local config overrides global
+      ---
+      duration_ms: 3.694707
+      ...
+    # Subtest: keeps empty invitation communities iterable after loading config
+    not ok 3 - keeps empty invitation communities iterable after loading config
+      ---
+      duration_ms: 4.693668
+      location: '/tmp/gh-issue-solver-1778599373526/tests/lino-store.test.js:64:3'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly deep-equal:
+        + actual - expected
+
+        + {}
+        - []
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected:
+      actual:
+      operator: 'deepStrictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///tmp/gh-issue-solver-1778599373526/tests/lino-store.test.js:77:14)
+        async Test.run (node:internal/test_runner/test:797:9)
+        async Suite.processPendingSubtests (node:internal/test_runner/test:526:7)
+      ...
+    # Subtest: returns empty object when no config files exist
+    ok 4 - returns empty object when no config files exist
+      ---
+      duration_ms: 2.671097
+      ...
+    1..4
+not ok 1 - LinoStore
+  ---
+  duration_ms: 22.725581
+  type: 'suite'
+  location: '/tmp/gh-issue-solver-1778599373526/tests/lino-store.test.js:26:1'
+  failureType: 'subtestsFailed'
+  error: '1 subtest failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+1..1
+# tests 4
+# suites 1
+# pass 3
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 82.378536
