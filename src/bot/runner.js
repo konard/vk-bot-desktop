@@ -6,6 +6,7 @@
 
 import logger from './logger.js';
 import { mergeWithDefaults } from './config.js';
+import { createVkClient } from './vk-client.js';
 import { setOnlineStatus } from './triggers/set-online-status.js';
 import { acceptFriendRequests } from './triggers/accept-friend-requests.js';
 import { deleteDeactivatedFriends } from './triggers/delete-deactivated-friends.js';
@@ -46,74 +47,79 @@ function scheduleEvery(ms, action, name) {
   };
 }
 
+const TRIGGER_SPECS = [
+  {
+    flag: 'onlineStatus',
+    intervalKey: 'onlineStatusMinutes',
+    intervalUnit: MINUTE_MS,
+    intervalDefault: 14,
+    name: 'set-online-status',
+    fn: ({ vk }) => setOnlineStatus({ vk }),
+  },
+  {
+    flag: 'acceptFriendRequests',
+    intervalKey: 'acceptFriendRequestsMinutes',
+    intervalUnit: MINUTE_MS,
+    intervalDefault: 20,
+    name: 'accept-friend-requests',
+    fn: ({ vk, config }) => acceptFriendRequests({ vk, config }),
+  },
+  {
+    flag: 'deleteDeactivatedFriends',
+    intervalKey: 'deleteDeactivatedFriendsMinutes',
+    intervalUnit: MINUTE_MS,
+    intervalDefault: 30,
+    name: 'delete-deactivated-friends',
+    fn: ({ vk, config }) => deleteDeactivatedFriends({ vk, config }),
+  },
+  {
+    flag: 'deleteOutgoingFriendRequests',
+    intervalKey: 'deleteOutgoingFriendRequestsMinutes',
+    intervalUnit: MINUTE_MS,
+    intervalDefault: 8,
+    name: 'delete-outgoing-friend-requests',
+    fn: ({ vk, config }) => deleteOutgoingFriendRequests({ vk, config }),
+  },
+  {
+    flag: 'sendInvitationPosts',
+    intervalKey: 'sendInvitationPostsMinutes',
+    intervalUnit: MINUTE_MS,
+    intervalDefault: 9,
+    name: 'send-invitation-posts',
+    fn: ({ vk, config }) => sendInvitationPosts({ vk, config }),
+  },
+  {
+    flag: 'sendBirthdayCongratulations',
+    intervalKey: 'sendBirthdayCongratulationsHours',
+    intervalUnit: HOUR_MS,
+    intervalDefault: 23,
+    name: 'send-birthday-congratulations',
+    fn: ({ vk, config }) => sendBirthdayCongratulations({ vk, config }),
+  },
+];
+
+function scheduleEnabledTriggers({ vk, config }) {
+  const stops = [];
+  for (const spec of TRIGGER_SPECS) {
+    if (!config.features?.[spec.flag]) {
+      continue;
+    }
+    const ms =
+      (config.intervals?.[spec.intervalKey] ?? spec.intervalDefault) *
+      spec.intervalUnit;
+    stops.push(scheduleEvery(ms, () => spec.fn({ vk, config }), spec.name));
+  }
+  return stops;
+}
+
 export async function startBot({ config: rawConfig, createVk }) {
   const config = mergeWithDefaults(rawConfig);
   if (!config.vk?.token) {
     throw new Error('VK access token is missing in configuration');
   }
-  const factory =
-    createVk ||
-    (async () => {
-      const { VK } = await import('vk-io');
-      return new VK({ token: config.vk.token });
-    });
+  const factory = createVk || (({ token }) => createVkClient({ token }));
   const vk = await factory({ token: config.vk.token });
-  const stops = [];
-  if (config.features?.onlineStatus) {
-    stops.push(
-      scheduleEvery(
-        (config.intervals?.onlineStatusMinutes ?? 14) * MINUTE_MS,
-        () => setOnlineStatus({ vk }),
-        'set-online-status'
-      )
-    );
-  }
-  if (config.features?.acceptFriendRequests) {
-    stops.push(
-      scheduleEvery(
-        (config.intervals?.acceptFriendRequestsMinutes ?? 20) * MINUTE_MS,
-        () => acceptFriendRequests({ vk, config }),
-        'accept-friend-requests'
-      )
-    );
-  }
-  if (config.features?.deleteDeactivatedFriends) {
-    stops.push(
-      scheduleEvery(
-        (config.intervals?.deleteDeactivatedFriendsMinutes ?? 30) * MINUTE_MS,
-        () => deleteDeactivatedFriends({ vk, config }),
-        'delete-deactivated-friends'
-      )
-    );
-  }
-  if (config.features?.deleteOutgoingFriendRequests) {
-    stops.push(
-      scheduleEvery(
-        (config.intervals?.deleteOutgoingFriendRequestsMinutes ?? 8) *
-          MINUTE_MS,
-        () => deleteOutgoingFriendRequests({ vk, config }),
-        'delete-outgoing-friend-requests'
-      )
-    );
-  }
-  if (config.features?.sendInvitationPosts) {
-    stops.push(
-      scheduleEvery(
-        (config.intervals?.sendInvitationPostsMinutes ?? 9) * MINUTE_MS,
-        () => sendInvitationPosts({ vk, config }),
-        'send-invitation-posts'
-      )
-    );
-  }
-  if (config.features?.sendBirthdayCongratulations) {
-    stops.push(
-      scheduleEvery(
-        (config.intervals?.sendBirthdayCongratulationsHours ?? 23) * HOUR_MS,
-        () => sendBirthdayCongratulations({ vk, config }),
-        'send-birthday-congratulations'
-      )
-    );
-  }
+  const stops = scheduleEnabledTriggers({ vk, config });
   return {
     stop() {
       for (const cancel of stops) {
