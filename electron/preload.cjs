@@ -16,6 +16,7 @@ contextBridge.exposeInMainWorld('vkbot', {
     ipcRenderer.invoke('vkbot:server-script', options),
   readStats: () => ipcRenderer.invoke('vkbot:read-stats'),
   fetchOutgoing: (token) => ipcRenderer.invoke('vkbot:fetch-outgoing', token),
+  validateToken: (token) => ipcRenderer.invoke('vkbot:validate-token', token),
   onLog: (handler) => {
     const listener = (_event, line) => handler(line);
     ipcRenderer.on('vkbot:log', listener);
