@@ -13,10 +13,15 @@ This document normalizes the product and release requirements collected from:
   publication.
 - Issue #24: macOS Gatekeeper first-launch instructions for ad-hoc signed
   builds without an Apple Developer ID.
+- Issue #26: desktop token acquisition, token parsing, auto-save behavior, and
+  landing-page download UX improvements.
 - Issue #28: GitHub Pages download page must republish on every main push and
   every release tag push, even when no `site/` files changed; CI change
   detection must distinguish real merge commits on `main` from `pull_request`
   synthetic merge commits.
+- Issue #32: bot runtime observability and lifecycle fixes.
+- Issue #37: VK localhost OAuth redirect rejection and embedded authorization
+  window token capture.
 - Issue #39: local-mode deactivated-friend cleanup must tolerate empty
   persisted priority lists, and the desktop log panel must provide one-click
   log copying.
@@ -114,6 +119,16 @@ local bot execution and remote execution over SSH.
    messages, and other required settings.
 10. The log panel must provide a copy button that copies the visible log text
     through the desktop clipboard bridge.
+11. Provide a VK token acquisition action that uses the Kate Mobile standalone
+    OAuth URL with `redirect_uri=https://oauth.vk.com/blank.html`.
+12. The desktop app must open that OAuth URL in a constrained Electron
+    authorization window, capture the final
+    `https://oauth.vk.com/blank.html#access_token=...` navigation, send only
+    the token to the renderer, and close the authorization window.
+13. The desktop app must not expose the rejected
+    `http://localhost:26852/vk-oauth` OAuth redirect as a user-facing token
+    acquisition path for the Kate Mobile app id, because VK rejects that
+    redirect URI before the local callback page can run.
 
 ## Release And Distribution
 

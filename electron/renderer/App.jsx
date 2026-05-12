@@ -9,11 +9,7 @@ import {
   resolveTheme,
   watchSystemTheme,
 } from './theme.js';
-import {
-  KATE_MOBILE_TOKEN_URL,
-  LOCALHOST_TOKEN_URL,
-  extractVkAccessToken,
-} from './vk-token.js';
+import { KATE_MOBILE_TOKEN_URL, extractVkAccessToken } from './vk-token.js';
 
 const DEFAULT_INVITATIONS = [
   'Приму заявки в друзья.',
@@ -703,13 +699,6 @@ export default function App({ api }) {
             onClick={() => onOpenTokenUrl(KATE_MOBILE_TOKEN_URL)}
           >
             {t('getKateMobileToken')}
-          </button>
-          <button
-            type="button"
-            className="secondary"
-            onClick={() => onOpenTokenUrl(LOCALHOST_TOKEN_URL)}
-          >
-            {t('getLocalhostToken')}
           </button>
         </div>
       </div>

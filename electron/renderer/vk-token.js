@@ -1,9 +1,6 @@
 export const KATE_MOBILE_TOKEN_URL =
   'https://oauth.vk.com/authorize?client_id=2685278&scope=1073737727&redirect_uri=https://oauth.vk.com/blank.html&display=page&response_type=token&revoke=1';
 
-export const LOCALHOST_TOKEN_URL =
-  'https://oauth.vk.com/authorize?client_id=2685278&scope=1073737727&redirect_uri=http://localhost:26852/vk-oauth&display=page&response_type=token&revoke=1';
-
 function paramsFromUrlPart(value) {
   const clean = String(value || '')
     .replace(/^#/, '')

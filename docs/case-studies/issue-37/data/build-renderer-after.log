@@ -1,0 +1,9 @@
+
+> vk-bot-desktop@0.9.18 build:renderer
+> node scripts/build-renderer.mjs
+
+
+  electron/renderer/dist/bootstrap.js      1.0mb ⚠️
+  electron/renderer/dist/bootstrap.js.map  1.7mb
+
+⚡ Done in 88ms

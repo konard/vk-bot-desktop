@@ -4,7 +4,6 @@ import fs from 'node:fs';
 
 import {
   KATE_MOBILE_TOKEN_URL,
-  LOCALHOST_TOKEN_URL,
   extractVkAccessToken,
 } from '../electron/renderer/vk-token.js';
 
@@ -13,13 +12,6 @@ describe('VK token helpers', () => {
     assert.equal(
       KATE_MOBILE_TOKEN_URL,
       'https://oauth.vk.com/authorize?client_id=2685278&scope=1073737727&redirect_uri=https://oauth.vk.com/blank.html&display=page&response_type=token&revoke=1'
-    );
-  });
-
-  it('builds the experimental localhost redirect OAuth URL', () => {
-    assert.equal(
-      LOCALHOST_TOKEN_URL,
-      'https://oauth.vk.com/authorize?client_id=2685278&scope=1073737727&redirect_uri=http://localhost:26852/vk-oauth&display=page&response_type=token&revoke=1'
     );
   });
 
@@ -45,22 +37,20 @@ describe('VK token helpers', () => {
     );
   });
 
-  it('wires the whitelisted token URLs through Electron IPC', () => {
+  it('wires the VK blank-page OAuth URL through an Electron auth window', () => {
     const mainSource = fs.readFileSync('electron/main.cjs', 'utf8');
     const preloadSource = fs.readFileSync('electron/preload.cjs', 'utf8');
 
-    assert.match(mainSource, /shell\.openExternal/);
-    assert.match(mainSource, /startOauthCallbackServer/);
+    assert.match(mainSource, /new BrowserWindow/);
+    assert.match(mainSource, /loadURL\(url\)/);
+    assert.match(mainSource, /extractVkOAuthBlankToken/);
     assert.match(mainSource, /vkbot:open-token-url/);
     assert.match(mainSource, /vkbot:token/);
     assert.match(
       mainSource,
       new RegExp(KATE_MOBILE_TOKEN_URL.replace(/\?/g, '\\?'))
     );
-    assert.match(
-      mainSource,
-      new RegExp(LOCALHOST_TOKEN_URL.replace(/\?/g, '\\?'))
-    );
+    assert.doesNotMatch(mainSource, /localhost:26852\/vk-oauth/);
     assert.match(preloadSource, /openTokenUrl/);
     assert.match(preloadSource, /onToken/);
   });
