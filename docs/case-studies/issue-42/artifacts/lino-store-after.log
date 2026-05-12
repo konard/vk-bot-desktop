@@ -1,0 +1,37 @@
+TAP version 13
+# Subtest: LinoStore
+    # Subtest: round-trips a config through formatIndented/parseIndented
+    ok 1 - round-trips a config through formatIndented/parseIndented
+      ---
+      duration_ms: 8.652349
+      ...
+    # Subtest: local config overrides global
+    ok 2 - local config overrides global
+      ---
+      duration_ms: 4.204949
+      ...
+    # Subtest: keeps empty invitation communities iterable after loading config
+    ok 3 - keeps empty invitation communities iterable after loading config
+      ---
+      duration_ms: 2.212203
+      ...
+    # Subtest: returns empty object when no config files exist
+    ok 4 - returns empty object when no config files exist
+      ---
+      duration_ms: 0.998171
+      ...
+    1..4
+ok 1 - LinoStore
+  ---
+  duration_ms: 17.19266
+  type: 'suite'
+  ...
+1..1
+# tests 4
+# suites 1
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 64.953921

@@ -1,0 +1,6 @@
+
+> vk-bot-desktop@0.9.18 format:check
+> prettier --check .
+
+Checking formatting...
+All matched files use Prettier code style!

@@ -5,6 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 
 import { LinoStore } from '../src/lino-store.js';
+import { mergeWithDefaults } from '../src/bot/config.js';
 
 // Deno's restricted permission set used in CI (`deno test --allow-read`) does
 // not grant env access, but `os.tmpdir()` reads TMPDIR/TEMP env vars. Skip
@@ -55,6 +56,25 @@ describe('LinoStore', { skip: isDenoRuntime }, () => {
       const merged = await store.loadLayered();
       assert.equal(merged.vk.token, 'local');
       assert.equal(merged.mode, 'local');
+    } finally {
+      await cleanup();
+    }
+  });
+
+  it('keeps empty invitation communities iterable after loading config', async () => {
+    const { store, cleanup } = await makeStore();
+    try {
+      await store.saveConfig(
+        {
+          vk: { token: 'vk1.a.testtoken_ok' },
+          features: { sendInvitationPosts: true },
+          invitationPost: { communities: [] },
+        },
+        'global'
+      );
+      const loaded = await store.loadLayered();
+      const config = mergeWithDefaults(loaded);
+      assert.deepEqual(config.invitationPost.communities, []);
     } finally {
       await cleanup();
     }

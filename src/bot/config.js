@@ -45,28 +45,57 @@ export const DEFAULT_CONFIG = {
   birthdayGreetings: [...BIRTHDAY_GREETINGS],
 };
 
+function isPlainObject(value) {
+  return value && typeof value === 'object' && !Array.isArray(value);
+}
+
+function normalizeArray(value, fallback) {
+  if (value === undefined) {
+    return fallback;
+  }
+  if (Array.isArray(value)) {
+    return value;
+  }
+  if (value === null) {
+    return [];
+  }
+  if (isPlainObject(value)) {
+    const entries = Object.entries(value);
+    if (entries.length === 0) {
+      return [];
+    }
+    if (entries.every(([, child]) => isPlainObject(child))) {
+      return entries.map(([key]) => key);
+    }
+  }
+  return [value];
+}
+
+function mergeValue(defaultValue, overlayValue) {
+  if (Array.isArray(defaultValue)) {
+    return normalizeArray(overlayValue, [...defaultValue]);
+  }
+  if (isPlainObject(defaultValue)) {
+    const merged = {};
+    const keys = new Set([
+      ...Object.keys(defaultValue),
+      ...Object.keys(isPlainObject(overlayValue) ? overlayValue : {}),
+    ]);
+    for (const key of keys) {
+      merged[key] = mergeValue(defaultValue[key], overlayValue?.[key]);
+    }
+    return merged;
+  }
+  return overlayValue === undefined ? defaultValue : overlayValue;
+}
+
 /**
  * Friends are merged from layered config so the user can edit either the
  * global file or a project-local override.
  */
 export function mergeWithDefaults(overlay) {
-  const result = JSON.parse(JSON.stringify(DEFAULT_CONFIG));
   if (!overlay || typeof overlay !== 'object') {
-    return result;
+    return JSON.parse(JSON.stringify(DEFAULT_CONFIG));
   }
-  for (const [section, value] of Object.entries(overlay)) {
-    if (
-      value &&
-      typeof value === 'object' &&
-      !Array.isArray(value) &&
-      result[section] &&
-      typeof result[section] === 'object' &&
-      !Array.isArray(result[section])
-    ) {
-      result[section] = { ...result[section], ...value };
-    } else {
-      result[section] = value;
-    }
-  }
-  return result;
+  return mergeValue(DEFAULT_CONFIG, overlay);
 }

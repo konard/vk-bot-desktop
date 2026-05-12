@@ -1,0 +1,54 @@
+TAP version 13
+# Subtest: bot config defaults
+    # Subtest: normalizes empty array fields parsed from lino as empty objects
+    ok 1 - normalizes empty array fields parsed from lino as empty objects
+      ---
+      duration_ms: 0.936138
+      ...
+    # Subtest: preserves default invitation messages when only communities are saved
+    ok 2 - preserves default invitation messages when only communities are saved
+      ---
+      duration_ms: 0.792163
+      ...
+    1..2
+ok 1 - bot config defaults
+  ---
+  duration_ms: 2.523648
+  type: 'suite'
+  ...
+# Subtest: LinoStore
+    # Subtest: round-trips a config through formatIndented/parseIndented
+    ok 1 - round-trips a config through formatIndented/parseIndented
+      ---
+      duration_ms: 8.549054
+      ...
+    # Subtest: local config overrides global
+    ok 2 - local config overrides global
+      ---
+      duration_ms: 3.364173
+      ...
+    # Subtest: keeps empty invitation communities iterable after loading config
+    ok 3 - keeps empty invitation communities iterable after loading config
+      ---
+      duration_ms: 2.439583
+      ...
+    # Subtest: returns empty object when no config files exist
+    ok 4 - returns empty object when no config files exist
+      ---
+      duration_ms: 1.129557
+      ...
+    1..4
+ok 2 - LinoStore
+  ---
+  duration_ms: 16.679114
+  type: 'suite'
+  ...
+1..2
+# tests 6
+# suites 2
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 73.373091
