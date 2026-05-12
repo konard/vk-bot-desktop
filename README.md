@@ -84,10 +84,13 @@ the Control-click → Open bypass, so the flow is:
 
 1. Double-click `VK Bot Desktop`, then click **Done** when the
    "Apple could not verify…" dialog appears.
+   ![macOS warning dialog with Done button](docs/screenshots/issue-31-macos-done.png)
 2. Open **System Settings → Privacy & Security** and scroll to the **Security**
    section.
 3. Click **Open Anyway** next to `VK Bot Desktop`, confirm, and authenticate
    with Touch ID or your admin password.
+   ![macOS Privacy & Security settings with Open Anyway button](docs/screenshots/issue-31-macos-open-anyway-settings.png)
+   ![macOS confirmation dialog with Open Anyway button](docs/screenshots/issue-31-macos-open-anyway-confirm.png)
 
 Only run these steps for VK Bot Desktop release artifacts whose SHA-256 matches
 `SHA256SUMS.txt` from the same GitHub release. The same workflow applies to

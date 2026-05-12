@@ -462,6 +462,22 @@ h1 {
   line-height: 1.45;
 }
 
+.install-macos-screenshots {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+  align-items: start;
+}
+
+.install-macos-screenshots img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-strong);
+}
+
 .verification {
   display: grid;
   gap: 20px;
@@ -621,6 +637,10 @@ h1 {
   }
 
   .download-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .install-macos-screenshots {
     grid-template-columns: 1fr;
   }
 
