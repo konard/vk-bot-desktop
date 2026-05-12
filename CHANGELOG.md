@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.9.18
+
+### Patch Changes
+
+- 7054a12: Add macOS Gatekeeper screenshots to README and the download page.
+
 ## 0.9.17
 
 ### Patch Changes
