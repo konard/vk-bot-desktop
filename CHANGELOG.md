@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.9.22
+
+### Patch Changes
+
+- 1aa40a7: Normalize array-shaped bot config fields loaded from Links Notation so empty invitation communities no longer crash the invitation-post trigger.
+
 ## 0.9.21
 
 ### Patch Changes
