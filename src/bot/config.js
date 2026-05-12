@@ -9,6 +9,18 @@
 
 import { INVITATION_MESSAGES } from './messages/invitation-messages.js';
 import { BIRTHDAY_GREETINGS } from './messages/birthday-greetings.js';
+import { parseVkIdList } from './list-values.js';
+
+/**
+ * 16 community IDs hardcoded in upstream konard/vk-bot's
+ * `triggers/send-invitation-posts-for-friends.js`. Used by the UI to
+ * prefill `invitationPost.communities` on first successful token connect.
+ */
+export const UPSTREAM_INVITATION_COMMUNITIES = [
+  64758790, 34985835, 24261502, 53294903, 33764742, 8337923, 94946045,
+  194360448, 39130136, 198580397, 195285978, 47350356, 61413825, 30345825,
+  180442247, 214787806,
+];
 
 export const DEFAULT_CONFIG = {
   vk: {
@@ -45,27 +57,71 @@ export const DEFAULT_CONFIG = {
   birthdayGreetings: [...BIRTHDAY_GREETINGS],
 };
 
-function normalizeList(value, { numeric = false } = {}) {
-  let items;
+function coerceToItems(value) {
   if (Array.isArray(value)) {
-    items = value;
-  } else if (value === undefined || value === null) {
-    items = [];
-  } else if (typeof value === 'object') {
-    items = [];
-  } else {
-    items = [value];
+    return { items: value };
   }
-
-  if (numeric) {
-    return items
-      .map((item) => Number(item))
-      .filter((item) => Number.isFinite(item));
+  if (value === undefined || value === null) {
+    return { items: [] };
   }
+  if (typeof value === 'string') {
+    return { stringValue: value };
+  }
+  if (typeof value === 'object') {
+    return { items: [] };
+  }
+  return { items: [value] };
+}
 
+function dedupeNumericIds(items, expect) {
+  const out = [];
+  const seen = new Set();
+  const push = (id) => {
+    const key = `${id}`;
+    if (seen.has(key)) {
+      return;
+    }
+    seen.add(key);
+    out.push(id);
+  };
+  for (const item of items) {
+    if (typeof item === 'number' && Number.isFinite(item) && item !== 0) {
+      push(item);
+      continue;
+    }
+    const text = String(item ?? '').trim();
+    if (!text) {
+      continue;
+    }
+    const { ids } = parseVkIdList(text, { expect });
+    for (const id of ids) {
+      push(id);
+    }
+  }
+  return out;
+}
+
+function normalizeStringList(value, items) {
+  if (typeof value === 'string') {
+    return value
+      .split(/[\r\n]+/u)
+      .map((line) => line.trim())
+      .filter((line) => line.length > 0);
+  }
   return items
     .map((item) => String(item).trim())
     .filter((item) => item.length > 0);
+}
+
+function normalizeList(value, { numeric = false, expect = 'user' } = {}) {
+  const { items, stringValue } = coerceToItems(value);
+  if (numeric) {
+    if (stringValue !== undefined) {
+      return parseVkIdList(stringValue, { expect }).ids;
+    }
+    return dedupeNumericIds(items, expect);
+  }
+  return normalizeStringList(stringValue, items ?? []);
 }
 
 export function normalizeConfigLists(config) {
@@ -76,6 +132,7 @@ export function normalizeConfigLists(config) {
   if ('priorityFriendIds' in out) {
     out.priorityFriendIds = normalizeList(out.priorityFriendIds, {
       numeric: true,
+      expect: 'user',
     });
   }
   if (
@@ -90,7 +147,7 @@ export function normalizeConfigLists(config) {
     if ('communities' in out.invitationPost) {
       out.invitationPost.communities = normalizeList(
         out.invitationPost.communities,
-        { numeric: true }
+        { numeric: true, expect: 'community' }
       );
     }
   }
