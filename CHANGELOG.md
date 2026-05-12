@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.9.21
+
+### Patch Changes
+
+- 0c27537: Fix local-mode deactivated-friend cleanup when persisted config contains empty
+  priority-list values, and add a desktop log-copy button.
+
 ## 0.9.20
 
 ### Patch Changes
