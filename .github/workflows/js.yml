@@ -1131,44 +1131,7 @@ jobs:
       - name: Smoke test Windows release artifacts
         if: matrix.platform == 'windows'
         shell: pwsh
-        run: |
-          $ErrorActionPreference = 'Stop'
-          $version = (Get-Content package.json | ConvertFrom-Json).version
-          $arch = '${{ matrix.arch }}'
-          $installerPath = "release/vk-bot-desktop-windows-installer-$arch-$version.exe"
-          $portablePath = "release/vk-bot-desktop-windows-portable-$arch-$version.exe"
-
-          if (!(Test-Path $installerPath) -or !(Test-Path $portablePath)) {
-            Get-ChildItem -Path release -File | Format-Table -AutoSize
-            throw "Expected versioned Windows installer and portable executables for $arch."
-          }
-
-          $installers = @(Get-Item $installerPath)
-          $portableApps = @(Get-Item $portablePath)
-
-          foreach ($installer in $installers) {
-            $installDir = Join-Path $env:RUNNER_TEMP 'vk-bot-desktop-install'
-            Remove-Item -Recurse -Force -ErrorAction SilentlyContinue $installDir
-            New-Item -ItemType Directory -Path $installDir | Out-Null
-
-            $process = Start-Process -FilePath $installer.FullName -ArgumentList @('/S', "/D=$installDir") -Wait -PassThru
-            if ($process.ExitCode -ne 0) {
-              throw "Installer failed with exit code $($process.ExitCode): $($installer.FullName)"
-            }
-
-            $installedExe = Join-Path $installDir 'VK Bot Desktop.exe'
-            if (!(Test-Path $installedExe)) {
-              Get-ChildItem -Recurse -Force $installDir | Format-Table -AutoSize
-              throw "Installed application executable not found at $installedExe"
-            }
-          }
-
-          foreach ($portable in $portableApps) {
-            if ($portable.Length -le 0) {
-              throw "Portable executable is empty: $($portable.FullName)"
-            }
-            Write-Host "Portable artifact: $($portable.Name) ($($portable.Length) bytes)"
-          }
+        run: pwsh ./scripts/smoke-test-windows-release-artifacts.ps1 -Arch '${{ matrix.arch }}'
 
       - name: Compute SHA256 sums (Linux/macOS)
         if: matrix.platform == 'linux' || matrix.platform == 'macos'

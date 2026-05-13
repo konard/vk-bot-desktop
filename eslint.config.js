@@ -114,6 +114,8 @@ export default [
       '.eslintcache',
       // Case study raw data files (downloaded from external sources)
       'docs/case-studies/*/data/**',
+      'docs/case-studies/*/github-data/**',
+      'docs/case-studies/*/template-data/**',
     ],
   },
 ];

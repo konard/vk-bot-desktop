@@ -29,7 +29,12 @@ while IFS= read -r -d '' file; do
     echo "::warning file=$file::File has $line_count lines (approaching limit of ${LIMIT}). Consider extracting code to keep under ${WARN_THRESHOLD} lines and prevent concurrent PR merge limit violations."
     WARNINGS+=("$file")
   fi
-done < <(find . -name "*.mjs" -type f -not -path "*/node_modules/*" -print0)
+done < <(
+  find . -name "*.mjs" -type f \
+    -not -path "*/node_modules/*" \
+    -not -path "./docs/case-studies/*/template-data/*" \
+    -print0
+)
 
 echo ""
 echo "Checking that .github/workflows/js.yml is under ${LIMIT} lines..."
