@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'test-anywhere';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 
 import { expectedDesktopReleaseAssetNames } from '../scripts/check-release-needed.mjs';
 
@@ -10,6 +10,11 @@ const adhocSignScript = readWorkflow('scripts/adhoc-sign-mac.cjs');
 const validateReleaseAssetsScript = readWorkflow(
   'scripts/validate-release-assets.mjs'
 );
+const windowsReleaseSmokeScriptPath =
+  'scripts/smoke-test-windows-release-artifacts.ps1';
+const windowsReleaseSmokeScript = existsSync(windowsReleaseSmokeScriptPath)
+  ? readWorkflow(windowsReleaseSmokeScriptPath)
+  : '';
 
 function readWorkflow(filePath) {
   return readFileSync(filePath, 'utf8').replaceAll('\r\n', '\n');
@@ -365,12 +370,42 @@ describe('desktop release workflow smoke tests', () => {
     expect(linuxSmokeIndex).toBeLessThan(uploadIndex);
     expect(macSmokeIndex).toBeLessThan(uploadIndex);
     expect(windowsSmokeIndex).toBeLessThan(uploadIndex);
+    expect(
+      workflowStep(electronWorkflow, 'Smoke test Windows release artifacts')
+    ).toContain('scripts/smoke-test-windows-release-artifacts.ps1');
+    expect(
+      workflowStep(electronWorkflow, 'Smoke test Windows release artifacts')
+    ).toContain("-Arch '${{ matrix.arch }}'");
     expect(electronWorkflow).toContain('dpkg-deb --contents');
     expect(electronWorkflow).toContain('--appimage-extract');
-    expect(electronWorkflow).toContain('Start-Process -FilePath');
-    expect(electronWorkflow).toContain('/S');
-    expect(electronWorkflow).toContain('/D=');
+    expect(windowsReleaseSmokeScript).toContain('Start-Process -FilePath');
+    expect(windowsReleaseSmokeScript).toContain('/S');
+    expect(windowsReleaseSmokeScript).toContain('/D=');
     expect(packageJson.build.nsis.runAfterFinish).toBe(false);
+  });
+
+  it('does not execute the NSIS installer on Windows ARM64 hosted runners', () => {
+    const arm64GuardIndex = windowsReleaseSmokeScript.indexOf(
+      "if ($Arch -eq 'arm64') {"
+    );
+    const installerRunIndex = windowsReleaseSmokeScript.indexOf(
+      'Start-Process -FilePath'
+    );
+    const arm64Guard = windowsReleaseSmokeScript.slice(
+      arm64GuardIndex,
+      installerRunIndex
+    );
+
+    expect(windowsReleaseSmokeScript).toContain(
+      "[ValidateSet('x64', 'arm64')]"
+    );
+    expect(windowsReleaseSmokeScript).toContain('win-arm64-unpacked');
+    expect(arm64GuardIndex).toBeGreaterThan(-1);
+    expect(installerRunIndex).toBeGreaterThan(arm64GuardIndex);
+    expect(arm64Guard).toContain('0xC0000005');
+    expect(arm64Guard).toContain('7z');
+    expect(arm64Guard).toContain('exit 0');
+    expect(arm64Guard).not.toContain('Start-Process -FilePath');
   });
 
   it('configures a Linux maintainer for deb artifacts', () => {

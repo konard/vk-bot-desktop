@@ -1,0 +1,6 @@
+.changeset/fix-windows-arm64-smoke.md 30ms
+docs/case-studies/issue-45/README.md 29ms (unchanged)
+tests/desktop-release-workflow.test.js 90ms (unchanged)
+eslint.config.js 15ms (unchanged)
+.jscpd.json 3ms (unchanged)
+[error] No parser could be inferred for file "/tmp/gh-issue-solver-1778678213775/.prettierignore".

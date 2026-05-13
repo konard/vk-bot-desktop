@@ -1,0 +1,11 @@
+
+> vk-bot-desktop@0.10.0 changeset:status
+> changeset status --since=origin/main
+
+🦋  info Packages to be bumped at patch:
+🦋  info
+🦋  - vk-bot-desktop
+🦋  ---
+🦋  info NO packages to be bumped at minor
+🦋  ---
+🦋  info NO packages to be bumped at major
