@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.10.2
+
+### Patch Changes
+
+- 9cbf3b7: Fix Windows desktop release smoke-test PowerShell interpolation so CI can
+  validate Windows artifacts.
+
 ## 0.10.1
 
 ### Patch Changes
