@@ -1,0 +1,125 @@
+TAP version 13
+# Subtest: release workflow orchestration
+    # Subtest: does not publish packages to npm from release jobs
+    ok 1 - does not publish packages to npm from release jobs
+      ---
+      duration_ms: 1.817615
+      ...
+    # Subtest: keeps desktop release jobs in the same workflow with an exact tag and commit
+    ok 2 - keeps desktop release jobs in the same workflow with an exact tag and commit
+      ---
+      duration_ms: 0.360389
+      ...
+    # Subtest: runs desktop jobs after optional release modes are skipped
+    ok 3 - runs desktop jobs after optional release modes are skipped
+      ---
+      duration_ms: 0.567898
+      ...
+    1..3
+ok 1 - release workflow orchestration
+  ---
+  duration_ms: 3.553427
+  type: 'suite'
+  ...
+# Subtest: desktop release workflow
+    # Subtest: builds desktop artifacts for Linux, macOS, and Windows releases
+    ok 1 - builds desktop artifacts for Linux, macOS, and Windows releases
+      ---
+      duration_ms: 0.32177
+      ...
+    # Subtest: uses versioned artifact names for release download links
+    ok 2 - uses versioned artifact names for release download links
+      ---
+      duration_ms: 1.034644
+      ...
+    # Subtest: uses system FPM for native Linux arm64 Debian builds
+    ok 3 - uses system FPM for native Linux arm64 Debian builds
+      ---
+      duration_ms: 0.282793
+      ...
+    # Subtest: normalizes Linux artifact architecture names before validation
+    ok 4 - normalizes Linux artifact architecture names before validation
+      ---
+      duration_ms: 0.326468
+      ...
+    1..4
+ok 2 - desktop release workflow
+  ---
+  duration_ms: 2.158374
+  type: 'suite'
+  ...
+# Subtest: desktop release workflow macOS signing
+    # Subtest: keeps signed and notarized macOS publishing when Apple secrets are configured
+    ok 1 - keeps signed and notarized macOS publishing when Apple secrets are configured
+      ---
+      duration_ms: 0.28114
+      ...
+    # Subtest: builds ad-hoc signed macOS artifacts without Apple secrets
+    ok 2 - builds ad-hoc signed macOS artifacts without Apple secrets
+      ---
+      duration_ms: 0.332887
+      ...
+    1..2
+ok 3 - desktop release workflow macOS signing
+  ---
+  duration_ms: 0.725374
+  type: 'suite'
+  ...
+# Subtest: desktop release workflow smoke tests
+    # Subtest: smoke-tests platform installers after building and before uploading
+    ok 1 - smoke-tests platform installers after building and before uploading
+      ---
+      duration_ms: 0.352126
+      ...
+    # Subtest: does not execute the NSIS installer on Windows ARM64 hosted runners
+    ok 2 - does not execute the NSIS installer on Windows ARM64 hosted runners
+      ---
+      duration_ms: 0.092339
+      ...
+    # Subtest: delimits PowerShell variables before literal colons in smoke-test output
+    not ok 3 - delimits PowerShell variables before literal colons in smoke-test output
+      ---
+      duration_ms: 0.406056
+      location: '/tmp/gh-issue-solver-1778682517240/node_modules/test-anywhere/src/index.js:174:12'
+      failureType: 'testCodeFailure'
+      error: 'Expected ["$Description:","$LASTEXITCODE:"] to equal []'
+      code: 'ERR_TEST_FAILURE'
+      stack: |-
+        Object.toEqual (file:///tmp/gh-issue-solver-1778682517240/node_modules/test-anywhere/src/index.js:399:15)
+        TestContext.<anonymous> (file:///tmp/gh-issue-solver-1778682517240/tests/desktop-release-workflow.test.js:418:31)
+        Test.runInAsyncScope (node:async_hooks:206:9)
+        Test.run (node:internal/test_runner/test:796:25)
+        Suite.processPendingSubtests (node:internal/test_runner/test:526:18)
+        Test.postRun (node:internal/test_runner/test:889:19)
+        Test.run (node:internal/test_runner/test:835:12)
+        async Suite.processPendingSubtests (node:internal/test_runner/test:526:7)
+      ...
+    # Subtest: configures a Linux maintainer for deb artifacts
+    ok 4 - configures a Linux maintainer for deb artifacts
+      ---
+      duration_ms: 0.157435
+      ...
+    # Subtest: hashes Linux and macOS artifacts without splitting filenames on spaces
+    ok 5 - hashes Linux and macOS artifacts without splitting filenames on spaces
+      ---
+      duration_ms: 0.14083
+      ...
+    1..5
+not ok 4 - desktop release workflow smoke tests
+  ---
+  duration_ms: 1.346311
+  type: 'suite'
+  location: '/tmp/gh-issue-solver-1778682517240/node_modules/test-anywhere/src/index.js:205:12'
+  failureType: 'subtestsFailed'
+  error: '1 subtest failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+1..4
+# tests 14
+# suites 4
+# pass 13
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 77.201026
