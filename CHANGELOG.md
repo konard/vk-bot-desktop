@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.10.1
+
+### Patch Changes
+
+- ec33b4a: Fix Windows ARM64 release smoke testing so GitHub-hosted ARM runners validate generated artifacts without launching the NSIS installer path that exits with an access violation.
+
 ## 0.10.0
 
 ### Minor Changes
