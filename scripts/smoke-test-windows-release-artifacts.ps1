@@ -30,7 +30,7 @@ function Assert-NonEmptyFile {
     throw "$Description is empty: $($item.FullName)"
   }
 
-  Write-Host "$Description: $($item.FullName) ($($item.Length) bytes)"
+  Write-Host "${Description}: $($item.FullName) ($($item.Length) bytes)"
   return $item
 }
 
@@ -59,7 +59,7 @@ if ($Arch -eq 'arm64') {
     Write-Host "Testing ARM64 installer archive with 7z: $($installer.FullName)"
     & $sevenZip.Source t $installer.FullName
     if ($LASTEXITCODE -ne 0) {
-      throw "7z integrity check failed with exit code $LASTEXITCODE: $($installer.FullName)"
+      throw "7z integrity check failed with exit code ${LASTEXITCODE}: $($installer.FullName)"
     }
   } else {
     Write-Warning '7z is not available; ARM64 installer archive integrity check skipped.'

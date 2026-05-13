@@ -1,0 +1,10 @@
+.github/workflows/release.yml
+scripts/validate_changeset.py
+scripts/bump_version.py
+scripts/format_release_notes.py
+scripts/version_and_commit.py
+scripts/create_github_release.py
+scripts/publish_to_pypi.py
+scripts/check_file_size.py
+scripts/create_manual_changeset.py
+scripts/detect_code_changes.py

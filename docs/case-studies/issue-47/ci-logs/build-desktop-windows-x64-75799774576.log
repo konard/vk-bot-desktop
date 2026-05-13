@@ -1,0 +1,247 @@
+Build desktop (windows x64)	Set up job	﻿2026-05-13T13:52:18.9551487Z Current runner version: '2.334.0'
+Build desktop (windows x64)	Set up job	2026-05-13T13:52:19.4831785Z ##[group]Runner Image Provisioner
+Build desktop (windows x64)	Set up job	2026-05-13T13:52:19.4832629Z Hosted Compute Agent
+Build desktop (windows x64)	Set up job	2026-05-13T13:52:19.4833237Z Version: 20260422.526
+Build desktop (windows x64)	Set up job	2026-05-13T13:52:19.4833827Z Commit: e1a9e573f4d0838b3a7c1b07401aeb29ed3635a9
+Build desktop (windows x64)	Set up job	2026-05-13T13:52:19.4834534Z Build Date: 2026-04-22T09:31:31Z
+Build desktop (windows x64)	Set up job	2026-05-13T13:52:19.4835161Z Worker ID: {9a6057bd-45f5-48c2-9e32-37df5fdab9d6}
+Build desktop (windows x64)	Set up job	2026-05-13T13:52:19.4835863Z Azure Region: westus
+Build desktop (windows x64)	Set up job	2026-05-13T13:52:19.4836390Z ##[endgroup]
+Build desktop (windows x64)	Set up job	2026-05-13T13:52:19.4837766Z ##[group]Operating System
+Build desktop (windows x64)	Set up job	2026-05-13T13:52:19.4838462Z Microsoft Windows Server 2025
+Build desktop (windows x64)	Set up job	2026-05-13T13:52:19.4839049Z 10.0.26100
+Build desktop (windows x64)	Set up job	2026-05-13T13:52:19.4839593Z Datacenter
+Build desktop (windows x64)	Set up job	2026-05-13T13:52:19.4840091Z ##[endgroup]
+Build desktop (windows x64)	Set up job	2026-05-13T13:52:19.4840641Z ##[group]Runner Image
+Build desktop (windows x64)	Set up job	2026-05-13T13:52:19.4841223Z Image: windows-2025
+Build desktop (windows x64)	Set up job	2026-05-13T13:52:19.4841810Z Version: 20260428.110.2
+Build desktop (windows x64)	Set up job	2026-05-13T13:52:19.4842870Z Included Software: https://github.com/actions/runner-images/blob/win25/20260428.110/images/windows/Windows2025-Readme.md
+Build desktop (windows x64)	Set up job	2026-05-13T13:52:19.4844838Z Image Release: https://github.com/actions/runner-images/releases/tag/win25%2F20260428.110
+Build desktop (windows x64)	Set up job	2026-05-13T13:52:19.4846309Z ##[endgroup]
+Build desktop (windows x64)	Set up job	2026-05-13T13:52:19.4847573Z ##[group]GITHUB_TOKEN Permissions
+Build desktop (windows x64)	Set up job	2026-05-13T13:52:19.4849484Z Contents: read
+Build desktop (windows x64)	Set up job	2026-05-13T13:52:19.4850124Z Metadata: read
+Build desktop (windows x64)	Set up job	2026-05-13T13:52:19.4850754Z ##[endgroup]
+Build desktop (windows x64)	Set up job	2026-05-13T13:52:19.4852905Z Secret source: Actions
+Build desktop (windows x64)	Set up job	2026-05-13T13:52:19.4853712Z Prepare workflow directory
+Build desktop (windows x64)	Set up job	2026-05-13T13:52:19.5179359Z Prepare all required actions
+Build desktop (windows x64)	Set up job	2026-05-13T13:52:19.5216268Z Getting action download info
+Build desktop (windows x64)	Set up job	2026-05-13T13:52:19.9839840Z Download action repository 'actions/checkout@v6' (SHA:de0fac2e4500dabe0009e67214ff5f5447ce83dd)
+Build desktop (windows x64)	Set up job	2026-05-13T13:52:20.1960420Z Download action repository 'actions/setup-node@v6' (SHA:48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e)
+Build desktop (windows x64)	Set up job	2026-05-13T13:52:20.4025792Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+Build desktop (windows x64)	Set up job	2026-05-13T13:52:24.5872427Z Complete job name: Build desktop (windows x64)
+Build desktop (windows x64)	Run actions/checkout@v6	﻿2026-05-13T13:52:28.2740098Z ##[group]Run actions/checkout@v6
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:28.2740808Z with:
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:28.2741032Z   ref: 7c7d9abf5685f131af8d3cd4b5734483ea7094c6
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:28.2741318Z   repository: konard/vk-bot-desktop
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:28.2741714Z   token: ***
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:28.2741894Z   ssh-strict: true
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:28.2742085Z   ssh-user: git
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:28.2742268Z   persist-credentials: true
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:28.2742473Z   clean: true
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:28.2742665Z   sparse-checkout-cone-mode: true
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:28.2742895Z   fetch-depth: 1
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:28.2743068Z   fetch-tags: false
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:28.2743252Z   show-progress: true
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:28.2743433Z   lfs: false
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:28.2743606Z   submodules: false
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:28.2743802Z   set-safe-directory: true
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:28.2744175Z ##[endgroup]
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:29.0209205Z Syncing repository: konard/vk-bot-desktop
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:29.0210538Z ##[group]Getting Git version info
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:29.0211029Z Working directory is 'D:\a\vk-bot-desktop\vk-bot-desktop'
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:29.2373845Z [command]"C:\Program Files\Git\bin\git.exe" version
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:31.4280050Z git version 2.54.0.windows.1
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:31.4333012Z ##[endgroup]
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:31.4352097Z Temporarily overriding HOME='D:\a\_temp\830fd09f-d71b-4508-8daf-cac8650ae9fc' before making global git config changes
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:31.4353024Z Adding repository directory to the temporary git global config as a safe directory
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:31.4362392Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\vk-bot-desktop\vk-bot-desktop
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:31.4668316Z Deleting the contents of 'D:\a\vk-bot-desktop\vk-bot-desktop'
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:31.4674147Z ##[group]Initializing the repository
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:31.4682358Z [command]"C:\Program Files\Git\bin\git.exe" init D:\a\vk-bot-desktop\vk-bot-desktop
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:31.5381921Z Initialized empty Git repository in D:/a/vk-bot-desktop/vk-bot-desktop/.git/
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:31.5426711Z [command]"C:\Program Files\Git\bin\git.exe" remote add origin https://github.com/konard/vk-bot-desktop
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:31.5743592Z ##[endgroup]
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:31.5744058Z ##[group]Disabling automatic garbage collection
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:31.5752135Z [command]"C:\Program Files\Git\bin\git.exe" config --local gc.auto 0
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:31.6050101Z ##[endgroup]
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:31.6050505Z ##[group]Setting up auth
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:31.6051874Z Removing SSH command configuration
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:31.6063118Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:31.6368679Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:32.8805209Z Removing HTTP extra header
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:32.8815329Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:32.9112760Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:33.4468553Z Removing includeIf entries pointing to credentials config files
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:33.4481268Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:33.4779848Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:34.0236904Z [command]"C:\Program Files\Git\bin\git.exe" config --file D:\a\_temp\git-credentials-67599334-acf1-4872-8630-d73133c94009.config http.https://github.com/.extraheader "AUTHORIZATION: basic ***"
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:34.0553073Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:D:/a/vk-bot-desktop/vk-bot-desktop/.git.path D:\a\_temp\git-credentials-67599334-acf1-4872-8630-d73133c94009.config
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:34.0855850Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:D:/a/vk-bot-desktop/vk-bot-desktop/.git/worktrees/*.path D:\a\_temp\git-credentials-67599334-acf1-4872-8630-d73133c94009.config
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:34.1158335Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-67599334-acf1-4872-8630-d73133c94009.config
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:34.1469020Z [command]"C:\Program Files\Git\bin\git.exe" config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-67599334-acf1-4872-8630-d73133c94009.config
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:34.1773095Z ##[endgroup]
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:34.1773547Z ##[group]Fetching the repository
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:34.1791129Z [command]"C:\Program Files\Git\bin\git.exe" -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin 7c7d9abf5685f131af8d3cd4b5734483ea7094c6
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:35.9158742Z From https://github.com/konard/vk-bot-desktop
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:35.9159442Z  * branch            7c7d9abf5685f131af8d3cd4b5734483ea7094c6 -> FETCH_HEAD
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:35.9371773Z [command]"C:\Program Files\Git\bin\git.exe" rev-parse --verify --quiet 7c7d9abf5685f131af8d3cd4b5734483ea7094c6^{object}
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:35.9643840Z 7c7d9abf5685f131af8d3cd4b5734483ea7094c6
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:35.9677816Z ##[endgroup]
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:35.9680744Z ##[group]Determining the checkout info
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:35.9681507Z ##[endgroup]
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:35.9692520Z [command]"C:\Program Files\Git\bin\git.exe" sparse-checkout disable
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:36.0080637Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all extensions.worktreeConfig
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:36.0383313Z ##[group]Checking out the ref
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:36.0392978Z [command]"C:\Program Files\Git\bin\git.exe" checkout --progress --force 7c7d9abf5685f131af8d3cd4b5734483ea7094c6
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:36.4907694Z Note: switching to '7c7d9abf5685f131af8d3cd4b5734483ea7094c6'.
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:36.4908180Z
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:36.4908490Z You are in 'detached HEAD' state. You can look around, make experimental
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:36.4909214Z changes and commit them, and you can discard any commits you make in this
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:36.4909931Z state without impacting any branches by switching back to a branch.
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:36.4910415Z
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:36.4910727Z If you want to create a new branch to retain commits you create, you may
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:36.4911512Z do so (now or later) by using -c with the switch command. Example:
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:36.4911976Z
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:36.4912148Z   git switch -c <new-branch-name>
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:36.4912461Z
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:36.4912676Z Or undo this operation with:
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:36.4912952Z
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:36.4913102Z   git switch -
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:36.4913372Z
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:36.4914135Z Turn off this advice by setting config variable advice.detachedHead to false
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:36.4914794Z
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:36.4914976Z HEAD is now at 7c7d9ab 0.10.1
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:36.4996845Z ##[endgroup]
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:36.5328067Z [command]"C:\Program Files\Git\bin\git.exe" log -1 --format=%H
+Build desktop (windows x64)	Run actions/checkout@v6	2026-05-13T13:52:36.5600217Z 7c7d9abf5685f131af8d3cd4b5734483ea7094c6
+Build desktop (windows x64)	Run actions/setup-node@v6	﻿2026-05-13T13:52:36.6114044Z ##[group]Run actions/setup-node@v6
+Build desktop (windows x64)	Run actions/setup-node@v6	2026-05-13T13:52:36.6114365Z with:
+Build desktop (windows x64)	Run actions/setup-node@v6	2026-05-13T13:52:36.6114542Z   node-version: 20.x
+Build desktop (windows x64)	Run actions/setup-node@v6	2026-05-13T13:52:36.6114733Z   check-latest: false
+Build desktop (windows x64)	Run actions/setup-node@v6	2026-05-13T13:52:36.6115038Z   token: ***
+Build desktop (windows x64)	Run actions/setup-node@v6	2026-05-13T13:52:36.6115217Z   package-manager-cache: true
+Build desktop (windows x64)	Run actions/setup-node@v6	2026-05-13T13:52:36.6115422Z ##[endgroup]
+Build desktop (windows x64)	Run actions/setup-node@v6	2026-05-13T13:52:36.7966117Z Found in cache @ C:\hostedtoolcache\windows\node\20.20.2\x64
+Build desktop (windows x64)	Run actions/setup-node@v6	2026-05-13T13:52:36.7972674Z ##[group]Environment details
+Build desktop (windows x64)	Run actions/setup-node@v6	2026-05-13T13:52:46.1082231Z node: v20.20.2
+Build desktop (windows x64)	Run actions/setup-node@v6	2026-05-13T13:52:46.1082561Z npm: 10.8.2
+Build desktop (windows x64)	Run actions/setup-node@v6	2026-05-13T13:52:46.1082831Z yarn: 1.22.22
+Build desktop (windows x64)	Run actions/setup-node@v6	2026-05-13T13:52:46.1083861Z ##[endgroup]
+Build desktop (windows x64)	Install dependencies	﻿2026-05-13T13:52:46.1356117Z ##[group]Run npm install --no-audit --no-fund
+Build desktop (windows x64)	Install dependencies	2026-05-13T13:52:46.1356551Z ^[[36;1mnpm install --no-audit --no-fund^[[0m
+Build desktop (windows x64)	Install dependencies	2026-05-13T13:52:46.2589684Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+Build desktop (windows x64)	Install dependencies	2026-05-13T13:52:46.2590184Z ##[endgroup]
+Build desktop (windows x64)	Install dependencies	2026-05-13T13:53:04.8275916Z npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+Build desktop (windows x64)	Install dependencies	2026-05-13T13:53:05.7874917Z npm warn deprecated npmlog@6.0.2: This package is no longer supported.
+Build desktop (windows x64)	Install dependencies	2026-05-13T13:53:06.6035349Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+Build desktop (windows x64)	Install dependencies	2026-05-13T13:53:07.4191033Z npm warn deprecated @npmcli/move-file@2.0.1: This functionality has been moved to @npmcli/fs
+Build desktop (windows x64)	Install dependencies	2026-05-13T13:53:07.5556923Z npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+Build desktop (windows x64)	Install dependencies	2026-05-13T13:53:07.7581244Z npm warn deprecated glob@8.1.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+Build desktop (windows x64)	Install dependencies	2026-05-13T13:53:07.8666103Z npm warn deprecated are-we-there-yet@3.0.1: This package is no longer supported.
+Build desktop (windows x64)	Install dependencies	2026-05-13T13:53:08.4515819Z npm warn deprecated gauge@4.0.4: This package is no longer supported.
+Build desktop (windows x64)	Install dependencies	2026-05-13T13:53:08.5140989Z npm warn deprecated boolean@3.2.0: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+Build desktop (windows x64)	Install dependencies	2026-05-13T13:53:08.8464047Z npm warn deprecated tar@6.2.1: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+Build desktop (windows x64)	Install dependencies	2026-05-13T13:53:09.2368584Z npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
+Build desktop (windows x64)	Install dependencies	2026-05-13T13:53:09.7832395Z npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+Build desktop (windows x64)	Install dependencies	2026-05-13T13:54:56.1805421Z
+Build desktop (windows x64)	Install dependencies	2026-05-13T13:54:56.1806130Z > vk-bot-desktop@0.10.1 prepare
+Build desktop (windows x64)	Install dependencies	2026-05-13T13:54:56.1806628Z > husky || true
+Build desktop (windows x64)	Install dependencies	2026-05-13T13:54:56.1807159Z
+Build desktop (windows x64)	Install dependencies	2026-05-13T13:54:56.3471302Z
+Build desktop (windows x64)	Install dependencies	2026-05-13T13:54:56.3472174Z added 708 packages in 2m
+Build desktop (windows x64)	Build renderer bundle	﻿2026-05-13T13:54:57.2477318Z ##[group]Run npm run build:renderer
+Build desktop (windows x64)	Build renderer bundle	2026-05-13T13:54:57.2477698Z ^[[36;1mnpm run build:renderer^[[0m
+Build desktop (windows x64)	Build renderer bundle	2026-05-13T13:54:57.2545725Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+Build desktop (windows x64)	Build renderer bundle	2026-05-13T13:54:57.2546075Z ##[endgroup]
+Build desktop (windows x64)	Build renderer bundle	2026-05-13T13:54:57.9452084Z
+Build desktop (windows x64)	Build renderer bundle	2026-05-13T13:54:57.9452916Z > vk-bot-desktop@0.10.1 build:renderer
+Build desktop (windows x64)	Build renderer bundle	2026-05-13T13:54:57.9457014Z > node scripts/build-renderer.mjs
+Build desktop (windows x64)	Build renderer bundle	2026-05-13T13:54:57.9457590Z
+Build desktop (windows x64)	Build renderer bundle	2026-05-13T13:54:58.1757067Z
+Build desktop (windows x64)	Build renderer bundle	2026-05-13T13:54:58.1757701Z   electron\renderer\dist\bootstrap.js      1.1mb
+Build desktop (windows x64)	Build renderer bundle	2026-05-13T13:54:58.1758132Z   electron\renderer\dist\bootstrap.js.map  1.7mb
+Build desktop (windows x64)	Build renderer bundle	2026-05-13T13:54:58.1758353Z
+Build desktop (windows x64)	Build renderer bundle	2026-05-13T13:54:58.1758427Z Done in 93ms
+Build desktop (windows x64)	Build Electron artifacts (Windows)	﻿2026-05-13T13:54:58.3542638Z ##[group]Run npx electron-builder --win --x64 --publish never
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:54:58.3543186Z ^[[36;1mnpx electron-builder --win --x64 --publish never^[[0m
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:54:58.3605117Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:54:58.3605631Z env:
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:54:58.3605999Z   GH_TOKEN: ***
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:54:58.3606180Z ##[endgroup]
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:55:00.5034006Z   • electron-builder  version=25.1.8 os=10.0.26100
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:55:00.5107419Z   • loaded configuration  file=package.json ("build" field)
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:55:00.6975907Z   • executing @electron/rebuild  electronVersion=33.4.11 arch=x64 buildFromSource=false appDir=./
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:55:00.6988476Z   • installing native dependencies  arch=x64
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:55:01.6289325Z   • completed installing native dependencies
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:55:01.6353120Z   • packaging       platform=win32 arch=x64 electron=33.4.11 appOutDir=release\win-unpacked
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:55:01.7726847Z   • downloading     url=https://github.com/electron/electron/releases/download/v33.4.11/electron-v33.4.11-win32-x64.zip size=115 MB parts=8
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:55:01.9755886Z   • downloaded      url=https://github.com/electron/electron/releases/download/v33.4.11/electron-v33.4.11-win32-x64.zip duration=322ms
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:55:04.7822682Z   • updating asar integrity executable resource  executablePath=release\win-unpacked\VK Bot Desktop.exe
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:55:04.8133191Z   • default Electron icon is used  reason=application icon is not set
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:55:05.1161326Z   • downloading     url=https://github.com/electron-userland/electron-builder-binaries/releases/download/winCodeSign-2.6.0/winCodeSign-2.6.0.7z size=5.6 MB parts=1
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:55:05.1423427Z   • downloaded      url=https://github.com/electron-userland/electron-builder-binaries/releases/download/winCodeSign-2.6.0/winCodeSign-2.6.0.7z duration=312ms
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:55:05.8768607Z   • signing with signtool.exe  path=release\win-unpacked\VK Bot Desktop.exe
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:55:05.8774226Z   • no signing info identified, signing is skipped  signHook=false cscInfo=null
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:55:05.8824695Z   • signing with signtool.exe  path=release\win-unpacked\resources\app.asar.unpacked\node_modules\ssh2\util\pagent.exe
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:55:05.8826054Z   • no signing info identified, signing is skipped  signHook=false cscInfo=null
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:55:05.8843993Z   • building        target=nsis file=release\vk-bot-desktop-windows-installer-x64-0.10.1.exe archs=x64 oneClick=false perMachine=false
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:55:06.1732912Z   • downloading     url=https://github.com/electron-userland/electron-builder-binaries/releases/download/nsis-3.0.4.1/nsis-3.0.4.1.7z size=1.3 MB parts=1
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:55:06.1909805Z   • downloaded      url=https://github.com/electron-userland/electron-builder-binaries/releases/download/nsis-3.0.4.1/nsis-3.0.4.1.7z duration=289ms
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:55:06.6075349Z   • signing with signtool.exe  path=release\win-unpacked\resources\elevate.exe
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:55:06.6076212Z   • no signing info identified, signing is skipped  signHook=false cscInfo=null
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:55:37.6565782Z   • downloading     url=https://github.com/electron-userland/electron-builder-binaries/releases/download/nsis-resources-3.4.1/nsis-resources-3.4.1.7z size=731 kB parts=1
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:55:37.6757466Z   • downloaded      url=https://github.com/electron-userland/electron-builder-binaries/releases/download/nsis-resources-3.4.1/nsis-resources-3.4.1.7z duration=336ms
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:55:38.9375555Z   • signing with signtool.exe  path=release\__uninstaller-nsis-vk-bot-desktop.exe
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:55:38.9377211Z   • no signing info identified, signing is skipped  signHook=false cscInfo=null
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:55:40.4461610Z   • signing with signtool.exe  path=release\vk-bot-desktop-windows-installer-x64-0.10.1.exe
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:55:40.4464021Z   • no signing info identified, signing is skipped  signHook=false cscInfo=null
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:55:40.4469685Z   • building block map  blockMapFile=release\vk-bot-desktop-windows-installer-x64-0.10.1.exe.blockmap
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:55:41.1822186Z   • building        target=portable file=release\vk-bot-desktop-windows-portable-x64-0.10.1.exe archs=x64
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:55:41.7702688Z   • signing with signtool.exe  path=release\vk-bot-desktop-windows-portable-x64-0.10.1.exe
+Build desktop (windows x64)	Build Electron artifacts (Windows)	2026-05-13T13:55:41.7704213Z   • no signing info identified, signing is skipped  signHook=false cscInfo=null
+Build desktop (windows x64)	Smoke test Windows release artifacts	﻿2026-05-13T13:55:41.9438819Z ##[group]Run pwsh ./scripts/smoke-test-windows-release-artifacts.ps1 -Arch 'x64'
+Build desktop (windows x64)	Smoke test Windows release artifacts	2026-05-13T13:55:41.9439596Z ^[[36;1mpwsh ./scripts/smoke-test-windows-release-artifacts.ps1 -Arch 'x64'^[[0m
+Build desktop (windows x64)	Smoke test Windows release artifacts	2026-05-13T13:55:41.9501756Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+Build desktop (windows x64)	Smoke test Windows release artifacts	2026-05-13T13:55:41.9502178Z ##[endgroup]
+Build desktop (windows x64)	Smoke test Windows release artifacts	2026-05-13T13:55:42.9506857Z ^[[31;1mParserError: ^[[0mD:\a\vk-bot-desktop\vk-bot-desktop\scripts\smoke-test-windows-release-artifacts.ps1:33^[[0m
+Build desktop (windows x64)	Smoke test Windows release artifacts	2026-05-13T13:55:42.9508295Z ^[[31;1m^[[0m^[[36;1mLine |^[[0m
+Build desktop (windows x64)	Smoke test Windows release artifacts	2026-05-13T13:55:42.9509668Z ^[[31;1m^[[0m^[[36;1m^[[36;1m  33 | ^[[0m   Write-Host "^[[36;1m$Description:^[[0m $($item.FullName) ($($item.Length) bytes) …^[[0m
+Build desktop (windows x64)	Smoke test Windows release artifacts	2026-05-13T13:55:42.9511307Z ^[[31;1m^[[0m^[[36;1m^[[36;1m^[[0m^[[36;1m^[[0m^[[36;1m     | ^[[31;1m               ~~~~~~~~~~~~~^[[0m
+Build desktop (windows x64)	Smoke test Windows release artifacts	2026-05-13T13:55:42.9513304Z ^[[31;1m^[[0m^[[36;1m^[[36;1m^[[0m^[[36;1m^[[0m^[[36;1m^[[31;1m^[[31;1m^[[36;1m     | ^[[31;1mVariable reference is not valid. ':' was not followed by a valid variable name character. Consider using ${} to^[[0m
+Build desktop (windows x64)	Smoke test Windows release artifacts	2026-05-13T13:55:42.9515410Z ^[[31;1m^[[0m^[[36;1m^[[36;1m^[[0m^[[36;1m^[[0m^[[36;1m^[[31;1m^[[31;1m^[[36;1m^[[31;1m^[[36;1m     | ^[[31;1mdelimit the name.^[[0m
+Build desktop (windows x64)	Smoke test Windows release artifacts	2026-05-13T13:55:43.1364060Z ##[error]Process completed with exit code 1.
+Build desktop (windows x64)	Post Run actions/checkout@v6	﻿2026-05-13T13:55:43.1629784Z Post job cleanup.
+Build desktop (windows x64)	Post Run actions/checkout@v6	2026-05-13T13:55:43.3934259Z [command]"C:\Program Files\Git\bin\git.exe" version
+Build desktop (windows x64)	Post Run actions/checkout@v6	2026-05-13T13:55:43.4243426Z git version 2.54.0.windows.1
+Build desktop (windows x64)	Post Run actions/checkout@v6	2026-05-13T13:55:43.4323442Z Temporarily overriding HOME='D:\a\_temp\1595b477-082e-4587-bda3-501abe55d219' before making global git config changes
+Build desktop (windows x64)	Post Run actions/checkout@v6	2026-05-13T13:55:43.4328646Z Adding repository directory to the temporary git global config as a safe directory
+Build desktop (windows x64)	Post Run actions/checkout@v6	2026-05-13T13:55:43.4338690Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\vk-bot-desktop\vk-bot-desktop
+Build desktop (windows x64)	Post Run actions/checkout@v6	2026-05-13T13:55:43.4658670Z Removing SSH command configuration
+Build desktop (windows x64)	Post Run actions/checkout@v6	2026-05-13T13:55:43.4671375Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+Build desktop (windows x64)	Post Run actions/checkout@v6	2026-05-13T13:55:43.5013873Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+Build desktop (windows x64)	Post Run actions/checkout@v6	2026-05-13T13:55:44.1065429Z Removing HTTP extra header
+Build desktop (windows x64)	Post Run actions/checkout@v6	2026-05-13T13:55:44.1076565Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Build desktop (windows x64)	Post Run actions/checkout@v6	2026-05-13T13:55:44.1470989Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+Build desktop (windows x64)	Post Run actions/checkout@v6	2026-05-13T13:55:44.7162256Z Removing includeIf entries pointing to credentials config files
+Build desktop (windows x64)	Post Run actions/checkout@v6	2026-05-13T13:55:44.7175575Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+Build desktop (windows x64)	Post Run actions/checkout@v6	2026-05-13T13:55:44.7464150Z includeif.gitdir:D:/a/vk-bot-desktop/vk-bot-desktop/.git.path
+Build desktop (windows x64)	Post Run actions/checkout@v6	2026-05-13T13:55:44.7465160Z includeif.gitdir:D:/a/vk-bot-desktop/vk-bot-desktop/.git/worktrees/*.path
+Build desktop (windows x64)	Post Run actions/checkout@v6	2026-05-13T13:55:44.7466267Z includeif.gitdir:/github/workspace/.git.path
+Build desktop (windows x64)	Post Run actions/checkout@v6	2026-05-13T13:55:44.7466949Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+Build desktop (windows x64)	Post Run actions/checkout@v6	2026-05-13T13:55:44.7514021Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:D:/a/vk-bot-desktop/vk-bot-desktop/.git.path
+Build desktop (windows x64)	Post Run actions/checkout@v6	2026-05-13T13:55:44.7799451Z D:\a\_temp\git-credentials-67599334-acf1-4872-8630-d73133c94009.config
+Build desktop (windows x64)	Post Run actions/checkout@v6	2026-05-13T13:55:44.7851695Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:D:/a/vk-bot-desktop/vk-bot-desktop/.git.path D:\a\_temp\git-credentials-67599334-acf1-4872-8630-d73133c94009.config
+Build desktop (windows x64)	Post Run actions/checkout@v6	2026-05-13T13:55:44.8191034Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:D:/a/vk-bot-desktop/vk-bot-desktop/.git/worktrees/*.path
+Build desktop (windows x64)	Post Run actions/checkout@v6	2026-05-13T13:55:44.8476839Z D:\a\_temp\git-credentials-67599334-acf1-4872-8630-d73133c94009.config
+Build desktop (windows x64)	Post Run actions/checkout@v6	2026-05-13T13:55:44.8525753Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:D:/a/vk-bot-desktop/vk-bot-desktop/.git/worktrees/*.path D:\a\_temp\git-credentials-67599334-acf1-4872-8630-d73133c94009.config
+Build desktop (windows x64)	Post Run actions/checkout@v6	2026-05-13T13:55:44.8852978Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:/github/workspace/.git.path
+Build desktop (windows x64)	Post Run actions/checkout@v6	2026-05-13T13:55:44.9139888Z /github/runner_temp/git-credentials-67599334-acf1-4872-8630-d73133c94009.config
+Build desktop (windows x64)	Post Run actions/checkout@v6	2026-05-13T13:55:44.9185894Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-67599334-acf1-4872-8630-d73133c94009.config
+Build desktop (windows x64)	Post Run actions/checkout@v6	2026-05-13T13:55:44.9520781Z [command]"C:\Program Files\Git\bin\git.exe" config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+Build desktop (windows x64)	Post Run actions/checkout@v6	2026-05-13T13:55:44.9800060Z /github/runner_temp/git-credentials-67599334-acf1-4872-8630-d73133c94009.config
+Build desktop (windows x64)	Post Run actions/checkout@v6	2026-05-13T13:55:44.9854385Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-67599334-acf1-4872-8630-d73133c94009.config
+Build desktop (windows x64)	Post Run actions/checkout@v6	2026-05-13T13:55:45.0195419Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+Build desktop (windows x64)	Post Run actions/checkout@v6	2026-05-13T13:55:45.6111279Z Removing credentials config 'D:\a\_temp\git-credentials-67599334-acf1-4872-8630-d73133c94009.config'
+Build desktop (windows x64)	Complete job	﻿2026-05-13T13:55:45.6367688Z Cleaning up orphan processes
+Build desktop (windows x64)	Complete job	2026-05-13T13:55:45.6632065Z Terminate orphan process: pid (7704) (vctip)

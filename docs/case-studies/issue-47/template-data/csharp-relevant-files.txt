@@ -1,0 +1,15 @@
+.github/workflows/docs.yml
+.github/workflows/release.yml
+scripts/create-github-release.test.mjs
+scripts/create-github-release.mjs
+scripts/detect-code-changes.mjs
+scripts/check-release-needed.mjs
+scripts/validate-changeset.mjs
+scripts/version-and-commit.mjs
+scripts/check-release-needed.test.mjs
+scripts/bump-version.mjs
+scripts/merge-changesets.mjs
+scripts/wait-for-nuget.mjs
+scripts/version-and-commit.test.mjs
+scripts/wait-for-nuget.test.mjs
+scripts/check-file-size.mjs

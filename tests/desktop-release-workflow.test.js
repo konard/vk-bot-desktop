@@ -408,6 +408,16 @@ describe('desktop release workflow smoke tests', () => {
     expect(arm64Guard).not.toContain('Start-Process -FilePath');
   });
 
+  it('delimits PowerShell variables before literal colons in smoke-test output', () => {
+    const simpleVariableColonReferences =
+      windowsReleaseSmokeScript.match(/\$[A-Za-z_][A-Za-z0-9_]*:/g) ?? [];
+    const invalidReferences = simpleVariableColonReferences.filter(
+      (reference) => reference !== '$env:'
+    );
+
+    expect(invalidReferences).toEqual([]);
+  });
+
   it('configures a Linux maintainer for deb artifacts', () => {
     expect(packageJson.build?.linux?.maintainer).toMatch(
       /^.+ <[^@\s]+@[^@\s]+\.[^@\s]+>$/
