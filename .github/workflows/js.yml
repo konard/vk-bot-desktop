@@ -654,6 +654,92 @@ jobs:
           echo "Report location: lychee/out.md (available as a workflow artifact if configured)."
           exit 1
 
+  # Regenerate preview images (README + site assets) using browser-commander
+  # so each release ends with all images current without manual steps.
+  # Issue: #51. Implementation: scripts/update-preview-images.mjs.
+  # See: docs/case-studies/issue-51/README.md for the full design.
+  preview-regen:
+    name: Regenerate Preview Images
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    if: |
+      (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
+      (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')) ||
+      (github.event_name == 'workflow_dispatch' && github.event.inputs.release_mode == 'checks')
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          # Always regenerate against main HEAD so the bot commit lands on a
+          # fast-forward parent. Tag pushes still trigger this job but the
+          # working copy used for the regen is main, not the tag ref, because
+          # the tag is immutable.
+          ref: main
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24.x'
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Install browser e2e dependencies
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+        run: npm install --no-save --package-lock=false --no-audit --no-fund browser-commander@0.8.0 playwright@1.59.1
+
+      - name: Install Chromium for preview rendering
+        run: npx playwright install --with-deps chromium
+
+      - name: Regenerate preview images
+        run: npm run preview:update
+
+      - name: Detect drift
+        id: drift
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            echo "drift=true" >> "$GITHUB_OUTPUT"
+            echo "Preview images drifted:"
+            git status --porcelain
+          else
+            echo "drift=false" >> "$GITHUB_OUTPUT"
+            echo "Preview images already current."
+          fi
+
+      - name: Commit drift back to main
+        if: steps.drift.outputs.drift == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Stage only generated artifacts so unrelated changes can't leak in.
+          git add \
+            site/assets/app-preview*.png \
+            docs/screenshots/issue-26-pages-*.png || true
+          if git diff --cached --quiet; then
+            echo "::notice::No tracked preview-image changes to commit (drift was outside expected paths)."
+            git status --porcelain
+            exit 0
+          fi
+          # [skip ci] prevents an infinite re-run loop; the next push to main
+          # will pick up these fresh images for the regular pages-build.
+          git commit -m "chore(preview): regenerate preview images [skip ci]"
+          git push origin HEAD:main
+
+      - name: Summarize regeneration result
+        if: always()
+        run: |
+          if [[ "${{ steps.drift.outputs.drift }}" == "true" ]]; then
+            echo "::notice::Preview images regenerated and (if applicable) committed to main."
+          else
+            echo "::notice::Preview images are already up to date."
+          fi
+
   pages-build:
     name: Build Pages site
     runs-on: ubuntu-latest
