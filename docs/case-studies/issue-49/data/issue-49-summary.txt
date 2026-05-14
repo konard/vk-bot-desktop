@@ -1,0 +1,2118 @@
+TITLE: Fixes and improvements
+AUTHOR: konard
+CREATED: 2026-05-13T16:04:35Z
+STATE: OPEN
+LABELS: ['bug']
+COMMENT COUNT: 0
+---BODY LENGTH: 65201
+
+=== BODY ===
+## Invitation improvements 
+
+```
+2026-05-13T15:53:25.719Z [info] Session log opened {
+  "file": "/Users/konard/.vk-bot-desktop/logs/2026-05-13T15-53-25-718Z-81033.log"
+}
+2026-05-13T15:53:25.743Z [info] Bot started
+2026-05-13T15:53:25.745Z [debug] Checking for 'send-invitation-posts' trigger...
+2026-05-13T15:53:25.748Z [debug] VK API request {
+  "method": "wall.get",
+  "url": "https://api.vk.ru/method/wall.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-64758790",
+    "count": 10,
+    "v": "5.199"
+  }
+}
+2026-05-13T15:53:27.648Z [debug] VK API response {
+  "method": "wall.get",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "count",
+    "items",
+    "reaction_sets"
+  ]
+}
+2026-05-13T15:53:27.648Z [debug] VK API request {
+  "method": "wall.post",
+  "url": "https://api.vk.ru/method/wall.post",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-64758790",
+    "message": "Новые друзья приветствуются. Заявки принимаются.",
+    "attachments": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T15:53:27.994Z [debug] VK API response {
+  "method": "wall.post",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "post_id"
+  ]
+}
+2026-05-13T15:53:27.995Z [info] Invitation post sent {
+  "communityId": 64758790
+}
+2026-05-13T15:53:32.995Z [debug] VK API request {
+  "method": "wall.get",
+  "url": "https://api.vk.ru/method/wall.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-34985835",
+    "count": 10,
+    "v": "5.199"
+  }
+}
+2026-05-13T15:53:36.246Z [debug] VK API response {
+  "method": "wall.get",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "count",
+    "items",
+    "reaction_sets"
+  ]
+}
+2026-05-13T15:53:36.246Z [debug] VK API request {
+  "method": "wall.post",
+  "url": "https://api.vk.ru/method/wall.post",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-34985835",
+    "message": "Жду заявку в друзья — давай знакомиться.",
+    "attachments": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T15:53:36.694Z [debug] VK API response {
+  "method": "wall.post",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "post_id"
+  ]
+}
+2026-05-13T15:53:36.694Z [info] Invitation post sent {
+  "communityId": 34985835
+}
+2026-05-13T15:53:41.695Z [debug] VK API request {
+  "method": "wall.get",
+  "url": "https://api.vk.ru/method/wall.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-24261502",
+    "count": 10,
+    "v": "5.199"
+  }
+}
+2026-05-13T15:53:43.635Z [debug] VK API response {
+  "method": "wall.get",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "count",
+    "items",
+    "reaction_sets"
+  ]
+}
+2026-05-13T15:53:43.635Z [debug] VK API request {
+  "method": "wall.post",
+  "url": "https://api.vk.ru/method/wall.post",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-24261502",
+    "message": "Заявки в друзья приветствуются.",
+    "attachments": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T15:53:43.965Z [debug] VK API response {
+  "method": "wall.post",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "post_id"
+  ]
+}
+2026-05-13T15:53:43.965Z [info] Invitation post sent {
+  "communityId": 24261502
+}
+2026-05-13T15:53:48.966Z [debug] VK API request {
+  "method": "wall.get",
+  "url": "https://api.vk.ru/method/wall.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-53294903",
+    "count": 10,
+    "v": "5.199"
+  }
+}
+2026-05-13T15:53:49.882Z [debug] VK API response {
+  "method": "wall.get",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "count",
+    "items",
+    "reaction_sets"
+  ]
+}
+2026-05-13T15:53:49.882Z [debug] VK API request {
+  "method": "wall.post",
+  "url": "https://api.vk.ru/method/wall.post",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-53294903",
+    "message": "Принимаю заявки в друзья — пишите",
+    "attachments": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T15:53:50.291Z [debug] VK API response {
+  "method": "wall.post",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "post_id"
+  ]
+}
+2026-05-13T15:53:50.292Z [info] Invitation post sent {
+  "communityId": 53294903
+}
+2026-05-13T15:53:55.293Z [debug] VK API request {
+  "method": "wall.get",
+  "url": "https://api.vk.ru/method/wall.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-33764742",
+    "count": 10,
+    "v": "5.199"
+  }
+}
+2026-05-13T15:53:55.888Z [debug] VK API response {
+  "method": "wall.get",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 15,
+  "errorMsg": "Access denied: wall is disabled"
+}
+2026-05-13T15:53:55.889Z [warn] Posting blocked for community; skipping {
+  "communityId": 33764742,
+  "code": 15
+}
+2026-05-13T15:53:55.889Z [debug] VK API request {
+  "method": "wall.get",
+  "url": "https://api.vk.ru/method/wall.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-8337923",
+    "count": 10,
+    "v": "5.199"
+  }
+}
+2026-05-13T15:53:56.117Z [debug] VK API response {
+  "method": "wall.get",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 15,
+  "errorMsg": "Access denied: you are in users blacklist"
+}
+2026-05-13T15:53:56.117Z [warn] Posting blocked for community; skipping {
+  "communityId": 8337923,
+  "code": 15
+}
+2026-05-13T15:53:56.268Z [debug] VK API request {
+  "method": "wall.get",
+  "url": "https://api.vk.ru/method/wall.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-94946045",
+    "count": 10,
+    "v": "5.199"
+  }
+}
+2026-05-13T15:53:56.758Z [debug] VK API response {
+  "method": "wall.get",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "count",
+    "items",
+    "reaction_sets"
+  ]
+}
+2026-05-13T15:53:56.759Z [debug] VK API request {
+  "method": "wall.post",
+  "url": "https://api.vk.ru/method/wall.post",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-94946045",
+    "message": "Новые друзья приветствуются. Заявки принимаются.",
+    "attachments": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T15:53:57.166Z [debug] VK API response {
+  "method": "wall.post",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "post_id"
+  ]
+}
+2026-05-13T15:53:57.166Z [info] Invitation post sent {
+  "communityId": 94946045
+}
+2026-05-13T15:54:02.168Z [debug] VK API request {
+  "method": "wall.get",
+  "url": "https://api.vk.ru/method/wall.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-194360448",
+    "count": 10,
+    "v": "5.199"
+  }
+}
+2026-05-13T15:54:02.756Z [debug] VK API response {
+  "method": "wall.get",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 15,
+  "errorMsg": "Access denied: you are in users blacklist"
+}
+2026-05-13T15:54:02.756Z [debug] VK API request {
+  "method": "wall.get",
+  "url": "https://api.vk.ru/method/wall.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-39130136",
+    "count": 10,
+    "v": "5.199"
+  }
+}
+2026-05-13T15:54:02.756Z [warn] Posting blocked for community; skipping {
+  "communityId": 194360448,
+  "code": 15
+}
+2026-05-13T15:54:03.225Z [debug] VK API response {
+  "method": "wall.get",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "count",
+    "items",
+    "reaction_sets"
+  ]
+}
+2026-05-13T15:54:03.225Z [debug] VK API request {
+  "method": "wall.post",
+  "url": "https://api.vk.ru/method/wall.post",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-39130136",
+    "message": "Жду заявок в друзья — давайте знакомиться.",
+    "attachments": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T15:54:03.599Z [debug] VK API response {
+  "method": "wall.post",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "post_id"
+  ]
+}
+2026-05-13T15:54:03.599Z [info] Invitation post sent {
+  "communityId": 39130136
+}
+2026-05-13T15:54:08.600Z [debug] VK API request {
+  "method": "wall.get",
+  "url": "https://api.vk.ru/method/wall.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-198580397",
+    "count": 10,
+    "v": "5.199"
+  }
+}
+2026-05-13T15:54:09.546Z [debug] VK API response {
+  "method": "wall.get",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "count",
+    "items",
+    "reaction_sets"
+  ]
+}
+2026-05-13T15:54:09.546Z [debug] VK API request {
+  "method": "wall.post",
+  "url": "https://api.vk.ru/method/wall.post",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-198580397",
+    "message": "Можно подружиться. Жду заявку в друзья.",
+    "attachments": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T15:54:09.922Z [debug] VK API response {
+  "method": "wall.post",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "post_id"
+  ]
+}
+2026-05-13T15:54:09.922Z [info] Invitation post sent {
+  "communityId": 198580397
+}
+2026-05-13T15:54:14.923Z [debug] VK API request {
+  "method": "wall.get",
+  "url": "https://api.vk.ru/method/wall.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-195285978",
+    "count": 10,
+    "v": "5.199"
+  }
+}
+2026-05-13T15:54:15.781Z [debug] VK API response {
+  "method": "wall.get",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "count",
+    "items",
+    "reaction_sets"
+  ]
+}
+2026-05-13T15:54:15.781Z [debug] VK API request {
+  "method": "wall.post",
+  "url": "https://api.vk.ru/method/wall.post",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-195285978",
+    "message": "Жду заявок в друзья — давайте знакомиться.",
+    "attachments": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T15:54:16.180Z [debug] VK API response {
+  "method": "wall.post",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "post_id"
+  ]
+}
+2026-05-13T15:54:16.180Z [info] Invitation post sent {
+  "communityId": 195285978
+}
+2026-05-13T15:54:21.181Z [debug] VK API request {
+  "method": "wall.get",
+  "url": "https://api.vk.ru/method/wall.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-47350356",
+    "count": 10,
+    "v": "5.199"
+  }
+}
+2026-05-13T15:54:22.121Z [debug] VK API response {
+  "method": "wall.get",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "count",
+    "items",
+    "reaction_sets"
+  ]
+}
+2026-05-13T15:54:22.121Z [debug] VK API request {
+  "method": "wall.post",
+  "url": "https://api.vk.ru/method/wall.post",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-47350356",
+    "message": "Жду заявку в друзья — давай знакомиться.",
+    "attachments": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T15:54:22.460Z [debug] VK API response {
+  "method": "wall.post",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "post_id"
+  ]
+}
+2026-05-13T15:54:22.460Z [info] Invitation post sent {
+  "communityId": 47350356
+}
+2026-05-13T15:54:27.461Z [debug] VK API request {
+  "method": "wall.get",
+  "url": "https://api.vk.ru/method/wall.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-61413825",
+    "count": 10,
+    "v": "5.199"
+  }
+}
+2026-05-13T15:54:28.306Z [debug] VK API response {
+  "method": "wall.get",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "count",
+    "items",
+    "reaction_sets"
+  ]
+}
+2026-05-13T15:54:28.306Z [debug] VK API request {
+  "method": "wall.post",
+  "url": "https://api.vk.ru/method/wall.post",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-61413825",
+    "message": "Жду заявок в друзья — давайте знакомиться.",
+    "attachments": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T15:54:28.723Z [debug] VK API response {
+  "method": "wall.post",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "post_id"
+  ]
+}
+2026-05-13T15:54:28.723Z [info] Invitation post sent {
+  "communityId": 61413825
+}
+2026-05-13T15:54:33.725Z [debug] VK API request {
+  "method": "wall.get",
+  "url": "https://api.vk.ru/method/wall.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-30345825",
+    "count": 10,
+    "v": "5.199"
+  }
+}
+2026-05-13T15:54:34.330Z [debug] VK API response {
+  "method": "wall.get",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 15,
+  "errorMsg": "Access denied: this wall available only for community members"
+}
+2026-05-13T15:54:34.330Z [warn] Posting blocked for community; skipping {
+  "communityId": 30345825,
+  "code": 15
+}
+2026-05-13T15:54:34.330Z [debug] VK API request {
+  "method": "wall.get",
+  "url": "https://api.vk.ru/method/wall.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-180442247",
+    "count": 10,
+    "v": "5.199"
+  }
+}
+2026-05-13T15:54:34.830Z [debug] VK API response {
+  "method": "wall.get",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "count",
+    "items",
+    "reaction_sets"
+  ]
+}
+2026-05-13T15:54:34.831Z [debug] VK API request {
+  "method": "wall.post",
+  "url": "https://api.vk.ru/method/wall.post",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-180442247",
+    "message": "Если хочется пообщаться — добавляйтесь в друзья.",
+    "attachments": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T15:54:35.269Z [debug] VK API response {
+  "method": "wall.post",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "post_id"
+  ]
+}
+2026-05-13T15:54:35.269Z [info] Invitation post sent {
+  "communityId": 180442247
+}
+2026-05-13T15:54:40.270Z [debug] VK API request {
+  "method": "wall.get",
+  "url": "https://api.vk.ru/method/wall.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-214787806",
+    "count": 10,
+    "v": "5.199"
+  }
+}
+2026-05-13T15:54:41.370Z [debug] VK API response {
+  "method": "wall.get",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "count",
+    "items",
+    "reaction_sets"
+  ]
+}
+2026-05-13T15:54:41.370Z [debug] VK API request {
+  "method": "wall.post",
+  "url": "https://api.vk.ru/method/wall.post",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-214787806",
+    "message": "Принимаю заявки в друзья — пишите",
+    "attachments": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T15:54:41.742Z [debug] VK API response {
+  "method": "wall.post",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "post_id"
+  ]
+}
+2026-05-13T15:54:41.742Z [info] Invitation post sent {
+  "communityId": 214787806
+}
+2026-05-13T15:54:46.744Z [debug] 'send-invitation-posts' trigger executed in 80999 ms
+2026-05-13T16:03:46.751Z [debug] Checking for 'send-invitation-posts' trigger...
+2026-05-13T16:03:46.753Z [debug] VK API request {
+  "method": "wall.get",
+  "url": "https://api.vk.ru/method/wall.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-64758790",
+    "count": 10,
+    "v": "5.199"
+  }
+}
+2026-05-13T16:03:47.675Z [debug] VK API response {
+  "method": "wall.get",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "count",
+    "items",
+    "reaction_sets"
+  ]
+}
+2026-05-13T16:03:47.675Z [debug] VK API request {
+  "method": "wall.post",
+  "url": "https://api.vk.ru/method/wall.post",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-64758790",
+    "message": "Жду заявок в друзья — давайте знакомиться.",
+    "attachments": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T16:03:48.008Z [debug] VK API response {
+  "method": "wall.post",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "post_id"
+  ]
+}
+2026-05-13T16:03:48.008Z [info] Invitation post sent {
+  "communityId": 64758790
+}
+2026-05-13T16:03:53.009Z [debug] VK API request {
+  "method": "wall.get",
+  "url": "https://api.vk.ru/method/wall.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-34985835",
+    "count": 10,
+    "v": "5.199"
+  }
+}
+2026-05-13T16:03:53.940Z [debug] VK API response {
+  "method": "wall.get",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "count",
+    "items",
+    "reaction_sets"
+  ]
+}
+2026-05-13T16:03:53.941Z [debug] VK API request {
+  "method": "wall.post",
+  "url": "https://api.vk.ru/method/wall.post",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-34985835",
+    "message": "Заявки в друзья приветствуются.",
+    "attachments": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T16:03:54.321Z [debug] VK API response {
+  "method": "wall.post",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "post_id"
+  ]
+}
+2026-05-13T16:03:54.322Z [info] Invitation post sent {
+  "communityId": 34985835
+}
+2026-05-13T16:03:59.323Z [debug] VK API request {
+  "method": "wall.get",
+  "url": "https://api.vk.ru/method/wall.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-24261502",
+    "count": 10,
+    "v": "5.199"
+  }
+}
+2026-05-13T16:04:00.191Z [debug] VK API response {
+  "method": "wall.get",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "count",
+    "items",
+    "reaction_sets"
+  ]
+}
+2026-05-13T16:04:00.191Z [info] Invitation post already present; skipping community {
+  "communityId": 24261502
+}
+2026-05-13T16:04:00.191Z [debug] VK API request {
+  "method": "wall.get",
+  "url": "https://api.vk.ru/method/wall.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-53294903",
+    "count": 10,
+    "v": "5.199"
+  }
+}
+2026-05-13T16:04:00.783Z [debug] VK API response {
+  "method": "wall.get",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "count",
+    "items",
+    "reaction_sets"
+  ]
+}
+2026-05-13T16:04:00.784Z [debug] VK API request {
+  "method": "wall.post",
+  "url": "https://api.vk.ru/method/wall.post",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-53294903",
+    "message": "Можно подружиться. Жду заявку в друзья.",
+    "attachments": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T16:04:01.139Z [debug] VK API response {
+  "method": "wall.post",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "post_id"
+  ]
+}
+2026-05-13T16:04:01.139Z [info] Invitation post sent {
+  "communityId": 53294903
+}
+2026-05-13T16:04:06.140Z [debug] VK API request {
+  "method": "wall.get",
+  "url": "https://api.vk.ru/method/wall.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-33764742",
+    "count": 10,
+    "v": "5.199"
+  }
+}
+2026-05-13T16:04:06.737Z [debug] VK API response {
+  "method": "wall.get",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 15,
+  "errorMsg": "Access denied: wall is disabled"
+}
+2026-05-13T16:04:06.737Z [warn] Posting blocked for community; skipping {
+  "communityId": 33764742,
+  "code": 15
+}
+2026-05-13T16:04:06.738Z [debug] VK API request {
+  "method": "wall.get",
+  "url": "https://api.vk.ru/method/wall.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-8337923",
+    "count": 10,
+    "v": "5.199"
+  }
+}
+2026-05-13T16:04:06.986Z [debug] VK API response {
+  "method": "wall.get",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 15,
+  "errorMsg": "Access denied: you are in users blacklist"
+}
+2026-05-13T16:04:06.986Z [warn] Posting blocked for community; skipping {
+  "communityId": 8337923,
+  "code": 15
+}
+2026-05-13T16:04:07.117Z [debug] VK API request {
+  "method": "wall.get",
+  "url": "https://api.vk.ru/method/wall.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-94946045",
+    "count": 10,
+    "v": "5.199"
+  }
+}
+2026-05-13T16:04:07.636Z [debug] VK API response {
+  "method": "wall.get",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "count",
+    "items",
+    "reaction_sets"
+  ]
+}
+2026-05-13T16:04:07.636Z [info] Invitation post already present; skipping community {
+  "communityId": 94946045
+}
+2026-05-13T16:04:07.636Z [debug] VK API request {
+  "method": "wall.get",
+  "url": "https://api.vk.ru/method/wall.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-194360448",
+    "count": 10,
+    "v": "5.199"
+  }
+}
+2026-05-13T16:04:07.863Z [debug] VK API response {
+  "method": "wall.get",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 15,
+  "errorMsg": "Access denied: you are in users blacklist"
+}
+2026-05-13T16:04:07.863Z [warn] Posting blocked for community; skipping {
+  "communityId": 194360448,
+  "code": 15
+}
+2026-05-13T16:04:08.015Z [debug] VK API request {
+  "method": "wall.get",
+  "url": "https://api.vk.ru/method/wall.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-39130136",
+    "count": 10,
+    "v": "5.199"
+  }
+}
+2026-05-13T16:04:08.496Z [debug] VK API response {
+  "method": "wall.get",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "count",
+    "items",
+    "reaction_sets"
+  ]
+}
+2026-05-13T16:04:08.496Z [info] Invitation post already present; skipping community {
+  "communityId": 39130136
+}
+2026-05-13T16:04:08.496Z [debug] VK API request {
+  "method": "wall.get",
+  "url": "https://api.vk.ru/method/wall.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-198580397",
+    "count": 10,
+    "v": "5.199"
+  }
+}
+2026-05-13T16:04:08.861Z [debug] VK API response {
+  "method": "wall.get",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "count",
+    "items",
+    "reaction_sets"
+  ]
+}
+2026-05-13T16:04:08.861Z [info] Invitation post already present; skipping community {
+  "communityId": 198580397
+}
+2026-05-13T16:04:08.876Z [debug] VK API request {
+  "method": "wall.get",
+  "url": "https://api.vk.ru/method/wall.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-195285978",
+    "count": 10,
+    "v": "5.199"
+  }
+}
+2026-05-13T16:04:09.198Z [debug] VK API response {
+  "method": "wall.get",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "count",
+    "items",
+    "reaction_sets"
+  ]
+}
+2026-05-13T16:04:09.198Z [info] Invitation post already present; skipping community {
+  "communityId": 195285978
+}
+2026-05-13T16:04:09.256Z [debug] VK API request {
+  "method": "wall.get",
+  "url": "https://api.vk.ru/method/wall.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-47350356",
+    "count": 10,
+    "v": "5.199"
+  }
+}
+2026-05-13T16:04:09.789Z [debug] VK API response {
+  "method": "wall.get",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "count",
+    "items",
+    "reaction_sets"
+  ]
+}
+2026-05-13T16:04:09.790Z [info] Invitation post already present; skipping community {
+  "communityId": 47350356
+}
+2026-05-13T16:04:09.790Z [debug] VK API request {
+  "method": "wall.get",
+  "url": "https://api.vk.ru/method/wall.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-61413825",
+    "count": 10,
+    "v": "5.199"
+  }
+}
+2026-05-13T16:04:10.179Z [debug] VK API response {
+  "method": "wall.get",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "count",
+    "items",
+    "reaction_sets"
+  ]
+}
+2026-05-13T16:04:10.179Z [info] Invitation post already present; skipping community {
+  "communityId": 61413825
+}
+2026-05-13T16:04:10.180Z [debug] VK API request {
+  "method": "wall.get",
+  "url": "https://api.vk.ru/method/wall.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-30345825",
+    "count": 10,
+    "v": "5.199"
+  }
+}
+2026-05-13T16:04:10.411Z [debug] VK API response {
+  "method": "wall.get",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 15,
+  "errorMsg": "Access denied: this wall available only for community members"
+}
+2026-05-13T16:04:10.411Z [warn] Posting blocked for community; skipping {
+  "communityId": 30345825,
+  "code": 15
+}
+2026-05-13T16:04:10.558Z [debug] VK API request {
+  "method": "wall.get",
+  "url": "https://api.vk.ru/method/wall.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-180442247",
+    "count": 10,
+    "v": "5.199"
+  }
+}
+2026-05-13T16:04:10.916Z [debug] VK API response {
+  "method": "wall.get",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "count",
+    "items",
+    "reaction_sets"
+  ]
+}
+2026-05-13T16:04:10.916Z [info] Invitation post already present; skipping community {
+  "communityId": 180442247
+}
+2026-05-13T16:04:10.937Z [debug] VK API request {
+  "method": "wall.get",
+  "url": "https://api.vk.ru/method/wall.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "owner_id": "-214787806",
+    "count": 10,
+    "v": "5.199"
+  }
+}
+2026-05-13T16:04:11.215Z [debug] VK API response {
+  "method": "wall.get",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "count",
+    "items",
+    "reaction_sets"
+  ]
+}
+2026-05-13T16:04:11.215Z [info] Invitation post already present; skipping community {
+  "communityId": 214787806
+}
+2026-05-13T16:04:11.215Z [debug] 'send-invitation-posts' trigger executed in 24464 ms
+
+```
+
+And the moment we only send invitation posts with only text, but in original https://github.com/konard/vk-bot we used to send current active avatar of the user, we need to find a way to reproduce the same feature, so not only text message should be in post, but also current active avatar of the user. That will attract more attention from real users, and will provide additional likes to the avatar itself.
+
+Also for each community we need to record in our .lino files in the application folder previously existing wall posts, so post ids should be saved, so if we see there is no our invitation posts in top 10 posts once in 15 minutes (or use repeat interval from https://github.com/konard/vk-bot as it is better tuned) we should delete our previous posts, as they are unlikely to be seen, and post new posts. The logic should be as intelligent as it was in https://github.com/konard/vk-bot, because for communites with less frequent updated, there is no need to create more posts than needed. And also we should keep our post on top, but not more than 1 post at a time, so we should record previously send posts, so once the we send new one, we can delete previous, and remove it from the .lino file. So we deleted post successfully we remove it from .lino file as expected, to not grow the file too much. And also each next new post is added to .lino file.
+
+## Invitation messages and other fixes
+
+Now when I press on `reset to default` in `Invitation messages`, it is not getting saved to our .lino configuration file, so on application restart it reverts to previous version of text. We also should check all other reset/clear buttons, everything that changes configuration, should trigger auto-save on debounce, and also notification, that each setting/parameter saved, so I will have visual feedback about each change.
+
+
+## Delete deactivated/blocked friends fixes
+
+```
+2026-05-13T16:10:20.785Z [info] Session log opened {
+  "file": "/Users/konard/.vk-bot-desktop/logs/2026-05-13T16-10-20-754Z-87265.log"
+}
+2026-05-13T16:10:20.813Z [info] Bot started
+2026-05-13T16:10:20.815Z [debug] Checking for 'delete-deactivated-friends' trigger...
+2026-05-13T16:10:20.817Z [debug] VK API request {
+  "method": "friends.get",
+  "url": "https://api.vk.ru/method/friends.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "count": 5000,
+    "offset": 0,
+    "fields": "deactivated",
+    "v": "5.199"
+  }
+}
+2026-05-13T16:10:25.137Z [debug] VK API response {
+  "method": "friends.get",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "count",
+    "items"
+  ]
+}
+2026-05-13T16:10:25.138Z [debug] VK API request {
+  "method": "friends.get",
+  "url": "https://api.vk.ru/method/friends.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "count": 5000,
+    "offset": 5000,
+    "fields": "deactivated",
+    "v": "5.199"
+  }
+}
+2026-05-13T16:10:28.890Z [debug] VK API response {
+  "method": "friends.get",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "count",
+    "items"
+  ]
+}
+2026-05-13T16:10:28.907Z [info] Deactivated friends to delete {
+  "count": 33
+}
+2026-05-13T16:10:28.907Z [debug] VK API request {
+  "method": "friends.delete",
+  "url": "https://api.vk.ru/method/friends.delete",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "user_id": 12598507,
+    "v": "5.199"
+  }
+}
+2026-05-13T16:10:29.130Z [debug] VK API response {
+  "method": "friends.delete",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 3,
+  "errorMsg": "Unknown method passed"
+}
+2026-05-13T16:10:29.131Z [warn] Failed to delete deactivated friend {
+  "userId": 12598507,
+  "error": {
+    "name": "APIError",
+    "message": "Code №3 - Unknown method passed",
+    "stack": "APIError: Code №3 - Unknown method passed\n    at SequentialWorker.execute (file:///private/var/folders/cl/831lqjgd58v5mb_m74cfdfcw0000gn/T/AppTranslocation/699D606C-4086-4E95-BC6E-929CE7D6A6EF/d/VK%20Bot%20Desktop.app/Contents/Resources/app.asar/node_modules/vk-io/lib/index.mjs:1854:44)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  }
+}
+2026-05-13T16:10:34.142Z [debug] VK API request {
+  "method": "friends.delete",
+  "url": "https://api.vk.ru/method/friends.delete",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "user_id": 28418305,
+    "v": "5.199"
+  }
+}
+2026-05-13T16:10:34.727Z [debug] VK API response {
+  "method": "friends.delete",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 3,
+  "errorMsg": "Unknown method passed"
+}
+2026-05-13T16:10:34.727Z [warn] Failed to delete deactivated friend {
+  "userId": 28418305,
+  "error": {
+    "name": "APIError",
+    "message": "Code №3 - Unknown method passed",
+    "stack": "APIError: Code №3 - Unknown method passed\n    at SequentialWorker.execute (file:///private/var/folders/cl/831lqjgd58v5mb_m74cfdfcw0000gn/T/AppTranslocation/699D606C-4086-4E95-BC6E-929CE7D6A6EF/d/VK%20Bot%20Desktop.app/Contents/Resources/app.asar/node_modules/vk-io/lib/index.mjs:1854:44)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  }
+}
+2026-05-13T16:10:39.729Z [debug] VK API request {
+  "method": "friends.delete",
+  "url": "https://api.vk.ru/method/friends.delete",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "user_id": 69444667,
+    "v": "5.199"
+  }
+}
+2026-05-13T16:10:40.370Z [debug] VK API response {
+  "method": "friends.delete",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 3,
+  "errorMsg": "Unknown method passed"
+}
+2026-05-13T16:10:40.371Z [warn] Failed to delete deactivated friend {
+  "userId": 69444667,
+  "error": {
+    "name": "APIError",
+    "message": "Code №3 - Unknown method passed",
+    "stack": "APIError: Code №3 - Unknown method passed\n    at SequentialWorker.execute (file:///private/var/folders/cl/831lqjgd58v5mb_m74cfdfcw0000gn/T/AppTranslocation/699D606C-4086-4E95-BC6E-929CE7D6A6EF/d/VK%20Bot%20Desktop.app/Contents/Resources/app.asar/node_modules/vk-io/lib/index.mjs:1854:44)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  }
+}
+2026-05-13T16:10:43.320Z [info] Stopping bot
+Bot exited with code 0
+```
+
+At the moment delete deactived/blocked friends is not working. That must be fixed.
+
+## Auto-accept friend requests fixes
+
+```
+2026-05-13T16:11:58.900Z [info] Session log opened {
+  "file": "/Users/konard/.vk-bot-desktop/logs/2026-05-13T16-11-58-899Z-87865.log"
+}
+2026-05-13T16:11:58.924Z [info] Bot started
+2026-05-13T16:11:58.926Z [debug] Checking for 'accept-friend-requests' trigger...
+2026-05-13T16:11:58.929Z [debug] VK API request {
+  "method": "friends.get",
+  "url": "https://api.vk.ru/method/friends.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "count": 5000,
+    "offset": 0,
+    "fields": "deactivated",
+    "v": "5.199"
+  }
+}
+2026-05-13T16:12:03.289Z [debug] VK API response {
+  "method": "friends.get",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "count",
+    "items"
+  ]
+}
+2026-05-13T16:12:03.291Z [debug] VK API request {
+  "method": "friends.get",
+  "url": "https://api.vk.ru/method/friends.get",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "count": 5000,
+    "offset": 5000,
+    "fields": "deactivated",
+    "v": "5.199"
+  }
+}
+2026-05-13T16:12:07.640Z [debug] VK API response {
+  "method": "friends.get",
+  "retry": 0,
+  "hasError": false,
+  "responseKeys": [
+    "count",
+    "items"
+  ]
+}
+2026-05-13T16:12:07.653Z [debug] VK API request {
+  "method": "friends.add",
+  "url": "https://api.vk.ru/method/friends.add",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "user_id": 198502458,
+    "text": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T16:12:07.877Z [debug] VK API response {
+  "method": "friends.add",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 3,
+  "errorMsg": "Unknown method passed"
+}
+2026-05-13T16:12:07.878Z [error] Could not send priority friend request {
+  "userId": 198502458,
+  "error": {
+    "name": "APIError",
+    "message": "Code №3 - Unknown method passed",
+    "stack": "APIError: Code №3 - Unknown method passed\n    at SequentialWorker.execute (file:///private/var/folders/cl/831lqjgd58v5mb_m74cfdfcw0000gn/T/AppTranslocation/699D606C-4086-4E95-BC6E-929CE7D6A6EF/d/VK%20Bot%20Desktop.app/Contents/Resources/app.asar/node_modules/vk-io/lib/index.mjs:1854:44)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  }
+}
+2026-05-13T16:12:08.032Z [debug] VK API request {
+  "method": "friends.add",
+  "url": "https://api.vk.ru/method/friends.add",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "user_id": 430832074,
+    "text": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T16:12:08.251Z [debug] VK API response {
+  "method": "friends.add",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 3,
+  "errorMsg": "Unknown method passed"
+}
+2026-05-13T16:12:08.252Z [error] Could not send priority friend request {
+  "userId": 430832074,
+  "error": {
+    "name": "APIError",
+    "message": "Code №3 - Unknown method passed",
+    "stack": "APIError: Code №3 - Unknown method passed\n    at SequentialWorker.execute (file:///private/var/folders/cl/831lqjgd58v5mb_m74cfdfcw0000gn/T/AppTranslocation/699D606C-4086-4E95-BC6E-929CE7D6A6EF/d/VK%20Bot%20Desktop.app/Contents/Resources/app.asar/node_modules/vk-io/lib/index.mjs:1854:44)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  }
+}
+2026-05-13T16:12:08.412Z [debug] VK API request {
+  "method": "friends.add",
+  "url": "https://api.vk.ru/method/friends.add",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "user_id": 432128061,
+    "text": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T16:12:08.634Z [debug] VK API response {
+  "method": "friends.add",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 3,
+  "errorMsg": "Unknown method passed"
+}
+2026-05-13T16:12:08.634Z [error] Could not send priority friend request {
+  "userId": 432128061,
+  "error": {
+    "name": "APIError",
+    "message": "Code №3 - Unknown method passed",
+    "stack": "APIError: Code №3 - Unknown method passed\n    at SequentialWorker.execute (file:///private/var/folders/cl/831lqjgd58v5mb_m74cfdfcw0000gn/T/AppTranslocation/699D606C-4086-4E95-BC6E-929CE7D6A6EF/d/VK%20Bot%20Desktop.app/Contents/Resources/app.asar/node_modules/vk-io/lib/index.mjs:1854:44)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  }
+}
+2026-05-13T16:12:08.792Z [debug] VK API request {
+  "method": "friends.add",
+  "url": "https://api.vk.ru/method/friends.add",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "user_id": 16305383,
+    "text": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T16:12:09.011Z [debug] VK API response {
+  "method": "friends.add",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 3,
+  "errorMsg": "Unknown method passed"
+}
+2026-05-13T16:12:09.011Z [error] Could not send priority friend request {
+  "userId": 16305383,
+  "error": {
+    "name": "APIError",
+    "message": "Code №3 - Unknown method passed",
+    "stack": "APIError: Code №3 - Unknown method passed\n    at SequentialWorker.execute (file:///private/var/folders/cl/831lqjgd58v5mb_m74cfdfcw0000gn/T/AppTranslocation/699D606C-4086-4E95-BC6E-929CE7D6A6EF/d/VK%20Bot%20Desktop.app/Contents/Resources/app.asar/node_modules/vk-io/lib/index.mjs:1854:44)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  }
+}
+2026-05-13T16:12:09.172Z [debug] VK API request {
+  "method": "friends.add",
+  "url": "https://api.vk.ru/method/friends.add",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "user_id": 9531119,
+    "text": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T16:12:09.393Z [debug] VK API response {
+  "method": "friends.add",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 3,
+  "errorMsg": "Unknown method passed"
+}
+2026-05-13T16:12:09.393Z [error] Could not send priority friend request {
+  "userId": 9531119,
+  "error": {
+    "name": "APIError",
+    "message": "Code №3 - Unknown method passed",
+    "stack": "APIError: Code №3 - Unknown method passed\n    at SequentialWorker.execute (file:///private/var/folders/cl/831lqjgd58v5mb_m74cfdfcw0000gn/T/AppTranslocation/699D606C-4086-4E95-BC6E-929CE7D6A6EF/d/VK%20Bot%20Desktop.app/Contents/Resources/app.asar/node_modules/vk-io/lib/index.mjs:1854:44)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  }
+}
+...
+2026-05-13T16:12:10.692Z [debug] VK API request {
+  "method": "friends.add",
+  "url": "https://api.vk.ru/method/friends.add",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "user_id": 256140921,
+    "text": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T16:12:10.952Z [debug] VK API response {
+  "method": "friends.add",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 3,
+  "errorMsg": "Unknown method passed"
+}
+2026-05-13T16:12:10.952Z [error] Could not send priority friend request {
+  "userId": 256140921,
+  "error": {
+    "name": "APIError",
+    "message": "Code №3 - Unknown method passed",
+    "stack": "APIError: Code №3 - Unknown method passed\n    at SequentialWorker.execute (file:///private/var/folders/cl/831lqjgd58v5mb_m74cfdfcw0000gn/T/AppTranslocation/699D606C-4086-4E95-BC6E-929CE7D6A6EF/d/VK%20Bot%20Desktop.app/Contents/Resources/app.asar/node_modules/vk-io/lib/index.mjs:1854:44)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  }
+}
+2026-05-13T16:12:11.072Z [debug] VK API request {
+  "method": "friends.add",
+  "url": "https://api.vk.ru/method/friends.add",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "user_id": 41444183,
+    "text": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T16:12:11.359Z [debug] VK API response {
+  "method": "friends.add",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 3,
+  "errorMsg": "Unknown method passed"
+}
+2026-05-13T16:12:11.359Z [error] Could not send priority friend request {
+  "userId": 41444183,
+  "error": {
+    "name": "APIError",
+    "message": "Code №3 - Unknown method passed",
+    "stack": "APIError: Code №3 - Unknown method passed\n    at SequentialWorker.execute (file:///private/var/folders/cl/831lqjgd58v5mb_m74cfdfcw0000gn/T/AppTranslocation/699D606C-4086-4E95-BC6E-929CE7D6A6EF/d/VK%20Bot%20Desktop.app/Contents/Resources/app.asar/node_modules/vk-io/lib/index.mjs:1854:44)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  }
+}
+2026-05-13T16:12:11.451Z [debug] VK API request {
+  "method": "friends.add",
+  "url": "https://api.vk.ru/method/friends.add",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "user_id": 288221158,
+    "text": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T16:12:11.665Z [debug] VK API response {
+  "method": "friends.add",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 3,
+  "errorMsg": "Unknown method passed"
+}
+2026-05-13T16:12:11.665Z [error] Could not send priority friend request {
+  "userId": 288221158,
+  "error": {
+    "name": "APIError",
+    "message": "Code №3 - Unknown method passed",
+    "stack": "APIError: Code №3 - Unknown method passed\n    at SequentialWorker.execute (file:///private/var/folders/cl/831lqjgd58v5mb_m74cfdfcw0000gn/T/AppTranslocation/699D606C-4086-4E95-BC6E-929CE7D6A6EF/d/VK%20Bot%20Desktop.app/Contents/Resources/app.asar/node_modules/vk-io/lib/index.mjs:1854:44)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  }
+}
+2026-05-13T16:12:11.830Z [debug] VK API request {
+  "method": "friends.add",
+  "url": "https://api.vk.ru/method/friends.add",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "user_id": 261636015,
+    "text": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T16:12:12.079Z [debug] VK API response {
+  "method": "friends.add",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 3,
+  "errorMsg": "Unknown method passed"
+}
+2026-05-13T16:12:12.079Z [error] Could not send priority friend request {
+  "userId": 261636015,
+  "error": {
+    "name": "APIError",
+    "message": "Code №3 - Unknown method passed",
+    "stack": "APIError: Code №3 - Unknown method passed\n    at SequentialWorker.execute (file:///private/var/folders/cl/831lqjgd58v5mb_m74cfdfcw0000gn/T/AppTranslocation/699D606C-4086-4E95-BC6E-929CE7D6A6EF/d/VK%20Bot%20Desktop.app/Contents/Resources/app.asar/node_modules/vk-io/lib/index.mjs:1854:44)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  }
+}
+2026-05-13T16:12:12.210Z [debug] VK API request {
+  "method": "friends.add",
+  "url": "https://api.vk.ru/method/friends.add",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "user_id": 686333206,
+    "text": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T16:12:12.429Z [debug] VK API response {
+  "method": "friends.add",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 3,
+  "errorMsg": "Unknown method passed"
+}
+2026-05-13T16:12:12.430Z [error] Could not send priority friend request {
+  "userId": 686333206,
+  "error": {
+    "name": "APIError",
+    "message": "Code №3 - Unknown method passed",
+    "stack": "APIError: Code №3 - Unknown method passed\n    at SequentialWorker.execute (file:///private/var/folders/cl/831lqjgd58v5mb_m74cfdfcw0000gn/T/AppTranslocation/699D606C-4086-4E95-BC6E-929CE7D6A6EF/d/VK%20Bot%20Desktop.app/Contents/Resources/app.asar/node_modules/vk-io/lib/index.mjs:1854:44)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  }
+}
+2026-05-13T16:12:12.590Z [debug] VK API request {
+  "method": "friends.add",
+  "url": "https://api.vk.ru/method/friends.add",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "user_id": 771681662,
+    "text": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T16:12:12.896Z [debug] VK API response {
+  "method": "friends.add",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 3,
+  "errorMsg": "Unknown method passed"
+}
+2026-05-13T16:12:12.897Z [error] Could not send priority friend request {
+  "userId": 771681662,
+  "error": {
+    "name": "APIError",
+    "message": "Code №3 - Unknown method passed",
+    "stack": "APIError: Code №3 - Unknown method passed\n    at SequentialWorker.execute (file:///private/var/folders/cl/831lqjgd58v5mb_m74cfdfcw0000gn/T/AppTranslocation/699D606C-4086-4E95-BC6E-929CE7D6A6EF/d/VK%20Bot%20Desktop.app/Contents/Resources/app.asar/node_modules/vk-io/lib/index.mjs:1854:44)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  }
+}
+2026-05-13T16:12:12.970Z [debug] VK API request {
+  "method": "friends.add",
+  "url": "https://api.vk.ru/method/friends.add",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "user_id": 14374586,
+    "text": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T16:12:13.204Z [debug] VK API response {
+  "method": "friends.add",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 3,
+  "errorMsg": "Unknown method passed"
+}
+2026-05-13T16:12:13.204Z [error] Could not send priority friend request {
+  "userId": 14374586,
+  "error": {
+    "name": "APIError",
+    "message": "Code №3 - Unknown method passed",
+    "stack": "APIError: Code №3 - Unknown method passed\n    at SequentialWorker.execute (file:///private/var/folders/cl/831lqjgd58v5mb_m74cfdfcw0000gn/T/AppTranslocation/699D606C-4086-4E95-BC6E-929CE7D6A6EF/d/VK%20Bot%20Desktop.app/Contents/Resources/app.asar/node_modules/vk-io/lib/index.mjs:1854:44)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  }
+}
+2026-05-13T16:12:13.350Z [debug] VK API request {
+  "method": "friends.add",
+  "url": "https://api.vk.ru/method/friends.add",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "user_id": 561231467,
+    "text": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T16:12:13.614Z [debug] VK API response {
+  "method": "friends.add",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 3,
+  "errorMsg": "Unknown method passed"
+}
+2026-05-13T16:12:13.614Z [error] Could not send priority friend request {
+  "userId": 561231467,
+  "error": {
+    "name": "APIError",
+    "message": "Code №3 - Unknown method passed",
+    "stack": "APIError: Code №3 - Unknown method passed\n    at SequentialWorker.execute (file:///private/var/folders/cl/831lqjgd58v5mb_m74cfdfcw0000gn/T/AppTranslocation/699D606C-4086-4E95-BC6E-929CE7D6A6EF/d/VK%20Bot%20Desktop.app/Contents/Resources/app.asar/node_modules/vk-io/lib/index.mjs:1854:44)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  }
+}
+2026-05-13T16:12:13.729Z [debug] VK API request {
+  "method": "friends.add",
+  "url": "https://api.vk.ru/method/friends.add",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "user_id": 379696004,
+    "text": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T16:12:14.331Z [debug] VK API response {
+  "method": "friends.add",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 3,
+  "errorMsg": "Unknown method passed"
+}
+2026-05-13T16:12:14.331Z [error] Could not send priority friend request {
+  "userId": 534795689,
+  "error": {
+    "name": "APIError",
+    "message": "Code №3 - Unknown method passed",
+    "stack": "APIError: Code №3 - Unknown method passed\n    at SequentialWorker.execute (file:///private/var/folders/cl/831lqjgd58v5mb_m74cfdfcw0000gn/T/AppTranslocation/699D606C-4086-4E95-BC6E-929CE7D6A6EF/d/VK%20Bot%20Desktop.app/Contents/Resources/app.asar/node_modules/vk-io/lib/index.mjs:1854:44)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  }
+}
+2026-05-13T16:12:14.487Z [debug] VK API request {
+  "method": "friends.add",
+  "url": "https://api.vk.ru/method/friends.add",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "user_id": 194656856,
+    "text": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T16:12:14.738Z [debug] VK API response {
+  "method": "friends.add",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 3,
+  "errorMsg": "Unknown method passed"
+}
+2026-05-13T16:12:14.738Z [error] Could not send priority friend request {
+  "userId": 194656856,
+  "error": {
+    "name": "APIError",
+    "message": "Code №3 - Unknown method passed",
+    "stack": "APIError: Code №3 - Unknown method passed\n    at SequentialWorker.execute (file:///private/var/folders/cl/831lqjgd58v5mb_m74cfdfcw0000gn/T/AppTranslocation/699D606C-4086-4E95-BC6E-929CE7D6A6EF/d/VK%20Bot%20Desktop.app/Contents/Resources/app.asar/node_modules/vk-io/lib/index.mjs:1854:44)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  }
+}
+2026-05-13T16:12:14.866Z [debug] VK API request {
+  "method": "friends.add",
+  "url": "https://api.vk.ru/method/friends.add",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "user_id": 158646820,
+    "text": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T16:12:15.086Z [debug] VK API response {
+  "method": "friends.add",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 3,
+  "errorMsg": "Unknown method passed"
+}
+2026-05-13T16:12:15.086Z [error] Could not send priority friend request {
+  "userId": 158646820,
+  "error": {
+    "name": "APIError",
+    "message": "Code №3 - Unknown method passed",
+    "stack": "APIError: Code №3 - Unknown method passed\n    at SequentialWorker.execute (file:///private/var/folders/cl/831lqjgd58v5mb_m74cfdfcw0000gn/T/AppTranslocation/699D606C-4086-4E95-BC6E-929CE7D6A6EF/d/VK%20Bot%20Desktop.app/Contents/Resources/app.asar/node_modules/vk-io/lib/index.mjs:1854:44)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  }
+}
+2026-05-13T16:12:15.245Z [debug] VK API request {
+  "method": "friends.add",
+  "url": "https://api.vk.ru/method/friends.add",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "user_id": 39502581,
+    "text": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T16:12:15.558Z [debug] VK API response {
+  "method": "friends.add",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 3,
+  "errorMsg": "Unknown method passed"
+}
+2026-05-13T16:12:15.559Z [error] Could not send priority friend request {
+  "userId": 39502581,
+  "error": {
+    "name": "APIError",
+    "message": "Code №3 - Unknown method passed",
+    "stack": "APIError: Code №3 - Unknown method passed\n    at SequentialWorker.execute (file:///private/var/folders/cl/831lqjgd58v5mb_m74cfdfcw0000gn/T/AppTranslocation/699D606C-4086-4E95-BC6E-929CE7D6A6EF/d/VK%20Bot%20Desktop.app/Contents/Resources/app.asar/node_modules/vk-io/lib/index.mjs:1854:44)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  }
+}
+2026-05-13T16:12:15.625Z [debug] VK API request {
+  "method": "friends.add",
+  "url": "https://api.vk.ru/method/friends.add",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "user_id": 155669831,
+    "text": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T16:12:15.845Z [debug] VK API response {
+  "method": "friends.add",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 3,
+  "errorMsg": "Unknown method passed"
+}
+2026-05-13T16:12:15.846Z [error] Could not send priority friend request {
+  "userId": 155669831,
+  "error": {
+    "name": "APIError",
+    "message": "Code №3 - Unknown method passed",
+    "stack": "APIError: Code №3 - Unknown method passed\n    at SequentialWorker.execute (file:///private/var/folders/cl/831lqjgd58v5mb_m74cfdfcw0000gn/T/AppTranslocation/699D606C-4086-4E95-BC6E-929CE7D6A6EF/d/VK%20Bot%20Desktop.app/Contents/Resources/app.asar/node_modules/vk-io/lib/index.mjs:1854:44)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  }
+}
+2026-05-13T16:12:16.005Z [debug] VK API request {
+  "method": "friends.add",
+  "url": "https://api.vk.ru/method/friends.add",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "user_id": 407552553,
+    "text": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T16:12:16.226Z [debug] VK API response {
+  "method": "friends.add",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 3,
+  "errorMsg": "Unknown method passed"
+}
+2026-05-13T16:12:16.227Z [error] Could not send priority friend request {
+  "userId": 407552553,
+  "error": {
+    "name": "APIError",
+    "message": "Code №3 - Unknown method passed",
+    "stack": "APIError: Code №3 - Unknown method passed\n    at SequentialWorker.execute (file:///private/var/folders/cl/831lqjgd58v5mb_m74cfdfcw0000gn/T/AppTranslocation/699D606C-4086-4E95-BC6E-929CE7D6A6EF/d/VK%20Bot%20Desktop.app/Contents/Resources/app.asar/node_modules/vk-io/lib/index.mjs:1854:44)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  }
+}
+2026-05-13T16:12:16.383Z [debug] VK API request {
+  "method": "friends.add",
+  "url": "https://api.vk.ru/method/friends.add",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "user_id": 712618469,
+    "text": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T16:12:16.686Z [debug] VK API response {
+  "method": "friends.add",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 3,
+  "errorMsg": "Unknown method passed"
+}
+2026-05-13T16:12:16.686Z [error] Could not send priority friend request {
+  "userId": 712618469,
+  "error": {
+    "name": "APIError",
+    "message": "Code №3 - Unknown method passed",
+    "stack": "APIError: Code №3 - Unknown method passed\n    at SequentialWorker.execute (file:///private/var/folders/cl/831lqjgd58v5mb_m74cfdfcw0000gn/T/AppTranslocation/699D606C-4086-4E95-BC6E-929CE7D6A6EF/d/VK%20Bot%20Desktop.app/Contents/Resources/app.asar/node_modules/vk-io/lib/index.mjs:1854:44)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  }
+}
+2026-05-13T16:12:16.763Z [debug] VK API request {
+  "method": "friends.add",
+  "url": "https://api.vk.ru/method/friends.add",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "user_id": 528022640,
+    "text": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T16:12:16.981Z [debug] VK API response {
+  "method": "friends.add",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 3,
+  "errorMsg": "Unknown method passed"
+}
+2026-05-13T16:12:16.981Z [error] Could not send priority friend request {
+  "userId": 528022640,
+  "error": {
+    "name": "APIError",
+    "message": "Code №3 - Unknown method passed",
+    "stack": "APIError: Code №3 - Unknown method passed\n    at SequentialWorker.execute (file:///private/var/folders/cl/831lqjgd58v5mb_m74cfdfcw0000gn/T/AppTranslocation/699D606C-4086-4E95-BC6E-929CE7D6A6EF/d/VK%20Bot%20Desktop.app/Contents/Resources/app.asar/node_modules/vk-io/lib/index.mjs:1854:44)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  }
+}
+2026-05-13T16:12:17.142Z [debug] VK API request {
+  "method": "friends.add",
+  "url": "https://api.vk.ru/method/friends.add",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "user_id": 597063510,
+    "text": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T16:12:17.358Z [debug] VK API response {
+  "method": "friends.add",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 3,
+  "errorMsg": "Unknown method passed"
+}
+2026-05-13T16:12:17.358Z [error] Could not send priority friend request {
+  "userId": 597063510,
+  "error": {
+    "name": "APIError",
+    "message": "Code №3 - Unknown method passed",
+    "stack": "APIError: Code №3 - Unknown method passed\n    at SequentialWorker.execute (file:///private/var/folders/cl/831lqjgd58v5mb_m74cfdfcw0000gn/T/AppTranslocation/699D606C-4086-4E95-BC6E-929CE7D6A6EF/d/VK%20Bot%20Desktop.app/Contents/Resources/app.asar/node_modules/vk-io/lib/index.mjs:1854:44)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  }
+}
+2026-05-13T16:12:17.521Z [debug] VK API request {
+  "method": "friends.add",
+  "url": "https://api.vk.ru/method/friends.add",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "user_id": 209280029,
+    "text": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T16:12:17.811Z [debug] VK API response {
+  "method": "friends.add",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 3,
+  "errorMsg": "Unknown method passed"
+}
+2026-05-13T16:12:17.811Z [error] Could not send priority friend request {
+  "userId": 209280029,
+  "error": {
+    "name": "APIError",
+    "message": "Code №3 - Unknown method passed",
+    "stack": "APIError: Code №3 - Unknown method passed\n    at SequentialWorker.execute (file:///private/var/folders/cl/831lqjgd58v5mb_m74cfdfcw0000gn/T/AppTranslocation/699D606C-4086-4E95-BC6E-929CE7D6A6EF/d/VK%20Bot%20Desktop.app/Contents/Resources/app.asar/node_modules/vk-io/lib/index.mjs:1854:44)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  }
+}
+2026-05-13T16:12:17.900Z [debug] VK API request {
+  "method": "friends.add",
+  "url": "https://api.vk.ru/method/friends.add",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "user_id": 683950705,
+    "text": "",
+    "v": "5.199"
+  }
+}
+2026-05-13T16:12:18.123Z [debug] VK API response {
+  "method": "friends.add",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 3,
+  "errorMsg": "Unknown method passed"
+}
+2026-05-13T16:12:18.123Z [error] Could not send priority friend request {
+  "userId": 683950705,
+  "error": {
+    "name": "APIError",
+    "message": "Code №3 - Unknown method passed",
+    "stack": "APIError: Code №3 - Unknown method passed\n    at SequentialWorker.execute (file:///private/var/folders/cl/831lqjgd58v5mb_m74cfdfcw0000gn/T/AppTranslocation/699D606C-4086-4E95-BC6E-929CE7D6A6EF/d/VK%20Bot%20Desktop.app/Contents/Resources/app.asar/node_modules/vk-io/lib/index.mjs:1854:44)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  }
+}
+2026-05-13T16:12:18.234Z [info] Stopping bot
+Bot exited with code 0
+```
+
+Auto acception friends requests does not work, we should also respect API limits and don't do too much and too fast requests. Double check http://github.com/konard/vk-bot how does respect API limits, and reproduce it for all our features, timing is important and not random, every repeat cycle and interval from http://github.com/konard/vk-bot was fine tuned to get no captcha requests. Also on any `Unknown method passed` we should stop each trigger with such error immediately.
+
+Also may be the problem is that we try to accept friends, that already have outgoing requests, we should check for that. For example now priority friends list is loaded by outgoing friends requests, so it may be the case.
+
+Double check how http://github.com/konard/vk-bot does it, and if possible do better.
+
+We also need a button to clear the log in addition to copy, for convenience of testing.
+
+## `Keep online status while running` fixes
+
+```
+2026-05-13T16:17:44.314Z [info] Session log opened {
+  "file": "/Users/konard/.vk-bot-desktop/logs/2026-05-13T16-17-44-314Z-89981.log"
+}
+2026-05-13T16:17:44.336Z [info] Bot started
+2026-05-13T16:17:44.338Z [debug] Checking for 'set-online-status' trigger...
+2026-05-13T16:17:44.341Z [debug] VK API request {
+  "method": "account.setOnline",
+  "url": "https://api.vk.ru/method/account.setOnline",
+  "retry": 0,
+  "headers": {
+    "User-Agent": "vk-io/4.10.0 (+https://github.com/negezor/vk-io)"
+  },
+  "params": {
+    "v": "5.199"
+  }
+}
+2026-05-13T16:17:44.961Z [debug] VK API response {
+  "method": "account.setOnline",
+  "retry": 0,
+  "hasError": true,
+  "errorCode": 3,
+  "errorMsg": "Unknown method passed"
+}
+2026-05-13T16:17:44.962Z [warn] Could not set online status {
+  "error": {
+    "name": "APIError",
+    "message": "Code №3 - Unknown method passed",
+    "stack": "APIError: Code №3 - Unknown method passed\n    at SequentialWorker.execute (file:///private/var/folders/cl/831lqjgd58v5mb_m74cfdfcw0000gn/T/AppTranslocation/699D606C-4086-4E95-BC6E-929CE7D6A6EF/d/VK%20Bot%20Desktop.app/Contents/Resources/app.asar/node_modules/vk-io/lib/index.mjs:1854:44)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+  }
+}
+2026-05-13T16:17:44.963Z [debug] 'set-online-status' trigger executed in 625 ms
+2026-05-13T16:17:47.729Z [info] Stopping bot
+Bot exited with code 0
+```
+
+`Keep online status while running` is still does not work.
+
+## Birthday congratulations
+
+We also need to add protection of repeated birthday congratulations, we should not try to do congratulations if we already have been talking to the person in the same day (messages are in history), so if user manually gave congratulations or we already did it, we should not repeat it. So automatic congratulations should only go if no messages in 24 hours with a person.
+
+## Final notes
+
+We also might want to use `https://dev.vk.com/ru/method/account.getAppPermissions` for diagnostics, may be some actions are simply not available for the application we do sign in through. So it may be the root cause for of some errors, so if we get error like `Unknown method passed`, we should try to check if we have permission for that method, and fail immediately if we get `Unknown method passed`, but we can use getAppPermissions for diagnostics before actually failing. So we keep as much code as we have, it may just don't work with current app permission, and once later we will get our own app and permissions are granted by VK, we might get full access required.
+
+We need to download all logs and data related about the issue to this repository, make sure we compile that data to `./docs/case-studies/issue-{id}` folder, and use it to do deep case study analysis (also make sure to search online for additional facts and data), in which we will reconstruct timeline/sequence of events, list of each and all requirements from the issue, find root causes of the each problem, and propose possible solutions and solution plans for each requirement (we should also check known existing components/libraries, that solve similar problem or can help in solutions).
+
+If there is not enough data to find actual root cause, add debug output and verbose mode if not present, that will allow us to find root cause on next iteration.
+
+If issue related to any other repository/project, where we can report issues on GitHub, please do so. Each issue must contain reproducible examples, workarounds and suggestions for fix the issue in code.
+
+Please plan and execute everything in this single pull request, you have unlimited time and context, as context auto-compacts and you can continue indefinitely, until it is each and every requirement fully addressed, and everything is totally done.
+
+
