@@ -1,7 +1,14 @@
 import logger from '../logger.js';
 import { asList } from '../list-values.js';
+import { isUnknownMethodError, reportUnknownMethod } from '../api-errors.js';
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+let unsupportedForProcess = false;
+
+export function resetDeleteOutgoingSupport() {
+  unsupportedForProcess = false;
+}
 
 /**
  * Decide which outgoing friend requests should be cancelled.
@@ -26,6 +33,9 @@ export function pickOutgoingToCancel({
 }
 
 export async function deleteOutgoingFriendRequests({ vk, config, context }) {
+  if (unsupportedForProcess) {
+    return;
+  }
   const max = config.limits?.maxOutgoingDeletionsPerRun ?? 20;
   if (max <= 0) {
     return;
@@ -59,6 +69,16 @@ export async function deleteOutgoingFriendRequests({ vk, config, context }) {
         await vk.api.friends.delete({ user_id: userId });
         logger.info('Deleted outgoing friend request', { userId });
       } catch (error) {
+        if (isUnknownMethodError(error)) {
+          unsupportedForProcess = true;
+          await reportUnknownMethod({
+            vk,
+            method: 'friends.delete',
+            error,
+            trigger: 'delete-outgoing-friend-requests',
+          });
+          return;
+        }
         logger.warn('Failed to delete outgoing friend request', {
           userId,
           error,

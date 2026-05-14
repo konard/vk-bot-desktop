@@ -5,11 +5,18 @@ import {
 } from '../friend-prioritization.js';
 import { StatsStore, statsRootFor } from '../stats.js';
 import { LinoStore } from '../../lino-store.js';
+import { isUnknownMethodError, reportUnknownMethod } from '../api-errors.js';
 
 const ONE_SECOND_MS = 1000;
 const ONE_MINUTE_MS = 60 * 1000;
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+let unsupportedForProcess = false;
+
+export function resetAcceptFriendRequestsSupport() {
+  unsupportedForProcess = false;
+}
 
 async function loadFriends({ vk }) {
   // VK's friends.get returns up to 5000 ids per page. For the desktop
@@ -33,6 +40,23 @@ async function loadFriends({ vk }) {
     }
   }
   return items;
+}
+
+async function loadOutgoingRequestIds({ vk }) {
+  try {
+    const response = await vk.api.friends.getRequests({
+      count: 1000,
+      out: 1,
+      need_viewed: 1,
+    });
+    return new Set(response.items || []);
+  } catch (error) {
+    logger.warn(
+      'Could not list outgoing friend requests; assuming none and continuing',
+      { error }
+    );
+    return new Set();
+  }
 }
 
 async function fetchIncomingRequestsWithMutuals({ vk, count }) {
@@ -64,13 +88,30 @@ async function fetchIncomingRequestsWithMutuals({ vk, count }) {
   }));
 }
 
-async function sendPriorityRequests({ vk, priorityToSend }) {
+async function sendPriorityRequests({ vk, priorityToSend, alreadyOutgoing }) {
   for (const userId of priorityToSend) {
+    if (alreadyOutgoing.has(userId)) {
+      logger.debug('Skipping priority friend with existing outgoing request', {
+        userId,
+      });
+      continue;
+    }
     try {
       await vk.api.friends.add({ user_id: userId, text: '' });
+      alreadyOutgoing.add(userId);
       logger.info('Friend request sent to priority friend', { userId });
       await sleep(10 * ONE_SECOND_MS);
     } catch (error) {
+      if (isUnknownMethodError(error)) {
+        unsupportedForProcess = true;
+        await reportUnknownMethod({
+          vk,
+          method: 'friends.add',
+          error,
+          trigger: 'accept-friend-requests',
+        });
+        return { stop: true };
+      }
       if (error.code === 29) {
         logger.warn('Rate limit while adding priority friend; backing off', {
           userId,
@@ -82,7 +123,11 @@ async function sendPriorityRequests({ vk, priorityToSend }) {
         logger.warn('Friend limit exceeded; stopping priority send', {
           userId,
         });
-        break;
+        return { stop: true };
+      }
+      if (error.code === 177) {
+        logger.warn('Priority user not found; continuing', { userId });
+        continue;
       }
       logger.error('Could not send priority friend request', {
         userId,
@@ -90,6 +135,7 @@ async function sendPriorityRequests({ vk, priorityToSend }) {
       });
     }
   }
+  return { stop: false };
 }
 
 async function acceptIncomingRequests({
@@ -109,11 +155,34 @@ async function acceptIncomingRequests({
       });
       await sleep(10 * ONE_SECOND_MS);
     } catch (error) {
+      if (isUnknownMethodError(error)) {
+        unsupportedForProcess = true;
+        await reportUnknownMethod({
+          vk,
+          method: 'friends.add',
+          error,
+          trigger: 'accept-friend-requests',
+        });
+        break;
+      }
+      if (error.code === 29) {
+        logger.warn('Rate limit hit; backing off and stopping run', {
+          userId: request.userId,
+        });
+        await sleep(ONE_MINUTE_MS);
+        break;
+      }
       if (error.code === 242) {
         logger.warn('Friend limit exceeded; stopping run', {
           userId: request.userId,
         });
         break;
+      }
+      if (error.code === 177) {
+        logger.warn('Incoming requester not found; continuing', {
+          userId: request.userId,
+        });
+        continue;
       }
       logger.error('Could not accept friend request', {
         userId: request.userId,
@@ -179,6 +248,9 @@ export async function acceptFriendRequests({
   config,
   stats: providedStats,
 }) {
+  if (unsupportedForProcess) {
+    return 0;
+  }
   try {
     const stats = resolveStats(providedStats);
     const friends = await loadFriends({ vk });
@@ -188,12 +260,21 @@ export async function acceptFriendRequests({
     const maxFriends = config.limits?.maxFriends ?? 10000;
     const remainingCapacity = Math.max(0, maxFriends - friendIds.length);
 
+    const alreadyOutgoing = await loadOutgoingRequestIds({ vk });
+
     const priorityToSend = pickPrioritySendList({
       priorityFriendIds: config.priorityFriendIds || [],
       currentFriendIds: friendIds,
       remainingCapacity,
     });
-    await sendPriorityRequests({ vk, priorityToSend });
+    const { stop } = await sendPriorityRequests({
+      vk,
+      priorityToSend,
+      alreadyOutgoing,
+    });
+    if (stop) {
+      return 0;
+    }
 
     const requests = await fetchIncomingRequestsWithMutuals({
       vk,

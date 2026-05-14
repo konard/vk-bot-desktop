@@ -1,7 +1,14 @@
 import logger from '../logger.js';
 import { pickDeactivatedToDelete } from '../friend-prioritization.js';
+import { isUnknownMethodError, reportUnknownMethod } from '../api-errors.js';
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+let unsupportedForProcess = false;
+
+export function resetDeleteDeactivatedSupport() {
+  unsupportedForProcess = false;
+}
 
 async function loadFriendsWithStatus({ vk }) {
   const items = [];
@@ -23,6 +30,9 @@ async function loadFriendsWithStatus({ vk }) {
 }
 
 export async function deleteDeactivatedFriends({ vk, config }) {
+  if (unsupportedForProcess) {
+    return;
+  }
   try {
     const friends = await loadFriendsWithStatus({ vk });
     const toDelete = pickDeactivatedToDelete({
@@ -35,6 +45,16 @@ export async function deleteDeactivatedFriends({ vk, config }) {
         await vk.api.friends.delete({ user_id: friend.id });
         logger.info('Deactivated friend deleted', { userId: friend.id });
       } catch (error) {
+        if (isUnknownMethodError(error)) {
+          unsupportedForProcess = true;
+          await reportUnknownMethod({
+            vk,
+            method: 'friends.delete',
+            error,
+            trigger: 'delete-deactivated-friends',
+          });
+          return;
+        }
         logger.warn('Failed to delete deactivated friend', {
           userId: friend.id,
           error,
