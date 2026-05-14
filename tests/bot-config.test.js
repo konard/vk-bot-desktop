@@ -68,4 +68,10 @@ describe('bot config defaults', () => {
       )
     );
   });
+
+  it('defaults verbose to true and lets the overlay opt out', () => {
+    assert.equal(mergeWithDefaults({}).verbose, true);
+    assert.equal(mergeWithDefaults({ verbose: false }).verbose, false);
+    assert.equal(mergeWithDefaults({ verbose: true }).verbose, true);
+  });
 });

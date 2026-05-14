@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
 import { startBot } from '../src/bot/runner.js';
+import { isVerbose, setVerbose } from '../src/bot/logger.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -45,6 +46,46 @@ describe('startBot scheduling', () => {
       );
     } finally {
       handle.stop();
+    }
+  });
+
+  it('applies config.verbose to the logger', async () => {
+    const initial = isVerbose();
+    try {
+      const fakeVk = { api: { account: { setOnline: async () => {} } } };
+      const handle1 = await startBot({
+        config: {
+          vk: { token: 'vk1.a.testtoken_ok' },
+          verbose: false,
+          features: { onlineStatus: false },
+        },
+        createVk: async () => fakeVk,
+      });
+      assert.equal(isVerbose(), false);
+      handle1.stop();
+
+      const handle2 = await startBot({
+        config: {
+          vk: { token: 'vk1.a.testtoken_ok' },
+          verbose: true,
+          features: { onlineStatus: false },
+        },
+        createVk: async () => fakeVk,
+      });
+      assert.equal(isVerbose(), true);
+      handle2.stop();
+
+      const handle3 = await startBot({
+        config: {
+          vk: { token: 'vk1.a.testtoken_ok' },
+          features: { onlineStatus: false },
+        },
+        createVk: async () => fakeVk,
+      });
+      assert.equal(isVerbose(), true);
+      handle3.stop();
+    } finally {
+      setVerbose(initial);
     }
   });
 

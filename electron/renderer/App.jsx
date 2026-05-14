@@ -64,6 +64,7 @@ const DEFAULT_FORM = {
   birthdayGreetings: DEFAULT_GREETINGS.join('\n'),
   ssh: { host: '', user: '', port: '22', keyPath: '' },
   isolation: 'screen',
+  verbose: true,
   features: Object.fromEntries(FEATURE_KEYS.map(([key]) => [key, true])),
 };
 
@@ -113,6 +114,7 @@ function configToForm(config) {
       keyPath: config.server?.keyPath || '',
     },
     isolation: config.server?.isolation === 'docker' ? 'docker' : 'screen',
+    verbose: typeof config.verbose === 'boolean' ? config.verbose : true,
     features,
   };
 }
@@ -136,6 +138,7 @@ function formToConfig(form) {
       keyPath: form.ssh.keyPath,
       isolation: form.isolation,
     },
+    verbose: form.verbose !== false,
     features: { ...form.features },
   };
 }
@@ -1214,6 +1217,15 @@ export default function App({ api }) {
         <div className="section-heading">
           <h2>{t('log')}</h2>
           <div className="inline-actions">
+            <label className="feature-row" htmlFor="verbose-toggle">
+              <input
+                id="verbose-toggle"
+                type="checkbox"
+                checked={form.verbose !== false}
+                onChange={(event) => onField(['verbose'], event.target.checked)}
+              />{' '}
+              {t('verbose')}
+            </label>
             <button
               type="button"
               className="secondary compact"
@@ -1232,6 +1244,9 @@ export default function App({ api }) {
             </button>
           </div>
         </div>
+        <p className="help" style={{ marginTop: 0 }}>
+          {t('verboseHelp')}
+        </p>
         {running ? (
           <p className="help" style={{ marginTop: 0 }}>
             {t('runningHint')}

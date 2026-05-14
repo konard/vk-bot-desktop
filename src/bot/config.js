@@ -26,6 +26,7 @@ export const DEFAULT_CONFIG = {
   vk: {
     token: '',
   },
+  verbose: true,
   features: {
     onlineStatus: true,
     acceptFriendRequests: true,

@@ -1,4 +1,4 @@
-import { describe, it, mock } from 'node:test';
+import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 
 import {
@@ -20,8 +20,7 @@ function makeVk({ overrides = {}, addImpl, getRequestsImpl } = {}) {
     api: {
       friends: {
         get: async () => ({ items: [] }),
-        getRequests:
-          getRequestsImpl ?? (async () => ({ items: [] })),
+        getRequests: getRequestsImpl ?? (async () => ({ items: [] })),
         getMutual: async () => [],
         add: addImpl ?? (async () => 1),
         ...overrides,

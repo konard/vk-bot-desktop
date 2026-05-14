@@ -4,7 +4,7 @@
  * run inside the Docker / screen session that server-mode installs.
  */
 
-import logger from './logger.js';
+import logger, { setVerbose } from './logger.js';
 import { mergeWithDefaults } from './config.js';
 import { createVkClient } from './vk-client.js';
 import { setOnlineStatus } from './triggers/set-online-status.js';
@@ -114,6 +114,7 @@ function scheduleEnabledTriggers({ vk, config }) {
 
 export async function startBot({ config: rawConfig, createVk }) {
   const config = mergeWithDefaults(rawConfig);
+  setVerbose(config.verbose !== false);
   if (!config.vk?.token) {
     throw new Error('VK access token is missing in configuration');
   }

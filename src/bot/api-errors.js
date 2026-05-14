@@ -37,7 +37,7 @@ export function resetAppPermissionsCache() {
   permissionsPromise = null;
 }
 
-export async function fetchAppPermissions(vk) {
+export function fetchAppPermissions(vk) {
   if (!vk?.api?.account?.getAppPermissions) {
     return null;
   }
@@ -72,8 +72,7 @@ export async function reportUnknownMethod({ vk, method, error, trigger }) {
       errorCode: Number(error?.code ?? error?.error_code) || null,
       errorMessage: error?.message || error?.error_msg || null,
       appPermissionsMask: permissions,
-      hint:
-        'VK has gated this method for the Kate Mobile OAuth app (see docs/case-studies/issue-49 §7). Re-runs will fail until the user switches OAuth flow.',
+      hint: 'VK has gated this method for the Kate Mobile OAuth app (see docs/case-studies/issue-49 §7). Re-runs will fail until the user switches OAuth flow.',
     }
   );
   return true;
