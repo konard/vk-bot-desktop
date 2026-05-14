@@ -1,7 +1,11 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 
-import { setOnlineStatus } from '../src/bot/triggers/set-online-status.js';
+import {
+  setOnlineStatus,
+  resetSetOnlineStatusSupport,
+} from '../src/bot/triggers/set-online-status.js';
+import { resetAppPermissionsCache } from '../src/bot/api-errors.js';
 import { addSink, removeSink } from '../src/bot/logger.js';
 
 // Use addSink/removeSink (not clearSinks) so concurrent tests under Deno's
@@ -22,6 +26,8 @@ function withCapturedLogs(fn) {
 
 describe('setOnlineStatus: healthy call', () => {
   it('logs success on a healthy call', async () => {
+    resetSetOnlineStatusSupport();
+    resetAppPermissionsCache();
     await withCapturedLogs(async (captured) => {
       const vk = { api: { account: { setOnline: async () => true } } };
       await setOnlineStatus({ vk });
@@ -31,36 +37,40 @@ describe('setOnlineStatus: healthy call', () => {
   });
 });
 
-describe('setOnlineStatus: VK error is logged verbatim', () => {
-  it('forwards the VK error into the log without adding speculation', async () => {
+describe('setOnlineStatus: Unknown method (code 3)', () => {
+  it('halts the trigger and logs the terminal diagnostic once', async () => {
+    resetSetOnlineStatusSupport();
+    resetAppPermissionsCache();
     await withCapturedLogs(async (captured) => {
       const err = new Error('Code №3 - Unknown method passed');
       err.code = 3;
+      let calls = 0;
       const vk = {
         api: {
           account: {
             setOnline: async () => {
+              calls += 1;
               throw err;
             },
+            getAppPermissions: async () => 1073737727,
           },
         },
       };
       await setOnlineStatus({ vk });
+      await setOnlineStatus({ vk });
+      assert.equal(calls, 1, 'second call should be short-circuited');
       assert.equal(captured.length, 1);
-      assert.match(captured[0], /Could not set online status/);
-      // The full VK error must be visible in the log.
-      assert.match(captured[0], /Unknown method passed/);
-      // Pretty-printed JSON brings the error message onto its own indented
-      // line, so the user/log reader can quickly find it.
-      assert.match(captured[0], /\n {4}"message":/);
-      // No speculative wording sneaks in.
-      assert.doesNotMatch(captured[0], /likely|maybe|probably|presumably/i);
+      assert.match(captured[0], /halting trigger/);
+      assert.match(captured[0], /set-online-status/);
+      assert.match(captured[0], /1073737727/);
     });
   });
 });
 
 describe('setOnlineStatus: other errors', () => {
   it('logs the generic warning for non-VK errors too', async () => {
+    resetSetOnlineStatusSupport();
+    resetAppPermissionsCache();
     await withCapturedLogs(async (captured) => {
       const vk = {
         api: {
