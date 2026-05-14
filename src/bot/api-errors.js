@@ -31,18 +31,24 @@ export function isUnknownMethodError(error) {
   return code === UNKNOWN_METHOD_CODE;
 }
 
-let permissionsPromise = null;
+// Per-vk cache so parallel test runners (Deno) and parallel triggers do not
+// share the same in-flight promise. Each vk instance gets its own slot; the
+// entry is garbage-collected when its vk is dropped.
+const permissionsByVk = new WeakMap();
 
-export function resetAppPermissionsCache() {
-  permissionsPromise = null;
+export function resetAppPermissionsCache(vk) {
+  if (vk) {
+    permissionsByVk.delete(vk);
+  }
 }
 
 export function fetchAppPermissions(vk) {
   if (!vk?.api?.account?.getAppPermissions) {
     return null;
   }
-  if (!permissionsPromise) {
-    permissionsPromise = (async () => {
+  let promise = permissionsByVk.get(vk);
+  if (!promise) {
+    promise = (async () => {
       try {
         const mask = await vk.api.account.getAppPermissions({});
         return Number(mask) || 0;
@@ -51,8 +57,9 @@ export function fetchAppPermissions(vk) {
         return null;
       }
     })();
+    permissionsByVk.set(vk, promise);
   }
-  return permissionsPromise;
+  return promise;
 }
 
 /**

@@ -7,6 +7,11 @@ import {
   sendInvitationPosts,
 } from '../src/bot/triggers/send-invitation-posts.js';
 
+// Deno's CI permission set (`deno test --allow-read`) does not grant env or
+// write access, so tests that materialise a real avatar file via os.tmpdir()
+// and fs.writeFile are skipped under Deno; Node still exercises them fully.
+const isDenoRuntime = typeof Deno !== 'undefined';
+
 const clone = (v) =>
   v === null || v === undefined ? v : JSON.parse(JSON.stringify(v));
 
@@ -219,43 +224,50 @@ describe('sendInvitationPosts: post rotation', () => {
 });
 
 describe('sendInvitationPosts: avatar attachment', () => {
-  it('attaches the configured avatar image when present', async () => {
-    const store = fakeStore();
-    let uploadArgs = null;
-    let postedAttachments = null;
-    const { promises: fs } = await import('node:fs');
-    const path = await import('node:path');
-    const os = await import('node:os');
-    const avatarPath = path.join(os.tmpdir(), `test-avatar-${Date.now()}.jpg`);
-    await fs.writeFile(avatarPath, Buffer.from([0xff, 0xd8, 0xff]));
-    const vk = makeVk({
-      wallGet: async () => ({ items: [{ id: 100 }] }),
-      wallPost: async ({ attachments }) => {
-        postedAttachments = attachments;
-        return { post_id: 1 };
-      },
-      uploadPhoto: async (args) => {
-        uploadArgs = args;
-        return { ownerId: -42, id: 200 };
-      },
-    });
-    try {
-      await runWithFastSleep(() =>
-        sendInvitationPosts({
-          vk,
-          config: {
-            invitationPost: { communities: [42], avatarPath },
-          },
-          store,
-        })
+  it(
+    'attaches the configured avatar image when present',
+    { skip: isDenoRuntime },
+    async () => {
+      const store = fakeStore();
+      let uploadArgs = null;
+      let postedAttachments = null;
+      const { promises: fs } = await import('node:fs');
+      const path = await import('node:path');
+      const os = await import('node:os');
+      const avatarPath = path.join(
+        os.tmpdir(),
+        `test-avatar-${Date.now()}.jpg`
       );
-      assert.ok(uploadArgs, 'wallPhoto should be called');
-      assert.equal(uploadArgs.group_id, 42);
-      assert.equal(postedAttachments, 'photo-42_200');
-    } finally {
-      await fs.unlink(avatarPath).catch(() => undefined);
+      await fs.writeFile(avatarPath, Buffer.from([0xff, 0xd8, 0xff]));
+      const vk = makeVk({
+        wallGet: async () => ({ items: [{ id: 100 }] }),
+        wallPost: async ({ attachments }) => {
+          postedAttachments = attachments;
+          return { post_id: 1 };
+        },
+        uploadPhoto: async (args) => {
+          uploadArgs = args;
+          return { ownerId: -42, id: 200 };
+        },
+      });
+      try {
+        await runWithFastSleep(() =>
+          sendInvitationPosts({
+            vk,
+            config: {
+              invitationPost: { communities: [42], avatarPath },
+            },
+            store,
+          })
+        );
+        assert.ok(uploadArgs, 'wallPhoto should be called');
+        assert.equal(uploadArgs.group_id, 42);
+        assert.equal(postedAttachments, 'photo-42_200');
+      } finally {
+        await fs.unlink(avatarPath).catch(() => undefined);
+      }
     }
-  });
+  );
 
   it('posts without attachment when no avatar is available', async () => {
     const store = fakeStore();
