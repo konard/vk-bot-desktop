@@ -41,4 +41,22 @@ describe('translate', () => {
   it('returns the key itself when nothing matches', () => {
     assert.equal(translate('en', '__never_defined__'), '__never_defined__');
   });
+
+  it('includes new clearLog/verbose/reset-save keys in both locales', () => {
+    for (const locale of ['en', 'ru']) {
+      assert.ok(translate(locale, 'clearLog').length > 0);
+      assert.ok(translate(locale, 'verbose').length > 0);
+      assert.ok(translate(locale, 'notifResetToDefault').length > 0);
+      assert.ok(translate(locale, 'notifListCleared').length > 0);
+      assert.ok(translate(locale, 'notifLogCleared').length > 0);
+    }
+  });
+});
+
+describe('TRANSLATIONS parity', () => {
+  it('every English key has a Russian translation', () => {
+    const enKeys = Object.keys(TRANSLATIONS.en);
+    const missing = enKeys.filter((key) => !(key in TRANSLATIONS.ru));
+    assert.deepEqual(missing, []);
+  });
 });

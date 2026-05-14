@@ -729,8 +729,8 @@ export default function App({ api }) {
   }, [api, onTokenChange, showToast, t]);
 
   const onResetToken = useCallback(async () => {
-    onField(['vkToken'], '');
     setTokenValidation(null);
+    applyAndSave((prev) => ({ ...prev, vkToken: '' }), 'notifTokenCleared');
     if (running && api?.stopLocal) {
       try {
         await api.stopLocal();
@@ -739,7 +739,7 @@ export default function App({ api }) {
         // ignore
       }
     }
-  }, [api, onField, running, showToast, t]);
+  }, [api, applyAndSave, running, showToast, t]);
 
   const onOpenTokenUrl = useCallback(
     async (url) => {
@@ -817,6 +817,11 @@ export default function App({ api }) {
     }
   }, [api, logText, showToast, t]);
 
+  const onClearLog = useCallback(() => {
+    setLogLines([]);
+    showToast(t('notifLogCleared'), 'info');
+  }, [showToast, t]);
+
   const onGenerateScript = useCallback(async () => {
     if (!api?.buildServerScript) {
       return;
@@ -845,37 +850,89 @@ export default function App({ api }) {
     }
   }, [api, form.vkToken, showToast, t]);
 
+  // Reset/clear writes the new form to disk immediately and notifies the
+  // user. Without this, the debounced auto-save would silently no-op when
+  // the new form happens to round-trip to the same value as the snapshot
+  // (e.g. defaults that were never persisted), leaving the user thinking
+  // the button did nothing.
+  const flushSave = useCallback(
+    async (nextForm, successToastKey) => {
+      if (!api?.saveConfig) {
+        return;
+      }
+      const serialized = JSON.stringify(formToConfig(nextForm));
+      try {
+        await api.saveConfig(JSON.parse(serialized));
+        savedConfigRef.current = serialized;
+        showToast(t(successToastKey), 'success');
+      } catch {
+        showToast(t('notifConfigSaveFailed'), 'warn');
+      }
+    },
+    [api, showToast, t]
+  );
+
+  const applyAndSave = useCallback(
+    (mutate, toastKey) => {
+      const next = mutate(formRef.current);
+      setForm(next);
+      flushSave(next, toastKey);
+    },
+    [flushSave]
+  );
+
   const onClearPriority = useCallback(() => {
-    setForm((prev) => ({ ...prev, priorityFriendIds: '' }));
-  }, []);
+    applyAndSave(
+      (prev) => ({ ...prev, priorityFriendIds: '' }),
+      'notifListCleared'
+    );
+  }, [applyAndSave]);
 
   const onResetInvitationMessages = useCallback(() => {
-    setForm((prev) => ({
-      ...prev,
-      invitationMessages: DEFAULT_INVITATIONS.join('\n'),
-    }));
-  }, []);
+    applyAndSave(
+      (prev) => ({
+        ...prev,
+        invitationMessages: DEFAULT_INVITATIONS.join('\n'),
+      }),
+      'notifResetToDefault'
+    );
+  }, [applyAndSave]);
   const onClearInvitationMessages = useCallback(() => {
-    setForm((prev) => ({ ...prev, invitationMessages: '' }));
-  }, []);
+    applyAndSave(
+      (prev) => ({ ...prev, invitationMessages: '' }),
+      'notifListCleared'
+    );
+  }, [applyAndSave]);
   const onResetInvitationCommunities = useCallback(() => {
-    setForm((prev) => ({
-      ...prev,
-      invitationCommunities: DEFAULT_INVITATION_COMMUNITIES.join('\n'),
-    }));
-  }, []);
+    applyAndSave(
+      (prev) => ({
+        ...prev,
+        invitationCommunities: DEFAULT_INVITATION_COMMUNITIES.join('\n'),
+      }),
+      'notifResetToDefault'
+    );
+  }, [applyAndSave]);
   const onClearInvitationCommunities = useCallback(() => {
-    setForm((prev) => ({ ...prev, invitationCommunities: '' }));
-  }, []);
+    applyAndSave(
+      (prev) => ({ ...prev, invitationCommunities: '' }),
+      'notifListCleared'
+    );
+  }, [applyAndSave]);
   const onResetBirthdayGreetings = useCallback(() => {
-    setForm((prev) => ({
-      ...prev,
-      birthdayGreetings: DEFAULT_GREETINGS.join('\n'),
-    }));
-  }, []);
+    applyAndSave(
+      (prev) => ({
+        ...prev,
+        birthdayGreetings: DEFAULT_GREETINGS.join('\n'),
+      }),
+      'notifResetToDefault'
+    );
+  }, [applyAndSave]);
   const onClearBirthdayGreetings = useCallback(() => {
-    setForm((prev) => ({ ...prev, birthdayGreetings: '' }));
-  }, []);
+    applyAndSave(
+      (prev) => ({ ...prev, birthdayGreetings: '' }),
+      'notifListCleared'
+    );
+  }, [applyAndSave]);
 
   // Prefill priority IDs from outgoing requests the first time the
   // token is validated as good.
@@ -1156,14 +1213,24 @@ export default function App({ api }) {
       <div className="section">
         <div className="section-heading">
           <h2>{t('log')}</h2>
-          <button
-            type="button"
-            className="secondary compact"
-            onClick={onCopyLog}
-            disabled={!logText}
-          >
-            {t('copyLog')}
-          </button>
+          <div className="inline-actions">
+            <button
+              type="button"
+              className="secondary compact"
+              onClick={onCopyLog}
+              disabled={!logText}
+            >
+              {t('copyLog')}
+            </button>
+            <button
+              type="button"
+              className="secondary compact"
+              onClick={onClearLog}
+              disabled={!logText}
+            >
+              {t('clearLog')}
+            </button>
+          </div>
         </div>
         {running ? (
           <p className="help" style={{ marginTop: 0 }}>
