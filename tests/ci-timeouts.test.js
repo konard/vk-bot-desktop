@@ -59,6 +59,7 @@ describe('CI timeout policy', () => {
       'instant-release': 90,
       'changeset-pr': 10,
       'link-checker': 10,
+      'preview-regen': 20,
       'pages-build': 10,
       'pages-deploy': 10,
       'desktop-release-context': 5,
