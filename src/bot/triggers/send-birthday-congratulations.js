@@ -6,6 +6,8 @@ import {
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+const TWENTY_FOUR_HOURS_SECONDS = 24 * 60 * 60;
+
 export function findBirthdayFriends({ friends, today = new Date() } = {}) {
   if (!Array.isArray(friends)) {
     return [];
@@ -30,6 +32,47 @@ export function findBirthdayFriends({ friends, today = new Date() } = {}) {
   return matches;
 }
 
+/**
+ * True if the conversation with `userId` has activity in the last
+ * `withinSeconds` seconds. Used to avoid sending the canned birthday greeting
+ * when the user has already exchanged messages with the friend today.
+ *
+ * Always returns `false` if the lookup fails so we never *block* a greeting on
+ * a transient API error.
+ */
+export async function recentlyMessaged({
+  vk,
+  userId,
+  withinSeconds = TWENTY_FOUR_HOURS_SECONDS,
+  now = Date.now(),
+} = {}) {
+  if (!vk?.api?.messages?.getHistory) {
+    return false;
+  }
+  try {
+    const history = await vk.api.messages.getHistory({
+      user_id: userId,
+      count: 1,
+    });
+    const items = history?.items || [];
+    if (items.length === 0) {
+      return false;
+    }
+    const lastDate = Number(items[0]?.date) || 0;
+    if (lastDate <= 0) {
+      return false;
+    }
+    const cutoff = Math.floor(now / 1000) - withinSeconds;
+    return lastDate >= cutoff;
+  } catch (error) {
+    logger.warn(
+      'Could not read message history for birthday dedup; greeting anyway',
+      { userId, error }
+    );
+    return false;
+  }
+}
+
 export async function sendBirthdayCongratulations({ vk, config }) {
   if (config.features?.sendBirthdayCongratulations === false) {
     return;
@@ -41,6 +84,13 @@ export async function sendBirthdayCongratulations({ vk, config }) {
     : BIRTHDAY_GREETINGS;
   logger.info('Birthday targets identified', { count: targets.length });
   for (const friend of targets) {
+    if (await recentlyMessaged({ vk, userId: friend.id })) {
+      logger.info(
+        'Skipping birthday greeting: recent conversation in last 24 hours',
+        { userId: friend.id }
+      );
+      continue;
+    }
     try {
       const message = pickBirthdayGreeting(Math.random, greetings);
       await vk.api.messages.send({
