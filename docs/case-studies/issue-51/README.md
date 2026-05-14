@@ -236,21 +236,23 @@ log output to root-cause it without needing a re-run.
 
 ---
 
-## 8. Upstream issues to file
+## 8. Upstream issues filed
 
-Per requirement **R8**, after this PR lands we will open:
+Per requirement **R8**, the following upstream issues were filed when this
+PR was opened:
 
-- `link-foundation/js-ai-driven-development-pipeline-template` — _"Add a
-  release-time hook that regenerates `example-app` screenshots with
-  `browser-commander`"_. Reproducible recipe will reference
-  `scripts/update-preview-images.mjs` from this repo.
-- `link-foundation/csharp-ai-driven-development-pipeline-template` — same
-  recommendation, lower priority (docs are DocFX-generated so the gap is
-  smaller but the pattern still applies for any example-app screenshots).
-- `link-foundation/rust-ai-driven-development-pipeline-template` and
-  `link-foundation/python-ai-driven-development-pipeline-template` —
-  tracking issues only, linking back to the JS template, since neither
-  has an example-app surface today.
+- [link-foundation/js-ai-driven-development-pipeline-template#62](https://github.com/link-foundation/js-ai-driven-development-pipeline-template/issues/62)
+  — _"Add release-time hook that regenerates example-app screenshots with
+  browser-commander"_ (primary host for the pattern). Reproducible recipe
+  references `scripts/update-preview-images.mjs` from this repo.
+- [link-foundation/csharp-ai-driven-development-pipeline-template#17](https://github.com/link-foundation/csharp-ai-driven-development-pipeline-template/issues/17)
+  — tracking issue, lower priority (DocFX-generated docs reduce the gap
+  but the pattern still applies when an example-app surface is added).
+- [link-foundation/rust-ai-driven-development-pipeline-template#52](https://github.com/link-foundation/rust-ai-driven-development-pipeline-template/issues/52)
+  — tracking issue only, no example-app surface today.
+- [link-foundation/python-ai-driven-development-pipeline-template#9](https://github.com/link-foundation/python-ai-driven-development-pipeline-template/issues/9)
+  — tracking issue only; the Python port would use `playwright-python`
+  directly since `browser-commander` is JS-only.
 
 ---
 
