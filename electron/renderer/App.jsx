@@ -721,6 +721,38 @@ export default function App({ api }) {
     [onField]
   );
 
+  // Reset/clear writes the new form to disk immediately and notifies the
+  // user. Without this, the debounced auto-save would silently no-op when
+  // the new form happens to round-trip to the same value as the snapshot
+  // (e.g. defaults that were never persisted), leaving the user thinking
+  // the button did nothing. Declared before onResetToken so the reset
+  // callbacks below can reference it without a temporal dead zone.
+  const flushSave = useCallback(
+    async (nextForm, successToastKey) => {
+      if (!api?.saveConfig) {
+        return;
+      }
+      const serialized = JSON.stringify(formToConfig(nextForm));
+      try {
+        await api.saveConfig(JSON.parse(serialized));
+        savedConfigRef.current = serialized;
+        showToast(t(successToastKey), 'success');
+      } catch {
+        showToast(t('notifConfigSaveFailed'), 'warn');
+      }
+    },
+    [api, showToast, t]
+  );
+
+  const applyAndSave = useCallback(
+    (mutate, toastKey) => {
+      const next = mutate(formRef.current);
+      setForm(next);
+      flushSave(next, toastKey);
+    },
+    [flushSave]
+  );
+
   useEffect(() => {
     if (!api?.onToken) {
       return undefined;
@@ -852,37 +884,6 @@ export default function App({ api }) {
       showToast(t('notifPriorityEmpty'), 'info');
     }
   }, [api, form.vkToken, showToast, t]);
-
-  // Reset/clear writes the new form to disk immediately and notifies the
-  // user. Without this, the debounced auto-save would silently no-op when
-  // the new form happens to round-trip to the same value as the snapshot
-  // (e.g. defaults that were never persisted), leaving the user thinking
-  // the button did nothing.
-  const flushSave = useCallback(
-    async (nextForm, successToastKey) => {
-      if (!api?.saveConfig) {
-        return;
-      }
-      const serialized = JSON.stringify(formToConfig(nextForm));
-      try {
-        await api.saveConfig(JSON.parse(serialized));
-        savedConfigRef.current = serialized;
-        showToast(t(successToastKey), 'success');
-      } catch {
-        showToast(t('notifConfigSaveFailed'), 'warn');
-      }
-    },
-    [api, showToast, t]
-  );
-
-  const applyAndSave = useCallback(
-    (mutate, toastKey) => {
-      const next = mutate(formRef.current);
-      setForm(next);
-      flushSave(next, toastKey);
-    },
-    [flushSave]
-  );
 
   const onClearPriority = useCallback(() => {
     applyAndSave(
