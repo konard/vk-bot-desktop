@@ -1,5 +1,51 @@
 # Changelog
 
+## 0.12.0
+
+### Minor Changes
+
+- Issue #51 — Auto-regenerate preview images on release:
+  - New `scripts/update-preview-images.mjs` drives `browser-commander` +
+    Playwright to recapture the four locale × theme preview tiles
+    (`site/assets/app-preview-{en,ru}-{light,dark}.png`), the share-image
+    fallback (`site/assets/app-preview.png`), and the README landing image
+    (`docs/screenshots/issue-26-pages-en-dark.png`). Exposed as
+    `npm run preview:update`. Honours `PREVIEW_VERBOSE=1` for diagnostic
+    logging on CI.
+  - New `preview-regen` job in `.github/workflows/js.yml` runs on push to
+    `main`, on release tag pushes (`refs/tags/v*`), and on
+    `workflow_dispatch` with `release_mode=checks`. It regenerates the
+    images and, on drift, commits them back to `main` with `[skip ci]`.
+  - Hoists `flushSave` + `applyAndSave` declarations in
+    `electron/renderer/App.jsx` so the `onResetToken` / `onClearPriority` /
+    `onResetInvitationMessages` (and siblings) `useCallback` deps no longer
+    trigger a temporal-dead-zone error at render time.
+  - Adds case study at `docs/case-studies/issue-51/` documenting the
+    inventory, root-cause analysis, link-foundation template parity survey,
+    and acceptance criteria.
+
+  Issue #53 — Harden the release pipeline so a broken release cannot publish
+  silently:
+  - `scripts/version-and-commit.mjs` now checks the exit code of every
+    awaited `command-stream` invocation (`assertOk`), stashes and pops local
+    tracked changes around `git rebase origin/main`, retries `git push` on
+    non-fast-forward with `git pull --rebase` (up to 3 attempts), verifies
+    `git rev-parse HEAD == git rev-parse origin/main` after the push, and
+    emits a `committed_sha` GitHub Actions output from all terminal paths.
+  - `.github/workflows/js.yml` consumes `steps.version.outputs.committed_sha`
+    for both `release.release_target` and `instant-release.release_target`,
+    falling back to `origin/main` only on the `skip_bump` path. The
+    `preview-regen` job is now ordered `needs: [release, instant-release]`
+    with a `!cancelled()` gate so the two jobs can never race to push to
+    `main` in the same workflow run.
+  - `tests/version-and-commit-guards.test.js` adds a regression net for
+    every invariant above (script-side and workflow-side).
+  - `docs/case-studies/issue-53/` collects the full timeline, root causes,
+    fix plan, CI logs, vendored snapshots of the four link-foundation
+    AI-pipeline templates with a per-bug comparison matrix, and drafted
+    upstream issues for the `js` and `python` templates affected by the
+    same silent-failure bug.
+
 ## 0.11.0
 
 ### Minor Changes
