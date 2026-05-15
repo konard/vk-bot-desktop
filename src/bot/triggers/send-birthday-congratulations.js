@@ -4,8 +4,6 @@ import {
   pickBirthdayGreeting,
 } from '../messages/birthday-greetings.js';
 
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
 const TWENTY_FOUR_HOURS_SECONDS = 24 * 60 * 60;
 
 export function findBirthdayFriends({ friends, today = new Date() } = {}) {
@@ -102,7 +100,6 @@ export async function sendBirthdayCongratulations({ vk, config }) {
         userId: friend.id,
         message,
       });
-      await sleep(5000);
     } catch (error) {
       logger.warn('Could not send birthday message', {
         userId: friend.id,

@@ -14,6 +14,7 @@
  * wrapper is a no-op.
  */
 import logger, { isVerbose } from './logger.js';
+import { getGlobalThrottle } from './vk-rate-limit.js';
 
 const PATCHED = Symbol.for('vk-bot-desktop.vkClient.patched');
 
@@ -65,10 +66,14 @@ function installRawHttpHook(APIRequest, hookOptions = {}) {
   APIRequest.prototype[PATCHED] = true;
   const verbosePredicate = hookOptions.isVerbose ?? isVerbose;
   const log = hookOptions.logger ?? logger;
+  const throttleFn =
+    hookOptions.throttle ??
+    ((method, fn) => getGlobalThrottle().throttle(method, fn));
   const originalMake = APIRequest.prototype.make;
   APIRequest.prototype.make = async function patchedMake(...args) {
+    const invokeMake = () => originalMake.apply(this, args);
     if (!verbosePredicate()) {
-      return originalMake.apply(this, args);
+      return throttleFn(this.method, invokeMake);
     }
     const { options } = this.api;
     const url = `${options.apiBaseUrl}/${this.method}`;
@@ -87,7 +92,7 @@ function installRawHttpHook(APIRequest, hookOptions = {}) {
       }),
     });
     try {
-      const result = await originalMake.apply(this, args);
+      const result = await throttleFn(this.method, invokeMake);
       log.debug('VK API response', {
         method: this.method,
         retry: this.retries,

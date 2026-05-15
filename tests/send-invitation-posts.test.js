@@ -5,12 +5,8 @@ import {
   readCachedPostIds,
   buildUpdatedCache,
   sendInvitationPosts,
+  getActiveAvatarAttachment,
 } from '../src/bot/triggers/send-invitation-posts.js';
-
-// Deno's CI permission set (`deno test --allow-read`) does not grant env or
-// write access, so tests that materialise a real avatar file via os.tmpdir()
-// and fs.writeFile are skipped under Deno; Node still exercises them fully.
-const isDenoRuntime = typeof Deno !== 'undefined';
 
 const clone = (v) =>
   v === null || v === undefined ? v : JSON.parse(JSON.stringify(v));
@@ -91,7 +87,13 @@ describe('buildUpdatedCache', () => {
   });
 });
 
-function makeVk({ wallGet, wallPost, wallDelete, usersGet, uploadPhoto } = {}) {
+function makeVk({
+  wallGet,
+  wallPost,
+  wallDelete,
+  usersGet,
+  photosGetById,
+} = {}) {
   return {
     api: {
       wall: {
@@ -100,11 +102,11 @@ function makeVk({ wallGet, wallPost, wallDelete, usersGet, uploadPhoto } = {}) {
         delete: wallDelete ?? (async () => 1),
       },
       users: {
-        get: usersGet ?? (async () => [{ photo_max_orig: null }]),
+        get: usersGet ?? (async () => [{ photo_id: null }]),
       },
-    },
-    upload: {
-      wallPhoto: uploadPhoto ?? (async () => ({ ownerId: -42, id: 100 })),
+      photos: {
+        getById: photosGetById ?? (async () => []),
+      },
     },
   };
 }
@@ -223,67 +225,111 @@ describe('sendInvitationPosts: post rotation', () => {
   });
 });
 
-describe('sendInvitationPosts: avatar attachment', () => {
-  it(
-    'attaches the configured avatar image when present',
-    { skip: isDenoRuntime },
-    async () => {
-      const store = fakeStore();
-      let uploadArgs = null;
-      let postedAttachments = null;
-      const { promises: fs } = await import('node:fs');
-      const path = await import('node:path');
-      const os = await import('node:os');
-      const avatarPath = path.join(
-        os.tmpdir(),
-        `test-avatar-${Date.now()}.jpg`
-      );
-      await fs.writeFile(avatarPath, Buffer.from([0xff, 0xd8, 0xff]));
-      const vk = makeVk({
-        wallGet: async () => ({ items: [{ id: 100 }] }),
-        wallPost: async ({ attachments }) => {
-          postedAttachments = attachments;
-          return { post_id: 1 };
+describe('getActiveAvatarAttachment', () => {
+  it('returns photo<owner>_<id>_<access_key> when both ids are present', async () => {
+    const vk = {
+      api: {
+        users: {
+          get: async () => [{ photo_id: '3972090_457245285' }],
         },
-        uploadPhoto: async (args) => {
-          uploadArgs = args;
-          return { ownerId: -42, id: 200 };
+        photos: {
+          getById: async () => [
+            { id: 457245285, owner_id: 3972090, access_key: 'abc123' },
+          ],
         },
-      });
-      try {
-        await runWithFastSleep(() =>
-          sendInvitationPosts({
-            vk,
-            config: {
-              invitationPost: { communities: [42], avatarPath },
-            },
-            store,
-          })
-        );
-        assert.ok(uploadArgs, 'wallPhoto should be called');
-        assert.equal(uploadArgs.group_id, 42);
-        assert.equal(postedAttachments, 'photo-42_200');
-      } finally {
-        await fs.unlink(avatarPath).catch(() => undefined);
-      }
-    }
-  );
+      },
+    };
+    const attachment = await getActiveAvatarAttachment({ vk });
+    assert.equal(attachment, 'photo3972090_457245285_abc123');
+  });
 
-  it('posts without attachment when no avatar is available', async () => {
+  it('falls back to bare photo<owner>_<id> when access_key lookup fails', async () => {
+    const vk = {
+      api: {
+        users: {
+          get: async () => [{ photo_id: '111_222' }],
+        },
+        photos: {
+          getById: async () => {
+            throw Object.assign(new Error('boom'), { code: 30 });
+          },
+        },
+      },
+    };
+    const attachment = await getActiveAvatarAttachment({ vk });
+    assert.equal(attachment, 'photo111_222');
+  });
+
+  it('falls back to bare photo<owner>_<id> when access_key field is missing', async () => {
+    const vk = {
+      api: {
+        users: {
+          get: async () => [{ photo_id: '1_2' }],
+        },
+        photos: {
+          getById: async () => [{ id: 2, owner_id: 1 }],
+        },
+      },
+    };
+    assert.equal(await getActiveAvatarAttachment({ vk }), 'photo1_2');
+  });
+
+  it('returns null when the active profile has no photo_id', async () => {
+    const vk = {
+      api: {
+        users: { get: async () => [{ photo_id: null }] },
+        photos: { getById: async () => [] },
+      },
+    };
+    assert.equal(await getActiveAvatarAttachment({ vk }), null);
+  });
+
+  it('returns null when users.get throws', async () => {
+    const vk = {
+      api: {
+        users: {
+          get: async () => {
+            throw new Error('network');
+          },
+        },
+        photos: { getById: async () => [] },
+      },
+    };
+    assert.equal(await getActiveAvatarAttachment({ vk }), null);
+  });
+
+  it('queries the current user via user_ids=0 and requests the photo_id field', async () => {
+    const calls = [];
+    const vk = {
+      api: {
+        users: {
+          get: async (params) => {
+            calls.push(params);
+            return [{ photo_id: '5_6' }];
+          },
+        },
+        photos: { getById: async () => [{ access_key: 'k' }] },
+      },
+    };
+    await getActiveAvatarAttachment({ vk });
+    assert.equal(calls.length, 1);
+    assert.equal(calls[0].user_ids, 0);
+    assert.match(String(calls[0].fields), /photo_id/);
+  });
+});
+
+describe('sendInvitationPosts: avatar attachment', () => {
+  it('attaches the avatar derived from photo_id + access_key', async () => {
     const store = fakeStore();
     let postedAttachments = null;
-    let uploadCalled = false;
     const vk = makeVk({
       wallGet: async () => ({ items: [{ id: 100 }] }),
       wallPost: async ({ attachments }) => {
         postedAttachments = attachments;
         return { post_id: 1 };
       },
-      usersGet: async () => [{ photo_max_orig: null }],
-      uploadPhoto: async () => {
-        uploadCalled = true;
-        return { ownerId: -42, id: 200 };
-      },
+      usersGet: async () => [{ photo_id: '3972090_457245285' }],
+      photosGetById: async () => [{ access_key: 'deadbeef' }],
     });
     await runWithFastSleep(() =>
       sendInvitationPosts({
@@ -292,7 +338,27 @@ describe('sendInvitationPosts: avatar attachment', () => {
         store,
       })
     );
-    assert.equal(uploadCalled, false);
+    assert.equal(postedAttachments, 'photo3972090_457245285_deadbeef');
+  });
+
+  it('posts without attachment when no avatar photo_id is available', async () => {
+    const store = fakeStore();
+    let postedAttachments = null;
+    const vk = makeVk({
+      wallGet: async () => ({ items: [{ id: 100 }] }),
+      wallPost: async ({ attachments }) => {
+        postedAttachments = attachments;
+        return { post_id: 1 };
+      },
+      usersGet: async () => [{ photo_id: null }],
+    });
+    await runWithFastSleep(() =>
+      sendInvitationPosts({
+        vk,
+        config: { invitationPost: { communities: [42] } },
+        store,
+      })
+    );
     assert.equal(postedAttachments, '');
   });
 });
