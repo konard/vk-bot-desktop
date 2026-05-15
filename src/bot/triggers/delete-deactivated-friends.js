@@ -2,8 +2,6 @@ import logger from '../logger.js';
 import { pickDeactivatedToDelete } from '../friend-prioritization.js';
 import { isUnknownMethodError, reportUnknownMethod } from '../api-errors.js';
 
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
 let unsupportedForProcess = false;
 
 export function resetDeleteDeactivatedSupport() {
@@ -60,7 +58,6 @@ export async function deleteDeactivatedFriends({ vk, config }) {
           error,
         });
       }
-      await sleep(5000);
     }
   } catch (error) {
     logger.error('Could not delete deactivated friends', { error });

@@ -1,7 +1,3 @@
-import { promises as fs } from 'node:fs';
-import path from 'node:path';
-import os from 'node:os';
-
 import logger from '../logger.js';
 import {
   INVITATION_MESSAGES,
@@ -13,8 +9,6 @@ const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const POST_CACHE_NAME = 'invitation-posts';
 
-const TEN_SECONDS_MS = 10 * 1000;
-const FIVE_SECONDS_MS = 5 * 1000;
 const ONE_MINUTE_MS = 60 * 1000;
 
 function resolveMessages(config) {
@@ -77,84 +71,52 @@ async function writePostCache(store, value) {
   }
 }
 
-async function getActiveAvatarUrl({ vk }) {
+// Builds the attachment string for the user's own avatar without re-uploading
+// the image. Likes therefore accumulate on the original photo across reposts.
+// Format: `photo<owner_id>_<photo_id>[_<access_key>]` — the access_key keeps
+// the attachment resolvable when posting to communities where viewers may not
+// otherwise have access to the source photo.
+export async function getActiveAvatarAttachment({ vk }) {
+  let photoId;
   try {
     const profiles = await vk.api.users.get({
       user_ids: 0,
-      fields: 'photo_max_orig',
+      fields: 'photo_id',
     });
     const profile = Array.isArray(profiles) ? profiles[0] : null;
-    return profile?.photo_max_orig || null;
+    photoId = profile?.photo_id;
   } catch (error) {
-    logger.warn('Could not fetch active avatar URL', { error });
+    logger.warn('Could not fetch active avatar photo_id', { error });
     return null;
   }
-}
-
-async function downloadToTempFile(url) {
-  if (typeof fetch !== 'function') {
+  if (
+    typeof photoId !== 'string' ||
+    photoId.length === 0 ||
+    !photoId.includes('_')
+  ) {
+    logger.info(
+      'Active avatar photo_id missing or malformed; posting without attachment',
+      { photoId }
+    );
     return null;
   }
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`avatar download failed (HTTP ${response.status})`);
-  }
-  const buffer = Buffer.from(await response.arrayBuffer());
-  const filename = `vk-bot-desktop-avatar-${Date.now()}.jpeg`;
-  const tempPath = path.join(os.tmpdir(), filename);
-  await fs.writeFile(tempPath, buffer);
-  return tempPath;
-}
-
-async function uploadCommunityAvatar({ vk, config, communityId }) {
-  const configuredPath = config.invitationPost?.avatarPath;
-  let pathToUpload = null;
-  let cleanupPath = null;
+  let accessKey = null;
   try {
-    if (configuredPath) {
-      const { existsSync } = await import('node:fs');
-      if (!existsSync(configuredPath)) {
-        logger.warn(
-          'Configured avatar image not found; falling back to active avatar',
-          { path: configuredPath }
-        );
-      } else {
-        pathToUpload = configuredPath;
-      }
-    }
-    if (!pathToUpload) {
-      const url = await getActiveAvatarUrl({ vk });
-      if (!url) {
-        return null;
-      }
-      try {
-        pathToUpload = await downloadToTempFile(url);
-        cleanupPath = pathToUpload;
-      } catch (error) {
-        logger.warn(
-          'Could not download active avatar; posting without attachment',
-          { error }
-        );
-        return null;
-      }
-    }
-    const { createReadStream } = await import('node:fs');
-    const photo = await vk.upload.wallPhoto({
-      source: {
-        value: createReadStream(pathToUpload),
-        filename: 'avatar.jpeg',
-      },
-      group_id: communityId,
+    const photos = await vk.api.photos.getById({
+      photos: photoId,
+      extended: 0,
     });
-    return `photo${photo.ownerId}_${photo.id}`;
-  } catch (error) {
-    logger.warn('Could not upload community avatar', { communityId, error });
-    return null;
-  } finally {
-    if (cleanupPath) {
-      fs.unlink(cleanupPath).catch(() => undefined);
+    const photo = Array.isArray(photos) ? photos[0] : null;
+    if (photo?.access_key && typeof photo.access_key === 'string') {
+      accessKey = photo.access_key;
     }
+  } catch (error) {
+    logger.warn('Could not fetch avatar access_key; attaching bare photo id', {
+      photoId,
+      error,
+    });
   }
+  return accessKey ? `photo${photoId}_${accessKey}` : `photo${photoId}`;
 }
 
 async function fetchTopWallPostIds({ vk, ownerId }) {
@@ -176,7 +138,6 @@ async function deleteRecordedPosts({ vk, ownerId, postIds }) {
     try {
       await vk.api.wall.delete({ owner_id: ownerId, post_id: postId });
       logger.info('Old invitation post deleted', { ownerId, postId });
-      await sleep(FIVE_SECONDS_MS);
     } catch (error) {
       if (error?.code === 104 || error?.code === 100) {
         logger.warn('Old invitation post already gone; dropping from cache', {
@@ -217,18 +178,10 @@ function handlePostError(error, communityId) {
   return {};
 }
 
-async function rotateCommunity({
-  vk,
-  config,
-  store,
-  communityId,
-  messages,
-  cache,
-}) {
+async function rotateCommunity({ vk, store, communityId, messages, cache }) {
   const ownerId = `-${communityId}`;
   const cachedIds = readCachedPostIds(cache, communityId);
   const topPostIds = await fetchTopWallPostIds({ vk, ownerId });
-  await sleep(TEN_SECONDS_MS);
 
   if (recordedPostStillVisible({ cachedIds, topPostIds })) {
     logger.info('Invitation post still in top 10; skipping community', {
@@ -239,11 +192,7 @@ async function rotateCommunity({
   }
 
   const attachments = [];
-  const avatarAttachment = await uploadCommunityAvatar({
-    vk,
-    config,
-    communityId,
-  });
+  const avatarAttachment = await getActiveAvatarAttachment({ vk });
   if (avatarAttachment) {
     attachments.push(avatarAttachment);
   }
@@ -255,7 +204,6 @@ async function rotateCommunity({
     attachments: attachments.join(','),
   });
   logger.info('Invitation post sent', { communityId, postId: sent?.post_id });
-  await sleep(FIVE_SECONDS_MS);
 
   const newPostId = sent?.post_id;
   let nextIds = newPostId ? [newPostId] : [];
@@ -286,7 +234,6 @@ export async function sendInvitationPosts({ vk, config, store }) {
     try {
       const { cache: nextCache } = await rotateCommunity({
         vk,
-        config,
         store: resolvedStore,
         communityId,
         messages,

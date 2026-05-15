@@ -2,8 +2,6 @@ import logger from '../logger.js';
 import { asList } from '../list-values.js';
 import { isUnknownMethodError, reportUnknownMethod } from '../api-errors.js';
 
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
 let unsupportedForProcess = false;
 
 export function resetDeleteOutgoingSupport() {
@@ -84,7 +82,6 @@ export async function deleteOutgoingFriendRequests({ vk, config, context }) {
           error,
         });
       }
-      await sleep(3000);
     }
   } catch (error) {
     logger.error('Could not delete outgoing friend requests', { error });

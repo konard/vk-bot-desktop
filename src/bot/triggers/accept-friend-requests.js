@@ -7,7 +7,6 @@ import { StatsStore, statsRootFor } from '../stats.js';
 import { LinoStore } from '../../lino-store.js';
 import { isUnknownMethodError, reportUnknownMethod } from '../api-errors.js';
 
-const ONE_SECOND_MS = 1000;
 const ONE_MINUTE_MS = 60 * 1000;
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -100,7 +99,6 @@ async function sendPriorityRequests({ vk, priorityToSend, alreadyOutgoing }) {
       await vk.api.friends.add({ user_id: userId, text: '' });
       alreadyOutgoing.add(userId);
       logger.info('Friend request sent to priority friend', { userId });
-      await sleep(10 * ONE_SECOND_MS);
     } catch (error) {
       if (isUnknownMethodError(error)) {
         unsupportedForProcess = true;
@@ -153,7 +151,6 @@ async function acceptIncomingRequests({
         userId: request.userId,
         mutualCount: request.mutualCount,
       });
-      await sleep(10 * ONE_SECOND_MS);
     } catch (error) {
       if (isUnknownMethodError(error)) {
         unsupportedForProcess = true;

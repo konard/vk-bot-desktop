@@ -29,7 +29,8 @@ class FakeVK {
 
 // Build a fresh fake vk-io module (with its own APIRequest class) plus a
 // fresh log capture for each test. The per-call hook overrides ensure that
-// concurrent test runners (Deno) do not share verbose flags or log sinks.
+// concurrent test runners (Deno) do not share verbose flags or log sinks,
+// and the bypass throttle keeps test latency at zero.
 function makeFixture({ verbose = true } = {}) {
   class APIRequest extends FakeAPIRequest {}
   const captured = [];
@@ -44,6 +45,7 @@ function makeFixture({ verbose = true } = {}) {
     hook: {
       isVerbose: () => verbose,
       logger: fakeLogger,
+      throttle: (_method, fn) => fn(),
     },
     captured,
   };
