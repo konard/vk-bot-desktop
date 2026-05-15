@@ -116,6 +116,10 @@ export default [
       'docs/case-studies/*/data/**',
       'docs/case-studies/*/github-data/**',
       'docs/case-studies/*/template-data/**',
+      // Upstream template snapshots — vendored verbatim from
+      // link-foundation templates for comparison purposes and not
+      // subject to this repo's lint rules.
+      'docs/case-studies/*/templates/**',
     ],
   },
 ];

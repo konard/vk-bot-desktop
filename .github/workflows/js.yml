@@ -475,9 +475,25 @@ jobs:
           steps.version.outputs.version_committed == 'true' ||
           steps.version.outputs.already_released == 'true' ||
           (steps.check_release.outputs.should_release == 'true' && steps.check_release.outputs.skip_bump == 'true')
+        env:
+          # `committed_sha` is what version-and-commit.mjs verified is on
+          # origin/main after the push. Prefer it over re-resolving origin/main
+          # so a concurrent preview-regen push cannot move our release target
+          # forward to a non-release commit (see docs/case-studies/issue-53).
+          COMMITTED_SHA: ${{ steps.version.outputs.committed_sha }}
         run: |
-          git fetch origin main
-          SHA="$(git rev-parse origin/main)"
+          set -euo pipefail
+          if [ -n "${COMMITTED_SHA:-}" ]; then
+            echo "Using committed_sha from version step: $COMMITTED_SHA"
+            SHA="$COMMITTED_SHA"
+          else
+            # skip_bump path: the release does not bump version, so there is no
+            # committed_sha. Fall back to origin/main but verify it matches the
+            # workflow-trigger SHA to catch races during the manual flow.
+            git fetch origin main
+            SHA="$(git rev-parse origin/main)"
+            echo "No committed_sha (skip_bump path). Using origin/main: $SHA"
+          fi
           echo "sha=$SHA" >> "$GITHUB_OUTPUT"
 
   # Manual Instant Release - triggered via workflow_dispatch with instant mode
@@ -528,9 +544,21 @@ jobs:
       - name: Resolve release target commit
         id: release_target
         if: steps.version.outputs.version_committed == 'true' || steps.version.outputs.already_released == 'true'
+        env:
+          # See release.release_target above: prefer the script-verified SHA
+          # over re-resolving origin/main, since preview-regen pushes can win
+          # the race and move origin/main forward to a non-release commit.
+          COMMITTED_SHA: ${{ steps.version.outputs.committed_sha }}
         run: |
-          git fetch origin main
-          SHA="$(git rev-parse origin/main)"
+          set -euo pipefail
+          if [ -n "${COMMITTED_SHA:-}" ]; then
+            echo "Using committed_sha from version step: $COMMITTED_SHA"
+            SHA="$COMMITTED_SHA"
+          else
+            git fetch origin main
+            SHA="$(git rev-parse origin/main)"
+            echo "No committed_sha. Using origin/main: $SHA"
+          fi
           echo "sha=$SHA" >> "$GITHUB_OUTPUT"
 
   # Manual Changeset PR - creates a pull request with the changeset for review
@@ -660,12 +688,26 @@ jobs:
   # See: docs/case-studies/issue-51/README.md for the full design.
   preview-regen:
     name: Regenerate Preview Images
+    # Run after the release/instant-release jobs so two same-run jobs are not
+    # racing to push to main. Without this, preview-regen can push between our
+    # `version-and-commit` push and downstream desktop checkout, moving
+    # origin/main forward to a non-release SHA (see docs/case-studies/issue-53).
+    needs: [release, instant-release]
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    # `!cancelled()` instead of `always()` so a cancelled run still aborts.
+    # The `result != 'failure'` checks tolerate `skipped` (instant-release is
+    # only fired on workflow_dispatch=instant, release is skipped for tag and
+    # workflow_dispatch=checks events).
     if: |
-      (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
-      (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')) ||
-      (github.event_name == 'workflow_dispatch' && github.event.inputs.release_mode == 'checks')
+      !cancelled() &&
+      needs.release.result != 'failure' &&
+      needs.instant-release.result != 'failure' &&
+      (
+        (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
+        (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')) ||
+        (github.event_name == 'workflow_dispatch' && github.event.inputs.release_mode == 'checks')
+      )
     permissions:
       contents: write
     steps:
