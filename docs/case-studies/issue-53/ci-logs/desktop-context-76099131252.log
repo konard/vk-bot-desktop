@@ -1,0 +1,80 @@
+Resolve desktop release context	UNKNOWN STEP	﻿2026-05-15T00:03:04.7077909Z Current runner version: '2.334.0'
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.7104780Z ##[group]Runner Image Provisioner
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.7105982Z Hosted Compute Agent
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.7106608Z Version: 20260213.493
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.7107219Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.7107989Z Build Date: 2026-02-13T00:28:41Z
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.7108672Z Worker ID: {dafef112-126c-4fb3-bc38-b617c5dff8d1}
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.7109411Z Azure Region: eastus
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.7109942Z ##[endgroup]
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.7111817Z ##[group]Operating System
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.7112406Z Ubuntu
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.7112941Z 24.04.4
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.7113385Z LTS
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.7113882Z ##[endgroup]
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.7114322Z ##[group]Runner Image
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.7114937Z Image: ubuntu-24.04
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.7115452Z Version: 20260413.86.1
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.7116986Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260413.86/images/ubuntu/Ubuntu2404-Readme.md
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.7118464Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260413.86
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.7119391Z ##[endgroup]
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.7120380Z ##[group]GITHUB_TOKEN Permissions
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.7122810Z Contents: read
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.7123466Z Metadata: read
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.7123975Z ##[endgroup]
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.7125962Z Secret source: Actions
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.7127081Z Prepare workflow directory
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.7461656Z Prepare all required actions
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.7554529Z Complete job name: Resolve desktop release context
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8328288Z ##[group]Run set -euo pipefail
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8329124Z ^[[36;1mset -euo pipefail^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8329752Z ^[[36;1m^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8330186Z ^[[36;1mTAG=""^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8331014Z ^[[36;1mTARGET_SHA=""^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8331682Z ^[[36;1m^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8332196Z ^[[36;1mif [[ "$GITHUB_REF" == refs/tags/v* ]]; then^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8332938Z ^[[36;1m  TAG="$GITHUB_REF_NAME"^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8333521Z ^[[36;1m  TARGET_SHA="$GITHUB_SHA"^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8334142Z ^[[36;1melif [ -n "$AUTOMATIC_TAG" ]; then^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8334794Z ^[[36;1m  TAG="$AUTOMATIC_TAG"^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8335401Z ^[[36;1m  TARGET_SHA="$AUTOMATIC_SHA"^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8336002Z ^[[36;1melif [ -n "$INSTANT_TAG" ]; then^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8336629Z ^[[36;1m  TAG="$INSTANT_TAG"^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8337188Z ^[[36;1m  TARGET_SHA="$INSTANT_SHA"^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8337716Z ^[[36;1melse^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8338371Z ^[[36;1m  TAG="$MANUAL_TAG"^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8338915Z ^[[36;1m  TARGET_SHA="$MANUAL_TARGET_SHA"^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8339571Z ^[[36;1m  if [ -z "$TARGET_SHA" ]; then^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8340166Z ^[[36;1m    TARGET_SHA="$GITHUB_SHA"^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8340919Z ^[[36;1m  fi^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8341340Z ^[[36;1mfi^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8341904Z ^[[36;1m^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8342462Z ^[[36;1mif [[ ! "$TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+([-+][0-9A-Za-z.-]+)?$ ]]; then^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8343371Z ^[[36;1m  echo "::error::Desktop release tag must look like v0.9.10. Got: $TAG"^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8344201Z ^[[36;1m  exit 1^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8344642Z ^[[36;1mfi^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8345105Z ^[[36;1m^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8345600Z ^[[36;1mif [ -z "$TARGET_SHA" ]; then^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8346333Z ^[[36;1m  echo "::error::Desktop release target SHA is empty for $TAG."^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8347144Z ^[[36;1m  exit 1^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8347590Z ^[[36;1mfi^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8348036Z ^[[36;1m^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8348517Z ^[[36;1mecho "release-tag=$TAG" >> "$GITHUB_OUTPUT"^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8349404Z ^[[36;1mecho "release-version=${TAG#v}" >> "$GITHUB_OUTPUT"^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8350170Z ^[[36;1mecho "target-sha=$TARGET_SHA" >> "$GITHUB_OUTPUT"^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8351085Z ^[[36;1mecho "should-publish=true" >> "$GITHUB_OUTPUT"^[[0m
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8813641Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8815579Z env:
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8816529Z   AUTOMATIC_TAG: v0.12.0
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8817629Z   AUTOMATIC_SHA: 87378f5fee9e9ec4364de9c5c015c8c65fc4d1ea
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8818686Z   INSTANT_TAG: 
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8819626Z   INSTANT_SHA: 
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8820359Z   MANUAL_TAG: 
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8821402Z   MANUAL_TARGET_SHA: 
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.8822318Z ##[endgroup]
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.9208131Z Evaluate and set job outputs
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.9216647Z Set output 'release-tag'
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.9218766Z Set output 'release-version'
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.9220091Z Set output 'target-sha'
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.9221288Z Set output 'should-publish'
+Resolve desktop release context	UNKNOWN STEP	2026-05-15T00:03:04.9222667Z Cleaning up orphan processes

@@ -1,0 +1,931 @@
+Build desktop (linux x64)	UNKNOWN STEP	﻿2026-05-15T00:03:09.6368580Z Current runner version: '2.334.0'
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:09.6393408Z ##[group]Runner Image Provisioner
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:09.6394300Z Hosted Compute Agent
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:09.6394813Z Version: 20260213.493
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:09.6395409Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:09.6396100Z Build Date: 2026-02-13T00:28:41Z
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:09.6396782Z Worker ID: {113cf85a-4203-45eb-a298-26eced78ff10}
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:09.6397499Z Azure Region: westus
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:09.6398024Z ##[endgroup]
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:09.6399401Z ##[group]Operating System
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:09.6399979Z Ubuntu
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:09.6400765Z 24.04.4
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:09.6401224Z LTS
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:09.6401720Z ##[endgroup]
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:09.6402171Z ##[group]Runner Image
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:09.6402779Z Image: ubuntu-24.04
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:09.6403297Z Version: 20260513.135.3
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:09.6404499Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260513.135/images/ubuntu/Ubuntu2404-Readme.md
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:09.6405991Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260513.135
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:09.6406934Z ##[endgroup]
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:09.6407930Z ##[group]GITHUB_TOKEN Permissions
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:09.6409747Z Contents: read
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:09.6410596Z Metadata: read
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:09.6411150Z ##[endgroup]
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:09.6413183Z Secret source: Actions
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:09.6413990Z Prepare workflow directory
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:09.6745303Z Prepare all required actions
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:09.6783531Z Getting action download info
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.1329089Z Download action repository 'actions/checkout@v6' (SHA:de0fac2e4500dabe0009e67214ff5f5447ce83dd)
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.2840930Z Download action repository 'actions/setup-node@v6' (SHA:48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e)
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.3696347Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.5877806Z Complete job name: Build desktop (linux x64)
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.6691651Z ##[group]Run actions/checkout@v6
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.6692554Z with:
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.6693018Z   ref: 87378f5fee9e9ec4364de9c5c015c8c65fc4d1ea
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.6693615Z   repository: konard/vk-bot-desktop
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.6694303Z   token: ***
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.6694721Z   ssh-strict: true
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.6695133Z   ssh-user: git
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.6695559Z   persist-credentials: true
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.6696076Z   clean: true
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.6696500Z   sparse-checkout-cone-mode: true
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.6696995Z   fetch-depth: 1
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.6697406Z   fetch-tags: false
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.6697815Z   show-progress: true
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.6698231Z   lfs: false
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.6698602Z   submodules: false
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.6699025Z   set-safe-directory: true
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.6699747Z ##[endgroup]
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.7645644Z Syncing repository: konard/vk-bot-desktop
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.7647618Z ##[group]Getting Git version info
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.7648525Z Working directory is '/home/runner/work/vk-bot-desktop/vk-bot-desktop'
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.7649633Z [command]/usr/bin/git version
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.7710684Z git version 2.54.0
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.7733987Z ##[endgroup]
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.7750904Z Temporarily overriding HOME='/home/runner/work/_temp/ff795490-c17c-47a7-9109-4109354e3b88' before making global git config changes
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.7752376Z Adding repository directory to the temporary git global config as a safe directory
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.7756653Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/vk-bot-desktop/vk-bot-desktop
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.7802669Z Deleting the contents of '/home/runner/work/vk-bot-desktop/vk-bot-desktop'
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.7806238Z ##[group]Initializing the repository
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.7811297Z [command]/usr/bin/git init /home/runner/work/vk-bot-desktop/vk-bot-desktop
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.7902150Z hint: Using 'master' as the name for the initial branch. This default branch name
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.7903811Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.7904866Z hint: to use in all of your new repositories, which will suppress this warning,
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.7905678Z hint: call:
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.7906081Z hint:
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.7906645Z hint: 	git config --global init.defaultBranch <name>
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.7907306Z hint:
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.7907909Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.7909366Z hint: 'development'. The just-created branch can be renamed via this command:
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.7910721Z hint:
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.7911220Z hint: 	git branch -m <name>
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.7911725Z hint:
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.7912369Z hint: Disable this message with "git config set advice.defaultBranchName false"
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.7914061Z Initialized empty Git repository in /home/runner/work/vk-bot-desktop/vk-bot-desktop/.git/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.7920337Z [command]/usr/bin/git remote add origin https://github.com/konard/vk-bot-desktop
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.7964357Z ##[endgroup]
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.7965124Z ##[group]Disabling automatic garbage collection
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.7968751Z [command]/usr/bin/git config --local gc.auto 0
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.7998748Z ##[endgroup]
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.8000441Z ##[group]Setting up auth
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.8001598Z Removing SSH command configuration
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.8007265Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.8042145Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.8399569Z Removing HTTP extra header
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.8404913Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.8435380Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.8644576Z Removing includeIf entries pointing to credentials config files
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.8650988Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.8682630Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.8910749Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-77bb7afe-040c-4c98-adb5-aaf0e0324ec3.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.8946486Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git.path /home/runner/work/_temp/git-credentials-77bb7afe-040c-4c98-adb5-aaf0e0324ec3.config
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.8978924Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-77bb7afe-040c-4c98-adb5-aaf0e0324ec3.config
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.9013098Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-77bb7afe-040c-4c98-adb5-aaf0e0324ec3.config
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.9043135Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-77bb7afe-040c-4c98-adb5-aaf0e0324ec3.config
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.9067773Z ##[endgroup]
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.9068515Z ##[group]Fetching the repository
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:10.9076408Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin 87378f5fee9e9ec4364de9c5c015c8c65fc4d1ea
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.4197186Z From https://github.com/konard/vk-bot-desktop
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.4199280Z  * branch            87378f5fee9e9ec4364de9c5c015c8c65fc4d1ea -> FETCH_HEAD
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.4239860Z [command]/usr/bin/git rev-parse --verify --quiet 87378f5fee9e9ec4364de9c5c015c8c65fc4d1ea^{object}
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.4262505Z 87378f5fee9e9ec4364de9c5c015c8c65fc4d1ea
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.4268686Z ##[endgroup]
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.4271021Z ##[group]Determining the checkout info
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.4273329Z ##[endgroup]
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.4274632Z [command]/usr/bin/git sparse-checkout disable
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.4321370Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.4349821Z ##[group]Checking out the ref
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.4353678Z [command]/usr/bin/git checkout --progress --force 87378f5fee9e9ec4364de9c5c015c8c65fc4d1ea
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.6256719Z Note: switching to '87378f5fee9e9ec4364de9c5c015c8c65fc4d1ea'.
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.6257728Z 
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.6258610Z You are in 'detached HEAD' state. You can look around, make experimental
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.6259745Z changes and commit them, and you can discard any commits you make in this
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.6261201Z state without impacting any branches by switching back to a branch.
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.6261783Z 
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.6262185Z If you want to create a new branch to retain commits you create, you may
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.6263100Z do so (now or later) by using -c with the switch command. Example:
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.6263628Z 
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.6263851Z   git switch -c <new-branch-name>
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.6264240Z 
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.6264553Z Or undo this operation with:
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.6264880Z 
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.6265066Z   git switch -
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.6265302Z 
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.6265738Z Turn off this advice by setting config variable advice.detachedHead to false
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.6266447Z 
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.6266884Z HEAD is now at 87378f5 chore(preview): regenerate preview images [skip ci]
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.6278454Z ##[endgroup]
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.6326255Z [command]/usr/bin/git log -1 --format=%H
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.6352028Z 87378f5fee9e9ec4364de9c5c015c8c65fc4d1ea
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.6665301Z ##[group]Run actions/setup-node@v6
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.6665628Z with:
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.6665857Z   node-version: 20.x
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.6666104Z   check-latest: false
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.6666487Z   token: ***
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.6666725Z   package-manager-cache: true
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.6666989Z ##[endgroup]
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.8496647Z Found in cache @ /opt/hostedtoolcache/node/20.20.2/x64
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:12.8501280Z ##[group]Environment details
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:15.4857597Z node: v20.20.2
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:15.4858009Z npm: 10.8.2
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:15.4858318Z yarn: 1.22.22
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:15.4859338Z ##[endgroup]
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:15.4983359Z ##[group]Run npm install --no-audit --no-fund
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:15.4983745Z ^[[36;1mnpm install --no-audit --no-fund^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:15.5028250Z shell: /usr/bin/bash -e {0}
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:15.5028512Z ##[endgroup]
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:19.9880468Z npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:20.3124051Z npm warn deprecated npmlog@6.0.2: This package is no longer supported.
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:20.7867754Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:20.8601942Z npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:21.0856538Z npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:21.1775820Z npm warn deprecated tar@6.2.1: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:21.1943752Z npm warn deprecated gauge@4.0.4: This package is no longer supported.
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:21.3787060Z npm warn deprecated are-we-there-yet@3.0.1: This package is no longer supported.
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:21.5770887Z npm warn deprecated boolean@3.2.0: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:21.5794085Z npm warn deprecated @npmcli/move-file@2.0.1: This functionality has been moved to @npmcli/fs
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:22.3199822Z npm warn deprecated glob@8.1.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:22.8691484Z npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:35.2289880Z 
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:35.2290931Z > vk-bot-desktop@0.11.0 prepare
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:35.2293169Z > husky || true
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:35.2293385Z 
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:35.2838274Z 
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:35.2838954Z added 711 packages in 20s
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:35.3064455Z ##[group]Run npm run build:renderer
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:35.3064791Z ^[[36;1mnpm run build:renderer^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:35.3098540Z shell: /usr/bin/bash -e {0}
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:35.3098784Z ##[endgroup]
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:35.4227683Z 
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:35.4228377Z > vk-bot-desktop@0.11.0 build:renderer
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:35.4229016Z > node scripts/build-renderer.mjs
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:35.4229269Z 
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:35.5649397Z 
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:35.5650611Z   electron/renderer/dist/bootstrap.js      1.1mb ⚠️
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:35.5651203Z   electron/renderer/dist/bootstrap.js.map  1.7mb
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:35.5651485Z 
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:35.5651638Z ⚡ Done in 81ms
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:35.5866864Z ##[group]Run if [ "x64" = "arm64" ]; then
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:35.5867200Z ^[[36;1mif [ "x64" = "arm64" ]; then^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:35.5867467Z ^[[36;1m  export USE_SYSTEM_FPM=true^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:35.5867694Z ^[[36;1mfi^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:35.5867866Z ^[[36;1m^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:35.5868122Z ^[[36;1mnpx electron-builder --linux --x64 --publish never^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:35.5903149Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:35.5903478Z env:
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:35.5904005Z   GH_TOKEN: ***
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:35.5904200Z ##[endgroup]
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:36.4912383Z   • electron-builder  version=25.1.8 os=6.17.0-1013-azure
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:36.4968005Z   • loaded configuration  file=package.json ("build" field)
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:36.6353490Z   • executing @electron/rebuild  electronVersion=33.4.11 arch=x64 buildFromSource=false appDir=./
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:36.6362657Z   • installing native dependencies  arch=x64
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:37.1378752Z   • preparing       moduleName=cpu-features arch=x64
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:39.7622407Z   • finished        moduleName=cpu-features arch=x64
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:39.7650778Z   • completed installing native dependencies
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:39.7695259Z   • packaging       platform=linux arch=x64 electron=33.4.11 appOutDir=release/linux-unpacked
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:39.8764533Z   • downloading     url=https://github.com/electron/electron/releases/download/v33.4.11/electron-v33.4.11-linux-x64.zip size=106 MB parts=8
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:40.0896146Z   • downloaded      url=https://github.com/electron/electron/releases/download/v33.4.11/electron-v33.4.11-linux-x64.zip duration=314ms
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:42.3247615Z   • building        target=AppImage arch=x64 file=release/vk-bot-desktop-linux-x86_64-0.11.0.AppImage
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:42.3249191Z   • building        target=tar.gz arch=x64 file=release/vk-bot-desktop-linux-x64-0.11.0.tar.gz
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:42.3396005Z   • default Electron icon is used  reason=application icon is not set
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:42.4693197Z   • downloading     url=https://github.com/electron-userland/electron-builder-binaries/releases/download/appimage-12.0.1/appimage-12.0.1.7z size=1.6 MB parts=1
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:03:42.5049355Z   • downloaded      url=https://github.com/electron-userland/electron-builder-binaries/releases/download/appimage-12.0.1/appimage-12.0.1.7z duration=149ms
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:06:55.6198521Z   • building        target=deb arch=x64 file=release/vk-bot-desktop-linux-amd64-0.11.0.deb
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:06:55.6203866Z   • adding autoupdate files for: deb. (Beta feature)  resourceDir=release/linux-unpacked/resources
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:06:55.8824775Z   • downloading     url=https://github.com/electron-userland/electron-builder-binaries/releases/download/fpm-1.9.3-2.3.1-linux-x86_64/fpm-1.9.3-2.3.1-linux-x86_64.7z size=5.0 MB parts=1
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:06:55.9275917Z   • downloaded      url=https://github.com/electron-userland/electron-builder-binaries/releases/download/fpm-1.9.3-2.3.1-linux-x86_64/fpm-1.9.3-2.3.1-linux-x86_64.7z duration=298ms
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3805766Z ##[group]Run set -euo pipefail
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3806104Z ^[[36;1mset -euo pipefail^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3806433Z ^[[36;1mVERSION="$(node -p "require('./package.json').version")"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3806771Z ^[[36;1mARCH="x64"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3806957Z ^[[36;1m^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3807133Z ^[[36;1mnormalize_artifact() {^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3807359Z ^[[36;1m  local source="$1"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3807574Z ^[[36;1m  local target="$2"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3807778Z ^[[36;1m^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3808016Z ^[[36;1m  if [ "$source" = "$target" ] || [ ! -f "$source" ]; then^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3808327Z ^[[36;1m    return^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3808518Z ^[[36;1m  fi^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3808679Z ^[[36;1m^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3808854Z ^[[36;1m  if [ -f "$target" ]; then^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3809295Z ^[[36;1m    echo "::error file=$target::Cannot normalize $source because the target already exists."^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3809749Z ^[[36;1m    exit 1^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3809955Z ^[[36;1m  fi^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3810365Z ^[[36;1m^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3810632Z ^[[36;1m  mv "$source" "$target"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3810962Z ^[[36;1m  echo "Renamed $(basename "$source") -> $(basename "$target")"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3811299Z ^[[36;1m}^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3811454Z ^[[36;1m^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3811622Z ^[[36;1mif [ "$ARCH" = "x64" ]; then^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3811861Z ^[[36;1m  normalize_artifact \^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3812196Z ^[[36;1m    "release/vk-bot-desktop-linux-x86_64-${VERSION}.AppImage" \^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3812622Z ^[[36;1m    "release/vk-bot-desktop-linux-x64-${VERSION}.AppImage"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3812955Z ^[[36;1m  normalize_artifact \^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3813260Z ^[[36;1m    "release/vk-bot-desktop-linux-amd64-${VERSION}.deb" \^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3813647Z ^[[36;1m    "release/vk-bot-desktop-linux-x64-${VERSION}.deb"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3813965Z ^[[36;1melif [ "$ARCH" = "arm64" ]; then^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3814224Z ^[[36;1m  normalize_artifact \^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3814548Z ^[[36;1m    "release/vk-bot-desktop-linux-aarch64-${VERSION}.AppImage" \^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3814992Z ^[[36;1m    "release/vk-bot-desktop-linux-arm64-${VERSION}.AppImage"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3815323Z ^[[36;1m  normalize_artifact \^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3815629Z ^[[36;1m    "release/vk-bot-desktop-linux-aarch64-${VERSION}.deb" \^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3816022Z ^[[36;1m    "release/vk-bot-desktop-linux-arm64-${VERSION}.deb"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3816329Z ^[[36;1mfi^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3816485Z ^[[36;1m^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3816732Z ^[[36;1mfind release -maxdepth 1 -type f -printf '%f\n' | sort^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3850647Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.3850973Z ##[endgroup]
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4226594Z Renamed vk-bot-desktop-linux-x86_64-0.11.0.AppImage -> vk-bot-desktop-linux-x64-0.11.0.AppImage
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4261270Z Renamed vk-bot-desktop-linux-amd64-0.11.0.deb -> vk-bot-desktop-linux-x64-0.11.0.deb
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4277495Z builder-debug.yml
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4279167Z latest-linux.yml
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4279729Z vk-bot-desktop-linux-x64-0.11.0.AppImage
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4280591Z vk-bot-desktop-linux-x64-0.11.0.deb
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4281249Z vk-bot-desktop-linux-x64-0.11.0.tar.gz
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4309993Z ##[group]Run set -euo pipefail
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4310672Z ^[[36;1mset -euo pipefail^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4310999Z ^[[36;1mVERSION="$(node -p "require('./package.json').version")"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4311340Z ^[[36;1mARCH="x64"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4311525Z ^[[36;1m^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4311712Z ^[[36;1mrequired_linux_artifacts=(^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4312062Z ^[[36;1m  "release/vk-bot-desktop-linux-${ARCH}-${VERSION}.AppImage"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4312496Z ^[[36;1m  "release/vk-bot-desktop-linux-${ARCH}-${VERSION}.deb"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4312898Z ^[[36;1m  "release/vk-bot-desktop-linux-${ARCH}-${VERSION}.tar.gz"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4313218Z ^[[36;1m)^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4333319Z ^[[36;1m^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4333608Z ^[[36;1mfor artifact in "${required_linux_artifacts[@]}"; do^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4333973Z ^[[36;1m  if [ ! -f "$artifact" ]; then^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4334470Z ^[[36;1m    echo "::error file=$artifact::Expected versioned Linux release artifact was not created."^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4334919Z ^[[36;1m    ls -la release || true^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4335157Z ^[[36;1m    exit 1^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4335343Z ^[[36;1m  fi^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4335506Z ^[[36;1mdone^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4335672Z ^[[36;1m^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4335938Z ^[[36;1mdebs=("release/vk-bot-desktop-linux-${ARCH}-${VERSION}.deb")^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4336408Z ^[[36;1mappimages=("release/vk-bot-desktop-linux-${ARCH}-${VERSION}.AppImage")^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4336889Z ^[[36;1mtarballs=("release/vk-bot-desktop-linux-${ARCH}-${VERSION}.tar.gz")^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4337241Z ^[[36;1m^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4337425Z ^[[36;1mfor deb in "${debs[@]}"; do^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4337697Z ^[[36;1m  echo "Inspecting Debian package: $deb"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4337989Z ^[[36;1m  dpkg-deb --info "$deb"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4338322Z ^[[36;1m  dpkg-deb --contents "$deb" | tee "$RUNNER_TEMP/deb-contents.txt"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4338809Z ^[[36;1m  if ! grep -Eq '/(opt|usr)/(bin|lib|share)/' "$RUNNER_TEMP/deb-contents.txt"; then^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4339360Z ^[[36;1m    echo "::error file=$deb::Debian package does not contain an installable app payload."^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4339786Z ^[[36;1m    exit 1^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4339970Z ^[[36;1m  fi^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4340394Z ^[[36;1mdone^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4340580Z ^[[36;1m^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4340777Z ^[[36;1mfor appimage in "${appimages[@]}"; do^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4341100Z ^[[36;1m  echo "Extracting AppImage payload: $appimage"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4341392Z ^[[36;1m  chmod +x "$appimage"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4341631Z ^[[36;1m  extract_dir="$(mktemp -d)"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4341917Z ^[[36;1m  artifact_path="$(realpath "$appimage")"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4342325Z ^[[36;1m  (cd "$extract_dir" && "$artifact_path" --appimage-extract >/dev/null)^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4342723Z ^[[36;1m  test -d "$extract_dir/squashfs-root"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4343213Z ^[[36;1m  find "$extract_dir/squashfs-root" -maxdepth 4 -type f | sort > "$RUNNER_TEMP/appimage-contents.txt"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4343749Z ^[[36;1m  sed -n '1,100p' "$RUNNER_TEMP/appimage-contents.txt"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4344263Z ^[[36;1m  find "$extract_dir/squashfs-root" -maxdepth 4 -type f -name '*.desktop' -print -quit | grep -q .^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4344713Z ^[[36;1mdone^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4344883Z ^[[36;1m^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4345064Z ^[[36;1mfor tarball in "${tarballs[@]}"; do^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4345349Z ^[[36;1m  echo "Inspecting tarball: $tarball"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4345684Z ^[[36;1m  tar -tzf "$tarball" > "$RUNNER_TEMP/tarball-contents.txt"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4346269Z ^[[36;1m  sed -n '1,100p' "$RUNNER_TEMP/tarball-contents.txt"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4346754Z ^[[36;1m  grep -Eq 'VK Bot Desktop|vk-bot-desktop|resources/app' "$RUNNER_TEMP/tarball-contents.txt"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4347180Z ^[[36;1mdone^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4380497Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4381041Z ##[endgroup]
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4739977Z Inspecting Debian package: release/vk-bot-desktop-linux-x64-0.11.0.deb
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4758724Z  new Debian package, version 2.0.
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4759294Z  size 76319616 bytes: control archive=7124 bytes.
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4777829Z      586 bytes,    14 lines      control
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4778949Z    22061 bytes,   198 lines      md5sums
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4779776Z     1173 bytes,    27 lines   *  postinst             #!/bin/bash
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4780905Z      215 bytes,     8 lines   *  postrm               #!/bin/bash
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4781473Z  Package: vk-bot-desktop
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4781755Z  Version: 0.11.0
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4781954Z  License: Unlicense
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4782362Z  Vendor: Konstantin Diachenko <1431904+konard@users.noreply.github.com>
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4782740Z  Architecture: amd64
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4783117Z  Maintainer: Konstantin Diachenko <1431904+konard@users.noreply.github.com>
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4783526Z  Installed-Size: 289045
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4784046Z  Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4784626Z  Recommends: libappindicator3-1
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4784867Z  Section: default
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4785067Z  Priority: optional
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4785375Z  Homepage: https://github.com/konard/vk-bot-desktop#readme
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4785698Z  Description: 
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4786107Z    Cross-platform desktop wrapper around konard/vk-bot, written with React and Electron.
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4827633Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4828199Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./usr/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4828627Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./usr/share/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4829093Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./usr/share/applications/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4829680Z -rw-r--r-- 0/0             277 2026-05-15 00:06 ./usr/share/applications/vk-bot-desktop.desktop
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4830492Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./usr/share/icons/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4831212Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./usr/share/icons/hicolor/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4831719Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./usr/share/icons/hicolor/16x16/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4832244Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./usr/share/icons/hicolor/16x16/apps/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4832869Z -rw-r--r-- 0/0             832 2026-05-15 00:03 ./usr/share/icons/hicolor/16x16/apps/vk-bot-desktop.png
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4833479Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./usr/share/icons/hicolor/256x256/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4834016Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./usr/share/icons/hicolor/256x256/apps/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4834646Z -rw-r--r-- 0/0           37977 2026-05-15 00:03 ./usr/share/icons/hicolor/256x256/apps/vk-bot-desktop.png
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4846273Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./usr/share/icons/hicolor/128x128/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4846875Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./usr/share/icons/hicolor/128x128/apps/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4847538Z -rw-r--r-- 0/0           18107 2026-05-15 00:03 ./usr/share/icons/hicolor/128x128/apps/vk-bot-desktop.png
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4858293Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./usr/share/icons/hicolor/64x64/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4859503Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./usr/share/icons/hicolor/64x64/apps/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4860875Z -rw-r--r-- 0/0            6621 2026-05-15 00:03 ./usr/share/icons/hicolor/64x64/apps/vk-bot-desktop.png
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4862183Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./usr/share/icons/hicolor/48x48/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4863151Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./usr/share/icons/hicolor/48x48/apps/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4864272Z -rw-r--r-- 0/0            4476 2026-05-15 00:03 ./usr/share/icons/hicolor/48x48/apps/vk-bot-desktop.png
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4865492Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./usr/share/icons/hicolor/32x32/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4866451Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./usr/share/icons/hicolor/32x32/apps/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4867560Z -rw-r--r-- 0/0            2021 2026-05-15 00:03 ./usr/share/icons/hicolor/32x32/apps/vk-bot-desktop.png
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4868513Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./usr/share/doc/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4869353Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./usr/share/doc/vk-bot-desktop/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4870535Z -rw-r--r-- 0/0             174 2026-05-15 00:06 ./usr/share/doc/vk-bot-desktop/changelog.gz
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4871408Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4872162Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4873003Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/locales/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4873948Z -rw-r--r-- 0/0          591404 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/ca.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.4945725Z -rw-r--r-- 0/0          632990 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/hu.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.5037652Z -rw-r--r-- 0/0          913953 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/sr.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.5124988Z -rw-r--r-- 0/0          609431 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/cs.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.5202032Z -rw-r--r-- 0/0          970818 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/bg.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.5288917Z -rw-r--r-- 0/0          574402 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/pt-BR.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.5372228Z -rw-r--r-- 0/0         1463936 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/ml.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.5457323Z -rw-r--r-- 0/0          865687 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/fa.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.5547610Z -rw-r--r-- 0/0         1301053 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/hi.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.5630436Z -rw-r--r-- 0/0          582430 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/es-419.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.5706151Z -rw-r--r-- 0/0          587883 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/hr.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.5786533Z -rw-r--r-- 0/0          540250 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/fi.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.5869270Z -rw-r--r-- 0/0          526531 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/af.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.5944826Z -rw-r--r-- 0/0          985336 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/uk.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.6031824Z -rw-r--r-- 0/0          551978 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/da.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.6108916Z -rw-r--r-- 0/0          591481 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/ko.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.6181988Z -rw-r--r-- 0/0          578116 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/pt-PT.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.6238324Z -rw-r--r-- 0/0          611588 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/pl.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.6324852Z -rw-r--r-- 0/0         1452484 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/ta.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.6424196Z -rw-r--r-- 0/0          681060 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/vi.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.6492844Z -rw-r--r-- 0/0         1063239 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/el.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.6588724Z -rw-r--r-- 0/0          573790 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/tr.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.6659717Z -rw-r--r-- 0/0          522871 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/id.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.6731273Z -rw-r--r-- 0/0          529386 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/et.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.6806726Z -rw-r--r-- 0/0          490197 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/zh-CN.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.6881428Z -rw-r--r-- 0/0          594422 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/sl.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.6958070Z -rw-r--r-- 0/0         1253040 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/bn.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.7055665Z -rw-r--r-- 0/0          618980 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/sk.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.7137152Z -rw-r--r-- 0/0          933294 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/ar.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.7218513Z -rw-r--r-- 0/0          611624 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/fil.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.7298020Z -rw-r--r-- 0/0          479573 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/en-GB.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.7370254Z -rw-r--r-- 0/0          637037 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/lt.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.7446892Z -rw-r--r-- 0/0         1207435 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/mr.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.7534491Z -rw-r--r-- 0/0          573640 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/it.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.7614813Z -rw-r--r-- 0/0         1407416 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/kn.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.7694056Z -rw-r--r-- 0/0          985758 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/ru.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.7792092Z -rw-r--r-- 0/0          629420 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/fr.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.7867064Z -rw-r--r-- 0/0          484081 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/en-US.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.7891777Z -rw-r--r-- 0/0          563075 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/sw.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.7977236Z -rw-r--r-- 0/0         1232845 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/gu.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.8057682Z -rw-r--r-- 0/0          547710 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/ms.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.8127044Z -rw-r--r-- 0/0          761129 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/he.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.8205072Z -rw-r--r-- 0/0          484825 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/zh-TW.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.8275749Z -rw-r--r-- 0/0          549551 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/nl.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.8350737Z -rw-r--r-- 0/0          635180 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/lv.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.8429190Z -rw-r--r-- 0/0         1342420 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/te.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.8519067Z -rw-r--r-- 0/0         1128483 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/th.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.8609660Z -rw-r--r-- 0/0          851492 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/am.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.8698627Z -rw-r--r-- 0/0          860178 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/ur.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.8777901Z -rw-r--r-- 0/0          598732 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/ro.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.8852206Z -rw-r--r-- 0/0          698384 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/ja.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.8937489Z -rw-r--r-- 0/0          581806 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/es.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.8998187Z -rw-r--r-- 0/0          589162 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/de.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9077135Z -rw-r--r-- 0/0          534166 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/sv.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9145772Z -rw-r--r-- 0/0          530863 2026-05-15 00:03 ./opt/VK Bot Desktop/locales/nb.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9214424Z -rw-r--r-- 0/0            1096 2026-05-15 00:03 ./opt/VK Bot Desktop/LICENSE.electron.txt
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9215210Z -rw-r--r-- 0/0          151994 2026-05-15 00:03 ./opt/VK Bot Desktop/chrome_100_percent.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9295187Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9296248Z -rw-r--r-- 0/0               3 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/package-type
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9297353Z -rw-r--r-- 0/0              96 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app-update.yml
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9298741Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9299990Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9302441Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9304041Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9305740Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9307620Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/ndk_compat/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9309719Z -rw-r--r-- 0/0           11567 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/ndk_compat/cpu-features.h
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9312219Z -rw-r--r-- 0/0             365 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/ndk_compat/ndk-compat-test.c
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9314451Z -rw-r--r-- 0/0            7514 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/ndk_compat/cpu-features.c
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9316621Z -rw-r--r-- 0/0            2165 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/ndk_compat/CMakeLists.txt
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9318721Z -rw-r--r-- 0/0             340 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/ndk_compat/README.md
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9320905Z -rw-r--r-- 0/0             473 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/WORKSPACE
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9322845Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/patches/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9325093Z -rw-r--r-- 0/0           22290 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/patches/0001-Add-Apple-Silicon-Support.patch
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9327219Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/src/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9329327Z -rw-r--r-- 0/0            5662 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/src/impl_aarch64_windows.c
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9331663Z -rw-r--r-- 0/0            2660 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/src/impl_x86_freebsd.c
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9333896Z -rw-r--r-- 0/0            3657 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/src/impl_aarch64_macos_or_iphone.c
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9336193Z -rw-r--r-- 0/0            3524 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/src/impl_mips_linux_or_android.c
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9338356Z -rw-r--r-- 0/0            7943 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/src/impl_ppc_linux.c
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9340622Z -rw-r--r-- 0/0            4136 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/src/stack_line_reader.c
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9342902Z -rw-r--r-- 0/0            5510 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/src/impl_aarch64__base_implementation.inl
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9345079Z -rw-r--r-- 0/0             792 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/src/equals.inl
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9347341Z -rw-r--r-- 0/0            5149 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/src/impl_s390x_linux.c
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9349555Z -rw-r--r-- 0/0            6603 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/src/string_view.c
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9351796Z -rw-r--r-- 0/0            1808 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/src/filesystem.c
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9353864Z -rw-r--r-- 0/0            2180 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/src/impl_x86_windows.c
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9356108Z -rw-r--r-- 0/0           87250 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/src/impl_x86__base_implementation.inl
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9358409Z -rw-r--r-- 0/0            3126 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/src/define_introspection.inl
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9360635Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/src/utils/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9362735Z -rw-r--r-- 0/0           14979 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/src/utils/list_cpu_features.c
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9364816Z -rw-r--r-- 0/0            5177 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/src/hwcaps.c
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9366961Z -rw-r--r-- 0/0            2980 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/src/impl_aarch64_linux_or_android.c
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9369234Z -rw-r--r-- 0/0            2267 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/src/impl_x86_linux_or_android.c
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9371590Z -rw-r--r-- 0/0            4268 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/src/impl_riscv_linux.c
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9373866Z -rw-r--r-- 0/0            1009 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/src/define_introspection_and_hwcaps.inl
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9376178Z -rw-r--r-- 0/0            9080 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/src/impl_arm_linux_or_android.c
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9378268Z -rw-r--r-- 0/0             736 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/src/copy.inl
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9380491Z -rw-r--r-- 0/0            2173 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/src/impl_x86_macos.c
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9382562Z -rw-r--r-- 0/0            2713 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/cpu_features.gyp
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9384526Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/bazel/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9386424Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/bazel/ci/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9388404Z -rw-r--r-- 0/0              84 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/bazel/ci/README.md
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9390619Z -rw-r--r-- 0/0             288 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/bazel/platforms.bzl
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9392895Z -rw-r--r-- 0/0           12876 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/LICENSE
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9395146Z -rw-r--r-- 0/0              51 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/.clang-format
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9397165Z -rw-r--r-- 0/0             969 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/CONTRIBUTING.md
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9399112Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/test/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9401370Z -rw-r--r-- 0/0            1719 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/test/filesystem_for_testing.h
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9403559Z -rw-r--r-- 0/0            1036 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/test/hwcaps_for_testing.h
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9405696Z -rw-r--r-- 0/0            5339 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/test/CMakeLists.txt
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9407722Z -rw-r--r-- 0/0             359 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/.dockerignore
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9409711Z -rw-r--r-- 0/0            8935 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/CMakeLists.txt
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9411808Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/include/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9413853Z -rw-r--r-- 0/0            2412 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/include/cpuinfo_mips.h
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9415991Z -rw-r--r-- 0/0            7563 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/include/cpuinfo_x86.h
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9418117Z -rw-r--r-- 0/0           10332 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/include/cpuinfo_aarch64.h
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9420407Z -rw-r--r-- 0/0            3723 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/include/cpuinfo_arm.h
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9422533Z -rw-r--r-- 0/0            2314 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/include/cpuinfo_riscv.h
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9424752Z -rw-r--r-- 0/0            1693 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/include/cpu_features_cache_info.h
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9427007Z -rw-r--r-- 0/0           10438 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/include/cpu_features_macros.h
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9429251Z -rw-r--r-- 0/0            4493 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/include/cpuinfo_ppc.h
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9431580Z -rw-r--r-- 0/0            3280 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/include/cpuinfo_s390x.h
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9433671Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/include/internal/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9435815Z -rw-r--r-- 0/0            1153 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/include/internal/cpuid_x86.h
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9437991Z -rw-r--r-- 0/0            9000 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/include/internal/hwcaps.h
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9440619Z -rw-r--r-- 0/0            1374 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/include/internal/filesystem.h
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9443018Z -rw-r--r-- 0/0            4127 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/include/internal/string_view.h
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9445263Z -rw-r--r-- 0/0            1262 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/include/internal/bit_utils.h
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9447555Z -rw-r--r-- 0/0            1654 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/include/internal/stack_line_reader.h
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9449853Z -rw-r--r-- 0/0            2151 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/include/internal/windows_utils.h
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9452134Z -rw-r--r-- 0/0             388 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/.grenrc.yml
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9454043Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/cmake/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9456102Z -rw-r--r-- 0/0             102 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/cmake/CpuFeaturesConfig.cmake.in
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9458374Z -rw-r--r-- 0/0             425 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/cmake/googletest.CMakeLists.txt.in
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9460636Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/cmake/ci/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9462621Z -rw-r--r-- 0/0            9193 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/cmake/ci/Makefile
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9464634Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/cmake/ci/sample/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9466703Z -rw-r--r-- 0/0             221 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/cmake/ci/sample/main.cpp
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9468942Z -rw-r--r-- 0/0             576 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/cmake/ci/sample/CMakeLists.txt
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9471185Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/cmake/ci/doc/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9473230Z -rw-r--r-- 0/0            2642 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/cmake/ci/doc/docker.dot
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9475390Z -rwxr-xr-x 0/0              98 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/cmake/ci/doc/generate_image.sh
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9477545Z -rw-r--r-- 0/0           21355 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/cmake/ci/doc/docker.svg
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9479568Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/cmake/ci/docker/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9481824Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/cmake/ci/docker/toolchain/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9484057Z -rw-r--r-- 0/0            1029 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/cmake/ci/docker/toolchain/Dockerfile
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9486434Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/cmake/ci/docker/amd64/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9488813Z -rw-r--r-- 0/0            1388 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/cmake/ci/docker/amd64/Dockerfile
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9491142Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/cmake/ci/vagrant/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9493256Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/cmake/ci/vagrant/freebsd/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9495519Z -rw-r--r-- 0/0            4274 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/cmake/ci/vagrant/freebsd/Vagrantfile
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9497723Z -rw-r--r-- 0/0             967 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/cmake/ci/README.md
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9500000Z -rw-r--r-- 0/0             120 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/cmake/CpuFeaturesNdkCompatConfig.cmake.in
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9502340Z -rw-r--r-- 0/0            1040 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/cmake/README.md
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9504281Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/scripts/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9506301Z -rw-r--r-- 0/0            3533 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/scripts/generate_badges.d
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9508452Z -rwxr-xr-x 0/0            2055 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/scripts/make_release.sh
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9510829Z -rwxr-xr-x 0/0            1807 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/scripts/test_integration.sh
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9513047Z -rwxr-xr-x 0/0           15776 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/scripts/run_integration.sh
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9515099Z -rw-r--r-- 0/0           11546 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/README.md
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9517042Z -rw-r--r-- 0/0            8531 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/deps/cpu_features/BUILD.bazel
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9518850Z -rw-r--r-- 0/0              73 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/.eslintrc.js
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9520661Z -rw-r--r-- 0/0            1085 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/LICENSE
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9522354Z -rw-r--r-- 0/0             397 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/buildcheck.gypi
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9524046Z -rw-r--r-- 0/0             674 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/package.json
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9525681Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/lib/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9527378Z -rw-r--r-- 0/0             115 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/lib/index.js
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9529041Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/build/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9531089Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/build/deps/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9533065Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/build/deps/cpu_features/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9535171Z -rw-r--r-- 0/0             147 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/build/deps/cpu_features/cpu_features.Makefile
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9537131Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/build/node_gyp_bins/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9539218Z lrwxrwxrwx 0/0               0 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/build/node_gyp_bins/python3 -> /usr/bin/python3
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9541374Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/build/Release/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9543268Z -rwxr-xr-x 0/0           60704 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/build/Release/cpufeatures.node
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9545153Z -rw-r--r-- 0/0             658 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/cpu-features/buildcheck.js
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9546684Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9548121Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/util/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9549652Z -rw-r--r-- 0/0            2096 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/util/pagent.c
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9551520Z -rw-r--r-- 0/0              41 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/util/build_pagent.bat
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9553131Z -rw-r--r-- 0/0           21322 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/SFTP.md
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9554671Z -rw-r--r-- 0/0              73 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/.eslintrc.js
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9556211Z -rw-r--r-- 0/0            1067 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/LICENSE
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9558169Z -rw-r--r-- 0/0             710 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/install.js
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9559732Z -rw-r--r-- 0/0             711 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/package.json
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9561424Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/lib/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9562977Z -rw-r--r-- 0/0           32130 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/lib/agent.js
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9565247Z -rw-r--r-- 0/0             767 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/lib/index.js
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9566883Z -rw-r--r-- 0/0           64168 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/lib/client.js
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9568516Z -rw-r--r-- 0/0            7132 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/lib/Channel.js
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9570356Z -rw-r--r-- 0/0            2323 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/lib/http-agents.js
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9572008Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/lib/protocol/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9573671Z -rw-r--r-- 0/0           60351 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/lib/protocol/kex.js
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9575624Z -rw-r--r-- 0/0           11808 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/lib/protocol/constants.js
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9577539Z -rw-r--r-- 0/0           47530 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/lib/protocol/crypto.js
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9579288Z -rw-r--r-- 0/0          114059 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/lib/protocol/SFTP.js
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9581230Z -rw-r--r-- 0/0           47776 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/lib/protocol/keyParser.js
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9582981Z -rw-r--r-- 0/0            6122 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/lib/protocol/zlib.js
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9584712Z -rw-r--r-- 0/0             423 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/lib/protocol/handlers.js
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9586543Z -rw-r--r-- 0/0            3647 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/lib/protocol/node-fs-compat.js
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9588414Z -rw-r--r-- 0/0           39158 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/lib/protocol/handlers.misc.js
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9590616Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/lib/protocol/crypto/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9592184Z -rw-r--r-- 0/0           22812 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/lib/protocol/crypto/poly1305.js
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9593325Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/lib/protocol/crypto/build/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9594487Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/lib/protocol/crypto/build/node_gyp_bins/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9596025Z lrwxrwxrwx 0/0               0 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/lib/protocol/crypto/build/node_gyp_bins/python3 -> /usr/bin/python3
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9597312Z drwxr-xr-x 0/0               0 2026-05-15 00:06 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/lib/protocol/crypto/build/Release/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9598682Z -rwxr-xr-x 0/0           88144 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/lib/protocol/crypto/build/Release/sshcrypto.node
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9600798Z -rw-r--r-- 0/0           10257 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/lib/protocol/utils.js
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9602128Z -rw-r--r-- 0/0           65576 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/lib/protocol/Protocol.js
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9603143Z -rw-r--r-- 0/0           18252 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/lib/keygen.js
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9604092Z -rw-r--r-- 0/0            9773 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/lib/utils.js
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9605159Z -rw-r--r-- 0/0           41705 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/lib/server.js
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9606048Z -rw-r--r-- 0/0              75 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar.unpacked/node_modules/ssh2/.eslintignore
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:10.9606768Z -rw-r--r-- 0/0        20168391 2026-05-15 00:03 ./opt/VK Bot Desktop/resources/app.asar
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:11.0311714Z -rw-r--r-- 0/0          687473 2026-05-15 00:03 ./opt/VK Bot Desktop/v8_context_snapshot.bin
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:11.0398350Z -rw-r--r-- 0/0          316538 2026-05-15 00:03 ./opt/VK Bot Desktop/snapshot_blob.bin
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:11.0412139Z -rw-r--r-- 0/0         5954613 2026-05-15 00:03 ./opt/VK Bot Desktop/resources.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:11.1168721Z -rwxr-xr-x 0/0         2691856 2026-05-15 00:03 ./opt/VK Bot Desktop/libffmpeg.so
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:11.1716686Z -rw-r--r-- 0/0             107 2026-05-15 00:03 ./opt/VK Bot Desktop/vk_swiftshader_icd.json
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:11.1718207Z -rwxr-xr-x 0/0         6921120 2026-05-15 00:03 ./opt/VK Bot Desktop/libGLESv2.so
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:11.2876818Z -rwxr-xr-x 0/0           38448 2026-05-15 00:03 ./opt/VK Bot Desktop/chrome-sandbox
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:11.2883423Z -rw-r--r-- 0/0         9170910 2026-05-15 00:03 ./opt/VK Bot Desktop/LICENSES.chromium.html
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:11.3063289Z -rwxr-xr-x 0/0         4772328 2026-05-15 00:03 ./opt/VK Bot Desktop/libvk_swiftshader.so
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:11.3814702Z -rwxr-xr-x 0/0       186312608 2026-05-15 00:03 ./opt/VK Bot Desktop/vk-bot-desktop
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:14.6203713Z -rw-r--r-- 0/0          230172 2026-05-15 00:03 ./opt/VK Bot Desktop/chrome_200_percent.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:14.6320414Z -rwxr-xr-x 0/0         2238408 2026-05-15 00:03 ./opt/VK Bot Desktop/libvulkan.so.1
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:14.6579087Z -rwxr-xr-x 0/0         2630640 2026-05-15 00:03 ./opt/VK Bot Desktop/chrome_crashpad_handler
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:14.6884913Z -rw-r--r-- 0/0        10468208 2026-05-15 00:03 ./opt/VK Bot Desktop/icudtl.dat
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:14.8998666Z -rwxr-xr-x 0/0          259856 2026-05-15 00:03 ./opt/VK Bot Desktop/libEGL.so
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:14.9043131Z Extracting AppImage payload: release/vk-bot-desktop-linux-x64-0.11.0.AppImage
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1311198Z /tmp/tmp.iwqUXb68Ag/squashfs-root/AppRun
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1311963Z /tmp/tmp.iwqUXb68Ag/squashfs-root/LICENSE.electron.txt
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1312556Z /tmp/tmp.iwqUXb68Ag/squashfs-root/LICENSES.chromium.html
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1313080Z /tmp/tmp.iwqUXb68Ag/squashfs-root/chrome-sandbox
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1313676Z /tmp/tmp.iwqUXb68Ag/squashfs-root/chrome_100_percent.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1314138Z /tmp/tmp.iwqUXb68Ag/squashfs-root/chrome_200_percent.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1314626Z /tmp/tmp.iwqUXb68Ag/squashfs-root/chrome_crashpad_handler
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1315536Z /tmp/tmp.iwqUXb68Ag/squashfs-root/icudtl.dat
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1316150Z /tmp/tmp.iwqUXb68Ag/squashfs-root/libEGL.so
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1316789Z /tmp/tmp.iwqUXb68Ag/squashfs-root/libGLESv2.so
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1317429Z /tmp/tmp.iwqUXb68Ag/squashfs-root/libffmpeg.so
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1318148Z /tmp/tmp.iwqUXb68Ag/squashfs-root/libvk_swiftshader.so
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1318876Z /tmp/tmp.iwqUXb68Ag/squashfs-root/libvulkan.so.1
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1319617Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/af.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1320662Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/am.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1321379Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/ar.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1322063Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/bg.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1322733Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/bn.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1323403Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/ca.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1324090Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/cs.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1324768Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/da.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1325440Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/de.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1326096Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/el.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1326775Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/en-GB.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1327484Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/en-US.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1328177Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/es-419.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1328881Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/es.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1329540Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/et.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1330416Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/fa.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1330912Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/fi.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1331377Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/fil.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1332079Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/fr.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1332892Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/gu.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1333777Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/he.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1334453Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/hi.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1335119Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/hr.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1335701Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/hu.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1336256Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/id.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1336625Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/it.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1336981Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/ja.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1337331Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/kn.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1337684Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/ko.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1338033Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/lt.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1338381Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/lv.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1338737Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/ml.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1339098Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/mr.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1339448Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/ms.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1339804Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/nb.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1340476Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/nl.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1340855Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/pl.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1341234Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/pt-BR.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1341610Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/pt-PT.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1341976Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/ro.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1342333Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/ru.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1342679Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/sk.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1343027Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/sl.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1343371Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/sr.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1343720Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/sv.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1344074Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/sw.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1344420Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/ta.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1344771Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/te.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1345117Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/th.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1345460Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/tr.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1345815Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/uk.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1346161Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/ur.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1346515Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/vi.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1346895Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/zh-CN.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1347267Z /tmp/tmp.iwqUXb68Ag/squashfs-root/locales/zh-TW.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1347632Z /tmp/tmp.iwqUXb68Ag/squashfs-root/resources.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1348038Z /tmp/tmp.iwqUXb68Ag/squashfs-root/resources/app-update.yml
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1348478Z /tmp/tmp.iwqUXb68Ag/squashfs-root/resources/app.asar
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1348865Z /tmp/tmp.iwqUXb68Ag/squashfs-root/snapshot_blob.bin
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1349244Z /tmp/tmp.iwqUXb68Ag/squashfs-root/usr/lib/libXss.so.1
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1349646Z /tmp/tmp.iwqUXb68Ag/squashfs-root/usr/lib/libXtst.so.6
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1350079Z /tmp/tmp.iwqUXb68Ag/squashfs-root/usr/lib/libappindicator.so.1
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1350776Z /tmp/tmp.iwqUXb68Ag/squashfs-root/usr/lib/libgconf-2.so.4
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1351216Z /tmp/tmp.iwqUXb68Ag/squashfs-root/usr/lib/libindicator.so.7
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1351638Z /tmp/tmp.iwqUXb68Ag/squashfs-root/usr/lib/libnotify.so.4
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1352060Z /tmp/tmp.iwqUXb68Ag/squashfs-root/v8_context_snapshot.bin
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1352445Z /tmp/tmp.iwqUXb68Ag/squashfs-root/vk-bot-desktop
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1352837Z /tmp/tmp.iwqUXb68Ag/squashfs-root/vk-bot-desktop.desktop
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1353260Z /tmp/tmp.iwqUXb68Ag/squashfs-root/vk_swiftshader_icd.json
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:16.1353749Z Inspecting tarball: release/vk-bot-desktop-linux-x64-0.11.0.tar.gz
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0758053Z vk-bot-desktop-linux-x64-0.11.0/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0758699Z vk-bot-desktop-linux-x64-0.11.0/LICENSE.electron.txt
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0759417Z vk-bot-desktop-linux-x64-0.11.0/LICENSES.chromium.html
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0760355Z vk-bot-desktop-linux-x64-0.11.0/chrome-sandbox
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0761127Z vk-bot-desktop-linux-x64-0.11.0/chrome_100_percent.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0762678Z vk-bot-desktop-linux-x64-0.11.0/chrome_200_percent.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0763468Z vk-bot-desktop-linux-x64-0.11.0/chrome_crashpad_handler
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0764121Z vk-bot-desktop-linux-x64-0.11.0/icudtl.dat
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0764712Z vk-bot-desktop-linux-x64-0.11.0/libEGL.so
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0765314Z vk-bot-desktop-linux-x64-0.11.0/libGLESv2.so
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0765902Z vk-bot-desktop-linux-x64-0.11.0/libffmpeg.so
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0766601Z vk-bot-desktop-linux-x64-0.11.0/libvk_swiftshader.so
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0767338Z vk-bot-desktop-linux-x64-0.11.0/libvulkan.so.1
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0768009Z vk-bot-desktop-linux-x64-0.11.0/locales/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0768643Z vk-bot-desktop-linux-x64-0.11.0/resources/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0769310Z vk-bot-desktop-linux-x64-0.11.0/resources.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0769812Z vk-bot-desktop-linux-x64-0.11.0/snapshot_blob.bin
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0770555Z vk-bot-desktop-linux-x64-0.11.0/v8_context_snapshot.bin
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0771013Z vk-bot-desktop-linux-x64-0.11.0/vk-bot-desktop
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0771451Z vk-bot-desktop-linux-x64-0.11.0/vk_swiftshader_icd.json
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0771863Z vk-bot-desktop-linux-x64-0.11.0/locales/af.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0772252Z vk-bot-desktop-linux-x64-0.11.0/locales/am.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0772636Z vk-bot-desktop-linux-x64-0.11.0/locales/ar.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0773005Z vk-bot-desktop-linux-x64-0.11.0/locales/bg.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0773394Z vk-bot-desktop-linux-x64-0.11.0/locales/bn.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0773765Z vk-bot-desktop-linux-x64-0.11.0/locales/ca.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0774161Z vk-bot-desktop-linux-x64-0.11.0/locales/cs.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0774557Z vk-bot-desktop-linux-x64-0.11.0/locales/da.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0774930Z vk-bot-desktop-linux-x64-0.11.0/locales/de.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0775304Z vk-bot-desktop-linux-x64-0.11.0/locales/el.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0775719Z vk-bot-desktop-linux-x64-0.11.0/locales/en-GB.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0776196Z vk-bot-desktop-linux-x64-0.11.0/locales/en-US.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0776939Z vk-bot-desktop-linux-x64-0.11.0/locales/es-419.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0777591Z vk-bot-desktop-linux-x64-0.11.0/locales/es.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0778259Z vk-bot-desktop-linux-x64-0.11.0/locales/et.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0778680Z vk-bot-desktop-linux-x64-0.11.0/locales/fa.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0779030Z vk-bot-desktop-linux-x64-0.11.0/locales/fi.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0779381Z vk-bot-desktop-linux-x64-0.11.0/locales/fil.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0779740Z vk-bot-desktop-linux-x64-0.11.0/locales/fr.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0780097Z vk-bot-desktop-linux-x64-0.11.0/locales/gu.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0780616Z vk-bot-desktop-linux-x64-0.11.0/locales/he.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0780976Z vk-bot-desktop-linux-x64-0.11.0/locales/hi.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0781317Z vk-bot-desktop-linux-x64-0.11.0/locales/hr.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0781668Z vk-bot-desktop-linux-x64-0.11.0/locales/hu.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0782014Z vk-bot-desktop-linux-x64-0.11.0/locales/id.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0782362Z vk-bot-desktop-linux-x64-0.11.0/locales/it.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0782712Z vk-bot-desktop-linux-x64-0.11.0/locales/ja.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0783060Z vk-bot-desktop-linux-x64-0.11.0/locales/kn.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0783411Z vk-bot-desktop-linux-x64-0.11.0/locales/ko.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0783758Z vk-bot-desktop-linux-x64-0.11.0/locales/lt.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0784104Z vk-bot-desktop-linux-x64-0.11.0/locales/lv.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0784452Z vk-bot-desktop-linux-x64-0.11.0/locales/ml.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0784800Z vk-bot-desktop-linux-x64-0.11.0/locales/mr.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0785145Z vk-bot-desktop-linux-x64-0.11.0/locales/ms.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0785692Z vk-bot-desktop-linux-x64-0.11.0/locales/nb.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0786037Z vk-bot-desktop-linux-x64-0.11.0/locales/nl.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0786402Z vk-bot-desktop-linux-x64-0.11.0/locales/pl.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0786779Z vk-bot-desktop-linux-x64-0.11.0/locales/pt-BR.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0787259Z vk-bot-desktop-linux-x64-0.11.0/locales/pt-PT.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0787625Z vk-bot-desktop-linux-x64-0.11.0/locales/ro.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0787975Z vk-bot-desktop-linux-x64-0.11.0/locales/ru.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0788317Z vk-bot-desktop-linux-x64-0.11.0/locales/sk.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0788663Z vk-bot-desktop-linux-x64-0.11.0/locales/sl.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0789005Z vk-bot-desktop-linux-x64-0.11.0/locales/sr.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0789351Z vk-bot-desktop-linux-x64-0.11.0/locales/sv.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0789698Z vk-bot-desktop-linux-x64-0.11.0/locales/sw.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0790038Z vk-bot-desktop-linux-x64-0.11.0/locales/ta.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0790736Z vk-bot-desktop-linux-x64-0.11.0/locales/te.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0791088Z vk-bot-desktop-linux-x64-0.11.0/locales/th.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0791430Z vk-bot-desktop-linux-x64-0.11.0/locales/tr.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0791776Z vk-bot-desktop-linux-x64-0.11.0/locales/uk.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0792130Z vk-bot-desktop-linux-x64-0.11.0/locales/ur.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0792479Z vk-bot-desktop-linux-x64-0.11.0/locales/vi.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0792841Z vk-bot-desktop-linux-x64-0.11.0/locales/zh-CN.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0793205Z vk-bot-desktop-linux-x64-0.11.0/locales/zh-TW.pak
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0793611Z vk-bot-desktop-linux-x64-0.11.0/resources/app-update.yml
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0794022Z vk-bot-desktop-linux-x64-0.11.0/resources/app.asar
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0794447Z vk-bot-desktop-linux-x64-0.11.0/resources/app.asar.unpacked/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0794977Z vk-bot-desktop-linux-x64-0.11.0/resources/app.asar.unpacked/node_modules/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0795604Z vk-bot-desktop-linux-x64-0.11.0/resources/app.asar.unpacked/node_modules/cpu-features/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0796239Z vk-bot-desktop-linux-x64-0.11.0/resources/app.asar.unpacked/node_modules/ssh2/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0796933Z vk-bot-desktop-linux-x64-0.11.0/resources/app.asar.unpacked/node_modules/cpu-features/.eslintrc.js
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0797671Z vk-bot-desktop-linux-x64-0.11.0/resources/app.asar.unpacked/node_modules/cpu-features/LICENSE
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0798380Z vk-bot-desktop-linux-x64-0.11.0/resources/app.asar.unpacked/node_modules/cpu-features/build/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0799136Z vk-bot-desktop-linux-x64-0.11.0/resources/app.asar.unpacked/node_modules/cpu-features/buildcheck.gypi
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0799909Z vk-bot-desktop-linux-x64-0.11.0/resources/app.asar.unpacked/node_modules/cpu-features/buildcheck.js
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0800779Z vk-bot-desktop-linux-x64-0.11.0/resources/app.asar.unpacked/node_modules/cpu-features/deps/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0801478Z vk-bot-desktop-linux-x64-0.11.0/resources/app.asar.unpacked/node_modules/cpu-features/lib/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0802207Z vk-bot-desktop-linux-x64-0.11.0/resources/app.asar.unpacked/node_modules/cpu-features/package.json
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0802931Z vk-bot-desktop-linux-x64-0.11.0/resources/app.asar.unpacked/node_modules/ssh2/.eslintignore
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0803630Z vk-bot-desktop-linux-x64-0.11.0/resources/app.asar.unpacked/node_modules/ssh2/.eslintrc.js
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0804295Z vk-bot-desktop-linux-x64-0.11.0/resources/app.asar.unpacked/node_modules/ssh2/LICENSE
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0804941Z vk-bot-desktop-linux-x64-0.11.0/resources/app.asar.unpacked/node_modules/ssh2/SFTP.md
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0805597Z vk-bot-desktop-linux-x64-0.11.0/resources/app.asar.unpacked/node_modules/ssh2/install.js
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0806236Z vk-bot-desktop-linux-x64-0.11.0/resources/app.asar.unpacked/node_modules/ssh2/lib/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0806901Z vk-bot-desktop-linux-x64-0.11.0/resources/app.asar.unpacked/node_modules/ssh2/package.json
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0807560Z vk-bot-desktop-linux-x64-0.11.0/resources/app.asar.unpacked/node_modules/ssh2/util/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0808397Z vk-bot-desktop-linux-x64-0.11.0/resources/app.asar.unpacked/node_modules/cpu-features/build/Release
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0809155Z vk-bot-desktop-linux-x64-0.11.0/resources/app.asar.unpacked/node_modules/cpu-features/build/deps/
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0810033Z vk-bot-desktop-linux-x64-0.11.0/resources/app.asar.unpacked/node_modules/cpu-features/build/node_gyp_bins
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0849680Z ##[group]Run cd release
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0850060Z ^[[36;1mcd release^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0850646Z ^[[36;1mchecksum_file="SHA256SUMS-ubuntu-latest.txt"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0851102Z ^[[36;1martifact_count=0^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0851411Z ^[[36;1m: > "$checksum_file"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0862397Z ^[[36;1m^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0862637Z ^[[36;1mwhile IFS= read -r file; do^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0862949Z ^[[36;1m  artifact_count=$((artifact_count + 1))^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0863324Z ^[[36;1m  shasum -a 256 "$file" | sed 's#  \./#  #' >> "$checksum_file"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0863683Z ^[[36;1mdone < <(^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0863901Z ^[[36;1m  find . -maxdepth 1 -type f \^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0864249Z ^[[36;1m    \( -name '*.AppImage' -o -name '*.deb' -o -name '*.tar.gz' \^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0864649Z ^[[36;1m       -o -name '*.dmg' -o -name '*.zip' \) \^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0864928Z ^[[36;1m    | sort^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0865111Z ^[[36;1m)^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0865299Z ^[[36;1m^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0865485Z ^[[36;1mif [ "$artifact_count" -eq 0 ]; then^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0865851Z ^[[36;1m  echo "No Linux/macOS release artifacts were found to hash." >&2^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0866195Z ^[[36;1m  exit 1^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0866367Z ^[[36;1mfi^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0866527Z ^[[36;1m^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0866690Z ^[[36;1mcat "$checksum_file"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0899374Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:18.0899700Z ##[endgroup]
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3258482Z 8da522749119cb4de8143c39062ee263d1e8539a018ff2f7e345b9ad0d9dba37  vk-bot-desktop-linux-x64-0.11.0.AppImage
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3259846Z adec7bea0bf34dfbe22c28706137056bd1691a68bae17ca9a5fb2d7e25e680e8  vk-bot-desktop-linux-x64-0.11.0.deb
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3262930Z ce3f1952d592c2e68af60210419cb7653903f2779bfb86296e0666bf1a0ab76e  vk-bot-desktop-linux-x64-0.11.0.tar.gz
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3294081Z ##[group]Run mkdir -p release
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3294389Z ^[[36;1mmkdir -p release^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3294594Z ^[[36;1m{^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3294823Z ^[[36;1m  echo "repository=konard/vk-bot-desktop"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3295151Z ^[[36;1m  echo "workflow=JavaScript CI/CD"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3295415Z ^[[36;1m  echo "run_id=25892544573"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3295662Z ^[[36;1m  echo "run_attempt=1"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3295889Z ^[[36;1m  echo "tag=$RELEASE_TAG"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3296136Z ^[[36;1m  echo "target_sha=$TARGET_SHA"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3296397Z ^[[36;1m  echo "builder_os=ubuntu-latest"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3296676Z ^[[36;1m  echo "builder_arch=x64"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3296913Z ^[[36;1m  if [ "linux" = "macos" ]; then^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3297195Z ^[[36;1m    echo "macos_artifacts=$MACOS_BUILD_MODE"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3297551Z ^[[36;1m    if [ "$MACOS_SIGNING_SECRETS_AVAILABLE" = "true" ]; then^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3297933Z ^[[36;1m      echo "macos_notarization=enabled"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3298188Z ^[[36;1m    else^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3298396Z ^[[36;1m      echo "macos_notarization=skipped"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3298676Z ^[[36;1m      echo "macos_signature=ad-hoc"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3299023Z ^[[36;1m      echo "macos_skip_reason=missing signing/notarization secrets"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3299360Z ^[[36;1m    fi^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3299525Z ^[[36;1m  fi^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3299745Z ^[[36;1m} > "release/provenance-ubuntu-latest.txt"^[[0m
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3332814Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3333132Z env:
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3333458Z   RELEASE_TAG: v0.12.0
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3333704Z   TARGET_SHA: 87378f5fee9e9ec4364de9c5c015c8c65fc4d1ea
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3334008Z   MACOS_SIGNING_SECRETS_AVAILABLE: 
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3334235Z   MACOS_BUILD_MODE: 
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3334423Z ##[endgroup]
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3453198Z ##[group]Run actions/upload-artifact@v4
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3453499Z with:
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3453694Z   name: electron-linux-x64
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3454314Z   path: release/*.AppImage
+Build desktop (linux x64)	UNKNOWN STEP	release/*.deb
+Build desktop (linux x64)	UNKNOWN STEP	release/*.tar.gz
+Build desktop (linux x64)	UNKNOWN STEP	release/*.dmg
+Build desktop (linux x64)	UNKNOWN STEP	release/*.zip
+Build desktop (linux x64)	UNKNOWN STEP	release/*.exe
+Build desktop (linux x64)	UNKNOWN STEP	release/*.msi
+Build desktop (linux x64)	UNKNOWN STEP	release/SHA256SUMS-*.txt
+Build desktop (linux x64)	UNKNOWN STEP	release/provenance-*.txt
+Build desktop (linux x64)	UNKNOWN STEP	
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3454967Z   if-no-files-found: ignore
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3455186Z   retention-days: 7
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3455381Z   compression-level: 6
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3455572Z   overwrite: false
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3455775Z   include-hidden-files: false
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.3455995Z ##[endgroup]
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.5676639Z With the provided path, there will be 5 files uploaded
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.5682975Z Artifact name is valid!
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.5684627Z Root directory input is valid!
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:19.8718222Z Beginning upload of artifact content to blob storage
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:21.1212983Z Uploaded bytes 8388608
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:21.4762113Z Uploaded bytes 16777216
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:21.4814572Z Uploaded bytes 25165824
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:21.6722836Z Uploaded bytes 33554432
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:21.6993059Z Uploaded bytes 41943040
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:21.9912859Z Uploaded bytes 50331648
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:21.9985211Z Uploaded bytes 58720256
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:22.2204939Z Uploaded bytes 67108864
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:22.6550877Z Uploaded bytes 75497472
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:22.7287040Z Uploaded bytes 83886080
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:22.9747275Z Uploaded bytes 92274688
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:23.3081864Z Uploaded bytes 100663296
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:23.6399267Z Uploaded bytes 109051904
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:23.9034297Z Uploaded bytes 117440512
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:24.0689304Z Uploaded bytes 125829120
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:24.2864922Z Uploaded bytes 134217728
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:24.6450099Z Uploaded bytes 142606336
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:24.9897395Z Uploaded bytes 150994944
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:25.1452178Z Uploaded bytes 159383552
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:25.3628151Z Uploaded bytes 167772160
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:25.7187073Z Uploaded bytes 176160768
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:25.8291664Z Uploaded bytes 184549376
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:26.1704634Z Uploaded bytes 192937984
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:26.3214772Z Uploaded bytes 201326592
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:26.6506579Z Uploaded bytes 209715200
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:26.8817316Z Uploaded bytes 218103808
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:27.1209968Z Uploaded bytes 226492416
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:27.3185188Z Uploaded bytes 234881024
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:27.5907264Z Uploaded bytes 243269632
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:27.7511849Z Uploaded bytes 251658240
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:27.9736152Z Uploaded bytes 260046848
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:28.2372858Z Uploaded bytes 268435456
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:28.6051595Z Uploaded bytes 276824064
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:28.7048297Z Uploaded bytes 285212672
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.0622483Z Uploaded bytes 293601280
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.2166035Z Uploaded bytes 294548788
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.2984154Z Finished uploading artifact content to blob storage!
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.2988265Z SHA256 digest of uploaded artifact zip is e80ea2ec179e2b82c2e46d7bacd91e634192f6a9458af0c2d52e3a05e03a40c9
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.2989964Z Finalizing artifact upload
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.6155192Z Artifact electron-linux-x64.zip successfully finalized. Artifact ID 7007466040
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.6156727Z Artifact electron-linux-x64 has been successfully uploaded! Final size is 294548788 bytes. Artifact ID is 7007466040
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.6166053Z Artifact download URL: https://github.com/konard/vk-bot-desktop/actions/runs/25892544573/artifacts/7007466040
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.6324877Z Post job cleanup.
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.7575783Z Post job cleanup.
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.8374250Z [command]/usr/bin/git version
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.8410320Z git version 2.54.0
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.8451849Z Temporarily overriding HOME='/home/runner/work/_temp/b58561a3-daff-440f-af06-95465725aec0' before making global git config changes
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.8453755Z Adding repository directory to the temporary git global config as a safe directory
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.8458160Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/vk-bot-desktop/vk-bot-desktop
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.8487785Z Removing SSH command configuration
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.8494314Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.8526517Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.8746587Z Removing HTTP extra header
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.8751092Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.8786486Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.9008423Z Removing includeIf entries pointing to credentials config files
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.9016264Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.9042520Z includeif.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git.path
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.9043814Z includeif.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git/worktrees/*.path
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.9044820Z includeif.gitdir:/github/workspace/.git.path
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.9045623Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.9052814Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git.path
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.9074212Z /home/runner/work/_temp/git-credentials-77bb7afe-040c-4c98-adb5-aaf0e0324ec3.config
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.9084255Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git.path /home/runner/work/_temp/git-credentials-77bb7afe-040c-4c98-adb5-aaf0e0324ec3.config
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.9119048Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git/worktrees/*.path
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.9139531Z /home/runner/work/_temp/git-credentials-77bb7afe-040c-4c98-adb5-aaf0e0324ec3.config
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.9148790Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-77bb7afe-040c-4c98-adb5-aaf0e0324ec3.config
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.9178063Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.9198113Z /github/runner_temp/git-credentials-77bb7afe-040c-4c98-adb5-aaf0e0324ec3.config
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.9205927Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-77bb7afe-040c-4c98-adb5-aaf0e0324ec3.config
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.9235510Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.9256803Z /github/runner_temp/git-credentials-77bb7afe-040c-4c98-adb5-aaf0e0324ec3.config
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.9266677Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-77bb7afe-040c-4c98-adb5-aaf0e0324ec3.config
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.9297543Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.9511000Z Removing credentials config '/home/runner/work/_temp/git-credentials-77bb7afe-040c-4c98-adb5-aaf0e0324ec3.config'
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.9639791Z Cleaning up orphan processes
+Build desktop (linux x64)	UNKNOWN STEP	2026-05-15T00:08:29.9951332Z ##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/upload-artifact@v4. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Node.js 20 will be removed from the runner on September 16th, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

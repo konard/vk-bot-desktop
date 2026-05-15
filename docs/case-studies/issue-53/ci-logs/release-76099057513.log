@@ -1,0 +1,544 @@
+Release	UNKNOWN STEP	﻿2026-05-15T00:02:20.9922223Z Current runner version: '2.334.0'
+Release	UNKNOWN STEP	2026-05-15T00:02:20.9945367Z ##[group]Runner Image Provisioner
+Release	UNKNOWN STEP	2026-05-15T00:02:20.9946165Z Hosted Compute Agent
+Release	UNKNOWN STEP	2026-05-15T00:02:20.9946739Z Version: 20260213.493
+Release	UNKNOWN STEP	2026-05-15T00:02:20.9947416Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+Release	UNKNOWN STEP	2026-05-15T00:02:20.9948169Z Build Date: 2026-02-13T00:28:41Z
+Release	UNKNOWN STEP	2026-05-15T00:02:20.9948903Z Worker ID: {eb61a080-2c53-4d1d-94cc-b5e88af62a08}
+Release	UNKNOWN STEP	2026-05-15T00:02:20.9950023Z Azure Region: westcentralus
+Release	UNKNOWN STEP	2026-05-15T00:02:20.9950665Z ##[endgroup]
+Release	UNKNOWN STEP	2026-05-15T00:02:20.9952081Z ##[group]Operating System
+Release	UNKNOWN STEP	2026-05-15T00:02:20.9952764Z Ubuntu
+Release	UNKNOWN STEP	2026-05-15T00:02:20.9953468Z 24.04.4
+Release	UNKNOWN STEP	2026-05-15T00:02:20.9953949Z LTS
+Release	UNKNOWN STEP	2026-05-15T00:02:20.9954404Z ##[endgroup]
+Release	UNKNOWN STEP	2026-05-15T00:02:20.9955013Z ##[group]Runner Image
+Release	UNKNOWN STEP	2026-05-15T00:02:20.9955597Z Image: ubuntu-24.04
+Release	UNKNOWN STEP	2026-05-15T00:02:20.9956102Z Version: 20260413.86.1
+Release	UNKNOWN STEP	2026-05-15T00:02:20.9957479Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260413.86/images/ubuntu/Ubuntu2404-Readme.md
+Release	UNKNOWN STEP	2026-05-15T00:02:20.9959130Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260413.86
+Release	UNKNOWN STEP	2026-05-15T00:02:20.9960014Z ##[endgroup]
+Release	UNKNOWN STEP	2026-05-15T00:02:20.9961273Z ##[group]GITHUB_TOKEN Permissions
+Release	UNKNOWN STEP	2026-05-15T00:02:20.9963446Z Contents: write
+Release	UNKNOWN STEP	2026-05-15T00:02:20.9964088Z Metadata: read
+Release	UNKNOWN STEP	2026-05-15T00:02:20.9964643Z PullRequests: write
+Release	UNKNOWN STEP	2026-05-15T00:02:20.9965273Z ##[endgroup]
+Release	UNKNOWN STEP	2026-05-15T00:02:20.9967259Z Secret source: Actions
+Release	UNKNOWN STEP	2026-05-15T00:02:20.9968051Z Prepare workflow directory
+Release	UNKNOWN STEP	2026-05-15T00:02:21.0353504Z Prepare all required actions
+Release	UNKNOWN STEP	2026-05-15T00:02:21.0390916Z Getting action download info
+Release	UNKNOWN STEP	2026-05-15T00:02:21.4813748Z Download action repository 'actions/checkout@v6' (SHA:de0fac2e4500dabe0009e67214ff5f5447ce83dd)
+Release	UNKNOWN STEP	2026-05-15T00:02:21.5835382Z Download action repository 'actions/setup-node@v6' (SHA:48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e)
+Release	UNKNOWN STEP	2026-05-15T00:02:22.4961211Z Complete job name: Release
+Release	UNKNOWN STEP	2026-05-15T00:02:22.5722424Z ##[group]Run actions/checkout@v6
+Release	UNKNOWN STEP	2026-05-15T00:02:22.5723987Z with:
+Release	UNKNOWN STEP	2026-05-15T00:02:22.5724479Z   fetch-depth: 0
+Release	UNKNOWN STEP	2026-05-15T00:02:22.5724962Z   repository: konard/vk-bot-desktop
+Release	UNKNOWN STEP	2026-05-15T00:02:22.5725672Z   token: ***
+Release	UNKNOWN STEP	2026-05-15T00:02:22.5726092Z   ssh-strict: true
+Release	UNKNOWN STEP	2026-05-15T00:02:22.5726521Z   ssh-user: git
+Release	UNKNOWN STEP	2026-05-15T00:02:22.5726973Z   persist-credentials: true
+Release	UNKNOWN STEP	2026-05-15T00:02:22.5727477Z   clean: true
+Release	UNKNOWN STEP	2026-05-15T00:02:22.5727928Z   sparse-checkout-cone-mode: true
+Release	UNKNOWN STEP	2026-05-15T00:02:22.5728456Z   fetch-tags: false
+Release	UNKNOWN STEP	2026-05-15T00:02:22.5728886Z   show-progress: true
+Release	UNKNOWN STEP	2026-05-15T00:02:22.5729329Z   lfs: false
+Release	UNKNOWN STEP	2026-05-15T00:02:22.5729735Z   submodules: false
+Release	UNKNOWN STEP	2026-05-15T00:02:22.5730203Z   set-safe-directory: true
+Release	UNKNOWN STEP	2026-05-15T00:02:22.5731020Z ##[endgroup]
+Release	UNKNOWN STEP	2026-05-15T00:02:22.6704225Z Syncing repository: konard/vk-bot-desktop
+Release	UNKNOWN STEP	2026-05-15T00:02:22.6706404Z ##[group]Getting Git version info
+Release	UNKNOWN STEP	2026-05-15T00:02:22.6707353Z Working directory is '/home/runner/work/vk-bot-desktop/vk-bot-desktop'
+Release	UNKNOWN STEP	2026-05-15T00:02:22.6708518Z [command]/usr/bin/git version
+Release	UNKNOWN STEP	2026-05-15T00:02:22.6729079Z git version 2.53.0
+Release	UNKNOWN STEP	2026-05-15T00:02:22.6752585Z ##[endgroup]
+Release	UNKNOWN STEP	2026-05-15T00:02:22.6766417Z Temporarily overriding HOME='/home/runner/work/_temp/2c1b9da6-b311-430b-a6d0-764333f86d4a' before making global git config changes
+Release	UNKNOWN STEP	2026-05-15T00:02:22.6768564Z Adding repository directory to the temporary git global config as a safe directory
+Release	UNKNOWN STEP	2026-05-15T00:02:22.6771712Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/vk-bot-desktop/vk-bot-desktop
+Release	UNKNOWN STEP	2026-05-15T00:02:22.6804172Z Deleting the contents of '/home/runner/work/vk-bot-desktop/vk-bot-desktop'
+Release	UNKNOWN STEP	2026-05-15T00:02:22.6808173Z ##[group]Initializing the repository
+Release	UNKNOWN STEP	2026-05-15T00:02:22.6813390Z [command]/usr/bin/git init /home/runner/work/vk-bot-desktop/vk-bot-desktop
+Release	UNKNOWN STEP	2026-05-15T00:02:22.6892090Z hint: Using 'master' as the name for the initial branch. This default branch name
+Release	UNKNOWN STEP	2026-05-15T00:02:22.6894256Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+Release	UNKNOWN STEP	2026-05-15T00:02:22.6896208Z hint: to use in all of your new repositories, which will suppress this warning,
+Release	UNKNOWN STEP	2026-05-15T00:02:22.6898126Z hint: call:
+Release	UNKNOWN STEP	2026-05-15T00:02:22.6898927Z hint:
+Release	UNKNOWN STEP	2026-05-15T00:02:22.6900121Z hint: 	git config --global init.defaultBranch <name>
+Release	UNKNOWN STEP	2026-05-15T00:02:22.6901243Z hint:
+Release	UNKNOWN STEP	2026-05-15T00:02:22.6902299Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+Release	UNKNOWN STEP	2026-05-15T00:02:22.6904476Z hint: 'development'. The just-created branch can be renamed via this command:
+Release	UNKNOWN STEP	2026-05-15T00:02:22.6906009Z hint:
+Release	UNKNOWN STEP	2026-05-15T00:02:22.6906792Z hint: 	git branch -m <name>
+Release	UNKNOWN STEP	2026-05-15T00:02:22.6907683Z hint:
+Release	UNKNOWN STEP	2026-05-15T00:02:22.6908805Z hint: Disable this message with "git config set advice.defaultBranchName false"
+Release	UNKNOWN STEP	2026-05-15T00:02:22.6910711Z Initialized empty Git repository in /home/runner/work/vk-bot-desktop/vk-bot-desktop/.git/
+Release	UNKNOWN STEP	2026-05-15T00:02:22.6914009Z [command]/usr/bin/git remote add origin https://github.com/konard/vk-bot-desktop
+Release	UNKNOWN STEP	2026-05-15T00:02:22.6970398Z ##[endgroup]
+Release	UNKNOWN STEP	2026-05-15T00:02:22.6971911Z ##[group]Disabling automatic garbage collection
+Release	UNKNOWN STEP	2026-05-15T00:02:22.6975033Z [command]/usr/bin/git config --local gc.auto 0
+Release	UNKNOWN STEP	2026-05-15T00:02:22.7003267Z ##[endgroup]
+Release	UNKNOWN STEP	2026-05-15T00:02:22.7004622Z ##[group]Setting up auth
+Release	UNKNOWN STEP	2026-05-15T00:02:22.7005300Z Removing SSH command configuration
+Release	UNKNOWN STEP	2026-05-15T00:02:22.7010186Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Release	UNKNOWN STEP	2026-05-15T00:02:22.7040822Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Release	UNKNOWN STEP	2026-05-15T00:02:22.7304761Z Removing HTTP extra header
+Release	UNKNOWN STEP	2026-05-15T00:02:22.7309527Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Release	UNKNOWN STEP	2026-05-15T00:02:22.7338485Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Release	UNKNOWN STEP	2026-05-15T00:02:22.7544845Z Removing includeIf entries pointing to credentials config files
+Release	UNKNOWN STEP	2026-05-15T00:02:22.7551829Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Release	UNKNOWN STEP	2026-05-15T00:02:22.7582419Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Release	UNKNOWN STEP	2026-05-15T00:02:22.7800147Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-99a4a293-e481-4055-a234-040e5c16515f.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+Release	UNKNOWN STEP	2026-05-15T00:02:22.7836069Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git.path /home/runner/work/_temp/git-credentials-99a4a293-e481-4055-a234-040e5c16515f.config
+Release	UNKNOWN STEP	2026-05-15T00:02:22.7865458Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-99a4a293-e481-4055-a234-040e5c16515f.config
+Release	UNKNOWN STEP	2026-05-15T00:02:22.7895210Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-99a4a293-e481-4055-a234-040e5c16515f.config
+Release	UNKNOWN STEP	2026-05-15T00:02:22.7925120Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-99a4a293-e481-4055-a234-040e5c16515f.config
+Release	UNKNOWN STEP	2026-05-15T00:02:22.7950380Z ##[endgroup]
+Release	UNKNOWN STEP	2026-05-15T00:02:22.7951143Z ##[group]Fetching the repository
+Release	UNKNOWN STEP	2026-05-15T00:02:22.7959262Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3101445Z From https://github.com/konard/vk-bot-desktop
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3104509Z  * [new branch]      issue-1-c464625cb2aa  -> origin/issue-1-c464625cb2aa
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3106792Z  * [new branch]      issue-11-5a698e976ba3 -> origin/issue-11-5a698e976ba3
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3108958Z  * [new branch]      issue-13-c24281c684e3 -> origin/issue-13-c24281c684e3
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3111325Z  * [new branch]      issue-15-9ea339e71924 -> origin/issue-15-9ea339e71924
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3113120Z  * [new branch]      issue-15-a34bf7d3d42f -> origin/issue-15-a34bf7d3d42f
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3114613Z  * [new branch]      issue-18-8dbdafb20a80 -> origin/issue-18-8dbdafb20a80
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3116422Z  * [new branch]      issue-20-f41343d25099 -> origin/issue-20-f41343d25099
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3117987Z  * [new branch]      issue-22-e81a3ff8f2b6 -> origin/issue-22-e81a3ff8f2b6
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3119637Z  * [new branch]      issue-24-387107d2234b -> origin/issue-24-387107d2234b
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3121232Z  * [new branch]      issue-26-13d5d785ff12 -> origin/issue-26-13d5d785ff12
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3123149Z  * [new branch]      issue-28-4ceb21ba0bd3 -> origin/issue-28-4ceb21ba0bd3
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3124827Z  * [new branch]      issue-28-bbc47868b0d3 -> origin/issue-28-bbc47868b0d3
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3126406Z  * [new branch]      issue-3-056428691864  -> origin/issue-3-056428691864
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3128017Z  * [new branch]      issue-3-0e5a85ffef02  -> origin/issue-3-0e5a85ffef02
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3129934Z  * [new branch]      issue-31-478598f7dea9 -> origin/issue-31-478598f7dea9
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3131731Z  * [new branch]      issue-32-3162af7780fd -> origin/issue-32-3162af7780fd
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3133856Z  * [new branch]      issue-35-ae8a9f0f2720 -> origin/issue-35-ae8a9f0f2720
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3135675Z  * [new branch]      issue-37-8ad5e669dedf -> origin/issue-37-8ad5e669dedf
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3137514Z  * [new branch]      issue-39-5d7ef40481ba -> origin/issue-39-5d7ef40481ba
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3139355Z  * [new branch]      issue-41-821066ba8668 -> origin/issue-41-821066ba8668
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3141329Z  * [new branch]      issue-42-dea4cdbacc30 -> origin/issue-42-dea4cdbacc30
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3143895Z  * [new branch]      issue-45-a6378227b2b7 -> origin/issue-45-a6378227b2b7
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3145993Z  * [new branch]      issue-47-3bee22ea6e65 -> origin/issue-47-3bee22ea6e65
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3148090Z  * [new branch]      issue-49-ff8c0e53d7c6 -> origin/issue-49-ff8c0e53d7c6
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3150211Z  * [new branch]      issue-51-60ec0489f01f -> origin/issue-51-60ec0489f01f
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3152366Z  * [new branch]      issue-6-4b296eea2cf6  -> origin/issue-6-4b296eea2cf6
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3155316Z  * [new branch]      issue-8-93b95b3c1197  -> origin/issue-8-93b95b3c1197
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3157633Z  * [new branch]      issue-8-d06a42598e1e  -> origin/issue-8-d06a42598e1e
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3159770Z  * [new branch]      main                  -> origin/main
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3161646Z  * [new tag]         v0.10.2               -> v0.10.2
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3163548Z  * [new tag]         v0.11.0               -> v0.11.0
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3165380Z  * [new tag]         v0.9.12               -> v0.9.12
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3167786Z  * [new tag]         v0.9.13               -> v0.9.13
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3169822Z  * [new tag]         v0.9.14               -> v0.9.14
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3171691Z  * [new tag]         v0.9.15               -> v0.9.15
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3174042Z  * [new tag]         v0.9.16               -> v0.9.16
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3175724Z  * [new tag]         v0.9.18               -> v0.9.18
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3177404Z  * [new tag]         v0.9.2                -> v0.9.2
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3179072Z  * [new tag]         v0.9.20               -> v0.9.20
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3181076Z  * [new tag]         v0.9.22               -> v0.9.22
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3182748Z  * [new tag]         v0.9.4                -> v0.9.4
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3184621Z  * [new tag]         v0.9.5                -> v0.9.5
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3186450Z  * [new tag]         v0.9.6                -> v0.9.6
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3188099Z  * [new tag]         v0.9.7                -> v0.9.7
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3191844Z [command]/usr/bin/git branch --list --remote origin/main
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3208833Z   origin/main
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3219951Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3241725Z 87378f5fee9e9ec4364de9c5c015c8c65fc4d1ea
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3252452Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules origin +9212c1126cb5f072edb92b66bb0455b36caf0720:refs/remotes/origin/main
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3303820Z From https://github.com/konard/vk-bot-desktop
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3306574Z  + 87378f5...9212c11 9212c1126cb5f072edb92b66bb0455b36caf0720 -> origin/main  (forced update)
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3331717Z [command]/usr/bin/git branch --list --remote origin/main
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3357177Z   origin/main
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3365183Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3385066Z 9212c1126cb5f072edb92b66bb0455b36caf0720
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3390707Z ##[endgroup]
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3392463Z ##[group]Determining the checkout info
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3395247Z ##[endgroup]
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3396287Z [command]/usr/bin/git sparse-checkout disable
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3433349Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3463939Z ##[group]Checking out the ref
+Release	UNKNOWN STEP	2026-05-15T00:02:24.3466794Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+Release	UNKNOWN STEP	2026-05-15T00:02:24.5357791Z Switched to a new branch 'main'
+Release	UNKNOWN STEP	2026-05-15T00:02:24.5359376Z branch 'main' set up to track 'origin/main'.
+Release	UNKNOWN STEP	2026-05-15T00:02:24.5380975Z ##[endgroup]
+Release	UNKNOWN STEP	2026-05-15T00:02:24.5421614Z [command]/usr/bin/git log -1 --format=%H
+Release	UNKNOWN STEP	2026-05-15T00:02:24.5446998Z 9212c1126cb5f072edb92b66bb0455b36caf0720
+Release	UNKNOWN STEP	2026-05-15T00:02:24.5690291Z ##[group]Run actions/setup-node@v6
+Release	UNKNOWN STEP	2026-05-15T00:02:24.5690607Z with:
+Release	UNKNOWN STEP	2026-05-15T00:02:24.5690825Z   node-version: 24.x
+Release	UNKNOWN STEP	2026-05-15T00:02:24.5691078Z   check-latest: false
+Release	UNKNOWN STEP	2026-05-15T00:02:24.5691470Z   token: ***
+Release	UNKNOWN STEP	2026-05-15T00:02:24.5691711Z   package-manager-cache: true
+Release	UNKNOWN STEP	2026-05-15T00:02:24.5691981Z ##[endgroup]
+Release	UNKNOWN STEP	2026-05-15T00:02:24.7213348Z Found in cache @ /opt/hostedtoolcache/node/24.14.1/x64
+Release	UNKNOWN STEP	2026-05-15T00:02:24.7217594Z ##[group]Environment details
+Release	UNKNOWN STEP	2026-05-15T00:02:27.6850948Z node: v24.14.1
+Release	UNKNOWN STEP	2026-05-15T00:02:27.6851194Z npm: 11.11.0
+Release	UNKNOWN STEP	2026-05-15T00:02:27.6851364Z yarn: 1.22.22
+Release	UNKNOWN STEP	2026-05-15T00:02:27.6852167Z ##[endgroup]
+Release	UNKNOWN STEP	2026-05-15T00:02:27.7056633Z ##[group]Run npm install
+Release	UNKNOWN STEP	2026-05-15T00:02:27.7057096Z ^[[36;1mnpm install^[[0m
+Release	UNKNOWN STEP	2026-05-15T00:02:27.7089339Z shell: /usr/bin/bash -e {0}
+Release	UNKNOWN STEP	2026-05-15T00:02:27.7089579Z ##[endgroup]
+Release	UNKNOWN STEP	2026-05-15T00:02:31.4121710Z npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+Release	UNKNOWN STEP	2026-05-15T00:02:31.7018055Z npm warn deprecated npmlog@6.0.2: This package is no longer supported.
+Release	UNKNOWN STEP	2026-05-15T00:02:32.0459678Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+Release	UNKNOWN STEP	2026-05-15T00:02:32.0784504Z npm warn deprecated tar@6.2.1: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+Release	UNKNOWN STEP	2026-05-15T00:02:32.1827540Z npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+Release	UNKNOWN STEP	2026-05-15T00:02:32.5168463Z npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
+Release	UNKNOWN STEP	2026-05-15T00:02:32.5182317Z npm warn deprecated gauge@4.0.4: This package is no longer supported.
+Release	UNKNOWN STEP	2026-05-15T00:02:32.7108955Z npm warn deprecated are-we-there-yet@3.0.1: This package is no longer supported.
+Release	UNKNOWN STEP	2026-05-15T00:02:32.8694300Z npm warn deprecated @npmcli/move-file@2.0.1: This functionality has been moved to @npmcli/fs
+Release	UNKNOWN STEP	2026-05-15T00:02:32.8866075Z npm warn deprecated boolean@3.2.0: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+Release	UNKNOWN STEP	2026-05-15T00:02:33.7681163Z npm warn deprecated glob@8.1.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+Release	UNKNOWN STEP	2026-05-15T00:02:35.3386255Z npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+Release	UNKNOWN STEP	2026-05-15T00:02:49.9034370Z 
+Release	UNKNOWN STEP	2026-05-15T00:02:49.9035392Z > vk-bot-desktop@0.11.0 prepare
+Release	UNKNOWN STEP	2026-05-15T00:02:49.9035868Z > husky || true
+Release	UNKNOWN STEP	2026-05-15T00:02:49.9036059Z 
+Release	UNKNOWN STEP	2026-05-15T00:02:49.9681055Z 
+Release	UNKNOWN STEP	2026-05-15T00:02:49.9681898Z added 711 packages, and audited 712 packages in 22s
+Release	UNKNOWN STEP	2026-05-15T00:02:49.9682437Z 
+Release	UNKNOWN STEP	2026-05-15T00:02:49.9683458Z 124 packages are looking for funding
+Release	UNKNOWN STEP	2026-05-15T00:02:49.9684512Z   run `npm fund` for details
+Release	UNKNOWN STEP	2026-05-15T00:02:50.0345324Z 
+Release	UNKNOWN STEP	2026-05-15T00:02:50.0346105Z 13 vulnerabilities (2 low, 1 moderate, 10 high)
+Release	UNKNOWN STEP	2026-05-15T00:02:50.0346619Z 
+Release	UNKNOWN STEP	2026-05-15T00:02:50.0347075Z To address issues that do not require attention, run:
+Release	UNKNOWN STEP	2026-05-15T00:02:50.0347735Z   npm audit fix
+Release	UNKNOWN STEP	2026-05-15T00:02:50.0348008Z 
+Release	UNKNOWN STEP	2026-05-15T00:02:50.0348457Z To address all issues (including breaking changes), run:
+Release	UNKNOWN STEP	2026-05-15T00:02:50.0349201Z   npm audit fix --force
+Release	UNKNOWN STEP	2026-05-15T00:02:50.0349493Z 
+Release	UNKNOWN STEP	2026-05-15T00:02:50.0349735Z Run `npm audit` for details.
+Release	UNKNOWN STEP	2026-05-15T00:02:50.0996603Z ##[group]Run node scripts/check-changesets.mjs
+Release	UNKNOWN STEP	2026-05-15T00:02:50.0996969Z ^[[36;1mnode scripts/check-changesets.mjs^[[0m
+Release	UNKNOWN STEP	2026-05-15T00:02:50.1018117Z shell: /usr/bin/bash -e {0}
+Release	UNKNOWN STEP	2026-05-15T00:02:50.1018346Z ##[endgroup]
+Release	UNKNOWN STEP	2026-05-15T00:02:50.1369464Z Checking for pending changeset files...
+Release	UNKNOWN STEP	2026-05-15T00:02:50.1369798Z 
+Release	UNKNOWN STEP	2026-05-15T00:02:50.1372515Z Found 1 changeset file(s)
+Release	UNKNOWN STEP	2026-05-15T00:02:50.1374255Z has_changesets=true
+Release	UNKNOWN STEP	2026-05-15T00:02:50.1374993Z changeset_count=1
+Release	UNKNOWN STEP	2026-05-15T00:02:50.1461553Z ##[group]Run node scripts/check-release-needed.mjs
+Release	UNKNOWN STEP	2026-05-15T00:02:50.1461923Z ^[[36;1mnode scripts/check-release-needed.mjs^[[0m
+Release	UNKNOWN STEP	2026-05-15T00:02:50.1482461Z shell: /usr/bin/bash -e {0}
+Release	UNKNOWN STEP	2026-05-15T00:02:50.1482688Z env:
+Release	UNKNOWN STEP	2026-05-15T00:02:50.1483131Z   HAS_CHANGESETS: true
+Release	UNKNOWN STEP	2026-05-15T00:02:50.1483368Z   REPOSITORY: konard/vk-bot-desktop
+Release	UNKNOWN STEP	2026-05-15T00:02:50.1483787Z   GH_TOKEN: ***
+Release	UNKNOWN STEP	2026-05-15T00:02:50.1483968Z ##[endgroup]
+Release	UNKNOWN STEP	2026-05-15T00:02:50.1824298Z Detected single-language repository (package.json in root)
+Release	UNKNOWN STEP	2026-05-15T00:02:50.1829229Z Package: vk-bot-desktop
+Release	UNKNOWN STEP	2026-05-15T00:02:50.1829708Z Current version: 0.11.0
+Release	UNKNOWN STEP	2026-05-15T00:02:50.1830189Z Release tag: v0.11.0
+Release	UNKNOWN STEP	2026-05-15T00:02:50.1832074Z Repository: konard/vk-bot-desktop
+Release	UNKNOWN STEP	2026-05-15T00:02:50.1832617Z Has changesets: true
+Release	UNKNOWN STEP	2026-05-15T00:02:50.1833391Z Found changesets, proceeding with release
+Release	UNKNOWN STEP	2026-05-15T00:02:50.1834024Z Output: should_release=true
+Release	UNKNOWN STEP	2026-05-15T00:02:50.1834650Z Output: skip_bump=false
+Release	UNKNOWN STEP	2026-05-15T00:02:50.1919157Z ##[group]Run node scripts/version-and-commit.mjs --mode changeset
+Release	UNKNOWN STEP	2026-05-15T00:02:50.1919620Z ^[[36;1mnode scripts/version-and-commit.mjs --mode changeset^[[0m
+Release	UNKNOWN STEP	2026-05-15T00:02:50.1940622Z shell: /usr/bin/bash -e {0}
+Release	UNKNOWN STEP	2026-05-15T00:02:50.1940852Z ##[endgroup]
+Release	UNKNOWN STEP	2026-05-15T00:02:53.6143861Z Detected single-language repository (package.json in root)
+Release	UNKNOWN STEP	2026-05-15T00:02:53.6146625Z Parsed configuration: { mode: 'changeset', bumpType: '', description: '(none)', jsRoot: '.' }
+Release	UNKNOWN STEP	2026-05-15T00:02:53.6405057Z Checking for remote changes...
+Release	UNKNOWN STEP	2026-05-15T00:02:53.9808079Z From https://github.com/konard/vk-bot-desktop
+Release	UNKNOWN STEP	2026-05-15T00:02:53.9808794Z  * branch            main       -> FETCH_HEAD
+Release	UNKNOWN STEP	2026-05-15T00:02:53.9811144Z    9212c11..87378f5  main       -> origin/main
+Release	UNKNOWN STEP	2026-05-15T00:02:53.9925809Z 9212c1126cb5f072edb92b66bb0455b36caf0720
+Release	UNKNOWN STEP	2026-05-15T00:02:53.9994871Z 87378f5fee9e9ec4364de9c5c015c8c65fc4d1ea
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0001387Z Remote main has advanced (local: 9212c1126cb5f072edb92b66bb0455b36caf0720, remote: 87378f5fee9e9ec4364de9c5c015c8c65fc4d1ea)
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0003297Z This may indicate a previous attempt partially succeeded.
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0071062Z {
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0071406Z   "name": "vk-bot-desktop",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0071800Z   "version": "0.11.0",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0072666Z   "description": "Cross-platform desktop wrapper around konard/vk-bot, written with React and Electron.",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0073726Z   "type": "module",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0074095Z   "main": "electron/main.cjs",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0074461Z   "exports": {
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0074763Z     ".": {
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0074989Z       "import": "./src/index.js"
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0075214Z     }
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0075366Z   },
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0075511Z   "bin": {
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0075717Z     "vk-bot-desktop": "./src/cli.mjs"
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0075944Z   },
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0076105Z   "scripts": {
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0076402Z     "test": "node --test --test-timeout=30000 tests/*.test.js",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0076716Z     "lint": "eslint .",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0076969Z     "lint:fix": "eslint . --fix",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0077231Z     "format": "prettier --write .",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0077816Z     "format:check": "prettier --check .",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0078346Z     "check:duplication": "jscpd .",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0079081Z     "check": "npm run lint && npm run format:check && npm run check:duplication",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0079804Z     "prepare": "husky || true",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0080238Z     "changeset": "changeset",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0080841Z     "changeset:version": "node scripts/changeset-version.mjs",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0081506Z     "changeset:publish": "changeset publish",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0082214Z     "changeset:status": "changeset status --since=origin/main",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0083243Z     "build:renderer": "node scripts/build-renderer.mjs",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0084068Z     "build:renderer:watch": "node scripts/build-renderer.mjs --watch",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0085003Z     "electron:dev": "npm run build:renderer && electron .",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0085891Z     "electron:build": "npm run build:renderer && electron-builder --publish never",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0087025Z     "electron:build:linux": "npm run build:renderer && electron-builder --linux --publish never",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0088198Z     "electron:build:mac": "npm run build:renderer && electron-builder --mac --publish never",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0089299Z     "electron:build:win": "npm run build:renderer && electron-builder --win --publish never",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0090162Z     "build:site": "node scripts/build-site.mjs",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0090829Z     "test:pages:e2e": "node scripts/test-pages-e2e.mjs",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0091562Z     "preview:update": "node scripts/update-preview-images.mjs"
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0092294Z   },
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0092673Z   "keywords": [
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0093239Z     "vk",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0093539Z     "vk-bot",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0093834Z     "electron",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0094439Z     "react",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0094755Z     "desktop"
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0095035Z   ],
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0095320Z   "author": "konard",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0095668Z   "license": "Unlicense",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0096057Z   "repository": {
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0096421Z     "type": "git",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0096899Z     "url": "https://github.com/konard/vk-bot-desktop"
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0097390Z   },
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0097718Z   "engines": {
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0098024Z     "node": ">=20.0.0"
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0098348Z   },
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0098659Z   "dependencies": {
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0099064Z     "lino-arguments": "^0.3.0",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0099539Z     "lino-objects-codec": "^0.3.6",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0099990Z     "node-ssh": "^13.2.0",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0100367Z     "react": "^18.3.1",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0100730Z     "react-dom": "^18.3.1",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0101108Z     "vk-io": "^4.9.0"
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0101708Z   },
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0102005Z   "devDependencies": {
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0102445Z     "@changesets/cli": "^2.29.7",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0103141Z     "electron": "^33.0.0",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0103591Z     "electron-builder": "^25.1.8",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0104024Z     "esbuild": "^0.24.0",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0104384Z     "eslint": "^9.38.0",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0104805Z     "eslint-config-prettier": "^10.1.8",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0105334Z     "eslint-plugin-prettier": "^5.5.4",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0105785Z     "husky": "^9.1.7",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0106126Z     "jscpd": "^4.0.5",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0106480Z     "lint-staged": "^16.2.6",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0106854Z     "prettier": "^3.6.2",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0107270Z     "test-anywhere": "^0.8.48"
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0107635Z   },
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0107908Z   "build": {
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0108317Z     "appId": "team.deep.vk-bot-desktop",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0108835Z     "productName": "VK Bot Desktop",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0109261Z     "files": [
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0109579Z       "electron/**/*",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0109928Z       "src/**/*",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0110247Z       "package.json"
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0110565Z     ],
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0110862Z     "directories": {
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0111214Z       "output": "release"
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0111566Z     },
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0111906Z     "linux": {
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0112551Z       "artifactName": "vk-bot-desktop-linux-${arch}-${version}.${ext}",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0113429Z       "target": [
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0113772Z         "AppImage",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0114096Z         "deb",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0114405Z         "tar.gz"
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0114709Z       ],
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0115005Z       "category": "Network",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0115773Z       "maintainer": "Konstantin Diachenko <1431904+konard@users.noreply.github.com>"
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0116491Z     },
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0116799Z     "mac": {
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0117120Z       "target": [
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0117456Z         "dmg",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0117772Z         "zip"
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0118084Z       ],
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0118525Z       "category": "public.app-category.social-networking",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0118986Z       "artifactName": "vk-bot-desktop-macos-${arch}-${version}.${ext}",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0119350Z       "hardenedRuntime": true,
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0119579Z       "notarize": true,
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0119857Z       "entitlements": "build/entitlements.mac.plist",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0120245Z       "entitlementsInherit": "build/entitlements.mac.plist"
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0120545Z     },
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0120697Z     "win": {
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0120863Z       "target": [
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0121041Z         "nsis",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0121209Z         "portable"
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0121380Z       ]
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0121522Z     },
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0121682Z     "appImage": {
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0122007Z       "artifactName": "vk-bot-desktop-linux-${arch}-${version}.AppImage"
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0122336Z     },
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0122490Z     "deb": {
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0123354Z       "artifactName": "vk-bot-desktop-linux-${arch}-${version}.deb"
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0123717Z     },
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0123879Z     "dmg": {
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0124256Z       "artifactName": "vk-bot-desktop-macos-${arch}-${version}.dmg",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0124639Z       "title": "Install VK Bot Desktop",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0124912Z       "backgroundColor": "#f4f6f5",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0125144Z       "iconSize": 96,
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0125334Z       "iconTextSize": 14,
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0125534Z       "window": {
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0125708Z         "width": 620,
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0125884Z         "height": 420
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0126063Z       },
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0126221Z       "contents": [
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0126387Z         {
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0126721Z           "x": 185,
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0127138Z           "y": 220
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0127437Z         },
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0127886Z         {
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0128049Z           "x": 435,
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0128230Z           "y": 220,
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0128405Z           "type": "link",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0128647Z           "path": "/Applications"
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0128863Z         }
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0129008Z       ]
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0129155Z     },
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0129301Z     "nsis": {
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0129671Z       "artifactName": "vk-bot-desktop-windows-installer-${arch}-${version}.${ext}",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0130059Z       "oneClick": false,
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0130330Z       "allowToChangeInstallationDirectory": true,
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0130618Z       "perMachine": false,
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0130830Z       "runAfterFinish": false
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0131025Z     },
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0131181Z     "portable": {
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0131526Z       "artifactName": "vk-bot-desktop-windows-portable-${arch}-${version}.${ext}"
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0131880Z     }
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0132035Z   },
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0132187Z   "lint-staged": {
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0132378Z     "*.{js,mjs,cjs,jsx}": [
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0132680Z       "eslint --fix --max-warnings 0 --no-warn-ignored",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0133383Z       "prettier --write",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0133618Z       "prettier --check"
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0133807Z     ],
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0134041Z     "*.md": [
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0134355Z       "prettier --write",
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0134718Z       "prettier --check"
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0135052Z     ]
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0135304Z   }
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0135564Z }
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0135861Z Remote version: 0.11.0
+Release	UNKNOWN STEP	2026-05-15T00:02:54.0136378Z Rebasing on remote main to incorporate changes...
+Release	UNKNOWN STEP	2026-05-15T00:02:54.1753430Z error: cannot rebase: You have unstaged changes.
+Release	UNKNOWN STEP	2026-05-15T00:02:54.1754754Z error: Please commit or stash them.
+Release	UNKNOWN STEP	2026-05-15T00:02:54.1761736Z Current version: 0.11.0
+Release	UNKNOWN STEP	2026-05-15T00:02:54.1762179Z Running changeset version...
+Release	UNKNOWN STEP	2026-05-15T00:02:54.2765223Z 
+Release	UNKNOWN STEP	2026-05-15T00:02:54.2765936Z > vk-bot-desktop@0.11.0 changeset:version
+Release	UNKNOWN STEP	2026-05-15T00:02:54.2766431Z > node scripts/changeset-version.mjs
+Release	UNKNOWN STEP	2026-05-15T00:02:54.2766652Z 
+Release	UNKNOWN STEP	2026-05-15T00:02:54.9843753Z Detected single-language repository (package.json in root)
+Release	UNKNOWN STEP	2026-05-15T00:02:54.9844641Z Running changeset version...
+Release	UNKNOWN STEP	2026-05-15T00:02:55.7181471Z 🦋  All files have been updated. Review them and commit at your leisure
+Release	UNKNOWN STEP	2026-05-15T00:02:55.7465308Z 
+Release	UNKNOWN STEP	2026-05-15T00:02:55.7465865Z Synchronizing package-lock.json...
+Release	UNKNOWN STEP	2026-05-15T00:02:56.8483817Z 
+Release	UNKNOWN STEP	2026-05-15T00:02:56.8484351Z > vk-bot-desktop@0.12.0 prepare
+Release	UNKNOWN STEP	2026-05-15T00:02:56.8484781Z > husky || true
+Release	UNKNOWN STEP	2026-05-15T00:02:56.8484911Z 
+Release	UNKNOWN STEP	2026-05-15T00:02:56.8961915Z 
+Release	UNKNOWN STEP	2026-05-15T00:02:56.8962535Z up to date, audited 679 packages in 1s
+Release	UNKNOWN STEP	2026-05-15T00:02:56.8963276Z 
+Release	UNKNOWN STEP	2026-05-15T00:02:56.8963555Z 124 packages are looking for funding
+Release	UNKNOWN STEP	2026-05-15T00:02:56.8964089Z   run `npm fund` for details
+Release	UNKNOWN STEP	2026-05-15T00:02:56.9536343Z 
+Release	UNKNOWN STEP	2026-05-15T00:02:56.9536991Z 12 vulnerabilities (2 low, 1 moderate, 9 high)
+Release	UNKNOWN STEP	2026-05-15T00:02:56.9537552Z 
+Release	UNKNOWN STEP	2026-05-15T00:02:56.9538242Z To address all issues (including breaking changes), run:
+Release	UNKNOWN STEP	2026-05-15T00:02:56.9538652Z   npm audit fix --force
+Release	UNKNOWN STEP	2026-05-15T00:02:56.9538947Z 
+Release	UNKNOWN STEP	2026-05-15T00:02:56.9539150Z Run `npm audit` for details.
+Release	UNKNOWN STEP	2026-05-15T00:02:56.9674764Z 
+Release	UNKNOWN STEP	2026-05-15T00:02:56.9675575Z ✅ Version bump complete with synchronized package-lock.json
+Release	UNKNOWN STEP	2026-05-15T00:02:56.9801683Z New version: 0.12.0
+Release	UNKNOWN STEP	2026-05-15T00:02:56.9940419Z  D .changeset/issue-51-preview-regen.md
+Release	UNKNOWN STEP	2026-05-15T00:02:56.9940981Z  M CHANGELOG.md
+Release	UNKNOWN STEP	2026-05-15T00:02:56.9941377Z  M package-lock.json
+Release	UNKNOWN STEP	2026-05-15T00:02:56.9941818Z  M package.json
+Release	UNKNOWN STEP	2026-05-15T00:02:56.9947502Z Changes detected, committing...
+Release	UNKNOWN STEP	2026-05-15T00:02:57.3870459Z ^[[33m[STARTED]^[[39m Backing up original state...
+Release	UNKNOWN STEP	2026-05-15T00:02:57.4189171Z ^[[32m[COMPLETED]^[[39m Backed up original state in git stash (f35af78)
+Release	UNKNOWN STEP	2026-05-15T00:02:57.4192234Z ^[[33m[STARTED]^[[39m Running tasks for staged files...
+Release	UNKNOWN STEP	2026-05-15T00:02:57.4196410Z ^[[33m[STARTED]^[[39m package.json^[[0;90m — 3 files^[[0m
+Release	UNKNOWN STEP	2026-05-15T00:02:57.4198498Z ^[[33m[STARTED]^[[39m *.{js,mjs,cjs,jsx}^[[0;90m — 0 files^[[0m
+Release	UNKNOWN STEP	2026-05-15T00:02:57.4199591Z ^[[33m[STARTED]^[[39m *.md^[[0;90m — 1 file^[[0m
+Release	UNKNOWN STEP	2026-05-15T00:02:57.4200432Z ^[[33m[SKIPPED]^[[39m *.{js,mjs,cjs,jsx}^[[0;90m — no files^[[0m
+Release	UNKNOWN STEP	2026-05-15T00:02:57.4201180Z ^[[33m[STARTED]^[[39m prettier --write
+Release	UNKNOWN STEP	2026-05-15T00:02:57.6578860Z ^[[32m[COMPLETED]^[[39m prettier --write
+Release	UNKNOWN STEP	2026-05-15T00:02:57.6579546Z ^[[33m[STARTED]^[[39m prettier --check
+Release	UNKNOWN STEP	2026-05-15T00:02:57.8771045Z ^[[32m[COMPLETED]^[[39m prettier --check
+Release	UNKNOWN STEP	2026-05-15T00:02:57.8771850Z ^[[32m[COMPLETED]^[[39m *.md^[[0;90m — 1 file^[[0m
+Release	UNKNOWN STEP	2026-05-15T00:02:57.8773290Z ^[[32m[COMPLETED]^[[39m package.json^[[0;90m — 3 files^[[0m
+Release	UNKNOWN STEP	2026-05-15T00:02:57.8774108Z ^[[32m[COMPLETED]^[[39m Running tasks for staged files...
+Release	UNKNOWN STEP	2026-05-15T00:02:57.8774894Z ^[[33m[STARTED]^[[39m Applying modifications from tasks...
+Release	UNKNOWN STEP	2026-05-15T00:02:57.8851197Z ^[[32m[COMPLETED]^[[39m Applying modifications from tasks...
+Release	UNKNOWN STEP	2026-05-15T00:02:57.8852267Z ^[[33m[STARTED]^[[39m Cleaning up temporary files...
+Release	UNKNOWN STEP	2026-05-15T00:02:57.8941344Z ^[[32m[COMPLETED]^[[39m Cleaning up temporary files...
+Release	UNKNOWN STEP	2026-05-15T00:02:57.9308017Z [main 1b35179] 0.12.0
+Release	UNKNOWN STEP	2026-05-15T00:02:57.9308598Z  4 files changed, 27 insertions(+), 27 deletions(-)
+Release	UNKNOWN STEP	2026-05-15T00:02:57.9309370Z  delete mode 100644 .changeset/issue-51-preview-regen.md
+Release	UNKNOWN STEP	2026-05-15T00:02:58.2590644Z To https://github.com/konard/vk-bot-desktop
+Release	UNKNOWN STEP	2026-05-15T00:02:58.2591086Z  ! [rejected]        main -> main (non-fast-forward)
+Release	UNKNOWN STEP	2026-05-15T00:02:58.2591620Z error: failed to push some refs to 'https://github.com/konard/vk-bot-desktop'
+Release	UNKNOWN STEP	2026-05-15T00:02:58.2618311Z hint: Updates were rejected because the tip of your current branch is behind
+Release	UNKNOWN STEP	2026-05-15T00:02:58.2619382Z hint: its remote counterpart. If you want to integrate the remote changes,
+Release	UNKNOWN STEP	2026-05-15T00:02:58.2619956Z hint: use 'git pull' before pushing again.
+Release	UNKNOWN STEP	2026-05-15T00:02:58.2620776Z hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+Release	UNKNOWN STEP	2026-05-15T00:02:58.2633790Z ✅ Version bump committed and pushed to main
+Release	UNKNOWN STEP	2026-05-15T00:02:58.2761114Z ##[group]Run VERSION="0.12.0"
+Release	UNKNOWN STEP	2026-05-15T00:02:58.2761380Z ^[[36;1mVERSION="0.12.0"^[[0m
+Release	UNKNOWN STEP	2026-05-15T00:02:58.2761603Z ^[[36;1mif [ -z "$VERSION" ]; then^[[0m
+Release	UNKNOWN STEP	2026-05-15T00:02:58.2762060Z ^[[36;1m  VERSION="$(node -p "JSON.parse(require('node:fs').readFileSync('package.json', 'utf8')).version")"^[[0m
+Release	UNKNOWN STEP	2026-05-15T00:02:58.2762509Z ^[[36;1mfi^[[0m
+Release	UNKNOWN STEP	2026-05-15T00:02:58.2762669Z ^[[36;1m^[[0m
+Release	UNKNOWN STEP	2026-05-15T00:02:58.2762864Z ^[[36;1mecho "version=$VERSION" >> "$GITHUB_OUTPUT"^[[0m
+Release	UNKNOWN STEP	2026-05-15T00:02:58.2763588Z ^[[36;1mecho "tag=v$VERSION" >> "$GITHUB_OUTPUT"^[[0m
+Release	UNKNOWN STEP	2026-05-15T00:02:58.2784605Z shell: /usr/bin/bash -e {0}
+Release	UNKNOWN STEP	2026-05-15T00:02:58.2784832Z ##[endgroup]
+Release	UNKNOWN STEP	2026-05-15T00:02:58.2903905Z ##[group]Run git fetch origin main
+Release	UNKNOWN STEP	2026-05-15T00:02:58.2904212Z ^[[36;1mgit fetch origin main^[[0m
+Release	UNKNOWN STEP	2026-05-15T00:02:58.2904467Z ^[[36;1mSHA="$(git rev-parse origin/main)"^[[0m
+Release	UNKNOWN STEP	2026-05-15T00:02:58.2904752Z ^[[36;1mecho "sha=$SHA" >> "$GITHUB_OUTPUT"^[[0m
+Release	UNKNOWN STEP	2026-05-15T00:02:58.2924786Z shell: /usr/bin/bash -e {0}
+Release	UNKNOWN STEP	2026-05-15T00:02:58.2925024Z ##[endgroup]
+Release	UNKNOWN STEP	2026-05-15T00:02:58.6384402Z From https://github.com/konard/vk-bot-desktop
+Release	UNKNOWN STEP	2026-05-15T00:02:58.6393903Z  * branch            main       -> FETCH_HEAD
+Release	UNKNOWN STEP	2026-05-15T00:02:58.6556414Z Post job cleanup.
+Release	UNKNOWN STEP	2026-05-15T00:02:58.7851756Z Post job cleanup.
+Release	UNKNOWN STEP	2026-05-15T00:02:58.8655743Z [command]/usr/bin/git version
+Release	UNKNOWN STEP	2026-05-15T00:02:58.8691788Z git version 2.53.0
+Release	UNKNOWN STEP	2026-05-15T00:02:58.8731532Z Temporarily overriding HOME='/home/runner/work/_temp/64136b7a-a0e9-4e96-8e06-903ed51bbd1d' before making global git config changes
+Release	UNKNOWN STEP	2026-05-15T00:02:58.8733313Z Adding repository directory to the temporary git global config as a safe directory
+Release	UNKNOWN STEP	2026-05-15T00:02:58.8736910Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/vk-bot-desktop/vk-bot-desktop
+Release	UNKNOWN STEP	2026-05-15T00:02:58.8766823Z Removing SSH command configuration
+Release	UNKNOWN STEP	2026-05-15T00:02:58.8773770Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Release	UNKNOWN STEP	2026-05-15T00:02:58.8807899Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Release	UNKNOWN STEP	2026-05-15T00:02:58.9057619Z Removing HTTP extra header
+Release	UNKNOWN STEP	2026-05-15T00:02:58.9063448Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Release	UNKNOWN STEP	2026-05-15T00:02:58.9095651Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Release	UNKNOWN STEP	2026-05-15T00:02:58.9309714Z Removing includeIf entries pointing to credentials config files
+Release	UNKNOWN STEP	2026-05-15T00:02:58.9316555Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Release	UNKNOWN STEP	2026-05-15T00:02:58.9338519Z includeif.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git.path
+Release	UNKNOWN STEP	2026-05-15T00:02:58.9339620Z includeif.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git/worktrees/*.path
+Release	UNKNOWN STEP	2026-05-15T00:02:58.9340241Z includeif.gitdir:/github/workspace/.git.path
+Release	UNKNOWN STEP	2026-05-15T00:02:58.9340678Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+Release	UNKNOWN STEP	2026-05-15T00:02:58.9347921Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git.path
+Release	UNKNOWN STEP	2026-05-15T00:02:58.9368146Z /home/runner/work/_temp/git-credentials-99a4a293-e481-4055-a234-040e5c16515f.config
+Release	UNKNOWN STEP	2026-05-15T00:02:58.9378698Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git.path /home/runner/work/_temp/git-credentials-99a4a293-e481-4055-a234-040e5c16515f.config
+Release	UNKNOWN STEP	2026-05-15T00:02:58.9416791Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git/worktrees/*.path
+Release	UNKNOWN STEP	2026-05-15T00:02:58.9437075Z /home/runner/work/_temp/git-credentials-99a4a293-e481-4055-a234-040e5c16515f.config
+Release	UNKNOWN STEP	2026-05-15T00:02:58.9446242Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-99a4a293-e481-4055-a234-040e5c16515f.config
+Release	UNKNOWN STEP	2026-05-15T00:02:58.9476313Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+Release	UNKNOWN STEP	2026-05-15T00:02:58.9497569Z /github/runner_temp/git-credentials-99a4a293-e481-4055-a234-040e5c16515f.config
+Release	UNKNOWN STEP	2026-05-15T00:02:58.9505213Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-99a4a293-e481-4055-a234-040e5c16515f.config
+Release	UNKNOWN STEP	2026-05-15T00:02:58.9534225Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+Release	UNKNOWN STEP	2026-05-15T00:02:58.9554650Z /github/runner_temp/git-credentials-99a4a293-e481-4055-a234-040e5c16515f.config
+Release	UNKNOWN STEP	2026-05-15T00:02:58.9564225Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-99a4a293-e481-4055-a234-040e5c16515f.config
+Release	UNKNOWN STEP	2026-05-15T00:02:58.9594119Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Release	UNKNOWN STEP	2026-05-15T00:02:58.9806257Z Removing credentials config '/home/runner/work/_temp/git-credentials-99a4a293-e481-4055-a234-040e5c16515f.config'
+Release	UNKNOWN STEP	2026-05-15T00:02:58.9937961Z Evaluate and set job outputs
+Release	UNKNOWN STEP	2026-05-15T00:02:58.9943804Z Set output 'release-tag'
+Release	UNKNOWN STEP	2026-05-15T00:02:58.9945419Z Set output 'release-version'
+Release	UNKNOWN STEP	2026-05-15T00:02:58.9946063Z Set output 'target-sha'
+Release	UNKNOWN STEP	2026-05-15T00:02:58.9946701Z Cleaning up orphan processes

@@ -1,0 +1,296 @@
+Publish GitHub release	UNKNOWN STEP	﻿2026-05-15T00:09:00.9810266Z Current runner version: '2.334.0'
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:00.9837783Z ##[group]Runner Image Provisioner
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:00.9839182Z Hosted Compute Agent
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:00.9839734Z Version: 20260213.493
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:00.9840363Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:00.9841000Z Build Date: 2026-02-13T00:28:41Z
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:00.9841741Z Worker ID: {cb89f3be-6052-40c5-add7-09490bbe80ce}
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:00.9842617Z Azure Region: eastus
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:00.9843171Z ##[endgroup]
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:00.9844731Z ##[group]Operating System
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:00.9845291Z Ubuntu
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:00.9845749Z 24.04.4
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:00.9846261Z LTS
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:00.9846711Z ##[endgroup]
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:00.9847195Z ##[group]Runner Image
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:00.9847794Z Image: ubuntu-24.04
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:00.9848255Z Version: 20260413.86.1
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:00.9849457Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260413.86/images/ubuntu/Ubuntu2404-Readme.md
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:00.9850900Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260413.86
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:00.9851817Z ##[endgroup]
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:00.9853358Z ##[group]GITHUB_TOKEN Permissions
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:00.9855900Z Attestations: write
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:00.9856521Z Contents: write
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:00.9857087Z Metadata: read
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:00.9857579Z ##[endgroup]
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:00.9859750Z Secret source: Actions
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:00.9860719Z Prepare workflow directory
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:01.0198418Z Prepare all required actions
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:01.0236241Z Getting action download info
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:01.3976563Z Download action repository 'actions/checkout@v6' (SHA:de0fac2e4500dabe0009e67214ff5f5447ce83dd)
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:01.5367677Z Download action repository 'actions/download-artifact@v4' (SHA:d3f86a106a0bac45b974a628896c90dbdf5c8093)
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:01.7290141Z Download action repository 'actions/attest@v4' (SHA:59d89421af93a897026c735860bf21b6eb4f7b26)
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:01.9914379Z Complete job name: Publish GitHub release
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.0689418Z ##[group]Run actions/checkout@v6
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.0690270Z with:
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.0690703Z   ref: 87378f5fee9e9ec4364de9c5c015c8c65fc4d1ea
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.0691271Z   repository: konard/vk-bot-desktop
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.0691948Z   token: ***
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.0692546Z   ssh-strict: true
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.0692947Z   ssh-user: git
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.0693345Z   persist-credentials: true
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.0693822Z   clean: true
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.0694230Z   sparse-checkout-cone-mode: true
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.0694702Z   fetch-depth: 1
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.0695086Z   fetch-tags: false
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.0695479Z   show-progress: true
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.0695869Z   lfs: false
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.0696228Z   submodules: false
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.0696627Z   set-safe-directory: true
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.0697326Z ##[endgroup]
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.1679591Z Syncing repository: konard/vk-bot-desktop
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.1682635Z ##[group]Getting Git version info
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.1684037Z Working directory is '/home/runner/work/vk-bot-desktop/vk-bot-desktop'
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.1685917Z [command]/usr/bin/git version
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.1708567Z git version 2.53.0
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.1732779Z ##[endgroup]
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.1749139Z Temporarily overriding HOME='/home/runner/work/_temp/6ffb7243-6a85-4f96-8eb4-267bdc652767' before making global git config changes
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.1751455Z Adding repository directory to the temporary git global config as a safe directory
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.1755954Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/vk-bot-desktop/vk-bot-desktop
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.1790623Z Deleting the contents of '/home/runner/work/vk-bot-desktop/vk-bot-desktop'
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.1795203Z ##[group]Initializing the repository
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.1800343Z [command]/usr/bin/git init /home/runner/work/vk-bot-desktop/vk-bot-desktop
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.1905782Z hint: Using 'master' as the name for the initial branch. This default branch name
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.1908381Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.1910223Z hint: to use in all of your new repositories, which will suppress this warning,
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.1911914Z hint: call:
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.1912980Z hint:
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.1914064Z hint: 	git config --global init.defaultBranch <name>
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.1915006Z hint:
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.1915549Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.1916598Z hint: 'development'. The just-created branch can be renamed via this command:
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.1917922Z hint:
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.1918515Z hint: 	git branch -m <name>
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.1919077Z hint:
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.1919648Z hint: Disable this message with "git config set advice.defaultBranchName false"
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.1920671Z Initialized empty Git repository in /home/runner/work/vk-bot-desktop/vk-bot-desktop/.git/
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.1922725Z [command]/usr/bin/git remote add origin https://github.com/konard/vk-bot-desktop
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.1951793Z ##[endgroup]
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.1952678Z ##[group]Disabling automatic garbage collection
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.1956028Z [command]/usr/bin/git config --local gc.auto 0
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.1984897Z ##[endgroup]
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.1986152Z ##[group]Setting up auth
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.1987160Z Removing SSH command configuration
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.1993897Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.2026025Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.2314687Z Removing HTTP extra header
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.2320481Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.2351951Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.2566429Z Removing includeIf entries pointing to credentials config files
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.2573089Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.2605452Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.2830943Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-2b486cf9-b7a2-4579-bf12-fff2fe41b7c3.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.2868282Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git.path /home/runner/work/_temp/git-credentials-2b486cf9-b7a2-4579-bf12-fff2fe41b7c3.config
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.2899149Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-2b486cf9-b7a2-4579-bf12-fff2fe41b7c3.config
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.2928293Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-2b486cf9-b7a2-4579-bf12-fff2fe41b7c3.config
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.2959413Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-2b486cf9-b7a2-4579-bf12-fff2fe41b7c3.config
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.2993431Z ##[endgroup]
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.2994333Z ##[group]Fetching the repository
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:02.3001593Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin 87378f5fee9e9ec4364de9c5c015c8c65fc4d1ea
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.5969827Z From https://github.com/konard/vk-bot-desktop
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.5972082Z  * branch            87378f5fee9e9ec4364de9c5c015c8c65fc4d1ea -> FETCH_HEAD
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.6000158Z [command]/usr/bin/git rev-parse --verify --quiet 87378f5fee9e9ec4364de9c5c015c8c65fc4d1ea^{object}
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.6022832Z 87378f5fee9e9ec4364de9c5c015c8c65fc4d1ea
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.6027996Z ##[endgroup]
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.6029508Z ##[group]Determining the checkout info
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.6031031Z ##[endgroup]
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.6033589Z [command]/usr/bin/git sparse-checkout disable
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.6071605Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.6098664Z ##[group]Checking out the ref
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.6102444Z [command]/usr/bin/git checkout --progress --force 87378f5fee9e9ec4364de9c5c015c8c65fc4d1ea
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.7967180Z Note: switching to '87378f5fee9e9ec4364de9c5c015c8c65fc4d1ea'.
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.7969071Z 
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.7970293Z You are in 'detached HEAD' state. You can look around, make experimental
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.7973785Z changes and commit them, and you can discard any commits you make in this
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.7977200Z state without impacting any branches by switching back to a branch.
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.7979223Z 
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.7980513Z If you want to create a new branch to retain commits you create, you may
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.7983726Z do so (now or later) by using -c with the switch command. Example:
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.7985583Z 
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.7986306Z   git switch -c <new-branch-name>
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.7987397Z 
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.7987942Z Or undo this operation with:
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.7988704Z 
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.7989151Z   git switch -
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.7989843Z 
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.7991524Z Turn off this advice by setting config variable advice.detachedHead to false
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.7993915Z 
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.7994959Z HEAD is now at 87378f5 chore(preview): regenerate preview images [skip ci]
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.7999172Z ##[endgroup]
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.8030213Z [command]/usr/bin/git log -1 --format=%H
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.8054205Z 87378f5fee9e9ec4364de9c5c015c8c65fc4d1ea
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.8356713Z ##[group]Run actions/download-artifact@v4
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.8358066Z with:
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.8358923Z   path: artifacts
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.8360095Z   merge-multiple: false
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.8361164Z   repository: konard/vk-bot-desktop
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.8362694Z   run-id: 25892544573
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:03.8363758Z ##[endgroup]
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:04.1475740Z Found 6 artifact(s)
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:04.1479420Z No input name, artifact-ids or pattern filtered specified, downloading all artifacts
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:04.1484345Z An extra directory with the artifact name will be created for each download
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:04.1487348Z Preparing to download the following artifacts:
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:04.1492404Z - electron-linux-arm64 (ID: 7007469604, Size: 308830207, Expected Digest: sha256:5debfe1d38f6ec90fa082f9a0ae1ea168e8ecba834cd7a942c5d6a718ff36451)
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:04.1499512Z - electron-linux-x64 (ID: 7007466040, Size: 294548788, Expected Digest: sha256:e80ea2ec179e2b82c2e46d7bacd91e634192f6a9458af0c2d52e3a05e03a40c9)
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:04.1506856Z - electron-windows-arm64 (ID: 7007460046, Size: 178697348, Expected Digest: sha256:8c12e269c5d769c87ae904283a439bb981e018a060b3699fe50228b081869136)
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:04.1513972Z - electron-windows-x64 (ID: 7007439157, Size: 167347478, Expected Digest: sha256:b96d1e6c7514f943e5cc24b6917131e261e6e5ba392f550ad082b0d04477186b)
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:04.1520941Z - electron-macos-x64-arm64 (ID: 7007428593, Size: 414431653, Expected Digest: sha256:90fbe222d4b51dd3eff6600f371218d6083ba4f050a6a4341bbdca65f790d30d)
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:04.1527993Z - github-pages (ID: 7007367933, Size: 3670214, Expected Digest: sha256:790211e0057e88f0f74b61d75adf73380c7cff37a3a065bb5f8a8177650a1f23)
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:04.2491258Z Redirecting to blob download url: https://productionresultssa7.blob.core.windows.net/actions-results/ba238eb9-4afe-44d4-8e91-6af5ae680233/workflow-job-run-0a2be2ba-8994-5be2-aeea-40f144a3cf0d/artifacts/afa28766d3caf497f6ad369ac6c5505dd8db6689a300a79784c20dcaaf97018f.zip
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:04.2501018Z Starting download of artifact to: /home/runner/work/vk-bot-desktop/vk-bot-desktop/artifacts/github-pages
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:04.2534608Z Redirecting to blob download url: https://productionresultssa7.blob.core.windows.net/actions-results/ba238eb9-4afe-44d4-8e91-6af5ae680233/workflow-job-run-432fa647-6835-51a4-b9cd-3afdc350fee9/artifacts/3c7c2cea3be51afbed1281cfc9decfb6f836cd8468e86bbebcc28c3789745ef6.zip
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:04.2545025Z Starting download of artifact to: /home/runner/work/vk-bot-desktop/vk-bot-desktop/artifacts/electron-linux-x64
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:04.2635533Z Redirecting to blob download url: https://productionresultssa7.blob.core.windows.net/actions-results/ba238eb9-4afe-44d4-8e91-6af5ae680233/workflow-job-run-c25c6e38-8d02-5b13-a194-187928467402/artifacts/886763ca5e82e41f277488f55a5443cc3ee5d132e25d73dd13027c08eaa5e208.zip
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:04.2643812Z Starting download of artifact to: /home/runner/work/vk-bot-desktop/vk-bot-desktop/artifacts/electron-windows-arm64
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:04.2657368Z Redirecting to blob download url: https://productionresultssa7.blob.core.windows.net/actions-results/ba238eb9-4afe-44d4-8e91-6af5ae680233/workflow-job-run-6d269b76-2d5c-5aa8-8f5c-081d9bfe31db/artifacts/da33ce69711d4ce647df9097275dc6b5089708a00b14e86430a9abe33aa2283d.zip
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:04.2665289Z Starting download of artifact to: /home/runner/work/vk-bot-desktop/vk-bot-desktop/artifacts/electron-linux-arm64
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:04.2675890Z Redirecting to blob download url: https://productionresultssa7.blob.core.windows.net/actions-results/ba238eb9-4afe-44d4-8e91-6af5ae680233/workflow-job-run-7b51d8a7-2e0a-533c-bdab-f31502283728/artifacts/968aef0a1c0cf60827b67de8396d319e5e607a0ed0a377779825ac9f2bbff8fe.zip
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:04.2681570Z Starting download of artifact to: /home/runner/work/vk-bot-desktop/vk-bot-desktop/artifacts/electron-macos-x64-arm64
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:04.2874316Z Redirecting to blob download url: https://productionresultssa7.blob.core.windows.net/actions-results/ba238eb9-4afe-44d4-8e91-6af5ae680233/workflow-job-run-b901ba07-e4a9-5438-a0a8-457457311eee/artifacts/08de5c1dd54d7d7621365aaa6450d2eae66e70869fd5ebd599650c8c347403ac.zip
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:04.2881307Z Starting download of artifact to: /home/runner/work/vk-bot-desktop/vk-bot-desktop/artifacts/electron-windows-x64
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:04.3540806Z (node:2346) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:04.3545827Z (Use `node --trace-deprecation ...` to show where the warning was created)
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:04.8290200Z SHA256 digest of downloaded artifact is 790211e0057e88f0f74b61d75adf73380c7cff37a3a065bb5f8a8177650a1f23
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:04.8291683Z Artifact download completed successfully.
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:11.9883848Z SHA256 digest of downloaded artifact is b96d1e6c7514f943e5cc24b6917131e261e6e5ba392f550ad082b0d04477186b
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:11.9884749Z Artifact download completed successfully.
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:12.4188888Z SHA256 digest of downloaded artifact is 8c12e269c5d769c87ae904283a439bb981e018a060b3699fe50228b081869136
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:15.3768368Z Artifact download completed successfully.
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:15.3769078Z SHA256 digest of downloaded artifact is e80ea2ec179e2b82c2e46d7bacd91e634192f6a9458af0c2d52e3a05e03a40c9
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:15.3769749Z Artifact download completed successfully.
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:15.6219801Z SHA256 digest of downloaded artifact is 5debfe1d38f6ec90fa082f9a0ae1ea168e8ecba834cd7a942c5d6a718ff36451
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:15.6220834Z Artifact download completed successfully.
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.0133265Z SHA256 digest of downloaded artifact is 90fbe222d4b51dd3eff6600f371218d6083ba4f050a6a4341bbdca65f790d30d
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.0134467Z Artifact download completed successfully.
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.0135082Z Total of 6 artifact(s) downloaded
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.0141155Z Download artifact has finished successfully
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.0301086Z ##[group]Run mkdir -p dist
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.0301517Z ^[[36;1mmkdir -p dist^[[0m
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.0302007Z ^[[36;1mfind artifacts -type f -name 'SHA256SUMS-*.txt' -exec cat {} + | sort > dist/SHA256SUMS.txt^[[0m
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.0303091Z ^[[36;1mfind artifacts -type f -name 'provenance-*.txt' -exec cat {} + > dist/BUILD-PROVENANCE.txt^[[0m
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.0303618Z ^[[36;1mfind artifacts -type f \^[[0m
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.0304019Z ^[[36;1m  \( -name '*.AppImage' -o -name '*.deb' -o -name '*.tar.gz' \^[[0m
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.0304444Z ^[[36;1m     -o -name '*.dmg' -o -name '*.zip' \^[[0m
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.0304808Z ^[[36;1m     -o -name '*.exe' -o -name '*.msi' \) \^[[0m
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.0305157Z ^[[36;1m  -exec cp {} dist/ \;^[[0m
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.0305439Z ^[[36;1mls -la dist^[[0m
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.0305691Z ^[[36;1mcat dist/SHA256SUMS.txt^[[0m
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.0332449Z shell: /usr/bin/bash -e {0}
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.0332770Z ##[endgroup]
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8594717Z total 1334072
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8595390Z drwxr-xr-x  2 runner runner      4096 May 15 00:09 .
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8596196Z drwxr-xr-x 17 runner runner      4096 May 15 00:09 ..
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8597118Z -rw-r--r--  1 runner runner      1131 May 15 00:09 BUILD-PROVENANCE.txt
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8598000Z -rw-r--r--  1 runner runner      1508 May 15 00:09 SHA256SUMS.txt
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8598713Z -rw-r--r--  1 runner runner 112850364 May 15 00:09 vk-bot-desktop-linux-arm64-0.11.0.AppImage
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8599454Z -rw-r--r--  1 runner runner  85833880 May 15 00:09 vk-bot-desktop-linux-arm64-0.11.0.deb
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8600182Z -rw-r--r--  1 runner runner 110997485 May 15 00:09 vk-bot-desktop-linux-arm64-0.11.0.tar.gz
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8600951Z -rw-r--r--  1 runner runner 112472006 May 15 00:09 vk-bot-desktop-linux-x64-0.11.0.AppImage
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8601679Z -rw-r--r--  1 runner runner  76319616 May 15 00:09 vk-bot-desktop-linux-x64-0.11.0.deb
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8602719Z -rw-r--r--  1 runner runner 106501484 May 15 00:09 vk-bot-desktop-linux-x64-0.11.0.tar.gz
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8603447Z -rw-r--r--  1 runner runner 102445321 May 15 00:09 vk-bot-desktop-macos-arm64-0.11.0.dmg
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8604105Z -rw-r--r--  1 runner runner  98967577 May 15 00:09 vk-bot-desktop-macos-arm64-0.11.0.zip
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8604749Z -rw-r--r--  1 runner runner 108547393 May 15 00:09 vk-bot-desktop-macos-x64-0.11.0.dmg
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8605437Z -rw-r--r--  1 runner runner 105080831 May 15 00:09 vk-bot-desktop-macos-x64-0.11.0.zip
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8606174Z -rw-r--r--  1 runner runner  89458120 May 15 00:09 vk-bot-desktop-windows-installer-arm64-0.11.0.exe
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8606949Z -rw-r--r--  1 runner runner  83785645 May 15 00:09 vk-bot-desktop-windows-installer-x64-0.11.0.exe
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8607703Z -rw-r--r--  1 runner runner  89231071 May 15 00:09 vk-bot-desktop-windows-portable-arm64-0.11.0.exe
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8608793Z -rw-r--r--  1 runner runner  83558178 May 15 00:09 vk-bot-desktop-windows-portable-x64-0.11.0.exe
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8610206Z 3c6026f3a3edb87d586f85f855d3fe09f6fc6e2dded7adc4c19e31bd85009d78  vk-bot-desktop-linux-arm64-0.11.0.AppImage
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8611803Z 3cceb13bac19915e0fa6351eafd15a2a36e7ff6aae9ffe3deb0f6a45c45ed84d  vk-bot-desktop-macos-x64-0.11.0.zip
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8613614Z 4f1e70981508f2d53972cb8be0f5258ec2e9eacca5a98248ec1149f4ffa3cf42  vk-bot-desktop-macos-x64-0.11.0.dmg
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8615068Z 6f5197284806c09b7789f1512f819d425c9a338d9bb08eeb2fa2b97b08a7ddd3  vk-bot-desktop-windows-installer-x64-0.11.0.exe
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8616681Z 808d713cdf140649bf06a688644bc9b749fc28c6148737f3e6dbf51fe4e914bf  vk-bot-desktop-windows-portable-arm64-0.11.0.exe
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8618172Z 81098870afc4dc53221d30da69ff9acf3274b83e1f2e3f5c7eb292d52560aa22  vk-bot-desktop-macos-arm64-0.11.0.dmg
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8619609Z 85fa1482b21665ffc2139f1fe27971313658d35a3b72eba2e9088fc40ddfc8b1  vk-bot-desktop-linux-arm64-0.11.0.tar.gz
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8620824Z 8abf0f168dbd9411f53acec494dbd21c4ca32552d89f68a5b8c79ee325ed4c3a  vk-bot-desktop-linux-arm64-0.11.0.deb
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8621861Z 8da522749119cb4de8143c39062ee263d1e8539a018ff2f7e345b9ad0d9dba37  vk-bot-desktop-linux-x64-0.11.0.AppImage
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8623102Z 9b720a548f65abb53fdfef4bba66e1b18e4dba490a1226ba9cf53c0c948a7865  vk-bot-desktop-windows-installer-arm64-0.11.0.exe
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8623948Z adec7bea0bf34dfbe22c28706137056bd1691a68bae17ca9a5fb2d7e25e680e8  vk-bot-desktop-linux-x64-0.11.0.deb
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8624707Z ce3f1952d592c2e68af60210419cb7653903f2779bfb86296e0666bf1a0ab76e  vk-bot-desktop-linux-x64-0.11.0.tar.gz
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8625507Z d79dbe9a5966bdfd06a2806a4308f53ad6487cfa2e7fb3445f443917fcd2457b  vk-bot-desktop-windows-portable-x64-0.11.0.exe
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8626334Z eac0f6cc158babebe227d5308e3c62b2a5aaf63df8589ac4ca5ace5d9a9c44f4  vk-bot-desktop-macos-arm64-0.11.0.zip
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8681795Z ##[group]Run node scripts/validate-release-assets.mjs --dist dist --tag "v0.12.0"
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8682824Z ^[[36;1mnode scripts/validate-release-assets.mjs --dist dist --tag "v0.12.0"^[[0m
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8704310Z shell: /usr/bin/bash -e {0}
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:17.8704606Z ##[endgroup]
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3895374Z Validating desktop release assets for v0.12.0
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3899005Z Expected version: 0.12.0
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3899464Z Found 16 file(s) in dist
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3926484Z ##[error]Required versioned release asset is missing.
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3938110Z ##[error]Required versioned release asset is missing.
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3939494Z ##[error]Required versioned release asset is missing.
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3940753Z ##[error]Required versioned release asset is missing.
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3941941Z ##[error]Required versioned release asset is missing.
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3943586Z ##[error]Required versioned release asset is missing.
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3944952Z ##[error]Required versioned release asset is missing.
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3946183Z ##[error]Required versioned release asset is missing.
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3947409Z ##[error]Required versioned release asset is missing.
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3948588Z ##[error]Required versioned release asset is missing.
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3949899Z ##[error]Required versioned release asset is missing.
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3951352Z ##[error]Required versioned release asset is missing.
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3952874Z ##[error]Required versioned release asset is missing.
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3954159Z ##[error]Required versioned release asset is missing.
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3954840Z 
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3954945Z Found assets:
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3955221Z   BUILD-PROVENANCE.txt
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3955479Z   SHA256SUMS.txt
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3955747Z   vk-bot-desktop-linux-arm64-0.11.0.AppImage
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3956113Z   vk-bot-desktop-linux-arm64-0.11.0.deb
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3956456Z   vk-bot-desktop-linux-arm64-0.11.0.tar.gz
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3956792Z   vk-bot-desktop-linux-x64-0.11.0.AppImage
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3957113Z   vk-bot-desktop-linux-x64-0.11.0.deb
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3957447Z   vk-bot-desktop-linux-x64-0.11.0.tar.gz
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3958021Z   vk-bot-desktop-macos-arm64-0.11.0.dmg
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3958543Z   vk-bot-desktop-macos-arm64-0.11.0.zip
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3959058Z   vk-bot-desktop-macos-x64-0.11.0.dmg
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3959588Z   vk-bot-desktop-macos-x64-0.11.0.zip
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3960176Z   vk-bot-desktop-windows-installer-arm64-0.11.0.exe
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3960849Z   vk-bot-desktop-windows-installer-x64-0.11.0.exe
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3961523Z   vk-bot-desktop-windows-portable-arm64-0.11.0.exe
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3962404Z   vk-bot-desktop-windows-portable-x64-0.11.0.exe
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.3964617Z ##[error]Process completed with exit code 1.
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.4085941Z Post job cleanup.
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.4906606Z [command]/usr/bin/git version
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.4943888Z git version 2.53.0
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.4985346Z Temporarily overriding HOME='/home/runner/work/_temp/12fbfe21-acb9-4423-a5f6-757fedb432fe' before making global git config changes
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.4987275Z Adding repository directory to the temporary git global config as a safe directory
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.4991768Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/vk-bot-desktop/vk-bot-desktop
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.5021612Z Removing SSH command configuration
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.5028216Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.5062403Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.5283766Z Removing HTTP extra header
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.5288804Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.5321741Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.5540303Z Removing includeIf entries pointing to credentials config files
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.5547725Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.5570300Z includeif.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git.path
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.5571494Z includeif.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git/worktrees/*.path
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.5572744Z includeif.gitdir:/github/workspace/.git.path
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.5573512Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.5580303Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git.path
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.5632869Z /home/runner/work/_temp/git-credentials-2b486cf9-b7a2-4579-bf12-fff2fe41b7c3.config
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.5645088Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git.path /home/runner/work/_temp/git-credentials-2b486cf9-b7a2-4579-bf12-fff2fe41b7c3.config
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.5678492Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git/worktrees/*.path
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.5698993Z /home/runner/work/_temp/git-credentials-2b486cf9-b7a2-4579-bf12-fff2fe41b7c3.config
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.5708020Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-2b486cf9-b7a2-4579-bf12-fff2fe41b7c3.config
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.5738120Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.5759001Z /github/runner_temp/git-credentials-2b486cf9-b7a2-4579-bf12-fff2fe41b7c3.config
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.5768849Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-2b486cf9-b7a2-4579-bf12-fff2fe41b7c3.config
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.5799614Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.5820106Z /github/runner_temp/git-credentials-2b486cf9-b7a2-4579-bf12-fff2fe41b7c3.config
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.5828782Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-2b486cf9-b7a2-4579-bf12-fff2fe41b7c3.config
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.5859013Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.6095312Z Removing credentials config '/home/runner/work/_temp/git-credentials-2b486cf9-b7a2-4579-bf12-fff2fe41b7c3.config'
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.6233839Z Cleaning up orphan processes
+Publish GitHub release	UNKNOWN STEP	2026-05-15T00:09:20.6551865Z ##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/download-artifact@v4. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Node.js 20 will be removed from the runner on September 16th, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

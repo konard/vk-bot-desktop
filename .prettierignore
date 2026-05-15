@@ -11,3 +11,6 @@ docs/case-studies/*/github-data/
 docs/case-studies/*/artifacts/
 docs/case-studies/*/ci-logs/
 docs/case-studies/*/template-data/
+# Upstream template snapshots vendored under templates/ are not subject
+# to this repo's formatting rules.
+docs/case-studies/*/templates/

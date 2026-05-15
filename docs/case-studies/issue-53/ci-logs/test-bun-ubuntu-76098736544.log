@@ -1,0 +1,999 @@
+Test (bun on ubuntu-latest)	UNKNOWN STEP	﻿2026-05-14T23:59:17.1347126Z Current runner version: '2.334.0'
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:17.1370274Z ##[group]Runner Image Provisioner
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:17.1371039Z Hosted Compute Agent
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:17.1371562Z Version: 20260213.493
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:17.1372617Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:17.1373372Z Build Date: 2026-02-13T00:28:41Z
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:17.1374006Z Worker ID: {0e6c6b96-c7fb-4478-a104-7c3fb70f8c0f}
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:17.1374747Z Azure Region: westus
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:17.1375303Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:17.1377105Z ##[group]Operating System
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:17.1377838Z Ubuntu
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:17.1378294Z 24.04.4
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:17.1378763Z LTS
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:17.1379233Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:17.1379760Z ##[group]Runner Image
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:17.1380314Z Image: ubuntu-24.04
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:17.1380839Z Version: 20260513.135.3
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:17.1382039Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260513.135/images/ubuntu/Ubuntu2404-Readme.md
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:17.1383574Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260513.135
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:17.1384464Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:17.1385450Z ##[group]GITHUB_TOKEN Permissions
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:17.1387775Z Contents: read
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:17.1388351Z Metadata: read
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:17.1388826Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:17.1390923Z Secret source: Actions
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:17.1391602Z Prepare workflow directory
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:17.1718285Z Prepare all required actions
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:17.1755182Z Getting action download info
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:17.6733864Z Download action repository 'actions/checkout@v6' (SHA:de0fac2e4500dabe0009e67214ff5f5447ce83dd)
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:17.7961208Z Download action repository 'actions/setup-node@v6' (SHA:48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e)
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:17.8900443Z Download action repository 'oven-sh/setup-bun@v2' (SHA:0c5077e51419868618aeaa5fe8019c62421857d6)
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:18.2969384Z Download action repository 'denoland/setup-deno@v2' (SHA:667a34cdef165d8d2b2e98dde39547c9daac7282)
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:18.7906988Z Complete job name: Test (bun on ubuntu-latest)
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:18.8813035Z ##[group]Run actions/checkout@v6
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:18.8814339Z with:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:18.8815036Z   fetch-depth: 0
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:18.8815826Z   repository: konard/vk-bot-desktop
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:18.8817486Z   token: ***
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:18.8818218Z   ssh-strict: true
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:18.8818959Z   ssh-user: git
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:18.8819712Z   persist-credentials: true
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:18.8820576Z   clean: true
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:18.8821345Z   sparse-checkout-cone-mode: true
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:18.8822268Z   fetch-tags: false
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:18.8823034Z   show-progress: true
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:18.8823806Z   lfs: false
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:18.8824518Z   submodules: false
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:18.8825353Z   set-safe-directory: true
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:18.8826728Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:18.9806031Z Syncing repository: konard/vk-bot-desktop
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:18.9808988Z ##[group]Getting Git version info
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:18.9810571Z Working directory is '/home/runner/work/vk-bot-desktop/vk-bot-desktop'
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:18.9812694Z [command]/usr/bin/git version
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:18.9881071Z git version 2.54.0
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:18.9905970Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:18.9922323Z Temporarily overriding HOME='/home/runner/work/_temp/5c400908-98fe-46b6-b7d8-ba51ed719115' before making global git config changes
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:18.9927277Z Adding repository directory to the temporary git global config as a safe directory
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:18.9931297Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/vk-bot-desktop/vk-bot-desktop
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:18.9976854Z Deleting the contents of '/home/runner/work/vk-bot-desktop/vk-bot-desktop'
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:18.9981036Z ##[group]Initializing the repository
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:18.9986837Z [command]/usr/bin/git init /home/runner/work/vk-bot-desktop/vk-bot-desktop
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.0090584Z hint: Using 'master' as the name for the initial branch. This default branch name
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.0092876Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.0095056Z hint: to use in all of your new repositories, which will suppress this warning,
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.0097329Z hint: call:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.0098764Z hint:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.0100331Z hint: 	git config --global init.defaultBranch <name>
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.0102355Z hint:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.0104168Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.0107530Z hint: 'development'. The just-created branch can be renamed via this command:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.0110045Z hint:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.0111248Z hint: 	git branch -m <name>
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.0112742Z hint:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.0114855Z hint: Disable this message with "git config set advice.defaultBranchName false"
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.0117319Z Initialized empty Git repository in /home/runner/work/vk-bot-desktop/vk-bot-desktop/.git/
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.0121041Z [command]/usr/bin/git remote add origin https://github.com/konard/vk-bot-desktop
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.0153411Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.0155790Z ##[group]Disabling automatic garbage collection
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.0158228Z [command]/usr/bin/git config --local gc.auto 0
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.0185860Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.0188378Z ##[group]Setting up auth
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.0189977Z Removing SSH command configuration
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.0193409Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.0229678Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.0558259Z Removing HTTP extra header
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.0565562Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.0599139Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.0803285Z Removing includeIf entries pointing to credentials config files
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.0809433Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.0842019Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.1060106Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-d7c92145-024b-4a08-935f-86e74f959a12.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.1109377Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git.path /home/runner/work/_temp/git-credentials-d7c92145-024b-4a08-935f-86e74f959a12.config
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.1140945Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-d7c92145-024b-4a08-935f-86e74f959a12.config
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.1171986Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-d7c92145-024b-4a08-935f-86e74f959a12.config
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.1201898Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-d7c92145-024b-4a08-935f-86e74f959a12.config
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.1228062Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.1229329Z ##[group]Fetching the repository
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:19.1237675Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4940897Z From https://github.com/konard/vk-bot-desktop
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4942803Z  * [new branch]      issue-1-c464625cb2aa  -> origin/issue-1-c464625cb2aa
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4944294Z  * [new branch]      issue-11-5a698e976ba3 -> origin/issue-11-5a698e976ba3
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4945314Z  * [new branch]      issue-13-c24281c684e3 -> origin/issue-13-c24281c684e3
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4946260Z  * [new branch]      issue-15-9ea339e71924 -> origin/issue-15-9ea339e71924
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4947504Z  * [new branch]      issue-15-a34bf7d3d42f -> origin/issue-15-a34bf7d3d42f
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4948473Z  * [new branch]      issue-18-8dbdafb20a80 -> origin/issue-18-8dbdafb20a80
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4949412Z  * [new branch]      issue-20-f41343d25099 -> origin/issue-20-f41343d25099
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4950001Z  * [new branch]      issue-22-e81a3ff8f2b6 -> origin/issue-22-e81a3ff8f2b6
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4950607Z  * [new branch]      issue-24-387107d2234b -> origin/issue-24-387107d2234b
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4951199Z  * [new branch]      issue-26-13d5d785ff12 -> origin/issue-26-13d5d785ff12
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4951802Z  * [new branch]      issue-28-4ceb21ba0bd3 -> origin/issue-28-4ceb21ba0bd3
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4952420Z  * [new branch]      issue-28-bbc47868b0d3 -> origin/issue-28-bbc47868b0d3
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4952977Z  * [new branch]      issue-3-056428691864  -> origin/issue-3-056428691864
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4953520Z  * [new branch]      issue-3-0e5a85ffef02  -> origin/issue-3-0e5a85ffef02
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4954076Z  * [new branch]      issue-31-478598f7dea9 -> origin/issue-31-478598f7dea9
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4954540Z  * [new branch]      issue-32-3162af7780fd -> origin/issue-32-3162af7780fd
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4955051Z  * [new branch]      issue-35-ae8a9f0f2720 -> origin/issue-35-ae8a9f0f2720
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4955498Z  * [new branch]      issue-37-8ad5e669dedf -> origin/issue-37-8ad5e669dedf
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4955952Z  * [new branch]      issue-39-5d7ef40481ba -> origin/issue-39-5d7ef40481ba
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4956695Z  * [new branch]      issue-41-821066ba8668 -> origin/issue-41-821066ba8668
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4957247Z  * [new branch]      issue-42-dea4cdbacc30 -> origin/issue-42-dea4cdbacc30
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4957900Z  * [new branch]      issue-45-a6378227b2b7 -> origin/issue-45-a6378227b2b7
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4958365Z  * [new branch]      issue-47-3bee22ea6e65 -> origin/issue-47-3bee22ea6e65
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4958822Z  * [new branch]      issue-49-ff8c0e53d7c6 -> origin/issue-49-ff8c0e53d7c6
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4959268Z  * [new branch]      issue-51-60ec0489f01f -> origin/issue-51-60ec0489f01f
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4959725Z  * [new branch]      issue-6-4b296eea2cf6  -> origin/issue-6-4b296eea2cf6
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4960177Z  * [new branch]      issue-8-93b95b3c1197  -> origin/issue-8-93b95b3c1197
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4960614Z  * [new branch]      issue-8-d06a42598e1e  -> origin/issue-8-d06a42598e1e
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4961128Z  * [new branch]      main                  -> origin/main
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4961620Z  * [new tag]         v0.10.2               -> v0.10.2
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4961961Z  * [new tag]         v0.11.0               -> v0.11.0
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4962311Z  * [new tag]         v0.9.12               -> v0.9.12
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4962646Z  * [new tag]         v0.9.13               -> v0.9.13
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4962984Z  * [new tag]         v0.9.14               -> v0.9.14
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4963300Z  * [new tag]         v0.9.15               -> v0.9.15
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4963618Z  * [new tag]         v0.9.16               -> v0.9.16
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4963935Z  * [new tag]         v0.9.18               -> v0.9.18
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4964263Z  * [new tag]         v0.9.2                -> v0.9.2
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4964583Z  * [new tag]         v0.9.20               -> v0.9.20
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4964909Z  * [new tag]         v0.9.22               -> v0.9.22
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4965224Z  * [new tag]         v0.9.4                -> v0.9.4
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4965548Z  * [new tag]         v0.9.5                -> v0.9.5
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4965865Z  * [new tag]         v0.9.6                -> v0.9.6
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.4966514Z  * [new tag]         v0.9.7                -> v0.9.7
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.5049814Z [command]/usr/bin/git branch --list --remote origin/main
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.5077811Z   origin/main
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.5088080Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.5109722Z 9212c1126cb5f072edb92b66bb0455b36caf0720
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.5113677Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.5114112Z ##[group]Determining the checkout info
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.5115082Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.5119483Z [command]/usr/bin/git sparse-checkout disable
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.5164082Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.5190043Z ##[group]Checking out the ref
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.5193788Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.7134903Z Switched to a new branch 'main'
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.7135605Z branch 'main' set up to track 'origin/main'.
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.7157222Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.7217249Z [command]/usr/bin/git log -1 --format=%H
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.7251443Z 9212c1126cb5f072edb92b66bb0455b36caf0720
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.7602590Z ##[group]Run oven-sh/setup-bun@v2
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.7602864Z with:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.7603041Z   bun-version: latest
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.7603235Z   no-cache: false
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.7603548Z   token: ***
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:20.7603715Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:21.4407557Z Downloading a new version of Bun: https://github.com/oven-sh/bun/releases/download/bun-v1.3.14/bun-linux-x64.zip
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:21.7032236Z [command]/usr/bin/unzip -o -q /home/runner/work/_temp/f5df833c-9602-4a24-9390-9b7941c2b7bf.zip
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:22.3770321Z [command]/home/runner/.bun/bin/bun --revision
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:22.3814804Z 1.3.14+0d9b296af
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:22.3954346Z ##[group]Run bun install
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:22.3954625Z ^[[36;1mbun install^[[0m
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:22.3995463Z shell: /usr/bin/bash -e {0}
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:22.3995750Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:22.4095375Z bun install v1.3.14 (0d9b296a)
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:22.4161769Z [6.39ms] migrated lockfile from package-lock.json
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.2893054Z Saved lockfile
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.2893315Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.2893441Z $ husky || true
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3297335Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3297778Z + lino-arguments@0.3.0
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3298167Z + lino-objects-codec@0.3.6
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3298558Z + node-ssh@13.2.1
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3298835Z + react@18.3.1
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3299109Z + react-dom@18.3.1
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3299336Z + vk-io@4.10.1
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3299529Z + @changesets/cli@2.31.0
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3299737Z + electron@33.4.11
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3299922Z + electron-builder@25.1.8
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3300129Z + esbuild@0.24.2
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3300375Z + eslint@9.39.4
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3300586Z + eslint-config-prettier@10.1.8
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3300833Z + eslint-plugin-prettier@5.5.5
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3301041Z + husky@9.1.7
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3301218Z + jscpd@4.0.9
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3301386Z + lint-staged@16.4.0
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3301574Z + prettier@3.8.3
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3301765Z + test-anywhere@0.8.50
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3301892Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3301975Z 678 packages installed [13.92s]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3434378Z ##[group]Run bun test --timeout 30000
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3434689Z ^[[36;1mbun test --timeout 30000^[[0m
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3468272Z shell: /usr/bin/bash -e {0}
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3468520Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3534432Z bun test v1.3.14 (0d9b296a)
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3631204Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3631995Z ##[group]tests/session-log.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3849232Z 2026-05-14T23:59:36.384Z [info] first line from session-log test
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3853395Z 2026-05-14T23:59:36.385Z [warn] second line {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3853901Z   "detail": "value"
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3854238Z }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3872565Z (pass) openSessionLog: writes log lines to a session file > creates a file under the given directory and persists logger output [3.64ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3876137Z 2026-05-14T23:59:36.387Z [info] vk {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3876574Z   "token": "***"
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3877071Z }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3881588Z (pass) openSessionLog: redacts secrets in persisted logs > writes the masked representation, not the raw token [0.89ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3882527Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3883233Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3883417Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3883877Z ##[group]tests/check-file-line-limits.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.3917329Z (pass) check-file-line-limits.sh > defines a warning band below the hard limit [0.14ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.4016185Z (pass) check-file-line-limits.sh > warns without failing for files above the warning threshold [9.87ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.4067107Z (pass) check-file-line-limits.sh > still fails files over the hard limit [5.08ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.4137606Z (pass) check-file-line-limits.sh > normalizes padded wc output from BSD-like environments [7.00ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.4138509Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.4139080Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.4139284Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.4139774Z ##[group]tests/detect-code-changes.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.4844188Z (pass) detect-code-changes.mjs > treats a push of a real merge commit on main with first-parent diff [68.96ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.5481516Z (pass) detect-code-changes.mjs > uses HEAD^2 diff for pull_request synthetic merge commits [63.77ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6003839Z (pass) detect-code-changes.mjs > uses HEAD^..HEAD on a plain non-merge push commit [52.19ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6625655Z (pass) detect-code-changes.mjs > regression: issue #28 - "Merge pull request" of a non-site PR on main does not classify as pull_request [62.12ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6627120Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6628123Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6628340Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6628788Z ##[group]tests/pages-site.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6646989Z (pass) GitHub Pages download site > has a reproducible React build script [0.10ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6648150Z (pass) GitHub Pages download site > deploys the built site with the official GitHub Pages actions [0.14ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6649430Z (pass) GitHub Pages download site > rebuilds on every main push and tag push, not only when site files change [0.06ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6650801Z (pass) GitHub Pages download site > detects language, theme, and operating system for the primary download [0.09ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6652143Z (pass) GitHub Pages download site > loads latest release assets without synthesizing absent asset links [0.10ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6653426Z (pass) GitHub Pages download site > runs browser-commander e2e checks before and after Pages deployment [0.12ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6654643Z (pass) GitHub Pages download site > authenticates the post-deploy GitHub Release API call [0.10ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6655835Z (pass) GitHub Pages download site > prints rate-limit diagnostics when the Release API call fails [0.06ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6657224Z (pass) GitHub Pages download site > requires macOS assets in the built-site release fixture [0.27ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6658553Z (pass) GitHub Pages download site > has expandable verification instructions and OS-specific preview chrome [0.20ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6661327Z (pass) GitHub Pages download site > documents the macOS Gatekeeper first-launch workflow for ad-hoc builds [0.23ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6661975Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6662261Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6662384Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6662648Z ##[group]tests/vk-client.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6680001Z (pass) createVkClient > returns a VK instance constructed with the given token [0.40ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6686773Z (pass) createVkClient > throws when no token is provided [0.67ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6694346Z (pass) createVkClient > logs request and response when verbose mode is on [0.76ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6696997Z (pass) createVkClient > logs an APIError-shaped response (code 3) verbatim [0.24ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6698764Z (pass) createVkClient > skips request/response logging when verbose is off [0.19ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6702096Z (pass) createVkClient > redacts access_token from logged params [0.28ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6702771Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6704546Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6704743Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6705138Z ##[group]tests/tag-prefix.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6712428Z (pass) tag prefix logic > defaults to "v" prefix (backward compatible) [0.03ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6713403Z (pass) tag prefix logic > supports "js-v" prefix for multi-language repos [0.02ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6714214Z (pass) tag prefix logic > supports "rust-v" prefix [0.02ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6714810Z (pass) tag prefix logic > supports empty prefix [0.03ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6715465Z (pass) tag prefix logic > works with pre-release versions [0.03ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6715884Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6716302Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6716709Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6717127Z ##[group]tests/index.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6722566Z (pass) add function > should add two positive numbers [0.02ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6723313Z (pass) add function > should add negative numbers [0.01ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6723899Z (pass) add function > should add zero [0.02ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6724580Z (pass) multiply function > should multiply two positive numbers [0.03ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6725327Z (pass) multiply function > should multiply by zero [0.02ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6726053Z (pass) multiply function > should multiply negative numbers [0.02ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6726749Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6727138Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6727303Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6727651Z ##[group]tests/i18n.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6739128Z (pass) detectLocale > returns ru for Russian language tags [0.05ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6739953Z (pass) detectLocale > falls back to en for unknown locales [0.03ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6740742Z (pass) translate > returns the translated string when available [0.07ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6741638Z (pass) translate > falls back to English when key missing in target locale [0.08ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6742579Z (pass) translate > returns the key itself when nothing matches [0.03ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6743481Z (pass) translate > includes new clearLog/verbose/reset-save keys in both locales [0.08ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6744463Z (pass) TRANSLATIONS parity > every English key has a Russian translation [0.14ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6745008Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6745392Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6745574Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6745972Z ##[group]tests/runner-schedule.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6808938Z 2026-05-14T23:59:36.680Z [debug] Checking for 'set-online-status' trigger...
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6810508Z 2026-05-14T23:59:36.680Z [info] Online status is set
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6811126Z 2026-05-14T23:59:36.681Z [debug] 'set-online-status' trigger executed in 1 ms
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6811670Z 2026-05-14T23:59:36.681Z [debug] Checking for 'accept-friend-requests' trigger...
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6819354Z 2026-05-14T23:59:36.681Z [error] Could not accept friend requests {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6820132Z 2026-05-14T23:59:36.681Z [debug] 'accept-friend-requests' trigger executed in 0 ms
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6820729Z   "error": {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6820909Z     "name": "TypeError",
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6821450Z     "message": "undefined is not an object (evaluating 'vk.api.friends.get')",
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6823257Z     "stack": "TypeError: undefined is not an object (evaluating 'vk.api.friends.get')\n    at loadFriends (/home/runner/work/vk-bot-desktop/vk-bot-desktop/src/bot/triggers/accept-friend-requests.js:27:35)\n    at acceptFriendRequests (/home/runner/work/vk-bot-desktop/vk-bot-desktop/src/bot/triggers/accept-friend-requests.js:256:27)\n    at <anonymous> (/home/runner/work/vk-bot-desktop/vk-bot-desktop/src/bot/runner.js:30:13)"
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6825148Z   }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6825404Z }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6825885Z 2026-05-14T23:59:36.681Z [debug] Checking for 'delete-deactivated-friends' trigger...
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6826872Z 2026-05-14T23:59:36.682Z [error] Could not delete deactivated friends {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6827634Z   "error": {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6828055Z     "name": "TypeError",
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6828612Z     "message": "undefined is not an object (evaluating 'vk.api.friends.get')",
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6831024Z     "stack": "TypeError: undefined is not an object (evaluating 'vk.api.friends.get')\n    at loadFriendsWithStatus (/home/runner/work/vk-bot-desktop/vk-bot-desktop/src/bot/triggers/delete-deactivated-friends.js:16:35)\n    at deleteDeactivatedFriends (/home/runner/work/vk-bot-desktop/vk-bot-desktop/src/bot/triggers/delete-deactivated-friends.js:37:27)\n    at <anonymous> (/home/runner/work/vk-bot-desktop/vk-bot-desktop/src/bot/runner.js:30:13)"
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6832797Z   }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6832999Z }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6833509Z 2026-05-14T23:59:36.682Z [debug] 'delete-deactivated-friends' trigger executed in 1 ms
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6834073Z 2026-05-14T23:59:36.682Z [debug] Checking for 'delete-outgoing-friend-requests' trigger...
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6834608Z 2026-05-14T23:59:36.682Z [error] Could not delete outgoing friend requests {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6834954Z   "error": {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6835132Z     "name": "TypeError",
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6835480Z     "message": "undefined is not an object (evaluating 'vk.api.friends.getRequests')",
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6837176Z     "stack": "TypeError: undefined is not an object (evaluating 'vk.api.friends.getRequests')\n    at deleteOutgoingFriendRequests (/home/runner/work/vk-bot-desktop/vk-bot-desktop/src/bot/triggers/delete-outgoing-friend-requests.js:44:35)\n    at <anonymous> (/home/runner/work/vk-bot-desktop/vk-bot-desktop/src/bot/runner.js:30:13)"
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6838364Z   }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6838504Z }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6838848Z 2026-05-14T23:59:36.682Z [debug] 'delete-outgoing-friend-requests' trigger executed in 0 ms
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6839735Z 2026-05-14T23:59:36.683Z [debug] Checking for 'send-invitation-posts' trigger...
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6840326Z 2026-05-14T23:59:36.683Z [info] No invitation-post communities configured; skipping
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6840802Z 2026-05-14T23:59:36.683Z [debug] 'send-invitation-posts' trigger executed in 0 ms
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6841290Z 2026-05-14T23:59:36.683Z [debug] Checking for 'send-birthday-congratulations' trigger...
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6841693Z 2026-05-14T23:59:36.683Z [error] Trigger threw {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6841963Z   "name": "send-birthday-congratulations",
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6842202Z   "error": {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6842361Z     "name": "TypeError",
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6842664Z     "message": "undefined is not an object (evaluating 'vk.api.friends.get')",
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6844402Z     "stack": "TypeError: undefined is not an object (evaluating 'vk.api.friends.get')\n    at collectFriendsWithBirthday (/home/runner/work/vk-bot-desktop/vk-bot-desktop/src/bot/triggers/send-birthday-congratulations.js:118:35)\n    at sendBirthdayCongratulations (/home/runner/work/vk-bot-desktop/vk-bot-desktop/src/bot/triggers/send-birthday-congratulations.js:80:25)\n    at <anonymous> (/home/runner/work/vk-bot-desktop/vk-bot-desktop/src/bot/runner.js:30:13)"
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6846000Z   }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.6846140Z }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.7299063Z (pass) startBot scheduling > fires the online-status trigger at least once and keeps the process alive [51.14ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:36.7303002Z (pass) startBot scheduling > applies config.verbose to the logger [0.46ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1356272Z (pass) startBot scheduling > does not exit prematurely when run as a forked child (regression for issue #32) [405.26ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1357183Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1357624Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1357769Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1358094Z ##[group]tests/api-errors.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1368631Z (pass) isUnknownMethodError > detects code 3 on `code` field [0.08ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1369729Z (pass) isUnknownMethodError > detects code 3 on `error_code` field [0.04ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1370362Z (pass) isUnknownMethodError > ignores other codes [0.05ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1372506Z (pass) fetchAppPermissions > returns the bitmask and caches subsequent calls [0.28ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1373771Z (pass) fetchAppPermissions > returns null when the method is unavailable [0.10ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1376124Z 2026-05-14T23:59:37.137Z [warn] Could not read account.getAppPermissions {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1377065Z   "error": {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1377299Z     "name": "Error",
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1377547Z     "message": "boom",
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1379889Z     "stack": "Error: boom\n    at getAppPermissions (/home/runner/work/vk-bot-desktop/vk-bot-desktop/tests/api-errors.test.js:69:23)\n    at <anonymous> (/home/runner/work/vk-bot-desktop/vk-bot-desktop/src/bot/api-errors.js:53:43)\n    at fetchAppPermissions (/home/runner/work/vk-bot-desktop/vk-bot-desktop/src/bot/api-errors.js:57:16)\n    at <anonymous> (/home/runner/work/vk-bot-desktop/vk-bot-desktop/tests/api-errors.test.js:74:24)\n    at fn (node:test:215:18)"
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1383184Z   }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1383407Z }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1383732Z (pass) fetchAppPermissions > returns null on error [0.26ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1384433Z 2026-05-14T23:59:37.137Z [error] VK API rejected method as unknown; halting trigger for this cycle {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1385213Z   "trigger": "delete-deactivated-friends",
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1385849Z   "method": "friends.delete",
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1386231Z   "errorCode": 3,
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1386796Z   "errorMessage": "Unknown method passed",
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1387263Z   "appPermissionsMask": 1073737727,
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1389214Z   "hint": "VK has gated this method for the Kate Mobile OAuth app (see docs/case-studies/issue-49 §7). Re-runs will fail until the user switches OAuth flow."
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1390110Z }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1390478Z (pass) reportUnknownMethod > emits a single error line that names the trigger, method, and mask [0.62ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1390846Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1391098Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1391199Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1391434Z ##[group]tests/site-downloads.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1399171Z (pass) Pages release download helpers > resolves versioned download links from actual release assets [0.46ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1400455Z (pass) Pages release download helpers > prefers versioned assets while tolerating legacy assets during migration [0.09ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1401566Z (pass) Pages release download helpers > derives user-visible asset names from the latest release version [0.08ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1402663Z (pass) Pages release download helpers > uses the release page rather than a synthetic checksum URL when missing [0.09ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1406315Z (pass) Pages release download helpers > keeps stable option groups for all supported operating systems [0.44ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1410177Z (pass) Pages release download helpers > groups primary installer downloads with smaller format alternatives [0.36ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1411080Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1411485Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1411649Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1412049Z ##[group]tests/friend-prioritization.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1422383Z (pass) computePotentialAcceptanceQuota > returns floor(totalIncomingSeen * 10%) - totalAcceptedEver [0.07ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1423280Z (pass) computePotentialAcceptanceQuota > clamps to zero when already over quota [0.02ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1423838Z (pass) computePotentialAcceptanceQuota > honours a custom percentage [0.03ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1424905Z (pass) selectIncomingRequests > respects the lifetime 10% quota across runs [0.23ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1426200Z (pass) selectIncomingRequests > falls back to current batch size when no lifetime stats provided [0.11ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1427243Z (pass) selectIncomingRequests > above the limit only accepts requests with mutuals [0.06ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1428103Z (pass) selectIncomingRequests > returns nothing when capacity is exhausted [0.07ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1428599Z (pass) selectIncomingRequests > returns nothing for empty input [0.03ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1429737Z (pass) pickPrioritySendList > returns priority IDs not yet in friends [0.16ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1430531Z (pass) pickPrioritySendList > respects remaining capacity [0.05ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1431832Z (pass) pickDeactivatedToDelete > returns banned/deleted friends excluding priority list [0.14ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1432939Z (pass) pickDeactivatedToDelete > treats malformed priority IDs from empty lino arrays as empty [0.06ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1433340Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1433580Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1433680Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1433927Z ##[group]tests/invitation-messages.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1440443Z (pass) invitation messages > contains exactly 10 entries [0.03ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1441656Z (pass) invitation messages > every message is a non-empty Russian-language string [0.11ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1443250Z (pass) invitation messages > does not pick the same index twice in a row [0.16ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1444000Z (pass) invitation messages > accepts a custom list [0.05ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1444656Z (pass) invitation messages > returns empty string for empty list [0.04ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1448333Z (pass) invitation messages > every default message is gender-neutral [0.39ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1448825Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1449161Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1449270Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1449507Z ##[group]tests/fetch-outgoing-requests.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1458551Z (pass) fetchOutgoingRequestIds > returns [] when vk client is missing [0.20ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1461496Z (pass) fetchOutgoingRequestIds > returns [] when friends.getRequests is missing [0.10ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1462616Z (pass) fetchOutgoingRequestIds > returns the items array from the VK response [0.15ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1463622Z (pass) fetchOutgoingRequestIds > returns [] when items is not an array [0.15ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1464177Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1464567Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1464744Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1465110Z ##[group]tests/stats.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1477309Z (pass) isoWeek > returns the ISO week number for known dates [0.19ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1478737Z (pass) pathsForDate > produces total + month + week paths [0.15ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1479746Z (pass) StatsStore > throws when rootDir missing [0.11ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1505076Z (pass) StatsStore > records accepted friends in three files [2.50ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1528340Z (pass) StatsStore > accumulates across multiple calls in the same week [2.31ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1548065Z (pass) StatsStore > isolates weeks: new week file when the date changes [1.94ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1556025Z (pass) StatsStore > records initial friends count once and never overwrites [0.79ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1561741Z (pass) StatsStore > snapshot returns empty objects when no data exists [0.57ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1562262Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1562697Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1562816Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1563086Z ##[group]tests/desktop-release-workflow.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1595303Z (pass) release workflow orchestration > does not publish packages to npm from release jobs [0.54ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1599950Z (pass) release workflow orchestration > keeps desktop release jobs in the same workflow with an exact tag and commit [0.40ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1607463Z (pass) release workflow orchestration > runs desktop jobs after optional release modes are skipped [0.76ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1609363Z (pass) desktop release workflow > builds desktop artifacts for Linux, macOS, and Windows releases [0.25ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1612889Z (pass) desktop release workflow > uses versioned artifact names for release download links [0.36ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1615203Z (pass) desktop release workflow > uses system FPM for native Linux arm64 Debian builds [0.23ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1617369Z (pass) desktop release workflow > normalizes Linux artifact architecture names before validation [0.20ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1620053Z (pass) desktop release workflow macOS signing > keeps signed and notarized macOS publishing when Apple secrets are configured [0.26ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1623725Z (pass) desktop release workflow macOS signing > builds ad-hoc signed macOS artifacts without Apple secrets [0.36ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1626814Z (pass) desktop release workflow smoke tests > smoke-tests platform installers after building and before uploading [0.27ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1627716Z (pass) desktop release workflow smoke tests > does not execute the NSIS installer on Windows ARM64 hosted runners [0.10ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1628680Z (pass) desktop release workflow smoke tests > delimits PowerShell variables before literal colons in smoke-test output [0.09ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1629530Z (pass) desktop release workflow smoke tests > configures a Linux maintainer for deb artifacts [0.09ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1631208Z (pass) desktop release workflow smoke tests > hashes Linux and macOS artifacts without splitting filenames on spaces [0.14ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1631671Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1631912Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1632019Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1632239Z ##[group]tests/logger.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1641353Z (pass) redact > masks long token-like strings [0.07ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1641799Z (pass) redact > masks query-style secrets [0.06ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1642744Z (pass) redact > masks secret-named object properties [0.09ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1643413Z (pass) redact > handles circular references [0.06ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1643813Z (pass) redact > does not mask short ids [0.03ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1644722Z 2026-05-14T23:59:37.164Z [info] token=***
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1645614Z (pass) logger sinks > routes log lines to registered sinks with redaction [0.14ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1647254Z 2026-05-14T23:59:37.164Z [error] Could not set online status {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1647821Z   "error": {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1648136Z     "name": "Error",
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1648508Z     "message": "Unknown method passed.",
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1649747Z     "stack": "Error: Unknown method passed.\n    at <anonymous> (/home/runner/work/vk-bot-desktop/vk-bot-desktop/tests/logger.test.js:72:20)\n    at fn (node:test:215:18)"
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1650945Z   }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1651218Z }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1651732Z (pass) logger sinks > pretty-prints object arguments with indentation [0.22ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1652577Z (pass) verbose mode > is enabled by default so debug lines reach sinks [0.15ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1653349Z (pass) verbose mode > suppresses debug lines when toggled off [0.11ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1653802Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1654187Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1654383Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1654902Z ##[group]tests/package-info.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1655357Z 2026-05-14T23:59:37.164Z [debug] verbose probe
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1655786Z 2026-05-14T23:59:37.164Z [info] shown
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1660215Z (pass) package info helpers > reads scoped package names and versions from package.json content [0.09ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1661454Z (pass) package info helpers > formats npm package specifiers from the derived package name [0.06ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1662596Z (pass) package info helpers > formats changeset headers from the derived package name [0.03ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1663866Z (pass) package info helpers > matches changesets for the derived package name only [0.13ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1664818Z (pass) package info helpers > reports missing package names clearly [0.06ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1665327Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1665726Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1665924Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1666314Z ##[group]tests/list-values.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1680284Z (pass) asList > passes through arrays [0.52ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1680848Z (pass) asList > wraps primitives [0.03ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1681502Z (pass) asList > returns empty for nullish or object input [0.05ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1682415Z (pass) splitListTokens > splits on commas, semicolons, spaces, tabs and newlines [0.13ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1683325Z (pass) splitListTokens > trims and drops empty tokens [0.04ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1684432Z (pass) splitListTokens > treats nullish input as empty list [0.05ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1685996Z (pass) parseVkReference > parses raw positive integers as users by default [0.27ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1687284Z (pass) parseVkReference > parses raw negative integers as communities by default [0.05ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1688460Z (pass) parseVkReference > parses raw positive integers as communities when expecting community [0.09ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1689981Z (pass) parseVkReference > parses idN, clubN, publicN and eventN [0.24ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1691103Z (pass) parseVkReference > parses full and short VK links [0.11ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1691849Z (pass) parseVkReference > parses screen-name links [0.07ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1692606Z (pass) parseVkReference > accepts bare screen names [0.04ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1693324Z (pass) parseVkReference > rejects empty and zero tokens [0.04ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1693994Z (pass) parseVkReference > rejects junk [0.04ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1695720Z (pass) parseVkReferenceList > parses mixed separators and link formats [0.22ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1696903Z (pass) parseVkReferenceList > dedupes equivalent forms [0.09ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1700925Z (pass) parseVkReferenceList > treats community context properly [0.17ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1701621Z (pass) parseVkIdList > returns numeric IDs for user lists [0.20ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1702150Z (pass) parseVkIdList > returns positive community IDs for community lists [0.13ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1702512Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1702766Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1702886Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1703125Z ##[group]tests/ci-timeouts.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1738014Z (pass) CI timeout policy > sets timeout-minutes for every JavaScript workflow job [2.26ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1739086Z (pass) CI timeout policy > parses workflow files checked out with Windows line endings [0.11ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1740097Z (pass) CI timeout policy > caps individual Node.js and Bun tests at 30 seconds [0.04ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1740688Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1741060Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1741239Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1741709Z ##[group]tests/delete-outgoing-friend-requests.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1746823Z (pass) pickOutgoingToCancel > returns the capacity-needed slice excluding priority friends [0.15ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1748083Z (pass) pickOutgoingToCancel > treats malformed priority IDs from empty lino arrays as empty [0.04ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1748781Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1749156Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1749327Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1749690Z ##[group]tests/set-online-status.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1758038Z 2026-05-14T23:59:37.175Z [info] Online status is set
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1758822Z (pass) setOnlineStatus: healthy call > logs success on a healthy call [0.32ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1763309Z 2026-05-14T23:59:37.176Z [error] VK API rejected method as unknown; halting trigger for this cycle {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1764169Z   "trigger": "set-online-status",
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1764632Z   "method": "account.setOnline",
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1765040Z   "errorCode": 3,
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1765738Z   "errorMessage": "Code №3 - Unknown method passed",
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1766286Z   "appPermissionsMask": 1073737727,
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1768217Z   "hint": "VK has gated this method for the Kate Mobile OAuth app (see docs/case-studies/issue-49 §7). Re-runs will fail until the user switches OAuth flow."
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1769327Z }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1770030Z (pass) setOnlineStatus: Unknown method (code 3) > halts the trigger and logs the terminal diagnostic once [0.52ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1771077Z 2026-05-14T23:59:37.176Z [warn] Could not set online status {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1771610Z   "error": {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1771914Z     "name": "Error",
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1772231Z     "message": "boom",
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1775912Z     "stack": "Error: boom\n    at setOnline (/home/runner/work/vk-bot-desktop/vk-bot-desktop/tests/set-online-status.test.js:79:25)\n    at setOnlineStatus (/home/runner/work/vk-bot-desktop/vk-bot-desktop/src/bot/triggers/set-online-status.js:15:26)\n    at <anonymous> (/home/runner/work/vk-bot-desktop/vk-bot-desktop/tests/set-online-status.test.js:84:13)\n    at withCapturedLogs (/home/runner/work/vk-bot-desktop/vk-bot-desktop/tests/set-online-status.test.js:24:26)\n    at <anonymous> (/home/runner/work/vk-bot-desktop/vk-bot-desktop/tests/set-online-status.test.js:74:11)\n    at fn (node:test:215:18)"
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1780212Z   }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1780497Z }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1781106Z (pass) setOnlineStatus: other errors > logs the generic warning for non-VK errors too [0.39ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1781562Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1781930Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1782144Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1782565Z ##[group]tests/lino-store.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1800563Z (pass) LinoStore > round-trips a config through formatIndented/parseIndented [2.15ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1811858Z (pass) LinoStore > normalizes empty and scalar list fields after loading lino config [1.12ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1812884Z (pass) LinoStore > normalizes legacy bare-key list shapes from existing config files [0.11ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1822479Z (pass) LinoStore > local config overrides global [0.97ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1830644Z (pass) LinoStore > keeps empty invitation communities iterable after loading config [0.79ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1840116Z (pass) LinoStore > returns empty object when no config files exist [0.95ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1840601Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1840918Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1841030Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1841366Z ##[group]tests/vk-token-mask.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1849466Z (pass) maskVkToken > returns empty string for nullish or empty input [0.07ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1850394Z (pass) maskVkToken > returns the value unchanged when it fits within the visible window [0.05ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1851340Z (pass) maskVkToken > keeps the first 10 and last 10 characters of long tokens [0.04ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1851978Z (pass) maskVkToken > replaces the middle with a fixed bullet run [0.07ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1852326Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1852706Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1852881Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1853277Z ##[group]tests/vk-token.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1860536Z (pass) VK token helpers > keeps the Kate Mobile blank-page OAuth URL requested by issue 26 [0.04ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1862448Z (pass) VK token helpers > extracts access_token from pasted VK redirect URLs [0.21ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1863270Z (pass) VK token helpers > accepts a raw token without changing it beyond trimming whitespace [0.10ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1867316Z (pass) VK token helpers > wires the VK blank-page OAuth URL through an Electron auth window [0.34ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1867696Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1867945Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1868057Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1868332Z ##[group]tests/send-birthday-congratulations.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1879745Z (pass) findBirthdayFriends > matches friends whose bdate day/month equal today [0.21ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1883483Z (pass) recentlyMessaged > returns true when the latest message is within the window [0.38ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1885139Z (pass) recentlyMessaged > returns false when the latest message is older than the window [0.16ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1886916Z (pass) recentlyMessaged > returns false when there is no history [0.14ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1889748Z 2026-05-14T23:59:37.188Z [warn] Could not read message history for birthday dedup; greeting anyway {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1890179Z   "userId": 7,
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1890338Z   "error": {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1890498Z     "name": "Error",
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1890676Z     "message": "boom",
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1892156Z     "stack": "Error: boom\n    at getHistory (/home/runner/work/vk-bot-desktop/vk-bot-desktop/tests/send-birthday-congratulations.test.js:69:23)\n    at recentlyMessaged (/home/runner/work/vk-bot-desktop/vk-bot-desktop/src/bot/triggers/send-birthday-congratulations.js:53:43)\n    at <anonymous> (/home/runner/work/vk-bot-desktop/vk-bot-desktop/tests/send-birthday-congratulations.test.js:74:24)\n    at fn (node:test:215:18)"
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1894422Z   }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1894655Z }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1894998Z (pass) recentlyMessaged > returns false when the lookup fails [0.32ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1895543Z 2026-05-14T23:59:37.189Z [info] Birthday targets identified {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1896017Z   "count": 2
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1896287Z }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1896784Z 2026-05-14T23:59:37.189Z [info] Skipping birthday greeting: recent conversation in last 24 hours {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1897179Z   "userId": 11
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1897328Z }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1897519Z 2026-05-14T23:59:37.189Z [info] Birthday message sent {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1897772Z   "userId": 22,
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1898198Z   "message": "С днём рождения! Пусть мечты сбываются. ✨"
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1898447Z }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1907566Z (pass) sendBirthdayCongratulations > skips friends with recent conversation in the last 24 h [1.73ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1908229Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1908497Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1908610Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1908860Z ##[group]tests/check-release-needed.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1917417Z (pass) desktop release detection > builds GitHub release tags from the package version [0.09ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1918642Z (pass) desktop release detection > releases through a version bump when changesets exist [0.12ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1919880Z (pass) desktop release detection > skips release when the current GitHub Release already has artifacts [0.05ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1921176Z (pass) desktop release detection > retries release without a bump when the GitHub Release is incomplete [0.03ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1922493Z (pass) desktop release detection > requires checksum, provenance, and all desktop platform assets [0.24ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1926331Z (pass) desktop release detection > checks GitHub Release artifact completeness with gh release view [0.37ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1927747Z (pass) desktop release detection > treats missing GitHub Releases as unpublished [0.18ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1929768Z (pass) desktop release detection > fails closed on unexpected gh release errors [0.19ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1930378Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1930789Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1930993Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1931434Z ##[group]tests/accept-friend-requests.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1951898Z 2026-05-14T23:59:37.195Z [error] VK API rejected method as unknown; halting trigger for this cycle {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1952675Z   "trigger": "accept-friend-requests",
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1953089Z   "method": "friends.add",
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1953420Z   "errorCode": 3,
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1953717Z   "errorMessage": "Unknown method passed",
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1953994Z   "appPermissionsMask": 1073737727,
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1954802Z   "hint": "VK has gated this method for the Kate Mobile OAuth app (see docs/case-studies/issue-49 §7). Re-runs will fail until the user switches OAuth flow."
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1955424Z }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1956124Z (pass) acceptFriendRequests: code 3 halts trigger for the process > stops the run on first Unknown method passed and short-circuits later runs [1.21ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1957867Z 2026-05-14T23:59:37.195Z [debug] Skipping priority friend with existing outgoing request {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1958348Z   "userId": 42
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1958512Z }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1958771Z 2026-05-14T23:59:37.195Z [info] Friend request sent to priority friend {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1959104Z   "userId": 7
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1959265Z }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1971377Z (pass) acceptFriendRequests: skips users with existing outgoing requests > does not re-send priority friend requests already pending [1.81ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1972219Z 2026-05-14T23:59:37.196Z [info] No incoming friend requests to be accepted
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1974357Z 2026-05-14T23:59:37.197Z [warn] Rate limit while adding priority friend; backing off {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1974719Z   "userId": 10
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1974876Z }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1985559Z 2026-05-14T23:59:37.198Z [info] No incoming friend requests to be accepted
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1986770Z (pass) acceptFriendRequests: rate-limit code 29 backs off then stops > aborts the priority loop after a 29 from VK [1.50ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1987255Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1987501Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1987599Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.1987912Z ##[group]tests/validate-release-assets.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2001022Z (pass) validate-release-assets.mjs > validates release assets from the tag version, not the checkout package version [0.13ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2002335Z (pass) validate-release-assets.mjs > reports each missing release asset with a GitHub annotation path [0.16ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2002981Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2003230Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2003333Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2003552Z ##[group]tests/theme.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2013072Z (pass) resolveTheme > honors explicit light or dark preferences [0.06ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2013899Z (pass) resolveTheme > falls back to system theme when preference is auto [0.04ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2014736Z (pass) resolveTheme > defaults to light when system theme is missing [0.03ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2015532Z (pass) applyTheme > writes data-theme to the document element [0.06ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2016266Z (pass) watchSystemTheme > returns a no-op when matchMedia is unavailable [0.08ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2017350Z (pass) watchSystemTheme > listens via addEventListener and reports dark/light [0.12ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2017721Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2017966Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2018076Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2018331Z ##[group]tests/send-invitation-posts.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2031466Z (pass) readCachedPostIds > returns [] when cache is missing [0.07ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2032201Z (pass) readCachedPostIds > returns [] for unknown community [0.05ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2033022Z (pass) readCachedPostIds > normalises scalar bucket to a single-element array [0.04ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2033841Z (pass) readCachedPostIds > normalises array bucket to numbers and drops NaN [0.06ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2034698Z (pass) buildUpdatedCache > writes the post id list under byCommunity [0.10ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2035540Z (pass) buildUpdatedCache > removes the entry when post id list is empty [0.06ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2036593Z (pass) buildUpdatedCache > coerces string ids to numbers and drops invalid [0.05ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2037154Z (pass) buildUpdatedCache > does not mutate the input cache [0.04ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2038338Z 2026-05-14T23:59:37.203Z [info] No invitation-post communities configured; skipping
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2038977Z (pass) sendInvitationPosts: basic flow > skips communities when no communities configured [0.24ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2058365Z 2026-05-14T23:59:37.205Z [info] Invitation post still in top 10; skipping community {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2059022Z (pass) sendInvitationPosts: basic flow > skips a community whose cached post is still in the top 10 [1.99ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2059527Z   "communityId": 42,
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2059715Z   "cached": [
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2059875Z     555
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2060030Z   ]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2060172Z }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2076616Z 2026-05-14T23:59:37.207Z [info] Invitation post sent {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2077205Z   "communityId": 42,
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2077452Z   "postId": 777
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2077650Z }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2089942Z 2026-05-14T23:59:37.208Z [info] Old invitation post deleted {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2090333Z   "ownerId": "-42",
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2090535Z   "postId": 555
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2110812Z }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2111453Z (pass) sendInvitationPosts: post rotation > posts a new message and deletes the old recorded post [4.34ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2115195Z 2026-05-14T23:59:37.211Z [info] Invitation post sent {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2115485Z   "communityId": 42,
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2115676Z   "postId": 777
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2115839Z }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2127944Z 2026-05-14T23:59:37.212Z [warn] Old invitation post already gone; dropping from cache {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2128548Z   "ownerId": "-42",
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2128728Z   "postId": 555,
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2128901Z   "code": 104
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2129052Z }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2129281Z 2026-05-14T23:59:37.212Z [info] Old invitation post deleted {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2129574Z   "ownerId": "-42",
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2129746Z   "postId": 666
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2129900Z }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2139490Z (pass) sendInvitationPosts: post rotation > drops cached id from cache when wall.delete reports code 104 (already gone) [3.71ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2152577Z 2026-05-14T23:59:37.215Z [info] Invitation post sent {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2153090Z   "communityId": 42,
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2153441Z   "postId": 777
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2153748Z }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2170445Z 2026-05-14T23:59:37.216Z [warn] Could not delete old invitation post; keeping in cache {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2171252Z   "ownerId": "-42",
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2171588Z   "postId": 555,
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2171944Z   "error": {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2172274Z     "name": "Error",
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2172636Z     "message": "Some other error",
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2177529Z     "stack": "Error: Some other error\n    at wallDelete (/home/runner/work/vk-bot-desktop/vk-bot-desktop/tests/send-invitation-posts.test.js:212:33)\n    at deleteRecordedPosts (/home/runner/work/vk-bot-desktop/vk-bot-desktop/src/bot/triggers/send-invitation-posts.js:177:25)\n    at rotateCommunity (/home/runner/work/vk-bot-desktop/vk-bot-desktop/src/bot/triggers/send-invitation-posts.js:263:29)\n    at async sendInvitationPosts (/home/runner/work/vk-bot-desktop/vk-bot-desktop/src/bot/triggers/send-invitation-posts.js:287:42)\n    at async runWithFastSleep (/home/runner/work/vk-bot-desktop/vk-bot-desktop/tests/send-invitation-posts.test.js:35:11)\n    at async <anonymous> (/home/runner/work/vk-bot-desktop/vk-bot-desktop/tests/send-invitation-posts.test.js:215:11)\n    at processTicksAndRejections (native:7:39)"
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2180817Z   }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2180981Z }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2181410Z (pass) sendInvitationPosts: post rotation > keeps a cached id when delete throws an unknown error [3.11ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2192516Z 2026-05-14T23:59:37.219Z [info] Invitation post sent {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2192952Z   "communityId": 42,
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2193196Z   "postId": 1
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2193409Z }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2204793Z (pass) sendInvitationPosts: avatar attachment > attaches the configured avatar image when present [3.37ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2218476Z 2026-05-14T23:59:37.221Z [info] Invitation post sent {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2218861Z   "communityId": 42,
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2219052Z   "postId": 1
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2219218Z }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2229979Z (pass) sendInvitationPosts: avatar attachment > posts without attachment when no avatar is available [2.52ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2245215Z 2026-05-14T23:59:37.224Z [warn] Captcha required; backing off {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2245759Z   "communityId": 1
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2246055Z }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2267060Z 2026-05-14T23:59:37.226Z [info] Invitation post sent {
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2267572Z   "communityId": 2,
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2267896Z   "postId": 1
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2268175Z }
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2278855Z (pass) sendInvitationPosts: error handling > does not crash on captcha (code 14); continues to next community [4.86ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2279895Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2280437Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2280606Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2281120Z ##[group]tests/create-github-release.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2303026Z (pass) create-github-release release title formatting > parses language from CLI arguments and environment defaults [0.22ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2306780Z (pass) create-github-release release title formatting > builds a human-readable release name from a language-prefixed tag [0.35ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2309117Z (pass) create-github-release.mjs > uses gh api and reports successful creation only for exit code 0 [0.28ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2311060Z (pass) create-github-release.mjs > throws when gh api exits non-zero with an unexpected error [0.19ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2312502Z (pass) create-github-release.mjs > treats already_exists as an idempotent gh api result [0.07ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.2769203Z (pass) create-github-release.mjs > passes release payload to gh api and reports success only on exit code 0 [45.65ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.3223894Z (pass) create-github-release.mjs > passes a human-readable release name for language-prefixed tags [45.40ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.3684531Z (pass) create-github-release.mjs > fails when gh api exits non-zero with an unexpected error [45.99ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4131511Z (pass) create-github-release.mjs > treats already_exists as an explicit idempotent skip [44.73ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4132294Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4132915Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4133128Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4133628Z ##[group]tests/renderer-clipboard.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4153831Z (pass) renderer clipboard helper > prefers the Electron preload API when available [0.26ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4155090Z (pass) renderer clipboard helper > falls back to navigator.clipboard.writeText outside Electron [0.14ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4157245Z (pass) renderer clipboard helper > throws when no clipboard implementation is available [0.19ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4158997Z (pass) Electron clipboard bridge > exposes a copyText preload API backed by Electron clipboard.writeText [0.18ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4159784Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4160183Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4160382Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4160819Z ##[group]tests/birthday-greetings.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4167949Z (pass) birthday greetings > contains exactly 10 entries [0.03ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4170977Z (pass) birthday greetings > every greeting has at most 2 emojis [0.28ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4171945Z (pass) birthday greetings > every greeting is a non-empty Russian-language string [0.08ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4173414Z (pass) birthday greetings > every greeting contains the core phrase "с днём рождения" [0.11ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4174460Z (pass) birthday greetings > does not pick the same index twice in a row [0.11ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4174993Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4175395Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4175573Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4175993Z ##[group]tests/bot-lifecycle.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4188959Z (pass) buildStatusCommand > uses the default session name [0.07ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4190185Z (pass) buildStatusCommand > honors a custom session name [0.03ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4191657Z (pass) buildStartCommand > defaults to screen isolation with the session name [0.09ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4193060Z (pass) buildStartCommand > builds a docker invocation with image and session name [0.06ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4194231Z (pass) buildStartCommand > passes through a custom command [0.04ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4195019Z (pass) buildStopCommand > uses --stop with the session [0.04ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4195802Z (pass) isRunning > returns true when stdout indicates running [0.35ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4196806Z (pass) isRunning > returns false when exit code != 0 [0.12ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4197584Z (pass) isRunning > returns false when stdout has no running keyword [0.13ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4206710Z (pass) isRunning > throws when runCommand is missing [0.17ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4207389Z (pass) startBot/stopBot > startBot invokes runCommand with the start argv [0.25ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4208246Z (pass) startBot/stopBot > stopBot invokes runCommand with the stop argv [0.20ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4208935Z (pass) ensureMutualExclusion > rejects unknown targetMode [0.38ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4209720Z (pass) ensureMutualExclusion > returns stoppedOther=false when no other runner is provided [0.11ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4210727Z (pass) ensureMutualExclusion > stops the remote bot when starting local and remote is running [0.12ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4211643Z (pass) ensureMutualExclusion > does not stop the remote bot when it is not running [0.10ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4213014Z (pass) ensureMutualExclusion > treats runner errors as not-running [0.16ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4214121Z (pass) ensureMutualExclusion > stops the local bot when starting server [0.10ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4214637Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4214919Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4215032Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4215255Z ##[group]tests/setup-npm.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4238080Z (pass) setup-npm version requirements > compares semantic versions numerically [0.20ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4238988Z (pass) setup-npm version requirements > requires npm 11.5.1 or later [0.09ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4239812Z (pass) setup-npm version requirements > requires Node.js 22.14.0 or later [0.06ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4242595Z (pass) setup-npm version requirements > selects the latest npm 11 tarball that satisfies trusted publishing [0.27ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4243193Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4243483Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4243657Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4244060Z ##[group]tests/release-badge.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4252500Z (pass) release badge version normalization > strips a plain v prefix for backward compatibility [0.10ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4253734Z (pass) release badge version normalization > strips a js-v prefix from multi-language release tags [0.04ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4254885Z (pass) release badge version normalization > strips a rust-v prefix from multi-language release tags [0.03ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4255871Z (pass) release badge version normalization > escapes hyphens in prerelease versions for shields.io static badge paths [0.08ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4256859Z (pass) release badge version normalization > builds a valid shields.io badge URL for prefixed tags [0.08ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4257703Z (pass) release badge version normalization > builds a valid shields.io badge URL for prefixed prerelease tags [0.05ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4258427Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4258803Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4258997Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4259445Z ##[group]tests/dispatch-and-watch-workflow.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4272104Z (pass) dispatch-and-watch-workflow.mjs > extracts a workflow run id from gh workflow run output [0.06ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4273747Z (pass) dispatch-and-watch-workflow.mjs > picks the newest workflow run for the requested target commit [0.18ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4278360Z https://github.com/konard/vk-bot-desktop/actions/runs/25636588014
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4279518Z (pass) dispatch-and-watch-workflow.mjs > watches the dispatched run and returns the downstream failure status [0.59ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4283953Z (pass) dispatch-and-watch-workflow.mjs fallback polling > finds the child run by head SHA when dispatch output has no run URL [0.37ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4284793Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4285040Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4285144Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4285393Z ##[group]tests/ssh-installer.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4296774Z (pass) buildInstallScript > emits a docker isolation invocation [0.25ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4297819Z (pass) buildInstallScript > emits a screen isolation invocation [0.11ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4298812Z (pass) buildInstallScript > stops any prior session before starting a new one [0.07ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4299774Z (pass) buildInstallScript > uses screen isolation by default [0.07ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4300930Z (pass) buildInstallScript > throws when the bundle archive is missing [0.08ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4301851Z (pass) buildInstallScript > throws on unknown isolation [0.08ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4302601Z (pass) buildInstallScript > escapes the remote dir [0.08ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4303398Z (pass) buildInstallPlan > returns plan metadata alongside the script [0.10ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4303962Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4304342Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4304521Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4304903Z ##[group]tests/oauth-token.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4323623Z (pass) VK OAuth blank-page redirect helpers > extracts the access token from the VK blank-page fragment [0.54ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4324473Z (pass) VK OAuth blank-page redirect helpers > recognizes VK blank-page redirects without accepting unrelated URLs [0.05ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4325619Z (pass) VK OAuth blank-page redirect helpers > allows only VK authorization navigation hosts in the embedded window [0.09ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4326090Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4326598Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4326715Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4327000Z ##[group]tests/bot-config.test.js:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4333986Z (pass) bot config defaults > normalizes empty array fields parsed from lino as empty objects [0.12ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4334791Z (pass) bot config defaults > preserves default invitation messages when only communities are saved [0.08ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4337572Z (pass) bot config defaults > parses priorityFriendIds from mixed strings, links and arrays [0.19ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4338804Z (pass) bot config defaults > parses invitation communities from links and id-prefixed forms [0.16ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4339921Z (pass) bot config defaults > keeps numeric arrays untouched but de-duplicates [0.11ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4340893Z (pass) bot config defaults > exposes the upstream invitation community list [0.07ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4341861Z (pass) bot config defaults > defaults verbose to true and lets the overlay opt out [0.11ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4342471Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4342866Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4343043Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4344165Z ##[group]docs/case-studies/issue-47/template-data/relevant-files/csharp-ai-driven-development-pipeline-template/scripts/check-release-needed.test.mjs:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4410888Z (pass) check-release-needed decide() > changesets take the normal release path [0.12ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4412048Z (pass) check-release-needed decide() > self-heals when csproj version is missing from NuGet [0.10ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4413198Z (pass) check-release-needed decide() > self-heals when package id is unknown to NuGet [0.08ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4414246Z (pass) check-release-needed decide() > self-heals GitHub release when NuGet already has the version [0.06ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4415403Z (pass) check-release-needed decide() > no-op when both NuGet and GitHub release exist [0.06ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4418329Z (pass) check-release-needed readCsprojInfo() > extracts version and package id [0.44ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4421371Z (pass) check-release-needed readCsprojInfo() > returns empty package id when not set in csproj [0.28ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4424513Z (pass) check-release-needed readCsprojInfo() > throws on missing <Version> tag [0.32ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4474306Z Fetching http://127.0.0.1:36675/nuget/mypackage/index.json
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4503877Z (pass) check-release-needed probes > fetchNugetVersions returns the version list from the flat-container index [7.90ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4532825Z Fetching http://127.0.0.1:34651/nuget/notregistered/index.json
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4539093Z (pass) check-release-needed probes > fetchNugetVersions returns null when the package id is not registered [3.51ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4569175Z Fetching http://127.0.0.1:44701/github/repos/link-foundation/csharp-ai-driven-development-pipeline-template/releases/tags/csharp_v1.0.0
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4575685Z (pass) check-release-needed probes > fetchGithubReleaseExists returns true when the GitHub release exists [3.65ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4600403Z Fetching http://127.0.0.1:32893/github/repos/link-foundation/csharp-ai-driven-development-pipeline-template/releases/tags/csharp_v9.9.9
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4605952Z (pass) check-release-needed probes > fetchGithubReleaseExists returns false on HTTP 404 [3.08ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4606971Z (pass) check-release-needed probes > fetchGithubReleaseExists returns false when repository is empty [0.10ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4633408Z Fetching http://127.0.0.1:43953/nuget/mypackage/index.json
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4640069Z Fetching http://127.0.0.1:43953/github/repos/link-foundation/csharp-ai-driven-development-pipeline-template/releases/tags/csharp_v2.4.0
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4643127Z (pass) check-release-needed probes > end-to-end: missing NuGet version + missing GitHub release triggers self-heal [3.55ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4667996Z Fetching http://127.0.0.1:44691/nuget/mypackage/index.json
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4672615Z Fetching http://127.0.0.1:44691/github/repos/link-foundation/csharp-ai-driven-development-pipeline-template/releases/tags/csharp_v2.4.0
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4677664Z (pass) check-release-needed probes > end-to-end: NuGet has the version and GitHub release exists → no-op [3.37ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4678423Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4678891Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4679077Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4680214Z ##[group]docs/case-studies/issue-47/template-data/relevant-files/csharp-ai-driven-development-pipeline-template/scripts/create-github-release.test.mjs:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4703654Z (pass) create-github-release helpers > parseArgs defaults to the C# release format and accepts package id [0.16ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4705098Z (pass) create-github-release helpers > normalizes release versions from legacy and language-prefixed tags [0.08ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4706628Z (pass) create-github-release helpers > builds C# release tags and titles from bare semver [0.07ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4707903Z (pass) create-github-release helpers > appends a NuGet shields.io badge when release notes do not have one [0.11ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4709357Z (pass) create-github-release helpers > does not append a second badge when release notes already contain shields.io [0.04ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4710663Z (pass) create-github-release helpers > builds a GitHub release payload with C# title and NuGet badge [0.27ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4716006Z (pass) create-github-release helpers > findPackageId reads PackageId from a project file [0.63ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4726873Z (pass) create-github-release helpers > uploads matching NuGet package assets after creating a release [1.04ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4733100Z (pass) create-github-release helpers > uploads matching NuGet package assets when the release already exists [0.63ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4733926Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4734348Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4734525Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.4735634Z ##[group]docs/case-studies/issue-47/template-data/relevant-files/csharp-ai-driven-development-pipeline-template/scripts/version-and-commit.test.mjs:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.6099861Z (pass) version-and-commit > does not report already_released when the target tag is missing [135.57ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.6877915Z (pass) version-and-commit > reports already_released when the target tag does exist [77.78ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.6878442Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.6878934Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.6879061Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.6879838Z ##[group]docs/case-studies/issue-47/template-data/relevant-files/csharp-ai-driven-development-pipeline-template/scripts/wait-for-nuget.test.mjs:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.6907732Z (pass) wait-for-nuget parseArgs() > defaults to two-minute checks across the NuGet indexing window [0.20ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.6909117Z (pass) wait-for-nuget parseArgs() > accepts --version as an alias for --release-version [0.08ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.6910525Z (pass) wait-for-nuget parseArgs() > honours CLI flags for max-attempts, sleep-seconds and flat-container-url [0.05ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.6912293Z (pass) wait-for-nuget parseArgs() > reads overrides from environment variables [0.06ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.6913382Z (pass) wait-for-nuget parseArgs() > inline --flag=value form is supported [0.05ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.6914478Z (pass) wait-for-nuget parseArgs() > rejects non-positive integers for --max-attempts [0.10ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.6915629Z (pass) wait-for-nuget parseArgs() > rejects non-positive integers for --sleep-seconds [0.09ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.6916921Z (pass) wait-for-nuget parseArgs() > throws when a flag is missing its value [0.08ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.6917736Z (pass) wait-for-nuget createNugetNuspecUrl() > builds the flat-container nuspec URL with lowercased id and version [0.10ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.6918688Z (pass) wait-for-nuget createNugetNuspecUrl() > lowercases mixed-case versions (e.g. semver pre-release tags) [0.05ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.6920179Z (pass) wait-for-nuget createNugetNuspecUrl() > defaults to the official flat-container URL when not specified [0.04ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.6921221Z (pass) wait-for-nuget waitForNugetPackage() > succeeds when indexing takes longer than the old 125-second loop [0.41ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.6922313Z (pass) wait-for-nuget waitForNugetPackage() > fails only after exhausting all attempts [0.19ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.6923437Z (pass) wait-for-nuget waitForNugetPackage() > returns immediately when the package is already indexed [0.15ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.6925057Z (pass) wait-for-nuget waitForNugetPackage() > tolerates transient network errors before succeeding [0.18ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.6964467Z (pass) wait-for-nuget checkNugetPackageVersion() > reports 200 responses as available against a live HTTP endpoint [3.90ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.6996126Z (pass) wait-for-nuget checkNugetPackageVersion() > reports 404 responses as unavailable without throwing [3.19ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.6998462Z (pass) wait-for-nuget checkNugetPackageVersion() > treats fetch network errors as a soft failure [0.24ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7034350Z (pass) wait-for-nuget checkNugetPackageVersion() > end-to-end: waits through 404 responses then succeeds when the package appears [3.54ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7034974Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7035250Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7035368Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7036107Z ##[group]docs/case-studies/issue-45/template-data/relevant-files/csharp-ai-driven-development-pipeline-template/scripts/check-release-needed.test.mjs:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7053740Z (pass) check-release-needed decide() > changesets take the normal release path [0.02ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7054447Z (pass) check-release-needed decide() > self-heals when csproj version is missing from NuGet [0.01ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7055147Z (pass) check-release-needed decide() > self-heals when package id is unknown to NuGet [0.01ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7055852Z (pass) check-release-needed decide() > self-heals GitHub release when NuGet already has the version
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7057117Z (pass) check-release-needed decide() > no-op when both NuGet and GitHub release exist
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7057966Z (pass) check-release-needed readCsprojInfo() > extracts version and package id [0.26ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7058962Z (pass) check-release-needed readCsprojInfo() > returns empty package id when not set in csproj [0.22ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7061073Z (pass) check-release-needed readCsprojInfo() > throws on missing <Version> tag [0.20ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7088090Z Fetching http://127.0.0.1:37883/nuget/mypackage/index.json
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7094185Z (pass) check-release-needed probes > fetchNugetVersions returns the version list from the flat-container index [3.28ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7118971Z Fetching http://127.0.0.1:41729/nuget/notregistered/index.json
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7123619Z (pass) check-release-needed probes > fetchNugetVersions returns null when the package id is not registered [2.93ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7147871Z Fetching http://127.0.0.1:39833/github/repos/link-foundation/csharp-ai-driven-development-pipeline-template/releases/tags/csharp_v1.0.0
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7152746Z (pass) check-release-needed probes > fetchGithubReleaseExists returns true when the GitHub release exists [2.88ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7177422Z Fetching http://127.0.0.1:42525/github/repos/link-foundation/csharp-ai-driven-development-pipeline-template/releases/tags/csharp_v9.9.9
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7183402Z (pass) check-release-needed probes > fetchGithubReleaseExists returns false on HTTP 404 [3.03ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7184679Z (pass) check-release-needed probes > fetchGithubReleaseExists returns false when repository is empty [0.02ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7207685Z Fetching http://127.0.0.1:45153/nuget/mypackage/index.json
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7213236Z Fetching http://127.0.0.1:45153/github/repos/link-foundation/csharp-ai-driven-development-pipeline-template/releases/tags/csharp_v2.4.0
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7217773Z (pass) check-release-needed probes > end-to-end: missing NuGet version + missing GitHub release triggers self-heal [3.42ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7246230Z Fetching http://127.0.0.1:37549/nuget/mypackage/index.json
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7251164Z Fetching http://127.0.0.1:37549/github/repos/link-foundation/csharp-ai-driven-development-pipeline-template/releases/tags/csharp_v2.4.0
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7255349Z (pass) check-release-needed probes > end-to-end: NuGet has the version and GitHub release exists → no-op [3.71ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7256107Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7256868Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7257043Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7258169Z ##[group]docs/case-studies/issue-45/template-data/relevant-files/csharp-ai-driven-development-pipeline-template/scripts/create-github-release.test.mjs:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7276011Z (pass) create-github-release helpers > parseArgs defaults to the C# release format and accepts package id [0.03ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7277607Z (pass) create-github-release helpers > normalizes release versions from legacy and language-prefixed tags [0.02ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7278859Z (pass) create-github-release helpers > builds C# release tags and titles from bare semver [0.02ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7280052Z (pass) create-github-release helpers > appends a NuGet shields.io badge when release notes do not have one [0.02ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7281406Z (pass) create-github-release helpers > does not append a second badge when release notes already contain shields.io [0.01ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7282739Z (pass) create-github-release helpers > builds a GitHub release payload with C# title and NuGet badge [0.04ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7283952Z (pass) create-github-release helpers > findPackageId reads PackageId from a project file [0.52ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7288839Z (pass) create-github-release helpers > uploads matching NuGet package assets after creating a release [0.62ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7293432Z (pass) create-github-release helpers > uploads matching NuGet package assets when the release already exists [0.45ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7294269Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7294648Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7294821Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.7295940Z ##[group]docs/case-studies/issue-45/template-data/relevant-files/csharp-ai-driven-development-pipeline-template/scripts/version-and-commit.test.mjs:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.8544942Z (pass) version-and-commit > does not report already_released when the target tag is missing [124.05ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.9331269Z (pass) version-and-commit > reports already_released when the target tag does exist [78.62ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.9331907Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.9332262Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.9332391Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.9333201Z ##[group]docs/case-studies/issue-45/template-data/relevant-files/csharp-ai-driven-development-pipeline-template/scripts/wait-for-nuget.test.mjs:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.9354575Z (pass) wait-for-nuget parseArgs() > defaults to two-minute checks across the NuGet indexing window [0.06ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.9355958Z (pass) wait-for-nuget parseArgs() > accepts --version as an alias for --release-version [0.02ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.9357447Z (pass) wait-for-nuget parseArgs() > honours CLI flags for max-attempts, sleep-seconds and flat-container-url [0.02ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.9359098Z (pass) wait-for-nuget parseArgs() > reads overrides from environment variables [0.02ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.9359978Z (pass) wait-for-nuget parseArgs() > inline --flag=value form is supported [0.02ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.9360724Z (pass) wait-for-nuget parseArgs() > rejects non-positive integers for --max-attempts [0.03ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.9361803Z (pass) wait-for-nuget parseArgs() > rejects non-positive integers for --sleep-seconds [0.02ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.9362524Z (pass) wait-for-nuget parseArgs() > throws when a flag is missing its value [0.02ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.9363333Z (pass) wait-for-nuget createNugetNuspecUrl() > builds the flat-container nuspec URL with lowercased id and version [0.02ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.9364301Z (pass) wait-for-nuget createNugetNuspecUrl() > lowercases mixed-case versions (e.g. semver pre-release tags) [0.02ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.9365418Z (pass) wait-for-nuget createNugetNuspecUrl() > defaults to the official flat-container URL when not specified [0.01ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.9366608Z (pass) wait-for-nuget waitForNugetPackage() > succeeds when indexing takes longer than the old 125-second loop [0.14ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.9367512Z (pass) wait-for-nuget waitForNugetPackage() > fails only after exhausting all attempts [0.05ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.9368435Z (pass) wait-for-nuget waitForNugetPackage() > returns immediately when the package is already indexed [0.03ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.9369644Z (pass) wait-for-nuget waitForNugetPackage() > tolerates transient network errors before succeeding [0.04ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.9392205Z (pass) wait-for-nuget checkNugetPackageVersion() > reports 200 responses as available against a live HTTP endpoint [3.24ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.9422154Z (pass) wait-for-nuget checkNugetPackageVersion() > reports 404 responses as unavailable without throwing [2.99ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.9423149Z (pass) wait-for-nuget checkNugetPackageVersion() > treats fetch network errors as a soft failure [0.07ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.9456127Z (pass) wait-for-nuget checkNugetPackageVersion() > end-to-end: waits through 404 responses then succeeds when the package appears [3.28ms]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.9457257Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.9457576Z ##[endgroup]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.9457682Z 
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.9457757Z  360 pass
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.9457914Z  0 fail
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.9458074Z  256 expect() calls
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.9458273Z Ran 360 tests across 49 files. [1.59s]
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:37.9570404Z Post job cleanup.
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:38.1318270Z Post job cleanup.
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:38.2190429Z [command]/usr/bin/git version
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:38.2228426Z git version 2.54.0
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:38.2271425Z Temporarily overriding HOME='/home/runner/work/_temp/a1d9245b-afdf-4cef-967a-355651628475' before making global git config changes
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:38.2272781Z Adding repository directory to the temporary git global config as a safe directory
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:38.2278309Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/vk-bot-desktop/vk-bot-desktop
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:38.2309720Z Removing SSH command configuration
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:38.2317094Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:38.2350732Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:38.2584460Z Removing HTTP extra header
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:38.2590761Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:38.2631351Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:38.2880320Z Removing includeIf entries pointing to credentials config files
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:38.2892327Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:38.2926865Z includeif.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git.path
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:38.2927887Z includeif.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git/worktrees/*.path
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:38.2928542Z includeif.gitdir:/github/workspace/.git.path
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:38.2928942Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:38.2941394Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git.path
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:38.2967546Z /home/runner/work/_temp/git-credentials-d7c92145-024b-4a08-935f-86e74f959a12.config
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:38.2980525Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git.path /home/runner/work/_temp/git-credentials-d7c92145-024b-4a08-935f-86e74f959a12.config
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:38.3020074Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git/worktrees/*.path
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:38.3044677Z /home/runner/work/_temp/git-credentials-d7c92145-024b-4a08-935f-86e74f959a12.config
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:38.3057523Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/vk-bot-desktop/vk-bot-desktop/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-d7c92145-024b-4a08-935f-86e74f959a12.config
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:38.3094921Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:38.3121443Z /github/runner_temp/git-credentials-d7c92145-024b-4a08-935f-86e74f959a12.config
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:38.3130696Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-d7c92145-024b-4a08-935f-86e74f959a12.config
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:38.3166979Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:38.3191754Z /github/runner_temp/git-credentials-d7c92145-024b-4a08-935f-86e74f959a12.config
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:38.3205862Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-d7c92145-024b-4a08-935f-86e74f959a12.config
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:38.3242957Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:38.3484026Z Removing credentials config '/home/runner/work/_temp/git-credentials-d7c92145-024b-4a08-935f-86e74f959a12.config'
+Test (bun on ubuntu-latest)	UNKNOWN STEP	2026-05-14T23:59:38.3644849Z Cleaning up orphan processes
