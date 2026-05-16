@@ -1,0 +1,807 @@
+bun test v1.3.13 (bf2e2cec)
+
+tests/oauth-token.test.js:
+(pass) VK OAuth blank-page redirect helpers > extracts the access token from the VK blank-page fragment [1.00ms]
+(pass) VK OAuth blank-page redirect helpers > recognizes VK blank-page redirects without accepting unrelated URLs
+(pass) VK OAuth blank-page redirect helpers > allows only VK authorization navigation hosts in the embedded window
+
+tests/i18n.test.js:
+(pass) detectLocale > returns ru for Russian language tags
+(pass) detectLocale > falls back to en for unknown locales
+(pass) translate > returns the translated string when available
+(pass) translate > falls back to English when key missing in target locale
+(pass) translate > returns the key itself when nothing matches
+(pass) translate > includes new clearLog/verbose/reset-save keys in both locales
+(pass) TRANSLATIONS parity > every English key has a Russian translation
+
+tests/dispatch-and-watch-workflow.test.js:
+(pass) dispatch-and-watch-workflow.mjs > extracts a workflow run id from gh workflow run output
+(pass) dispatch-and-watch-workflow.mjs > picks the newest workflow run for the requested target commit
+https://github.com/konard/vk-bot-desktop/actions/runs/25636588014
+(pass) dispatch-and-watch-workflow.mjs > watches the dispatched run and returns the downstream failure status [2.00ms]
+(pass) dispatch-and-watch-workflow.mjs fallback polling > finds the child run by head SHA when dispatch output has no run URL
+
+tests/bot-config.test.js:
+(pass) bot config defaults > normalizes empty array fields parsed from lino as empty objects
+(pass) bot config defaults > preserves default invitation messages when only communities are saved
+(pass) bot config defaults > parses priorityFriendIds from mixed strings, links and arrays [2.00ms]
+(pass) bot config defaults > parses invitation communities from links and id-prefixed forms
+(pass) bot config defaults > keeps numeric arrays untouched but de-duplicates
+(pass) bot config defaults > exposes the upstream invitation community list
+(pass) bot config defaults > defaults verbose to true and lets the overlay opt out
+
+tests/runner-schedule.test.js:
+2026-05-16T13:55:57.121Z [debug] Checking for 'set-online-status' trigger...
+2026-05-16T13:55:57.122Z [info] Online status is set
+2026-05-16T13:55:57.122Z [debug] 'set-online-status' trigger executed in 2 ms
+2026-05-16T13:55:57.122Z [debug] Checking for 'accept-friend-requests' trigger...
+2026-05-16T13:55:57.124Z [error] Could not accept friend requests {
+  "error": {
+    "name": "TypeError",
+    "message": "undefined is not an object (evaluating 'vk.api.friends.get')",
+    "stack": "TypeError: undefined is not an object (evaluating 'vk.api.friends.get')\n    at loadFriends (/tmp/gh-issue-solver-1778938970638/src/bot/triggers/accept-friend-requests.js:26:35)\n    at acceptFriendRequests (/tmp/gh-issue-solver-1778938970638/src/bot/triggers/accept-friend-requests.js:253:27)\n    at <anonymous> (/tmp/gh-issue-solver-1778938970638/src/bot/runner.js:30:13)"
+  }
+}
+2026-05-16T13:55:57.124Z [debug] 'accept-friend-requests' trigger executed in 2 ms
+2026-05-16T13:55:57.124Z [debug] Checking for 'delete-deactivated-friends' trigger...
+2026-05-16T13:55:57.125Z [error] Could not delete deactivated friends {
+  "error": {
+    "name": "TypeError",
+    "message": "undefined is not an object (evaluating 'vk.api.friends.get')",
+    "stack": "TypeError: undefined is not an object (evaluating 'vk.api.friends.get')\n    at loadFriendsWithStatus (/tmp/gh-issue-solver-1778938970638/src/bot/triggers/delete-deactivated-friends.js:14:35)\n    at deleteDeactivatedFriends (/tmp/gh-issue-solver-1778938970638/src/bot/triggers/delete-deactivated-friends.js:35:27)\n    at <anonymous> (/tmp/gh-issue-solver-1778938970638/src/bot/runner.js:30:13)"
+  }
+}
+2026-05-16T13:55:57.125Z [debug] 'delete-deactivated-friends' trigger executed in 1 ms
+2026-05-16T13:55:57.125Z [debug] Checking for 'delete-outgoing-friend-requests' trigger...
+2026-05-16T13:55:57.125Z [error] Could not delete outgoing friend requests {
+  "error": {
+    "name": "TypeError",
+    "message": "undefined is not an object (evaluating 'vk.api.friends.getRequests')",
+    "stack": "TypeError: undefined is not an object (evaluating 'vk.api.friends.getRequests')\n    at deleteOutgoingFriendRequests (/tmp/gh-issue-solver-1778938970638/src/bot/triggers/delete-outgoing-friend-requests.js:42:35)\n    at <anonymous> (/tmp/gh-issue-solver-1778938970638/src/bot/runner.js:30:13)"
+  }
+}
+2026-05-16T13:55:57.125Z [debug] 'delete-outgoing-friend-requests' trigger executed in 0 ms
+2026-05-16T13:55:57.125Z [debug] Checking for 'send-invitation-posts' trigger...
+2026-05-16T13:55:57.125Z [info] No invitation-post communities configured; skipping
+2026-05-16T13:55:57.126Z [debug] 'send-invitation-posts' trigger executed in 1 ms
+2026-05-16T13:55:57.126Z [debug] Checking for 'send-birthday-congratulations' trigger...
+2026-05-16T13:55:57.126Z [error] Trigger threw {
+  "name": "send-birthday-congratulations",
+  "error": {
+    "name": "TypeError",
+    "message": "undefined is not an object (evaluating 'vk.api.friends.get')",
+    "stack": "TypeError: undefined is not an object (evaluating 'vk.api.friends.get')\n    at collectFriendsWithBirthday (/tmp/gh-issue-solver-1778938970638/src/bot/triggers/send-birthday-congratulations.js:115:35)\n    at sendBirthdayCongratulations (/tmp/gh-issue-solver-1778938970638/src/bot/triggers/send-birthday-congratulations.js:78:25)\n    at <anonymous> (/tmp/gh-issue-solver-1778938970638/src/bot/runner.js:30:13)"
+  }
+}
+(pass) startBot scheduling > fires the online-status trigger at least once and keeps the process alive [54.00ms]
+(pass) startBot scheduling > applies config.verbose to the logger [1.00ms]
+(pass) startBot scheduling > does not exit prematurely when run as a forked child (regression for issue #32) [414.00ms]
+
+tests/tag-prefix.test.js:
+(pass) tag prefix logic > defaults to "v" prefix (backward compatible)
+(pass) tag prefix logic > supports "js-v" prefix for multi-language repos [1.00ms]
+(pass) tag prefix logic > supports "rust-v" prefix
+(pass) tag prefix logic > supports empty prefix
+(pass) tag prefix logic > works with pre-release versions
+
+tests/vk-token.test.js:
+(pass) VK token helpers > keeps the Kate Mobile blank-page OAuth URL requested by issue 26
+(pass) VK token helpers > extracts access_token from pasted VK redirect URLs
+(pass) VK token helpers > accepts a raw token without changing it beyond trimming whitespace
+(pass) VK token helpers > wires the VK blank-page OAuth URL through an Electron auth window [1.00ms]
+
+tests/vk-token-mask.test.js:
+(pass) maskVkToken > returns empty string for nullish or empty input
+(pass) maskVkToken > returns the value unchanged when it fits within the visible window
+(pass) maskVkToken > keeps the first 10 and last 10 characters of long tokens
+(pass) maskVkToken > replaces the middle with a fixed bullet run
+
+tests/api-errors.test.js:
+(pass) isUnknownMethodError > detects code 3 on `code` field
+(pass) isUnknownMethodError > detects code 3 on `error_code` field
+(pass) isUnknownMethodError > ignores other codes
+(pass) fetchAppPermissions > returns the bitmask and caches subsequent calls
+(pass) fetchAppPermissions > returns null when the method is unavailable
+2026-05-16T13:55:57.592Z [warn] Could not read account.getAppPermissions {
+  "error": {
+    "name": "Error",
+    "message": "boom",
+    "stack": "Error: boom\n    at getAppPermissions (/tmp/gh-issue-solver-1778938970638/tests/api-errors.test.js:69:23)\n    at <anonymous> (/tmp/gh-issue-solver-1778938970638/src/bot/api-errors.js:53:43)\n    at fetchAppPermissions (/tmp/gh-issue-solver-1778938970638/src/bot/api-errors.js:57:16)\n    at <anonymous> (/tmp/gh-issue-solver-1778938970638/tests/api-errors.test.js:74:24)\n    at fn (node:test:210:18)"
+  }
+}
+(pass) fetchAppPermissions > returns null on error [1.00ms]
+2026-05-16T13:55:57.593Z [error] VK API rejected method as unknown; halting trigger for this cycle {
+  "trigger": "delete-deactivated-friends",
+  "method": "friends.delete",
+  "errorCode": 3,
+  "errorMessage": "Unknown method passed",
+  "appPermissionsMask": 1073737727,
+  "hint": "VK has gated this method for the Kate Mobile OAuth app (see docs/case-studies/issue-49 §7). Re-runs will fail until the user switches OAuth flow."
+}
+(pass) reportUnknownMethod > emits a single error line that names the trigger, method, and mask
+
+tests/create-github-release.test.js:
+(pass) create-github-release release title formatting > parses language from CLI arguments and environment defaults
+(pass) create-github-release release title formatting > builds a human-readable release name from a language-prefixed tag
+(pass) create-github-release.mjs > uses gh api and reports successful creation only for exit code 0
+(pass) create-github-release.mjs > throws when gh api exits non-zero with an unexpected error [1.00ms]
+(pass) create-github-release.mjs > treats already_exists as an idempotent gh api result
+(pass) create-github-release.mjs > passes release payload to gh api and reports success only on exit code 0 [54.00ms]
+(pass) create-github-release.mjs > passes a human-readable release name for language-prefixed tags [57.00ms]
+(pass) create-github-release.mjs > fails when gh api exits non-zero with an unexpected error [59.00ms]
+(pass) create-github-release.mjs > treats already_exists as an explicit idempotent skip [50.00ms]
+
+tests/ssh-installer.test.js:
+(pass) buildInstallScript > emits a docker isolation invocation [1.00ms]
+(pass) buildInstallScript > emits a screen isolation invocation
+(pass) buildInstallScript > stops any prior session before starting a new one
+(pass) buildInstallScript > uses screen isolation by default
+(pass) buildInstallScript > throws when the bundle archive is missing
+(pass) buildInstallScript > throws on unknown isolation
+(pass) buildInstallScript > escapes the remote dir [1.00ms]
+(pass) buildInstallPlan > returns plan metadata alongside the script
+
+tests/session-log.test.js:
+2026-05-16T13:55:57.824Z [info] first line from session-log test
+2026-05-16T13:55:57.824Z [warn] second line {
+  "detail": "value"
+}
+(pass) openSessionLog: writes log lines to a session file > creates a file under the given directory and persists logger output [4.00ms]
+2026-05-16T13:55:57.827Z [info] vk {
+  "token": "***"
+}
+(pass) openSessionLog: redacts secrets in persisted logs > writes the masked representation, not the raw token [1.00ms]
+
+tests/bot-lifecycle.test.js:
+(pass) buildStatusCommand > uses the default session name
+(pass) buildStatusCommand > honors a custom session name
+(pass) buildStartCommand > defaults to screen isolation with the session name
+(pass) buildStartCommand > builds a docker invocation with image and session name
+(pass) buildStartCommand > passes through a custom command
+(pass) buildStopCommand > uses --stop with the session
+(pass) isRunning > returns true when stdout indicates running [1.00ms]
+(pass) isRunning > returns false when exit code != 0
+(pass) isRunning > returns false when stdout has no running keyword
+(pass) isRunning > throws when runCommand is missing
+(pass) startBot/stopBot > startBot invokes runCommand with the start argv
+(pass) startBot/stopBot > stopBot invokes runCommand with the stop argv
+(pass) ensureMutualExclusion > rejects unknown targetMode
+(pass) ensureMutualExclusion > returns stoppedOther=false when no other runner is provided
+(pass) ensureMutualExclusion > stops the remote bot when starting local and remote is running [1.00ms]
+(pass) ensureMutualExclusion > does not stop the remote bot when it is not running
+(pass) ensureMutualExclusion > treats runner errors as not-running
+(pass) ensureMutualExclusion > stops the local bot when starting server
+
+tests/set-online-status.test.js:
+2026-05-16T13:55:57.833Z [info] Online status is set
+(pass) setOnlineStatus: healthy call > logs success on a healthy call
+2026-05-16T13:55:57.833Z [error] VK API rejected method as unknown; halting trigger for this cycle {
+  "trigger": "set-online-status",
+  "method": "account.setOnline",
+  "errorCode": 3,
+  "errorMessage": "Code №3 - Unknown method passed",
+  "appPermissionsMask": 1073737727,
+  "hint": "VK has gated this method for the Kate Mobile OAuth app (see docs/case-studies/issue-49 §7). Re-runs will fail until the user switches OAuth flow."
+}
+(pass) setOnlineStatus: Unknown method (code 3) > halts the trigger and logs the terminal diagnostic once [1.00ms]
+2026-05-16T13:55:57.833Z [warn] Could not set online status {
+  "error": {
+    "name": "Error",
+    "message": "boom",
+    "stack": "Error: boom\n    at setOnline (/tmp/gh-issue-solver-1778938970638/tests/set-online-status.test.js:79:25)\n    at setOnlineStatus (/tmp/gh-issue-solver-1778938970638/src/bot/triggers/set-online-status.js:15:26)\n    at <anonymous> (/tmp/gh-issue-solver-1778938970638/tests/set-online-status.test.js:84:13)\n    at withCapturedLogs (/tmp/gh-issue-solver-1778938970638/tests/set-online-status.test.js:24:26)\n    at <anonymous> (/tmp/gh-issue-solver-1778938970638/tests/set-online-status.test.js:74:11)\n    at fn (node:test:210:18)"
+  }
+}
+(pass) setOnlineStatus: other errors > logs the generic warning for non-VK errors too
+
+tests/ci-timeouts.test.js:
+(pass) CI timeout policy > sets timeout-minutes for every JavaScript workflow job [2.00ms]
+(pass) CI timeout policy > parses workflow files checked out with Windows line endings
+(pass) CI timeout policy > caps individual Node.js and Bun tests at 30 seconds
+
+tests/send-birthday-congratulations.test.js:
+(pass) findBirthdayFriends > matches friends whose bdate day/month equal today [8.00ms]
+(pass) recentlyMessaged > returns true when the latest message is within the window
+(pass) recentlyMessaged > returns false when the latest message is older than the window
+(pass) recentlyMessaged > returns false when there is no history
+2026-05-16T13:55:57.848Z [warn] Could not read message history for birthday dedup; greeting anyway {
+  "userId": 7,
+  "error": {
+    "name": "Error",
+    "message": "boom",
+    "stack": "Error: boom\n    at getHistory (/tmp/gh-issue-solver-1778938970638/tests/send-birthday-congratulations.test.js:69:23)\n    at recentlyMessaged (/tmp/gh-issue-solver-1778938970638/src/bot/triggers/send-birthday-congratulations.js:51:43)\n    at <anonymous> (/tmp/gh-issue-solver-1778938970638/tests/send-birthday-congratulations.test.js:74:24)\n    at fn (node:test:210:18)"
+  }
+}
+(pass) recentlyMessaged > returns false when the lookup fails [1.00ms]
+2026-05-16T13:55:57.849Z [info] Birthday targets identified {
+  "count": 2
+}
+2026-05-16T13:55:57.849Z [info] Skipping birthday greeting: recent conversation in last 24 hours {
+  "userId": 11
+}
+2026-05-16T13:55:57.849Z [info] Birthday message sent {
+  "userId": 22,
+  "message": "🥳 С днём рождения!"
+}
+(pass) sendBirthdayCongratulations > skips friends with recent conversation in the last 24 h
+
+tests/send-invitation-posts.test.js:
+(pass) readCachedPostIds > returns [] when cache is missing
+(pass) readCachedPostIds > returns [] for unknown community
+(pass) readCachedPostIds > normalises scalar bucket to a single-element array
+(pass) readCachedPostIds > normalises array bucket to numbers and drops NaN
+(pass) buildUpdatedCache > writes the post id list under byCommunity
+(pass) buildUpdatedCache > removes the entry when post id list is empty
+(pass) buildUpdatedCache > coerces string ids to numbers and drops invalid
+(pass) buildUpdatedCache > does not mutate the input cache
+2026-05-16T13:55:57.852Z [info] No invitation-post communities configured; skipping
+(pass) sendInvitationPosts: basic flow > skips communities when no communities configured
+2026-05-16T13:55:57.853Z [info] Invitation post still in top 10; skipping community {
+  "communityId": 42,
+  "cached": [
+    555
+  ]
+}
+(pass) sendInvitationPosts: basic flow > skips a community whose cached post is still in the top 10 [1.00ms]
+2026-05-16T13:55:57.853Z [info] Active avatar photo_id missing or malformed; posting without attachment {
+  "photoId": null,
+  "profileCount": 1,
+  "profileKeys": [
+    "photo_id"
+  ],
+  "hasCropPhoto": false
+}
+2026-05-16T13:55:57.853Z [info] Invitation post sent {
+  "communityId": 42,
+  "postId": 777
+}
+2026-05-16T13:55:57.853Z [info] Old invitation post deleted {
+  "ownerId": "-42",
+  "postId": 555
+}
+(pass) sendInvitationPosts: post rotation > posts a new message and deletes the old recorded post [1.00ms]
+2026-05-16T13:55:57.854Z [info] Active avatar photo_id missing or malformed; posting without attachment {
+  "photoId": null,
+  "profileCount": 1,
+  "profileKeys": [
+    "photo_id"
+  ],
+  "hasCropPhoto": false
+}
+2026-05-16T13:55:57.854Z [info] Invitation post sent {
+  "communityId": 42,
+  "postId": 777
+}
+2026-05-16T13:55:57.854Z [warn] Old invitation post already gone; dropping from cache {
+  "ownerId": "-42",
+  "postId": 555,
+  "code": 104
+}
+2026-05-16T13:55:57.854Z [info] Old invitation post deleted {
+  "ownerId": "-42",
+  "postId": 666
+}
+(pass) sendInvitationPosts: post rotation > drops cached id from cache when wall.delete reports code 104 (already gone) [1.00ms]
+2026-05-16T13:55:57.854Z [info] Active avatar photo_id missing or malformed; posting without attachment {
+  "photoId": null,
+  "profileCount": 1,
+  "profileKeys": [
+    "photo_id"
+  ],
+  "hasCropPhoto": false
+}
+2026-05-16T13:55:57.854Z [info] Invitation post sent {
+  "communityId": 42,
+  "postId": 777
+}
+2026-05-16T13:55:57.854Z [warn] Could not delete old invitation post; keeping in cache {
+  "ownerId": "-42",
+  "postId": 555,
+  "error": {
+    "name": "Error",
+    "message": "Some other error",
+    "stack": "Error: Some other error\n    at wallDelete (/tmp/gh-issue-solver-1778938970638/tests/send-invitation-posts.test.js:214:33)\n    at deleteRecordedPosts (/tmp/gh-issue-solver-1778938970638/src/bot/triggers/send-invitation-posts.js:207:25)\n    at rotateCommunity (/tmp/gh-issue-solver-1778938970638/src/bot/triggers/send-invitation-posts.js:279:29)\n    at async sendInvitationPosts (/tmp/gh-issue-solver-1778938970638/src/bot/triggers/send-invitation-posts.js:303:42)\n    at async runWithFastSleep (/tmp/gh-issue-solver-1778938970638/tests/send-invitation-posts.test.js:31:11)\n    at async <anonymous> (/tmp/gh-issue-solver-1778938970638/tests/send-invitation-posts.test.js:217:11)\n    at processTicksAndRejections (native:7:39)"
+  }
+}
+(pass) sendInvitationPosts: post rotation > keeps a cached id when delete throws an unknown error
+2026-05-16T13:55:57.855Z [debug] Active avatar attachment resolved {
+  "photoId": "3972090_457245285",
+  "hasAccessKey": true
+}
+(pass) getActiveAvatarAttachment > returns photo<owner>_<id>_<access_key> when both ids are present
+2026-05-16T13:55:57.855Z [warn] Could not fetch avatar access_key; attaching bare photo id {
+  "photoId": "111_222",
+  "error": {
+    "name": "Error",
+    "message": "boom",
+    "stack": "Error: boom\n    at getById (/tmp/gh-issue-solver-1778938970638/tests/send-invitation-posts.test.js:254:37)\n    at resolveAvatarAccessKey (/tmp/gh-issue-solver-1778938970638/src/bot/triggers/send-invitation-posts.js:123:40)\n    at getActiveAvatarAttachment (/tmp/gh-issue-solver-1778938970638/src/bot/triggers/send-invitation-posts.js:179:40)\n    at async <anonymous> (/tmp/gh-issue-solver-1778938970638/tests/send-invitation-posts.test.js:259:30)\n    at processTicksAndRejections (native:7:39)"
+  }
+}
+2026-05-16T13:55:57.855Z [debug] Active avatar attachment resolved {
+  "photoId": "111_222",
+  "hasAccessKey": false
+}
+(pass) getActiveAvatarAttachment > falls back to bare photo<owner>_<id> when access_key lookup fails [1.00ms]
+2026-05-16T13:55:57.855Z [debug] Active avatar attachment resolved {
+  "photoId": "1_2",
+  "hasAccessKey": false
+}
+(pass) getActiveAvatarAttachment > falls back to bare photo<owner>_<id> when access_key field is missing
+2026-05-16T13:55:57.855Z [info] Active avatar photo_id missing or malformed; posting without attachment {
+  "photoId": null,
+  "profileCount": 1,
+  "profileKeys": [
+    "photo_id"
+  ],
+  "hasCropPhoto": false
+}
+(pass) getActiveAvatarAttachment > returns null when the active profile has no photo_id
+2026-05-16T13:55:57.855Z [warn] Could not fetch active avatar photo_id {
+  "error": {
+    "name": "Error",
+    "message": "network",
+    "stack": "Error: network\n    at get (/tmp/gh-issue-solver-1778938970638/tests/send-invitation-posts.test.js:292:23)\n    at getActiveAvatarAttachment (/tmp/gh-issue-solver-1778938970638/src/bot/triggers/send-invitation-posts.js:155:35)\n    at <anonymous> (/tmp/gh-issue-solver-1778938970638/tests/send-invitation-posts.test.js:298:24)\n    at fn (node:test:210:18)"
+  }
+}
+(pass) getActiveAvatarAttachment > returns null when users.get throws
+2026-05-16T13:55:57.856Z [debug] Active avatar attachment resolved {
+  "photoId": "5_6",
+  "hasAccessKey": true
+}
+(pass) getActiveAvatarAttachment > omits user_ids so VK resolves the current token holder
+2026-05-16T13:55:57.856Z [debug] Active avatar attachment resolved {
+  "photoId": "3972090_457245285",
+  "hasAccessKey": true
+}
+(pass) getActiveAvatarAttachment > uses crop_photo as an API fallback when photo_id is missing
+2026-05-16T13:55:57.856Z [info] Active avatar photo_id missing or malformed; posting without attachment {
+  "profileCount": 0,
+  "profileKeys": [],
+  "hasCropPhoto": false
+}
+(pass) getActiveAvatarAttachment > returns null when VK resolves no current profile
+2026-05-16T13:55:57.856Z [debug] Active avatar attachment resolved {
+  "photoId": "3972090_457245285",
+  "hasAccessKey": true
+}
+2026-05-16T13:55:57.856Z [info] Invitation post sent {
+  "communityId": 42,
+  "postId": 1
+}
+(pass) sendInvitationPosts: avatar attachment > attaches the avatar derived from photo_id + access_key [1.00ms]
+2026-05-16T13:55:57.856Z [info] Active avatar photo_id missing or malformed; posting without attachment {
+  "photoId": null,
+  "profileCount": 1,
+  "profileKeys": [
+    "photo_id"
+  ],
+  "hasCropPhoto": false
+}
+2026-05-16T13:55:57.856Z [info] Invitation post sent {
+  "communityId": 42,
+  "postId": 1
+}
+(pass) sendInvitationPosts: avatar attachment > posts without attachment when no avatar photo_id is available
+2026-05-16T13:55:57.856Z [info] Active avatar photo_id missing or malformed; posting without attachment {
+  "photoId": null,
+  "profileCount": 1,
+  "profileKeys": [
+    "photo_id"
+  ],
+  "hasCropPhoto": false
+}
+2026-05-16T13:55:57.857Z [warn] Captcha required; backing off {
+  "communityId": 1
+}
+2026-05-16T13:55:57.859Z [info] Active avatar photo_id missing or malformed; posting without attachment {
+  "photoId": null,
+  "profileCount": 1,
+  "profileKeys": [
+    "photo_id"
+  ],
+  "hasCropPhoto": false
+}
+2026-05-16T13:55:57.859Z [info] Invitation post sent {
+  "communityId": 2,
+  "postId": 1
+}
+(pass) sendInvitationPosts: error handling > does not crash on captcha (code 14); continues to next community [3.00ms]
+
+tests/pages-site.test.js:
+(pass) GitHub Pages download site > has a reproducible React build script
+(pass) GitHub Pages download site > deploys the built site with the official GitHub Pages actions
+(pass) GitHub Pages download site > rebuilds on every main push and tag push, not only when site files change
+(pass) GitHub Pages download site > detects language, theme, and operating system for the primary download
+(pass) GitHub Pages download site > loads latest release assets without synthesizing absent asset links
+(pass) GitHub Pages download site > runs browser-commander e2e checks before and after Pages deployment
+(pass) GitHub Pages download site > authenticates the post-deploy GitHub Release API call
+(pass) GitHub Pages download site > prints rate-limit diagnostics when the Release API call fails
+(pass) GitHub Pages download site > requires macOS assets in the built-site release fixture
+(pass) GitHub Pages download site > has expandable verification instructions and OS-specific preview chrome
+(pass) GitHub Pages download site > documents the macOS Gatekeeper first-launch workflow for ad-hoc builds [1.00ms]
+
+tests/stats.test.js:
+(pass) isoWeek > returns the ISO week number for known dates
+(pass) pathsForDate > produces total + month + week paths
+(pass) StatsStore > throws when rootDir missing
+(pass) StatsStore > records accepted friends in three files [2.00ms]
+(pass) StatsStore > accumulates across multiple calls in the same week [2.00ms]
+(pass) StatsStore > isolates weeks: new week file when the date changes [2.00ms]
+(pass) StatsStore > records initial friends count once and never overwrites [1.00ms]
+(pass) StatsStore > snapshot returns empty objects when no data exists
+
+tests/package-info.test.js:
+(pass) package info helpers > reads scoped package names and versions from package.json content [1.00ms]
+(pass) package info helpers > formats npm package specifiers from the derived package name
+(pass) package info helpers > formats changeset headers from the derived package name
+(pass) package info helpers > matches changesets for the derived package name only
+(pass) package info helpers > reports missing package names clearly
+
+tests/accept-friend-requests.test.js:
+2026-05-16T13:55:57.876Z [error] VK API rejected method as unknown; halting trigger for this cycle {
+  "trigger": "accept-friend-requests",
+  "method": "friends.add",
+  "errorCode": 3,
+  "errorMessage": "Unknown method passed",
+  "appPermissionsMask": 1073737727,
+  "hint": "VK has gated this method for the Kate Mobile OAuth app (see docs/case-studies/issue-49 §7). Re-runs will fail until the user switches OAuth flow."
+}
+(pass) acceptFriendRequests: code 3 halts trigger for the process > stops the run on first Unknown method passed and short-circuits later runs [1.00ms]
+2026-05-16T13:55:57.876Z [debug] Skipping priority friend with existing outgoing request {
+  "userId": 42
+}
+2026-05-16T13:55:57.876Z [info] Friend request sent to priority friend {
+  "userId": 7
+}
+2026-05-16T13:55:57.876Z [info] No incoming friend requests to be accepted
+(pass) acceptFriendRequests: skips users with existing outgoing requests > does not re-send priority friend requests already pending [1.00ms]
+2026-05-16T13:55:57.876Z [warn] Rate limit while adding priority friend; backing off {
+  "userId": 10
+}
+2026-05-16T13:55:57.878Z [info] No incoming friend requests to be accepted
+(pass) acceptFriendRequests: rate-limit code 29 backs off then stops > aborts the priority loop after a 29 from VK [2.00ms]
+
+tests/logger.test.js:
+(pass) redact > masks long token-like strings [1.00ms]
+(pass) redact > masks query-style secrets
+(pass) redact > masks secret-named object properties
+(pass) redact > handles circular references
+(pass) redact > does not mask short ids
+2026-05-16T13:55:57.880Z [info] token=***
+(pass) logger sinks > routes log lines to registered sinks with redaction
+2026-05-16T13:55:57.880Z [error] Could not set online status {
+  "error": {
+    "name": "Error",
+    "message": "Unknown method passed.",
+    "stack": "Error: Unknown method passed.\n    at <anonymous> (/tmp/gh-issue-solver-1778938970638/tests/logger.test.js:72:20)\n    at fn (node:test:210:18)"
+  }
+}
+(pass) logger sinks > pretty-prints object arguments with indentation
+2026-05-16T13:55:57.881Z [debug] verbose probe
+(pass) verbose mode > is enabled by default so debug lines reach sinks
+2026-05-16T13:55:57.881Z [info] shown
+(pass) verbose mode > suppresses debug lines when toggled off
+
+tests/release-badge.test.js:
+(pass) release badge version normalization > strips a plain v prefix for backward compatibility
+(pass) release badge version normalization > strips a js-v prefix from multi-language release tags
+(pass) release badge version normalization > strips a rust-v prefix from multi-language release tags [1.00ms]
+(pass) release badge version normalization > escapes hyphens in prerelease versions for shields.io static badge paths
+(pass) release badge version normalization > builds a valid shields.io badge URL for prefixed tags
+(pass) release badge version normalization > builds a valid shields.io badge URL for prefixed prerelease tags
+
+tests/site-downloads.test.js:
+(pass) Pages release download helpers > resolves versioned download links from actual release assets [1.00ms]
+(pass) Pages release download helpers > prefers versioned assets while tolerating legacy assets during migration
+(pass) Pages release download helpers > derives user-visible asset names from the latest release version
+(pass) Pages release download helpers > uses the release page rather than a synthetic checksum URL when missing
+(pass) Pages release download helpers > keeps stable option groups for all supported operating systems
+(pass) Pages release download helpers > groups primary installer downloads with smaller format alternatives
+
+tests/version-and-commit-guards.test.js:
+(pass) version-and-commit guards (issue #53) > checks the exit code of every awaited command-stream invocation
+(pass) version-and-commit guards (issue #53) > exposes an assertOk helper that throws on non-zero exit
+(pass) version-and-commit guards (issue #53) > retries the push on non-fast-forward rejections
+(pass) version-and-commit guards (issue #53) > verifies origin/main matches HEAD after a successful push
+(pass) version-and-commit guards (issue #53) > stashes uncommitted changes before rebasing
+(pass) version-and-commit guards (issue #53) > emits committed_sha output for downstream jobs
+(pass) release workflow consumes committed_sha (issue #53) > uses committed_sha in the release.release_target step
+(pass) release workflow consumes committed_sha (issue #53) > uses committed_sha in the instant-release.release_target step
+(pass) release workflow consumes committed_sha (issue #53) > orders preview-regen after release and instant-release jobs
+
+tests/list-values.test.js:
+(pass) asList > passes through arrays
+(pass) asList > wraps primitives
+(pass) asList > returns empty for nullish or object input
+(pass) splitListTokens > splits on commas, semicolons, spaces, tabs and newlines
+(pass) splitListTokens > trims and drops empty tokens
+(pass) splitListTokens > treats nullish input as empty list
+(pass) parseVkReference > parses raw positive integers as users by default
+(pass) parseVkReference > parses raw negative integers as communities by default
+(pass) parseVkReference > parses raw positive integers as communities when expecting community
+(pass) parseVkReference > parses idN, clubN, publicN and eventN
+(pass) parseVkReference > parses full and short VK links
+(pass) parseVkReference > parses screen-name links
+(pass) parseVkReference > accepts bare screen names
+(pass) parseVkReference > rejects empty and zero tokens
+(pass) parseVkReference > rejects junk
+(pass) parseVkReferenceList > parses mixed separators and link formats
+(pass) parseVkReferenceList > dedupes equivalent forms
+(pass) parseVkReferenceList > treats community context properly
+(pass) parseVkIdList > returns numeric IDs for user lists
+(pass) parseVkIdList > returns positive community IDs for community lists
+
+tests/vk-rate-limit.test.js:
+(pass) classifyMethod > classifies VK read methods (get/search/is/are/look prefixes)
+(pass) classifyMethod > classifies VK write methods (anything not matching read prefixes)
+(pass) classifyMethod > treats invalid or empty inputs as write to use the safer (longer) delay
+(pass) classifyMethod > uses the last segment after the dot when present
+(pass) classifyMethod > classifies bare methods without a dot too
+(pass) pickDelay > returns the min when random() returns 0
+(pass) pickDelay > returns near the max when random() returns ~1
+(pass) pickDelay > respects the configured read range (3000–7000 ms)
+(pass) pickDelay > respects the configured write range (6000–13000 ms)
+(pass) createThrottle > fires the first call without any delay
+(pass) createThrottle > waits at least the picked read delay between two read calls
+(pass) createThrottle > waits at least the picked write delay between two write calls
+(pass) createThrottle > uses the NEXT method to pick the delay (read after write waits 3–7s)
+(pass) createThrottle > does not sleep when enough wall-clock time has already elapsed
+(pass) createThrottle > serialises concurrent calls through a single chain
+(pass) createThrottle > records the end timestamp even when the inner function throws
+(pass) createThrottle > reset() clears the pacing state so the next call fires immediately
+(pass) createThrottle > picks delays inside the documented range (3000–7000 for read, 6000–13000 for write) [1.00ms]
+
+tests/lino-store.test.js:
+(pass) LinoStore > round-trips a config through formatIndented/parseIndented [3.00ms]
+(pass) LinoStore > normalizes empty and scalar list fields after loading lino config [2.00ms]
+(pass) LinoStore > normalizes legacy bare-key list shapes from existing config files
+(pass) LinoStore > local config overrides global [1.00ms]
+(pass) LinoStore > keeps empty invitation communities iterable after loading config [1.00ms]
+(pass) LinoStore > returns empty object when no config files exist [1.00ms]
+
+tests/detect-code-changes.test.js:
+(pass) detect-code-changes.mjs > treats a push of a real merge commit on main with first-parent diff [98.00ms]
+(pass) detect-code-changes.mjs > uses HEAD^2 diff for pull_request synthetic merge commits [102.00ms]
+(pass) detect-code-changes.mjs > uses HEAD^..HEAD on a plain non-merge push commit [74.00ms]
+(pass) detect-code-changes.mjs > regression: issue #28 - "Merge pull request" of a non-site PR on main does not classify as pull_request [92.00ms]
+
+tests/desktop-release-workflow.test.js:
+(pass) release workflow orchestration > does not publish packages to npm from release jobs
+(pass) release workflow orchestration > keeps desktop release jobs in the same workflow with an exact tag and commit [1.00ms]
+(pass) release workflow orchestration > runs desktop jobs after optional release modes are skipped
+(pass) desktop release workflow > builds desktop artifacts for Linux, macOS, and Windows releases
+(pass) desktop release workflow > uses versioned artifact names for release download links [1.00ms]
+(pass) desktop release workflow > uses system FPM for native Linux arm64 Debian builds
+(pass) desktop release workflow > normalizes Linux artifact architecture names before validation
+(pass) desktop release workflow macOS signing > keeps signed and notarized macOS publishing when Apple secrets are configured
+(pass) desktop release workflow macOS signing > builds ad-hoc signed macOS artifacts without Apple secrets
+(pass) desktop release workflow smoke tests > smoke-tests platform installers after building and before uploading [1.00ms]
+(pass) desktop release workflow smoke tests > does not execute the NSIS installer on Windows ARM64 hosted runners
+(pass) desktop release workflow smoke tests > delimits PowerShell variables before literal colons in smoke-test output
+(pass) desktop release workflow smoke tests > configures a Linux maintainer for deb artifacts
+(pass) desktop release workflow smoke tests > hashes Linux and macOS artifacts without splitting filenames on spaces
+
+tests/index.test.js:
+(pass) add function > should add two positive numbers
+(pass) add function > should add negative numbers
+(pass) add function > should add zero
+(pass) multiply function > should multiply two positive numbers
+(pass) multiply function > should multiply by zero
+(pass) multiply function > should multiply negative numbers
+
+tests/setup-npm.test.js:
+(pass) setup-npm version requirements > compares semantic versions numerically
+(pass) setup-npm version requirements > requires npm 11.5.1 or later
+(pass) setup-npm version requirements > requires Node.js 22.14.0 or later
+(pass) setup-npm version requirements > selects the latest npm 11 tarball that satisfies trusted publishing
+
+tests/fetch-outgoing-requests.test.js:
+(pass) fetchOutgoingRequestIds > returns [] when vk client is missing
+(pass) fetchOutgoingRequestIds > returns [] when friends.getRequests is missing
+(pass) fetchOutgoingRequestIds > returns the items array from the VK response
+(pass) fetchOutgoingRequestIds > returns [] when items is not an array
+
+tests/check-file-line-limits.test.js:
+(pass) check-file-line-limits.sh > defines a warning band below the hard limit
+(pass) check-file-line-limits.sh > warns without failing for files above the warning threshold [12.00ms]
+(pass) check-file-line-limits.sh > still fails files over the hard limit [7.00ms]
+(pass) check-file-line-limits.sh > normalizes padded wc output from BSD-like environments [8.00ms]
+
+tests/friend-prioritization.test.js:
+(pass) computePotentialAcceptanceQuota > returns floor(totalIncomingSeen * 10%) - totalAcceptedEver
+(pass) computePotentialAcceptanceQuota > clamps to zero when already over quota
+(pass) computePotentialAcceptanceQuota > honours a custom percentage
+(pass) selectIncomingRequests > respects the lifetime 10% quota across runs
+(pass) selectIncomingRequests > falls back to current batch size when no lifetime stats provided
+(pass) selectIncomingRequests > above the limit only accepts requests with mutuals
+(pass) selectIncomingRequests > returns nothing when capacity is exhausted
+(pass) selectIncomingRequests > returns nothing for empty input
+(pass) pickPrioritySendList > returns priority IDs not yet in friends
+(pass) pickPrioritySendList > respects remaining capacity [1.00ms]
+(pass) pickDeactivatedToDelete > returns banned/deleted friends excluding priority list
+(pass) pickDeactivatedToDelete > treats malformed priority IDs from empty lino arrays as empty
+
+tests/validate-release-assets.test.js:
+(pass) validate-release-assets.mjs > validates release assets from the tag version, not the checkout package version
+(pass) validate-release-assets.mjs > reports each missing release asset with a GitHub annotation path
+
+tests/invitation-messages.test.js:
+(pass) invitation messages > contains exactly 10 entries
+(pass) invitation messages > every message is a non-empty Russian-language string [1.00ms]
+(pass) invitation messages > does not pick the same index twice in a row
+(pass) invitation messages > accepts a custom list
+(pass) invitation messages > returns empty string for empty list
+(pass) invitation messages > every default message is gender-neutral
+
+tests/check-release-needed.test.js:
+(pass) desktop release detection > builds GitHub release tags from the package version
+(pass) desktop release detection > releases through a version bump when changesets exist
+(pass) desktop release detection > skips release when the current GitHub Release already has artifacts
+(pass) desktop release detection > retries release without a bump when the GitHub Release is incomplete
+(pass) desktop release detection > requires checksum, provenance, and all desktop platform assets
+(pass) desktop release detection > checks GitHub Release artifact completeness with gh release view [1.00ms]
+(pass) desktop release detection > treats missing GitHub Releases as unpublished
+(pass) desktop release detection > fails closed on unexpected gh release errors
+
+tests/renderer-clipboard.test.js:
+(pass) renderer clipboard helper > prefers the Electron preload API when available
+(pass) renderer clipboard helper > falls back to navigator.clipboard.writeText outside Electron
+(pass) renderer clipboard helper > throws when no clipboard implementation is available
+(pass) Electron clipboard bridge > exposes a copyText preload API backed by Electron clipboard.writeText [1.00ms]
+
+tests/vk-client.test.js:
+(pass) createVkClient > returns a VK instance constructed with the given token
+(pass) createVkClient > throws when no token is provided
+(pass) createVkClient > logs request and response when verbose mode is on [1.00ms]
+(pass) createVkClient > logs an APIError-shaped response (code 3) verbatim
+(pass) createVkClient > skips request/response logging when verbose is off
+(pass) createVkClient > redacts access_token from logged params
+
+tests/birthday-greetings.test.js:
+(pass) birthday greetings > contains exactly 10 entries
+(pass) birthday greetings > every greeting has at most 2 emojis [1.00ms]
+(pass) birthday greetings > every greeting is a non-empty Russian-language string
+(pass) birthday greetings > every greeting contains the core phrase "с днём рождения"
+(pass) birthday greetings > does not pick the same index twice in a row
+
+tests/theme.test.js:
+(pass) resolveTheme > honors explicit light or dark preferences
+(pass) resolveTheme > falls back to system theme when preference is auto
+(pass) resolveTheme > defaults to light when system theme is missing
+(pass) applyTheme > writes data-theme to the document element
+(pass) watchSystemTheme > returns a no-op when matchMedia is unavailable
+(pass) watchSystemTheme > listens via addEventListener and reports dark/light
+
+tests/delete-outgoing-friend-requests.test.js:
+(pass) pickOutgoingToCancel > returns the capacity-needed slice excluding priority friends
+(pass) pickOutgoingToCancel > treats malformed priority IDs from empty lino arrays as empty
+
+docs/case-studies/issue-53/templates/csharp/scripts/version-and-commit.test.mjs:
+(pass) version-and-commit > does not report already_released when the target tag is missing [212.00ms]
+(pass) version-and-commit > reports already_released when the target tag does exist [136.00ms]
+
+docs/case-studies/issue-47/template-data/relevant-files/csharp-ai-driven-development-pipeline-template/scripts/version-and-commit.test.mjs:
+(pass) version-and-commit > does not report already_released when the target tag is missing [205.00ms]
+(pass) version-and-commit > reports already_released when the target tag does exist [134.00ms]
+
+docs/case-studies/issue-47/template-data/relevant-files/csharp-ai-driven-development-pipeline-template/scripts/check-release-needed.test.mjs:
+(pass) check-release-needed decide() > changesets take the normal release path
+(pass) check-release-needed decide() > self-heals when csproj version is missing from NuGet
+(pass) check-release-needed decide() > self-heals when package id is unknown to NuGet
+(pass) check-release-needed decide() > self-heals GitHub release when NuGet already has the version
+(pass) check-release-needed decide() > no-op when both NuGet and GitHub release exist
+(pass) check-release-needed readCsprojInfo() > extracts version and package id [1.00ms]
+(pass) check-release-needed readCsprojInfo() > returns empty package id when not set in csproj
+(pass) check-release-needed readCsprojInfo() > throws on missing <Version> tag [1.00ms]
+Fetching http://127.0.0.1:46535/nuget/mypackage/index.json
+(pass) check-release-needed probes > fetchNugetVersions returns the version list from the flat-container index [15.00ms]
+Fetching http://127.0.0.1:45457/nuget/notregistered/index.json
+(pass) check-release-needed probes > fetchNugetVersions returns null when the package id is not registered [5.00ms]
+Fetching http://127.0.0.1:33037/github/repos/link-foundation/csharp-ai-driven-development-pipeline-template/releases/tags/csharp_v1.0.0
+(pass) check-release-needed probes > fetchGithubReleaseExists returns true when the GitHub release exists [5.00ms]
+Fetching http://127.0.0.1:34223/github/repos/link-foundation/csharp-ai-driven-development-pipeline-template/releases/tags/csharp_v9.9.9
+(pass) check-release-needed probes > fetchGithubReleaseExists returns false on HTTP 404 [4.00ms]
+(pass) check-release-needed probes > fetchGithubReleaseExists returns false when repository is empty
+Fetching http://127.0.0.1:32905/nuget/mypackage/index.json
+Fetching http://127.0.0.1:32905/github/repos/link-foundation/csharp-ai-driven-development-pipeline-template/releases/tags/csharp_v2.4.0
+(pass) check-release-needed probes > end-to-end: missing NuGet version + missing GitHub release triggers self-heal [4.00ms]
+Fetching http://127.0.0.1:46015/nuget/mypackage/index.json
+Fetching http://127.0.0.1:46015/github/repos/link-foundation/csharp-ai-driven-development-pipeline-template/releases/tags/csharp_v2.4.0
+(pass) check-release-needed probes > end-to-end: NuGet has the version and GitHub release exists → no-op [6.00ms]
+
+docs/case-studies/issue-47/template-data/relevant-files/csharp-ai-driven-development-pipeline-template/scripts/create-github-release.test.mjs:
+(pass) create-github-release helpers > parseArgs defaults to the C# release format and accepts package id
+(pass) create-github-release helpers > normalizes release versions from legacy and language-prefixed tags
+(pass) create-github-release helpers > builds C# release tags and titles from bare semver
+(pass) create-github-release helpers > appends a NuGet shields.io badge when release notes do not have one
+(pass) create-github-release helpers > does not append a second badge when release notes already contain shields.io
+(pass) create-github-release helpers > builds a GitHub release payload with C# title and NuGet badge
+(pass) create-github-release helpers > findPackageId reads PackageId from a project file [1.00ms]
+(pass) create-github-release helpers > uploads matching NuGet package assets after creating a release [2.00ms]
+(pass) create-github-release helpers > uploads matching NuGet package assets when the release already exists [1.00ms]
+
+docs/case-studies/issue-47/template-data/relevant-files/csharp-ai-driven-development-pipeline-template/scripts/wait-for-nuget.test.mjs:
+(pass) wait-for-nuget parseArgs() > defaults to two-minute checks across the NuGet indexing window
+(pass) wait-for-nuget parseArgs() > accepts --version as an alias for --release-version
+(pass) wait-for-nuget parseArgs() > honours CLI flags for max-attempts, sleep-seconds and flat-container-url
+(pass) wait-for-nuget parseArgs() > reads overrides from environment variables [1.00ms]
+(pass) wait-for-nuget parseArgs() > inline --flag=value form is supported
+(pass) wait-for-nuget parseArgs() > rejects non-positive integers for --max-attempts
+(pass) wait-for-nuget parseArgs() > rejects non-positive integers for --sleep-seconds
+(pass) wait-for-nuget parseArgs() > throws when a flag is missing its value
+(pass) wait-for-nuget createNugetNuspecUrl() > builds the flat-container nuspec URL with lowercased id and version
+(pass) wait-for-nuget createNugetNuspecUrl() > lowercases mixed-case versions (e.g. semver pre-release tags)
+(pass) wait-for-nuget createNugetNuspecUrl() > defaults to the official flat-container URL when not specified
+(pass) wait-for-nuget waitForNugetPackage() > succeeds when indexing takes longer than the old 125-second loop
+(pass) wait-for-nuget waitForNugetPackage() > fails only after exhausting all attempts
+(pass) wait-for-nuget waitForNugetPackage() > returns immediately when the package is already indexed
+(pass) wait-for-nuget waitForNugetPackage() > tolerates transient network errors before succeeding
+(pass) wait-for-nuget checkNugetPackageVersion() > reports 200 responses as available against a live HTTP endpoint [6.00ms]
+(pass) wait-for-nuget checkNugetPackageVersion() > reports 404 responses as unavailable without throwing [5.00ms]
+(pass) wait-for-nuget checkNugetPackageVersion() > treats fetch network errors as a soft failure
+(pass) wait-for-nuget checkNugetPackageVersion() > end-to-end: waits through 404 responses then succeeds when the package appears [6.00ms]
+
+docs/case-studies/issue-45/template-data/relevant-files/csharp-ai-driven-development-pipeline-template/scripts/version-and-commit.test.mjs:
+(pass) version-and-commit > does not report already_released when the target tag is missing [197.00ms]
+(pass) version-and-commit > reports already_released when the target tag does exist [118.00ms]
+
+docs/case-studies/issue-45/template-data/relevant-files/csharp-ai-driven-development-pipeline-template/scripts/check-release-needed.test.mjs:
+(pass) check-release-needed decide() > changesets take the normal release path [1.00ms]
+(pass) check-release-needed decide() > self-heals when csproj version is missing from NuGet
+(pass) check-release-needed decide() > self-heals when package id is unknown to NuGet
+(pass) check-release-needed decide() > self-heals GitHub release when NuGet already has the version
+(pass) check-release-needed decide() > no-op when both NuGet and GitHub release exist
+(pass) check-release-needed readCsprojInfo() > extracts version and package id
+(pass) check-release-needed readCsprojInfo() > returns empty package id when not set in csproj
+(pass) check-release-needed readCsprojInfo() > throws on missing <Version> tag
+Fetching http://127.0.0.1:35837/nuget/mypackage/index.json
+(pass) check-release-needed probes > fetchNugetVersions returns the version list from the flat-container index [4.00ms]
+Fetching http://127.0.0.1:35539/nuget/notregistered/index.json
+(pass) check-release-needed probes > fetchNugetVersions returns null when the package id is not registered [3.00ms]
+Fetching http://127.0.0.1:40195/github/repos/link-foundation/csharp-ai-driven-development-pipeline-template/releases/tags/csharp_v1.0.0
+(pass) check-release-needed probes > fetchGithubReleaseExists returns true when the GitHub release exists [3.00ms]
+Fetching http://127.0.0.1:44735/github/repos/link-foundation/csharp-ai-driven-development-pipeline-template/releases/tags/csharp_v9.9.9
+(pass) check-release-needed probes > fetchGithubReleaseExists returns false on HTTP 404 [3.00ms]
+(pass) check-release-needed probes > fetchGithubReleaseExists returns false when repository is empty
+Fetching http://127.0.0.1:44967/nuget/mypackage/index.json
+Fetching http://127.0.0.1:44967/github/repos/link-foundation/csharp-ai-driven-development-pipeline-template/releases/tags/csharp_v2.4.0
+(pass) check-release-needed probes > end-to-end: missing NuGet version + missing GitHub release triggers self-heal [3.00ms]
+Fetching http://127.0.0.1:34749/nuget/mypackage/index.json
+Fetching http://127.0.0.1:34749/github/repos/link-foundation/csharp-ai-driven-development-pipeline-template/releases/tags/csharp_v2.4.0
+(pass) check-release-needed probes > end-to-end: NuGet has the version and GitHub release exists → no-op [3.00ms]
+
+docs/case-studies/issue-45/template-data/relevant-files/csharp-ai-driven-development-pipeline-template/scripts/create-github-release.test.mjs:
+(pass) create-github-release helpers > parseArgs defaults to the C# release format and accepts package id
+(pass) create-github-release helpers > normalizes release versions from legacy and language-prefixed tags
+(pass) create-github-release helpers > builds C# release tags and titles from bare semver
+(pass) create-github-release helpers > appends a NuGet shields.io badge when release notes do not have one
+(pass) create-github-release helpers > does not append a second badge when release notes already contain shields.io
+(pass) create-github-release helpers > builds a GitHub release payload with C# title and NuGet badge
+(pass) create-github-release helpers > findPackageId reads PackageId from a project file [1.00ms]
+(pass) create-github-release helpers > uploads matching NuGet package assets after creating a release [1.00ms]
+(pass) create-github-release helpers > uploads matching NuGet package assets when the release already exists
+
+docs/case-studies/issue-45/template-data/relevant-files/csharp-ai-driven-development-pipeline-template/scripts/wait-for-nuget.test.mjs:
+(pass) wait-for-nuget parseArgs() > defaults to two-minute checks across the NuGet indexing window
+(pass) wait-for-nuget parseArgs() > accepts --version as an alias for --release-version
+(pass) wait-for-nuget parseArgs() > honours CLI flags for max-attempts, sleep-seconds and flat-container-url
+(pass) wait-for-nuget parseArgs() > reads overrides from environment variables
+(pass) wait-for-nuget parseArgs() > inline --flag=value form is supported
+(pass) wait-for-nuget parseArgs() > rejects non-positive integers for --max-attempts
+(pass) wait-for-nuget parseArgs() > rejects non-positive integers for --sleep-seconds
+(pass) wait-for-nuget parseArgs() > throws when a flag is missing its value [1.00ms]
+(pass) wait-for-nuget createNugetNuspecUrl() > builds the flat-container nuspec URL with lowercased id and version
+(pass) wait-for-nuget createNugetNuspecUrl() > lowercases mixed-case versions (e.g. semver pre-release tags)
+(pass) wait-for-nuget createNugetNuspecUrl() > defaults to the official flat-container URL when not specified
+(pass) wait-for-nuget waitForNugetPackage() > succeeds when indexing takes longer than the old 125-second loop
+(pass) wait-for-nuget waitForNugetPackage() > fails only after exhausting all attempts
+(pass) wait-for-nuget waitForNugetPackage() > returns immediately when the package is already indexed
+(pass) wait-for-nuget waitForNugetPackage() > tolerates transient network errors before succeeding
+(pass) wait-for-nuget checkNugetPackageVersion() > reports 200 responses as available against a live HTTP endpoint [3.00ms]
+(pass) wait-for-nuget checkNugetPackageVersion() > reports 404 responses as unavailable without throwing [4.00ms]
+(pass) wait-for-nuget checkNugetPackageVersion() > treats fetch network errors as a soft failure
+(pass) wait-for-nuget checkNugetPackageVersion() > end-to-end: waits through 404 responses then succeeds when the package appears [5.00ms]
+
+ 397 pass
+ 0 fail
+ 267 expect() calls
+Ran 397 tests across 52 files. [2.44s]

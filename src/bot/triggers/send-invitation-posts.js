@@ -71,43 +71,68 @@ async function writePostCache(store, value) {
   }
 }
 
-// Builds the attachment string for the user's own avatar without re-uploading
-// the image. Likes therefore accumulate on the original photo across reposts.
-// Format: `photo<owner_id>_<photo_id>[_<access_key>]` — the access_key keeps
-// the attachment resolvable when posting to communities where viewers may not
-// otherwise have access to the source photo.
-export async function getActiveAvatarAttachment({ vk }) {
-  let photoId;
-  try {
-    const profiles = await vk.api.users.get({
-      user_ids: 0,
-      fields: 'photo_id',
-    });
-    const profile = Array.isArray(profiles) ? profiles[0] : null;
-    photoId = profile?.photo_id;
-  } catch (error) {
-    logger.warn('Could not fetch active avatar photo_id', { error });
+const ACTIVE_AVATAR_FIELDS = 'photo_id,crop_photo';
+
+function parsePhotoReference(value) {
+  if (typeof value !== 'string' || value.length === 0) {
     return null;
   }
-  if (
-    typeof photoId !== 'string' ||
-    photoId.length === 0 ||
-    !photoId.includes('_')
-  ) {
-    logger.info(
-      'Active avatar photo_id missing or malformed; posting without attachment',
-      { photoId }
-    );
+  const match = value.match(/^(-?\d+)_(\d+)(?:_([A-Za-z0-9_-]+))?$/);
+  if (!match) {
     return null;
   }
-  let accessKey = null;
+  return {
+    photoId: `${match[1]}_${match[2]}`,
+    accessKey: match[3] || null,
+  };
+}
+
+function referenceFromPhotoObject(photo) {
+  const ownerId = Number(photo?.owner_id);
+  const id = Number(photo?.id);
+  if (!Number.isFinite(ownerId) || !Number.isFinite(id)) {
+    return null;
+  }
+  return {
+    photoId: `${ownerId}_${id}`,
+    accessKey:
+      typeof photo.access_key === 'string' && photo.access_key.length > 0
+        ? photo.access_key
+        : null,
+  };
+}
+
+function getProfileAvatarReference(profile) {
+  return (
+    parsePhotoReference(profile?.photo_id) ||
+    referenceFromPhotoObject(profile?.crop_photo?.photo)
+  );
+}
+
+function formatPhotoAttachment({ photoId, accessKey }) {
+  return accessKey ? `photo${photoId}_${accessKey}` : `photo${photoId}`;
+}
+
+async function resolveAvatarAccessKey({ vk, reference }) {
+  const { photoId } = reference;
+  let { accessKey } = reference;
+  if (accessKey) {
+    return { photoId, accessKey };
+  }
   try {
     const photos = await vk.api.photos.getById({
       photos: photoId,
       extended: 0,
     });
     const photo = Array.isArray(photos) ? photos[0] : null;
-    if (photo?.access_key && typeof photo.access_key === 'string') {
+    const resolved = referenceFromPhotoObject(photo);
+    if (resolved) {
+      return {
+        photoId: resolved.photoId,
+        accessKey: resolved.accessKey || accessKey,
+      };
+    }
+    if (typeof photo?.access_key === 'string' && photo.access_key.length > 0) {
       accessKey = photo.access_key;
     }
   } catch (error) {
@@ -116,7 +141,50 @@ export async function getActiveAvatarAttachment({ vk }) {
       error,
     });
   }
-  return accessKey ? `photo${photoId}_${accessKey}` : `photo${photoId}`;
+  return { photoId, accessKey };
+}
+
+// Builds the attachment string for the user's own avatar without re-uploading
+// the image. Likes therefore accumulate on the original photo across reposts.
+// Format: `photo<owner_id>_<photo_id>[_<access_key>]` — the access_key keeps
+// the attachment resolvable when posting to communities where viewers may not
+// otherwise have access to the source photo.
+export async function getActiveAvatarAttachment({ vk }) {
+  let profiles;
+  try {
+    profiles = await vk.api.users.get({
+      fields: ACTIVE_AVATAR_FIELDS,
+    });
+  } catch (error) {
+    logger.warn('Could not fetch active avatar photo_id', { error });
+    return null;
+  }
+
+  const profile = Array.isArray(profiles) ? profiles[0] : null;
+  const reference = getProfileAvatarReference(profile);
+  if (!reference) {
+    logger.info(
+      'Active avatar photo_id missing or malformed; posting without attachment',
+      {
+        photoId: profile?.photo_id,
+        profileCount: Array.isArray(profiles) ? profiles.length : 0,
+        profileId: profile?.id,
+        profileKeys: profile ? Object.keys(profile).slice(0, 16) : [],
+        hasCropPhoto: Boolean(profile?.crop_photo?.photo),
+      }
+    );
+    return null;
+  }
+
+  const { photoId, accessKey } = await resolveAvatarAccessKey({
+    vk,
+    reference,
+  });
+  logger.debug('Active avatar attachment resolved', {
+    photoId,
+    hasAccessKey: Boolean(accessKey),
+  });
+  return formatPhotoAttachment({ photoId, accessKey });
 }
 
 async function fetchTopWallPostIds({ vk, ownerId }) {

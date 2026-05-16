@@ -298,13 +298,14 @@ describe('getActiveAvatarAttachment', () => {
     assert.equal(await getActiveAvatarAttachment({ vk }), null);
   });
 
-  it('queries the current user via user_ids=0 and requests the photo_id field', async () => {
+  it('omits user_ids so VK resolves the current token holder', async () => {
     const calls = [];
     const vk = {
       api: {
         users: {
           get: async (params) => {
             calls.push(params);
+            assert.equal('user_ids' in params, false);
             return [{ photo_id: '5_6' }];
           },
         },
@@ -313,8 +314,48 @@ describe('getActiveAvatarAttachment', () => {
     };
     await getActiveAvatarAttachment({ vk });
     assert.equal(calls.length, 1);
-    assert.equal(calls[0].user_ids, 0);
     assert.match(String(calls[0].fields), /photo_id/);
+    assert.match(String(calls[0].fields), /crop_photo/);
+  });
+
+  it('uses crop_photo as an API fallback when photo_id is missing', async () => {
+    let photosGetByIdCalled = false;
+    const vk = {
+      api: {
+        users: {
+          get: async () => [
+            {
+              crop_photo: {
+                photo: {
+                  owner_id: 3972090,
+                  id: 457245285,
+                  access_key: 'cropkey',
+                },
+              },
+            },
+          ],
+        },
+        photos: {
+          getById: async () => {
+            photosGetByIdCalled = true;
+            return [];
+          },
+        },
+      },
+    };
+    const attachment = await getActiveAvatarAttachment({ vk });
+    assert.equal(attachment, 'photo3972090_457245285_cropkey');
+    assert.equal(photosGetByIdCalled, false);
+  });
+
+  it('returns null when VK resolves no current profile', async () => {
+    const vk = {
+      api: {
+        users: { get: async () => [] },
+        photos: { getById: async () => [] },
+      },
+    };
+    assert.equal(await getActiveAvatarAttachment({ vk }), null);
   });
 });
 
