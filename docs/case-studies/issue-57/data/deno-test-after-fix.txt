@@ -1,0 +1,2613 @@
+Download https://registry.npmjs.org/@changesets%2fcli
+Download https://registry.npmjs.org/electron
+Download https://registry.npmjs.org/electron-builder
+Download https://registry.npmjs.org/esbuild
+Download https://registry.npmjs.org/eslint
+Download https://registry.npmjs.org/eslint-config-prettier
+Download https://registry.npmjs.org/eslint-plugin-prettier
+Download https://registry.npmjs.org/husky
+Download https://registry.npmjs.org/jscpd
+Download https://registry.npmjs.org/lino-arguments
+Download https://registry.npmjs.org/lino-objects-codec
+Download https://registry.npmjs.org/lint-staged
+Download https://registry.npmjs.org/node-ssh
+Download https://registry.npmjs.org/prettier
+Download https://registry.npmjs.org/react
+Download https://registry.npmjs.org/react-dom
+Download https://registry.npmjs.org/test-anywhere
+Download https://registry.npmjs.org/vk-io
+Download https://registry.npmjs.org/@changesets%2fapply-release-plan
+Download https://registry.npmjs.org/@changesets%2fassemble-release-plan
+Download https://registry.npmjs.org/@changesets%2fchangelog-git
+Download https://registry.npmjs.org/@changesets%2fconfig
+Download https://registry.npmjs.org/@changesets%2ferrors
+Download https://registry.npmjs.org/@changesets%2fget-dependents-graph
+Download https://registry.npmjs.org/@changesets%2fget-release-plan
+Download https://registry.npmjs.org/@changesets%2fgit
+Download https://registry.npmjs.org/@changesets%2flogger
+Download https://registry.npmjs.org/@changesets%2fpre
+Download https://registry.npmjs.org/@changesets%2fread
+Download https://registry.npmjs.org/@changesets%2fshould-skip-package
+Download https://registry.npmjs.org/@changesets%2ftypes
+Download https://registry.npmjs.org/@changesets%2fwrite
+Download https://registry.npmjs.org/@inquirer%2fexternal-editor
+Download https://registry.npmjs.org/@manypkg%2fget-packages
+Download https://registry.npmjs.org/ansi-colors
+Download https://registry.npmjs.org/enquirer
+Download https://registry.npmjs.org/fs-extra
+Download https://registry.npmjs.org/mri
+Download https://registry.npmjs.org/package-manager-detector
+Download https://registry.npmjs.org/picocolors
+Download https://registry.npmjs.org/resolve-from
+Download https://registry.npmjs.org/semver
+Download https://registry.npmjs.org/spawndamnit
+Download https://registry.npmjs.org/term-size
+Download https://registry.npmjs.org/@electron%2fget
+Download https://registry.npmjs.org/@types%2fnode
+Download https://registry.npmjs.org/extract-zip
+Download https://registry.npmjs.org/app-builder-lib
+Download https://registry.npmjs.org/builder-util
+Download https://registry.npmjs.org/builder-util-runtime
+Download https://registry.npmjs.org/chalk
+Download https://registry.npmjs.org/dmg-builder
+Download https://registry.npmjs.org/is-ci
+Download https://registry.npmjs.org/lazy-val
+Download https://registry.npmjs.org/simple-update-notifier
+Download https://registry.npmjs.org/yargs
+Download https://registry.npmjs.org/@esbuild%2faix-ppc64
+Download https://registry.npmjs.org/@esbuild%2fandroid-arm
+Download https://registry.npmjs.org/@esbuild%2fandroid-arm64
+Download https://registry.npmjs.org/@esbuild%2fandroid-x64
+Download https://registry.npmjs.org/@esbuild%2fdarwin-arm64
+Download https://registry.npmjs.org/@esbuild%2fdarwin-x64
+Download https://registry.npmjs.org/@esbuild%2ffreebsd-arm64
+Download https://registry.npmjs.org/@esbuild%2ffreebsd-x64
+Download https://registry.npmjs.org/@esbuild%2flinux-arm
+Download https://registry.npmjs.org/@esbuild%2flinux-arm64
+Download https://registry.npmjs.org/@esbuild%2flinux-ia32
+Download https://registry.npmjs.org/@esbuild%2flinux-loong64
+Download https://registry.npmjs.org/@esbuild%2flinux-mips64el
+Download https://registry.npmjs.org/@esbuild%2flinux-ppc64
+Download https://registry.npmjs.org/@esbuild%2flinux-riscv64
+Download https://registry.npmjs.org/@esbuild%2flinux-s390x
+Download https://registry.npmjs.org/@esbuild%2flinux-x64
+Download https://registry.npmjs.org/@esbuild%2fnetbsd-arm64
+Download https://registry.npmjs.org/@esbuild%2fnetbsd-x64
+Download https://registry.npmjs.org/@esbuild%2fopenbsd-arm64
+Download https://registry.npmjs.org/@esbuild%2fopenbsd-x64
+Download https://registry.npmjs.org/@esbuild%2fsunos-x64
+Download https://registry.npmjs.org/@esbuild%2fwin32-arm64
+Download https://registry.npmjs.org/@esbuild%2fwin32-ia32
+Download https://registry.npmjs.org/@esbuild%2fwin32-x64
+Download https://registry.npmjs.org/@eslint-community%2feslint-utils
+Download https://registry.npmjs.org/@eslint-community%2fregexpp
+Download https://registry.npmjs.org/@eslint%2fconfig-array
+Download https://registry.npmjs.org/@eslint%2fconfig-helpers
+Download https://registry.npmjs.org/@eslint%2fcore
+Download https://registry.npmjs.org/@eslint%2feslintrc
+Download https://registry.npmjs.org/@eslint%2fjs
+Download https://registry.npmjs.org/@eslint%2fplugin-kit
+Download https://registry.npmjs.org/@humanfs%2fnode
+Download https://registry.npmjs.org/@humanwhocodes%2fmodule-importer
+Download https://registry.npmjs.org/@humanwhocodes%2fretry
+Download https://registry.npmjs.org/@types%2festree
+Download https://registry.npmjs.org/ajv
+Download https://registry.npmjs.org/cross-spawn
+Download https://registry.npmjs.org/debug
+Download https://registry.npmjs.org/escape-string-regexp
+Download https://registry.npmjs.org/eslint-scope
+Download https://registry.npmjs.org/eslint-visitor-keys
+Download https://registry.npmjs.org/espree
+Download https://registry.npmjs.org/esquery
+Download https://registry.npmjs.org/esutils
+Download https://registry.npmjs.org/fast-deep-equal
+Download https://registry.npmjs.org/file-entry-cache
+Download https://registry.npmjs.org/find-up
+Download https://registry.npmjs.org/glob-parent
+Download https://registry.npmjs.org/ignore
+Download https://registry.npmjs.org/imurmurhash
+Download https://registry.npmjs.org/is-glob
+Download https://registry.npmjs.org/jiti
+Download https://registry.npmjs.org/json-stable-stringify-without-jsonify
+Download https://registry.npmjs.org/lodash.merge
+Download https://registry.npmjs.org/minimatch
+Download https://registry.npmjs.org/natural-compare
+Download https://registry.npmjs.org/optionator
+Download https://registry.npmjs.org/@types%2feslint
+Download https://registry.npmjs.org/prettier-linter-helpers
+Download https://registry.npmjs.org/synckit
+Download https://registry.npmjs.org/@jscpd%2fbadge-reporter
+Download https://registry.npmjs.org/@jscpd%2fcore
+Download https://registry.npmjs.org/@jscpd%2ffinder
+Download https://registry.npmjs.org/@jscpd%2fhtml-reporter
+Download https://registry.npmjs.org/@jscpd%2ftokenizer
+Download https://registry.npmjs.org/colors
+Download https://registry.npmjs.org/commander
+Download https://registry.npmjs.org/jscpd-sarif-reporter
+Download https://registry.npmjs.org/@dotenvx%2fdotenvx
+Download https://registry.npmjs.org/getenv
+Download https://registry.npmjs.org/links-notation
+Download https://registry.npmjs.org/lino-env
+Download https://registry.npmjs.org/listr2
+Download https://registry.npmjs.org/picomatch
+Download https://registry.npmjs.org/string-argv
+Download https://registry.npmjs.org/tinyexec
+Download https://registry.npmjs.org/yaml
+Download https://registry.npmjs.org/is-stream
+Download https://registry.npmjs.org/make-dir
+Download https://registry.npmjs.org/sb-promise-queue
+Download https://registry.npmjs.org/sb-scandir
+Download https://registry.npmjs.org/shell-escape
+Download https://registry.npmjs.org/ssh2
+Download https://registry.npmjs.org/loose-envify
+Download https://registry.npmjs.org/scheduler
+Download https://registry.npmjs.org/abort-controller
+Download https://registry.npmjs.org/form-data-encoder
+Download https://registry.npmjs.org/formdata-node
+Download https://registry.npmjs.org/inspectable
+Download https://registry.npmjs.org/middleware-io
+Download https://registry.npmjs.org/node-fetch
+Download https://registry.npmjs.org/@changesets%2fget-version-range-type
+Download https://registry.npmjs.org/detect-indent
+Download https://registry.npmjs.org/lodash.startcase
+Download https://registry.npmjs.org/outdent
+Download https://registry.npmjs.org/micromatch
+Download https://registry.npmjs.org/extendable-error
+Download https://registry.npmjs.org/is-subdir
+Download https://registry.npmjs.org/@changesets%2fparse
+Download https://registry.npmjs.org/p-filter
+Download https://registry.npmjs.org/human-id
+Download https://registry.npmjs.org/chardet
+Download https://registry.npmjs.org/iconv-lite
+Download https://registry.npmjs.org/@babel%2fruntime
+Download https://registry.npmjs.org/@manypkg%2ffind-root
+Download https://registry.npmjs.org/globby
+Download https://registry.npmjs.org/read-yaml-file
+Download https://registry.npmjs.org/strip-ansi
+Download https://registry.npmjs.org/graceful-fs
+Download https://registry.npmjs.org/jsonfile
+Download https://registry.npmjs.org/universalify
+Download https://registry.npmjs.org/quansync
+Download https://registry.npmjs.org/signal-exit
+Download https://registry.npmjs.org/env-paths
+Download https://registry.npmjs.org/global-agent
+Download https://registry.npmjs.org/got
+Download https://registry.npmjs.org/progress
+Download https://registry.npmjs.org/sumchecker
+Download https://registry.npmjs.org/undici-types
+Download https://registry.npmjs.org/@types%2fyauzl
+Download https://registry.npmjs.org/get-stream
+Download https://registry.npmjs.org/yauzl
+Download https://registry.npmjs.org/@develar%2fschema-utils
+Download https://registry.npmjs.org/@electron%2fnotarize
+Download https://registry.npmjs.org/@electron%2fosx-sign
+Download https://registry.npmjs.org/@electron%2frebuild
+Download https://registry.npmjs.org/@electron%2funiversal
+Download https://registry.npmjs.org/@malept%2fflatpak-bundler
+Download https://registry.npmjs.org/@types%2ffs-extra
+Download https://registry.npmjs.org/async-exit-hook
+Download https://registry.npmjs.org/bluebird-lst
+Download https://registry.npmjs.org/chromium-pickle-js
+Download https://registry.npmjs.org/config-file-ts
+Download https://registry.npmjs.org/dotenv
+Download https://registry.npmjs.org/dotenv-expand
+Download https://registry.npmjs.org/ejs
+Download https://registry.npmjs.org/electron-builder-squirrel-windows
+Download https://registry.npmjs.org/electron-publish
+Download https://registry.npmjs.org/form-data
+Download https://registry.npmjs.org/hosted-git-info
+Download https://registry.npmjs.org/isbinaryfile
+Download https://registry.npmjs.org/js-yaml
+Download https://registry.npmjs.org/json5
+Download https://registry.npmjs.org/resedit
+Download https://registry.npmjs.org/sanitize-filename
+Download https://registry.npmjs.org/tar
+Download https://registry.npmjs.org/temp-file
+Download https://registry.npmjs.org/7zip-bin
+Download https://registry.npmjs.org/@types%2fdebug
+Download https://registry.npmjs.org/app-builder-bin
+Download https://registry.npmjs.org/http-proxy-agent
+Download https://registry.npmjs.org/https-proxy-agent
+Download https://registry.npmjs.org/source-map-support
+Download https://registry.npmjs.org/stat-mode
+Download https://registry.npmjs.org/sax
+Download https://registry.npmjs.org/ansi-styles
+Download https://registry.npmjs.org/supports-color
+Download https://registry.npmjs.org/dmg-license
+Download https://registry.npmjs.org/ci-info
+Download https://registry.npmjs.org/cliui
+Download https://registry.npmjs.org/escalade
+Download https://registry.npmjs.org/get-caller-file
+Download https://registry.npmjs.org/require-directory
+Download https://registry.npmjs.org/string-width
+Download https://registry.npmjs.org/y18n
+Download https://registry.npmjs.org/yargs-parser
+Download https://registry.npmjs.org/@eslint%2fobject-schema
+Download https://registry.npmjs.org/@types%2fjson-schema
+Download https://registry.npmjs.org/globals
+Download https://registry.npmjs.org/import-fresh
+Download https://registry.npmjs.org/strip-json-comments
+Download https://registry.npmjs.org/levn
+Download https://registry.npmjs.org/@humanfs%2fcore
+Download https://registry.npmjs.org/@humanfs%2ftypes
+Download https://registry.npmjs.org/fast-json-stable-stringify
+Download https://registry.npmjs.org/json-schema-traverse
+Download https://registry.npmjs.org/uri-js
+Download https://registry.npmjs.org/path-key
+Download https://registry.npmjs.org/shebang-command
+Download https://registry.npmjs.org/which
+Download https://registry.npmjs.org/ms
+Download https://registry.npmjs.org/esrecurse
+Download https://registry.npmjs.org/estraverse
+Download https://registry.npmjs.org/acorn
+Download https://registry.npmjs.org/acorn-jsx
+Download https://registry.npmjs.org/flat-cache
+Download https://registry.npmjs.org/locate-path
+Download https://registry.npmjs.org/path-exists
+Download https://registry.npmjs.org/is-extglob
+Download https://registry.npmjs.org/brace-expansion
+Download https://registry.npmjs.org/deep-is
+Download https://registry.npmjs.org/fast-levenshtein
+Download https://registry.npmjs.org/prelude-ls
+Download https://registry.npmjs.org/type-check
+Download https://registry.npmjs.org/word-wrap
+Download https://registry.npmjs.org/fast-diff
+Download https://registry.npmjs.org/@pkgr%2fcore
+Download https://registry.npmjs.org/badgen
+Download https://registry.npmjs.org/eventemitter3
+Download https://registry.npmjs.org/blamer
+Download https://registry.npmjs.org/bytes
+Download https://registry.npmjs.org/cli-table3
+Download https://registry.npmjs.org/fast-glob
+Download https://registry.npmjs.org/markdown-table
+Download https://registry.npmjs.org/pug
+Download https://registry.npmjs.org/spark-md5
+Download https://registry.npmjs.org/node-sarif-builder
+Download https://registry.npmjs.org/cli-truncate
+Download https://registry.npmjs.org/colorette
+Download https://registry.npmjs.org/log-update
+Download https://registry.npmjs.org/rfdc
+Download https://registry.npmjs.org/wrap-ansi
+Download https://registry.npmjs.org/asn1
+Download https://registry.npmjs.org/bcrypt-pbkdf
+Download https://registry.npmjs.org/cpu-features
+Download https://registry.npmjs.org/nan
+Download https://registry.npmjs.org/js-tokens
+Download https://registry.npmjs.org/event-target-shim
+Download https://registry.npmjs.org/node-domexception
+Download https://registry.npmjs.org/web-streams-polyfill
+Download https://registry.npmjs.org/reflect-metadata
+Download https://registry.npmjs.org/data-uri-to-buffer
+Download https://registry.npmjs.org/fetch-blob
+Download https://registry.npmjs.org/formdata-polyfill
+Download https://registry.npmjs.org/braces
+Download https://registry.npmjs.org/better-path-resolve
+Download https://registry.npmjs.org/p-map
+Download https://registry.npmjs.org/safer-buffer
+Download https://registry.npmjs.org/array-union
+Download https://registry.npmjs.org/dir-glob
+Download https://registry.npmjs.org/merge2
+Download https://registry.npmjs.org/slash
+Download https://registry.npmjs.org/pify
+Download https://registry.npmjs.org/strip-bom
+Download https://registry.npmjs.org/ansi-regex
+Download https://registry.npmjs.org/boolean
+Download https://registry.npmjs.org/es6-error
+Download https://registry.npmjs.org/matcher
+Download https://registry.npmjs.org/roarr
+Download https://registry.npmjs.org/serialize-error
+Download https://registry.npmjs.org/@sindresorhus%2fis
+Download https://registry.npmjs.org/@szmarczak%2fhttp-timer
+Download https://registry.npmjs.org/@types%2fcacheable-request
+Download https://registry.npmjs.org/@types%2fresponselike
+Download https://registry.npmjs.org/cacheable-lookup
+Download https://registry.npmjs.org/cacheable-request
+Download https://registry.npmjs.org/decompress-response
+Download https://registry.npmjs.org/http2-wrapper
+Download https://registry.npmjs.org/lowercase-keys
+Download https://registry.npmjs.org/p-cancelable
+Download https://registry.npmjs.org/responselike
+Download https://registry.npmjs.org/pump
+Download https://registry.npmjs.org/buffer-crc32
+Download https://registry.npmjs.org/fd-slicer
+Download https://registry.npmjs.org/ajv-keywords
+Download https://registry.npmjs.org/promise-retry
+Download https://registry.npmjs.org/compare-version
+Download https://registry.npmjs.org/minimist
+Download https://registry.npmjs.org/plist
+Download https://registry.npmjs.org/@malept%2fcross-spawn-promise
+Download https://registry.npmjs.org/detect-libc
+Download https://registry.npmjs.org/node-abi
+Download https://registry.npmjs.org/node-api-version
+Download https://registry.npmjs.org/node-gyp
+Download https://registry.npmjs.org/ora
+Download https://registry.npmjs.org/read-binary-file-arch
+Download https://registry.npmjs.org/@electron%2fasar
+Download https://registry.npmjs.org/dir-compare
+Download https://registry.npmjs.org/lodash
+Download https://registry.npmjs.org/tmp-promise
+Download https://registry.npmjs.org/bluebird
+Download https://registry.npmjs.org/glob
+Download https://registry.npmjs.org/typescript
+Download https://registry.npmjs.org/jake
+Download https://registry.npmjs.org/mime
+Download https://registry.npmjs.org/asynckit
+Download https://registry.npmjs.org/combined-stream
+Download https://registry.npmjs.org/es-set-tostringtag
+Download https://registry.npmjs.org/hasown
+Download https://registry.npmjs.org/mime-types
+Download https://registry.npmjs.org/lru-cache
+Download https://registry.npmjs.org/argparse
+Download https://registry.npmjs.org/pe-library
+Download https://registry.npmjs.org/truncate-utf8-bytes
+Download https://registry.npmjs.org/chownr
+Download https://registry.npmjs.org/fs-minipass
+Download https://registry.npmjs.org/minipass
+Download https://registry.npmjs.org/minizlib
+Download https://registry.npmjs.org/mkdirp
+Download https://registry.npmjs.org/yallist
+Download https://registry.npmjs.org/@types%2fms
+Download https://registry.npmjs.org/agent-base
+Download https://registry.npmjs.org/buffer-from
+Download https://registry.npmjs.org/source-map
+Download https://registry.npmjs.org/color-convert
+Download https://registry.npmjs.org/has-flag
+Download https://registry.npmjs.org/@types%2fplist
+Download https://registry.npmjs.org/@types%2fverror
+Download https://registry.npmjs.org/crc
+Download https://registry.npmjs.org/iconv-corefoundation
+Download https://registry.npmjs.org/smart-buffer
+Download https://registry.npmjs.org/verror
+Download https://registry.npmjs.org/emoji-regex
+Download https://registry.npmjs.org/is-fullwidth-code-point
+Download https://registry.npmjs.org/parent-module
+Download https://registry.npmjs.org/punycode
+Download https://registry.npmjs.org/shebang-regex
+Download https://registry.npmjs.org/isexe
+Download https://registry.npmjs.org/flatted
+Download https://registry.npmjs.org/keyv
+Download https://registry.npmjs.org/p-locate
+Download https://registry.npmjs.org/balanced-match
+Download https://registry.npmjs.org/concat-map
+Download https://registry.npmjs.org/execa
+Download https://registry.npmjs.org/@colors%2fcolors
+Download https://registry.npmjs.org/@nodelib%2ffs.stat
+Download https://registry.npmjs.org/@nodelib%2ffs.walk
+Download https://registry.npmjs.org/repeat-string
+Download https://registry.npmjs.org/pug-code-gen
+Download https://registry.npmjs.org/pug-filters
+Download https://registry.npmjs.org/pug-lexer
+Download https://registry.npmjs.org/pug-linker
+Download https://registry.npmjs.org/pug-load
+Download https://registry.npmjs.org/pug-parser
+Download https://registry.npmjs.org/pug-runtime
+Download https://registry.npmjs.org/pug-strip-comments
+Download https://registry.npmjs.org/@types%2fsarif
+Download https://registry.npmjs.org/slice-ansi
+Download https://registry.npmjs.org/ansi-escapes
+Download https://registry.npmjs.org/cli-cursor
+Download https://registry.npmjs.org/tweetnacl
+Download https://registry.npmjs.org/buildcheck
+Download https://registry.npmjs.org/fill-range
+Download https://registry.npmjs.org/is-windows
+Download https://registry.npmjs.org/path-type
+Download https://registry.npmjs.org/esprima
+Download https://registry.npmjs.org/detect-node
+Download https://registry.npmjs.org/globalthis
+Download https://registry.npmjs.org/json-stringify-safe
+Download https://registry.npmjs.org/semver-compare
+Download https://registry.npmjs.org/sprintf-js
+Download https://registry.npmjs.org/type-fest
+Download https://registry.npmjs.org/defer-to-connect
+Download https://registry.npmjs.org/@types%2fhttp-cache-semantics
+Download https://registry.npmjs.org/@types%2fkeyv
+Download https://registry.npmjs.org/clone-response
+Download https://registry.npmjs.org/http-cache-semantics
+Download https://registry.npmjs.org/normalize-url
+Download https://registry.npmjs.org/mimic-response
+Download https://registry.npmjs.org/quick-lru
+Download https://registry.npmjs.org/resolve-alpn
+Download https://registry.npmjs.org/end-of-stream
+Download https://registry.npmjs.org/once
+Download https://registry.npmjs.org/pend
+Download https://registry.npmjs.org/at-least-node
+Download https://registry.npmjs.org/err-code
+Download https://registry.npmjs.org/retry
+Download https://registry.npmjs.org/@xmldom%2fxmldom
+Download https://registry.npmjs.org/base64-js
+Download https://registry.npmjs.org/xmlbuilder
+Download https://registry.npmjs.org/exponential-backoff
+Download https://registry.npmjs.org/make-fetch-happen
+Download https://registry.npmjs.org/nopt
+Download https://registry.npmjs.org/npmlog
+Download https://registry.npmjs.org/rimraf
+Download https://registry.npmjs.org/bl
+Download https://registry.npmjs.org/cli-spinners
+Download https://registry.npmjs.org/is-interactive
+Download https://registry.npmjs.org/is-unicode-supported
+Download https://registry.npmjs.org/log-symbols
+Download https://registry.npmjs.org/wcwidth
+Download https://registry.npmjs.org/p-limit
+Download https://registry.npmjs.org/tmp
+Download https://registry.npmjs.org/foreground-child
+Download https://registry.npmjs.org/jackspeak
+Download https://registry.npmjs.org/package-json-from-dist
+Download https://registry.npmjs.org/path-scurry
+Download https://registry.npmjs.org/async
+Download https://registry.npmjs.org/filelist
+Download https://registry.npmjs.org/delayed-stream
+Download https://registry.npmjs.org/es-errors
+Download https://registry.npmjs.org/get-intrinsic
+Download https://registry.npmjs.org/has-tostringtag
+Download https://registry.npmjs.org/function-bind
+Download https://registry.npmjs.org/mime-db
+Download https://registry.npmjs.org/utf8-byte-length
+Download https://registry.npmjs.org/color-name
+Download https://registry.npmjs.org/buffer
+Download https://registry.npmjs.org/node-addon-api
+Download https://registry.npmjs.org/assert-plus
+Download https://registry.npmjs.org/core-util-is
+Download https://registry.npmjs.org/extsprintf
+Download https://registry.npmjs.org/callsites
+Download https://registry.npmjs.org/json-buffer
+Download https://registry.npmjs.org/human-signals
+Download https://registry.npmjs.org/merge-stream
+Download https://registry.npmjs.org/npm-run-path
+Download https://registry.npmjs.org/onetime
+Download https://registry.npmjs.org/strip-final-newline
+Download https://registry.npmjs.org/@nodelib%2ffs.scandir
+Download https://registry.npmjs.org/fastq
+Download https://registry.npmjs.org/constantinople
+Download https://registry.npmjs.org/doctypes
+Download https://registry.npmjs.org/js-stringify
+Download https://registry.npmjs.org/pug-attrs
+Download https://registry.npmjs.org/pug-error
+Download https://registry.npmjs.org/void-elements
+Download https://registry.npmjs.org/with
+Download https://registry.npmjs.org/jstransformer
+Download https://registry.npmjs.org/pug-walk
+Download https://registry.npmjs.org/resolve
+Download https://registry.npmjs.org/character-parser
+Download https://registry.npmjs.org/is-expression
+Download https://registry.npmjs.org/object-assign
+Download https://registry.npmjs.org/token-stream
+Download https://registry.npmjs.org/get-east-asian-width
+Download https://registry.npmjs.org/environment
+Download https://registry.npmjs.org/restore-cursor
+Download https://registry.npmjs.org/to-regex-range
+Download https://registry.npmjs.org/define-properties
+Download https://registry.npmjs.org/gopd
+Download https://registry.npmjs.org/wrappy
+Download https://registry.npmjs.org/fs.realpath
+Download https://registry.npmjs.org/inflight
+Download https://registry.npmjs.org/inherits
+Download https://registry.npmjs.org/path-is-absolute
+Download https://registry.npmjs.org/agentkeepalive
+Download https://registry.npmjs.org/cacache
+Download https://registry.npmjs.org/is-lambda
+Download https://registry.npmjs.org/minipass-collect
+Download https://registry.npmjs.org/minipass-fetch
+Download https://registry.npmjs.org/minipass-flush
+Download https://registry.npmjs.org/minipass-pipeline
+Download https://registry.npmjs.org/negotiator
+Download https://registry.npmjs.org/socks-proxy-agent
+Download https://registry.npmjs.org/ssri
+Download https://registry.npmjs.org/abbrev
+Download https://registry.npmjs.org/are-we-there-yet
+Download https://registry.npmjs.org/console-control-strings
+Download https://registry.npmjs.org/gauge
+Download https://registry.npmjs.org/set-blocking
+Download https://registry.npmjs.org/readable-stream
+Download https://registry.npmjs.org/defaults
+Download https://registry.npmjs.org/yocto-queue
+Download https://registry.npmjs.org/@isaacs%2fcliui
+Download https://registry.npmjs.org/@pkgjs%2fparseargs
+Download https://registry.npmjs.org/call-bind-apply-helpers
+Download https://registry.npmjs.org/es-define-property
+Download https://registry.npmjs.org/es-object-atoms
+Download https://registry.npmjs.org/get-proto
+Download https://registry.npmjs.org/has-symbols
+Download https://registry.npmjs.org/math-intrinsics
+Download https://registry.npmjs.org/ieee754
+Download https://registry.npmjs.org/mimic-fn
+Download https://registry.npmjs.org/run-parallel
+Download https://registry.npmjs.org/reusify
+Download https://registry.npmjs.org/@babel%2fparser
+Download https://registry.npmjs.org/@babel%2ftypes
+Download https://registry.npmjs.org/assert-never
+Download https://registry.npmjs.org/babel-walk
+Download https://registry.npmjs.org/is-promise
+Download https://registry.npmjs.org/promise
+Download https://registry.npmjs.org/is-core-module
+Download https://registry.npmjs.org/path-parse
+Download https://registry.npmjs.org/supports-preserve-symlinks-flag
+Download https://registry.npmjs.org/is-regex
+Download https://registry.npmjs.org/is-number
+Download https://registry.npmjs.org/define-data-property
+Download https://registry.npmjs.org/has-property-descriptors
+Download https://registry.npmjs.org/object-keys
+Download https://registry.npmjs.org/humanize-ms
+Download https://registry.npmjs.org/@npmcli%2ffs
+Download https://registry.npmjs.org/@npmcli%2fmove-file
+Download https://registry.npmjs.org/infer-owner
+Download https://registry.npmjs.org/promise-inflight
+Download https://registry.npmjs.org/unique-filename
+Download https://registry.npmjs.org/@tootallnate%2fonce
+Download https://registry.npmjs.org/encoding
+Download https://registry.npmjs.org/minipass-sized
+Download https://registry.npmjs.org/socks
+Download https://registry.npmjs.org/delegates
+Download https://registry.npmjs.org/aproba
+Download https://registry.npmjs.org/color-support
+Download https://registry.npmjs.org/has-unicode
+Download https://registry.npmjs.org/wide-align
+Download https://registry.npmjs.org/string_decoder
+Download https://registry.npmjs.org/util-deprecate
+Download https://registry.npmjs.org/clone
+Download https://registry.npmjs.org/dunder-proto
+Download https://registry.npmjs.org/astral-regex
+Download https://registry.npmjs.org/queue-microtask
+Download https://registry.npmjs.org/@babel%2fhelper-string-parser
+Download https://registry.npmjs.org/@babel%2fhelper-validator-identifier
+Download https://registry.npmjs.org/asap
+Download https://registry.npmjs.org/call-bound
+Download https://registry.npmjs.org/mimic-function
+Download https://registry.npmjs.org/p-try
+Download https://registry.npmjs.org/@gar%2fpromisify
+Download https://registry.npmjs.org/aggregate-error
+Download https://registry.npmjs.org/unique-slug
+Download https://registry.npmjs.org/ip-address
+Download https://registry.npmjs.org/safe-buffer
+Download https://registry.npmjs.org/eastasianwidth
+Download https://registry.npmjs.org/clean-stack
+Download https://registry.npmjs.org/indent-string
+Download https://registry.npmjs.org/archiver
+Download https://registry.npmjs.org/archiver-utils
+Download https://registry.npmjs.org/readdir-glob
+Download https://registry.npmjs.org/tar-stream
+Download https://registry.npmjs.org/zip-stream
+Download https://registry.npmjs.org/lazystream
+Download https://registry.npmjs.org/lodash.defaults
+Download https://registry.npmjs.org/lodash.difference
+Download https://registry.npmjs.org/lodash.flatten
+Download https://registry.npmjs.org/lodash.isplainobject
+Download https://registry.npmjs.org/lodash.union
+Download https://registry.npmjs.org/normalize-path
+Download https://registry.npmjs.org/fs-constants
+Download https://registry.npmjs.org/compress-commons
+Download https://registry.npmjs.org/isarray
+Download https://registry.npmjs.org/process-nextick-args
+Download https://registry.npmjs.org/crc32-stream
+Download https://registry.npmjs.org/crc-32
+Download https://registry.npmjs.org/vk-io/-/vk-io-4.10.1.tgz
+Download https://registry.npmjs.org/electron-builder/-/electron-builder-25.1.8.tgz
+Download https://registry.npmjs.org/eslint/-/eslint-9.39.4.tgz
+Download https://registry.npmjs.org/prettier/-/prettier-3.8.3.tgz
+Download https://registry.npmjs.org/@changesets/cli/-/cli-2.31.0.tgz
+Download https://registry.npmjs.org/eslint-plugin-prettier/-/eslint-plugin-prettier-5.5.5.tgz
+Download https://registry.npmjs.org/lino-arguments/-/lino-arguments-0.3.0.tgz
+Download https://registry.npmjs.org/react-dom/-/react-dom-18.3.1.tgz
+Download https://registry.npmjs.org/electron/-/electron-33.4.11.tgz
+Download https://registry.npmjs.org/react/-/react-18.3.1.tgz
+Download https://registry.npmjs.org/esbuild/-/esbuild-0.24.2.tgz
+Download https://registry.npmjs.org/lino-objects-codec/-/lino-objects-codec-0.3.6.tgz
+Download https://registry.npmjs.org/jscpd/-/jscpd-4.2.2.tgz
+Download https://registry.npmjs.org/husky/-/husky-9.1.7.tgz
+Download https://registry.npmjs.org/lint-staged/-/lint-staged-16.4.0.tgz
+Download https://registry.npmjs.org/node-ssh/-/node-ssh-13.2.1.tgz
+Download https://registry.npmjs.org/test-anywhere/-/test-anywhere-0.8.50.tgz
+Download https://registry.npmjs.org/eslint-config-prettier/-/eslint-config-prettier-10.1.8.tgz
+Download https://registry.npmjs.org/middleware-io/-/middleware-io-2.8.1.tgz
+Download https://registry.npmjs.org/form-data-encoder/-/form-data-encoder-1.9.0.tgz
+Download https://registry.npmjs.org/debug/-/debug-4.4.3.tgz
+Download https://registry.npmjs.org/formdata-node/-/formdata-node-4.4.1.tgz
+Download https://registry.npmjs.org/abort-controller/-/abort-controller-3.0.0.tgz
+Download https://registry.npmjs.org/inspectable/-/inspectable-2.1.1.tgz
+Download https://registry.npmjs.org/node-fetch/-/node-fetch-3.3.2.tgz
+Download https://registry.npmjs.org/yargs/-/yargs-17.7.2.tgz
+Download https://registry.npmjs.org/dmg-builder/-/dmg-builder-25.1.8.tgz
+Download https://registry.npmjs.org/chalk/-/chalk-4.1.2.tgz
+Download https://registry.npmjs.org/builder-util/-/builder-util-25.1.7.tgz
+Download https://registry.npmjs.org/fs-extra/-/fs-extra-10.1.0.tgz
+Download https://registry.npmjs.org/app-builder-lib/-/app-builder-lib-25.1.8.tgz
+Download https://registry.npmjs.org/builder-util-runtime/-/builder-util-runtime-9.2.10.tgz
+Download https://registry.npmjs.org/is-ci/-/is-ci-3.0.1.tgz
+Download https://registry.npmjs.org/lazy-val/-/lazy-val-1.0.5.tgz
+Download https://registry.npmjs.org/simple-update-notifier/-/simple-update-notifier-2.0.0.tgz
+Download https://registry.npmjs.org/@eslint/eslintrc/-/eslintrc-3.3.5.tgz
+Download https://registry.npmjs.org/@eslint-community/eslint-utils/-/eslint-utils-4.9.1.tgz
+Download https://registry.npmjs.org/@eslint/js/-/js-9.39.4.tgz
+Download https://registry.npmjs.org/cross-spawn/-/cross-spawn-7.0.6.tgz
+Download https://registry.npmjs.org/@eslint-community/regexpp/-/regexpp-4.12.2.tgz
+Download https://registry.npmjs.org/json-stable-stringify-without-jsonify/-/json-stable-stringify-without-jsonify-1.0.1.tgz
+Download https://registry.npmjs.org/imurmurhash/-/imurmurhash-0.1.4.tgz
+Download https://registry.npmjs.org/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz
+Download https://registry.npmjs.org/is-glob/-/is-glob-4.0.3.tgz
+Download https://registry.npmjs.org/find-up/-/find-up-5.0.0.tgz
+Download https://registry.npmjs.org/eslint-scope/-/eslint-scope-8.4.0.tgz
+Download https://registry.npmjs.org/glob-parent/-/glob-parent-6.0.2.tgz
+Download https://registry.npmjs.org/minimatch/-/minimatch-3.1.5.tgz
+Download https://registry.npmjs.org/eslint-visitor-keys/-/eslint-visitor-keys-4.2.1.tgz
+Download https://registry.npmjs.org/lodash.merge/-/lodash.merge-4.6.2.tgz
+Download https://registry.npmjs.org/@eslint/config-array/-/config-array-0.21.2.tgz
+Download https://registry.npmjs.org/@eslint/config-helpers/-/config-helpers-0.4.2.tgz
+Download https://registry.npmjs.org/ajv/-/ajv-6.15.0.tgz
+Download https://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-4.0.0.tgz
+Download https://registry.npmjs.org/@humanfs/node/-/node-0.16.8.tgz
+Download https://registry.npmjs.org/@eslint/core/-/core-0.17.0.tgz
+Download https://registry.npmjs.org/ignore/-/ignore-5.3.2.tgz
+Download https://registry.npmjs.org/esutils/-/esutils-2.0.3.tgz
+Download https://registry.npmjs.org/@humanwhocodes/module-importer/-/module-importer-1.0.1.tgz
+Download https://registry.npmjs.org/@eslint/plugin-kit/-/plugin-kit-0.4.1.tgz
+Download https://registry.npmjs.org/file-entry-cache/-/file-entry-cache-8.0.0.tgz
+Download https://registry.npmjs.org/@humanwhocodes/retry/-/retry-0.4.3.tgz
+Download https://registry.npmjs.org/optionator/-/optionator-0.9.4.tgz
+Download https://registry.npmjs.org/espree/-/espree-10.4.0.tgz
+Download https://registry.npmjs.org/esquery/-/esquery-1.7.0.tgz
+Download https://registry.npmjs.org/@types/estree/-/estree-1.0.9.tgz
+Download https://registry.npmjs.org/natural-compare/-/natural-compare-1.4.0.tgz
+Download https://registry.npmjs.org/package-manager-detector/-/package-manager-detector-0.2.11.tgz
+Download https://registry.npmjs.org/picocolors/-/picocolors-1.1.1.tgz
+Download https://registry.npmjs.org/@changesets/assemble-release-plan/-/assemble-release-plan-6.0.10.tgz
+Download https://registry.npmjs.org/spawndamnit/-/spawndamnit-3.0.1.tgz
+Download https://registry.npmjs.org/term-size/-/term-size-2.2.1.tgz
+Download https://registry.npmjs.org/resolve-from/-/resolve-from-5.0.0.tgz
+Download https://registry.npmjs.org/semver/-/semver-7.8.0.tgz
+Download https://registry.npmjs.org/@changesets/read/-/read-0.6.7.tgz
+Download https://registry.npmjs.org/mri/-/mri-1.2.0.tgz
+Download https://registry.npmjs.org/@manypkg/get-packages/-/get-packages-1.1.3.tgz
+Download https://registry.npmjs.org/@changesets/pre/-/pre-2.0.2.tgz
+Download https://registry.npmjs.org/@changesets/should-skip-package/-/should-skip-package-0.1.2.tgz
+Download https://registry.npmjs.org/@changesets/apply-release-plan/-/apply-release-plan-7.1.1.tgz
+Download https://registry.npmjs.org/@changesets/get-dependents-graph/-/get-dependents-graph-2.1.4.tgz
+Download https://registry.npmjs.org/@changesets/changelog-git/-/changelog-git-0.2.1.tgz
+Download https://registry.npmjs.org/@changesets/get-release-plan/-/get-release-plan-4.0.16.tgz
+Download https://registry.npmjs.org/@changesets/git/-/git-3.0.4.tgz
+Download https://registry.npmjs.org/@changesets/logger/-/logger-0.1.1.tgz
+Download https://registry.npmjs.org/@changesets/write/-/write-0.4.0.tgz
+Download https://registry.npmjs.org/@inquirer/external-editor/-/external-editor-1.0.3.tgz
+Download https://registry.npmjs.org/@changesets/config/-/config-3.1.4.tgz
+Download https://registry.npmjs.org/@changesets/types/-/types-6.1.0.tgz
+Download https://registry.npmjs.org/ansi-colors/-/ansi-colors-4.1.3.tgz
+Download https://registry.npmjs.org/enquirer/-/enquirer-2.4.1.tgz
+Download https://registry.npmjs.org/fs-extra/-/fs-extra-7.0.1.tgz
+Download https://registry.npmjs.org/@changesets/errors/-/errors-0.2.0.tgz
+Download https://registry.npmjs.org/prettier-linter-helpers/-/prettier-linter-helpers-1.0.1.tgz
+Download https://registry.npmjs.org/synckit/-/synckit-0.11.12.tgz
+Download https://registry.npmjs.org/getenv/-/getenv-2.0.0.tgz
+Download https://registry.npmjs.org/links-notation/-/links-notation-0.11.2.tgz
+Download https://registry.npmjs.org/lino-env/-/lino-env-0.2.8.tgz
+Download https://registry.npmjs.org/scheduler/-/scheduler-0.23.2.tgz
+Download https://registry.npmjs.org/loose-envify/-/loose-envify-1.4.0.tgz
+Download https://registry.npmjs.org/@electron/get/-/get-2.0.3.tgz
+Download https://registry.npmjs.org/extract-zip/-/extract-zip-2.0.1.tgz
+Download https://registry.npmjs.org/@types/node/-/node-20.19.41.tgz
+Download https://registry.npmjs.org/@esbuild/linux-x64/-/linux-x64-0.24.2.tgz
+Download https://registry.npmjs.org/@jscpd/tokenizer/-/tokenizer-4.2.2.tgz
+Download https://registry.npmjs.org/fs-extra/-/fs-extra-11.3.5.tgz
+Download https://registry.npmjs.org/@jscpd/core/-/core-4.2.2.tgz
+Download https://registry.npmjs.org/colors/-/colors-1.4.0.tgz
+Download https://registry.npmjs.org/@jscpd/html-reporter/-/html-reporter-4.2.2.tgz
+Download https://registry.npmjs.org/@jscpd/finder/-/finder-4.2.2.tgz
+Download https://registry.npmjs.org/jscpd-sarif-reporter/-/jscpd-sarif-reporter-4.2.2.tgz
+Download https://registry.npmjs.org/@jscpd/badge-reporter/-/badge-reporter-4.2.2.tgz
+Download https://registry.npmjs.org/commander/-/commander-5.1.0.tgz
+Download https://registry.npmjs.org/yaml/-/yaml-2.9.0.tgz
+Download https://registry.npmjs.org/listr2/-/listr2-9.0.5.tgz
+Download https://registry.npmjs.org/commander/-/commander-14.0.3.tgz
+Download https://registry.npmjs.org/string-argv/-/string-argv-0.3.2.tgz
+Download https://registry.npmjs.org/picomatch/-/picomatch-4.0.4.tgz
+Download https://registry.npmjs.org/tinyexec/-/tinyexec-1.1.2.tgz
+Download https://registry.npmjs.org/sb-promise-queue/-/sb-promise-queue-2.1.1.tgz
+Download https://registry.npmjs.org/shell-escape/-/shell-escape-0.2.0.tgz
+Download https://registry.npmjs.org/ssh2/-/ssh2-1.17.0.tgz
+Download https://registry.npmjs.org/sb-scandir/-/sb-scandir-3.1.1.tgz
+Download https://registry.npmjs.org/is-stream/-/is-stream-2.0.1.tgz
+Download https://registry.npmjs.org/make-dir/-/make-dir-3.1.0.tgz
+Download https://registry.npmjs.org/ms/-/ms-2.1.3.tgz
+Download https://registry.npmjs.org/web-streams-polyfill/-/web-streams-polyfill-4.0.0-beta.3.tgz
+Download https://registry.npmjs.org/node-domexception/-/node-domexception-1.0.0.tgz
+Download https://registry.npmjs.org/event-target-shim/-/event-target-shim-5.0.1.tgz
+Download https://registry.npmjs.org/fetch-blob/-/fetch-blob-3.2.0.tgz
+Download https://registry.npmjs.org/data-uri-to-buffer/-/data-uri-to-buffer-4.0.1.tgz
+Download https://registry.npmjs.org/formdata-polyfill/-/formdata-polyfill-4.0.10.tgz
+Download https://registry.npmjs.org/get-caller-file/-/get-caller-file-2.0.5.tgz
+Download https://registry.npmjs.org/escalade/-/escalade-3.2.0.tgz
+Download https://registry.npmjs.org/require-directory/-/require-directory-2.1.1.tgz
+Download https://registry.npmjs.org/cliui/-/cliui-8.0.1.tgz
+Download https://registry.npmjs.org/string-width/-/string-width-4.2.3.tgz
+Download https://registry.npmjs.org/y18n/-/y18n-5.0.8.tgz
+Download https://registry.npmjs.org/yargs-parser/-/yargs-parser-21.1.1.tgz
+Download https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.6.3.tgz
+Download https://registry.npmjs.org/js-yaml/-/js-yaml-4.1.1.tgz
+Download https://registry.npmjs.org/ansi-styles/-/ansi-styles-4.3.0.tgz
+Download https://registry.npmjs.org/supports-color/-/supports-color-7.2.0.tgz
+Download https://registry.npmjs.org/app-builder-bin/-/app-builder-bin-5.0.0-alpha.10.tgz
+Download https://registry.npmjs.org/https-proxy-agent/-/https-proxy-agent-7.0.6.tgz
+Download https://registry.npmjs.org/source-map-support/-/source-map-support-0.5.21.tgz
+Download https://registry.npmjs.org/7zip-bin/-/7zip-bin-5.2.0.tgz
+Download https://registry.npmjs.org/bluebird-lst/-/bluebird-lst-1.0.9.tgz
+Download https://registry.npmjs.org/@types/debug/-/debug-4.1.13.tgz
+Download https://registry.npmjs.org/http-proxy-agent/-/http-proxy-agent-7.0.2.tgz
+Download https://registry.npmjs.org/stat-mode/-/stat-mode-1.0.0.tgz
+Download https://registry.npmjs.org/temp-file/-/temp-file-3.4.0.tgz
+Download https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.11.tgz
+Download https://registry.npmjs.org/jsonfile/-/jsonfile-6.2.1.tgz
+Download https://registry.npmjs.org/universalify/-/universalify-2.0.1.tgz
+Download https://registry.npmjs.org/@develar/schema-utils/-/schema-utils-2.6.5.tgz
+Download https://registry.npmjs.org/async-exit-hook/-/async-exit-hook-2.0.1.tgz
+Download https://registry.npmjs.org/@malept/flatpak-bundler/-/flatpak-bundler-0.4.0.tgz
+Download https://registry.npmjs.org/@types/fs-extra/-/fs-extra-9.0.13.tgz
+Download https://registry.npmjs.org/config-file-ts/-/config-file-ts-0.2.8-rc1.tgz
+Download https://registry.npmjs.org/sanitize-filename/-/sanitize-filename-1.6.4.tgz
+Download https://registry.npmjs.org/dotenv/-/dotenv-16.6.1.tgz
+Download https://registry.npmjs.org/electron-builder-squirrel-windows/-/electron-builder-squirrel-windows-25.1.8.tgz
+Download https://registry.npmjs.org/form-data/-/form-data-4.0.5.tgz
+Download https://registry.npmjs.org/chromium-pickle-js/-/chromium-pickle-js-0.2.0.tgz
+Download https://registry.npmjs.org/json5/-/json5-2.2.3.tgz
+Download https://registry.npmjs.org/hosted-git-info/-/hosted-git-info-4.1.0.tgz
+Download https://registry.npmjs.org/@electron/universal/-/universal-2.0.1.tgz
+Download https://registry.npmjs.org/tar/-/tar-6.2.1.tgz
+Download https://registry.npmjs.org/@electron/notarize/-/notarize-2.5.0.tgz
+Download https://registry.npmjs.org/ejs/-/ejs-3.1.10.tgz
+Download https://registry.npmjs.org/electron-publish/-/electron-publish-25.1.7.tgz
+Download https://registry.npmjs.org/dotenv-expand/-/dotenv-expand-11.0.7.tgz
+Download https://registry.npmjs.org/@electron/rebuild/-/rebuild-3.6.1.tgz
+Download https://registry.npmjs.org/minimatch/-/minimatch-10.2.5.tgz
+Download https://registry.npmjs.org/resedit/-/resedit-1.7.2.tgz
+Download https://registry.npmjs.org/isbinaryfile/-/isbinaryfile-5.0.7.tgz
+Download https://registry.npmjs.org/@electron/osx-sign/-/osx-sign-1.3.1.tgz
+Download https://registry.npmjs.org/sax/-/sax-1.6.0.tgz
+Download https://registry.npmjs.org/ci-info/-/ci-info-3.9.0.tgz
+Download https://registry.npmjs.org/globals/-/globals-14.0.0.tgz
+Download https://registry.npmjs.org/import-fresh/-/import-fresh-3.3.1.tgz
+Download https://registry.npmjs.org/strip-json-comments/-/strip-json-comments-3.1.1.tgz
+Download https://registry.npmjs.org/eslint-visitor-keys/-/eslint-visitor-keys-3.4.3.tgz
+Download https://registry.npmjs.org/path-key/-/path-key-3.1.1.tgz
+Download https://registry.npmjs.org/shebang-command/-/shebang-command-2.0.0.tgz
+Download https://registry.npmjs.org/which/-/which-2.0.2.tgz
+Download https://registry.npmjs.org/is-extglob/-/is-extglob-2.1.1.tgz
+Download https://registry.npmjs.org/locate-path/-/locate-path-6.0.0.tgz
+Download https://registry.npmjs.org/path-exists/-/path-exists-4.0.0.tgz
+Download https://registry.npmjs.org/esrecurse/-/esrecurse-4.3.0.tgz
+Download https://registry.npmjs.org/estraverse/-/estraverse-5.3.0.tgz
+Download https://registry.npmjs.org/brace-expansion/-/brace-expansion-1.1.14.tgz
+Download https://registry.npmjs.org/@eslint/object-schema/-/object-schema-2.1.7.tgz
+Download https://registry.npmjs.org/json-schema-traverse/-/json-schema-traverse-0.4.1.tgz
+Download https://registry.npmjs.org/fast-json-stable-stringify/-/fast-json-stable-stringify-2.1.0.tgz
+Download https://registry.npmjs.org/uri-js/-/uri-js-4.4.1.tgz
+Download https://registry.npmjs.org/@humanfs/core/-/core-0.19.2.tgz
+Download https://registry.npmjs.org/@humanfs/types/-/types-0.15.0.tgz
+Download https://registry.npmjs.org/@types/json-schema/-/json-schema-7.0.15.tgz
+Download https://registry.npmjs.org/levn/-/levn-0.4.1.tgz
+Download https://registry.npmjs.org/flat-cache/-/flat-cache-4.0.1.tgz
+Download https://registry.npmjs.org/prelude-ls/-/prelude-ls-1.2.1.tgz
+Download https://registry.npmjs.org/deep-is/-/deep-is-0.1.4.tgz
+Download https://registry.npmjs.org/word-wrap/-/word-wrap-1.2.5.tgz
+Download https://registry.npmjs.org/type-check/-/type-check-0.4.0.tgz
+Download https://registry.npmjs.org/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz
+Download https://registry.npmjs.org/acorn-jsx/-/acorn-jsx-5.3.2.tgz
+Download https://registry.npmjs.org/acorn/-/acorn-8.16.0.tgz
+Download https://registry.npmjs.org/quansync/-/quansync-0.2.11.tgz
+Download https://registry.npmjs.org/signal-exit/-/signal-exit-4.1.0.tgz
+Download https://registry.npmjs.org/@changesets/parse/-/parse-0.4.3.tgz
+Download https://registry.npmjs.org/p-filter/-/p-filter-2.1.0.tgz
+Download https://registry.npmjs.org/globby/-/globby-11.1.0.tgz
+Download https://registry.npmjs.org/read-yaml-file/-/read-yaml-file-1.1.0.tgz
+Download https://registry.npmjs.org/@changesets/types/-/types-4.1.0.tgz
+Download https://registry.npmjs.org/@manypkg/find-root/-/find-root-1.1.0.tgz
+Download https://registry.npmjs.org/@babel/runtime/-/runtime-7.29.2.tgz
+Download https://registry.npmjs.org/fs-extra/-/fs-extra-8.1.0.tgz
+Download https://registry.npmjs.org/@changesets/get-version-range-type/-/get-version-range-type-0.4.0.tgz
+Download https://registry.npmjs.org/detect-indent/-/detect-indent-6.1.0.tgz
+Download https://registry.npmjs.org/lodash.startcase/-/lodash.startcase-4.4.0.tgz
+Download https://registry.npmjs.org/prettier/-/prettier-2.8.8.tgz
+Download https://registry.npmjs.org/outdent/-/outdent-0.5.0.tgz
+Download https://registry.npmjs.org/is-subdir/-/is-subdir-1.2.0.tgz
+Download https://registry.npmjs.org/micromatch/-/micromatch-4.0.8.tgz
+Download https://registry.npmjs.org/human-id/-/human-id-4.1.3.tgz
+Download https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.7.2.tgz
+Download https://registry.npmjs.org/chardet/-/chardet-2.1.1.tgz
+Download https://registry.npmjs.org/strip-ansi/-/strip-ansi-6.0.1.tgz
+Download https://registry.npmjs.org/jsonfile/-/jsonfile-4.0.0.tgz
+Download https://registry.npmjs.org/universalify/-/universalify-0.1.2.tgz
+Download https://registry.npmjs.org/extendable-error/-/extendable-error-0.1.7.tgz
+Download https://registry.npmjs.org/fast-diff/-/fast-diff-1.3.0.tgz
+Download https://registry.npmjs.org/@pkgr/core/-/core-0.2.9.tgz
+Download https://registry.npmjs.org/js-tokens/-/js-tokens-4.0.0.tgz
+Download https://registry.npmjs.org/env-paths/-/env-paths-2.2.1.tgz
+Download https://registry.npmjs.org/global-agent/-/global-agent-3.0.0.tgz
+Download https://registry.npmjs.org/progress/-/progress-2.0.3.tgz
+Download https://registry.npmjs.org/got/-/got-11.8.6.tgz
+Download https://registry.npmjs.org/sumchecker/-/sumchecker-3.0.1.tgz
+Download https://registry.npmjs.org/semver/-/semver-6.3.1.tgz
+Download https://registry.npmjs.org/get-stream/-/get-stream-5.2.0.tgz
+Download https://registry.npmjs.org/yauzl/-/yauzl-2.10.0.tgz
+Download https://registry.npmjs.org/@types/yauzl/-/yauzl-2.10.3.tgz
+Download https://registry.npmjs.org/undici-types/-/undici-types-6.21.0.tgz
+Download https://registry.npmjs.org/spark-md5/-/spark-md5-3.0.2.tgz
+Download https://registry.npmjs.org/eventemitter3/-/eventemitter3-5.0.4.tgz
+Download https://registry.npmjs.org/pug/-/pug-3.0.4.tgz
+Download https://registry.npmjs.org/bytes/-/bytes-3.1.2.tgz
+Download https://registry.npmjs.org/fast-glob/-/fast-glob-3.3.3.tgz
+Download https://registry.npmjs.org/markdown-table/-/markdown-table-2.0.0.tgz
+Download https://registry.npmjs.org/cli-table3/-/cli-table3-0.6.5.tgz
+Download https://registry.npmjs.org/blamer/-/blamer-1.0.7.tgz
+Download https://registry.npmjs.org/node-sarif-builder/-/node-sarif-builder-3.4.0.tgz
+Download https://registry.npmjs.org/badgen/-/badgen-3.3.2.tgz
+Download https://registry.npmjs.org/colorette/-/colorette-2.0.20.tgz
+Download https://registry.npmjs.org/cli-truncate/-/cli-truncate-5.2.0.tgz
+Download https://registry.npmjs.org/rfdc/-/rfdc-1.4.1.tgz
+Download https://registry.npmjs.org/log-update/-/log-update-6.1.0.tgz
+Download https://registry.npmjs.org/wrap-ansi/-/wrap-ansi-9.0.2.tgz
+Download https://registry.npmjs.org/bcrypt-pbkdf/-/bcrypt-pbkdf-1.0.2.tgz
+Download https://registry.npmjs.org/nan/-/nan-2.27.0.tgz
+Download https://registry.npmjs.org/cpu-features/-/cpu-features-0.0.10.tgz
+Download https://registry.npmjs.org/asn1/-/asn1-0.2.6.tgz
+Download https://registry.npmjs.org/web-streams-polyfill/-/web-streams-polyfill-3.3.3.tgz
+Download https://registry.npmjs.org/wrap-ansi/-/wrap-ansi-7.0.0.tgz
+Download https://registry.npmjs.org/emoji-regex/-/emoji-regex-8.0.0.tgz
+Download https://registry.npmjs.org/is-fullwidth-code-point/-/is-fullwidth-code-point-3.0.0.tgz
+Download https://registry.npmjs.org/safer-buffer/-/safer-buffer-2.1.2.tgz
+Download https://registry.npmjs.org/argparse/-/argparse-2.0.1.tgz
+Download https://registry.npmjs.org/color-convert/-/color-convert-2.0.1.tgz
+Download https://registry.npmjs.org/has-flag/-/has-flag-4.0.0.tgz
+Download https://registry.npmjs.org/agent-base/-/agent-base-7.1.4.tgz
+Download https://registry.npmjs.org/source-map/-/source-map-0.6.1.tgz
+Download https://registry.npmjs.org/buffer-from/-/buffer-from-1.1.2.tgz
+Download https://registry.npmjs.org/bluebird/-/bluebird-3.7.2.tgz
+Download https://registry.npmjs.org/@types/ms/-/ms-2.1.0.tgz
+Download https://registry.npmjs.org/ajv-keywords/-/ajv-keywords-3.5.2.tgz
+Download https://registry.npmjs.org/tmp-promise/-/tmp-promise-3.0.3.tgz
+Download https://registry.npmjs.org/fs-extra/-/fs-extra-9.1.0.tgz
+Download https://registry.npmjs.org/lodash/-/lodash-4.18.1.tgz
+Download https://registry.npmjs.org/typescript/-/typescript-5.9.3.tgz
+Download https://registry.npmjs.org/glob/-/glob-10.5.0.tgz
+Download https://registry.npmjs.org/truncate-utf8-bytes/-/truncate-utf8-bytes-1.0.2.tgz
+Download https://registry.npmjs.org/archiver/-/archiver-5.3.2.tgz
+Download https://registry.npmjs.org/combined-stream/-/combined-stream-1.0.8.tgz
+Download https://registry.npmjs.org/asynckit/-/asynckit-0.4.0.tgz
+Download https://registry.npmjs.org/es-set-tostringtag/-/es-set-tostringtag-2.1.0.tgz
+Download https://registry.npmjs.org/hasown/-/hasown-2.0.3.tgz
+Download https://registry.npmjs.org/mime-types/-/mime-types-2.1.35.tgz
+Download https://registry.npmjs.org/lru-cache/-/lru-cache-6.0.0.tgz
+Download https://registry.npmjs.org/plist/-/plist-3.1.1.tgz
+Download https://registry.npmjs.org/@malept/cross-spawn-promise/-/cross-spawn-promise-2.0.0.tgz
+Download https://registry.npmjs.org/minimatch/-/minimatch-9.0.9.tgz
+Download https://registry.npmjs.org/@electron/asar/-/asar-3.4.1.tgz
+Download https://registry.npmjs.org/dir-compare/-/dir-compare-4.2.0.tgz
+Download https://registry.npmjs.org/mkdirp/-/mkdirp-1.0.4.tgz
+Download https://registry.npmjs.org/chownr/-/chownr-2.0.0.tgz
+Download https://registry.npmjs.org/fs-minipass/-/fs-minipass-2.1.0.tgz
+Download https://registry.npmjs.org/minipass/-/minipass-5.0.0.tgz
+Download https://registry.npmjs.org/minizlib/-/minizlib-2.1.2.tgz
+Download https://registry.npmjs.org/yallist/-/yallist-4.0.0.tgz
+Download https://registry.npmjs.org/promise-retry/-/promise-retry-2.0.1.tgz
+Download https://registry.npmjs.org/jake/-/jake-10.9.4.tgz
+Download https://registry.npmjs.org/mime/-/mime-2.6.0.tgz
+Download https://registry.npmjs.org/detect-libc/-/detect-libc-2.1.2.tgz
+Download https://registry.npmjs.org/ora/-/ora-5.4.1.tgz
+Download https://registry.npmjs.org/node-gyp/-/node-gyp-9.4.1.tgz
+Download https://registry.npmjs.org/node-abi/-/node-abi-3.92.0.tgz
+Download https://registry.npmjs.org/node-api-version/-/node-api-version-0.2.1.tgz
+Download https://registry.npmjs.org/read-binary-file-arch/-/read-binary-file-arch-1.0.6.tgz
+Download https://registry.npmjs.org/brace-expansion/-/brace-expansion-5.0.6.tgz
+Download https://registry.npmjs.org/pe-library/-/pe-library-0.4.1.tgz
+Download https://registry.npmjs.org/compare-version/-/compare-version-0.1.2.tgz
+Download https://registry.npmjs.org/isbinaryfile/-/isbinaryfile-4.0.10.tgz
+Download https://registry.npmjs.org/minimist/-/minimist-1.2.8.tgz
+Download https://registry.npmjs.org/parent-module/-/parent-module-1.0.1.tgz
+Download https://registry.npmjs.org/resolve-from/-/resolve-from-4.0.0.tgz
+Download https://registry.npmjs.org/shebang-regex/-/shebang-regex-3.0.0.tgz
+Download https://registry.npmjs.org/isexe/-/isexe-2.0.0.tgz
+Download https://registry.npmjs.org/p-locate/-/p-locate-5.0.0.tgz
+Download https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.2.tgz
+Download https://registry.npmjs.org/concat-map/-/concat-map-0.0.1.tgz
+Download https://registry.npmjs.org/punycode/-/punycode-2.3.1.tgz
+Download https://registry.npmjs.org/flatted/-/flatted-3.4.2.tgz
+Download https://registry.npmjs.org/keyv/-/keyv-4.5.4.tgz
+Download https://registry.npmjs.org/p-map/-/p-map-2.1.0.tgz
+Download https://registry.npmjs.org/merge2/-/merge2-1.4.1.tgz
+Download https://registry.npmjs.org/dir-glob/-/dir-glob-3.0.1.tgz
+Download https://registry.npmjs.org/slash/-/slash-3.0.0.tgz
+Download https://registry.npmjs.org/array-union/-/array-union-2.1.0.tgz
+Download https://registry.npmjs.org/strip-bom/-/strip-bom-3.0.0.tgz
+Download https://registry.npmjs.org/js-yaml/-/js-yaml-3.14.2.tgz
+Download https://registry.npmjs.org/pify/-/pify-4.0.1.tgz
+Download https://registry.npmjs.org/find-up/-/find-up-4.1.0.tgz
+Download https://registry.npmjs.org/@types/node/-/node-12.20.55.tgz
+Download https://registry.npmjs.org/better-path-resolve/-/better-path-resolve-1.0.0.tgz
+Download https://registry.npmjs.org/picomatch/-/picomatch-2.3.2.tgz
+Download https://registry.npmjs.org/braces/-/braces-3.0.3.tgz
+Download https://registry.npmjs.org/ansi-regex/-/ansi-regex-5.0.1.tgz
+Download https://registry.npmjs.org/serialize-error/-/serialize-error-7.0.1.tgz
+Download https://registry.npmjs.org/matcher/-/matcher-3.0.0.tgz
+Download https://registry.npmjs.org/boolean/-/boolean-3.2.0.tgz
+Download https://registry.npmjs.org/roarr/-/roarr-2.15.4.tgz
+Download https://registry.npmjs.org/es6-error/-/es6-error-4.1.1.tgz
+Download https://registry.npmjs.org/cacheable-lookup/-/cacheable-lookup-5.0.4.tgz
+Download https://registry.npmjs.org/http2-wrapper/-/http2-wrapper-1.0.3.tgz
+Download https://registry.npmjs.org/@types/cacheable-request/-/cacheable-request-6.0.3.tgz
+Download https://registry.npmjs.org/@types/responselike/-/responselike-1.0.3.tgz
+Download https://registry.npmjs.org/@szmarczak/http-timer/-/http-timer-4.0.6.tgz
+Download https://registry.npmjs.org/decompress-response/-/decompress-response-6.0.0.tgz
+Download https://registry.npmjs.org/responselike/-/responselike-2.0.1.tgz
+Download https://registry.npmjs.org/@sindresorhus/is/-/is-4.6.0.tgz
+Download https://registry.npmjs.org/cacheable-request/-/cacheable-request-7.0.4.tgz
+Download https://registry.npmjs.org/lowercase-keys/-/lowercase-keys-2.0.0.tgz
+Download https://registry.npmjs.org/p-cancelable/-/p-cancelable-2.1.1.tgz
+Download https://registry.npmjs.org/pump/-/pump-3.0.4.tgz
+Download https://registry.npmjs.org/fd-slicer/-/fd-slicer-1.1.0.tgz
+Download https://registry.npmjs.org/buffer-crc32/-/buffer-crc32-0.2.13.tgz
+Download https://registry.npmjs.org/pug-parser/-/pug-parser-6.0.0.tgz
+Download https://registry.npmjs.org/pug-strip-comments/-/pug-strip-comments-2.0.0.tgz
+Download https://registry.npmjs.org/pug-filters/-/pug-filters-4.0.0.tgz
+Download https://registry.npmjs.org/pug-code-gen/-/pug-code-gen-3.0.4.tgz
+Download https://registry.npmjs.org/pug-linker/-/pug-linker-4.0.0.tgz
+Download https://registry.npmjs.org/pug-runtime/-/pug-runtime-3.0.1.tgz
+Download https://registry.npmjs.org/pug-lexer/-/pug-lexer-5.0.1.tgz
+Download https://registry.npmjs.org/pug-load/-/pug-load-3.0.0.tgz
+Download https://registry.npmjs.org/@nodelib/fs.stat/-/fs.stat-2.0.5.tgz
+Download https://registry.npmjs.org/glob-parent/-/glob-parent-5.1.2.tgz
+Download https://registry.npmjs.org/@nodelib/fs.walk/-/fs.walk-1.2.8.tgz
+Download https://registry.npmjs.org/repeat-string/-/repeat-string-1.6.1.tgz
+Download https://registry.npmjs.org/@colors/colors/-/colors-1.5.0.tgz
+Download https://registry.npmjs.org/execa/-/execa-4.1.0.tgz
+Download https://registry.npmjs.org/@types/sarif/-/sarif-2.1.7.tgz
+Download https://registry.npmjs.org/string-width/-/string-width-8.2.1.tgz
+Download https://registry.npmjs.org/slice-ansi/-/slice-ansi-8.0.0.tgz
+Download https://registry.npmjs.org/slice-ansi/-/slice-ansi-7.1.2.tgz
+Download https://registry.npmjs.org/cli-cursor/-/cli-cursor-5.0.0.tgz
+Download https://registry.npmjs.org/ansi-escapes/-/ansi-escapes-7.3.0.tgz
+Download https://registry.npmjs.org/strip-ansi/-/strip-ansi-7.2.0.tgz
+Download https://registry.npmjs.org/ansi-styles/-/ansi-styles-6.2.3.tgz
+Download https://registry.npmjs.org/string-width/-/string-width-7.2.0.tgz
+Download https://registry.npmjs.org/tweetnacl/-/tweetnacl-0.14.5.tgz
+Download https://registry.npmjs.org/buildcheck/-/buildcheck-0.0.7.tgz
+Download https://registry.npmjs.org/color-name/-/color-name-1.1.4.tgz
+Download https://registry.npmjs.org/tmp/-/tmp-0.2.5.tgz
+Download https://registry.npmjs.org/at-least-node/-/at-least-node-1.0.0.tgz
+Download https://registry.npmjs.org/path-scurry/-/path-scurry-1.11.1.tgz
+Download https://registry.npmjs.org/jackspeak/-/jackspeak-3.4.3.tgz
+Download https://registry.npmjs.org/minipass/-/minipass-7.1.3.tgz
+Download https://registry.npmjs.org/package-json-from-dist/-/package-json-from-dist-1.0.1.tgz
+Download https://registry.npmjs.org/foreground-child/-/foreground-child-3.3.1.tgz
+Download https://registry.npmjs.org/utf8-byte-length/-/utf8-byte-length-1.0.5.tgz
+Download https://registry.npmjs.org/tar-stream/-/tar-stream-2.2.0.tgz
+Download https://registry.npmjs.org/zip-stream/-/zip-stream-4.1.1.tgz
+Download https://registry.npmjs.org/async/-/async-3.2.6.tgz
+Download https://registry.npmjs.org/readable-stream/-/readable-stream-3.6.2.tgz
+Download https://registry.npmjs.org/readdir-glob/-/readdir-glob-1.1.3.tgz
+Download https://registry.npmjs.org/archiver-utils/-/archiver-utils-2.1.0.tgz
+Download https://registry.npmjs.org/delayed-stream/-/delayed-stream-1.0.0.tgz
+Download https://registry.npmjs.org/has-tostringtag/-/has-tostringtag-1.0.2.tgz
+Download https://registry.npmjs.org/get-intrinsic/-/get-intrinsic-1.3.0.tgz
+Download https://registry.npmjs.org/es-errors/-/es-errors-1.3.0.tgz
+Download https://registry.npmjs.org/function-bind/-/function-bind-1.1.2.tgz
+Download https://registry.npmjs.org/mime-db/-/mime-db-1.52.0.tgz
+Download https://registry.npmjs.org/@xmldom/xmldom/-/xmldom-0.9.10.tgz
+Download https://registry.npmjs.org/xmlbuilder/-/xmlbuilder-15.1.1.tgz
+Download https://registry.npmjs.org/base64-js/-/base64-js-1.5.1.tgz
+Download https://registry.npmjs.org/brace-expansion/-/brace-expansion-2.1.0.tgz
+Download https://registry.npmjs.org/glob/-/glob-7.2.3.tgz
+Download https://registry.npmjs.org/p-limit/-/p-limit-3.1.0.tgz
+Download https://registry.npmjs.org/minipass/-/minipass-3.3.6.tgz
+Download https://registry.npmjs.org/err-code/-/err-code-2.0.3.tgz
+Download https://registry.npmjs.org/retry/-/retry-0.12.0.tgz
+Download https://registry.npmjs.org/filelist/-/filelist-1.0.6.tgz
+Download https://registry.npmjs.org/bl/-/bl-4.1.0.tgz
+Download https://registry.npmjs.org/cli-spinners/-/cli-spinners-2.9.2.tgz
+Download https://registry.npmjs.org/is-interactive/-/is-interactive-1.0.0.tgz
+Download https://registry.npmjs.org/is-unicode-supported/-/is-unicode-supported-0.1.0.tgz
+Download https://registry.npmjs.org/cli-cursor/-/cli-cursor-3.1.0.tgz
+Download https://registry.npmjs.org/log-symbols/-/log-symbols-4.1.0.tgz
+Download https://registry.npmjs.org/wcwidth/-/wcwidth-1.0.1.tgz
+Download https://registry.npmjs.org/make-fetch-happen/-/make-fetch-happen-10.2.1.tgz
+Download https://registry.npmjs.org/nopt/-/nopt-6.0.0.tgz
+Download https://registry.npmjs.org/npmlog/-/npmlog-6.0.2.tgz
+Download https://registry.npmjs.org/exponential-backoff/-/exponential-backoff-3.1.3.tgz
+Download https://registry.npmjs.org/rimraf/-/rimraf-3.0.2.tgz
+Download https://registry.npmjs.org/balanced-match/-/balanced-match-4.0.4.tgz
+Download https://registry.npmjs.org/callsites/-/callsites-3.1.0.tgz
+Download https://registry.npmjs.org/json-buffer/-/json-buffer-3.0.1.tgz
+Download https://registry.npmjs.org/path-type/-/path-type-4.0.0.tgz
+Download https://registry.npmjs.org/esprima/-/esprima-4.0.1.tgz
+Download https://registry.npmjs.org/argparse/-/argparse-1.0.10.tgz
+Download https://registry.npmjs.org/locate-path/-/locate-path-5.0.0.tgz
+Download https://registry.npmjs.org/is-windows/-/is-windows-1.0.2.tgz
+Download https://registry.npmjs.org/fill-range/-/fill-range-7.1.1.tgz
+Download https://registry.npmjs.org/type-fest/-/type-fest-0.13.1.tgz
+Download https://registry.npmjs.org/sprintf-js/-/sprintf-js-1.1.3.tgz
+Download https://registry.npmjs.org/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz
+Download https://registry.npmjs.org/globalthis/-/globalthis-1.0.4.tgz
+Download https://registry.npmjs.org/semver-compare/-/semver-compare-1.0.0.tgz
+Download https://registry.npmjs.org/detect-node/-/detect-node-2.1.0.tgz
+Download https://registry.npmjs.org/resolve-alpn/-/resolve-alpn-1.2.1.tgz
+Download https://registry.npmjs.org/quick-lru/-/quick-lru-5.1.1.tgz
+Download https://registry.npmjs.org/@types/http-cache-semantics/-/http-cache-semantics-4.2.0.tgz
+Download https://registry.npmjs.org/@types/keyv/-/keyv-3.1.4.tgz
+Download https://registry.npmjs.org/defer-to-connect/-/defer-to-connect-2.0.1.tgz
+Download https://registry.npmjs.org/mimic-response/-/mimic-response-3.1.0.tgz
+Download https://registry.npmjs.org/normalize-url/-/normalize-url-6.1.0.tgz
+Download https://registry.npmjs.org/http-cache-semantics/-/http-cache-semantics-4.2.0.tgz
+Download https://registry.npmjs.org/clone-response/-/clone-response-1.0.3.tgz
+Download https://registry.npmjs.org/end-of-stream/-/end-of-stream-1.4.5.tgz
+Download https://registry.npmjs.org/once/-/once-1.4.0.tgz
+Download https://registry.npmjs.org/pend/-/pend-1.2.0.tgz
+Download https://registry.npmjs.org/token-stream/-/token-stream-1.0.0.tgz
+Download https://registry.npmjs.org/pug-error/-/pug-error-2.1.0.tgz
+Download https://registry.npmjs.org/pug-walk/-/pug-walk-2.0.0.tgz
+Download https://registry.npmjs.org/resolve/-/resolve-1.22.12.tgz
+Download https://registry.npmjs.org/jstransformer/-/jstransformer-1.0.0.tgz
+Download https://registry.npmjs.org/constantinople/-/constantinople-4.0.1.tgz
+Download https://registry.npmjs.org/pug-attrs/-/pug-attrs-3.0.0.tgz
+Download https://registry.npmjs.org/doctypes/-/doctypes-1.1.0.tgz
+Download https://registry.npmjs.org/with/-/with-7.0.2.tgz
+Download https://registry.npmjs.org/js-stringify/-/js-stringify-1.0.2.tgz
+Download https://registry.npmjs.org/void-elements/-/void-elements-3.1.0.tgz
+Download https://registry.npmjs.org/character-parser/-/character-parser-2.2.0.tgz
+Download https://registry.npmjs.org/is-expression/-/is-expression-4.0.0.tgz
+Download https://registry.npmjs.org/object-assign/-/object-assign-4.1.1.tgz
+Download https://registry.npmjs.org/fastq/-/fastq-1.20.1.tgz
+Download https://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz
+Download https://registry.npmjs.org/onetime/-/onetime-5.1.2.tgz
+Download https://registry.npmjs.org/human-signals/-/human-signals-1.1.1.tgz
+Download https://registry.npmjs.org/merge-stream/-/merge-stream-2.0.0.tgz
+Download https://registry.npmjs.org/npm-run-path/-/npm-run-path-4.0.1.tgz
+Download https://registry.npmjs.org/signal-exit/-/signal-exit-3.0.7.tgz
+Download https://registry.npmjs.org/strip-final-newline/-/strip-final-newline-2.0.0.tgz
+Download https://registry.npmjs.org/get-east-asian-width/-/get-east-asian-width-1.6.0.tgz
+Download https://registry.npmjs.org/is-fullwidth-code-point/-/is-fullwidth-code-point-5.1.0.tgz
+Download https://registry.npmjs.org/restore-cursor/-/restore-cursor-5.1.0.tgz
+Download https://registry.npmjs.org/environment/-/environment-1.1.0.tgz
+Download https://registry.npmjs.org/ansi-regex/-/ansi-regex-6.2.2.tgz
+Download https://registry.npmjs.org/emoji-regex/-/emoji-regex-10.6.0.tgz
+Download https://registry.npmjs.org/lru-cache/-/lru-cache-10.4.3.tgz
+Download https://registry.npmjs.org/@isaacs/cliui/-/cliui-8.0.2.tgz
+Download https://registry.npmjs.org/@pkgjs/parseargs/-/parseargs-0.11.0.tgz
+Download https://registry.npmjs.org/fs-constants/-/fs-constants-1.0.0.tgz
+Download https://registry.npmjs.org/inherits/-/inherits-2.0.4.tgz
+Download https://registry.npmjs.org/archiver-utils/-/archiver-utils-3.0.4.tgz
+Download https://registry.npmjs.org/compress-commons/-/compress-commons-4.1.2.tgz
+Download https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz
+Download https://registry.npmjs.org/string_decoder/-/string_decoder-1.3.0.tgz
+Download https://registry.npmjs.org/minimatch/-/minimatch-5.1.9.tgz
+Download https://registry.npmjs.org/normalize-path/-/normalize-path-3.0.0.tgz
+Download https://registry.npmjs.org/lodash.isplainobject/-/lodash.isplainobject-4.0.6.tgz
+Download https://registry.npmjs.org/readable-stream/-/readable-stream-2.3.8.tgz
+Download https://registry.npmjs.org/lodash.difference/-/lodash.difference-4.5.0.tgz
+Download https://registry.npmjs.org/lazystream/-/lazystream-1.0.1.tgz
+Download https://registry.npmjs.org/lodash.defaults/-/lodash.defaults-4.2.0.tgz
+Download https://registry.npmjs.org/lodash.flatten/-/lodash.flatten-4.4.0.tgz
+Download https://registry.npmjs.org/lodash.union/-/lodash.union-4.6.0.tgz
+Download https://registry.npmjs.org/has-symbols/-/has-symbols-1.1.0.tgz
+Download https://registry.npmjs.org/es-object-atoms/-/es-object-atoms-1.1.1.tgz
+Download https://registry.npmjs.org/math-intrinsics/-/math-intrinsics-1.1.0.tgz
+Download https://registry.npmjs.org/call-bind-apply-helpers/-/call-bind-apply-helpers-1.0.2.tgz
+Download https://registry.npmjs.org/gopd/-/gopd-1.2.0.tgz
+Download https://registry.npmjs.org/es-define-property/-/es-define-property-1.0.1.tgz
+Download https://registry.npmjs.org/get-proto/-/get-proto-1.0.1.tgz
+Download https://registry.npmjs.org/inflight/-/inflight-1.0.6.tgz
+Download https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz
+Download https://registry.npmjs.org/path-is-absolute/-/path-is-absolute-1.0.1.tgz
+Download https://registry.npmjs.org/yocto-queue/-/yocto-queue-0.1.0.tgz
+Download https://registry.npmjs.org/buffer/-/buffer-5.7.1.tgz
+Download https://registry.npmjs.org/restore-cursor/-/restore-cursor-3.1.0.tgz
+Download https://registry.npmjs.org/defaults/-/defaults-1.0.4.tgz
+Download https://registry.npmjs.org/minipass-fetch/-/minipass-fetch-2.1.2.tgz
+Download https://registry.npmjs.org/minipass-pipeline/-/minipass-pipeline-1.2.4.tgz
+Download https://registry.npmjs.org/negotiator/-/negotiator-0.6.4.tgz
+Download https://registry.npmjs.org/https-proxy-agent/-/https-proxy-agent-5.0.1.tgz
+Download https://registry.npmjs.org/http-proxy-agent/-/http-proxy-agent-5.0.0.tgz
+Download https://registry.npmjs.org/cacache/-/cacache-16.1.3.tgz
+Download https://registry.npmjs.org/socks-proxy-agent/-/socks-proxy-agent-7.0.0.tgz
+Download https://registry.npmjs.org/agentkeepalive/-/agentkeepalive-4.6.0.tgz
+Download https://registry.npmjs.org/is-lambda/-/is-lambda-1.0.1.tgz
+Download https://registry.npmjs.org/lru-cache/-/lru-cache-7.18.3.tgz
+Download https://registry.npmjs.org/minipass-flush/-/minipass-flush-1.0.7.tgz
+Download https://registry.npmjs.org/ssri/-/ssri-9.0.1.tgz
+Download https://registry.npmjs.org/minipass-collect/-/minipass-collect-1.0.2.tgz
+Download https://registry.npmjs.org/abbrev/-/abbrev-1.1.1.tgz
+Download https://registry.npmjs.org/are-we-there-yet/-/are-we-there-yet-3.0.1.tgz
+Download https://registry.npmjs.org/console-control-strings/-/console-control-strings-1.1.0.tgz
+Download https://registry.npmjs.org/gauge/-/gauge-4.0.4.tgz
+Download https://registry.npmjs.org/set-blocking/-/set-blocking-2.0.0.tgz
+Download https://registry.npmjs.org/sprintf-js/-/sprintf-js-1.0.3.tgz
+Download https://registry.npmjs.org/p-locate/-/p-locate-4.1.0.tgz
+Download https://registry.npmjs.org/to-regex-range/-/to-regex-range-5.0.1.tgz
+Download https://registry.npmjs.org/define-properties/-/define-properties-1.2.1.tgz
+Download https://registry.npmjs.org/mimic-response/-/mimic-response-1.0.1.tgz
+Download https://registry.npmjs.org/wrappy/-/wrappy-1.0.2.tgz
+Download https://registry.npmjs.org/is-core-module/-/is-core-module-2.16.2.tgz
+Download https://registry.npmjs.org/path-parse/-/path-parse-1.0.7.tgz
+Download https://registry.npmjs.org/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz
+Download https://registry.npmjs.org/promise/-/promise-7.3.1.tgz
+Download https://registry.npmjs.org/is-promise/-/is-promise-2.2.2.tgz
+Download https://registry.npmjs.org/@babel/parser/-/parser-7.29.3.tgz
+Download https://registry.npmjs.org/@babel/types/-/types-7.29.0.tgz
+Download https://registry.npmjs.org/babel-walk/-/babel-walk-3.0.0-canary-5.tgz
+Download https://registry.npmjs.org/assert-never/-/assert-never-1.4.0.tgz
+Download https://registry.npmjs.org/is-regex/-/is-regex-1.2.1.tgz
+Download https://registry.npmjs.org/acorn/-/acorn-7.4.1.tgz
+Download https://registry.npmjs.org/reusify/-/reusify-1.1.0.tgz
+Download https://registry.npmjs.org/run-parallel/-/run-parallel-1.2.0.tgz
+Download https://registry.npmjs.org/mimic-fn/-/mimic-fn-2.1.0.tgz
+Download https://registry.npmjs.org/onetime/-/onetime-7.0.0.tgz
+Download https://registry.npmjs.org/wrap-ansi/-/wrap-ansi-8.1.0.tgz
+Download https://registry.npmjs.org/string-width/-/string-width-5.1.2.tgz
+Download https://registry.npmjs.org/crc32-stream/-/crc32-stream-4.0.3.tgz
+Download https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.2.1.tgz
+Download https://registry.npmjs.org/core-util-is/-/core-util-is-1.0.2.tgz
+Download https://registry.npmjs.org/isarray/-/isarray-1.0.0.tgz
+Download https://registry.npmjs.org/string_decoder/-/string_decoder-1.1.1.tgz
+Download https://registry.npmjs.org/process-nextick-args/-/process-nextick-args-2.0.1.tgz
+Download https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.1.2.tgz
+Download https://registry.npmjs.org/dunder-proto/-/dunder-proto-1.0.1.tgz
+Download https://registry.npmjs.org/ieee754/-/ieee754-1.2.1.tgz
+Download https://registry.npmjs.org/clone/-/clone-1.0.4.tgz
+Download https://registry.npmjs.org/minipass-sized/-/minipass-sized-1.0.3.tgz
+Download https://registry.npmjs.org/encoding/-/encoding-0.1.13.tgz
+Download https://registry.npmjs.org/agent-base/-/agent-base-6.0.2.tgz
+Download https://registry.npmjs.org/@tootallnate/once/-/once-2.0.1.tgz
+Download https://registry.npmjs.org/infer-owner/-/infer-owner-1.0.4.tgz
+Download https://registry.npmjs.org/promise-inflight/-/promise-inflight-1.0.1.tgz
+Download https://registry.npmjs.org/glob/-/glob-8.1.0.tgz
+Download https://registry.npmjs.org/@npmcli/move-file/-/move-file-2.0.1.tgz
+Download https://registry.npmjs.org/unique-filename/-/unique-filename-2.0.1.tgz
+Download https://registry.npmjs.org/@npmcli/fs/-/fs-2.1.2.tgz
+Download https://registry.npmjs.org/p-map/-/p-map-4.0.0.tgz
+Download https://registry.npmjs.org/socks/-/socks-2.8.9.tgz
+Download https://registry.npmjs.org/humanize-ms/-/humanize-ms-1.2.1.tgz
+Download https://registry.npmjs.org/delegates/-/delegates-1.0.0.tgz
+Download https://registry.npmjs.org/aproba/-/aproba-2.1.0.tgz
+Download https://registry.npmjs.org/wide-align/-/wide-align-1.1.5.tgz
+Download https://registry.npmjs.org/has-unicode/-/has-unicode-2.0.1.tgz
+Download https://registry.npmjs.org/color-support/-/color-support-1.1.3.tgz
+Download https://registry.npmjs.org/p-limit/-/p-limit-2.3.0.tgz
+Download https://registry.npmjs.org/is-number/-/is-number-7.0.0.tgz
+Download https://registry.npmjs.org/define-data-property/-/define-data-property-1.1.4.tgz
+Download https://registry.npmjs.org/has-property-descriptors/-/has-property-descriptors-1.0.2.tgz
+Download https://registry.npmjs.org/object-keys/-/object-keys-1.1.1.tgz
+Download https://registry.npmjs.org/asap/-/asap-2.0.6.tgz
+Download https://registry.npmjs.org/@babel/helper-validator-identifier/-/helper-validator-identifier-7.28.5.tgz
+Download https://registry.npmjs.org/@babel/helper-string-parser/-/helper-string-parser-7.27.1.tgz
+Download https://registry.npmjs.org/call-bound/-/call-bound-1.0.4.tgz
+Download https://registry.npmjs.org/queue-microtask/-/queue-microtask-1.2.3.tgz
+Download https://registry.npmjs.org/mimic-function/-/mimic-function-5.0.1.tgz
+Download https://registry.npmjs.org/emoji-regex/-/emoji-regex-9.2.2.tgz
+Download https://registry.npmjs.org/eastasianwidth/-/eastasianwidth-0.2.0.tgz
+Download https://registry.npmjs.org/crc-32/-/crc-32-1.2.2.tgz
+Download https://registry.npmjs.org/unique-slug/-/unique-slug-3.0.0.tgz
+Download https://registry.npmjs.org/@gar/promisify/-/promisify-1.1.3.tgz
+Download https://registry.npmjs.org/aggregate-error/-/aggregate-error-3.1.0.tgz
+Download https://registry.npmjs.org/ip-address/-/ip-address-10.2.0.tgz
+Download https://registry.npmjs.org/smart-buffer/-/smart-buffer-4.2.0.tgz
+Download https://registry.npmjs.org/p-try/-/p-try-2.2.0.tgz
+Download https://registry.npmjs.org/indent-string/-/indent-string-4.0.0.tgz
+Download https://registry.npmjs.org/clean-stack/-/clean-stack-2.2.0.tgz
+Initialize electron-builder@25.1.8
+Initialize vk-io@4.10.1
+Initialize eslint-plugin-prettier@5.5.5
+Initialize lino-arguments@0.3.0
+Initialize esbuild@0.24.2
+Initialize react@18.3.1
+Initialize husky@9.1.7
+Initialize eslint-config-prettier@10.1.8
+Initialize inspectable@2.1.1
+Initialize debug@4.4.3
+Initialize lino-objects-codec@0.3.6
+Initialize lint-staged@16.4.0
+Initialize abort-controller@3.0.0
+Initialize node-fetch@3.3.2
+Initialize form-data-encoder@1.9.0
+Initialize yargs@17.7.2
+Initialize chalk@4.1.2
+Initialize fs-extra@10.1.0
+Initialize jscpd@4.2.2
+Initialize minimatch@3.1.5
+Initialize find-up@5.0.0
+Initialize is-glob@4.0.3
+Initialize dmg-builder@25.1.8
+Initialize simple-update-notifier@2.0.0
+Initialize glob-parent@6.0.2
+Initialize node-ssh@13.2.1
+Initialize middleware-io@2.8.1
+Initialize builder-util@25.1.7
+Initialize cross-spawn@7.0.6
+Initialize escape-string-regexp@4.0.0
+Initialize eslint-visitor-keys@4.2.1
+Initialize is-ci@3.0.1
+Initialize imurmurhash@0.1.4
+Initialize fast-deep-equal@3.1.3
+Initialize lazy-val@1.0.5
+Initialize json-stable-stringify-without-jsonify@1.0.1
+Initialize formdata-node@4.4.1
+Initialize ignore@5.3.2
+Initialize mri@1.2.0
+Initialize esutils@2.0.3
+Initialize @humanwhocodes/retry@0.4.3
+Initialize @types/estree@1.0.9
+Initialize optionator@0.9.4
+Initialize @humanwhocodes/module-importer@1.0.1
+Initialize @eslint-community/eslint-utils@4.9.1
+Initialize package-manager-detector@0.2.11
+Initialize @eslint/plugin-kit@0.4.1
+Initialize getenv@2.0.0
+Initialize builder-util-runtime@9.2.10
+Initialize scheduler@0.23.2
+Initialize @eslint/config-helpers@0.4.2
+Initialize links-notation@0.11.2
+Initialize @changesets/git@3.0.4
+Initialize loose-envify@1.4.0
+Initialize spawndamnit@3.0.1
+Initialize @changesets/pre@2.0.2
+Initialize @changesets/read@0.6.7
+Initialize extract-zip@2.0.1
+Initialize @changesets/logger@0.1.1
+Initialize @changesets/errors@0.2.0
+Initialize @eslint/js@9.39.4
+Initialize @inquirer/external-editor@1.0.3
+Initialize resolve-from@5.0.0
+Initialize ansi-colors@4.1.3
+Initialize @changesets/write@0.4.0
+Initialize @humanfs/node@0.16.8
+Initialize prettier-linter-helpers@1.0.1
+Initialize @changesets/should-skip-package@0.1.2
+Initialize @changesets/types@6.1.0
+Initialize synckit@0.11.12
+Initialize electron@33.4.11
+Initialize @changesets/assemble-release-plan@6.0.10
+Initialize semver@7.8.0
+Initialize natural-compare@1.4.0
+Initialize eslint-scope@8.4.0
+Initialize term-size@2.2.1
+Initialize espree@10.4.0
+Initialize lino-env@0.2.8
+Initialize file-entry-cache@8.0.0
+Initialize @eslint/config-array@0.21.2
+Initialize lodash.merge@4.6.2
+Initialize @manypkg/get-packages@1.1.3
+Initialize enquirer@2.4.1
+Initialize @eslint/core@0.17.0
+Initialize picocolors@1.1.1
+Initialize @eslint-community/regexpp@4.12.2
+Initialize @changesets/changelog-git@0.2.1
+Initialize @changesets/cli@2.31.0
+Initialize fs-extra@7.0.1
+Initialize @electron/get@2.0.3
+Initialize esquery@1.7.0
+Initialize ajv@6.15.0
+Initialize @eslint/eslintrc@3.3.5
+Initialize listr2@9.0.5
+Initialize commander@5.1.0
+Initialize colors@1.4.0
+Initialize commander@14.0.3
+Initialize fs-extra@11.3.5
+Initialize yaml@2.9.0
+Initialize eslint@9.39.4
+Initialize jscpd-sarif-reporter@4.2.2
+Initialize ms@2.1.3
+Initialize formdata-polyfill@4.0.10
+Initialize escalade@3.2.0
+Initialize string-argv@0.3.2
+Initialize picomatch@4.0.4
+Initialize make-dir@3.1.0
+Initialize get-caller-file@2.0.5
+Initialize string-width@4.2.3
+Initialize is-stream@2.0.1
+Initialize sb-promise-queue@2.1.1
+Initialize data-uri-to-buffer@4.0.1
+Initialize require-directory@2.1.1
+Initialize sb-scandir@3.1.1
+Initialize fetch-blob@3.2.0
+Initialize shell-escape@0.2.0
+Initialize tinyexec@1.1.2
+Initialize node-domexception@1.0.0
+Initialize event-target-shim@5.0.1
+Initialize web-streams-polyfill@4.0.0-beta.3
+Initialize ansi-styles@4.3.0
+Initialize source-map-support@0.5.21
+Initialize yargs-parser@21.1.1
+Initialize temp-file@3.4.0
+Initialize y18n@5.0.8
+Initialize async-exit-hook@2.0.1
+Initialize https-proxy-agent@7.0.6
+Initialize graceful-fs@4.2.11
+Initialize js-yaml@4.1.1
+Initialize dotenv@16.6.1
+Initialize jsonfile@6.2.1
+Initialize bluebird-lst@1.0.9
+Initialize cliui@8.0.1
+Initialize http-proxy-agent@7.0.2
+Initialize electron-builder-squirrel-windows@25.1.8
+Initialize config-file-ts@0.2.8-rc1
+Initialize universalify@2.0.1
+Initialize @types/debug@4.1.13
+Initialize supports-color@7.2.0
+Initialize hosted-git-info@4.1.0
+Initialize chromium-pickle-js@0.2.0
+Initialize path-exists@4.0.0
+Initialize import-fresh@3.3.1
+Initialize eslint-visitor-keys@3.4.3
+Initialize which@2.0.2
+Initialize stat-mode@1.0.0
+Initialize electron-publish@25.1.7
+Initialize tar@6.2.1
+Initialize sax@1.6.0
+Initialize json5@2.2.3
+Initialize globals@14.0.0
+Initialize sanitize-filename@1.6.4
+Initialize form-data@4.0.5
+Initialize isbinaryfile@5.0.7
+Initialize ci-info@3.9.0
+Initialize ejs@3.1.10
+Initialize path-key@3.1.1
+Initialize is-extglob@2.1.1
+Initialize shebang-command@2.0.0
+Initialize estraverse@5.3.0
+Initialize minimatch@10.2.5
+Initialize dotenv-expand@11.0.7
+Initialize locate-path@6.0.0
+Initialize esrecurse@4.3.0
+Initialize strip-json-comments@3.1.1
+Initialize @types/fs-extra@9.0.13
+Initialize brace-expansion@1.1.14
+Initialize @electron/universal@2.0.1
+Initialize @malept/flatpak-bundler@0.4.0
+Initialize @changesets/get-release-plan@4.0.16
+Initialize @electron/notarize@2.5.0
+Initialize @develar/schema-utils@2.6.5
+Initialize @electron/rebuild@3.6.1
+Initialize @electron/osx-sign@1.3.1
+Initialize resedit@1.7.2
+Initialize @changesets/config@3.1.4
+Initialize @changesets/get-dependents-graph@2.1.4
+Initialize @types/node@20.19.41
+Initialize ssh2@1.17.0
+Initialize @eslint/object-schema@2.1.7
+Initialize json-schema-traverse@0.4.1
+Initialize @types/json-schema@7.0.15
+Initialize fast-json-stable-stringify@2.1.0
+Initialize @changesets/apply-release-plan@7.1.1
+Initialize iconv-lite@0.6.3
+Initialize @humanfs/types@0.15.0
+Initialize @humanfs/core@0.19.2
+Initialize prelude-ls@1.2.1
+Initialize uri-js@4.4.1
+Initialize app-builder-lib@25.1.8
+Initialize deep-is@0.1.4
+Initialize flat-cache@4.0.1
+Initialize word-wrap@1.2.5
+Initialize acorn-jsx@5.3.2
+Initialize p-filter@2.1.0
+Initialize read-yaml-file@1.1.0
+Initialize lodash.startcase@4.4.0
+Initialize type-check@0.4.0
+Initialize globby@11.1.0
+Initialize signal-exit@4.1.0
+Initialize levn@0.4.1
+Initialize fast-levenshtein@2.0.6
+Initialize quansync@0.2.11
+Initialize detect-indent@6.1.0
+Initialize micromatch@4.0.8
+Initialize outdent@0.5.0
+Initialize fs-extra@8.1.0
+Initialize react-dom@18.3.1
+Initialize is-subdir@1.2.0
+Initialize human-id@4.1.3
+Initialize chardet@2.1.1
+Initialize strip-ansi@6.0.1
+Initialize jsonfile@4.0.0
+Initialize js-tokens@4.0.0
+Initialize fast-diff@1.3.0
+Initialize @babel/runtime@7.29.2
+Initialize env-paths@2.2.1
+Initialize @manypkg/find-root@1.1.0
+Initialize @changesets/types@4.1.0
+Initialize universalify@0.1.2
+Initialize @jscpd/core@4.2.2
+Initialize progress@2.0.3
+Initialize extendable-error@0.1.7
+Initialize semver@6.3.1
+Initialize @jscpd/finder@4.2.2
+Initialize acorn@8.16.0
+Initialize global-agent@3.0.0
+Initialize colorette@2.0.20
+Initialize get-stream@5.2.0
+Initialize @changesets/parse@0.4.3
+Initialize markdown-table@2.0.0
+Initialize spark-md5@3.0.2
+Initialize wrap-ansi@9.0.2
+Initialize @jscpd/badge-reporter@4.2.2
+Initialize log-update@6.1.0
+Initialize bcrypt-pbkdf@1.0.2
+Initialize wrap-ansi@7.0.0
+Initialize eventemitter3@5.0.4
+Initialize rfdc@1.4.1
+Initialize undici-types@6.21.0
+Initialize iconv-lite@0.7.2
+Initialize is-fullwidth-code-point@3.0.0
+Initialize yauzl@2.10.0
+Initialize has-flag@4.0.0
+Initialize agent-base@7.1.4
+Initialize @changesets/get-version-range-type@0.4.0
+Initialize blamer@1.0.7
+Initialize pug@3.0.4
+Initialize cli-table3@0.6.5
+Initialize node-sarif-builder@3.4.0
+Initialize sumchecker@3.0.1
+Initialize got@11.8.6
+Initialize emoji-regex@8.0.0
+Initialize bytes@3.1.2
+Initialize badgen@3.3.2
+Initialize nan@2.27.0
+Initialize ajv-keywords@3.5.2
+Initialize cli-truncate@5.2.0
+Initialize fast-glob@3.3.3
+Initialize color-convert@2.0.1
+Initialize asn1@0.2.6
+Initialize cpu-features@0.0.10
+Initialize buffer-from@1.1.2
+Initialize @types/yauzl@2.10.3
+Initialize argparse@2.0.1
+Initialize glob@10.5.0
+Initialize safer-buffer@2.1.2
+Initialize tmp-promise@3.0.3
+Initialize fs-extra@9.1.0
+Initialize @types/ms@2.1.0
+Initialize @pkgr/core@0.2.9
+Initialize truncate-utf8-bytes@1.0.2
+Initialize combined-stream@1.0.8
+Initialize archiver@5.3.2
+Initialize asynckit@0.4.0
+Initialize es-set-tostringtag@2.1.0
+Initialize hasown@2.0.3
+Initialize lru-cache@6.0.0
+Initialize minipass@5.0.0
+Initialize minimatch@9.0.9
+Initialize fs-minipass@2.1.0
+Initialize mime-types@2.1.35
+Initialize dir-compare@4.2.0
+Initialize mkdirp@1.0.4
+Initialize minizlib@2.1.2
+Initialize yallist@4.0.0
+Initialize chownr@2.0.0
+Initialize detect-libc@2.1.2
+Initialize promise-retry@2.0.1
+Initialize @malept/cross-spawn-promise@2.0.0
+Initialize mime@2.6.0
+Initialize ora@5.4.1
+Initialize node-api-version@0.2.1
+Initialize @electron/asar@3.4.1
+Initialize jake@10.9.4
+Initialize source-map@0.6.1
+Initialize bluebird@3.7.2
+Initialize node-abi@3.92.0
+Initialize brace-expansion@5.0.6
+Initialize compare-version@0.1.2
+Initialize read-binary-file-arch@1.0.6
+Initialize pe-library@0.4.1
+Initialize isbinaryfile@4.0.10
+Initialize plist@3.1.1
+Initialize parent-module@1.0.1
+Initialize shebang-regex@3.0.0
+Initialize p-locate@5.0.0
+Initialize resolve-from@4.0.0
+Initialize isexe@2.0.0
+Initialize pify@4.0.1
+Initialize merge2@1.4.1
+Initialize slash@3.0.0
+Initialize keyv@4.5.4
+Initialize balanced-match@1.0.2
+Initialize minimist@1.2.8
+Initialize punycode@2.3.1
+Initialize concat-map@0.0.1
+Initialize p-map@2.1.0
+Initialize flatted@3.4.2
+Initialize strip-bom@3.0.0
+Initialize cacheable-lookup@5.0.4
+Initialize braces@3.0.3
+Initialize dir-glob@3.0.1
+Initialize better-path-resolve@1.0.0
+Initialize array-union@2.1.0
+Initialize picomatch@2.3.2
+Initialize serialize-error@7.0.1
+Initialize responselike@2.0.1
+Initialize decompress-response@6.0.0
+Initialize es6-error@4.1.1
+Initialize find-up@4.1.0
+Initialize http2-wrapper@1.0.3
+Initialize @jscpd/html-reporter@4.2.2
+Initialize ansi-regex@5.0.1
+Initialize p-cancelable@2.1.1
+Initialize matcher@3.0.0
+Initialize boolean@3.2.0
+Initialize js-yaml@3.14.2
+Initialize cacheable-request@7.0.4
+Initialize lowercase-keys@2.0.0
+Initialize @types/cacheable-request@6.0.3
+Initialize pump@3.0.4
+Initialize roarr@2.15.4
+Initialize @types/node@12.20.55
+Initialize pug-strip-comments@2.0.0
+Initialize @types/responselike@1.0.3
+Initialize pug-parser@6.0.0
+Initialize buffer-crc32@0.2.13
+Initialize fd-slicer@1.1.0
+Initialize @sindresorhus/is@4.6.0
+Initialize @szmarczak/http-timer@4.0.6
+Initialize pug-code-gen@3.0.4
+Initialize pug-runtime@3.0.1
+Initialize pug-filters@4.0.0
+Initialize pug-linker@4.0.0
+Initialize glob-parent@5.1.2
+Initialize pug-load@3.0.0
+Initialize pug-lexer@5.0.1
+Initialize repeat-string@1.6.1
+Initialize slice-ansi@8.0.0
+Initialize string-width@8.2.1
+Initialize execa@4.1.0
+Initialize slice-ansi@7.1.2
+Initialize @types/sarif@2.1.7
+Initialize cli-cursor@5.0.0
+Initialize @nodelib/fs.stat@2.0.5
+Initialize @nodelib/fs.walk@1.2.8
+Initialize @colors/colors@1.5.0
+Initialize ansi-styles@6.2.3
+Initialize strip-ansi@7.2.0
+Initialize string-width@7.2.0
+Initialize ansi-escapes@7.3.0
+Initialize at-least-node@1.0.0
+Initialize color-name@1.1.4
+Initialize buildcheck@0.0.7
+Initialize tmp@0.2.5
+Initialize tweetnacl@0.14.5
+Initialize foreground-child@3.3.1
+Initialize zip-stream@4.1.1
+Initialize minipass@7.1.3
+Initialize path-scurry@1.11.1
+Initialize lodash@4.18.1
+Initialize utf8-byte-length@1.0.5
+Initialize tar-stream@2.2.0
+Initialize package-json-from-dist@1.0.1
+Initialize readable-stream@3.6.2
+Initialize jackspeak@3.4.3
+Initialize readdir-glob@1.1.3
+Initialize delayed-stream@1.0.0
+Initialize has-tostringtag@1.0.2
+Initialize archiver-utils@2.1.0
+Initialize @jscpd/tokenizer@4.2.2
+Initialize node-gyp@9.4.1
+Initialize get-intrinsic@1.3.0
+Initialize brace-expansion@2.1.0
+Initialize es-errors@1.3.0
+Initialize glob@7.2.3
+Initialize mime-db@1.52.0
+Initialize retry@0.12.0
+Initialize p-limit@3.1.0
+Initialize minipass@3.3.6
+Initialize err-code@2.0.3
+Initialize is-unicode-supported@0.1.0
+Initialize filelist@1.0.6
+Initialize cli-cursor@3.1.0
+Initialize xmlbuilder@15.1.1
+Initialize is-interactive@1.0.0
+Initialize cli-spinners@2.9.2
+Initialize function-bind@1.1.2
+Initialize nopt@6.0.0
+Initialize balanced-match@4.0.4
+Initialize bl@4.1.0
+Initialize base64-js@1.5.1
+Initialize log-symbols@4.1.0
+Initialize async@3.2.6
+Initialize callsites@3.1.0
+Initialize npmlog@6.0.2
+Initialize make-fetch-happen@10.2.1
+Initialize path-type@4.0.0
+Initialize json-stringify-safe@5.0.1
+Initialize sprintf-js@1.1.3
+Initialize esprima@4.0.1
+Initialize locate-path@5.0.0
+Initialize resolve-alpn@1.2.1
+Initialize fill-range@7.1.1
+Initialize is-windows@1.0.2
+Initialize quick-lru@5.1.1
+Initialize @xmldom/xmldom@0.9.10
+Initialize json-buffer@3.0.1
+Initialize defer-to-connect@2.0.1
+Initialize argparse@1.0.10
+Initialize type-fest@0.13.1
+Initialize semver-compare@1.0.0
+Initialize rimraf@3.0.2
+Initialize wcwidth@1.0.1
+Initialize globalthis@1.0.4
+Initialize mimic-response@3.1.0
+Initialize normalize-url@6.1.0
+Initialize http-cache-semantics@4.2.0
+Initialize detect-node@2.1.0
+Initialize exponential-backoff@3.1.3
+Initialize @types/http-cache-semantics@4.2.0
+Initialize @types/keyv@3.1.4
+Initialize clone-response@1.0.3
+Initialize pend@1.2.0
+Initialize once@1.4.0
+Initialize pug-walk@2.0.0
+Initialize end-of-stream@1.4.5
+Initialize token-stream@1.0.0
+Initialize jstransformer@1.0.0
+Initialize pug-error@2.1.0
+Initialize doctypes@1.1.0
+Initialize constantinople@4.0.1
+Initialize object-assign@4.1.1
+Initialize pug-attrs@3.0.0
+Initialize npm-run-path@4.0.1
+Initialize character-parser@2.2.0
+Initialize merge-stream@2.0.0
+Initialize void-elements@3.1.0
+Initialize is-expression@4.0.0
+Initialize get-east-asian-width@1.6.0
+Initialize onetime@5.1.2
+Initialize environment@1.1.0
+Initialize human-signals@1.1.1
+Initialize ansi-regex@6.2.2
+Initialize fastq@1.20.1
+Initialize with@7.0.2
+Initialize resolve@1.22.12
+Initialize strip-final-newline@2.0.0
+Initialize signal-exit@3.0.7
+Initialize is-fullwidth-code-point@5.1.0
+Initialize restore-cursor@5.1.0
+Initialize js-stringify@1.0.2
+Initialize emoji-regex@10.6.0
+Initialize archiver-utils@3.0.4
+Initialize util-deprecate@1.0.2
+Initialize fs-constants@1.0.0
+Initialize inherits@2.0.4
+Initialize string_decoder@1.3.0
+Initialize minimatch@5.1.9
+Initialize compress-commons@4.1.2
+Initialize prettier@3.8.3
+Initialize normalize-path@3.0.0
+Initialize @isaacs/cliui@8.0.2
+Initialize lodash.defaults@4.2.0
+Initialize lodash.isplainobject@4.0.6
+Initialize @pkgjs/parseargs@0.11.0
+Initialize @nodelib/fs.scandir@2.1.5
+Initialize lazystream@1.0.1
+Initialize readable-stream@2.3.8
+Initialize lodash.flatten@4.4.0
+Initialize lodash.union@4.6.0
+Initialize lodash.difference@4.5.0
+Initialize math-intrinsics@1.1.0
+Initialize lru-cache@10.4.3
+Initialize yocto-queue@0.1.0
+Initialize es-object-atoms@1.1.1
+Initialize has-symbols@1.1.0
+Initialize call-bind-apply-helpers@1.0.2
+Initialize buffer@5.7.1
+Initialize es-define-property@1.0.1
+Initialize restore-cursor@3.1.0
+Initialize minipass-pipeline@1.2.4
+Initialize fs.realpath@1.0.0
+Initialize socks-proxy-agent@7.0.0
+Initialize path-is-absolute@1.0.1
+Initialize gopd@1.2.0
+Initialize https-proxy-agent@5.0.1
+Initialize lru-cache@7.18.3
+Initialize inflight@1.0.6
+Initialize is-lambda@1.0.1
+Initialize http-proxy-agent@5.0.0
+Initialize negotiator@0.6.4
+Initialize p-locate@4.1.0
+Initialize console-control-strings@1.1.0
+Initialize gauge@4.0.4
+Initialize get-proto@1.0.1
+Initialize ssri@9.0.1
+Initialize to-regex-range@5.0.1
+Initialize cacache@16.1.3
+Initialize sprintf-js@1.0.3
+Initialize minipass-collect@1.0.2
+Initialize minipass-fetch@2.1.2
+Initialize wrappy@1.0.2
+Initialize minipass-flush@1.0.7
+Initialize abbrev@1.1.1
+Initialize set-blocking@2.0.0
+Initialize mimic-response@1.0.1
+Initialize path-parse@1.0.7
+Initialize agentkeepalive@4.6.0
+Initialize defaults@1.0.4
+Initialize are-we-there-yet@3.0.1
+Initialize is-core-module@2.16.2
+Initialize define-properties@1.2.1
+Initialize supports-preserve-symlinks-flag@1.0.0
+Initialize promise@7.3.1
+Initialize is-promise@2.2.2
+Initialize babel-walk@3.0.0-canary-5
+Initialize assert-never@1.4.0
+Initialize run-parallel@1.2.0
+Initialize mimic-fn@2.1.0
+Initialize onetime@7.0.0
+Initialize core-util-is@1.0.2
+Initialize crc32-stream@4.0.3
+Initialize safe-buffer@5.2.1
+Initialize is-regex@1.2.1
+Initialize clone@1.0.4
+Initialize safe-buffer@5.1.2
+Initialize isarray@1.0.0
+Initialize agent-base@6.0.2
+Initialize reusify@1.1.0
+Initialize string-width@5.1.2
+Initialize ieee754@1.2.1
+Initialize wrap-ansi@8.1.0
+Initialize minipass-sized@1.0.3
+Initialize string_decoder@1.1.1
+Initialize dunder-proto@1.0.1
+Initialize process-nextick-args@2.0.1
+Initialize infer-owner@1.0.4
+Initialize promise-inflight@1.0.1
+Initialize encoding@0.1.13
+Initialize glob@8.1.0
+Initialize p-map@4.0.0
+Initialize unique-filename@2.0.1
+Initialize socks@2.8.9
+Initialize delegates@1.0.0
+Initialize aproba@2.1.0
+Initialize humanize-ms@1.2.1
+Initialize wide-align@1.1.5
+Initialize @tootallnate/once@2.0.1
+Initialize acorn@7.4.1
+Initialize is-number@7.0.0
+Initialize @npmcli/move-file@2.0.1
+Initialize has-unicode@2.0.1
+Initialize p-limit@2.3.0
+Initialize color-support@1.1.3
+Initialize @npmcli/fs@2.1.2
+Initialize eastasianwidth@0.2.0
+Initialize has-property-descriptors@1.0.2
+Initialize define-data-property@1.1.4
+Initialize object-keys@1.1.1
+Initialize unique-slug@3.0.0
+Initialize crc-32@1.2.2
+Initialize emoji-regex@9.2.2
+Initialize asap@2.0.6
+Initialize queue-microtask@1.2.3
+Initialize @babel/helper-string-parser@7.27.1
+Initialize aggregate-error@3.1.0
+Initialize mimic-function@5.0.1
+Initialize clean-stack@2.2.0
+Initialize indent-string@4.0.0
+Initialize call-bound@1.0.4
+Initialize p-try@2.2.0
+Initialize @babel/helper-validator-identifier@7.28.5
+Initialize smart-buffer@4.2.0
+Initialize ip-address@10.2.0
+Initialize @gar/promisify@1.1.3
+Initialize @babel/types@7.29.0
+Initialize @babel/parser@7.29.3
+Initialize web-streams-polyfill@3.3.3
+Initialize prettier@2.8.8
+Initialize @esbuild/linux-x64@0.24.2
+Initialize typescript@5.9.3
+Initialize test-anywhere@0.8.50
+Initialize 7zip-bin@5.2.0
+Initialize app-builder-bin@5.0.0-alpha.10
+╭ Warning
+│
+│  The following packages are deprecated:
+│  npm:node-domexception@1.0.0 (Use your platform's native DOMException instead)
+│  npm:tar@6.2.1 (Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me)
+│  npm:glob@10.5.0 (Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me)
+│  npm:boolean@3.2.0 (Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.)
+│  npm:glob@7.2.3 (Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me)
+│  npm:npmlog@6.0.2 (This package is no longer supported.)
+│  npm:rimraf@3.0.2 (Rimraf versions prior to v4 are no longer supported)
+│  npm:inflight@1.0.6 (This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.)
+│  npm:gauge@4.0.4 (This package is no longer supported.)
+│  npm:are-we-there-yet@3.0.1 (This package is no longer supported.)
+│  npm:glob@8.1.0 (Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me)
+│  npm:@npmcli/move-file@2.0.1 (This functionality has been moved to @npmcli/fs)
+╰─
+╭ Warning
+│
+│  Ignored build scripts for packages:
+│  npm:electron@33.4.11
+│  npm:ssh2@1.17.0
+│  npm:cpu-features@0.0.10
+│
+│  Run "deno approve-scripts" to run build scripts.
+╰─
+running 3 tests from ./tests/accept-friend-requests.test.js
+acceptFriendRequests: code 3 halts trigger for the process ...
+  stops the run on first Unknown method passed and short-circuits later runs ...
+------- output -------
+2026-05-16T13:56:04.134Z [error] VK API rejected method as unknown; halting trigger for this cycle {
+  "trigger": "accept-friend-requests",
+  "method": "friends.add",
+  "errorCode": 3,
+  "errorMessage": "Unknown method passed",
+  "appPermissionsMask": 1073737727,
+  "hint": "VK has gated this method for the Kate Mobile OAuth app (see docs/case-studies/issue-49 §7). Re-runs will fail until the user switches OAuth flow."
+}
+----- output end -----
+  stops the run on first Unknown method passed and short-circuits later runs ... ok (5ms)
+acceptFriendRequests: code 3 halts trigger for the process ... ok (6ms)
+acceptFriendRequests: skips users with existing outgoing requests ...
+  does not re-send priority friend requests already pending ...
+------- output -------
+2026-05-16T13:56:04.145Z [debug] Skipping priority friend with existing outgoing request {
+  "userId": 42
+}
+2026-05-16T13:56:04.146Z [info] Friend request sent to priority friend {
+  "userId": 7
+}
+2026-05-16T13:56:04.146Z [info] No incoming friend requests to be accepted
+----- output end -----
+  does not re-send priority friend requests already pending ... ok (8ms)
+acceptFriendRequests: skips users with existing outgoing requests ... ok (8ms)
+acceptFriendRequests: rate-limit code 29 backs off then stops ...
+  aborts the priority loop after a 29 from VK ...
+------- output -------
+2026-05-16T13:56:04.147Z [warn] Rate limit while adding priority friend; backing off {
+  "userId": 10
+}
+2026-05-16T13:56:04.151Z [info] No incoming friend requests to be accepted
+----- output end -----
+  aborts the priority loop after a 29 from VK ... ok (5ms)
+acceptFriendRequests: rate-limit code 29 backs off then stops ... ok (5ms)
+running 3 tests from ./tests/api-errors.test.js
+isUnknownMethodError ...
+  detects code 3 on `code` field ... ok (1ms)
+  detects code 3 on `error_code` field ... ok (1ms)
+  ignores other codes ... ok (1ms)
+isUnknownMethodError ... ok (1ms)
+fetchAppPermissions ...
+  returns the bitmask and caches subsequent calls ...
+------- post-test output -------
+2026-05-16T13:56:04.234Z [warn] Could not read account.getAppPermissions {
+  "error": {
+    "name": "Error",
+    "message": "boom",
+    "stack": "Error: boom\n    at Object.getAppPermissions (file:///tmp/gh-issue-solver-1778938970638/tests/api-errors.test.js:69:19)\n    at file:///tmp/gh-issue-solver-1778938970638/src/bot/api-errors.js:53:43\n    at fetchAppPermissions (file:///tmp/gh-issue-solver-1778938970638/src/bot/api-errors.js:59:7)\n    at Object.fn (file:///tmp/gh-issue-solver-1778938970638/tests/api-errors.test.js:74:24)\n    at fn (node:test:156:33)\n    at innerWrapped (ext:cli/40_test.js:230:11)\n    at Object.outerWrapped [as fn] (ext:cli/40_test.js:173:20)\n    at TestContext.step (ext:cli/40_test.js:564:37)\n    at TestSuite.addTest (node:test:151:40)\n    at test (node:test:301:25)"
+  }
+}
+----- post-test output end -----
+  returns the bitmask and caches subsequent calls ... ok (1ms)
+  returns null when the method is unavailable ... ok (1ms)
+  returns null on error ... ok (1ms)
+fetchAppPermissions ... ok (1ms)
+reportUnknownMethod ...
+  emits a single error line that names the trigger, method, and mask ...
+------- post-test output -------
+2026-05-16T13:56:04.235Z [error] VK API rejected method as unknown; halting trigger for this cycle {
+  "trigger": "delete-deactivated-friends",
+  "method": "friends.delete",
+  "errorCode": 3,
+  "errorMessage": "Unknown method passed",
+  "appPermissionsMask": 1073737727,
+  "hint": "VK has gated this method for the Kate Mobile OAuth app (see docs/case-studies/issue-49 §7). Re-runs will fail until the user switches OAuth flow."
+}
+----- post-test output end -----
+  emits a single error line that names the trigger, method, and mask ... ok (0ms)
+reportUnknownMethod ... ok (0ms)
+running 1 test from ./tests/birthday-greetings.test.js
+birthday greetings ...
+  contains exactly 10 entries ... ok (2ms)
+  every greeting has at most 2 emojis ... ok (2ms)
+  every greeting is a non-empty Russian-language string ... ok (1ms)
+  every greeting contains the core phrase "с днём рождения" ... ok (1ms)
+  does not pick the same index twice in a row ... ok (0ms)
+birthday greetings ... ok (2ms)
+running 1 test from ./tests/bot-config.test.js
+bot config defaults ...
+  normalizes empty array fields parsed from lino as empty objects ... ok (9ms)
+  preserves default invitation messages when only communities are saved ... ok (9ms)
+  parses priorityFriendIds from mixed strings, links and arrays ... ok (9ms)
+  parses invitation communities from links and id-prefixed forms ... ok (8ms)
+  keeps numeric arrays untouched but de-duplicates ... ok (8ms)
+  exposes the upstream invitation community list ... ok (8ms)
+  defaults verbose to true and lets the overlay opt out ... ok (7ms)
+bot config defaults ... ok (11ms)
+running 6 tests from ./tests/bot-lifecycle.test.js
+buildStatusCommand ...
+  uses the default session name ... ok (1ms)
+  honors a custom session name ... ok (0ms)
+buildStatusCommand ... ok (1ms)
+buildStartCommand ...
+  defaults to screen isolation with the session name ... ok (0ms)
+  builds a docker invocation with image and session name ... ok (0ms)
+  passes through a custom command ... ok (1ms)
+buildStartCommand ... ok (0ms)
+buildStopCommand ...
+  uses --stop with the session ... ok (0ms)
+buildStopCommand ... ok (0ms)
+isRunning ...
+  returns true when stdout indicates running ... ok (1ms)
+  returns false when exit code != 0 ... ok (1ms)
+  returns false when stdout has no running keyword ... ok (1ms)
+  throws when runCommand is missing ... ok (1ms)
+isRunning ... ok (1ms)
+startBot/stopBot ...
+  startBot invokes runCommand with the start argv ... ok (8ms)
+  stopBot invokes runCommand with the stop argv ... ok (7ms)
+startBot/stopBot ... ok (8ms)
+ensureMutualExclusion ...
+  rejects unknown targetMode ... ok (1ms)
+  returns stoppedOther=false when no other runner is provided ... ok (1ms)
+  does not stop the remote bot when it is not running ... ok (0ms)
+  treats runner errors as not-running ... ok (0ms)
+  stops the remote bot when starting local and remote is running ... ok (1ms)
+  stops the local bot when starting server ... ok (0ms)
+ensureMutualExclusion ... ok (1ms)
+running 1 test from ./tests/check-file-line-limits.test.js
+defines a warning band below the hard limit ... ok (2ms)
+running 8 tests from ./tests/check-release-needed.test.js
+builds GitHub release tags from the package version ... ok (0ms)
+releases through a version bump when changesets exist ... ok (0ms)
+skips release when the current GitHub Release already has artifacts ... ok (0ms)
+retries release without a bump when the GitHub Release is incomplete ... ok (0ms)
+requires checksum, provenance, and all desktop platform assets ... ok (6ms)
+checks GitHub Release artifact completeness with gh release view ... ok (0ms)
+treats missing GitHub Releases as unpublished ... ok (0ms)
+fails closed on unexpected gh release errors ... ok (0ms)
+running 3 tests from ./tests/ci-timeouts.test.js
+sets timeout-minutes for every JavaScript workflow job ... ok (11ms)
+parses workflow files checked out with Windows line endings ... ok (0ms)
+caps individual Node.js and Bun tests at 30 seconds ... ok (0ms)
+running 5 tests from ./tests/create-github-release.test.js
+parses language from CLI arguments and environment defaults ... ok (0ms)
+builds a human-readable release name from a language-prefixed tag ... ok (0ms)
+uses gh api and reports successful creation only for exit code 0 ... ok (0ms)
+throws when gh api exits non-zero with an unexpected error ... ok (0ms)
+treats already_exists as an idempotent gh api result ... ok (0ms)
+running 1 test from ./tests/delete-outgoing-friend-requests.test.js
+pickOutgoingToCancel ...
+  returns the capacity-needed slice excluding priority friends ... ok (1ms)
+  treats malformed priority IDs from empty lino arrays as empty ... ok (0ms)
+pickOutgoingToCancel ... ok (1ms)
+running 14 tests from ./tests/desktop-release-workflow.test.js
+does not publish packages to npm from release jobs ... ok (1ms)
+keeps desktop release jobs in the same workflow with an exact tag and commit ... ok (0ms)
+runs desktop jobs after optional release modes are skipped ... ok (0ms)
+builds desktop artifacts for Linux, macOS, and Windows releases ... ok (0ms)
+uses versioned artifact names for release download links ... ok (0ms)
+uses system FPM for native Linux arm64 Debian builds ... ok (0ms)
+normalizes Linux artifact architecture names before validation ... ok (0ms)
+keeps signed and notarized macOS publishing when Apple secrets are configured ... ok (0ms)
+builds ad-hoc signed macOS artifacts without Apple secrets ... ok (0ms)
+smoke-tests platform installers after building and before uploading ... ok (0ms)
+does not execute the NSIS installer on Windows ARM64 hosted runners ... ok (0ms)
+delimits PowerShell variables before literal colons in smoke-test output ... ok (0ms)
+configures a Linux maintainer for deb artifacts ... ok (0ms)
+hashes Linux and macOS artifacts without splitting filenames on spaces ... ok (0ms)
+running 1 test from ./tests/detect-code-changes.test.js
+skipped on Deno or Windows runner ... ignored (0ms)
+running 4 tests from ./tests/dispatch-and-watch-workflow.test.js
+extracts a workflow run id from gh workflow run output ... ok (0ms)
+picks the newest workflow run for the requested target commit ... ok (0ms)
+watches the dispatched run and returns the downstream failure status ...
+------- post-test output -------
+https://github.com/konard/vk-bot-desktop/actions/runs/25636588014
+----- post-test output end -----
+watches the dispatched run and returns the downstream failure status ... ok (0ms)
+finds the child run by head SHA when dispatch output has no run URL ... ok (0ms)
+running 1 test from ./tests/fetch-outgoing-requests.test.js
+fetchOutgoingRequestIds ...
+  returns [] when vk client is missing ... ok (1ms)
+  returns [] when friends.getRequests is missing ... ok (0ms)
+  returns the items array from the VK response ... ok (0ms)
+  returns [] when items is not an array ... ok (0ms)
+fetchOutgoingRequestIds ... ok (2ms)
+running 4 tests from ./tests/friend-prioritization.test.js
+computePotentialAcceptanceQuota ...
+  returns floor(totalIncomingSeen * 10%) - totalAcceptedEver ... ok (1ms)
+  clamps to zero when already over quota ... ok (0ms)
+  honours a custom percentage ... ok (0ms)
+computePotentialAcceptanceQuota ... ok (1ms)
+selectIncomingRequests ...
+  respects the lifetime 10% quota across runs ... ok (2ms)
+  falls back to current batch size when no lifetime stats provided ... ok (1ms)
+  above the limit only accepts requests with mutuals ... ok (1ms)
+  returns nothing when capacity is exhausted ... ok (1ms)
+  returns nothing for empty input ... ok (1ms)
+selectIncomingRequests ... ok (1ms)
+pickPrioritySendList ...
+  returns priority IDs not yet in friends ... ok (0ms)
+  respects remaining capacity ... ok (0ms)
+pickPrioritySendList ... ok (0ms)
+pickDeactivatedToDelete ...
+  returns banned/deleted friends excluding priority list ... ok (9ms)
+  treats malformed priority IDs from empty lino arrays as empty ... ok (9ms)
+pickDeactivatedToDelete ... ok (9ms)
+running 3 tests from ./tests/i18n.test.js
+detectLocale ...
+  returns ru for Russian language tags ... ok (1ms)
+  falls back to en for unknown locales ... ok (1ms)
+detectLocale ... ok (1ms)
+translate ...
+  returns the translated string when available ... ok (0ms)
+  falls back to English when key missing in target locale ... ok (0ms)
+  returns the key itself when nothing matches ... ok (0ms)
+  includes new clearLog/verbose/reset-save keys in both locales ... ok (1ms)
+translate ... ok (0ms)
+TRANSLATIONS parity ...
+  every English key has a Russian translation ... ok (0ms)
+TRANSLATIONS parity ... ok (0ms)
+running 6 tests from ./tests/index.test.js
+should add two positive numbers ... ok (0ms)
+should add negative numbers ... ok (0ms)
+should add zero ... ok (0ms)
+should multiply two positive numbers ... ok (0ms)
+should multiply by zero ... ok (0ms)
+should multiply negative numbers ... ok (0ms)
+running 1 test from ./tests/invitation-messages.test.js
+invitation messages ...
+  contains exactly 10 entries ... ok (1ms)
+  every message is a non-empty Russian-language string ... ok (1ms)
+  does not pick the same index twice in a row ... ok (1ms)
+  accepts a custom list ... ok (0ms)
+  returns empty string for empty list ... ok (0ms)
+  every default message is gender-neutral ... ok (0ms)
+invitation messages ... ok (2ms)
+running 1 test from ./tests/lino-store.test.js
+LinoStore ... ignored (0ms)
+running 5 tests from ./tests/list-values.test.js
+asList ...
+  passes through arrays ... ok (0ms)
+  wraps primitives ... ok (0ms)
+  returns empty for nullish or object input ... ok (0ms)
+asList ... ok (1ms)
+splitListTokens ...
+  splits on commas, semicolons, spaces, tabs and newlines ... ok (1ms)
+  trims and drops empty tokens ... ok (1ms)
+  treats nullish input as empty list ... ok (1ms)
+splitListTokens ... ok (0ms)
+parseVkReference ...
+  parses raw positive integers as users by default ... ok (8ms)
+  parses raw negative integers as communities by default ... ok (7ms)
+  parses raw positive integers as communities when expecting community ... ok (7ms)
+  parses idN, clubN, publicN and eventN ... ok (8ms)
+  parses full and short VK links ... ok (8ms)
+  parses screen-name links ... ok (7ms)
+  accepts bare screen names ... ok (7ms)
+  rejects empty and zero tokens ... ok (7ms)
+  rejects junk ... ok (7ms)
+parseVkReference ... ok (9ms)
+parseVkReferenceList ...
+  parses mixed separators and link formats ... ok (1ms)
+  dedupes equivalent forms ... ok (0ms)
+  treats community context properly ... ok (0ms)
+parseVkReferenceList ... ok (0ms)
+parseVkIdList ...
+  returns numeric IDs for user lists ... ok (1ms)
+  returns positive community IDs for community lists ... ok (1ms)
+parseVkIdList ... ok (0ms)
+running 3 tests from ./tests/logger.test.js
+redact ...
+  masks long token-like strings ... ok (1ms)
+  masks query-style secrets ... ok (1ms)
+  masks secret-named object properties ... ok (0ms)
+  handles circular references ... ok (0ms)
+  does not mask short ids ... ok (0ms)
+redact ... ok (2ms)
+logger sinks ...
+  routes log lines to registered sinks with redaction ...
+------- post-test output -------
+2026-05-16T13:56:05.828Z [info] token=***
+2026-05-16T13:56:05.828Z [error] Could not set online status {
+  "error": {
+    "name": "Error",
+    "message": "Unknown method passed.",
+    "stack": "Error: Unknown method passed.\n    at Object.fn (file:///tmp/gh-issue-solver-1778938970638/tests/logger.test.js:72:16)\n    at fn (node:test:156:33)\n    at innerWrapped (ext:cli/40_test.js:230:11)\n    at Object.outerWrapped [as fn] (ext:cli/40_test.js:173:20)\n    at TestContext.step (ext:cli/40_test.js:564:37)\n    at TestSuite.addTest (node:test:151:40)\n    at test (node:test:301:25)\n    at file:///tmp/gh-issue-solver-1778938970638/tests/logger.test.js:66:3\n    at node:test:275:7\n    at innerWrapped (ext:cli/40_test.js:230:11)"
+  }
+}
+----- post-test output end -----
+  routes log lines to registered sinks with redaction ... ok (1ms)
+  pretty-prints object arguments with indentation ... ok (1ms)
+logger sinks ... ok (1ms)
+verbose mode ...
+  is enabled by default so debug lines reach sinks ...
+------- post-test output -------
+2026-05-16T13:56:05.829Z [debug] verbose probe
+2026-05-16T13:56:05.829Z [info] shown
+----- post-test output end -----
+  is enabled by default so debug lines reach sinks ... ok (1ms)
+  suppresses debug lines when toggled off ... ok (1ms)
+verbose mode ... ok (0ms)
+running 1 test from ./tests/oauth-token.test.js
+VK OAuth blank-page redirect helpers ...
+  extracts the access token from the VK blank-page fragment ... ok (0ms)
+  recognizes VK blank-page redirects without accepting unrelated URLs ... ok (0ms)
+  allows only VK authorization navigation hosts in the embedded window ... ok (0ms)
+VK OAuth blank-page redirect helpers ... ok (1ms)
+running 5 tests from ./tests/package-info.test.js
+reads scoped package names and versions from package.json content ... ok (0ms)
+formats npm package specifiers from the derived package name ... ok (0ms)
+formats changeset headers from the derived package name ... ok (0ms)
+matches changesets for the derived package name only ... ok (0ms)
+reports missing package names clearly ... ok (0ms)
+running 11 tests from ./tests/pages-site.test.js
+has a reproducible React build script ... ok (0ms)
+deploys the built site with the official GitHub Pages actions ... ok (0ms)
+rebuilds on every main push and tag push, not only when site files change ... ok (0ms)
+detects language, theme, and operating system for the primary download ... ok (0ms)
+loads latest release assets without synthesizing absent asset links ... ok (0ms)
+runs browser-commander e2e checks before and after Pages deployment ... ok (0ms)
+authenticates the post-deploy GitHub Release API call ... ok (0ms)
+prints rate-limit diagnostics when the Release API call fails ... ok (0ms)
+requires macOS assets in the built-site release fixture ... ok (0ms)
+has expandable verification instructions and OS-specific preview chrome ... ok (0ms)
+documents the macOS Gatekeeper first-launch workflow for ad-hoc builds ... ok (0ms)
+running 6 tests from ./tests/release-badge.test.js
+strips a plain v prefix for backward compatibility ... ok (0ms)
+strips a js-v prefix from multi-language release tags ... ok (0ms)
+strips a rust-v prefix from multi-language release tags ... ok (0ms)
+escapes hyphens in prerelease versions for shields.io static badge paths ... ok (0ms)
+builds a valid shields.io badge URL for prefixed tags ... ok (0ms)
+builds a valid shields.io badge URL for prefixed prerelease tags ... ok (0ms)
+running 2 tests from ./tests/renderer-clipboard.test.js
+renderer clipboard helper ...
+  prefers the Electron preload API when available ... ok (1ms)
+  falls back to navigator.clipboard.writeText outside Electron ... ok (1ms)
+  throws when no clipboard implementation is available ... ok (1ms)
+renderer clipboard helper ... ok (1ms)
+Electron clipboard bridge ...
+  exposes a copyText preload API backed by Electron clipboard.writeText ... ok (0ms)
+Electron clipboard bridge ... ok (0ms)
+running 1 test from ./tests/runner-schedule.test.js
+startBot scheduling ...
+  fires the online-status trigger at least once and keeps the process alive ...
+------- post-test output -------
+2026-05-16T13:56:06.318Z [debug] Checking for 'set-online-status' trigger...
+2026-05-16T13:56:06.319Z [info] Online status is set
+2026-05-16T13:56:06.319Z [debug] 'set-online-status' trigger executed in 1 ms
+2026-05-16T13:56:06.319Z [debug] Checking for 'accept-friend-requests' trigger...
+2026-05-16T13:56:06.319Z [warn] Stats store unavailable; running without persistence {
+  "error": {
+    "name": "NotCapable",
+    "message": "Requires env access to \"VK_BOT_DESKTOP_GLOBAL_DIR\", run again with the --allow-env flag",
+    "stack": "NotCapable: Requires env access to \"VK_BOT_DESKTOP_GLOBAL_DIR\", run again with the --allow-env flag\n    at Object.getEnv [as get] (ext:deno_os/30_os.js:124:10)\n    at denoEnvGet (ext:deno_node/_process/process.ts:35:21)\n    at Object.get (ext:deno_node/_process/process.ts:52:22)\n    at defaultGlobalDir (file:///tmp/gh-issue-solver-1778938970638/src/lino-store.js:23:17)\n    at new LinoStore (file:///tmp/gh-issue-solver-1778938970638/src/lino-store.js:254:35)\n    at resolveStats (file:///tmp/gh-issue-solver-1778938970638/src/bot/triggers/accept-friend-requests.js:205:19)\n    at acceptFriendRequests (file:///tmp/gh-issue-solver-1778938970638/src/bot/triggers/accept-friend-requests.js:252:19)\n    at Object.fn (file:///tmp/gh-issue-solver-1778938970638/src/bot/runner.js:65:29)\n    at file:///tmp/gh-issue-solver-1778938970638/src/bot/runner.js:110:45\n    at run (file:///tmp/gh-issue-solver-1778938970638/src/bot/runner.js:30:13)"
+  }
+}
+2026-05-16T13:56:06.320Z [error] Could not accept friend requests {
+  "error": {
+    "name": "TypeError",
+    "message": "Cannot read properties of undefined (reading 'get')",
+    "stack": "TypeError: Cannot read properties of undefined (reading 'get')\n    at loadFriends (file:///tmp/gh-issue-solver-1778938970638/src/bot/triggers/accept-friend-requests.js:26:43)\n    at acceptFriendRequests (file:///tmp/gh-issue-solver-1778938970638/src/bot/triggers/accept-friend-requests.js:253:27)\n    at Object.fn (file:///tmp/gh-issue-solver-1778938970638/src/bot/runner.js:65:29)\n    at file:///tmp/gh-issue-solver-1778938970638/src/bot/runner.js:110:45\n    at run (file:///tmp/gh-issue-solver-1778938970638/src/bot/runner.js:30:13)\n    at Timeout.wrappedCallback [as _onTimeout] (ext:deno_web/02_timers.js:50:7)\n    at invokeCallback (ext:deno_node/internal/timers.mjs:160:13)\n    at Object.cb [as _onTimeout] (ext:deno_node/internal/timers.mjs:198:16)\n    at listOnTimeout (ext:core/02_timers.js:307:17)\n    at Object.processTimers (ext:core/02_timers.js:250:7)"
+  }
+}
+2026-05-16T13:56:06.320Z [debug] 'accept-friend-requests' trigger executed in 1 ms
+2026-05-16T13:56:06.320Z [debug] Checking for 'delete-deactivated-friends' trigger...
+2026-05-16T13:56:06.320Z [error] Could not delete deactivated friends {
+  "error": {
+    "name": "TypeError",
+    "message": "Cannot read properties of undefined (reading 'get')",
+    "stack": "TypeError: Cannot read properties of undefined (reading 'get')\n    at loadFriendsWithStatus (file:///tmp/gh-issue-solver-1778938970638/src/bot/triggers/delete-deactivated-friends.js:14:43)\n    at deleteDeactivatedFriends (file:///tmp/gh-issue-solver-1778938970638/src/bot/triggers/delete-deactivated-friends.js:35:27)\n    at Object.fn (file:///tmp/gh-issue-solver-1778938970638/src/bot/runner.js:73:29)\n    at file:///tmp/gh-issue-solver-1778938970638/src/bot/runner.js:110:45\n    at run (file:///tmp/gh-issue-solver-1778938970638/src/bot/runner.js:30:13)\n    at Timeout.wrappedCallback [as _onTimeout] (ext:deno_web/02_timers.js:50:7)\n    at invokeCallback (ext:deno_node/internal/timers.mjs:160:13)\n    at Object.cb [as _onTimeout] (ext:deno_node/internal/timers.mjs:198:16)\n    at listOnTimeout (ext:core/02_timers.js:307:17)\n    at Object.processTimers (ext:core/02_timers.js:250:7)"
+  }
+}
+2026-05-16T13:56:06.320Z [debug] 'delete-deactivated-friends' trigger executed in 0 ms
+2026-05-16T13:56:06.320Z [debug] Checking for 'delete-outgoing-friend-requests' trigger...
+2026-05-16T13:56:06.321Z [error] Could not delete outgoing friend requests {
+  "error": {
+    "name": "TypeError",
+    "message": "Cannot read properties of undefined (reading 'getRequests')",
+    "stack": "TypeError: Cannot read properties of undefined (reading 'getRequests')\n    at deleteOutgoingFriendRequests (file:///tmp/gh-issue-solver-1778938970638/src/bot/triggers/delete-outgoing-friend-requests.js:42:43)\n    at Object.fn (file:///tmp/gh-issue-solver-1778938970638/src/bot/runner.js:81:29)\n    at file:///tmp/gh-issue-solver-1778938970638/src/bot/runner.js:110:45\n    at run (file:///tmp/gh-issue-solver-1778938970638/src/bot/runner.js:30:13)\n    at Timeout.wrappedCallback [as _onTimeout] (ext:deno_web/02_timers.js:50:7)\n    at invokeCallback (ext:deno_node/internal/timers.mjs:160:13)\n    at Object.cb [as _onTimeout] (ext:deno_node/internal/timers.mjs:198:16)\n    at listOnTimeout (ext:core/02_timers.js:307:17)\n    at Object.processTimers (ext:core/02_timers.js:250:7)\n    at __eventLoopTick (ext:core/01_core.js:461:33)"
+  }
+}
+2026-05-16T13:56:06.321Z [debug] 'delete-outgoing-friend-requests' trigger executed in 1 ms
+2026-05-16T13:56:06.321Z [debug] Checking for 'send-invitation-posts' trigger...
+2026-05-16T13:56:06.321Z [info] No invitation-post communities configured; skipping
+2026-05-16T13:56:06.321Z [debug] 'send-invitation-posts' trigger executed in 0 ms
+2026-05-16T13:56:06.321Z [debug] Checking for 'send-birthday-congratulations' trigger...
+2026-05-16T13:56:06.321Z [error] Trigger threw {
+  "name": "send-birthday-congratulations",
+  "error": {
+    "name": "TypeError",
+    "message": "Cannot read properties of undefined (reading 'get')",
+    "stack": "TypeError: Cannot read properties of undefined (reading 'get')\n    at collectFriendsWithBirthday (file:///tmp/gh-issue-solver-1778938970638/src/bot/triggers/send-birthday-congratulations.js:115:43)\n    at sendBirthdayCongratulations (file:///tmp/gh-issue-solver-1778938970638/src/bot/triggers/send-birthday-congratulations.js:78:25)\n    at Object.fn (file:///tmp/gh-issue-solver-1778938970638/src/bot/runner.js:97:29)\n    at file:///tmp/gh-issue-solver-1778938970638/src/bot/runner.js:110:45\n    at run (file:///tmp/gh-issue-solver-1778938970638/src/bot/runner.js:30:13)\n    at Timeout.wrappedCallback [as _onTimeout] (ext:deno_web/02_timers.js:50:7)\n    at invokeCallback (ext:deno_node/internal/timers.mjs:160:13)\n    at Object.cb [as _onTimeout] (ext:deno_node/internal/timers.mjs:198:16)\n    at listOnTimeout (ext:core/02_timers.js:307:17)\n    at Object.processTimers (ext:core/02_timers.js:250:7)"
+  }
+}
+----- post-test output end -----
+  fires the online-status trigger at least once and keeps the process alive ... ok (53ms)
+  does not exit prematurely when run as a forked child (regression for issue #32) ... ignored (0ms)
+  applies config.verbose to the logger ... ok (1ms)
+startBot scheduling ... ok (54ms)
+running 3 tests from ./tests/send-birthday-congratulations.test.js
+findBirthdayFriends ...
+  matches friends whose bdate day/month equal today ... ok (0ms)
+findBirthdayFriends ... ok (1ms)
+recentlyMessaged ...
+  returns true when the latest message is within the window ...
+------- post-test output -------
+2026-05-16T13:56:06.452Z [warn] Could not read message history for birthday dedup; greeting anyway {
+  "userId": 7,
+  "error": {
+    "name": "Error",
+    "message": "boom",
+    "stack": "Error: boom\n    at Object.getHistory (file:///tmp/gh-issue-solver-1778938970638/tests/send-birthday-congratulations.test.js:69:19)\n    at recentlyMessaged (file:///tmp/gh-issue-solver-1778938970638/src/bot/triggers/send-birthday-congratulations.js:51:43)\n    at Object.fn (file:///tmp/gh-issue-solver-1778938970638/tests/send-birthday-congratulations.test.js:74:24)\n    at fn (node:test:156:33)\n    at innerWrapped (ext:cli/40_test.js:230:11)\n    at Object.outerWrapped [as fn] (ext:cli/40_test.js:173:20)\n    at TestContext.step (ext:cli/40_test.js:564:37)\n    at TestSuite.addTest (node:test:151:40)\n    at test (node:test:301:25)\n    at file:///tmp/gh-issue-solver-1778938970638/tests/send-birthday-congratulations.test.js:64:3"
+  }
+}
+----- post-test output end -----
+  returns true when the latest message is within the window ... ok (2ms)
+  returns false when the latest message is older than the window ... ok (2ms)
+  returns false when there is no history ... ok (2ms)
+  returns false when the lookup fails ... ok (1ms)
+recentlyMessaged ... ok (2ms)
+sendBirthdayCongratulations ...
+  skips friends with recent conversation in the last 24 h ...
+------- post-test output -------
+2026-05-16T13:56:06.454Z [info] Birthday targets identified {
+  "count": 2
+}
+2026-05-16T13:56:06.454Z [info] Skipping birthday greeting: recent conversation in last 24 hours {
+  "userId": 11
+}
+2026-05-16T13:56:06.454Z [info] Birthday message sent {
+  "userId": 22,
+  "message": "С днём рождения! Удачи во всём. 🍀"
+}
+----- post-test output end -----
+  skips friends with recent conversation in the last 24 h ... ok (1ms)
+sendBirthdayCongratulations ... ok (1ms)
+running 7 tests from ./tests/send-invitation-posts.test.js
+readCachedPostIds ...
+  returns [] when cache is missing ... ok (1ms)
+  returns [] for unknown community ... ok (0ms)
+  normalises scalar bucket to a single-element array ... ok (0ms)
+  normalises array bucket to numbers and drops NaN ... ok (0ms)
+readCachedPostIds ... ok (1ms)
+buildUpdatedCache ...
+  writes the post id list under byCommunity ... ok (7ms)
+  removes the entry when post id list is empty ... ok (6ms)
+  coerces string ids to numbers and drops invalid ... ok (6ms)
+  does not mutate the input cache ... ok (6ms)
+buildUpdatedCache ... ok (6ms)
+sendInvitationPosts: basic flow ...
+  skips communities when no communities configured ...
+------- post-test output -------
+2026-05-16T13:56:06.544Z [info] No invitation-post communities configured; skipping
+2026-05-16T13:56:06.545Z [info] Invitation post still in top 10; skipping community {
+  "communityId": 42,
+  "cached": [
+    555
+  ]
+}
+----- post-test output end -----
+  skips communities when no communities configured ... ok (2ms)
+  skips a community whose cached post is still in the top 10 ... ok (1ms)
+sendInvitationPosts: basic flow ... ok (1ms)
+sendInvitationPosts: post rotation ...
+  posts a new message and deletes the old recorded post ...
+------- post-test output -------
+2026-05-16T13:56:06.546Z [info] Active avatar photo_id missing or malformed; posting without attachment {
+  "photoId": null,
+  "profileCount": 1,
+  "profileKeys": [
+    "photo_id"
+  ],
+  "hasCropPhoto": false
+}
+2026-05-16T13:56:06.546Z [info] Active avatar photo_id missing or malformed; posting without attachment {
+  "photoId": null,
+  "profileCount": 1,
+  "profileKeys": [
+    "photo_id"
+  ],
+  "hasCropPhoto": false
+}
+2026-05-16T13:56:06.546Z [info] Active avatar photo_id missing or malformed; posting without attachment {
+  "photoId": null,
+  "profileCount": 1,
+  "profileKeys": [
+    "photo_id"
+  ],
+  "hasCropPhoto": false
+}
+2026-05-16T13:56:06.546Z [info] Invitation post sent {
+  "communityId": 42,
+  "postId": 777
+}
+2026-05-16T13:56:06.546Z [info] Invitation post sent {
+  "communityId": 42,
+  "postId": 777
+}
+2026-05-16T13:56:06.546Z [info] Invitation post sent {
+  "communityId": 42,
+  "postId": 777
+}
+2026-05-16T13:56:06.546Z [info] Old invitation post deleted {
+  "ownerId": "-42",
+  "postId": 555
+}
+2026-05-16T13:56:06.546Z [warn] Old invitation post already gone; dropping from cache {
+  "ownerId": "-42",
+  "postId": 555,
+  "code": 104
+}
+2026-05-16T13:56:06.546Z [warn] Could not delete old invitation post; keeping in cache {
+  "ownerId": "-42",
+  "postId": 555,
+  "error": {
+    "name": "Error",
+    "message": "Some other error",
+    "stack": "Error: Some other error\n    at Object.wallDelete [as delete] (file:///tmp/gh-issue-solver-1778938970638/tests/send-invitation-posts.test.js:214:29)\n    at deleteRecordedPosts (file:///tmp/gh-issue-solver-1778938970638/src/bot/triggers/send-invitation-posts.js:207:31)\n    at rotateCommunity (file:///tmp/gh-issue-solver-1778938970638/src/bot/triggers/send-invitation-posts.js:279:29)\n    at async sendInvitationPosts (file:///tmp/gh-issue-solver-1778938970638/src/bot/triggers/send-invitation-posts.js:303:36)\n    at async runWithFastSleep (file:///tmp/gh-issue-solver-1778938970638/tests/send-invitation-posts.test.js:31:5)\n    at async Object.fn (file:///tmp/gh-issue-solver-1778938970638/tests/send-invitation-posts.test.js:217:5)\n    at async fn (node:test:156:18)\n    at async innerWrapped (ext:cli/40_test.js:230:5)\n    at async Object.outerWrapped [as fn] (ext:cli/40_test.js:173:14)\n    at async TestContext.step (ext:cli/40_test.js:564:22)"
+  }
+}
+2026-05-16T13:56:06.547Z [info] Old invitation post deleted {
+  "ownerId": "-42",
+  "postId": 666
+}
+----- post-test output end -----
+  posts a new message and deletes the old recorded post ... ok (2ms)
+  keeps a cached id when delete throws an unknown error ... ok (2ms)
+  drops cached id from cache when wall.delete reports code 104 (already gone) ... ok (2ms)
+sendInvitationPosts: post rotation ... ok (1ms)
+getActiveAvatarAttachment ...
+  returns photo<owner>_<id>_<access_key> when both ids are present ...
+------- post-test output -------
+2026-05-16T13:56:06.548Z [info] Active avatar photo_id missing or malformed; posting without attachment {
+  "photoId": null,
+  "profileCount": 1,
+  "profileKeys": [
+    "photo_id"
+  ],
+  "hasCropPhoto": false
+}
+2026-05-16T13:56:06.548Z [warn] Could not fetch active avatar photo_id {
+  "error": {
+    "name": "Error",
+    "message": "network",
+    "stack": "Error: network\n    at Object.get (file:///tmp/gh-issue-solver-1778938970638/tests/send-invitation-posts.test.js:292:19)\n    at getActiveAvatarAttachment (file:///tmp/gh-issue-solver-1778938970638/src/bot/triggers/send-invitation-posts.js:155:35)\n    at Object.fn (file:///tmp/gh-issue-solver-1778938970638/tests/send-invitation-posts.test.js:298:24)\n    at fn (node:test:156:33)\n    at innerWrapped (ext:cli/40_test.js:230:11)\n    at Object.outerWrapped [as fn] (ext:cli/40_test.js:173:20)\n    at TestContext.step (ext:cli/40_test.js:564:37)\n    at TestSuite.addTest (node:test:151:40)\n    at test (node:test:301:25)\n    at file:///tmp/gh-issue-solver-1778938970638/tests/send-invitation-posts.test.js:287:3"
+  }
+}
+2026-05-16T13:56:06.549Z [info] Active avatar photo_id missing or malformed; posting without attachment {
+  "profileCount": 0,
+  "profileKeys": [],
+  "hasCropPhoto": false
+}
+2026-05-16T13:56:06.549Z [warn] Could not fetch avatar access_key; attaching bare photo id {
+  "photoId": "111_222",
+  "error": {
+    "name": "Error",
+    "message": "boom",
+    "stack": "Error: boom\n    at Object.getById (file:///tmp/gh-issue-solver-1778938970638/tests/send-invitation-posts.test.js:254:33)\n    at resolveAvatarAccessKey (file:///tmp/gh-issue-solver-1778938970638/src/bot/triggers/send-invitation-posts.js:123:40)\n    at getActiveAvatarAttachment (file:///tmp/gh-issue-solver-1778938970638/src/bot/triggers/send-invitation-posts.js:179:40)\n    at async Object.fn (file:///tmp/gh-issue-solver-1778938970638/tests/send-invitation-posts.test.js:259:24)\n    at async fn (node:test:156:18)\n    at async innerWrapped (ext:cli/40_test.js:230:5)\n    at async Object.outerWrapped [as fn] (ext:cli/40_test.js:173:14)\n    at async TestContext.step (ext:cli/40_test.js:564:22)\n    at async Promise.all (index 1)\n    at async innerWrapped (ext:cli/40_test.js:230:5)"
+  }
+}
+2026-05-16T13:56:06.549Z [debug] Active avatar attachment resolved {
+  "photoId": "3972090_457245285",
+  "hasAccessKey": true
+}
+2026-05-16T13:56:06.549Z [debug] Active avatar attachment resolved {
+  "photoId": "3972090_457245285",
+  "hasAccessKey": true
+}
+2026-05-16T13:56:06.549Z [debug] Active avatar attachment resolved {
+  "photoId": "111_222",
+  "hasAccessKey": false
+}
+2026-05-16T13:56:06.549Z [debug] Active avatar attachment resolved {
+  "photoId": "1_2",
+  "hasAccessKey": false
+}
+2026-05-16T13:56:06.549Z [debug] Active avatar attachment resolved {
+  "photoId": "5_6",
+  "hasAccessKey": true
+}
+----- post-test output end -----
+  returns photo<owner>_<id>_<access_key> when both ids are present ... ok (2ms)
+  returns null when the active profile has no photo_id ... ok (1ms)
+  returns null when users.get throws ... ok (1ms)
+  returns null when VK resolves no current profile ... ok (1ms)
+  uses crop_photo as an API fallback when photo_id is missing ... ok (1ms)
+  falls back to bare photo<owner>_<id> when access_key lookup fails ... ok (2ms)
+  falls back to bare photo<owner>_<id> when access_key field is missing ... ok (2ms)
+  omits user_ids so VK resolves the current token holder ... ok (1ms)
+getActiveAvatarAttachment ... ok (2ms)
+sendInvitationPosts: avatar attachment ...
+  attaches the avatar derived from photo_id + access_key ...
+------- post-test output -------
+2026-05-16T13:56:06.550Z [info] Active avatar photo_id missing or malformed; posting without attachment {
+  "photoId": null,
+  "profileCount": 1,
+  "profileKeys": [
+    "photo_id"
+  ],
+  "hasCropPhoto": false
+}
+2026-05-16T13:56:06.550Z [debug] Active avatar attachment resolved {
+  "photoId": "3972090_457245285",
+  "hasAccessKey": true
+}
+2026-05-16T13:56:06.550Z [info] Invitation post sent {
+  "communityId": 42,
+  "postId": 1
+}
+2026-05-16T13:56:06.550Z [info] Invitation post sent {
+  "communityId": 42,
+  "postId": 1
+}
+----- post-test output end -----
+  attaches the avatar derived from photo_id + access_key ... ok (0ms)
+  posts without attachment when no avatar photo_id is available ... ok (0ms)
+sendInvitationPosts: avatar attachment ... ok (0ms)
+sendInvitationPosts: error handling ...
+  does not crash on captcha (code 14); continues to next community ...
+------- post-test output -------
+2026-05-16T13:56:06.551Z [info] Active avatar photo_id missing or malformed; posting without attachment {
+  "photoId": null,
+  "profileCount": 1,
+  "profileKeys": [
+    "photo_id"
+  ],
+  "hasCropPhoto": false
+}
+2026-05-16T13:56:06.551Z [warn] Captcha required; backing off {
+  "communityId": 1
+}
+2026-05-16T13:56:06.553Z [info] Active avatar photo_id missing or malformed; posting without attachment {
+  "photoId": null,
+  "profileCount": 1,
+  "profileKeys": [
+    "photo_id"
+  ],
+  "hasCropPhoto": false
+}
+2026-05-16T13:56:06.553Z [info] Invitation post sent {
+  "communityId": 2,
+  "postId": 1
+}
+----- post-test output end -----
+  does not crash on captcha (code 14); continues to next community ... ok (3ms)
+sendInvitationPosts: error handling ... ok (2ms)
+running 2 tests from ./tests/session-log.test.js
+openSessionLog: writes log lines to a session file ... ignored (0ms)
+openSessionLog: redacts secrets in persisted logs ... ignored (0ms)
+running 3 tests from ./tests/set-online-status.test.js
+setOnlineStatus: healthy call ...
+  logs success on a healthy call ...
+------- post-test output -------
+2026-05-16T13:56:06.701Z [info] Online status is set
+----- post-test output end -----
+  logs success on a healthy call ... ok (1ms)
+setOnlineStatus: healthy call ... ok (2ms)
+setOnlineStatus: Unknown method (code 3) ...
+  halts the trigger and logs the terminal diagnostic once ...
+------- post-test output -------
+2026-05-16T13:56:06.703Z [error] VK API rejected method as unknown; halting trigger for this cycle {
+  "trigger": "set-online-status",
+  "method": "account.setOnline",
+  "errorCode": 3,
+  "errorMessage": "Code №3 - Unknown method passed",
+  "appPermissionsMask": 1073737727,
+  "hint": "VK has gated this method for the Kate Mobile OAuth app (see docs/case-studies/issue-49 §7). Re-runs will fail until the user switches OAuth flow."
+}
+----- post-test output end -----
+  halts the trigger and logs the terminal diagnostic once ... ok (1ms)
+setOnlineStatus: Unknown method (code 3) ... ok (1ms)
+setOnlineStatus: other errors ...
+  logs the generic warning for non-VK errors too ...
+------- post-test output -------
+2026-05-16T13:56:06.704Z [warn] Could not set online status {
+  "error": {
+    "name": "Error",
+    "message": "boom",
+    "stack": "Error: boom\n    at Object.setOnline (file:///tmp/gh-issue-solver-1778938970638/tests/set-online-status.test.js:79:21)\n    at setOnlineStatus (file:///tmp/gh-issue-solver-1778938970638/src/bot/triggers/set-online-status.js:15:26)\n    at file:///tmp/gh-issue-solver-1778938970638/tests/set-online-status.test.js:84:13\n    at withCapturedLogs (file:///tmp/gh-issue-solver-1778938970638/tests/set-online-status.test.js:24:26)\n    at Object.fn (file:///tmp/gh-issue-solver-1778938970638/tests/set-online-status.test.js:74:11)\n    at fn (node:test:156:33)\n    at innerWrapped (ext:cli/40_test.js:230:11)\n    at Object.outerWrapped [as fn] (ext:cli/40_test.js:173:20)\n    at TestContext.step (ext:cli/40_test.js:564:37)\n    at TestSuite.addTest (node:test:151:40)"
+  }
+}
+----- post-test output end -----
+  logs the generic warning for non-VK errors too ... ok (0ms)
+setOnlineStatus: other errors ... ok (0ms)
+running 4 tests from ./tests/setup-npm.test.js
+compares semantic versions numerically ... ok (0ms)
+requires npm 11.5.1 or later ... ok (0ms)
+requires Node.js 22.14.0 or later ... ok (0ms)
+selects the latest npm 11 tarball that satisfies trusted publishing ... ok (0ms)
+running 6 tests from ./tests/site-downloads.test.js
+resolves versioned download links from actual release assets ... ok (1ms)
+prefers versioned assets while tolerating legacy assets during migration ... ok (0ms)
+derives user-visible asset names from the latest release version ... ok (0ms)
+uses the release page rather than a synthetic checksum URL when missing ... ok (0ms)
+keeps stable option groups for all supported operating systems ... ok (0ms)
+groups primary installer downloads with smaller format alternatives ... ok (0ms)
+running 2 tests from ./tests/ssh-installer.test.js
+buildInstallScript ...
+  emits a docker isolation invocation ... ok (2ms)
+  emits a screen isolation invocation ... ok (1ms)
+  stops any prior session before starting a new one ... ok (1ms)
+  uses screen isolation by default ... ok (1ms)
+  throws when the bundle archive is missing ... ok (1ms)
+  throws on unknown isolation ... ok (0ms)
+  escapes the remote dir ... ok (1ms)
+buildInstallScript ... ok (4ms)
+buildInstallPlan ...
+  returns plan metadata alongside the script ... ok (0ms)
+buildInstallPlan ... ok (0ms)
+running 3 tests from ./tests/stats.test.js
+isoWeek ...
+  returns the ISO week number for known dates ... ok (0ms)
+isoWeek ... ok (1ms)
+pathsForDate ...
+  produces total + month + week paths ... ok (0ms)
+pathsForDate ... ok (0ms)
+StatsStore ... ignored (0ms)
+running 5 tests from ./tests/tag-prefix.test.js
+defaults to "v" prefix (backward compatible) ... ok (0ms)
+supports "js-v" prefix for multi-language repos ... ok (0ms)
+supports "rust-v" prefix ... ok (0ms)
+supports empty prefix ... ok (0ms)
+works with pre-release versions ... ok (0ms)
+running 3 tests from ./tests/theme.test.js
+resolveTheme ...
+  honors explicit light or dark preferences ... ok (0ms)
+  falls back to system theme when preference is auto ... ok (0ms)
+  defaults to light when system theme is missing ... ok (0ms)
+resolveTheme ... ok (1ms)
+applyTheme ...
+  writes data-theme to the document element ... ok (0ms)
+applyTheme ... ok (0ms)
+watchSystemTheme ...
+  returns a no-op when matchMedia is unavailable ... ok (0ms)
+  listens via addEventListener and reports dark/light ... ok (0ms)
+watchSystemTheme ... ok (0ms)
+running 2 tests from ./tests/validate-release-assets.test.js
+validates release assets from the tag version, not the checkout package version ... ok (0ms)
+reports each missing release asset with a GitHub annotation path ... ok (0ms)
+running 9 tests from ./tests/version-and-commit-guards.test.js
+checks the exit code of every awaited command-stream invocation ... ok (1ms)
+exposes an assertOk helper that throws on non-zero exit ... ok (0ms)
+retries the push on non-fast-forward rejections ... ok (0ms)
+verifies origin/main matches HEAD after a successful push ... ok (0ms)
+stashes uncommitted changes before rebasing ... ok (0ms)
+emits committed_sha output for downstream jobs ... ok (0ms)
+uses committed_sha in the release.release_target step ... ok (0ms)
+uses committed_sha in the instant-release.release_target step ... ok (0ms)
+orders preview-regen after release and instant-release jobs ... ok (0ms)
+running 1 test from ./tests/vk-client.test.js
+createVkClient ...
+  returns a VK instance constructed with the given token ... ok (3ms)
+  throws when no token is provided ... ok (2ms)
+  logs request and response when verbose mode is on ... ok (2ms)
+  logs an APIError-shaped response (code 3) verbatim ... ok (1ms)
+  redacts access_token from logged params ... ok (1ms)
+  skips request/response logging when verbose is off ... ok (1ms)
+createVkClient ... ok (3ms)
+running 3 tests from ./tests/vk-rate-limit.test.js
+classifyMethod ...
+  classifies VK read methods (get/search/is/are/look prefixes) ... ok (1ms)
+  classifies VK write methods (anything not matching read prefixes) ... ok (0ms)
+  treats invalid or empty inputs as write to use the safer (longer) delay ... ok (0ms)
+  uses the last segment after the dot when present ... ok (0ms)
+  classifies bare methods without a dot too ... ok (1ms)
+classifyMethod ... ok (2ms)
+pickDelay ...
+  returns the min when random() returns 0 ... ok (1ms)
+  returns near the max when random() returns ~1 ... ok (1ms)
+  respects the configured read range (3000–7000 ms) ... ok (1ms)
+  respects the configured write range (6000–13000 ms) ... ok (1ms)
+pickDelay ... ok (0ms)
+createThrottle ...
+  fires the first call without any delay ... ok (11ms)
+  picks delays inside the documented range (3000–7000 for read, 6000–13000 for write) ... ok (10ms)
+  does not sleep when enough wall-clock time has already elapsed ... ok (10ms)
+  reset() clears the pacing state so the next call fires immediately ... ok (10ms)
+  waits at least the picked read delay between two read calls ... ok (11ms)
+  waits at least the picked write delay between two write calls ... ok (10ms)
+  uses the NEXT method to pick the delay (read after write waits 3–7s) ... ok (10ms)
+  records the end timestamp even when the inner function throws ... ok (10ms)
+  serialises concurrent calls through a single chain ... ok (11ms)
+createThrottle ... ok (12ms)
+running 1 test from ./tests/vk-token-mask.test.js
+maskVkToken ...
+  returns empty string for nullish or empty input ... ok (1ms)
+  returns the value unchanged when it fits within the visible window ... ok (1ms)
+  keeps the first 10 and last 10 characters of long tokens ... ok (0ms)
+  replaces the middle with a fixed bullet run ... ok (0ms)
+maskVkToken ... ok (1ms)
+running 1 test from ./tests/vk-token.test.js
+VK token helpers ...
+  keeps the Kate Mobile blank-page OAuth URL requested by issue 26 ... ok (1ms)
+  extracts access_token from pasted VK redirect URLs ... ok (1ms)
+  accepts a raw token without changing it beyond trimming whitespace ... ok (1ms)
+  wires the VK blank-page OAuth URL through an Electron auth window ... ok (0ms)
+VK token helpers ... ok (2ms)
+
+ok | 151 passed (190 steps) | 0 failed | 5 ignored (1 step) (3s)

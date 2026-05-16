@@ -1,0 +1,335 @@
+TAP version 13
+# 2026-05-16T13:53:14.826Z [info] No invitation-post communities configured; skipping
+# 2026-05-16T13:53:14.827Z [info] Invitation post still in top 10; skipping community {
+#   "communityId": 42,
+#   "cached": [
+#     555
+#   ]
+# }
+# 2026-05-16T13:53:14.828Z [info] Active avatar photo_id missing or malformed; posting without attachment {
+#   "photoId": null,
+#   "profileCount": 1,
+#   "profileKeys": [
+#     "photo_id"
+#   ],
+#   "hasCropPhoto": false
+# }
+# 2026-05-16T13:53:14.828Z [info] Invitation post sent {
+#   "communityId": 42,
+#   "postId": 777
+# }
+# 2026-05-16T13:53:14.828Z [info] Old invitation post deleted {
+#   "ownerId": "-42",
+#   "postId": 555
+# }
+# 2026-05-16T13:53:14.829Z [info] Active avatar photo_id missing or malformed; posting without attachment {
+#   "photoId": null,
+#   "profileCount": 1,
+#   "profileKeys": [
+#     "photo_id"
+#   ],
+#   "hasCropPhoto": false
+# }
+# 2026-05-16T13:53:14.829Z [info] Invitation post sent {
+#   "communityId": 42,
+#   "postId": 777
+# }
+# 2026-05-16T13:53:14.829Z [info] Old invitation post deleted {
+#   "ownerId": "-42",
+#   "postId": 666
+# }
+# 2026-05-16T13:53:14.830Z [info] Active avatar photo_id missing or malformed; posting without attachment {
+#   "photoId": null,
+#   "profileCount": 1,
+#   "profileKeys": [
+#     "photo_id"
+#   ],
+#   "hasCropPhoto": false
+# }
+# 2026-05-16T13:53:14.830Z [info] Invitation post sent {
+#   "communityId": 42,
+#   "postId": 777
+# }
+# 2026-05-16T13:53:14.829Z [warn] Old invitation post already gone; dropping from cache {
+#   "ownerId": "-42",
+#   "postId": 555,
+#   "code": 104
+# }
+# 2026-05-16T13:53:14.830Z [warn] Could not delete old invitation post; keeping in cache {
+#   "ownerId": "-42",
+#   "postId": 555,
+#   "error": {
+#     "name": "Error",
+#     "message": "Some other error",
+#     "stack": "Error: Some other error\\n    at Object.wallDelete [as delete] (file:///tmp/gh-issue-solver-1778938970638/tests/send-invitation-posts.test.js:214:29)\\n    at deleteRecordedPosts (file:///tmp/gh-issue-solver-1778938970638/src/bot/triggers/send-invitation-posts.js:207:31)\\n    at rotateCommunity (file:///tmp/gh-issue-solver-1778938970638/src/bot/triggers/send-invitation-posts.js:279:29)\\n    at async sendInvitationPosts (file:///tmp/gh-issue-solver-1778938970638/src/bot/triggers/send-invitation-posts.js:303:36)\\n    at async runWithFastSleep (file:///tmp/gh-issue-solver-1778938970638/tests/send-invitation-posts.test.js:31:5)\\n    at async TestContext.<anonymous> (file:///tmp/gh-issue-solver-1778938970638/tests/send-invitation-posts.test.js:217:5)\\n    at async Test.run (node:internal/test_runner/test:797:9)\\n    at async Suite.processPendingSubtests (node:internal/test_runner/test:526:7)"
+#   }
+# }
+# 2026-05-16T13:53:14.831Z [warn] Could not fetch avatar access_key; attaching bare photo id {
+#   "photoId": "111_222",
+#   "error": {
+#     "name": "Error",
+#     "message": "boom",
+#     "stack": "Error: boom\\n    at Object.getById (file:///tmp/gh-issue-solver-1778938970638/tests/send-invitation-posts.test.js:254:33)\\n    at resolveAvatarAccessKey (file:///tmp/gh-issue-solver-1778938970638/src/bot/triggers/send-invitation-posts.js:123:40)\\n    at getActiveAvatarAttachment (file:///tmp/gh-issue-solver-1778938970638/src/bot/triggers/send-invitation-posts.js:179:40)\\n    at async TestContext.<anonymous> (file:///tmp/gh-issue-solver-1778938970638/tests/send-invitation-posts.test.js:259:24)\\n    at async Test.run (node:internal/test_runner/test:797:9)\\n    at async Suite.processPendingSubtests (node:internal/test_runner/test:526:7)"
+#   }
+# }
+# 2026-05-16T13:53:14.832Z [warn] Could not fetch active avatar photo_id {
+#   "error": {
+#     "name": "Error",
+#     "message": "network",
+#     "stack": "Error: network\\n    at Object.get (file:///tmp/gh-issue-solver-1778938970638/tests/send-invitation-posts.test.js:292:19)\\n    at getActiveAvatarAttachment (file:///tmp/gh-issue-solver-1778938970638/src/bot/triggers/send-invitation-posts.js:155:35)\\n    at TestContext.<anonymous> (file:///tmp/gh-issue-solver-1778938970638/tests/send-invitation-posts.test.js:298:24)\\n    at Test.runInAsyncScope (node:async_hooks:206:9)\\n    at Test.run (node:internal/test_runner/test:796:25)\\n    at Suite.processPendingSubtests (node:internal/test_runner/test:526:18)\\n    at Test.postRun (node:internal/test_runner/test:889:19)\\n    at Test.run (node:internal/test_runner/test:835:12)\\n    at async Suite.processPendingSubtests (node:internal/test_runner/test:526:7)"
+#   }
+# }
+# 2026-05-16T13:53:14.831Z [debug] Active avatar attachment resolved {
+#   "photoId": "3972090_457245285",
+#   "hasAccessKey": true
+# }
+# 2026-05-16T13:53:14.831Z [debug] Active avatar attachment resolved {
+#   "photoId": "111_222",
+#   "hasAccessKey": false
+# }
+# 2026-05-16T13:53:14.831Z [debug] Active avatar attachment resolved {
+#   "photoId": "1_2",
+#   "hasAccessKey": false
+# }
+# 2026-05-16T13:53:14.832Z [info] Active avatar photo_id missing or malformed; posting without attachment {
+#   "photoId": null,
+#   "profileCount": 1,
+#   "profileKeys": [
+#     "photo_id"
+#   ],
+#   "hasCropPhoto": false
+# }
+# 2026-05-16T13:53:14.832Z [debug] Active avatar attachment resolved {
+#   "photoId": "5_6",
+#   "hasAccessKey": true
+# }
+# 2026-05-16T13:53:14.833Z [debug] Active avatar attachment resolved {
+#   "photoId": "3972090_457245285",
+#   "hasAccessKey": true
+# }
+# 2026-05-16T13:53:14.833Z [info] Active avatar photo_id missing or malformed; posting without attachment {
+#   "profileCount": 0,
+#   "profileKeys": [],
+#   "hasCropPhoto": false
+# }
+# 2026-05-16T13:53:14.834Z [debug] Active avatar attachment resolved {
+#   "photoId": "3972090_457245285",
+#   "hasAccessKey": true
+# }
+# 2026-05-16T13:53:14.834Z [info] Invitation post sent {
+#   "communityId": 42,
+#   "postId": 1
+# }
+# 2026-05-16T13:53:14.834Z [info] Active avatar photo_id missing or malformed; posting without attachment {
+#   "photoId": null,
+#   "profileCount": 1,
+#   "profileKeys": [
+#     "photo_id"
+#   ],
+#   "hasCropPhoto": false
+# }
+# 2026-05-16T13:53:14.834Z [info] Invitation post sent {
+#   "communityId": 42,
+#   "postId": 1
+# }
+# 2026-05-16T13:53:14.835Z [info] Active avatar photo_id missing or malformed; posting without attachment {
+#   "photoId": null,
+#   "profileCount": 1,
+#   "profileKeys": [
+#     "photo_id"
+#   ],
+#   "hasCropPhoto": false
+# }
+# 2026-05-16T13:53:14.835Z [warn] Captcha required; backing off {
+#   "communityId": 1
+# }
+# Subtest: readCachedPostIds
+    # Subtest: returns [] when cache is missing
+    ok 1 - returns [] when cache is missing
+      ---
+      duration_ms: 1.129276
+      ...
+    # Subtest: returns [] for unknown community
+    ok 2 - returns [] for unknown community
+      ---
+      duration_ms: 0.122664
+      ...
+    # Subtest: normalises scalar bucket to a single-element array
+    ok 3 - normalises scalar bucket to a single-element array
+      ---
+      duration_ms: 0.165197
+      ...
+    # Subtest: normalises array bucket to numbers and drops NaN
+    ok 4 - normalises array bucket to numbers and drops NaN
+      ---
+      duration_ms: 0.95074
+      ...
+    1..4
+ok 1 - readCachedPostIds
+  ---
+  duration_ms: 3.450401
+  type: 'suite'
+  ...
+# Subtest: buildUpdatedCache
+    # Subtest: writes the post id list under byCommunity
+    ok 1 - writes the post id list under byCommunity
+      ---
+      duration_ms: 0.256433
+      ...
+    # Subtest: removes the entry when post id list is empty
+    ok 2 - removes the entry when post id list is empty
+      ---
+      duration_ms: 0.12746
+      ...
+    # Subtest: coerces string ids to numbers and drops invalid
+    ok 3 - coerces string ids to numbers and drops invalid
+      ---
+      duration_ms: 0.076914
+      ...
+    # Subtest: does not mutate the input cache
+    ok 4 - does not mutate the input cache
+      ---
+      duration_ms: 0.103664
+      ...
+    1..4
+ok 2 - buildUpdatedCache
+  ---
+  duration_ms: 0.757431
+  type: 'suite'
+  ...
+# Subtest: sendInvitationPosts: basic flow
+    # Subtest: skips communities when no communities configured
+    ok 1 - skips communities when no communities configured
+      ---
+      duration_ms: 1.078561
+      ...
+    # Subtest: skips a community whose cached post is still in the top 10
+    ok 2 - skips a community whose cached post is still in the top 10
+      ---
+      duration_ms: 0.655309
+      ...
+    1..2
+ok 3 - sendInvitationPosts: basic flow
+  ---
+  duration_ms: 1.863653
+  type: 'suite'
+  ...
+# Subtest: sendInvitationPosts: post rotation
+    # Subtest: posts a new message and deletes the old recorded post
+    ok 1 - posts a new message and deletes the old recorded post
+      ---
+      duration_ms: 0.922248
+      ...
+    # Subtest: drops cached id from cache when wall.delete reports code 104 (already gone)
+    ok 2 - drops cached id from cache when wall.delete reports code 104 (already gone)
+      ---
+      duration_ms: 0.80946
+      ...
+    # Subtest: keeps a cached id when delete throws an unknown error
+    ok 3 - keeps a cached id when delete throws an unknown error
+      ---
+      duration_ms: 0.658374
+      ...
+    1..3
+ok 4 - sendInvitationPosts: post rotation
+  ---
+  duration_ms: 2.594605
+  type: 'suite'
+  ...
+# Subtest: getActiveAvatarAttachment
+    # Subtest: returns photo<owner>_<id>_<access_key> when both ids are present
+    ok 1 - returns photo<owner>_<id>_<access_key> when both ids are present
+      ---
+      duration_ms: 0.38199
+      ...
+    # Subtest: falls back to bare photo<owner>_<id> when access_key lookup fails
+    ok 2 - falls back to bare photo<owner>_<id> when access_key lookup fails
+      ---
+      duration_ms: 0.540437
+      ...
+    # Subtest: falls back to bare photo<owner>_<id> when access_key field is missing
+    ok 3 - falls back to bare photo<owner>_<id> when access_key field is missing
+      ---
+      duration_ms: 0.209242
+      ...
+    # Subtest: returns null when the active profile has no photo_id
+    ok 4 - returns null when the active profile has no photo_id
+      ---
+      duration_ms: 0.213038
+      ...
+    # Subtest: returns null when users.get throws
+    ok 5 - returns null when users.get throws
+      ---
+      duration_ms: 0.338876
+      ...
+    # Subtest: omits user_ids so VK resolves the current token holder
+    ok 6 - omits user_ids so VK resolves the current token holder
+      ---
+      duration_ms: 0.318476
+      ...
+    # Subtest: uses crop_photo as an API fallback when photo_id is missing
+    ok 7 - uses crop_photo as an API fallback when photo_id is missing
+      ---
+      duration_ms: 0.187339
+      ...
+    # Subtest: returns null when VK resolves no current profile
+    ok 8 - returns null when VK resolves no current profile
+      ---
+      duration_ms: 0.731051
+      ...
+    1..8
+ok 5 - getActiveAvatarAttachment
+  ---
+  duration_ms: 3.197585
+  type: 'suite'
+  ...
+# Subtest: sendInvitationPosts: avatar attachment
+    # Subtest: attaches the avatar derived from photo_id + access_key
+    ok 1 - attaches the avatar derived from photo_id + access_key
+      ---
+      duration_ms: 0.507708
+      ...
+    # Subtest: posts without attachment when no avatar photo_id is available
+    ok 2 - posts without attachment when no avatar photo_id is available
+      ---
+      duration_ms: 0.265196
+      ...
+    1..2
+ok 6 - sendInvitationPosts: avatar attachment
+  ---
+  duration_ms: 1.089718
+  type: 'suite'
+  ...
+# 2026-05-16T13:53:14.850Z [info] Active avatar photo_id missing or malformed; posting without attachment {
+#   "photoId": null,
+#   "profileCount": 1,
+#   "profileKeys": [
+#     "photo_id"
+#   ],
+#   "hasCropPhoto": false
+# }
+# 2026-05-16T13:53:14.850Z [info] Invitation post sent {
+#   "communityId": 2,
+#   "postId": 1
+# }
+# Subtest: sendInvitationPosts: error handling
+    # Subtest: does not crash on captcha (code 14); continues to next community
+    ok 1 - does not crash on captcha (code 14); continues to next community
+      ---
+      duration_ms: 15.278193
+      ...
+    1..1
+ok 7 - sendInvitationPosts: error handling
+  ---
+  duration_ms: 15.455908
+  type: 'suite'
+  ...
+1..7
+# tests 24
+# suites 7
+# pass 24
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 94.861068

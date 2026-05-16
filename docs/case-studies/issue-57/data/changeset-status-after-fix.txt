@@ -1,0 +1,7 @@
+🦋  info Packages to be bumped at patch:
+🦋  info
+🦋  - vk-bot-desktop
+🦋  ---
+🦋  info NO packages to be bumped at minor
+🦋  ---
+🦋  info NO packages to be bumped at major

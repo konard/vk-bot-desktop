@@ -1,0 +1,52 @@
+{
+  "name": "photos.getById",
+  "description": "Returns information about photos by their IDs.",
+  "access_token_type": [
+    "user",
+    "service"
+  ],
+  "parameters": [
+    {
+      "name": "photos",
+      "description": "IDs separated with a comma, that are IDs of users who posted photos and IDs of photos themselves with an underscore character between such IDs. To get information about a photo in the group album, you shall specify group ID instead of user ID. Example: \"1_129207899,6492_135055734, , -20629724_271945303\"",
+      "type": "array",
+      "required": true,
+      "items": {
+        "type": "string",
+        "format": "value_object",
+        "properties": {
+          "owner_id": {
+            "type": "integer",
+            "format": "int64",
+            "entity": "owner",
+            "required": true
+          },
+          "photo_id": {
+            "type": "integer",
+            "minimum": 0,
+            "required": true
+          },
+          "access_key": {
+            "type": "string"
+          }
+        }
+      },
+      "maxItems": 500
+    },
+    {
+      "name": "extended",
+      "description": "'1' - to return additional fields, '0' - (default)",
+      "type": "boolean"
+    },
+    {
+      "name": "photo_sizes",
+      "description": "'1' - to return photo sizes in a",
+      "type": "boolean"
+    }
+  ],
+  "responses": {
+    "response": {
+      "$ref": "../photos/responses.json#/definitions/photos_getById_response"
+    }
+  }
+}
